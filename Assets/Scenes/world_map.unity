@@ -907,7 +907,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710635096}
-  m_LocalRotation: {x: 0.04873797, y: -0.000000017319675, z: 8.4513013e-10, w: 0.9988116}
+  m_LocalRotation: {x: 0.04873797, y: 0.000000017319675, z: -8.4513013e-10, w: 0.9988116}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3182,40 +3182,6 @@ Transform:
   m_Father: {fileID: 913307015}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &919132148570873319 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5504311997989855175, guid: 0b86003dedf94794c93a283d8caa9850, type: 3}
-  m_PrefabInstance: {fileID: 4657380934024053280}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &919132148570873320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148570873319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6993e5bb630916345a99c1b85261775c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollider: {fileID: 2042290095}
-  worldTextBox: {fileID: 838229388}
-  signText: Pallet Town
-  textDisplayDuration: 0.5
---- !u!65 &919132148570873321
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148570873319}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 2, z: 2}
-  m_Center: {x: -1, y: 1, z: 0}
 --- !u!4 &1151388029096125990
 Transform:
   m_ObjectHideFlags: 0
@@ -3499,10 +3465,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4657380934509011608, guid: 0b86003dedf94794c93a283d8caa9850, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 919132148570873320, guid: 0b86003dedf94794c93a283d8caa9850, type: 3}
+      propertyPath: worldTextBox
+      value: 
+      objectReference: {fileID: 838229388}
+    - target: {fileID: 919132148570873320, guid: 0b86003dedf94794c93a283d8caa9850, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 2042290095}
     - target: {fileID: 5127610090511877501, guid: 0b86003dedf94794c93a283d8caa9850, type: 3}
       propertyPath: m_RootOrder
       value: 1
