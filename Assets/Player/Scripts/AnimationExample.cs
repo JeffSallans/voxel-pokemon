@@ -17,7 +17,7 @@ public class AnimationExample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             gameObject.GetComponent<Animator>().SetBool("isWalking", true);
         }

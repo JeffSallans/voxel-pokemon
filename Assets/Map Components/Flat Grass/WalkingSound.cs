@@ -34,6 +34,11 @@ public class WalkingSound : MonoBehaviour
     /// </summary>
     public bool audioShouldBePlaying = false;
 
+    /// <summary>
+    /// Used for debugging to see if the walking audio should be playing
+    /// </summary>
+    public int lastIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,11 +83,17 @@ public class WalkingSound : MonoBehaviour
         // Handle empty sound list
         if (audioSourceList.Length == 0) yield return new WaitForSeconds(secondsBetweenAudioSounds);
 
-        var index = (int) Mathf.Floor(Random.value * audioSourceList.Length);
+        // Random sounds
+        //var index = (int) Mathf.Floor(Random.value * audioSourceList.Length);
+
+        // Looping sounds
+        var index = (lastIndex + 1) % audioSourceList.Length;
+
         var audioSource = (AudioSource) audioSourceList.GetValue(index);
         audioSource.Play();
         audioShouldBePlaying = false;
         yield return new WaitForSeconds(secondsBetweenAudioSounds);
         audioShouldBePlaying = playerOnSurface;
+        lastIndex = index;
     }
 }
