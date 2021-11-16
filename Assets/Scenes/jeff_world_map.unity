@@ -1171,7 +1171,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710635096}
-  m_LocalRotation: {x: 0.04873797, y: 0.000000017319675, z: -8.4513013e-10, w: 0.9988116}
+  m_LocalRotation: {x: 0.04873797, y: -0.000000017319675, z: 8.4513013e-10, w: 0.9988116}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2076,7 +2076,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.08498757, y: 0.00000001662484, z: -0.0000000014180354, w: 0.996382}
+  m_LocalRotation: {x: 0.084987596, y: -0.000000018207025, z: 0.00000000155299, w: 0.996382}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2931,7 +2931,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790161850}
-  m_LocalRotation: {x: 0.073382296, y: -0.0000000130296645, z: -0.0000000019789836, w: 0.9973039}
+  m_LocalRotation: {x: 0.07338231, y: 0.0000000064210153, z: 0.0000000015897559, w: 0.9973039}
   m_LocalPosition: {x: 27.16, y: 2.1006935, z: 11.697651}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4538,6 +4538,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7b0a76ed91313c94b92d548e92e0f232, type: 2}
+    - target: {fileID: 4773216260802000939, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 5647159541779516164}
+    - target: {fileID: 4773216260802000939, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 2042290095}
+    - target: {fileID: 4773216260802000939, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+      propertyPath: secondsBetweenAudioSounds
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773216260802000939, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+      propertyPath: audioSourceList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773216260802000939, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+      propertyPath: audioSourceList.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5493188057229986085, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -4586,8 +4606,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flat Grass (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3700980059110554590, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+--- !u!1 &5647159541779516157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8521626124577134605, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+  m_PrefabInstance: {fileID: 5647159541779516156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &5647159541779516158
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647159541779516157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &5647159541779516164 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7797021578276344450, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+  m_PrefabInstance: {fileID: 5647159541779516156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5674420310932028941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4684,6 +4729,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4773216260802000939, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 2042290095}
     - target: {fileID: 5493188057229986085, guid: 98f7bef583d9be74d8063c122eb5c126, type: 3}
       propertyPath: m_RootOrder
       value: 16
