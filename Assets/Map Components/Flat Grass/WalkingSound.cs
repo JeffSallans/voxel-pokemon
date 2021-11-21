@@ -10,9 +10,9 @@ using UnityEngine;
 public class WalkingSound : MonoBehaviour
 {
     /// <summary>
-    /// The player collider to trigger the text
+    /// The player collider to trigger the sound
     /// </summary>
-    public CapsuleCollider playerCollider;
+    public BoxCollider playerCollider;
     
     /// <summary>
     /// Sounds to activate when the player is walking
