@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class sc_deck_test : MonoBehaviour
 {
+    public GameObject prefabExample;
 
     public void debugmsg()
     {
