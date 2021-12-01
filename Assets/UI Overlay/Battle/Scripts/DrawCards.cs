@@ -6,16 +6,21 @@ public class DrawCards : MonoBehaviour
 {
     public GameObject energy_fire;
     public GameObject energy_lightning;
+    public GameObject hand_area;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        hand_area = GameObject.Find("Player Hand");
     }
 
     public void OnClick()
     {
-        GameObject card = Instantiate(energy_fire, new Vector2(0, 0), Quaternion.identity);
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject card = Instantiate(energy_fire, new Vector2(0, 0), Quaternion.identity);
+            card.transform.SetParent(hand_area.transform, false);
+        }
     }
     // Update is called once per frame
     void Update()
