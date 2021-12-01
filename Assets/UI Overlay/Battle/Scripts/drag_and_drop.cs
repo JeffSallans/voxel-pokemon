@@ -22,15 +22,17 @@ public class drag_and_drop : MonoBehaviour
         dropArea = GameObject.Find("Drop Zone");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Enter");
         isOverDropZone = true;
         dropzone = collision.gameObject;
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("Exit");
         isOverDropZone = false;
         dropzone = null;
     }
@@ -62,7 +64,6 @@ public class drag_and_drop : MonoBehaviour
         if (isDragging)
         {
             transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            transform.SetParent(handArea.transform, true);
             transform.SetParent(canvas.transform, true);
         }
         
