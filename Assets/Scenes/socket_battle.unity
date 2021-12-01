@@ -16181,6 +16181,64 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1973188774414822340, guid: 42fd93bfce54be74ebf8a6d1b58ccb88, type: 3}
   m_PrefabInstance: {fileID: 382514569}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &382874668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382874670}
+  - component: {fileID: 382874669}
+  m_Layer: 0
+  m_Name: BattleState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &382874669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382874668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1264b63ca8ae54392cabab2ee2f18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: []
+  hand: []
+  discard: []
+  player: {fileID: 0}
+  activePokemon: {fileID: 0}
+  opponent: {fileID: 0}
+  opponentActivePokemon: {fileID: 0}
+  playerPokemonLocations: []
+  opponentPokemonLocations: []
+  deckLocation: {fileID: 0}
+  handLocations: []
+  discardLocation: {fileID: 0}
+  commonEnergy: []
+  switchPokemonOverlay: {fileID: 0}
+  handSize: 5
+--- !u!4 &382874670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382874668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 279.58893, y: 272.92108, z: -4.4455566}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &383404166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67515,6 +67573,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1574268381}
+  - component: {fileID: 1574268383}
+  - component: {fileID: 1574268382}
   m_Layer: 0
   m_Name: GlobalState
   m_TagString: Untagged
@@ -67536,6 +67596,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574268382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574268380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4401051e9e075344b2911b561612aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: []
+  party: []
+--- !u!114 &1574268383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574268380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dafeb426fbfcbd42ab5ee2702b4ba87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardInventory: []
+  energyInventory: []
+  pokemonInventory: []
 --- !u!1001 &1574764649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79687,6 +79776,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4332400828342869050, guid: 27f69f72a0a495244a170aabfca7177e, type: 3}
   m_PrefabInstance: {fileID: 1725452397}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1857813918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857813920}
+  - component: {fileID: 1857813919}
+  m_Layer: 0
+  m_Name: Opponent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1857813919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857813918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b549bd55c25923e48958048f457988a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party: []
+  movesConfig: 
+  opponentStrategyBot: {fileID: 0}
+--- !u!4 &1857813920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857813918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 654.6178, y: -49.547657, z: 302.34946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1858213575
 PrefabInstance:
   m_ObjectHideFlags: 0
