@@ -57,6 +57,11 @@ public class Card : MonoBehaviour
     public string cardType;
 
     /// <summary>
+    /// The type of damage "Physical" or "Special"
+    /// </summary>
+    public string damageType;
+
+    /// <summary>
     /// The damage the card will do
     /// </summary>
     public int damage
