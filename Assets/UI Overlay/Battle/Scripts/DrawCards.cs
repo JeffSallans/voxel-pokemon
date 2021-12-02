@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrawCards : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class DrawCards : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            GameObject card = Instantiate(energy_fire, new Vector2(0, 0), Quaternion.identity);
+            GameObject card = Instantiate(energy_lightning, new Vector2(0, 0), Quaternion.identity);
             card.transform.SetParent(hand_area.transform, false);
         }
     }
