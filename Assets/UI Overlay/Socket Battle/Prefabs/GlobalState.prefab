@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2455326099814127597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2455326099814127596}
+  - component: {fileID: 2455326099814127598}
+  - component: {fileID: 2455326099814127599}
+  m_Layer: 0
+  m_Name: GlobalState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2455326099814127596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455326099814127597}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 279.58893, y: 272.92108, z: -4.4455566}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2455326099814127598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455326099814127597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dafeb426fbfcbd42ab5ee2702b4ba87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardInventory:
+  - {fileID: 8051497567730727058, guid: f0d7b689805aa3f47b5edd4c2be708f2, type: 3}
+  energyInventory:
+  - {fileID: 523483096532525809, guid: a39431431a1faae48a9cc35cac9f2889, type: 3}
+  pokemonInventory:
+  - {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+--- !u!114 &2455326099814127599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455326099814127597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4401051e9e075344b2911b561612aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck:
+  - {fileID: 8051497567730727058, guid: f0d7b689805aa3f47b5edd4c2be708f2, type: 3}
+  - {fileID: 8051497567730727058, guid: f0d7b689805aa3f47b5edd4c2be708f2, type: 3}
+  - {fileID: 8051497567730727058, guid: f0d7b689805aa3f47b5edd4c2be708f2, type: 3}
+  - {fileID: 8051497567730727058, guid: f0d7b689805aa3f47b5edd4c2be708f2, type: 3}
+  party:
+  - {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}

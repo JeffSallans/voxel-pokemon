@@ -122,11 +122,12 @@ public class BattleGameBoard : MonoBehaviour
 
     }
 
-    public void onBattleStart(PlayerDeck _player, OpponentDeck _opponent)
+    /// <summary>
+    /// Assumes player and opponent are set before calling this
+    /// </summary>
+    public void onBattleStart()
     {
-        player = _player;
         activePokemon = player.party.First();
-        opponent = _opponent;
         opponentActivePokemon = opponent.party.First();
 
         // Shuffle player deck

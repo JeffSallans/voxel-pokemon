@@ -22,4 +22,5 @@ public static class EnergyType {
     public const string GHOST = "Ghost";
     public const string ICE = "Ice";
     public const string STEEL = "Steel";
+    public const string BUG = "Bug";
 }

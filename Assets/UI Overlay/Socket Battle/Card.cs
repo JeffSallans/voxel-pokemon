@@ -146,6 +146,11 @@ public class Card : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Where the card description should be rendered
+    /// </summary>
+    public TextAsset descriptionGameObject;
+
     private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
@@ -157,7 +162,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //descriptionGameObject.se = cardDesc;
     }
 
     public void onBattleStart() {
@@ -168,6 +173,11 @@ public class Card : MonoBehaviour
     public void onDraw(Pokemon activePokemon) { }
 
     public void onOpponentDraw(Pokemon opponentActivePokemon) { }
+
+    public void onPlayEvent()
+    {
+        battleGameBoard.onPlay(this, battleGameBoard.activePokemon, battleGameBoard.opponentActivePokemon);
+    }
 
     public void onPlay(Pokemon user, Pokemon target) {
         var dealtDamage = damage + user.attackStat - target.defenceStat;
