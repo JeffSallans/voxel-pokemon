@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class drag_and_drop : MonoBehaviour
 {
+    ptDisplayElectricEnergy ptDisplay;
+
     public GameObject canvas;
     public GameObject handArea;
 
@@ -11,6 +14,7 @@ public class drag_and_drop : MonoBehaviour
     private GameObject dropzone;
     private GameObject dropArea;
     private GameObject startParent;
+    private GameObject pt_active_energy_lightning;
     private Vector2 startPos;
     private bool isOverDropZone = false;
 
@@ -20,17 +24,28 @@ public class drag_and_drop : MonoBehaviour
         canvas = GameObject.Find("Main Canvas");
         handArea = GameObject.Find("Player Hand");
         dropArea = GameObject.Find("Drop Zone");
+        pt_active_energy_lightning = GameObject.Find("pt_active_energy_lightning");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void PlayCard()
     {
+        ptDisplay = pt_active_energy_lightning.GetComponent<ptDisplayElectricEnergy>();
+        ptDisplay.AddEnergy();
+        //UIText = pt_active_energy_lightning.GetComponent<Text>();
+        Destroy(this.gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Enter");
         isOverDropZone = true;
         dropzone = collision.gameObject;
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("Exit");
         isOverDropZone = false;
         dropzone = null;
     }
@@ -46,8 +61,9 @@ public class drag_and_drop : MonoBehaviour
         isDragging = false;
         if (isOverDropZone)
         {
-            transform.position = dropArea.transform.position;
-            transform.SetParent(dropArea.transform, false);
+            PlayCard();
+            //transform.position = dropArea.transform.position;
+            //transform.SetParent(dropArea.transform, false);
         }
         else
         {
@@ -62,7 +78,6 @@ public class drag_and_drop : MonoBehaviour
         if (isDragging)
         {
             transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            transform.SetParent(handArea.transform, true);
             transform.SetParent(canvas.transform, true);
         }
         
