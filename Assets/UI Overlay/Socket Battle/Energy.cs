@@ -19,7 +19,9 @@ public class Energy : MonoBehaviour
     public Card attachedToCard;
 
     public Pokemon attachedToPokemon;
-       
+
+    private BattleGameBoard battleGameBoard;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +32,10 @@ public class Energy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void onBattleStart(BattleGameBoard _battleGameBoard)
+    {
+        battleGameBoard = _battleGameBoard;
     }
 }

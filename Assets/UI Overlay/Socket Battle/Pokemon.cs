@@ -15,9 +15,9 @@ public class Pokemon : MonoBehaviour
     public int initHealth;
 
     public int attackStat;
-    public int defenceStat;
+    public int defenseStat;
     public int specialAttackStat;
-    public int specialDefenceStat;
+    public int specialdefenseStat;
     public int evasionStat;
 
     public int availableEnergySockets;
@@ -26,6 +26,8 @@ public class Pokemon : MonoBehaviour
 
     public List<Energy> attachedEnergy;
     public List<StatusEffect> attachedStatus;
+
+    private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +39,10 @@ public class Pokemon : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void onBattleStart(BattleGameBoard _battleGameBoard)
+    {
+        battleGameBoard = _battleGameBoard;
     }
 }

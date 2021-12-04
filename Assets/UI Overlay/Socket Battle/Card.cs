@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// How a card works
@@ -23,9 +24,9 @@ public class Card : MonoBehaviour
             var desc = descWithTemplates.Replace("{damage}", damage.ToString())
                     .Replace("{turn}", turn.ToString())
                     .Replace("{attack}", attackStat.ToString())
-                    .Replace("{defence}", defenceStat.ToString())
+                    .Replace("{defense}", defenseStat.ToString())
                     .Replace("{specialAttack}", specialAttackStat.ToString())
-                    .Replace("{specialDefence}", specialDefenceStat.ToString())
+                    .Replace("{specialdefense}", specialdefenseStat.ToString())
                     .Replace("{evasion}", evasionStat.ToString());
             return desc;
         }
@@ -85,14 +86,14 @@ public class Card : MonoBehaviour
     public int specialAttackStat;
 
     /// <summary>
-    /// The defence stat the card will change
+    /// The defense stat the card will change
     /// </summary>
-    public int defenceStat;
+    public int defenseStat;
 
     /// <summary>
-    /// The special defence stat the card will change
+    /// The special defense stat the card will change
     /// </summary>
-    public int specialDefenceStat;
+    public int specialdefenseStat;
 
     /// <summary>
     /// The evasion stat the card will change
@@ -149,7 +150,7 @@ public class Card : MonoBehaviour
     /// <summary>
     /// Where the card description should be rendered
     /// </summary>
-    public TextAsset descriptionGameObject;
+    public Text descriptionGameObject;
 
     private BattleGameBoard battleGameBoard;
 
@@ -162,12 +163,12 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //descriptionGameObject.se = cardDesc;
+        descriptionGameObject.text = cardDesc;
     }
 
-    public void onBattleStart() {
+    public void onBattleStart(BattleGameBoard _battleGameBoard) {
         attachedEnergies = battleStartEnergies.ToList();
-        battleGameBoard = GameObject.Find("BattleState").GetComponent<BattleGameBoard>();
+        battleGameBoard = _battleGameBoard;
     }
 
     public void onDraw(Pokemon activePokemon) { }
@@ -180,7 +181,7 @@ public class Card : MonoBehaviour
     }
 
     public void onPlay(Pokemon user, Pokemon target) {
-        var dealtDamage = damage + user.attackStat - target.defenceStat;
+        var dealtDamage = damage + user.attackStat - target.defenseStat;
         var newHealth = target.health - dealtDamage;
         target.health = Mathf.Max(newHealth, 0);
     }

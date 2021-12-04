@@ -212,14 +212,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3402eb7de66d1244ca889a132dc37bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Tackle
   battleCardModifiers: []
   gameCardModifiers: []
-  cost: []
-  initCardDescription: 
-  cardType: 
-  damageType: 
-  initDamage: 0
+  cost:
+  - {fileID: 523483096532525809, guid: a39431431a1faae48a9cc35cac9f2889, type: 3}
+  initCardDescription: Deal <color=red>{damage}</color> Damage
+  cardType: Normal
+  damageType: Normal
+  initDamage: 8
   attackStat: 0
   specialAttackStat: 0
   defenceStat: 0
@@ -228,7 +229,7 @@ MonoBehaviour:
   turn: 0
   attachedEnergies: []
   battleStartEnergies: []
-  descriptionGameObject: {fileID: 0}
+  descriptionGameObject: {fileID: 4017294796244460332}
 --- !u!1 &4017294797601549818
 GameObject:
   m_ObjectHideFlags: 0

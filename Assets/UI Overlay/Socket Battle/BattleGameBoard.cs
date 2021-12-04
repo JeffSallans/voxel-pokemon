@@ -52,16 +52,52 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     /// <summary>
-    /// All the energy events to trigger on pokemon
+    /// All the energy events on pokemon to trigger
+    /// </summary>
+    public List<Energy> allPokemonEnergy
+    {
+        get
+        {
+            var pokemonEnergy = player.party.Select(p => p.attachedEnergy).SelectMany(x => x).ToList();
+            return commonEnergy.Union(pokemonEnergy).ToList();
+        }
+    }
+
+    /// <summary>
+    /// All the energy events to trigger
     /// </summary>
     public List<Energy> allEnergy
     {
         get
         {
-            var energy = player.party.Select(p => p.attachedEnergy).SelectMany(x => x).ToList();
-            return commonEnergy.Union(energy).ToList();
+            var pokemonEnergy = player.party.Select(p => p.attachedEnergy).SelectMany(x => x).ToList();
+            var cardEnergy = allCards.Select(p => p.attachedEnergies).SelectMany(x => x).ToList();
+            return commonEnergy.Union(pokemonEnergy).Union(cardEnergy).ToList();
         }
     }
+
+    /// <summary>
+    /// All the card events to trigger
+    /// </summary>
+    public List<Card> allCards
+    {
+        get
+        {
+            return deck.Union(hand).Union(discard).ToList();
+        }
+    }
+
+    /// <summary>
+    /// All the pokemon events to trigger
+    /// </summary>
+    public List<Pokemon> allPokemon
+    {
+        get
+        {
+            return player.party.Union(opponent.party).ToList();
+        }
+    }
+
 
     public OpponentDeck opponent;
 
@@ -127,8 +163,24 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public void onBattleStart()
     {
+        // Place pokemon
         activePokemon = player.party.First();
         opponentActivePokemon = opponent.party.First();
+        var i = 0;
+        player.party.ForEach(p =>
+        {
+            p.transform.position = playerPokemonLocations[i].transform.position;
+            p.transform.rotation = playerPokemonLocations[i].transform.rotation;
+            i++;
+        });
+        var j = 0;
+        opponent.party.ForEach(p =>
+        {
+            p.transform.position = opponentPokemonLocations[j].transform.position;
+            p.transform.rotation = opponentPokemonLocations[j].transform.rotation;
+            j++;
+        });
+
 
         // Shuffle player deck
         deck = player.deck.ToList();
@@ -140,6 +192,9 @@ public class BattleGameBoard : MonoBehaviour
         });
 
         // Send event to all energy, cards, and pokemon
+        allPokemon.ForEach(p => p.onBattleStart(this));
+        allCards.ForEach(c => c.onBattleStart(this));
+        allEnergy.ForEach(e => e.onBattleStart(this));
 
         // Trigger opponent first move
     }
