@@ -15,8 +15,8 @@ public class ptDisplayElectricEnergy : MonoBehaviour
 
     void UpdateText()
     {
-        Text uiText = this.GetComponent<Text>();
-        uiText.text = "Energy:" + energyAmount + "";
+        Text uiText = GetComponent<Text>();
+        uiText.text = "Energy: " + energyAmount + "";
     }
     public void AddEnergy()
     {
@@ -31,5 +31,6 @@ public class ptDisplayElectricEnergy : MonoBehaviour
         {
             energyAmount = 0;
         }
+        UpdateText();
     }
 }

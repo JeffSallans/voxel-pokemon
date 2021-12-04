@@ -147,8 +147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy_fire: {fileID: 7773122306042797233, guid: b2bf926db0af8a946a61d1e04c61d3af, type: 3}
-  energy_lightning: {fileID: 6869973600470177582, guid: a48d16c86bd4a864da234cea7a56198e, type: 3}
+  energy_lightning: {fileID: 1006167220146276219, guid: a48d16c86bd4a864da234cea7a56198e, type: 3}
   hand_area: {fileID: 0}
+  deck:
+  - {fileID: 1006167220146276219, guid: a48d16c86bd4a864da234cea7a56198e, type: 3}
+  - {fileID: 7773122306042797233, guid: b2bf926db0af8a946a61d1e04c61d3af, type: 3}
 --- !u!1 &8277087519596234635
 GameObject:
   m_ObjectHideFlags: 0
