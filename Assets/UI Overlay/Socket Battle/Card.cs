@@ -133,7 +133,7 @@ public class Card : MonoBehaviour
                     }
                 ).ToList();
             var usableAsString = battleGameBoard?.useableEnergy?.Select(e => e.energyName)
-                .GroupBy(
+                ?.GroupBy(
                     c => c,
                     c => c,
                     (name, _name) => new
@@ -141,8 +141,8 @@ public class Card : MonoBehaviour
                         energyName = name,
                         count = _name.Count()
                     }
-                ).ToDictionary(e => e.energyName);
-            var result = costAsString.All(c => usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
+                )?.ToDictionary(e => e.energyName);
+            var result = costAsString.All(c => usableAsString != null && usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
             return result;
         }
     }
@@ -157,6 +157,11 @@ public class Card : MonoBehaviour
     /// </summary>
     public Button playButtonGameObject;
 
+    /// <summary>
+    /// A list of locations of all the attached energy
+    /// </summary>
+    public List<GameObject> energyLocations;
+
     private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
@@ -170,6 +175,15 @@ public class Card : MonoBehaviour
     {
         descriptionGameObject.text = cardDesc;
         playButtonGameObject.interactable = canBePlayed;
+
+        // Update attached Energies to placeholder locations
+        var i = 0;
+        attachedEnergies.ForEach(e =>
+        {
+            e.transform.localPosition = gameObject.transform.localPosition + energyLocations[i].transform.localPosition;
+            e.transform.rotation = energyLocations[i].transform.rotation;
+            i++;
+        });
     }
 
     public void onBattleStart(BattleGameBoard _battleGameBoard) {
@@ -183,6 +197,7 @@ public class Card : MonoBehaviour
 
     public void onPlayEvent()
     {
+        if (!canBePlayed) { return; }
         battleGameBoard.onPlay(this, battleGameBoard.activePokemon, battleGameBoard.opponentActivePokemon);
     }
 
@@ -190,15 +205,6 @@ public class Card : MonoBehaviour
         var dealtDamage = damage + user.attackStat - target.defenseStat;
         var newHealth = target.health - dealtDamage;
         target.health = Mathf.Max(newHealth, 0);
-    }
-
-    public void onEnergyPlay(Energy source, Pokemon target) {
-        attachedEnergies.Remove(source);
-        target.attachedEnergy.Add(source);
-
-        source.isUsed = false;
-        source.attachedToCard = null;
-        source.attachedToPokemon = target;
     }
 
     public void onTurnEnd() { }

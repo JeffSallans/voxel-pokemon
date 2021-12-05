@@ -203,6 +203,9 @@ public class BattleGameBoard : MonoBehaviour
     /// On the draw step
     /// </summary>
     public void onDraw() {
+        // Refresh energy
+        availableEnergy.ForEach(e => { e.isUsed = false; }); 
+
         // Draw cards up to handSize
         while (hand.Count < handSize)
         {
@@ -252,9 +255,15 @@ public class BattleGameBoard : MonoBehaviour
         onOpponentTurnEnd();
     }
 
+    /// <summary>
+    /// The Event when a card is played
+    /// </summary>
+    /// <param name="move"></param>
+    /// <param name="user"></param>
+    /// <param name="target"></param>
     public void onPlay(Card move, Pokemon user, Pokemon target) {
         // Pay cost
-        payMoveCost(move);
+        payMoveCost(move.cost);
         
         // Trigger move action
         move.onPlay(user, target);
@@ -266,21 +275,41 @@ public class BattleGameBoard : MonoBehaviour
         move.transform.rotation = discardLocation.transform.rotation;
     }
 
-    private void payMoveCost(Card move)
+    /// <summary>
+    /// Update the energies that are used to play the move
+    /// </summary>
+    /// <param name="move"></param>
+    private void payMoveCost(List<Energy> cost)
     {
-        move.cost.ForEach(energy =>
+        cost.ForEach(energy =>
         {
             // Subtract from common
-
+            var target = commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
+            if (target != null)
+            {
+                target.isUsed = true;
+            }
             // Subtract from active
-
+            else
+            {
+                var targetOnPokemon = activePokemon.attachedEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
+                if (targetOnPokemon != null)
+                {
+                    targetOnPokemon.isUsed = true;
+                }
+            }
         });
     }
 
     public void onEnergyPlay(Card move, Energy source, Pokemon target)
     {
-        move.onEnergyPlay(source, target);
+        // Pay cost
+        payMoveCost(commonEnergy.GetRange(0, 1));
 
+        // Trigger move action
+        source.onEnergyPlay(move, target);
+
+        // Discard card
         discard.Add(move);
         hand.Remove(move);
         move.transform.position = discardLocation.transform.position;

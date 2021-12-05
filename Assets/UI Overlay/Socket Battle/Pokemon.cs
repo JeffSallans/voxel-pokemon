@@ -35,6 +35,8 @@ public class Pokemon : MonoBehaviour
 
     public Text healthText;
 
+    public List<GameObject> energyLocations;
+
     private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
@@ -50,6 +52,15 @@ public class Pokemon : MonoBehaviour
             .Replace("{health}", health.ToString())
             .Replace("{initHealth}", initHealth.ToString());
         healthText.text = healthDesc;
+
+        // Update attached Energies to placeholder locations
+        var i = 0;
+        attachedEnergy.ForEach(e =>
+        {
+            e.transform.localPosition = gameObject.transform.localPosition + energyLocations[i].transform.localPosition;
+            e.transform.rotation = energyLocations[i].transform.rotation;
+            i++;
+        });
     }
 
     public void onBattleStart(BattleGameBoard _battleGameBoard)

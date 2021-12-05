@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Resource to play a move.  It can be attached to cards or pokemon.
@@ -23,6 +24,7 @@ public class Energy : MonoBehaviour
         set
         {
             defaultObject.SetActive(!value);
+            usedObject.SetActive(value);
             _isUsed = value;
         }
     }
@@ -35,6 +37,36 @@ public class Energy : MonoBehaviour
     /// Reference to the default object
     /// </summary>
     public GameObject defaultObject;
+
+    /// <summary>
+    /// Reference to the used object
+    /// </summary>
+    public GameObject usedObject;
+
+    /// <summary>
+    /// Returns true if the energy can be played with the usable energy
+    /// </summary>
+    public bool canBePlayed
+    {
+        get
+        {
+            var costAsString = battleGameBoard?.commonEnergy?.GetRange(0, 1)
+                .Select(c => new { energyName = c.energyName, count = 1 })
+                .ToList();
+            var usableAsString = battleGameBoard?.useableEnergy?.Select(e => e.energyName)
+                ?.GroupBy(
+                    c => c,
+                    c => c,
+                    (name, _name) => new
+                    {
+                        energyName = name,
+                        count = _name.Count()
+                    }
+                )?.ToDictionary(e => e.energyName);
+            var result = costAsString.All(c => usableAsString != null && usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
+            return result;
+        }
+    }
 
     private BattleGameBoard battleGameBoard;
 
@@ -53,6 +85,31 @@ public class Energy : MonoBehaviour
     public void onBattleStart(BattleGameBoard _battleGameBoard)
     {
         battleGameBoard = _battleGameBoard;
+    }
+
+    /// <summary>
+    /// When the player clicks on the energy to attach
+    /// </summary>
+    public void onEnergyPlayEvent()
+    {
+        print("energy play");
+        if (!canBePlayed) { return; }
+        battleGameBoard.onEnergyPlay(attachedToCard, this, battleGameBoard.activePokemon);
+    }
+
+    /// <summary>
+    /// When an energy is played
+    /// </summary>
+    /// <param name="move"></param>
+    /// <param name="target"></param>
+    public void onEnergyPlay(Card move, Pokemon target)
+    {
+        move.attachedEnergies.Remove(this);
+        target.attachedEnergy.Add(this);
+
+        isUsed = true;
+        attachedToCard = null;
+        attachedToPokemon = target;
     }
 
     public void onTurnEnd() { }
