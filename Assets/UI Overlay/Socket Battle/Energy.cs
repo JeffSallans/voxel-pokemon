@@ -11,14 +11,30 @@ public class Energy : MonoBehaviour
 
     public string energyType;
 
+
+    private bool _isUsed;
+
     /// <summary>
     /// True if the energy is used for this turn
     /// </summary>
-    public bool isUsed;
+    public bool isUsed
+    {
+        get { return _isUsed; }
+        set
+        {
+            defaultObject.SetActive(!value);
+            _isUsed = value;
+        }
+    }
 
     public Card attachedToCard;
 
     public Pokemon attachedToPokemon;
+
+    /// <summary>
+    /// Reference to the default object
+    /// </summary>
+    public GameObject defaultObject;
 
     private BattleGameBoard battleGameBoard;
 
@@ -38,4 +54,10 @@ public class Energy : MonoBehaviour
     {
         battleGameBoard = _battleGameBoard;
     }
+
+    public void onTurnEnd() { }
+
+    public void onOpponentTurnEnd() { }
+
+    public void onBattleEnd() { }
 }

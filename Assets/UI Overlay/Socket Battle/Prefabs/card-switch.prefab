@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyName: Normal
   energyType: Normal
-  isUsed: 0
   attachedToCard: {fileID: 4317659339815420024}
   attachedToPokemon: {fileID: 0}
+  defaultObject: {fileID: 0}
 --- !u!1 &3414694231076870408
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,13 +405,14 @@ MonoBehaviour:
   initDamage: 0
   attackStat: 0
   specialAttackStat: 0
-  defenceStat: 0
-  specialDefenceStat: 0
+  defenseStat: 0
+  specialdefenseStat: 0
   evasionStat: 0
   turn: 0
   attachedEnergies: []
   battleStartEnergies: []
   descriptionGameObject: {fileID: 7176361207626423238}
+  playButtonGameObject: {fileID: 4846905399046421193}
 --- !u!1 &7176361207626423240
 GameObject:
   m_ObjectHideFlags: 0
