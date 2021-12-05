@@ -15,6 +15,7 @@ public class drag_and_drop : MonoBehaviour
     private GameObject dropArea;
     private GameObject startParent;
     private GameObject pt_active_energy_lightning;
+    private GameObject pt_active_energy_normal;
     private Vector2 startPos;
     private bool isOverDropZone = false;
 
@@ -25,13 +26,21 @@ public class drag_and_drop : MonoBehaviour
         handArea = GameObject.Find("Player Hand");
         dropArea = GameObject.Find("Drop Zone");
         pt_active_energy_lightning = GameObject.Find("pt_active_energy_lightning");
+        pt_active_energy_normal = GameObject.Find("pt_active_energy_normal");
     }
 
     void PlayCard()
     {
-        ptDisplay = pt_active_energy_lightning.GetComponent<ptDisplayElectricEnergy>();
-        ptDisplay.AddEnergy();
-        //UIText = pt_active_energy_lightning.GetComponent<Text>();
+        if (this.gameObject.name == "card_energy_normal(Clone)")
+        {
+            ptDisplay = pt_active_energy_normal.GetComponent<ptDisplayElectricEnergy>();
+            ptDisplay.AddEnergy();
+        }
+        else if (this.gameObject.name == "card_energy_lightning(Clone)")
+        {
+            ptDisplay = pt_active_energy_lightning.GetComponent<ptDisplayElectricEnergy>();
+            ptDisplay.AddEnergy();
+        }
         Destroy(this.gameObject);
     }
 

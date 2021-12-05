@@ -24,6 +24,7 @@ public class ptSpirit : MonoBehaviour
     public void UpdateText()
     {
         maxSpiritAmount = ptTurnScript.turnNumber;
+        if(maxSpiritAmount == 0) { maxSpiritAmount = 1; }
         Text uiText = GetComponent<Text>();
         uiText.text = "Spirit: " + spiritAmount + " / " + maxSpiritAmount + "";
     }
@@ -42,5 +43,10 @@ public class ptSpirit : MonoBehaviour
             spiritAmount = 0;
         }
         UpdateText();
+    }
+
+    public void IncreaseMaxSpirit()
+    {
+        maxSpiritAmount++;
     }
 }
