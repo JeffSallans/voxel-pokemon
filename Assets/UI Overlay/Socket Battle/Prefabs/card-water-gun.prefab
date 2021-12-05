@@ -70,6 +70,7 @@ MonoBehaviour:
   attachedEnergies: []
   battleStartEnergies: []
   descriptionGameObject: {fileID: 2154839557868362292}
+  playButtonGameObject: {fileID: 4410048307063618363}
 --- !u!1 &2154839557868362298
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +564,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyName: Normal
   energyType: Normal
-  isUsed: 0
   attachedToCard: {fileID: 5015709387190944138}
   attachedToPokemon: {fileID: 0}
+  defaultObject: {fileID: 0}

@@ -290,8 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: 
   pokemonTypes: []
-  health: 0
-  initHealth: 0
+  health: 80
+  initHealth: 80
   attackStat: 0
   defenseStat: 0
   specialAttackStat: 0
@@ -302,3 +302,4 @@ MonoBehaviour:
   possibleEnergyTypes: []
   attachedEnergy: []
   attachedStatus: []
+  healthText: {fileID: 1026682548143241326}

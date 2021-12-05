@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// The stats for the given pokemon
@@ -11,7 +12,12 @@ public class Pokemon : MonoBehaviour
 
     public List<string> pokemonTypes;
 
-    public int health;
+    private int _health;
+    public int health {
+        get { return _health; }
+        set { _health = Mathf.Max(value, 0); }
+    }
+
     public int initHealth;
 
     public int attackStat;
@@ -27,6 +33,8 @@ public class Pokemon : MonoBehaviour
     public List<Energy> attachedEnergy;
     public List<StatusEffect> attachedStatus;
 
+    public Text healthText;
+
     private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
@@ -38,11 +46,21 @@ public class Pokemon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var healthDesc = ("{health} / {initHealth}")
+            .Replace("{health}", health.ToString())
+            .Replace("{initHealth}", initHealth.ToString());
+        healthText.text = healthDesc;
     }
 
     public void onBattleStart(BattleGameBoard _battleGameBoard)
     {
         battleGameBoard = _battleGameBoard;
+        health = initHealth;
     }
+
+    public void onTurnEnd() { }
+
+    public void onOpponentTurnEnd() { }
+
+    public void onBattleEnd() { }
 }

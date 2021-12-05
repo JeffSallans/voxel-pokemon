@@ -122,7 +122,7 @@ public class Card : MonoBehaviour
     {
         get
         {
-            var costAsString = cost.Select(c => c.energyName)
+            var costAsString = cost?.Select(c => c.energyName)
                 .GroupBy(
                     c => c,
                     c => c,
@@ -132,7 +132,7 @@ public class Card : MonoBehaviour
                         count = _name.Count()
                     }
                 ).ToList();
-            var usableAsString = battleGameBoard.useableEnergy.Select(e => e.energyName)
+            var usableAsString = battleGameBoard?.useableEnergy?.Select(e => e.energyName)
                 .GroupBy(
                     c => c,
                     c => c,
@@ -142,7 +142,7 @@ public class Card : MonoBehaviour
                         count = _name.Count()
                     }
                 ).ToDictionary(e => e.energyName);
-            var result = costAsString.All(c => c.count <= usableAsString[c.energyName].count);
+            var result = costAsString.All(c => usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
             return result;
         }
     }
@@ -151,6 +151,11 @@ public class Card : MonoBehaviour
     /// Where the card description should be rendered
     /// </summary>
     public Text descriptionGameObject;
+
+    /// <summary>
+    /// Button that plays the card
+    /// </summary>
+    public Button playButtonGameObject;
 
     private BattleGameBoard battleGameBoard;
 
@@ -164,6 +169,7 @@ public class Card : MonoBehaviour
     void Update()
     {
         descriptionGameObject.text = cardDesc;
+        playButtonGameObject.interactable = canBePlayed;
     }
 
     public void onBattleStart(BattleGameBoard _battleGameBoard) {
@@ -195,9 +201,9 @@ public class Card : MonoBehaviour
         source.attachedToPokemon = target;
     }
 
-    public void onTurnEnd(Pokemon activePokemon) { }
+    public void onTurnEnd() { }
 
-    public void onOpponentTurnEnd(Pokemon opponentActivePokemon) { }
+    public void onOpponentTurnEnd() { }
 
     public void onBattleEnd() { }
 }

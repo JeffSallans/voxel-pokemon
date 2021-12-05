@@ -253,12 +253,28 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     public void onPlay(Card move, Pokemon user, Pokemon target) {
+        // Pay cost
+        payMoveCost(move);
+        
+        // Trigger move action
         move.onPlay(user, target);
 
+        // Discard card
         discard.Add(move);
         hand.Remove(move);
         move.transform.position = discardLocation.transform.position;
         move.transform.rotation = discardLocation.transform.rotation;
+    }
+
+    private void payMoveCost(Card move)
+    {
+        move.cost.ForEach(energy =>
+        {
+            // Subtract from common
+
+            // Subtract from active
+
+        });
     }
 
     public void onEnergyPlay(Card move, Energy source, Pokemon target)
@@ -282,15 +298,24 @@ public class BattleGameBoard : MonoBehaviour
         hand.RemoveAll(card => true);
 
         // Send event to all energy, cards, status, and pokemon
+        allPokemon.ForEach(p => p.onTurnEnd());
+        allCards.ForEach(c => c.onTurnEnd());
+        allEnergy.ForEach(e => e.onTurnEnd());
 
         // Check game end conditions
         onEitherTurnEnd();
+
+        // Trigger next step
+        onOpponentDraw();
     }
 
     public void onOpponentTurnEnd() {
         // Compute next move
 
         // Send event to all energy, cards, status, and pokemon
+        allPokemon.ForEach(p => p.onOpponentTurnEnd());
+        allCards.ForEach(c => c.onOpponentTurnEnd());
+        allEnergy.ForEach(e => e.onOpponentTurnEnd());
 
         // Check game end conditions
         onEitherTurnEnd();
@@ -298,9 +323,14 @@ public class BattleGameBoard : MonoBehaviour
 
     public void onEitherTurnEnd()
     {
-        // When all player pokemon are 0 hp
-        
+
         // When all opponents pokemon are 0 hp
+        var numberOfPlayeredKOed = player.party.Where(p => p.health <= 0).Count();
+        if (numberOfPlayeredKOed == 0) { onBattleEnd(true); }
+
+        // When all player pokemon are 0 hp
+        var numberOfOpponentKOed = opponent.party.Where(p => p.health <= 0).Count();
+        if (numberOfOpponentKOed == 0) { onBattleEnd(false); }
 
         // When player active pokemon is 0 hp - switch in
 
@@ -325,6 +355,11 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     public void onBattleEnd(bool isPlayerWinner) {
+        // Send event to all energy, cards, status, and pokemon
+        allPokemon.ForEach(p => p.onBattleEnd());
+        allCards.ForEach(c => c.onBattleEnd());
+        allEnergy.ForEach(e => e.onBattleEnd());
+
         if (isPlayerWinner)
         {
             print("The player won");
