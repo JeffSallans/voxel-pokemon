@@ -47,6 +47,10 @@ public class CardScript : MonoBehaviour
         {
             controllerScript.Attack(10);
         }
+        else if (this.gameObject.name == "card_attack_thunderjolt(Clone)")
+        {
+            controllerScript.Attack(20);
+        }
 
         // Spend resources
         if (costEnergy1Type != null)

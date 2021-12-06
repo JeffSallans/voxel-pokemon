@@ -19,6 +19,7 @@ public class ControllerScript : MonoBehaviour
     public GameObject slotNormal;
     public GameObject uiTurnIndicator;
     public GameObject uiSpiritIndicator;
+    public GameObject uiAnnouncer;
     public GameObject hand_area;
     public GameObject energyArea;
     public GameObject[] deckOptions;
@@ -56,6 +57,7 @@ public class ControllerScript : MonoBehaviour
         UpdateTextTurn();
         UpdateTextSpirit();
         UpdateTextHealth();
+        Announcer("A wild Pidgey appeared!");
     }
 
     // Update is called once per frame
@@ -104,6 +106,7 @@ public class ControllerScript : MonoBehaviour
         if (isPlayerTurn)
         {
             enemyHealth = enemyHealth - damage;
+            Announcer("The enemy Pidgey took " + damage +  " damage!");
         }
         else if (isPlayerTurn == false)
         {
@@ -118,6 +121,12 @@ public class ControllerScript : MonoBehaviour
         uiText.text = "Health: " + enemyHealth + "";
         uiText = pt_active_health.GetComponent<Text>();
         uiText.text = "Health: " + activeHealth + "";
+    }
+
+    public void Announcer(string announcement)
+    {
+        Text uiText = uiAnnouncer.GetComponent<Text>();
+        uiText.text = announcement;
     }
 
     // Spirit functions
@@ -201,6 +210,7 @@ public class ControllerScript : MonoBehaviour
             energySlot.transform.SetParent(energyArea.transform, false);
             energySlot.transform.SetSiblingIndex(0);
         }
+        Announcer("Pikachu is charging up! (+1 " + energy + " energy)");
         UpdateTextEnergy(energy);
     }
 
