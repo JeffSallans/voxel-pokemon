@@ -92,7 +92,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
-  handArea: {fileID: 0}
+  controller: {fileID: 0}
+  handArea: {fileID: 6947863044781361520, guid: 7f0bca8d35613f04ba1fb8790362f70f, type: 3}
+  energyArea: {fileID: 6688005818759202141, guid: 18cb49bb5944b484484d1951fa66a2cb, type: 3}
+  slotLightning: {fileID: 1495878753087428786, guid: 49e6ed8856e8afc46902d0ee800bea80, type: 3}
+  slotNormal: {fileID: 9114358540711743270, guid: 0d3c47056dad9a8478e47f19476f56aa, type: 3}
+  costSpiritAmount: 1
+  costEnergyAmount: 0
+  costEnergyType: 
 --- !u!114 &1171730069537104953
 MonoBehaviour:
   m_ObjectHideFlags: 0

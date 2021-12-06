@@ -9,7 +9,7 @@ public class DrawCards : MonoBehaviour
     public GameObject energy_lightning;
     public GameObject hand_area;
     public GameObject[] deckOptions;
-    public List<GameObject> deck; //= new List<GameObject>();
+    public List<GameObject> deck;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +33,6 @@ public class DrawCards : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            //GameObject card = Instantiate(deckOptions[Random.Range(0, deckOptions.Length)], new Vector2(0, 0), Quaternion.identity);
-            //card.transform.SetParent(hand_area.transform, false);
             GameObject card = Instantiate(deck[0], new Vector2(0, 0), Quaternion.identity);
             deck.RemoveAt(0);
             card.transform.SetParent(hand_area.transform, false);

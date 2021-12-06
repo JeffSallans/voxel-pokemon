@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8277087518972877207}
   - component: {fileID: 8277087518972877206}
   - component: {fileID: 8277087518972877209}
-  - component: {fileID: 6478583251685322235}
   m_Layer: 5
   m_Name: Draw Button
   m_TagString: Untagged
@@ -122,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6478583251685322235}
-        m_TargetAssemblyTypeName: DrawCards, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ControllerScript, Assembly-CSharp
+        m_MethodName: DrawFive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -134,28 +133,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6478583251685322235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8277087518972877211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d85d4cbbabacfe64f9d0683a108d0161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energy_fire: {fileID: 7773122306042797233, guid: b2bf926db0af8a946a61d1e04c61d3af, type: 3}
-  energy_lightning: {fileID: 1006167220146276219, guid: a48d16c86bd4a864da234cea7a56198e, type: 3}
-  hand_area: {fileID: 0}
-  deckOptions:
-  - {fileID: 8978943488063147242, guid: 9bda83d40c6f22249be1f8af6b01d91f, type: 3}
-  - {fileID: 6045161960798092442, guid: e861f9417c0c4f248b9708f2307590ea, type: 3}
-  - {fileID: 1006167220146276219, guid: a48d16c86bd4a864da234cea7a56198e, type: 3}
-  - {fileID: 6208834640434887032, guid: 0116937de3b0f34418fa8a034e01da1d, type: 3}
-  - {fileID: 2616645663320014377, guid: 33bc957f733e25b41bc12258af5a8899, type: 3}
-  deck: []
 --- !u!1 &8277087519596234635
 GameObject:
   m_ObjectHideFlags: 0
