@@ -200,6 +200,9 @@ public class BattleGameBoard : MonoBehaviour
 
         // Trigger opponent first move
         opponent.opponentStrategyBot.computeOpponentsNextMove();
+
+        // Trigger draw
+        onDraw();
     }
 
     /// <summary>
@@ -357,6 +360,9 @@ public class BattleGameBoard : MonoBehaviour
 
         // Check game end conditions
         onEitherTurnEnd();
+
+        // Trigger draw
+        onDraw();
     }
 
     public void onEitherTurnEnd()
