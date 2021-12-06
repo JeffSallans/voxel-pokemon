@@ -233,7 +233,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Dealing 8 physical damage
@@ -290,7 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonName: 
   pokemonTypes: []
-  health: 80
   initHealth: 80
   attackStat: 0
   defenseStat: 0
@@ -303,3 +302,5 @@ MonoBehaviour:
   attachedEnergy: []
   attachedStatus: []
   healthText: {fileID: 1026682548143241326}
+  nextAttackText: {fileID: 1026682548161252689}
+  energyLocations: []

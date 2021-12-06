@@ -15,9 +15,9 @@ public class OpponentDeck : MonoBehaviour
     /// <summary>
     /// The possible moves for this opponent to battle with
     /// </summary>
-    public string movesConfig;
+    public List<OpponentMove> movesConfig;
 
-    public GameObject opponentStrategyBot;
+    public OpponentBot opponentStrategyBot;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,6 @@ public class OpponentDeck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

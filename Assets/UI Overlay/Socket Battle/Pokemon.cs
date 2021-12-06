@@ -33,7 +33,14 @@ public class Pokemon : MonoBehaviour
     public List<Energy> attachedEnergy;
     public List<StatusEffect> attachedStatus;
 
+    /// <summary>
+    /// Shows the current health
+    /// </summary>
     public Text healthText;
+    /// <summary>
+    /// Textbox for opponent to show next attack
+    /// </summary>
+    public Text nextAttackText;
 
     public List<GameObject> energyLocations;
 

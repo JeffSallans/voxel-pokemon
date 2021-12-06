@@ -195,8 +195,11 @@ public class BattleGameBoard : MonoBehaviour
         allPokemon.ForEach(p => p.onBattleStart(this));
         allCards.ForEach(c => c.onBattleStart(this));
         allEnergy.ForEach(e => e.onBattleStart(this));
+        opponent.opponentStrategyBot.onBattleStart(this);
+        opponent.movesConfig.ForEach(m => m.onBattleStart(this));
 
         // Trigger opponent first move
+        opponent.opponentStrategyBot.computeOpponentsNextMove();
     }
 
     /// <summary>
@@ -250,6 +253,7 @@ public class BattleGameBoard : MonoBehaviour
 
     public void onOpponentDraw() {
         // Take action on queued move
+        opponent.opponentStrategyBot.opponentPlay();
 
         // Trigger right away for now
         onOpponentTurnEnd();
@@ -330,6 +334,8 @@ public class BattleGameBoard : MonoBehaviour
         allPokemon.ForEach(p => p.onTurnEnd());
         allCards.ForEach(c => c.onTurnEnd());
         allEnergy.ForEach(e => e.onTurnEnd());
+        opponent.opponentStrategyBot.onTurnEnd();
+        opponent.movesConfig.ForEach(m => m.onTurnEnd());
 
         // Check game end conditions
         onEitherTurnEnd();
@@ -340,11 +346,14 @@ public class BattleGameBoard : MonoBehaviour
 
     public void onOpponentTurnEnd() {
         // Compute next move
+        opponent.opponentStrategyBot.computeOpponentsNextMove();
 
         // Send event to all energy, cards, status, and pokemon
         allPokemon.ForEach(p => p.onOpponentTurnEnd());
         allCards.ForEach(c => c.onOpponentTurnEnd());
         allEnergy.ForEach(e => e.onOpponentTurnEnd());
+        opponent.opponentStrategyBot.onOpponentTurnEnd();
+        opponent.movesConfig.ForEach(m => m.onOpponentTurnEnd());
 
         // Check game end conditions
         onEitherTurnEnd();
@@ -388,6 +397,8 @@ public class BattleGameBoard : MonoBehaviour
         allPokemon.ForEach(p => p.onBattleEnd());
         allCards.ForEach(c => c.onBattleEnd());
         allEnergy.ForEach(e => e.onBattleEnd());
+        opponent.opponentStrategyBot.onBattleEnd();
+        opponent.movesConfig.ForEach(m => m.onBattleEnd());
 
         if (isPlayerWinner)
         {
