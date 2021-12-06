@@ -92,7 +92,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  controller: {fileID: 0}
   handArea: {fileID: 0}
+  energyArea: {fileID: 0}
+  slotLightning: {fileID: 0}
+  slotNormal: {fileID: 0}
+  costSpiritAmount: 1
+  costEnergy1Amount: 1
+  costEnergy1Type: normal
+  costEnergy2Amount: 0
+  costEnergy2Type: 
 --- !u!114 &7003044697998274472
 MonoBehaviour:
   m_ObjectHideFlags: 0
