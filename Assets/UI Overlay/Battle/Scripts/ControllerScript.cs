@@ -15,6 +15,8 @@ public class ControllerScript : MonoBehaviour
     public bool isPlayerTurn;
     public int cardsInHand = 0;
 
+    private int totalEnergy = 0;
+
     public GameObject slotLightning;
     public GameObject slotNormal;
     public GameObject uiTurnIndicator;
@@ -29,41 +31,22 @@ public class ControllerScript : MonoBehaviour
     private GameObject pt_active_energy_normal;
     private GameObject pt_active_health;
     private GameObject pt_enemy_health;
+    private GameObject img_highlight_active;
+    private GameObject img_highlight_enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        spiritAmount = 2;
-        maxSpiritAmount = 2;
-        activeHealth = 40;
-        enemyHealth = 40;
-        isPlayerTurn = true;
-        turnNumber = 1;
-
-        AddMultipleGameObjects(deckOptions[0], 5, deck);
-        AddMultipleGameObjects(deckOptions[1], 5, deck);
-        AddMultipleGameObjects(deckOptions[2], 5, deck);
-        AddMultipleGameObjects(deckOptions[3], 5, deck);
-        AddMultipleGameObjects(deckOptions[4], 2, deck);
-        RandomizeDeck();
-        DrawFive();
-
         pt_active_energy_lightning = GameObject.Find("pt_active_energy_lightning");
         pt_active_energy_normal = GameObject.Find("pt_active_energy_normal");
         pt_active_health = GameObject.Find("pt_active_health");
         pt_enemy_health = GameObject.Find("pt_enemy_health");
         energyArea = GameObject.Find("Energy Display");
+        hand_area = GameObject.Find("Player Hand");
+        img_highlight_active = GameObject.Find("img_highlight_active");
+        img_highlight_enemy = GameObject.Find("img_highlight_enemy");
 
-        UpdateTextTurn();
-        UpdateTextSpirit();
-        UpdateTextHealth();
-        Announcer("A wild Pidgey appeared!");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartBattle();
     }
 
     // Turn functions
@@ -72,16 +55,22 @@ public class ControllerScript : MonoBehaviour
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
+            img_highlight_enemy.gameObject.SetActive(true);
+            img_highlight_active.gameObject.SetActive(false);
         }
         else
         {
             isPlayerTurn = true;
+            img_highlight_enemy.gameObject.SetActive(false);
+            img_highlight_active.gameObject.SetActive(true);
+            DrawFive();
             turnNumber++;
             if (maxSpiritAmount == 0) { maxSpiritAmount = 1; }
             IncreaseMaxSpirit(1);
             MaximizeSpirit();
         }
         UpdateTextTurn();
+        UpdateTextSpirit();
     }
 
     void UpdateTextTurn()
@@ -163,6 +152,35 @@ public class ControllerScript : MonoBehaviour
     }
 
     // Deck and hand functions
+    public void StartBattle()
+    {
+        DiscardHand();
+        DiscardAllEnergy();
+        spiritAmount = 2;
+        maxSpiritAmount = 2;
+        activeHealth = 40;
+        enemyHealth = 40;
+        isPlayerTurn = true;
+        turnNumber = 1;
+        lightningEnergy = 0;
+        normalEnergy = 0;
+
+        AddMultipleGameObjects(deckOptions[0], 5, deck);
+        AddMultipleGameObjects(deckOptions[1], 5, deck);
+        AddMultipleGameObjects(deckOptions[2], 5, deck);
+        AddMultipleGameObjects(deckOptions[3], 5, deck);
+        AddMultipleGameObjects(deckOptions[4], 2, deck);
+        RandomizeDeck();
+        DrawFive();
+
+        img_highlight_enemy.gameObject.SetActive(false);
+        img_highlight_active.gameObject.SetActive(true);
+
+        UpdateTextTurn();
+        UpdateTextSpirit();
+        UpdateTextHealth();
+        Announcer("A wild Pidgey appeared!");
+    }
     public void DrawFive()
     {
         for (int i = cardsInHand; i < 5; i++)
@@ -193,12 +211,33 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
+    public void DiscardHand()
+    {
+        while (cardsInHand != 0)
+        {
+            Destroy(hand_area.transform.GetChild(cardsInHand - 1).gameObject);
+            cardsInHand = cardsInHand - 1;
+        }
+    }
+
+    public void DiscardAllEnergy()
+    {
+        while (totalEnergy != 0)
+        {
+            Destroy(energyArea.transform.GetChild(totalEnergy - 1).gameObject);
+            totalEnergy = totalEnergy - 1;
+        }
+        normalEnergy = 0;
+        lightningEnergy = 0;
+    }
+
     // Energy functions
     public void AddEnergy(string energy, int amount)
     {
         if (energy == "lightning")
         {
             lightningEnergy = lightningEnergy + amount;
+            totalEnergy = totalEnergy + amount;
             GameObject energySlot = Instantiate(slotLightning, new Vector2(0, 0), Quaternion.identity);
             energySlot.transform.SetParent(energyArea.transform, false);
             energySlot.transform.SetSiblingIndex(10);
@@ -206,6 +245,7 @@ public class ControllerScript : MonoBehaviour
         else if (energy == "normal")
         {
             normalEnergy = normalEnergy + amount;
+            totalEnergy = totalEnergy + amount;
             GameObject energySlot = Instantiate(slotNormal, new Vector2(0, 0), Quaternion.identity);
             energySlot.transform.SetParent(energyArea.transform, false);
             energySlot.transform.SetSiblingIndex(0);
@@ -221,6 +261,7 @@ public class ControllerScript : MonoBehaviour
             for (int i = 0; i < amount; i++)
             {
                 lightningEnergy = lightningEnergy - 1;
+                totalEnergy = totalEnergy - amount;
                 GameObject obj = energyArea.transform.Find("slot_energy_lightning(Clone)").gameObject;
                 Destroy(obj);
             }
@@ -230,6 +271,7 @@ public class ControllerScript : MonoBehaviour
             for (int i = 0; i < amount; i++)
             {
                 normalEnergy = normalEnergy - 1;
+                totalEnergy = totalEnergy - amount;
                 GameObject obj = energyArea.transform.Find("slot_energy_normal(Clone)").gameObject;
                 Destroy(obj);
             }
