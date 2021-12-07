@@ -16,6 +16,7 @@ public class ControllerScript : MonoBehaviour
     public int cardsInHand = 0;
 
     private int totalEnergy = 0;
+    private string enemyIntent;
 
     public GameObject slotLightning;
     public GameObject slotNormal;
@@ -27,6 +28,7 @@ public class ControllerScript : MonoBehaviour
     public GameObject[] deckOptions;
     public List<GameObject> deck;
 
+    private GameObject pt_intent;
     private GameObject pt_active_energy_lightning;
     private GameObject pt_active_energy_normal;
     private GameObject pt_active_health;
@@ -43,10 +45,42 @@ public class ControllerScript : MonoBehaviour
         pt_enemy_health = GameObject.Find("pt_enemy_health");
         energyArea = GameObject.Find("Energy Display");
         hand_area = GameObject.Find("Player Hand");
+        pt_intent = GameObject.Find("pt_intent");
         img_highlight_active = GameObject.Find("img_highlight_active");
         img_highlight_enemy = GameObject.Find("img_highlight_enemy");
 
         StartBattle();
+    }
+
+    public void StartBattle()
+    {
+        DiscardHand();
+        DiscardAllEnergy();
+        spiritAmount = 2;
+        maxSpiritAmount = 2;
+        activeHealth = 40;
+        enemyHealth = 40;
+        isPlayerTurn = true;
+        turnNumber = 1;
+        lightningEnergy = 0;
+        normalEnergy = 0;
+
+        AddMultipleGameObjects(deckOptions[0], 5, deck);
+        AddMultipleGameObjects(deckOptions[1], 5, deck);
+        AddMultipleGameObjects(deckOptions[2], 5, deck);
+        AddMultipleGameObjects(deckOptions[3], 5, deck);
+        AddMultipleGameObjects(deckOptions[4], 2, deck);
+        RandomizeDeck();
+        DrawFive();
+
+        img_highlight_enemy.gameObject.SetActive(false);
+        img_highlight_active.gameObject.SetActive(true);
+
+        UpdateTextTurn();
+        UpdateTextSpirit();
+        UpdateTextHealth();
+        Announcer("A wild Pidgey appeared!");
+        NewEnemyIntent();
     }
 
     // Turn functions
@@ -57,6 +91,7 @@ public class ControllerScript : MonoBehaviour
             isPlayerTurn = false;
             img_highlight_enemy.gameObject.SetActive(true);
             img_highlight_active.gameObject.SetActive(false);
+            EnemyTurn();
         }
         else
         {
@@ -152,35 +187,6 @@ public class ControllerScript : MonoBehaviour
     }
 
     // Deck and hand functions
-    public void StartBattle()
-    {
-        DiscardHand();
-        DiscardAllEnergy();
-        spiritAmount = 2;
-        maxSpiritAmount = 2;
-        activeHealth = 40;
-        enemyHealth = 40;
-        isPlayerTurn = true;
-        turnNumber = 1;
-        lightningEnergy = 0;
-        normalEnergy = 0;
-
-        AddMultipleGameObjects(deckOptions[0], 5, deck);
-        AddMultipleGameObjects(deckOptions[1], 5, deck);
-        AddMultipleGameObjects(deckOptions[2], 5, deck);
-        AddMultipleGameObjects(deckOptions[3], 5, deck);
-        AddMultipleGameObjects(deckOptions[4], 2, deck);
-        RandomizeDeck();
-        DrawFive();
-
-        img_highlight_enemy.gameObject.SetActive(false);
-        img_highlight_active.gameObject.SetActive(true);
-
-        UpdateTextTurn();
-        UpdateTextSpirit();
-        UpdateTextHealth();
-        Announcer("A wild Pidgey appeared!");
-    }
     public void DrawFive()
     {
         for (int i = cardsInHand; i < 5; i++)
@@ -218,17 +224,6 @@ public class ControllerScript : MonoBehaviour
             Destroy(hand_area.transform.GetChild(cardsInHand - 1).gameObject);
             cardsInHand = cardsInHand - 1;
         }
-    }
-
-    public void DiscardAllEnergy()
-    {
-        while (totalEnergy != 0)
-        {
-            Destroy(energyArea.transform.GetChild(totalEnergy - 1).gameObject);
-            totalEnergy = totalEnergy - 1;
-        }
-        normalEnergy = 0;
-        lightningEnergy = 0;
     }
 
     // Energy functions
@@ -291,5 +286,93 @@ public class ControllerScript : MonoBehaviour
             Text uiText = pt_active_energy_normal.GetComponent<Text>();
             uiText.text = "Energy: " + normalEnergy + "";
         }
+    }
+
+    public void DiscardAllEnergy()
+    {
+        while (totalEnergy != 0)
+        {
+            Destroy(energyArea.transform.GetChild(totalEnergy - 1).gameObject);
+            totalEnergy = totalEnergy - 1;
+        }
+        normalEnergy = 0;
+        lightningEnergy = 0;
+    }
+
+    //Enemy Turn
+    private void EnemyTurn()
+    {
+        if (enemyIntent == "Attacking")
+        {
+            EnemyAttackSelection();
+        }
+        else if (enemyIntent == "Charging")
+        {
+            StartCoroutine(EnemyChargingLogic());
+        }
+
+    }
+
+    private void EnemyAttackSelection()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            StartCoroutine(EnemyAttackLogic("Tackle", 10));
+        }
+        else
+        {
+            StartCoroutine(EnemyAttackLogic("Gust", 15));
+        }
+    }
+
+    IEnumerator EnemyAttackLogic(string attackName, int attackDamage)
+    {
+        //thinking...
+        Announcer("Enemy Pidgey is thinking...");
+        //Wait for 2 seconds
+        yield return new WaitForSeconds(2);
+        Announcer("Enemy Pidgey used " + attackName + "!");
+        //Wait for 1 seconds
+        yield return new WaitForSeconds(1);
+        string text = uiAnnouncer.GetComponent<Text>().text;
+        Announcer(text + "\n Pikachu took " + attackDamage + " damage!");
+        activeHealth = activeHealth - attackDamage;
+        UpdateTextHealth();
+        //Wait for 1 seconds
+        yield return new WaitForSeconds(1);
+        NewEnemyIntent();
+        NextTurn();
+    }
+
+    IEnumerator EnemyChargingLogic()
+    {
+        //thinking...
+        Announcer("Enemy Pidgey is thinking...");
+        //Wait for 2 seconds
+        yield return new WaitForSeconds(2);
+        Announcer("Enemy Pidgey is building energy!");
+        //Wait for 1 seconds
+        yield return new WaitForSeconds(1);
+        NewEnemyIntent();
+        NextTurn();
+    }
+
+    private void NewEnemyIntent()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            enemyIntent = "Charging";
+        }
+        else
+        {
+            enemyIntent = "Attacking";
+        }
+        SetTextEnemyIntent(enemyIntent);
+    }
+
+    private void SetTextEnemyIntent(string intent)
+    {
+        Text uiText = pt_intent.GetComponent<Text>();
+        uiText.text = intent;
     }
 }
