@@ -65,11 +65,12 @@ public class ControllerScript : MonoBehaviour
         lightningEnergy = 0;
         normalEnergy = 0;
 
-        AddMultipleGameObjects(deckOptions[0], 5, deck);
-        AddMultipleGameObjects(deckOptions[1], 5, deck);
+        AddMultipleGameObjects(deckOptions[0], 4, deck);
+        AddMultipleGameObjects(deckOptions[1], 4, deck);
         AddMultipleGameObjects(deckOptions[2], 5, deck);
         AddMultipleGameObjects(deckOptions[3], 5, deck);
         AddMultipleGameObjects(deckOptions[4], 2, deck);
+        AddMultipleGameObjects(deckOptions[5], 4, deck);
         RandomizeDeck();
         DrawFive();
 
@@ -229,7 +230,7 @@ public class ControllerScript : MonoBehaviour
     // Energy functions
     public void AddEnergy(string energy, int amount)
     {
-        if (energy == "lightning")
+        if (energy == "Lightning")
         {
             lightningEnergy = lightningEnergy + amount;
             totalEnergy = totalEnergy + amount;
@@ -237,7 +238,7 @@ public class ControllerScript : MonoBehaviour
             energySlot.transform.SetParent(energyArea.transform, false);
             energySlot.transform.SetSiblingIndex(10);
         }
-        else if (energy == "normal")
+        else if (energy == "Normal")
         {
             normalEnergy = normalEnergy + amount;
             totalEnergy = totalEnergy + amount;
@@ -251,7 +252,7 @@ public class ControllerScript : MonoBehaviour
 
     public void SubtractEnergy(string energy, int amount)
     {
-        if (energy == "lightning")
+        if (energy == "Lightning")
         {
             for (int i = 0; i < amount; i++)
             {
@@ -261,7 +262,7 @@ public class ControllerScript : MonoBehaviour
                 Destroy(obj);
             }
         }
-        else if (energy == "normal")
+        else if (energy == "Normal")
         {
             for (int i = 0; i < amount; i++)
             {
@@ -276,12 +277,12 @@ public class ControllerScript : MonoBehaviour
 
     void UpdateTextEnergy(string energy)
     {
-        if (energy == "lightning")
+        if (energy == "Lightning")
         {
             Text uiText = pt_active_energy_lightning.GetComponent<Text>();
             uiText.text = "Energy: " + lightningEnergy + "";
         }
-        else if (energy == "normal")
+        else if (energy == "Normal")
         {
             Text uiText = pt_active_energy_normal.GetComponent<Text>();
             uiText.text = "Energy: " + normalEnergy + "";
