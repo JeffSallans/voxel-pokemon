@@ -17,6 +17,11 @@ public class PlayerDeck : MonoBehaviour
     /// </summary>
     public List<Pokemon> party;
 
+    /// <summary>
+    /// The energies to bring into battle. (Should probably be computed)
+    /// </summary>
+    public List<Energy> energies;
+
     // Start is called before the first frame update
     void Start()
     {

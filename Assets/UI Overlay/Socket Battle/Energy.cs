@@ -29,8 +29,6 @@ public class Energy : MonoBehaviour
         }
     }
 
-    public Card attachedToCard;
-
     public Pokemon attachedToPokemon;
 
     /// <summary>
@@ -94,21 +92,18 @@ public class Energy : MonoBehaviour
     {
         print("energy play");
         if (!canBePlayed) { return; }
-        battleGameBoard.onEnergyPlay(attachedToCard, this, battleGameBoard.activePokemon);
+        battleGameBoard.onEnergyPlay(this, battleGameBoard.activePokemon);
     }
 
     /// <summary>
     /// When an energy is played
     /// </summary>
-    /// <param name="move"></param>
     /// <param name="target"></param>
-    public void onEnergyPlay(Card move, Pokemon target)
+    public void onEnergyPlay(Pokemon target)
     {
-        move.attachedEnergies.Remove(this);
         target.attachedEnergy.Add(this);
 
         isUsed = true;
-        attachedToCard = null;
         attachedToPokemon = target;
     }
 

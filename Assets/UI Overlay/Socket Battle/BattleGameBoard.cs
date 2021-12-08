@@ -8,6 +8,12 @@ using UnityEngine;
 /// </summary>
 public class BattleGameBoard : MonoBehaviour
 {
+    public PlayerDeck player;
+
+    public OpponentDeck opponent;
+
+    public string debugVariablesBelow;
+
     /// <summary>
     /// Cards to be drawn
     /// </summary>
@@ -23,7 +29,20 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public List<Card> discard;
 
-    public PlayerDeck player;
+    /// <summary>
+    /// The possible energies to deal a hand with
+    /// </summary>
+    public List<Energy> energyDeck;
+
+    /// <summary>
+    /// The possible energies to pick from
+    /// </summary>
+    public List<Energy> energyHand;
+
+    /// <summary>
+    /// The energies that were removed from the pokemon, to be reshuffled in when energyDeck is empty
+    /// </summary>
+    public List<Energy> energyDiscard;
 
     /// <summary>
     /// The pokemon that can use moves
@@ -98,13 +117,12 @@ public class BattleGameBoard : MonoBehaviour
         }
     }
 
-
-    public OpponentDeck opponent;
-
     /// <summary>
     /// The pokemon that will recieve the next attack
     /// </summary>
     public Pokemon opponentActivePokemon;
+
+    public string renderLocationsBelow;
 
     /// <summary>
     /// Where to render the pokemon prefabs
@@ -132,6 +150,21 @@ public class BattleGameBoard : MonoBehaviour
     public GameObject discardLocation;
 
     /// <summary>
+    /// Where to render the energy deck prefabs
+    /// </summary>
+    public GameObject energyDeckLocation;
+
+    /// <summary>
+    /// Where to render possible energies
+    /// </summary>
+    public List<GameObject> energyHandLocations;
+
+    /// <summary>
+    /// Where to render the discard energy
+    /// </summary>
+    public GameObject energyDiscardLocation;
+
+    /// <summary>
     /// The common energy to use every turn
     /// </summary>
     public List<Energy> commonEnergy;
@@ -142,9 +175,14 @@ public class BattleGameBoard : MonoBehaviour
     public GameObject switchPokemonOverlay;
 
     /// <summary>
+    /// How many energies to pick from
+    /// </summary>
+    public int energyHandSize = 3;
+
+    /// <summary>
     /// How many cards to draw
     /// </summary>
-    public int handSize = 5;
+    public int handSize = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -191,6 +229,14 @@ public class BattleGameBoard : MonoBehaviour
             c.transform.rotation = deckLocation.transform.rotation;
         });
 
+        energyDeck = player.energies.ToList();
+        Shuffle(energyDeck);
+        energyDeck.ForEach(e =>
+        {
+            e.transform.position = deckLocation.transform.position;
+            e.transform.rotation = deckLocation.transform.rotation;
+        });
+
         // Send event to all energy, cards, and pokemon
         allPokemon.ForEach(p => p.onBattleStart(this));
         allCards.ForEach(c => c.onBattleStart(this));
@@ -212,13 +258,17 @@ public class BattleGameBoard : MonoBehaviour
         // Refresh energy
         availableEnergy.ForEach(e => { e.isUsed = false; }); 
 
+        // Pick 3 energies
+        while (energyHand.Count < energyHandSize)
+        {
+            if (energyDeck.Count < 1) { reshuffleEnergyDiscard(); }
+            drawEnergy();
+        }
+
         // Draw cards up to handSize
         while (hand.Count < handSize)
         {
-            if (deck.Count < 1)
-            {
-                reshuffleDiscard();
-            }
+            if (deck.Count < 1) { reshuffleDiscard(); }
             drawCard(activePokemon);
         }
     }
@@ -251,6 +301,36 @@ public class BattleGameBoard : MonoBehaviour
         {
             c.transform.position = deckLocation.transform.position;
             c.transform.rotation = deckLocation.transform.rotation;
+        });
+    }
+
+    /// <summary>
+    /// Draw the top energy from the deck
+    /// </summary>
+    private void drawEnergy()
+    {
+        // Draw card
+        var energyDrawn = energyDeck.First();
+        energyDrawn.isUsed = false;
+        energyHand.Add(energyDrawn);
+        energyDeck.Remove(energyDrawn);
+        energyDrawn.transform.position = energyHandLocations[energyHand.Count - 1].transform.position;
+        energyDrawn.transform.rotation = energyHandLocations[energyHand.Count - 1].transform.rotation;
+        energyDrawn.transform.localScale = energyHandLocations[energyHand.Count - 1].transform.localScale;
+    }
+
+    /// <summary>
+    /// Modifies energy discard and energy deck
+    /// </summary>
+    private void reshuffleEnergyDiscard()
+    {
+        energyDeck.AddRange(energyDiscard);
+        energyDiscard.RemoveAll(card => true);
+        Shuffle(energyDeck);
+        energyDeck.ForEach(c =>
+        {
+            c.transform.position = energyDeckLocation.transform.position;
+            c.transform.rotation = energyDeckLocation.transform.rotation;
         });
     }
 
@@ -308,19 +388,28 @@ public class BattleGameBoard : MonoBehaviour
         });
     }
 
-    public void onEnergyPlay(Card move, Energy source, Pokemon target)
+    public void onEnergyEvent(int index)
     {
-        // Pay cost
-        payMoveCost(commonEnergy.GetRange(0, 1));
+        onEnergyPlay(energyHand[index], activePokemon);
+    }
 
-        // Trigger move action
-        source.onEnergyPlay(move, target);
 
-        // Discard card
-        discard.Add(move);
-        hand.Remove(move);
-        move.transform.position = discardLocation.transform.position;
-        move.transform.rotation = discardLocation.transform.rotation;
+    public void onEnergyPlay(Energy source, Pokemon target)
+    {
+        // Remove energy
+        energyHand.Remove(source);
+        
+        // Trigger energy action
+        source.onEnergyPlay(target);
+
+        // Discard other energies
+        energyHand.ForEach(e =>
+        {
+            e.transform.position = energyDiscardLocation.transform.position;
+            e.transform.rotation = energyDiscardLocation.transform.rotation;
+        });
+        energyDiscard.AddRange(energyHand);
+        energyHand.RemoveAll(card => true);
     }
 
     public void onTurnEnd() {

@@ -66,6 +66,8 @@ public class Pokemon : MonoBehaviour
         {
             e.transform.localPosition = gameObject.transform.localPosition + energyLocations[i].transform.localPosition;
             e.transform.rotation = energyLocations[i].transform.rotation;
+            e.transform.localScale = energyLocations[i].transform.localScale;
+
             i++;
         });
     }
