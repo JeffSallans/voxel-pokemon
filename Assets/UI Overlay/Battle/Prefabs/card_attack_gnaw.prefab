@@ -579,7 +579,6 @@ MonoBehaviour:
   costEnergy1Type: Normal
   costEnergy2Amount: 0
   costEnergy2Type: 
-  ZoomCard: {fileID: 8978943488063147242}
 --- !u!114 &7003044697998274472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +646,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 7664154057997211515}
           m_TargetAssemblyTypeName: CardScript, Assembly-CSharp
-          m_MethodName: OnHeaverExit
+          m_MethodName: OnHoverExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
