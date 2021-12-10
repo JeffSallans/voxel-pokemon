@@ -21,6 +21,7 @@ public class CardScript : MonoBehaviour
     public int costEnergy2Amount;
     public string costEnergy2Type;
 
+    private int indexNo;
     private bool isZoomed = false;
     private bool isPlayable = true;
     private bool isDragging = false;
@@ -93,6 +94,7 @@ public class CardScript : MonoBehaviour
     public void StartDrag()
     {
         isDragging = true;
+        OnHoverExit();
         startParent = transform.parent.gameObject;
         startPos = transform.position;
         isPlayable = true;
@@ -162,18 +164,26 @@ public class CardScript : MonoBehaviour
     
     public void OnHoverEnter()
     {
-        if (!isZoomed)
+        if (!isZoomed && !isDragging)
         {
-            transform.localScale *= 2f;
+            startParent = transform.parent.gameObject;
+            indexNo = transform.GetSiblingIndex();
+            controllerScript.AddPlaceHolder(indexNo);
+            transform.localScale *= 2;
+            transform.SetParent(canvas.transform, true);
             isZoomed = true;
         }
     }
 
-    public void OnHeaverExit()
+    public void OnHoverExit()
     {
         if (isZoomed)
         {
+            controllerScript.RemovePlaceHolder();
             transform.localScale *= .5f;
+            transform.position = startPos;
+            transform.SetParent(startParent.transform, false);
+            transform.SetSiblingIndex(indexNo);
             isZoomed = false;
         }
     }

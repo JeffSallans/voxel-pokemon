@@ -25,9 +25,11 @@ public class ControllerScript : MonoBehaviour
     public GameObject uiAnnouncer;
     public GameObject hand_area;
     public GameObject energyArea;
+    public GameObject ZoomPlaceholderCard;
     public GameObject[] deckOptions;
     public List<GameObject> deck;
 
+    private GameObject placeholder;
     private GameObject pt_intent;
     private GameObject pt_active_energy_lightning;
     private GameObject pt_active_energy_normal;
@@ -225,6 +227,18 @@ public class ControllerScript : MonoBehaviour
             Destroy(hand_area.transform.GetChild(cardsInHand - 1).gameObject);
             cardsInHand = cardsInHand - 1;
         }
+    }
+
+    public void AddPlaceHolder(int indexno)
+    {
+        placeholder = Instantiate(ZoomPlaceholderCard, new Vector2(Input.mousePosition.x, Input.mousePosition.y), Quaternion.identity);
+        placeholder.transform.SetParent(hand_area.transform, false);
+        placeholder.transform.SetSiblingIndex(indexno);
+    }
+
+    public void RemovePlaceHolder()
+    {
+        Destroy(placeholder);
     }
 
     // Energy functions
