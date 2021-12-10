@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ControllerScript : MonoBehaviour
 {
-    public int activeHealth;
     public int enemyHealth;
     public int lightningEnergy = 0;
     public int normalEnergy = 0;
@@ -15,8 +14,16 @@ public class ControllerScript : MonoBehaviour
     public bool isPlayerTurn;
     public int cardsInHand = 0;
 
+    private int actHealth;
+    private int actAttack;
+    private int actDefense;
+    private int actSAttack;
+    private int actSDefense;
+    private int actSpeed;
     private int totalEnergy = 0;
     private string enemyIntent;
+    private List<int> actBS = new List<int> { 35, 55, 40, 50, 50, 90 };
+    private List<int> enmBS = new List<int> { 40, 45, 40, 35, 35, 56 };
 
     public GameObject slotLightning;
     public GameObject slotNormal;
@@ -37,6 +44,8 @@ public class ControllerScript : MonoBehaviour
     private GameObject pt_enemy_health;
     private GameObject img_highlight_active;
     private GameObject img_highlight_enemy;
+    private GameObject inp_pokemon1;
+    private GameObject inp_pokemon2;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +59,9 @@ public class ControllerScript : MonoBehaviour
         pt_intent = GameObject.Find("pt_intent");
         img_highlight_active = GameObject.Find("img_highlight_active");
         img_highlight_enemy = GameObject.Find("img_highlight_enemy");
+        inp_pokemon1 = GameObject.Find("inp_pokemon1");
+        inp_pokemon2 = GameObject.Find("inp_pokemon2");
+
 
         StartBattle();
     }
@@ -60,7 +72,7 @@ public class ControllerScript : MonoBehaviour
         DiscardAllEnergy();
         spiritAmount = 2;
         maxSpiritAmount = 2;
-        activeHealth = 40;
+        actHealth = 40;
         enemyHealth = 40;
         isPlayerTurn = true;
         turnNumber = 1;
@@ -82,8 +94,14 @@ public class ControllerScript : MonoBehaviour
         UpdateTextTurn();
         UpdateTextSpirit();
         UpdateTextHealth();
-        Announcer("A wild Pidgey appeared!");
+        Announcer("A wild Pidgey appeared!", false);
         NewEnemyIntent();
+    }
+
+    private void CalculateStats()
+    {
+        int activeLevel = int.Parse(inp_pokemon1.GetComponent<Text>().text);
+        actHealth = ((2 * actBS[0] + 31 ) * activeLevel);
     }
 
     // Turn functions
@@ -128,16 +146,16 @@ public class ControllerScript : MonoBehaviour
 
     // Battle functions
 
-    public void Attack(int damage)
+    public void Attack(string name, int power)
     {
         if (isPlayerTurn)
         {
-            enemyHealth = enemyHealth - damage;
-            Announcer("The enemy Pidgey took " + damage +  " damage!");
+            enemyHealth = enemyHealth - power;
+            Announcer("Pikachu used " + name + "! \n The enemy Pidgey took " + power +  " damage!", false);
         }
         else if (isPlayerTurn == false)
         {
-            activeHealth = activeHealth - damage;
+            actHealth = actHealth - power;
         }
         UpdateTextHealth();
     }
@@ -147,13 +165,21 @@ public class ControllerScript : MonoBehaviour
         Text uiText = pt_enemy_health.GetComponent<Text>();
         uiText.text = "Health: " + enemyHealth + "";
         uiText = pt_active_health.GetComponent<Text>();
-        uiText.text = "Health: " + activeHealth + "";
+        uiText.text = "Health: " + actHealth + "";
     }
 
-    public void Announcer(string announcement)
+    public void Announcer(string announcement, bool addToExisting)
     {
         Text uiText = uiAnnouncer.GetComponent<Text>();
-        uiText.text = announcement;
+        if (!addToExisting)
+        {
+            uiText.text = announcement;
+        }
+        else if (addToExisting)
+        {
+            string text = uiAnnouncer.GetComponent<Text>().text;
+            uiText.text = text + "\n" + announcement;
+        }
     }
 
     // Spirit functions
@@ -260,7 +286,7 @@ public class ControllerScript : MonoBehaviour
             energySlot.transform.SetParent(energyArea.transform, false);
             energySlot.transform.SetSiblingIndex(0);
         }
-        Announcer("Pikachu is charging up! (+1 " + energy + " energy)");
+        Announcer("Pikachu is charging up! (+1 " + energy + " energy)", false);
         UpdateTextEnergy(energy);
     }
 
@@ -343,15 +369,16 @@ public class ControllerScript : MonoBehaviour
     IEnumerator EnemyAttackLogic(string attackName, int attackDamage)
     {
         //thinking...
-        Announcer("Enemy Pidgey is thinking...");
+        Announcer("Enemy Pidgey is thinking...", false);
         //Wait for 2 seconds
         yield return new WaitForSeconds(2);
-        Announcer("Enemy Pidgey used " + attackName + "!");
+        Announcer("Enemy Pidgey used " + attackName + "!", false);
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);
-        string text = uiAnnouncer.GetComponent<Text>().text;
-        Announcer(text + "\n Pikachu took " + attackDamage + " damage!");
-        activeHealth = activeHealth - attackDamage;
+        Announcer("Pikachu took " + attackDamage + " damage!", true);
+        //string text = uiAnnouncer.GetComponent<Text>().text;
+        //Announcer(text + "\n Pikachu took " + attackDamage + " damage!", true);
+        Attack(attackName, attackDamage);
         UpdateTextHealth();
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);
@@ -362,10 +389,10 @@ public class ControllerScript : MonoBehaviour
     IEnumerator EnemyChargingLogic()
     {
         //thinking...
-        Announcer("Enemy Pidgey is thinking...");
+        Announcer("Enemy Pidgey is thinking...", false);
         //Wait for 2 seconds
         yield return new WaitForSeconds(2);
-        Announcer("Enemy Pidgey is building energy!");
+        Announcer("Enemy Pidgey is building energy!", false);
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);
         NewEnemyIntent();

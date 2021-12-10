@@ -52,6 +52,15 @@ public class CardScript : MonoBehaviour
             txtDamage = transform.Find("txtDamage").gameObject;
             SetCardText();
         }
+        else if (cardType == "Status")
+        {
+            txtName = transform.Find("txtName").gameObject;
+            txtCardType = transform.Find("txtCardType").gameObject;
+            txtSpirit = transform.Find("txtSpirit").gameObject;
+            txtEnergyCost = transform.Find("txtEnergyCost").gameObject;
+            txtDamage = transform.Find("txtDamage").gameObject;
+            SetCardText();
+        }
     }
 
     void PlayCard()
@@ -62,7 +71,7 @@ public class CardScript : MonoBehaviour
         }
         else if (cardType == "Attack")
         {
-            controllerScript.Attack(attackPower);
+            controllerScript.Attack(cardName, attackPower);
         }
 
         // Spend resources
