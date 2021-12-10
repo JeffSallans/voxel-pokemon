@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ControllerScript : MonoBehaviour
 {
-    public int enemyHealth;
     public int lightningEnergy = 0;
     public int normalEnergy = 0;
     public int spiritAmount;
@@ -15,15 +14,16 @@ public class ControllerScript : MonoBehaviour
     public int cardsInHand = 0;
 
     private int actHealth;
+    private int actLevel;
     private int actAttack;
     private int actDefense;
     private int actSAttack;
     private int actSDefense;
     private int actSpeed;
+    public int eneHealth;
+    public int eneLevel;
     private int totalEnergy = 0;
     private string enemyIntent;
-    private List<int> actBS = new List<int> { 35, 55, 40, 50, 50, 90 };
-    private List<int> enmBS = new List<int> { 40, 45, 40, 35, 35, 56 };
 
     public GameObject slotLightning;
     public GameObject slotNormal;
@@ -44,8 +44,13 @@ public class ControllerScript : MonoBehaviour
     private GameObject pt_enemy_health;
     private GameObject img_highlight_active;
     private GameObject img_highlight_enemy;
-    private GameObject inp_pokemon1;
-    private GameObject inp_pokemon2;
+    private GameObject inp_pokemon1GO;
+    private GameObject inp_pokemon2GO;
+    private InputField inp_pokemon1CO;
+    private InputField inp_pokemon2CO;
+
+    private List<int> actBS;
+    private List<int> eneBS;
 
     // Start is called before the first frame update
     void Start()
@@ -59,21 +64,29 @@ public class ControllerScript : MonoBehaviour
         pt_intent = GameObject.Find("pt_intent");
         img_highlight_active = GameObject.Find("img_highlight_active");
         img_highlight_enemy = GameObject.Find("img_highlight_enemy");
-        inp_pokemon1 = GameObject.Find("inp_pokemon1");
-        inp_pokemon2 = GameObject.Find("inp_pokemon2");
+        inp_pokemon1GO = GameObject.Find("inp_pokemon1");
+        inp_pokemon1GO = inp_pokemon1GO.transform.GetChild(1).gameObject;
+        inp_pokemon2GO = GameObject.Find("inp_pokemon2");
+        inp_pokemon2GO = inp_pokemon2GO.transform.GetChild(1).gameObject;
+        actLevel = int.Parse(inp_pokemon1GO.GetComponent<Text>().text);
+        eneLevel = int.Parse(inp_pokemon2GO.GetComponent<Text>().text);
+        actBS = new List<int> { 35, 5, 55, 40, 50, 50, 90 };
+        eneBS = new List<int> { 40, 5, 45, 40, 35, 35, 56 };
 
-
-        StartBattle();
+    StartBattle();
     }
 
     public void StartBattle()
     {
+        actLevel = int.Parse(inp_pokemon1GO.GetComponent<Text>().text);
+        eneLevel = int.Parse(inp_pokemon2GO.GetComponent<Text>().text);
+        actBS[1] = actLevel;
+        eneBS[1] = eneLevel;
         DiscardHand();
         DiscardAllEnergy();
         spiritAmount = 2;
         maxSpiritAmount = 2;
-        actHealth = 40;
-        enemyHealth = 40;
+        CalculateStats();
         isPlayerTurn = true;
         turnNumber = 1;
         lightningEnergy = 0;
@@ -100,8 +113,14 @@ public class ControllerScript : MonoBehaviour
 
     private void CalculateStats()
     {
-        int activeLevel = int.Parse(inp_pokemon1.GetComponent<Text>().text);
-        actHealth = ((2 * actBS[0] + 31 ) * activeLevel);
+        actHealth = ((2 * actBS[0] + 31) * actBS[1])/100 + actBS[1] + 10;
+        actAttack = ((2 * actBS[2] + 31) * actBS[1])/ 100 + 5;
+        actDefense = ((2 * actBS[3] + 31) * actBS[1]) / 100 + 5;
+        actSAttack = ((2 * actBS[4] + 31) * actBS[1]) / 100 + 5;
+        actSDefense = ((2 * actBS[5] + 31) * actBS[1]) / 100 + 5;
+        actSpeed = ((2 * actBS[6] + 31) * actBS[1]) / 100 + 5;
+
+        eneHealth = ((((2 * eneBS[0] + 31) * eneBS[1]) / 100) + eneBS[1] + 10);
     }
 
     // Turn functions
@@ -150,7 +169,7 @@ public class ControllerScript : MonoBehaviour
     {
         if (isPlayerTurn)
         {
-            enemyHealth = enemyHealth - power;
+            eneHealth = eneHealth - power;
             Announcer("Pikachu used " + name + "! \n The enemy Pidgey took " + power +  " damage!", false);
         }
         else if (isPlayerTurn == false)
@@ -163,7 +182,7 @@ public class ControllerScript : MonoBehaviour
     void UpdateTextHealth()
     {
         Text uiText = pt_enemy_health.GetComponent<Text>();
-        uiText.text = "Health: " + enemyHealth + "";
+        uiText.text = "Health: " + eneHealth + "";
         uiText = pt_active_health.GetComponent<Text>();
         uiText.text = "Health: " + actHealth + "";
     }
