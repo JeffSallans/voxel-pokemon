@@ -282,7 +282,7 @@ public class BattleGameBoard : MonoBehaviour
         var cardDrawn = deck.First();
         hand.Add(cardDrawn);
         deck.Remove(cardDrawn);
-        cardDrawn.transform.position = handLocations[hand.Count - 1].transform.position;
+        cardDrawn.transform.position = handLocations[hand.Count - 1].transform.position + new Vector3(0, 0, -1);
         cardDrawn.transform.rotation = handLocations[hand.Count - 1].transform.rotation;
 
         // Trigger event

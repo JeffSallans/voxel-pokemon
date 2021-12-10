@@ -186,7 +186,7 @@ RectTransform:
   m_GameObject: {fileID: 4017294796470993437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4017294797601549765}
   - {fileID: 4017294796244460333}
@@ -231,6 +231,7 @@ MonoBehaviour:
   battleStartEnergies: []
   descriptionGameObject: {fileID: 4017294796244460332}
   playButtonGameObject: {fileID: 1663069533588406819}
+  energyLocations: []
 --- !u!1 &4017294797601549818
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,9 +432,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyName: Normal
   energyType: Normal
-  attachedToCard: {fileID: 8051497567730727058}
   attachedToPokemon: {fileID: 0}
   defaultObject: {fileID: 0}
+  usedObject: {fileID: 0}
 --- !u!1 &8877910317589586402
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// How a card works
@@ -150,7 +151,7 @@ public class Card : MonoBehaviour
     /// <summary>
     /// Where the card description should be rendered
     /// </summary>
-    public Text descriptionGameObject;
+    public TextMeshProUGUI descriptionGameObject;
 
     /// <summary>
     /// Button that plays the card

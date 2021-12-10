@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 7181646897142688383}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: -21.4, y: -91.19, z: -51.6}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 6958537872026927517}
   - {fileID: 286334457060384487}
@@ -128,7 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyName: Water
   energyType: Water
-  attachedToCard: {fileID: 0}
   attachedToPokemon: {fileID: 0}
   defaultObject: {fileID: 2172879264689066662}
   usedObject: {fileID: 7455766209834734145}
