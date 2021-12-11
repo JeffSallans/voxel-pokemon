@@ -1470,6 +1470,7 @@ MonoBehaviour:
   maxSpiritAmount: 2
   turnNumber: 1
   isPlayerTurn: 1
+  discardUsed: 0
   cardsInHand: 0
   slotLightning: {fileID: 1495878753087428786, guid: 49e6ed8856e8afc46902d0ee800bea80, type: 3}
   slotNormal: {fileID: 9114358540711743270, guid: 0d3c47056dad9a8478e47f19476f56aa, type: 3}
@@ -1484,8 +1485,8 @@ MonoBehaviour:
   - {fileID: 6045161960798092442, guid: e861f9417c0c4f248b9708f2307590ea, type: 3}
   - {fileID: 1006167220146276219, guid: a48d16c86bd4a864da234cea7a56198e, type: 3}
   - {fileID: 6208834640434887032, guid: 0116937de3b0f34418fa8a034e01da1d, type: 3}
-  - {fileID: 2616645663320014377, guid: 33bc957f733e25b41bc12258af5a8899, type: 3}
   - {fileID: 8932521351345688871, guid: b993221a61210494b996b00ad12b1287, type: 3}
+  - {fileID: 4022538055471660613, guid: 906038bfe3f3cfa4298a1b89b81105f7, type: 3}
   deck: []
 --- !u!1 &1101506172
 GameObject:

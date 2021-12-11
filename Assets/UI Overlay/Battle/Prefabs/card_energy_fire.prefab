@@ -91,8 +91,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72574233970c4e843a0fbdc2262b1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  handArea: {fileID: 0}
+  cardName: 
+  cardType: 
+  energyType: 
+  attackPower: 0
+  specialEffect: 
+  spareVariable1: 0
+  spareVariable2: 0
+  cardDescription: None
+  costSpiritAmount: 0
+  costEnergy1Amount: 0
+  costEnergy1Type: 
+  costEnergy2Amount: 0
+  costEnergy2Type: 
 --- !u!114 &8533160237728382963
 MonoBehaviour:
   m_ObjectHideFlags: 0

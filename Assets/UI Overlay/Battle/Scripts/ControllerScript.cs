@@ -94,12 +94,12 @@ public class ControllerScript : MonoBehaviour
         lightningEnergy = 0;
         normalEnergy = 0;
 
-        AddMultipleGameObjects(deckOptions[0], 4, deck);
-        AddMultipleGameObjects(deckOptions[1], 4, deck);
-        AddMultipleGameObjects(deckOptions[2], 5, deck);
-        AddMultipleGameObjects(deckOptions[3], 5, deck);
-        AddMultipleGameObjects(deckOptions[4], 2, deck);
-        AddMultipleGameObjects(deckOptions[5], 4, deck);
+        AddMultipleGameObjects(deckOptions[0], 3, deck);
+        AddMultipleGameObjects(deckOptions[1], 3, deck);
+        AddMultipleGameObjects(deckOptions[2], 6, deck);
+        AddMultipleGameObjects(deckOptions[3], 6, deck);
+        AddMultipleGameObjects(deckOptions[4], 3, deck);
+        AddMultipleGameObjects(deckOptions[5], 3, deck);
         RandomizeDeck();
         DrawFive();
 
@@ -190,12 +190,21 @@ public class ControllerScript : MonoBehaviour
 
     // Battle functions
 
-    public void Attack(string name, int power)
+    public void Attack(string name, int power, string type)
     {
         if (isPlayerTurn)
         {
-            float random = Mathf.Round(Random.Range(.85f, 1.0f));
-            int damage = Mathf.RoundToInt(((((2 * actBS[6] / 5) + 2) * power * actCS[1] / eneCS[2] / 50) + 2) * random);
+            int damage = 0;
+            if (type == "Attack - Physical")
+            {
+                float random = Mathf.Round(Random.Range(.85f, 1.0f));
+                damage = Mathf.RoundToInt(((((2 * actBS[6] / 5) + 2) * power * actCS[1] / eneCS[2] / 50) + 2) * random);
+            }
+            else if (type == "Attack - Special")
+            {
+                float random = Mathf.Round(Random.Range(.85f, 1.0f));
+                damage = Mathf.RoundToInt(((((2 * actBS[6] / 5) + 2) * power * actCS[3] / eneCS[4] / 50) + 2) * random);
+            }
             eneCS[0] = eneCS[0] - damage;
             Announcer("Pikachu used " + name + "! \n The enemy Pidgey took " + damage +  " damage!", false);
         }
@@ -426,7 +435,7 @@ public class ControllerScript : MonoBehaviour
         Announcer("Enemy Pidgey used " + attackName + "!", false);
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);
-        Attack(attackName, attackDamage);
+        Attack(attackName, attackDamage, "Attack - Physical");
         UpdateTextHealth();
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);
