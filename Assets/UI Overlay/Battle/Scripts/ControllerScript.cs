@@ -13,15 +13,15 @@ public class ControllerScript : MonoBehaviour
     public bool isPlayerTurn;
     public int cardsInHand = 0;
 
-    private int actHealth;
-    private int actLevel;
-    private int actAttack;
-    private int actDefense;
-    private int actSAttack;
-    private int actSDefense;
-    private int actSpeed;
-    public int eneHealth;
-    public int eneLevel;
+    //private int actHealth;
+    //private int actLevel;
+    //private int actAttack;
+    //private int actDefense;
+    //private int actSAttack;
+    //private int actSDefense;
+    //private int actSpeed;
+    //public int eneHealth;
+    //public int eneLevel;
     private int totalEnergy = 0;
     private string enemyIntent;
 
@@ -46,11 +46,15 @@ public class ControllerScript : MonoBehaviour
     private GameObject img_highlight_enemy;
     private GameObject inp_pokemon1GO;
     private GameObject inp_pokemon2GO;
-    private InputField inp_pokemon1CO;
-    private InputField inp_pokemon2CO;
+    //private InputField inp_pokemon1CO;
+    //private InputField inp_pokemon2CO;
 
     private List<int> actBS;
     private List<int> eneBS;
+    private List<int> actMS;
+    private List<int> eneMS;
+    private List<int> actCS;
+    private List<int> eneCS;
 
     // Start is called before the first frame update
     void Start()
@@ -68,25 +72,22 @@ public class ControllerScript : MonoBehaviour
         inp_pokemon1GO = inp_pokemon1GO.transform.GetChild(1).gameObject;
         inp_pokemon2GO = GameObject.Find("inp_pokemon2");
         inp_pokemon2GO = inp_pokemon2GO.transform.GetChild(1).gameObject;
-        actLevel = int.Parse(inp_pokemon1GO.GetComponent<Text>().text);
-        eneLevel = int.Parse(inp_pokemon2GO.GetComponent<Text>().text);
-        actBS = new List<int> { 35, 5, 55, 40, 50, 50, 90 };
-        eneBS = new List<int> { 40, 5, 45, 40, 35, 35, 56 };
-
-    StartBattle();
+        actBS = new List<int> { 35, 55, 40, 50, 50, 90, 5 };
+        eneBS = new List<int> { 40, 45, 40, 35, 35, 56, 5 };
+        actMS = new List<int> { 0, 0, 0, 0, 0, 0 };
+        eneMS = new List<int> { 0, 0, 0, 0, 0, 0 };
+        actCS = new List<int> { 0, 0, 0, 0, 0, 0 };
+        eneCS = new List<int> { 0, 0, 0, 0, 0, 0 };
+        StartBattle();
     }
 
     public void StartBattle()
     {
-        actLevel = int.Parse(inp_pokemon1GO.GetComponent<Text>().text);
-        eneLevel = int.Parse(inp_pokemon2GO.GetComponent<Text>().text);
-        actBS[1] = actLevel;
-        eneBS[1] = eneLevel;
+        CalculateStats();
         DiscardHand();
         DiscardAllEnergy();
         spiritAmount = 2;
         maxSpiritAmount = 2;
-        CalculateStats();
         isPlayerTurn = true;
         turnNumber = 1;
         lightningEnergy = 0;
@@ -113,14 +114,36 @@ public class ControllerScript : MonoBehaviour
 
     private void CalculateStats()
     {
-        actHealth = ((2 * actBS[0] + 31) * actBS[1])/100 + actBS[1] + 10;
-        actAttack = ((2 * actBS[2] + 31) * actBS[1])/ 100 + 5;
-        actDefense = ((2 * actBS[3] + 31) * actBS[1]) / 100 + 5;
-        actSAttack = ((2 * actBS[4] + 31) * actBS[1]) / 100 + 5;
-        actSDefense = ((2 * actBS[5] + 31) * actBS[1]) / 100 + 5;
-        actSpeed = ((2 * actBS[6] + 31) * actBS[1]) / 100 + 5;
+        actBS[6] = int.Parse(inp_pokemon1GO.GetComponent<Text>().text);
+        eneBS[6] = int.Parse(inp_pokemon2GO.GetComponent<Text>().text);
 
-        eneHealth = ((((2 * eneBS[0] + 31) * eneBS[1]) / 100) + eneBS[1] + 10);
+        actMS[0] = ((2 * actBS[0] + 31) * actBS[6])/100 + actBS[6] + 10;
+        actMS[1] = ((2 * actBS[1] + 31) * actBS[6])/ 100 + 5;
+        actMS[2] = ((2 * actBS[2] + 31) * actBS[6]) / 100 + 5;
+        actMS[3] = ((2 * actBS[3] + 31) * actBS[6]) / 100 + 5;
+        actMS[4] = ((2 * actBS[4] + 31) * actBS[6]) / 100 + 5;
+        actMS[5] = ((2 * actBS[5] + 31) * actBS[6]) / 100 + 5;
+
+        eneMS[0] = ((((2 * eneBS[0] + 31) * eneBS[6]) / 100) + eneBS[6] + 10);
+        eneMS[1] = ((2 * eneBS[1] + 31) * eneBS[6]) / 100 + 5;
+        eneMS[2] = ((2 * eneBS[2] + 31) * eneBS[6]) / 100 + 5;
+        eneMS[3] = ((2 * eneBS[3] + 31) * eneBS[6]) / 100 + 5;
+        eneMS[4] = ((2 * eneBS[4] + 31) * eneBS[6]) / 100 + 5;
+        eneMS[5] = ((2 * eneBS[5] + 31) * eneBS[6]) / 100 + 5;
+
+        actCS[0] = ((2 * actBS[0] + 31) * actBS[6]) / 100 + actBS[6] + 10;
+        actCS[1] = ((2 * actBS[1] + 31) * actBS[6]) / 100 + 5;
+        actCS[2] = ((2 * actBS[2] + 31) * actBS[6]) / 100 + 5;
+        actCS[3] = ((2 * actBS[3] + 31) * actBS[6]) / 100 + 5;
+        actCS[4] = ((2 * actBS[4] + 31) * actBS[6]) / 100 + 5;
+        actCS[5] = ((2 * actBS[5] + 31) * actBS[6]) / 100 + 5;
+
+        eneCS[0] = ((((2 * eneBS[0] + 31) * eneBS[6]) / 100) + eneBS[6] + 10);
+        eneCS[1] = ((2 * eneBS[1] + 31) * eneBS[6]) / 100 + 5;
+        eneCS[2] = ((2 * eneBS[2] + 31) * eneBS[6]) / 100 + 5;
+        eneCS[3] = ((2 * eneBS[3] + 31) * eneBS[6]) / 100 + 5;
+        eneCS[4] = ((2 * eneBS[4] + 31) * eneBS[6]) / 100 + 5;
+        eneCS[5] = ((2 * eneBS[5] + 31) * eneBS[6]) / 100 + 5;
     }
 
     // Turn functions
@@ -169,22 +192,24 @@ public class ControllerScript : MonoBehaviour
     {
         if (isPlayerTurn)
         {
-            eneHealth = eneHealth - power;
+            eneCS[0] = eneCS[0] - power;
             Announcer("Pikachu used " + name + "! \n The enemy Pidgey took " + power +  " damage!", false);
         }
         else if (isPlayerTurn == false)
         {
-            actHealth = actHealth - power;
+            actCS[0] = actCS[0] - power;
         }
         UpdateTextHealth();
     }
 
     void UpdateTextHealth()
     {
+        Debug.Log("Active: " + actCS[0] + ", " + actCS[1] + ", " + actCS[2] + ", " + actCS[3] + ", " + actCS[4] + ", " + actCS[5]);
+        Debug.Log("Enemy: " + eneCS[0] + ", " + eneCS[1] + ", " + eneCS[2] + ", " + eneCS[3] + ", " + eneCS[4] + ", " + eneCS[5]);
         Text uiText = pt_enemy_health.GetComponent<Text>();
-        uiText.text = "Health: " + eneHealth + "";
+        uiText.text = "Health: " + eneCS[0] + " / " + eneMS[0];
         uiText = pt_active_health.GetComponent<Text>();
-        uiText.text = "Health: " + actHealth + "";
+        uiText.text = "Health: " + actCS[0] + " / " + actMS[0];
     }
 
     public void Announcer(string announcement, bool addToExisting)
