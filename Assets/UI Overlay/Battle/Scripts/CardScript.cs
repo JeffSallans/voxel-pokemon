@@ -198,13 +198,21 @@ public class CardScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isDragging)
         {
             transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             transform.SetParent(canvas.transform, true);
+            
         }
-        
+        if (Input.GetMouseButtonDown(1) && isZoomed && controllerScript.isPlayerTurn == true)
+            if (!controllerScript.discardUsed)
+            {
+                OnHoverExit();
+                controllerScript.discardUsed = true;
+                controllerScript.cardsInHand = controllerScript.cardsInHand - 1;
+                Destroy(this.gameObject);
+            }
     }
 }

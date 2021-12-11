@@ -11,6 +11,7 @@ public class ControllerScript : MonoBehaviour
     public int maxSpiritAmount;
     public int turnNumber;
     public bool isPlayerTurn;
+    public bool discardUsed;
     public int cardsInHand = 0;
 
     //private int actHealth;
@@ -159,6 +160,7 @@ public class ControllerScript : MonoBehaviour
         else
         {
             isPlayerTurn = true;
+            discardUsed = false;
             img_highlight_enemy.gameObject.SetActive(false);
             img_highlight_active.gameObject.SetActive(true);
             DrawFive();
@@ -192,12 +194,17 @@ public class ControllerScript : MonoBehaviour
     {
         if (isPlayerTurn)
         {
-            eneCS[0] = eneCS[0] - power;
-            Announcer("Pikachu used " + name + "! \n The enemy Pidgey took " + power +  " damage!", false);
+            float random = Mathf.Round(Random.Range(.85f, 1.0f));
+            int damage = Mathf.RoundToInt(((((2 * actBS[6] / 5) + 2) * power * actCS[1] / eneCS[2] / 50) + 2) * random);
+            eneCS[0] = eneCS[0] - damage;
+            Announcer("Pikachu used " + name + "! \n The enemy Pidgey took " + damage +  " damage!", false);
         }
         else if (isPlayerTurn == false)
         {
-            actCS[0] = actCS[0] - power;
+            float random = Mathf.Round(Random.Range(.85f, 1.0f));
+            int damage = Mathf.RoundToInt(((((2 * eneBS[6] / 5) + 2) * power * eneCS[1] / actCS[2] / 50) + 2) * random);
+            actCS[0] = actCS[0] - damage;
+            Announcer("Pikachu took " + damage + " damage!", true);
         }
         UpdateTextHealth();
     }
@@ -402,11 +409,11 @@ public class ControllerScript : MonoBehaviour
     {
         if (Random.Range(0, 2) == 0)
         {
-            StartCoroutine(EnemyAttackLogic("Tackle", 10));
+            StartCoroutine(EnemyAttackLogic("Tackle", 25));
         }
         else
         {
-            StartCoroutine(EnemyAttackLogic("Gust", 15));
+            StartCoroutine(EnemyAttackLogic("Gust", 40));
         }
     }
 
@@ -419,9 +426,6 @@ public class ControllerScript : MonoBehaviour
         Announcer("Enemy Pidgey used " + attackName + "!", false);
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);
-        Announcer("Pikachu took " + attackDamage + " damage!", true);
-        //string text = uiAnnouncer.GetComponent<Text>().text;
-        //Announcer(text + "\n Pikachu took " + attackDamage + " damage!", true);
         Attack(attackName, attackDamage);
         UpdateTextHealth();
         //Wait for 1 seconds
@@ -461,4 +465,5 @@ public class ControllerScript : MonoBehaviour
         Text uiText = pt_intent.GetComponent<Text>();
         uiText.text = intent;
     }
+
 }
