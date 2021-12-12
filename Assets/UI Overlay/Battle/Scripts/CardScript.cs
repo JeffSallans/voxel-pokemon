@@ -15,6 +15,7 @@ public class CardScript : MonoBehaviour
     public string specialEffect;
     public int spareVariable1;
     public int spareVariable2;
+    public string cardDescription;
     public int costSpiritAmount;
     public int costEnergy1Amount;
     public string costEnergy1Type;
@@ -34,23 +35,42 @@ public class CardScript : MonoBehaviour
     private GameObject txtSpirit;
     private GameObject txtEnergyCost;
     private GameObject txtDamage;
+    private GameObject txtCardDescription;
     private Vector2 startPos;
     private bool isOverDropZone = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        Text uiText;
         canvas = GameObject.Find("Main Canvas");
         controller = GameObject.Find("Controller");
         controllerScript = controller.GetComponent<ControllerScript>();
-        if (cardType == "Attack")
+        if (cardType != "Energy")
         {
             txtName = transform.Find("txtName").gameObject;
+            uiText = txtName.GetComponent<Text>();
+            uiText.text = cardName;
             txtCardType = transform.Find("txtCardType").gameObject;
+            uiText = txtCardType.GetComponent<Text>();
+            uiText.text = cardType;
             txtSpirit = transform.Find("txtSpirit").gameObject;
+            uiText = txtSpirit.GetComponent<Text>();
+            uiText.text = costSpiritAmount.ToString();
             txtEnergyCost = transform.Find("txtEnergyCost").gameObject;
+            uiText = txtEnergyCost.GetComponent<Text>();
+            uiText.text = costEnergy1Type + ": " + costEnergy1Amount;
+            if (costEnergy2Type != "") { string text = txtEnergyCost.GetComponent<Text>().text; ; uiText.text = text + "\n" + costEnergy2Type + ": " + costEnergy2Amount; }
             txtDamage = transform.Find("txtDamage").gameObject;
-            SetCardText();
+            uiText = txtDamage.GetComponent<Text>();
+            uiText.text = attackPower.ToString();
+            //SetCardText();
+        }
+        if (cardDescription != "None")
+        {
+            txtCardDescription = transform.Find("txtCardDescription").gameObject;
+            uiText = txtCardDescription.GetComponent<Text>();
+            uiText.text = cardDescription;
         }
     }
 
@@ -60,9 +80,9 @@ public class CardScript : MonoBehaviour
         {
             controllerScript.AddEnergy(energyType, 1);
         }
-        else if (cardType == "Attack")
+        else if (cardType == "Attack - Physical" || cardType == "Attack - Special")
         {
-            controllerScript.Attack(attackPower);
+            controllerScript.Attack(cardName, attackPower, cardType);
         }
 
         // Spend resources
@@ -160,6 +180,11 @@ public class CardScript : MonoBehaviour
         if (costEnergy2Type != "") { string text = txtEnergyCost.GetComponent<Text>().text; ; uiText.text = text + "\n" + costEnergy2Type + ": " + costEnergy2Amount; }
         uiText = txtDamage.GetComponent<Text>();
         uiText.text = attackPower.ToString();
+        if (cardDescription != null)
+        {
+            uiText = txtCardDescription.GetComponent<Text>();
+            uiText.text = cardDescription;
+        }
     }
     
     public void OnHoverEnter()
@@ -189,13 +214,21 @@ public class CardScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isDragging)
         {
             transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             transform.SetParent(canvas.transform, true);
+            
         }
-        
+        if (Input.GetMouseButtonDown(1) && isZoomed && controllerScript.isPlayerTurn == true)
+            if (!controllerScript.discardUsed)
+            {
+                OnHoverExit();
+                controllerScript.discardUsed = true;
+                controllerScript.cardsInHand = controllerScript.cardsInHand - 1;
+                Destroy(this.gameObject);
+            }
     }
 }
