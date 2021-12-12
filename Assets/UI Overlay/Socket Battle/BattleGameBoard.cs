@@ -170,6 +170,16 @@ public class BattleGameBoard : MonoBehaviour
     public List<Energy> commonEnergy;
 
     /// <summary>
+    /// The locations of the party
+    /// </summary>
+    public List<GameObject> pokemonModelLocations;
+
+    /// <summary>
+    /// The locations of the opponent party
+    /// </summary>
+    public List<GameObject> opponentPokemonModelLocations;
+
+    /// <summary>
     /// The UI to choose a pokemon to switch to
     /// </summary>
     public GameObject switchPokemonOverlay;

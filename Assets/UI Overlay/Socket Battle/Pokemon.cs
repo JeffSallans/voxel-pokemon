@@ -44,6 +44,11 @@ public class Pokemon : MonoBehaviour
 
     public List<GameObject> energyLocations;
 
+    /// <summary>
+    /// The pokemon to play
+    /// </summary>
+    public GameObject pokemonModel;
+
     private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
