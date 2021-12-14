@@ -14,15 +14,6 @@ public class ControllerScript : MonoBehaviour
     public bool discardUsed;
     public int cardsInHand = 0;
 
-    //private int actHealth;
-    //private int actLevel;
-    //private int actAttack;
-    //private int actDefense;
-    //private int actSAttack;
-    //private int actSDefense;
-    //private int actSpeed;
-    //public int eneHealth;
-    //public int eneLevel;
     private int totalEnergy = 0;
     private string enemyIntent;
 
@@ -36,6 +27,7 @@ public class ControllerScript : MonoBehaviour
     public GameObject ZoomPlaceholderCard;
     public GameObject[] deckOptions;
     public List<GameObject> deck;
+    public List<GameObject> eneDeck;
 
     private GameObject placeholder;
     private GameObject pt_intent;
@@ -47,8 +39,6 @@ public class ControllerScript : MonoBehaviour
     private GameObject img_highlight_enemy;
     private GameObject inp_pokemon1GO;
     private GameObject inp_pokemon2GO;
-    //private InputField inp_pokemon1CO;
-    //private InputField inp_pokemon2CO;
 
     private List<int> actBS;
     private List<int> eneBS;
@@ -56,6 +46,8 @@ public class ControllerScript : MonoBehaviour
     private List<int> eneMS;
     private List<int> actCS;
     private List<int> eneCS;
+    private List<float> actMod;
+    private List<float> eneMod;
 
     // Start is called before the first frame update
     void Start()
@@ -73,12 +65,14 @@ public class ControllerScript : MonoBehaviour
         inp_pokemon1GO = inp_pokemon1GO.transform.GetChild(1).gameObject;
         inp_pokemon2GO = GameObject.Find("inp_pokemon2");
         inp_pokemon2GO = inp_pokemon2GO.transform.GetChild(1).gameObject;
-        actBS = new List<int> { 35, 55, 40, 50, 50, 90, 5 };
+        actBS = new List<int> { 35, 55, 40, 50, 50, 90, 5 }; // HP, Attack, Defense, Sp Attack, Sp Defense, Speed, Level
         eneBS = new List<int> { 40, 45, 40, 35, 35, 56, 5 };
         actMS = new List<int> { 0, 0, 0, 0, 0, 0 };
         eneMS = new List<int> { 0, 0, 0, 0, 0, 0 };
         actCS = new List<int> { 0, 0, 0, 0, 0, 0 };
         eneCS = new List<int> { 0, 0, 0, 0, 0, 0 };
+        actMod = new List<float> { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f }; // Modifiers: Attack, Defense, Speed, Accuracy, evasion, critical chance
+        eneMod = new List<float> { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
         StartBattle();
     }
 
@@ -216,6 +210,24 @@ public class ControllerScript : MonoBehaviour
             Announcer("Pikachu took " + damage + " damage!", true);
         }
         UpdateTextHealth();
+    }
+
+    public void StatusAttack(string name, string effect, int amount1, int amount2)
+    {
+        if (isPlayerTurn)
+        {
+            if (name == "Reduce Attack")
+            {
+                Announcer("Pikachu used " + name + "! \n The enemy Pidgey's attack fell!", false);
+            }
+        }
+        else if (isPlayerTurn == false)
+        {
+            if (name == "Reduce Attack")
+            {
+
+            }
+        }
     }
 
     void UpdateTextHealth()
