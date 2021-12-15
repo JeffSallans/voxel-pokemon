@@ -1426,6 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1074129231}
   - component: {fileID: 1074129232}
+  - component: {fileID: 1074129233}
   m_Layer: 5
   m_Name: Controller
   m_TagString: Untagged
@@ -1488,6 +1489,23 @@ MonoBehaviour:
   - {fileID: 8932521351345688871, guid: b993221a61210494b996b00ad12b1287, type: 3}
   - {fileID: 4022538055471660613, guid: 906038bfe3f3cfa4298a1b89b81105f7, type: 3}
   deck: []
+  eneDeck: []
+--- !u!114 &1074129233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074129230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269c570cc487d4c43bc552c0385c4e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAttackGnaw: {fileID: 8978943488063147242, guid: 9bda83d40c6f22249be1f8af6b01d91f, type: 3}
+  cardAttackTackle: {fileID: 8932521351345688871, guid: b993221a61210494b996b00ad12b1287, type: 3}
+  cardAttackGust: {fileID: 6045161960798092442, guid: e861f9417c0c4f248b9708f2307590ea, type: 3}
+  cardStatusSandAttack: {fileID: 4022538055471660613, guid: 906038bfe3f3cfa4298a1b89b81105f7, type: 3}
 --- !u!1 &1101506172
 GameObject:
   m_ObjectHideFlags: 0

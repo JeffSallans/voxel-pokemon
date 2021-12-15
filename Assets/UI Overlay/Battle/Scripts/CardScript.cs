@@ -13,8 +13,8 @@ public class CardScript : MonoBehaviour
     public string energyType;
     public int attackPower;
     public string specialEffect;
-    public int spareVariable1;
-    public int spareVariable2;
+    public int extraVariable1;
+    public int extraVariable2;
     public string cardDescription;
     public int costSpiritAmount;
     public int costEnergy1Amount;
@@ -83,6 +83,10 @@ public class CardScript : MonoBehaviour
         else if (cardType == "Attack - Physical" || cardType == "Attack - Special")
         {
             controllerScript.Attack(cardName, attackPower, cardType);
+        }
+        else if (cardType == "Status")
+        {
+            controllerScript.StatusAttack(cardName, specialEffect, extraVariable1, extraVariable2);
         }
 
         // Spend resources
