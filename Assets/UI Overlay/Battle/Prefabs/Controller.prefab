@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1168459802901842882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1168459802901842883}
+  - component: {fileID: 1168459802901842908}
+  - component: {fileID: 1168459802901842909}
+  m_Layer: 5
+  m_Name: Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1168459802901842883
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168459802901842882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 281}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1168459802901842908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168459802901842882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e65112f5413d724d9432f93561fb7df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightningEnergy: 0
+  normalEnergy: 0
+  spiritAmount: 2
+  maxSpiritAmount: 2
+  turnNumber: 1
+  isPlayerTurn: 1
+  discardUsed: 0
+  cardsInHand: 0
+  slotLightning: {fileID: 1495878753087428786, guid: 49e6ed8856e8afc46902d0ee800bea80, type: 3}
+  slotNormal: {fileID: 9114358540711743270, guid: 0d3c47056dad9a8478e47f19476f56aa, type: 3}
+  uiTurnIndicator: {fileID: 2638382640326008330, guid: 614c81814d68d6643abe0d45ca7eb7cb, type: 3}
+  uiSpiritIndicator: {fileID: 7492604798292035702, guid: 4f9c5d09566ffc84e9b2a55ba29ab64c, type: 3}
+  uiAnnouncer: {fileID: 6432386285460900306, guid: e69d258e1a498e841b670c455609e6f2, type: 3}
+  hand_area: {fileID: 6947863044781361520, guid: 7f0bca8d35613f04ba1fb8790362f70f, type: 3}
+  energyArea: {fileID: 6688005818759202141, guid: 18cb49bb5944b484484d1951fa66a2cb, type: 3}
+  ZoomPlaceholderCard: {fileID: 77248076937037909, guid: 0da983f832ad54b4e9e4a13b974ba902, type: 3}
+  deckOptions:
+  - {fileID: 8978943488063147242, guid: 9bda83d40c6f22249be1f8af6b01d91f, type: 3}
+  - {fileID: 6045161960798092442, guid: e861f9417c0c4f248b9708f2307590ea, type: 3}
+  - {fileID: 1006167220146276219, guid: a48d16c86bd4a864da234cea7a56198e, type: 3}
+  - {fileID: 6208834640434887032, guid: 0116937de3b0f34418fa8a034e01da1d, type: 3}
+  - {fileID: 8932521351345688871, guid: b993221a61210494b996b00ad12b1287, type: 3}
+  - {fileID: 4022538055471660613, guid: 906038bfe3f3cfa4298a1b89b81105f7, type: 3}
+  deck: []
+  eneDeck: []
+--- !u!114 &1168459802901842909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168459802901842882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269c570cc487d4c43bc552c0385c4e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAttackGnaw: {fileID: 8978943488063147242, guid: 9bda83d40c6f22249be1f8af6b01d91f, type: 3}
+  cardAttackTackle: {fileID: 8932521351345688871, guid: b993221a61210494b996b00ad12b1287, type: 3}
+  cardAttackGust: {fileID: 6045161960798092442, guid: e861f9417c0c4f248b9708f2307590ea, type: 3}
+  cardStatusSandAttack: {fileID: 4022538055471660613, guid: 906038bfe3f3cfa4298a1b89b81105f7, type: 3}

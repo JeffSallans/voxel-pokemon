@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ControllerScript : MonoBehaviour
 {
+    EnemyDeckCreator enemyDeckCreator;
+    CardScript enemyCardScript;
+
     public int lightningEnergy = 0;
     public int normalEnergy = 0;
     public int spiritAmount;
@@ -52,6 +55,7 @@ public class ControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyDeckCreator = GetComponent<EnemyDeckCreator>();
         pt_active_energy_lightning = GameObject.Find("pt_active_energy_lightning");
         pt_active_energy_normal = GameObject.Find("pt_active_energy_normal");
         pt_active_health = GameObject.Find("pt_active_health");
@@ -88,10 +92,11 @@ public class ControllerScript : MonoBehaviour
         lightningEnergy = 0;
         normalEnergy = 0;
 
+        enemyDeckCreator.BuildEnemyDeck("Pidgey", 5);
         AddMultipleGameObjects(deckOptions[0], 3, deck);
         AddMultipleGameObjects(deckOptions[1], 3, deck);
-        AddMultipleGameObjects(deckOptions[2], 6, deck);
-        AddMultipleGameObjects(deckOptions[3], 6, deck);
+        AddMultipleGameObjects(deckOptions[2], 4, deck);
+        AddMultipleGameObjects(deckOptions[3], 8, deck);
         AddMultipleGameObjects(deckOptions[4], 3, deck);
         AddMultipleGameObjects(deckOptions[5], 3, deck);
         RandomizeDeck();
@@ -428,14 +433,15 @@ public class ControllerScript : MonoBehaviour
 
     private void EnemyAttackSelection()
     {
-        if (Random.Range(0, 2) == 0)
-        {
-            StartCoroutine(EnemyAttackLogic("Tackle", 25));
-        }
-        else
-        {
-            StartCoroutine(EnemyAttackLogic("Gust", 40));
-        }
+        EnemyAttackLogic2(eneDeck[Random.Range(0, eneDeck.Count - 1)]);
+        //if (Random.Range(0, 2) == 0)
+        //{
+        //    StartCoroutine(EnemyAttackLogic("Tackle", 25));
+        //}
+        //else
+        //{
+        //    StartCoroutine(EnemyAttackLogic("Gust", 40));
+        //}
     }
 
     IEnumerator EnemyAttackLogic(string attackName, int attackDamage)
@@ -448,6 +454,24 @@ public class ControllerScript : MonoBehaviour
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);
         Attack(attackName, attackDamage, "Attack - Physical");
+        UpdateTextHealth();
+        //Wait for 1 seconds
+        yield return new WaitForSeconds(1);
+        NewEnemyIntent();
+        NextTurn();
+    }
+
+    IEnumerator EnemyAttackLogic2(GameObject card)
+    {
+        enemyCardScript = card.GetComponent<CardScript>();
+        //thinking...
+        Announcer("Enemy Pidgey is thinking...", false);
+        //Wait for 2 seconds
+        yield return new WaitForSeconds(2);
+        Announcer("Enemy Pidgey used " + enemyCardScript.cardName + "!", false);
+        //Wait for 1 seconds
+        yield return new WaitForSeconds(1);
+        Attack(enemyCardScript.cardName, enemyCardScript.attackPower, enemyCardScript.cardType);
         UpdateTextHealth();
         //Wait for 1 seconds
         yield return new WaitForSeconds(1);

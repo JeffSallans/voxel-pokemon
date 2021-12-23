@@ -13,6 +13,7 @@ public class EnemyDeckCreator : MonoBehaviour
     public GameObject cardStatusSandAttack;
 
     private List<GameObject> possibleDeck;
+    private List<GameObject> enemyDeck;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,22 @@ public class EnemyDeckCreator : MonoBehaviour
 
     public void BuildEnemyDeck(string name, int level)
     {
-        if (name == "Pidgey") { if (level >= 0) { possibleDeck.Add(cardAttackTackle); } }
-        if (name == "Pidgey") { if (level >= 5) { possibleDeck.Add(cardAttackGnaw); } }
+        if (name == "Pidgey")
+        { 
+            if (level >= 0) { possibleDeck.Add(cardAttackTackle); } 
+            if (level >= 5) { possibleDeck.Add(cardAttackGnaw); }
+        }
+
+        /*if (possibleDeck.Count > 6)
+        {
+            for (int i = 0; i < 6; )
+            {
+                int r = Random.Range(0, possibleDeck.Count - 1);
+                if (!enemyDeck.Contains(possibleDeck[r])) { enemyDeck.Add(possibleDeck[r]); i++; }
+            }
+        }
+        else { enemyDeck = possibleDeck; }
+        controllerScript.eneDeck = enemyDeck; */
     }
 
     void AddMultipleGameObjects(GameObject objectToAdd, int count, List<GameObject> targetList)
