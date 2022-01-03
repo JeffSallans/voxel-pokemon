@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,11 +37,11 @@ public class Pokemon : MonoBehaviour
     /// <summary>
     /// Shows the current health
     /// </summary>
-    public Text healthText;
+    public TextMeshProUGUI healthText;
     /// <summary>
     /// Textbox for opponent to show next attack
     /// </summary>
-    public Text nextAttackText;
+    public TextMeshProUGUI nextAttackText;
 
     public List<GameObject> energyLocations;
 

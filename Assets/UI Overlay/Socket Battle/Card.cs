@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using System;
 
 /// <summary>
 /// How a card works
@@ -165,6 +167,22 @@ public class Card : MonoBehaviour
 
     private BattleGameBoard battleGameBoard;
 
+    /// <summary>
+    /// True if the mouse cursor is over the card
+    /// </summary>
+    public bool isSelected = false;
+
+    /// <summary>
+    /// True if the mouse is dragging the card
+    /// </summary>
+    public bool isDragging = false;
+
+    /// <summary>
+    /// The initial position of the card before the user action
+    /// </summary>
+    public Vector3 startPosition;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -185,6 +203,25 @@ public class Card : MonoBehaviour
             e.transform.rotation = energyLocations[i].transform.rotation;
             i++;
         });
+    }
+
+    public void OnHoverEnter()
+    {
+        if (!isSelected && !isDragging)
+        {
+            startPosition = transform.position;
+            transform.localPosition += new Vector3(0, 0, -30);
+            isSelected = true;
+        }
+    }
+
+    public void OnHoverExit()
+    {
+        if (isSelected)
+        {
+            transform.position = startPosition;
+            isSelected = false;
+        }
     }
 
     public void onBattleStart(BattleGameBoard _battleGameBoard) {

@@ -22,7 +22,7 @@ public class OpponentBot : MonoBehaviour
     void Update()
     {
         if (nextOpponentMove != null)
-        {
+        { 
             nextOpponentMove.actingPokemon.nextAttackText.text = nextOpponentMove?.moveDescription;
         }
     }

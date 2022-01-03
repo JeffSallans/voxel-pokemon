@@ -45,7 +45,7 @@ public class ObservationDescription : MonoBehaviour
     {
         if (collider.gameObject == playerCollider.gameObject)
         {
-            worldTextBox.OpenDialog(signText);
+            worldTextBox.ShowMessage(signText);
         }
     }
 
