@@ -170,18 +170,27 @@ public class Card : MonoBehaviour
     /// <summary>
     /// True if the mouse cursor is over the card
     /// </summary>
-    public bool isSelected = false;
+    private bool isSelected = false;
 
     /// <summary>
     /// True if the mouse is dragging the card
     /// </summary>
-    public bool isDragging = false;
+    private bool isDragging = false;
+
+    /// <summary>
+    /// True if the card is over an interactable space
+    /// </summary>
+    private bool isOverDropZone = false;
 
     /// <summary>
     /// The initial position of the card before the user action
     /// </summary>
-    public Vector3 startPosition;
+    private Vector3 dragStartPosition = new Vector3();
 
+    /// <summary>
+    /// The last position of the mouse to compute the delta
+    /// </summary>
+    private Vector3 previousMousePosition = new Vector3();
 
     // Start is called before the first frame update
     void Start()
@@ -203,13 +212,20 @@ public class Card : MonoBehaviour
             e.transform.rotation = energyLocations[i].transform.rotation;
             i++;
         });
+
+        // Update card position
+        var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+        if (isDragging) {
+            transform.localPosition += (mousePosition - previousMousePosition);
+        }
+        previousMousePosition = mousePosition;
     }
 
     public void OnHoverEnter()
     {
-        if (!isSelected && !isDragging)
+        if (canBePlayed && !isSelected && !isDragging)
         {
-            startPosition = transform.position;
+            dragStartPosition = transform.position;
             transform.localPosition += new Vector3(0, 0, -30);
             isSelected = true;
         }
@@ -219,8 +235,39 @@ public class Card : MonoBehaviour
     {
         if (isSelected)
         {
-            transform.position = startPosition;
+            transform.position = dragStartPosition;
             isSelected = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        isOverDropZone = true;
+        //dropzone = collision.gameObject;
+
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        isOverDropZone = false;
+        //dropzone = null;
+    }
+
+    public void onDrag()
+    {
+        isDragging = true;
+    }
+
+    public void onDrop()
+    {
+        isDragging = false;
+        if (isOverDropZone)
+        {
+            onPlayEvent();
+        }
+        else
+        {
+            OnHoverExit();
         }
     }
 

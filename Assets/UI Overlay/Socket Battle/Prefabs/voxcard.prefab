@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2154839557541264132}
   - component: {fileID: 5015709387190944138}
   - component: {fileID: -6547581641622625052}
+  - component: {fileID: 909415425063228781}
   m_Layer: 5
   m_Name: voxcard
   m_TagString: Untagged
@@ -77,9 +78,6 @@ MonoBehaviour:
   descriptionGameObject: {fileID: 5703409768264312485}
   playButtonGameObject: {fileID: 4410048307063618363}
   energyLocations: []
-  isSelected: 0
-  isDragging: 0
-  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-6547581641622625052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,13 +95,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 5015709387190944138}
+          m_TargetAssemblyTypeName: Card, Assembly-CSharp
+          m_MethodName: onDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -113,13 +111,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 5015709387190944138}
+          m_TargetAssemblyTypeName: Card, Assembly-CSharp
+          m_MethodName: onDrop
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -157,6 +155,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!61 &909415425063228781
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154839557541264133}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.4690247, y: 0.82736206}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 84.76898, y: 137.07861}
+  m_EdgeRadius: 0
 --- !u!1 &3078121551019237634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,6 +1110,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2154839557541264132}
     m_Modifications:
+    - target: {fileID: 1296298233305749733, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421799263190205916, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7438674642005719686, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1145,6 +1177,10 @@ PrefabInstance:
     - target: {fileID: 7813933921053483068, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
       propertyPath: m_Name
       value: energy-normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813933921053483068, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
