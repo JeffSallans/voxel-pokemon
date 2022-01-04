@@ -194,6 +194,17 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public int handSize = 4;
 
+    /// <summary>
+    /// Starts the battle
+    /// </summary>
+    public GameObject startBattleButton;
+
+    /// <summary>
+    /// Ends the turn
+    /// </summary>
+    public GameObject endTurnButton;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -259,6 +270,9 @@ public class BattleGameBoard : MonoBehaviour
 
         // Trigger draw
         onDraw();
+
+        startBattleButton.SetActive(false);
+        endTurnButton.SetActive(true);
     }
 
     /// <summary>

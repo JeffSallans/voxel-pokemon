@@ -42,6 +42,46 @@ public class Energy : MonoBehaviour
     public GameObject usedObject;
 
     /// <summary>
+    /// True if the energy can be place at the beginning of a match
+    /// </summary>
+    public bool initCanBeDragged = true;
+
+    /// <summary>
+    /// True if the energy is draggable
+    /// </summary>
+    private bool canBeDragged = true;
+
+    /// <summary>
+    /// True if the mouse cursor is over the card
+    /// </summary>
+    private bool isSelected = false;
+
+    /// <summary>
+    /// True if the mouse is dragging the card
+    /// </summary>
+    private bool isDragging = false;
+
+    /// <summary>
+    /// True if the card is over an interactable space
+    /// </summary>
+    private bool isOverDropZone = false;
+
+    /// <summary>
+    /// The initial position of the card before the user action
+    /// </summary>
+    private Vector3 dragStartPosition = new Vector3();
+
+    /// <summary>
+    /// The last position of the mouse to compute the delta
+    /// </summary>
+    private Vector3 previousMousePosition = new Vector3();
+
+    /// <summary>
+    /// The dropEvent for the selected drag
+    /// </summary>
+    private DropEvent dropEvent;
+
+    /// <summary>
     /// Returns true if the energy can be played with the usable energy
     /// </summary>
     public bool canBePlayed
@@ -77,12 +117,81 @@ public class Energy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Update energy position
+        var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+        if (isDragging)
+        {
+            transform.localPosition += (mousePosition - previousMousePosition);
+        }
+        previousMousePosition = mousePosition;
+    }
+
+    public void OnHoverEnter()
+    {
+        if (canBeDragged && !isSelected && !isDragging)
+        {
+            dragStartPosition = transform.position;
+            transform.localPosition += new Vector3(0, 0, -50);
+            isSelected = true;
+        }
+    }
+
+    public void OnHoverExit()
+    {
+        transform.position = dragStartPosition;
+        isDragging = false;
+        isSelected = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        dropEvent = collision.gameObject.GetComponent<DropEvent>();
+        if (dropEvent.eventType == "TargetPokemon")
+        {
+            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+            isOverDropZone = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
+        if (triggeredDropEvent != dropEvent) return;
+
+        if (dropEvent.eventType == "TargetPokemon")
+        {
+            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            isOverDropZone = false;
+        }
+    }
+
+    public void onDrag()
+    {
+        if (canBeDragged)
+        {
+            isDragging = true;
+        }
+    }
+
+    public void onDrop()
+    {
+        if (!canBeDragged) return;
+
+        isDragging = false;
+        if (isOverDropZone)
+        {
+            onEnergyPlay(dropEvent.targetPokemon);
+        }
+        else
+        {
+            OnHoverExit();
+        }
     }
 
     public void onBattleStart(BattleGameBoard _battleGameBoard)
     {
         battleGameBoard = _battleGameBoard;
+        canBeDragged = initCanBeDragged;
     }
 
     /// <summary>
@@ -103,6 +212,7 @@ public class Energy : MonoBehaviour
     {
         target.attachedEnergy.Add(this);
 
+        canBeDragged = false;
         isUsed = true;
         attachedToPokemon = target;
     }

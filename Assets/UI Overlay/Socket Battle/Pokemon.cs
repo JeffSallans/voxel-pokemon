@@ -64,7 +64,7 @@ public class Pokemon : MonoBehaviour
         var healthDesc = ("{health} / {initHealth}")
             .Replace("{health}", health.ToString())
             .Replace("{initHealth}", initHealth.ToString());
-        healthText.text = healthDesc;
+        if (healthText) healthText.text = healthDesc;
 
         // Update attached Energies to placeholder locations
         var i = 0;
