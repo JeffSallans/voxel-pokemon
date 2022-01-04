@@ -35,6 +35,10 @@ public class Pokemon : MonoBehaviour
     public List<StatusEffect> attachedStatus;
 
     /// <summary>
+    /// Shows the name
+    /// </summary>
+    public TextMeshProUGUI nameText;
+    /// <summary>
     /// Shows the current health
     /// </summary>
     public TextMeshProUGUI healthText;
@@ -50,12 +54,22 @@ public class Pokemon : MonoBehaviour
     /// </summary>
     public GameObject pokemonModel;
 
+    /// <summary>
+    /// The select indicator
+    /// </summary>
+    public GameObject pokemonSelectModel;
+
+    /// <summary>
+    /// The object containing the 2D box collider to move into position
+    /// </summary>
+    public DropEvent onHoverWrapper;
+
     private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (nameText) nameText.text = pokemonName;
     }
 
     // Update is called once per frame
@@ -82,6 +96,27 @@ public class Pokemon : MonoBehaviour
     {
         battleGameBoard = _battleGameBoard;
         health = initHealth;
+    }
+
+    /// <summary>
+    /// Set the pokemon in the spot according to the hud and model placeholder positions
+    /// </summary>
+    /// <param name="placeholder"></param>
+    /// <param name="modelPlaceholder"></param>
+    public void setPlacement(Pokemon placeholder, GameObject modelPlaceholder)
+    {
+        // Set HUD position
+        transform.position = placeholder.transform.position;
+
+        // Set box collider position
+        if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
+
+        // Set model position
+        pokemonModel.gameObject.transform.position = modelPlaceholder.transform.localPosition + modelPlaceholder.transform.parent.localPosition + modelPlaceholder.transform.parent.parent.localPosition;
+        pokemonModel.gameObject.transform.localRotation = modelPlaceholder.transform.localRotation;
+
+        // Set select position
+        pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.localPosition + modelPlaceholder.transform.parent.localPosition + modelPlaceholder.transform.parent.parent.localPosition;
     }
 
     public void onTurnEnd() { }

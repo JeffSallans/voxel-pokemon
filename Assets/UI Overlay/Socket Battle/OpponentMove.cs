@@ -18,9 +18,7 @@ public class OpponentMove : MonoBehaviour
     {
         get
         {
-            var desc = moveDescriptionWithTemplates.Replace("{damage}", damage.ToString())
-                    .Replace("{damageEnergy}", damageEnergy)
-                    .Replace("{damageType}", isPhysicalType ? "physical" : "special");
+            var desc = moveDescriptionWithTemplates.Replace("{damage}", damage.ToString());
             return desc;
         }
     }

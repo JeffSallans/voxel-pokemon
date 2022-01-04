@@ -35,10 +35,7 @@ public class DropEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetPokemon = gameObject.GetComponent<Pokemon>();
-        targetCard = gameObject.GetComponent<Card>();
-        targetEnergySocket = gameObject.GetComponent<Energy>();
-        targetGameObject = gameObject;
+
     }
 
     // Update is called once per frame

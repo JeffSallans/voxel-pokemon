@@ -138,15 +138,18 @@ public class Energy : MonoBehaviour
 
     public void OnHoverExit()
     {
-        transform.position = dragStartPosition;
-        isDragging = false;
-        isSelected = false;
+        if (canBeDragged)
+        {
+            transform.position = dragStartPosition;
+            isDragging = false;
+            isSelected = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         dropEvent = collision.gameObject.GetComponent<DropEvent>();
-        if (dropEvent.eventType == "TargetPokemon")
+        if (dropEvent?.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
             isOverDropZone = true;
@@ -158,7 +161,7 @@ public class Energy : MonoBehaviour
         var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
         if (triggeredDropEvent != dropEvent) return;
 
-        if (dropEvent.eventType == "TargetPokemon")
+        if (dropEvent?.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
             isOverDropZone = false;

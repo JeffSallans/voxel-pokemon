@@ -178,11 +178,6 @@ public class Card : MonoBehaviour
     private bool isDragging = false;
 
     /// <summary>
-    /// True if the card is over an interactable space
-    /// </summary>
-    private bool isOverDropZone = false;
-
-    /// <summary>
     /// The initial position of the card before the user action
     /// </summary>
     private Vector3 dragStartPosition = new Vector3();
@@ -238,19 +233,21 @@ public class Card : MonoBehaviour
 
     public void OnHoverExit()
     {
-        transform.position = dragStartPosition;
-        isDragging = false;
-        isSelected = false;
+        if (isSelected)
+        {
+            transform.position = dragStartPosition;
+            isDragging = false;
+            isSelected = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         dropEvent = collision.gameObject.GetComponent<DropEvent>();
-
+        print("triggered");
         if (dropEvent.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
-            isOverDropZone = true;
         }
     }
 
@@ -259,16 +256,16 @@ public class Card : MonoBehaviour
         var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
         if (triggeredDropEvent != dropEvent) return;
 
-        if (dropEvent.eventType == "TargetPokemon")
+        if (dropEvent?.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
-            isOverDropZone = false;
         }
+        dropEvent = null;
     }
 
     public void onDrag()
     {
-        if (canBePlayed)
+        if (canBePlayed && isSelected && !isDragging)
         {
             isDragging = true;
         }
@@ -276,11 +273,12 @@ public class Card : MonoBehaviour
 
     public void onDrop()
     {
-        if (!canBePlayed) return;
+        if (!canBePlayed || !isDragging) return;
 
         isDragging = false;
-        if (dropEvent.eventType == "TargetPokemon")
+        if (dropEvent?.eventType == "TargetPokemon")
         {
+            OnHoverExit();
             onPlay(battleGameBoard.activePokemon, dropEvent.targetPokemon);
         }
         else

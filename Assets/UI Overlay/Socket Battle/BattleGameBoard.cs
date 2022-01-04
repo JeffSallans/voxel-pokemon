@@ -127,12 +127,12 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Where to render the pokemon prefabs
     /// </summary>
-    public List<GameObject> playerPokemonLocations;
+    public List<Pokemon> playerPokemonLocations;
 
     /// <summary>
     /// Where to render the pokemon prefabs
     /// </summary>
-    public List<GameObject> opponentPokemonLocations;
+    public List<Pokemon> opponentPokemonLocations;
 
     /// <summary>
     /// Where to render the deck prefabs
@@ -228,15 +228,13 @@ public class BattleGameBoard : MonoBehaviour
         var i = 0;
         player.party.ForEach(p =>
         {
-            p.transform.position = playerPokemonLocations[i].transform.position;
-            p.transform.rotation = playerPokemonLocations[i].transform.rotation;
+            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i]);
             i++;
         });
         var j = 0;
         opponent.party.ForEach(p =>
         {
-            p.transform.position = opponentPokemonLocations[j].transform.position;
-            p.transform.rotation = opponentPokemonLocations[j].transform.rotation;
+            p.setPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
             j++;
         });
 
