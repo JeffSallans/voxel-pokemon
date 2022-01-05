@@ -160,7 +160,7 @@ public class Energy : MonoBehaviour
         var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
         if (triggeredDropEvent != dropEvent) return;
 
-        if (dropEvent?.eventType == "TargetPokemon" && canAttachEnergy(dropEvent.targetPokemon))
+        if (dropEvent?.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
         }
