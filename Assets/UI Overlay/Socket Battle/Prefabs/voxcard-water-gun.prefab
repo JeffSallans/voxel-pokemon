@@ -38,7 +38,7 @@ PrefabInstance:
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: cost.Array.data[0]
       value: 
-      objectReference: {fileID: 4552813687197859720}
+      objectReference: {fileID: 1456272977932936004, guid: c3e40c80083515c44a5afa43ea43d6af, type: 3}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initCardDescription
       value: Deal <color=red>{damage}</color> \uf043 dmg
@@ -145,14 +145,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
---- !u!114 &4552813687197859720 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 963392411228784205, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
-  m_PrefabInstance: {fileID: 3634545250421160389}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
