@@ -1,5 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1167554675208996632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6882942980807967042}
+    m_Modifications:
+    - target: {fileID: 8405079797155805272, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_Name
+      value: squirtle-v5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 370
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218594829439132386, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+--- !u!1 &7248309686232252224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8405079797155805272, guid: 03432d7f04591ca46a8fc1232d59ce75, type: 3}
+  m_PrefabInstance: {fileID: 1167554675208996632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6113955895665038183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +81,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: pokemonModel
+      value: 
+      objectReference: {fileID: 7248309686232252224}
     - target: {fileID: 818531783516017186, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_Name
       value: pokemon-squirtle
@@ -95,5 +173,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7918325570863788290, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+--- !u!224 &6882942980807967042 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 818531783516017189, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+  m_PrefabInstance: {fileID: 6113955895665038183}
+  m_PrefabAsset: {fileID: 0}

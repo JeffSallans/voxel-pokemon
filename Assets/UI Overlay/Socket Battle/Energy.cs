@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Resource to play a move.  It can be attached to cards or pokemon.
@@ -62,11 +63,6 @@ public class Energy : MonoBehaviour
     private bool isDragging = false;
 
     /// <summary>
-    /// True if the card is over an interactable space
-    /// </summary>
-    private bool isOverDropZone = false;
-
-    /// <summary>
     /// The initial position of the card before the user action
     /// </summary>
     private Vector3 dragStartPosition = new Vector3();
@@ -91,6 +87,7 @@ public class Energy : MonoBehaviour
             var costAsString = battleGameBoard?.commonEnergy?.GetRange(0, 1)
                 .Select(c => new { energyName = c.energyName, count = 1 })
                 .ToList();
+            if (costAsString == null) return true;
             var usableAsString = battleGameBoard?.useableEnergy?.Select(e => e.energyName)
                 ?.GroupBy(
                     c => c,
@@ -132,6 +129,7 @@ public class Energy : MonoBehaviour
         {
             dragStartPosition = transform.position;
             transform.localPosition += new Vector3(0, 0, -50);
+            isDragging = false;
             isSelected = true;
         }
     }
@@ -146,26 +144,27 @@ public class Energy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter(Collider collision)
     {
-        dropEvent = collision.gameObject.GetComponent<DropEvent>();
-        if (dropEvent?.eventType == "TargetPokemon")
+        var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
+
+        if (triggeredDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(triggeredDropEvent.targetPokemon))
         {
+            dropEvent = collision.gameObject.GetComponent<DropEvent>();
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
-            isOverDropZone = true;
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit(Collider collision)
     {
         var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
         if (triggeredDropEvent != dropEvent) return;
 
-        if (dropEvent?.eventType == "TargetPokemon")
+        if (dropEvent?.eventType == "TargetPokemon" && canAttachEnergy(dropEvent.targetPokemon))
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
-            isOverDropZone = false;
         }
+        dropEvent = null;
     }
 
     public void onDrag()
@@ -180,9 +179,9 @@ public class Energy : MonoBehaviour
     {
         if (!canBeDragged) return;
 
-        isDragging = false;
-        if (isOverDropZone)
+        if (dropEvent?.eventType == "TargetPokemon" && canAttachEnergy(dropEvent.targetPokemon))
         {
+            OnHoverExit();
             onEnergyPlay(dropEvent.targetPokemon);
         }
         else
@@ -200,18 +199,28 @@ public class Energy : MonoBehaviour
     /// <summary>
     /// When the player clicks on the energy to attach
     /// </summary>
-    public void onEnergyPlayEvent()
+    public void onEnergyPlay(Pokemon target)
     {
-        print("energy play");
-        if (!canBePlayed) { return; }
-        battleGameBoard.onEnergyPlay(this, battleGameBoard.activePokemon);
+        print("PLAY: Attach energy " + energyName + " to " + target.pokemonName);
+        if (!canAttachEnergy(target)) { return; }
+        battleGameBoard.onEnergyPlay(this, target);
+    }
+
+    /// <summary>
+    /// Returns true if the energy can be attached to the given target
+    /// </summary>
+    public bool canAttachEnergy(Pokemon target)
+    {
+        var hasRoomToAttach = target.attachedEnergy.Count < target.maxNumberOfAttachedEnergy;
+        var supportsEnergyType = energyName == "Normal" || target.energyTypes.Contains(energyName);
+        return canBePlayed && hasRoomToAttach && supportsEnergyType;
     }
 
     /// <summary>
     /// When an energy is played
     /// </summary>
     /// <param name="target"></param>
-    public void onEnergyPlay(Pokemon target)
+    public void playEnergy(Pokemon target)
     {
         target.attachedEnergy.Add(this);
 

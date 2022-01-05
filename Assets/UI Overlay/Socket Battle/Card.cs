@@ -227,6 +227,7 @@ public class Card : MonoBehaviour
         {
             dragStartPosition = transform.position;
             transform.localPosition += new Vector3(0, 0, -50);
+            isDragging = false;
             isSelected = true;
         }
     }
@@ -241,17 +242,16 @@ public class Card : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter(Collider collision)
     {
         dropEvent = collision.gameObject.GetComponent<DropEvent>();
-        print("triggered");
-        if (dropEvent.eventType == "TargetPokemon")
+        if (dropEvent?.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit(Collider collision)
     {
         var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
         if (triggeredDropEvent != dropEvent) return;
@@ -275,7 +275,6 @@ public class Card : MonoBehaviour
     {
         if (!canBePlayed || !isDragging) return;
 
-        isDragging = false;
         if (dropEvent?.eventType == "TargetPokemon")
         {
             OnHoverExit();
@@ -296,13 +295,14 @@ public class Card : MonoBehaviour
 
     public void onOpponentDraw(Pokemon opponentActivePokemon) { }
 
-    public void onPlayEvent()
+    public void onPlay(Pokemon user, Pokemon target)
     {
+        print("PLAY: Used card " + cardName + " on " + target.pokemonName);
         if (!canBePlayed) { return; }
-        battleGameBoard.onPlay(this, battleGameBoard.activePokemon, battleGameBoard.opponentActivePokemon);
+        battleGameBoard.onPlay(this, user, target);
     }
 
-    public void onPlay(Pokemon user, Pokemon target) {
+    public void play(Pokemon user, Pokemon target) {
         var dealtDamage = damage + user.attackStat - target.defenseStat;
         var newHealth = target.health - dealtDamage;
         target.health = Mathf.Max(newHealth, 0);

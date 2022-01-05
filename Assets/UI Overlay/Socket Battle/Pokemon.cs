@@ -66,6 +66,11 @@ public class Pokemon : MonoBehaviour
 
     private BattleGameBoard battleGameBoard;
 
+    /// <summary>
+    /// Max number of energy a pokemon can hold
+    /// </summary>
+    public int maxNumberOfAttachedEnergy = 4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,9 +89,9 @@ public class Pokemon : MonoBehaviour
         var i = 0;
         attachedEnergy.ForEach(e =>
         {
-            e.transform.localPosition = gameObject.transform.localPosition + energyLocations[i].transform.localPosition;
-            e.transform.rotation = energyLocations[i].transform.rotation;
             e.transform.localScale = energyLocations[i].transform.localScale;
+            e.transform.localRotation = energyLocations[i].transform.localRotation;
+            e.transform.position = energyLocations[i].transform.position;
 
             i++;
         });
@@ -112,11 +117,11 @@ public class Pokemon : MonoBehaviour
         if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
 
         // Set model position
-        pokemonModel.gameObject.transform.position = modelPlaceholder.transform.localPosition + modelPlaceholder.transform.parent.localPosition + modelPlaceholder.transform.parent.parent.localPosition;
         pokemonModel.gameObject.transform.localRotation = modelPlaceholder.transform.localRotation;
+        pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
 
         // Set select position
-        pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.localPosition + modelPlaceholder.transform.parent.localPosition + modelPlaceholder.transform.parent.parent.localPosition;
+        pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.position;
     }
 
     public void onTurnEnd() { }

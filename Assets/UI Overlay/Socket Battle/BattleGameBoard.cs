@@ -90,8 +90,7 @@ public class BattleGameBoard : MonoBehaviour
         get
         {
             var pokemonEnergy = player.party.Select(p => p.attachedEnergy).SelectMany(x => x).ToList();
-            var cardEnergy = allCards.Select(p => p.attachedEnergies).SelectMany(x => x).ToList();
-            return commonEnergy.Union(pokemonEnergy).Union(cardEnergy).ToList();
+            return commonEnergy.Union(pokemonEnergy).Union(energyDeck).ToList();
         }
     }
 
@@ -375,7 +374,7 @@ public class BattleGameBoard : MonoBehaviour
         payMoveCost(move.cost);
         
         // Trigger move action
-        move.onPlay(user, target);
+        move.play(user, target);
 
         // Discard card
         discard.Add(move);
@@ -422,7 +421,7 @@ public class BattleGameBoard : MonoBehaviour
         energyHand.Remove(source);
         
         // Trigger energy action
-        source.onEnergyPlay(target);
+        source.playEnergy(target);
 
         // Discard other energies
         energyHand.ForEach(e =>
