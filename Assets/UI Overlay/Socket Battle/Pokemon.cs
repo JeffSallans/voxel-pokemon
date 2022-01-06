@@ -27,7 +27,10 @@ public class Pokemon : MonoBehaviour
     public int specialdefenseStat;
     public int evasionStat;
 
-    public int availableEnergySockets;
+    /// <summary>
+    /// Max number of energy a pokemon can hold
+    /// </summary>
+    public int maxNumberOfAttachedEnergy = 2;
     public List<string> energyTypes;
     public List<string> possibleEnergyTypes;
 
@@ -66,11 +69,6 @@ public class Pokemon : MonoBehaviour
 
     private BattleGameBoard battleGameBoard;
 
-    /// <summary>
-    /// Max number of energy a pokemon can hold
-    /// </summary>
-    public int maxNumberOfAttachedEnergy = 4;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +99,13 @@ public class Pokemon : MonoBehaviour
     {
         battleGameBoard = _battleGameBoard;
         health = initHealth;
+
+        // Hide locked energies
+        energyLocations.ForEach(e =>
+        {
+            var index = energyLocations.IndexOf(e);
+            e.SetActive(index < maxNumberOfAttachedEnergy);
+        });
     }
 
     /// <summary>
@@ -117,7 +122,9 @@ public class Pokemon : MonoBehaviour
         if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
 
         // Set model position
-        pokemonModel.gameObject.transform.localRotation = modelPlaceholder.transform.localRotation;
+        // ASSUMING structure is model -> model-animation-target -> <actual model>
+        pokemonModel.gameObject.transform.parent.parent.rotation *= modelPlaceholder.transform.localRotation;
+        pokemonModel.gameObject.transform.parent.parent.rotation *= Quaternion.Euler(0, 180f, 0);
         pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
 
         // Set select position

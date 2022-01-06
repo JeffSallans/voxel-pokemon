@@ -21,8 +21,8 @@ public class OpponentBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nextOpponentMove != null)
-        { 
+        if (nextOpponentMove != null) 
+        {
             nextOpponentMove.actingPokemon.nextAttackText.text = nextOpponentMove?.moveDescription;
         }
     }

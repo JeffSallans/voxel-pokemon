@@ -29,7 +29,7 @@ public class Card : MonoBehaviour
                     .Replace("{attack}", attackStat.ToString())
                     .Replace("{defense}", defenseStat.ToString())
                     .Replace("{specialAttack}", specialAttackStat.ToString())
-                    .Replace("{specialdefense}", specialdefenseStat.ToString())
+                    .Replace("{specialdefense}", specialDefenseStat.ToString())
                     .Replace("{evasion}", evasionStat.ToString());
             return desc;
         }
@@ -96,7 +96,7 @@ public class Card : MonoBehaviour
     /// <summary>
     /// The special defense stat the card will change
     /// </summary>
-    public int specialdefenseStat;
+    public int specialDefenseStat;
 
     /// <summary>
     /// The evasion stat the card will change
@@ -107,6 +107,21 @@ public class Card : MonoBehaviour
     /// How long a StatusEffect will be placed
     /// </summary>
     public int turn;
+
+    /// <summary>
+    /// The animation event to trigger on the user
+    /// </summary>
+    public string userAnimationType = "onAttack";
+
+    /// <summary>
+    /// The animation event to trigger on the target
+    /// </summary>
+    public string targetAnimationType = "onHit";
+
+    /// <summary>
+    /// The animation event to trigger on the target (used for particle or identifying effects)
+    /// </summary>
+    public string targetAnimationType2 = "";
 
     /// <summary>
     /// Current energies during a battle
@@ -303,9 +318,13 @@ public class Card : MonoBehaviour
     }
 
     public void play(Pokemon user, Pokemon target) {
-        var dealtDamage = damage + user.attackStat - target.defenseStat;
+        var dealtDamage = damage;
         var newHealth = target.health - dealtDamage;
         target.health = Mathf.Max(newHealth, 0);
+
+        if (userAnimationType != "") user.GetComponent<Animator>().SetTrigger(userAnimationType);
+        if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
+        if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
     }
 
     public void onTurnEnd() { }

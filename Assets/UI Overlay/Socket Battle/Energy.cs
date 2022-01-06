@@ -225,7 +225,7 @@ public class Energy : MonoBehaviour
         target.attachedEnergy.Add(this);
 
         canBeDragged = false;
-        isUsed = true;
+        isUsed = false;
         attachedToPokemon = target;
     }
 
