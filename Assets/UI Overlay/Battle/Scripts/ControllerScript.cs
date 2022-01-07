@@ -61,6 +61,7 @@ public class ControllerScript : MonoBehaviour
         pt_active_health = GameObject.Find("pt_active_health");
         pt_enemy_health = GameObject.Find("pt_enemy_health");
         energyArea = GameObject.Find("Energy Display");
+        uiSpiritIndicator = GameObject.Find("pt_spirit");
         hand_area = GameObject.Find("Player Hand");
         pt_intent = GameObject.Find("pt_intent");
         img_highlight_active = GameObject.Find("img_highlight_active");
@@ -92,7 +93,7 @@ public class ControllerScript : MonoBehaviour
         lightningEnergy = 0;
         normalEnergy = 0;
 
-        enemyDeckCreator.BuildEnemyDeck("Pidgey", 5);
+        enemyDeckCreator.BuildEnemyDeck("pidgey", 5);
         AddMultipleGameObjects(deckOptions[0], 3, deck);
         AddMultipleGameObjects(deckOptions[1], 3, deck);
         AddMultipleGameObjects(deckOptions[2], 4, deck);
