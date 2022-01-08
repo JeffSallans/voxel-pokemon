@@ -16,7 +16,10 @@ public class Pokemon : MonoBehaviour
     private int _health;
     public int health {
         get { return _health; }
-        set { _health = Mathf.Max(value, 0); }
+        set {
+            if (_health != 0 && value <= 0) gameObject.GetComponent<Animator>().SetTrigger("onDeath"); 
+            _health = Mathf.Max(value, 0);
+        }
     }
 
     public int initHealth;
@@ -73,6 +76,7 @@ public class Pokemon : MonoBehaviour
     void Start()
     {
         if (nameText) nameText.text = pokemonName;
+        gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
     }
 
     // Update is called once per frame
@@ -97,6 +101,8 @@ public class Pokemon : MonoBehaviour
 
     public void onBattleStart(BattleGameBoard _battleGameBoard)
     {
+        gameObject.GetComponent<Animator>().SetBool("hasSpawned", true);
+
         battleGameBoard = _battleGameBoard;
         health = initHealth;
 

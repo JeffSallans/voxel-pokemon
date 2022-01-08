@@ -46,7 +46,7 @@ public class WorldDialog : MonoBehaviour
     private MessageEvent currentmessage {
         get
         {
-            return messages.Peek();
+            return (messages.Count > 0) ? messages.Peek() : null;
         }
     }
 
@@ -74,6 +74,7 @@ public class WorldDialog : MonoBehaviour
     /// <param name="callback">Function to trigger after dialog is read</param>
     public void ShowMessage(string text, Func<bool> callback = null)
     {
+        print("DIALOG SHOW: "+text);
         var newMessage = new MessageEvent();
         newMessage.message = text;
         newMessage.eventToCallAfterMessage = callback;
@@ -96,7 +97,7 @@ public class WorldDialog : MonoBehaviour
         dialogObject.SetActive(true);
         clickCaptureObject.SetActive(true);
 
-        textboxObject.text = currentmessage.message;
+        textboxObject.text = currentmessage?.message;
 
         // Show text if not displayed
         textboxObject.gameObject.SetActive(true);        
@@ -107,14 +108,16 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     public void CaptureClick()
     {
+        print("CLICK DIALOG");
         if (currentmessage.eventToCallAfterMessage != null)
         {
             currentmessage.eventToCallAfterMessage();
         }
-        messages.Dequeue();
+        if (messages.Count > 0) { messages.Dequeue(); }
 
         // Check to display next message
-        if (currentmessage != null)
+        var possibleNewMessage = (messages.Count > 0) ? messages.Peek() : null;
+        if (possibleNewMessage != null)
         {
             OpenNextMessage();
         }
@@ -130,6 +133,7 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     private void HideDialog()
     {
+        print("HIDE DIALOG");
         dialogObject.SetActive(false);
         clickCaptureObject.SetActive(false);
         textboxObject.text = "";

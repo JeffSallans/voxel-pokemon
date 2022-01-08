@@ -32,9 +32,9 @@ public class OpponentBot : MonoBehaviour
         battleGameBoard = _battleGameBoard;
     }
 
-    public void opponentPlay()
+    public string opponentPlay()
     {
-        nextOpponentMove.playMove();
+        return nextOpponentMove.playMove();
     }
 
     public void computeOpponentsNextMove()

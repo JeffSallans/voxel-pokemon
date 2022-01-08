@@ -203,6 +203,20 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public GameObject endTurnButton;
 
+    /// <summary>
+    /// Ends the turn
+    /// </summary>
+    public WorldDialog worldDialog;
+
+    /// <summary>
+    /// True if the game is done
+    /// </summary>
+    public bool gameHasEnded = false;
+
+    /// <summary>
+    /// True if the game has ended. Don't use this value if gameHasEnded is false.
+    /// </summary>
+    public bool playerHasWon = true;
 
     // Start is called before the first frame update
     void Start()
@@ -221,6 +235,8 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public void onBattleStart()
     {
+        gameHasEnded = false;
+
         // Place pokemon
         activePokemon = player.party.First();
         opponentActivePokemon = opponent.party.First();
@@ -357,10 +373,12 @@ public class BattleGameBoard : MonoBehaviour
 
     public void onOpponentDraw() {
         // Take action on queued move
-        opponent.opponentStrategyBot.opponentPlay();
-
-        // Trigger right away for now
-        onOpponentTurnEnd();
+        var message = opponent.opponentStrategyBot.opponentPlay();
+        worldDialog.ShowMessage(message, () => {
+            // Trigger right away for now
+            onOpponentTurnEnd();
+            return true;
+        });
     }
 
     /// <summary>
@@ -443,6 +461,15 @@ public class BattleGameBoard : MonoBehaviour
         discard.AddRange(hand);
         hand.RemoveAll(card => true);
 
+        // Discard other energies
+        energyHand.ForEach(e =>
+        {
+            e.transform.position = energyDiscardLocation.transform.position;
+            e.transform.rotation = energyDiscardLocation.transform.rotation;
+        });
+        energyDiscard.AddRange(energyHand);
+        energyHand.RemoveAll(card => true);
+
         // Send event to all energy, cards, status, and pokemon
         allPokemon.ForEach(p => p.onTurnEnd());
         allCards.ForEach(c => c.onTurnEnd());
@@ -454,7 +481,10 @@ public class BattleGameBoard : MonoBehaviour
         onEitherTurnEnd();
 
         // Trigger next step
-        onOpponentDraw();
+        if (!gameHasEnded)
+        {
+            onOpponentDraw();
+        }
     }
 
     public void onOpponentTurnEnd() {
@@ -472,23 +502,27 @@ public class BattleGameBoard : MonoBehaviour
         onEitherTurnEnd();
 
         // Trigger draw
-        onDraw();
+        if (!gameHasEnded)
+        {
+            onDraw();
+        }
     }
 
     public void onEitherTurnEnd()
     {
 
         // When all opponents pokemon are 0 hp
-        var numberOfPlayeredKOed = player.party.Where(p => p.health <= 0).Count();
-        if (numberOfPlayeredKOed == 0) { onBattleEnd(true); }
+        var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
+        if (numberOfOpponentPokeAlive == 0) { onBattleEnd(true); }
 
         // When all player pokemon are 0 hp
-        var numberOfOpponentKOed = opponent.party.Where(p => p.health <= 0).Count();
-        if (numberOfOpponentKOed == 0) { onBattleEnd(false); }
+        var numberOfPlayerPokeAlive = player.party.Where(p => p.health > 0).Count();
+        if (numberOfPlayerPokeAlive == 0) { onBattleEnd(false); }
 
         // When player active pokemon is 0 hp - switch in
 
-        // When opponent active pokemon is 0 hp - switch in 
+        // When opponent active pokemon is 0 hp - switch in
+
     }
 
 
@@ -516,13 +550,23 @@ public class BattleGameBoard : MonoBehaviour
         opponent.opponentStrategyBot.onBattleEnd();
         opponent.movesConfig.ForEach(m => m.onBattleEnd());
 
+        // Set results
+        gameHasEnded = true;
+        playerHasWon = isPlayerWinner;
+
         if (isPlayerWinner)
         {
-            print("The player won");
+            worldDialog.ShowMessage("Red won!", () => {
+                print("The player won");
+                return true;
+            });
         }
         else
         {
-            print("The opponent won");
+            worldDialog.ShowMessage("Youngster Joey won.", () => {
+                print("The opponent won");
+                return true;
+            });
         }
     }
 
