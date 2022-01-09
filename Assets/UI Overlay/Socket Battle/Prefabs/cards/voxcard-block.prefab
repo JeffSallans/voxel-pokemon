@@ -20,12 +20,16 @@ PrefabInstance:
       value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: blockStat
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initDamage
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: defenseStat
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: userAnimationType
@@ -33,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initCardDescription
-      value: Prevent <color=red>{defense}</color> dmg this turn
+      value: Prevent <color=red>{block}</color> dmg this turn
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: targetAnimationType

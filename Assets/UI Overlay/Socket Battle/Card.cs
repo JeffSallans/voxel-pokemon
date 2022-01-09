@@ -29,8 +29,9 @@ public class Card : MonoBehaviour
                     .Replace("{attack}", attackStat.ToString())
                     .Replace("{defense}", defenseStat.ToString())
                     .Replace("{specialAttack}", specialAttackStat.ToString())
-                    .Replace("{specialdefense}", specialDefenseStat.ToString())
-                    .Replace("{evasion}", evasionStat.ToString());
+                    .Replace("{specialDefense}", specialDefenseStat.ToString())
+                    .Replace("{evasion}", evasionStat.ToString())
+                    .Replace("{block}", blockStat.ToString());
             return desc;
         }
     }
@@ -102,6 +103,11 @@ public class Card : MonoBehaviour
     /// The evasion stat the card will change
     /// </summary>
     public int evasionStat;
+
+    /// <summary>
+    /// The block stat the card will change
+    /// </summary>
+    public int blockStat;
 
     /// <summary>
     /// How long a StatusEffect will be placed
@@ -318,9 +324,33 @@ public class Card : MonoBehaviour
     }
 
     public void play(Pokemon user, Pokemon target) {
-        var dealtDamage = damage;
-        var newHealth = target.health - dealtDamage;
-        target.health = Mathf.Max(newHealth, 0);
+        // Deal Damage if applicable
+        if (damage > 0)
+        {
+            // Determine damage
+            var dealtDamage = damage - target.blockStat;
+            target.blockStat = Mathf.Max(-dealtDamage, 0);
+
+            // Hit target
+            var newHealth = target.health - Mathf.Max(dealtDamage, 0);
+            target.health = Mathf.Max(newHealth, 0);
+        }
+
+        // Add status effects if applicable
+        var totalStatChange = Mathf.Abs(attackStat) + Mathf.Abs(defenseStat) + Mathf.Abs(specialAttackStat) + Mathf.Abs(specialDefenseStat) + Mathf.Abs(evasionStat) + Mathf.Abs(blockStat);
+        if (totalStatChange > 0)
+        {
+            // target.attackStat += attackStat;
+            // target.defenseStat += defenseStat;
+            // target.specialAttackStat += specialAttackStat;
+            // target.specialDefenseStat += specialDefenseStat;
+            // target.evasionStat += evasionStat;
+            target.attachedStatus.Add(new StatusEffect(target, this, "blockStatEffect", new Dictionary<string, string>() {
+                { "statType", "blockStat" },
+                { "stackCount", blockStat.ToString() },
+                { "turnsLeft", "1" }
+            }));
+        }
 
         if (userAnimationType != "") user.GetComponent<Animator>().SetTrigger(userAnimationType);
         if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);

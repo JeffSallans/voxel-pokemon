@@ -399,6 +399,11 @@ public class BattleGameBoard : MonoBehaviour
         hand.Remove(move);
         move.transform.position = discardLocation.transform.position;
         move.transform.rotation = discardLocation.transform.rotation;
+
+        // Check if you won after a card play
+        var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
+        if (numberOfOpponentPokeAlive == 0) { onBattleEnd(true); }
+
     }
 
     /// <summary>

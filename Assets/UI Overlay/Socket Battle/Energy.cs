@@ -128,7 +128,7 @@ public class Energy : MonoBehaviour
         if (canBeDragged && !isSelected && !isDragging)
         {
             dragStartPosition = transform.position;
-            transform.localPosition += new Vector3(0, 0, -50);
+            transform.localPosition += new Vector3(0, 0, -40);
             isDragging = false;
             isSelected = true;
         }

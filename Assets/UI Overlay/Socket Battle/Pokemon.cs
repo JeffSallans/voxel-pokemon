@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 /// <summary>
 /// The stats for the given pokemon
@@ -27,8 +28,23 @@ public class Pokemon : MonoBehaviour
     public int attackStat;
     public int defenseStat;
     public int specialAttackStat;
-    public int specialdefenseStat;
+    public int specialDefenseStat;
     public int evasionStat;
+    public int blockStat
+    {
+        get
+        {
+            var blockStatusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (blockStatusEffect == null) return 0;
+            return blockStatusEffect.stackCount;
+        }
+        set
+        {
+            var blockStatusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (blockStatusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            else { blockStatusEffect.stackCount = value; }
+        }
+    }
 
     /// <summary>
     /// Max number of energy a pokemon can hold
@@ -55,6 +71,8 @@ public class Pokemon : MonoBehaviour
 
     public List<GameObject> energyLocations;
 
+    public List<TextMeshProUGUI> statusLocations;
+
     /// <summary>
     /// The pokemon to play
     /// </summary>
@@ -76,6 +94,7 @@ public class Pokemon : MonoBehaviour
     void Start()
     {
         if (nameText) nameText.text = pokemonName;
+        attachedStatus = new List<StatusEffect>();
         gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
     }
 
@@ -97,6 +116,23 @@ public class Pokemon : MonoBehaviour
 
             i++;
         });
+
+        // Update status effect
+        var j = 0;
+        statusLocations.ForEach(statusLocation =>
+        {
+            if (attachedStatus.Count > j)
+            {
+                var statusEffect = attachedStatus[j];
+                statusEffect.Update();
+                statusLocation.text = statusEffect.statusEffectDisplay;
+            }
+            else {
+                statusLocation.text = "";
+            }
+
+            j++;
+        });
     }
 
     public void onBattleStart(BattleGameBoard _battleGameBoard)
@@ -105,6 +141,7 @@ public class Pokemon : MonoBehaviour
 
         battleGameBoard = _battleGameBoard;
         health = initHealth;
+        attachedStatus = new List<StatusEffect>();
 
         // Hide locked energies
         energyLocations.ForEach(e =>
@@ -139,7 +176,14 @@ public class Pokemon : MonoBehaviour
 
     public void onTurnEnd() { }
 
-    public void onOpponentTurnEnd() { }
+    public void onOpponentTurnEnd() {
+        // Need to use this method because this function might shrink attachedStatus function
+        var statusCount = attachedStatus.Count;
+        for (var i = statusCount - 1; i >= 0; i--)
+        {
+            attachedStatus[i].onOpponentTurnEnd();
+        }
+    }
 
     public void onBattleEnd() { }
 }

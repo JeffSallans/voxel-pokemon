@@ -80,13 +80,20 @@ public class OpponentMove : MonoBehaviour
     public string playMove()
     {
         var target = battleGameBoard.activePokemon;
-        var dealtDamage = damage;
-        var newHealth = target.health - dealtDamage;
-        target.health = newHealth;
+
+        // Determine damage
+        var dealtDamage = damage - target.blockStat;
+        target.blockStat = Mathf.Max(-dealtDamage, 0);
+
+        // Hit target
+        var newHealth = target.health - Mathf.Max(dealtDamage, 0);
+        target.health = Mathf.Max(newHealth, 0);
+
         if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
         if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
         if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
-        return moveDescription;
+
+        return moveDescriptionWithTemplates.Replace("{damage}", Mathf.Max(dealtDamage, 0).ToString());
     }
 
     public void onTurnEnd() { }
