@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 3173765897477300202}
   - component: {fileID: 4995130698197359453}
   - component: {fileID: 7362784303879129182}
+  - component: {fileID: 7934963958312347533}
   m_Layer: 5
   m_Name: energy-normal
   m_TagString: Untagged
@@ -478,6 +479,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7934963958312347533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4276494747118148778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e83ccfc1bcc6bc4aa07ae227a6ab913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animTargetPositionX: 0
+  animTargetPositionY: 0
+  animTargetPositionZ: 0
+  distancePerSecond: 0
+  targetEventTrigger: {fileID: 3173765897477300202}
+  _target: {fileID: 0}
 --- !u!1 &8339479183201981766
 GameObject:
   m_ObjectHideFlags: 0

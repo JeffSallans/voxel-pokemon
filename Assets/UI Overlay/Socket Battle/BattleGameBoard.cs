@@ -271,21 +271,26 @@ public class BattleGameBoard : MonoBehaviour
             e.transform.rotation = deckLocation.transform.rotation;
         });
 
-        // Send event to all energy, cards, and pokemon
-        allPokemon.ForEach(p => p.onBattleStart(this));
-        allCards.ForEach(c => c.onBattleStart(this));
-        allEnergy.ForEach(e => e.onBattleStart(this));
-        opponent.opponentStrategyBot.onBattleStart(this);
-        opponent.movesConfig.ForEach(m => m.onBattleStart(this));
+        worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", () => {
 
-        // Trigger opponent first move
-        opponent.opponentStrategyBot.computeOpponentsNextMove();
+            // Send event to all energy, cards, and pokemon
+            allPokemon.ForEach(p => p.onBattleStart(this));
+            allCards.ForEach(c => c.onBattleStart(this));
+            allEnergy.ForEach(e => e.onBattleStart(this));
+            opponent.opponentStrategyBot.onBattleStart(this);
+            opponent.movesConfig.ForEach(m => m.onBattleStart(this));
 
-        // Trigger draw
-        onDraw();
+            // Trigger opponent first move
+            opponent.opponentStrategyBot.computeOpponentsNextMove();
 
-        startBattleButton.SetActive(false);
-        endTurnButton.SetActive(true);
+            // Trigger draw
+            onDraw();
+
+            startBattleButton.SetActive(false);
+            endTurnButton.SetActive(true);
+
+            return true;
+        });
     }
 
     /// <summary>
@@ -319,7 +324,8 @@ public class BattleGameBoard : MonoBehaviour
         var cardDrawn = deck.First();
         hand.Add(cardDrawn);
         deck.Remove(cardDrawn);
-        cardDrawn.transform.position = handLocations[hand.Count - 1].transform.position + new Vector3(0, 0, -1);
+        var cardLoc = handLocations[hand.Count - 1].transform.position + new Vector3(0, 0, -1);
+        cardDrawn.Translate(cardLoc);
         cardDrawn.transform.rotation = handLocations[hand.Count - 1].transform.rotation;
 
         // Trigger event
@@ -351,7 +357,7 @@ public class BattleGameBoard : MonoBehaviour
         energyDrawn.isUsed = false;
         energyHand.Add(energyDrawn);
         energyDeck.Remove(energyDrawn);
-        energyDrawn.transform.position = energyHandLocations[energyHand.Count - 1].transform.position;
+        energyDrawn.Translate(energyHandLocations[energyHand.Count - 1].transform.position);
         energyDrawn.transform.rotation = energyHandLocations[energyHand.Count - 1].transform.rotation;
         energyDrawn.transform.localScale = energyHandLocations[energyHand.Count - 1].transform.localScale;
     }
@@ -397,12 +403,12 @@ public class BattleGameBoard : MonoBehaviour
         // Discard card
         discard.Add(move);
         hand.Remove(move);
-        move.transform.position = discardLocation.transform.position;
+        move.Translate(discardLocation.transform.position);
         move.transform.rotation = discardLocation.transform.rotation;
 
         // Check if you won after a card play
         var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
-        if (numberOfOpponentPokeAlive == 0) { onBattleEnd(true); }
+        if (numberOfOpponentPokeAlive == 0) { onTurnEnd(); }
 
     }
 
@@ -412,24 +418,35 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="move"></param>
     private void payMoveCost(List<Energy> cost)
     {
-        cost.ForEach(energy =>
+        var coloredCost = cost.Where(e => e.energyName != "Normal").ToList();
+        coloredCost.ForEach(energy => payEnergyCost(energy));
+
+        var colorlessCost = cost.Where(e => e.energyName == "Normal").ToList();
+        colorlessCost.ForEach(energy => payEnergyCost(energy));
+    }
+
+    private void payEnergyCost(Energy energy)
+    {
+        // Subtract from common
+        var target = commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
+        if (target != null)
         {
-            // Subtract from common
-            var target = commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
-            if (target != null)
-            {
-                target.isUsed = true;
-            }
-            // Subtract from active
-            else
-            {
-                var targetOnPokemon = activePokemon.attachedEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
-                if (targetOnPokemon != null)
-                {
-                    targetOnPokemon.isUsed = true;
-                }
-            }
-        });
+            target.isUsed = true;
+            return;
+        }
+        // Subtract from active
+        var targetOnPokemon = activePokemon.attachedEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
+        if (targetOnPokemon != null)
+        {
+            targetOnPokemon.isUsed = true;
+            return;
+        }
+        var colorlessTargetOnPokemon = activePokemon.attachedEnergy.Where(e => !e.isUsed).FirstOrDefault();
+        if (energy.energyName == "Normal" && colorlessTargetOnPokemon != null)
+        {
+            colorlessTargetOnPokemon.isUsed = true;
+            return;
+        }
     }
 
     public void onEnergyEvent(int index)
@@ -449,7 +466,7 @@ public class BattleGameBoard : MonoBehaviour
         // Discard other energies
         energyHand.ForEach(e =>
         {
-            e.transform.position = energyDiscardLocation.transform.position;
+            e.Translate(energyDiscardLocation.transform.position);
             e.transform.rotation = energyDiscardLocation.transform.rotation;
         });
         energyDiscard.AddRange(energyHand);
@@ -460,8 +477,8 @@ public class BattleGameBoard : MonoBehaviour
         // Discard hand
         hand.ForEach(c =>
         {
-            c.transform.position = discardLocation.transform.position;
             c.transform.rotation = discardLocation.transform.rotation;
+            c.Translate(discardLocation.transform.position);
         });
         discard.AddRange(hand);
         hand.RemoveAll(card => true);
@@ -469,7 +486,7 @@ public class BattleGameBoard : MonoBehaviour
         // Discard other energies
         energyHand.ForEach(e =>
         {
-            e.transform.position = energyDiscardLocation.transform.position;
+            e.Translate(energyDiscardLocation.transform.position);
             e.transform.rotation = energyDiscardLocation.transform.rotation;
         });
         energyDiscard.AddRange(energyHand);
@@ -568,7 +585,7 @@ public class BattleGameBoard : MonoBehaviour
         }
         else
         {
-            worldDialog.ShowMessage("Youngster Joey won.", () => {
+            worldDialog.ShowMessage(opponent.opponentName + " won.", () => {
                 print("The opponent won");
                 return true;
             });

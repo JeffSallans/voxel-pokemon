@@ -112,7 +112,8 @@ public class Pokemon : MonoBehaviour
         {
             e.transform.localScale = energyLocations[i].transform.localScale;
             e.transform.localRotation = energyLocations[i].transform.localRotation;
-            e.transform.position = energyLocations[i].transform.position;
+            //e.transform.position = energyLocations[i].transform.position;
+            e.Translate(energyLocations[i].transform.position);
 
             i++;
         });
@@ -186,4 +187,14 @@ public class Pokemon : MonoBehaviour
     }
 
     public void onBattleEnd() { }
+
+    /// <summary>
+    /// Animate the energy to a new location
+    /// </summary>
+    /// <param name="_targetPosition"></param>
+    /// <param name="_distancePerSecond"></param>
+    public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
+    {
+        gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+    }
 }

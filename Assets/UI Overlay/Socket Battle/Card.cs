@@ -146,7 +146,9 @@ public class Card : MonoBehaviour
     {
         get
         {
+            // Check color energy count
             var costAsString = cost?.Select(c => c.energyName)
+                .Where(e => e != "Normal")
                 .GroupBy(
                     c => c,
                     c => c,
@@ -166,8 +168,12 @@ public class Card : MonoBehaviour
                         count = _name.Count()
                     }
                 )?.ToDictionary(e => e.energyName);
-            var result = costAsString.All(c => usableAsString != null && usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
-            return result;
+            var coloredEnergyConditionMet = costAsString.All(c => usableAsString != null && usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
+
+            // Check count for colorless check
+            var hasEnoughUsableEnergyForColorless = cost?.Count <= battleGameBoard?.useableEnergy?.Count ;
+
+            return coloredEnergyConditionMet && hasEnoughUsableEnergyForColorless;
         }
     }
 
@@ -298,7 +304,8 @@ public class Card : MonoBehaviour
 
         if (dropEvent?.eventType == "TargetPokemon")
         {
-            OnHoverExit();
+            isDragging = false;
+            isSelected = false;
             onPlay(battleGameBoard.activePokemon, dropEvent.targetPokemon);
         }
         else
@@ -362,4 +369,14 @@ public class Card : MonoBehaviour
     public void onOpponentTurnEnd() { }
 
     public void onBattleEnd() { }
+
+    /// <summary>
+    /// Animate the card to a new location
+    /// </summary>
+    /// <param name="_targetPosition"></param>
+    /// <param name="_distancePerSecond"></param>
+    public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
+    {
+        gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+    }
 }

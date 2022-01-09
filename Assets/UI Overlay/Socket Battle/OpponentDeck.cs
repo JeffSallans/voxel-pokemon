@@ -8,6 +8,11 @@ using UnityEngine;
 public class OpponentDeck : MonoBehaviour
 {
     /// <summary>
+    /// The trainer name
+    /// </summary>
+    public string opponentName;
+
+    /// <summary>
     /// The pokemon to bring into battle, the first one in the list is the active one
     /// </summary>
     public List<Pokemon> party;

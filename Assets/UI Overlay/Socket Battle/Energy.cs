@@ -77,32 +77,6 @@ public class Energy : MonoBehaviour
     /// </summary>
     private DropEvent dropEvent;
 
-    /// <summary>
-    /// Returns true if the energy can be played with the usable energy
-    /// </summary>
-    public bool canBePlayed
-    {
-        get
-        {
-            var costAsString = battleGameBoard?.commonEnergy?.GetRange(0, 1)
-                .Select(c => new { energyName = c.energyName, count = 1 })
-                .ToList();
-            if (costAsString == null) return true;
-            var usableAsString = battleGameBoard?.useableEnergy?.Select(e => e.energyName)
-                ?.GroupBy(
-                    c => c,
-                    c => c,
-                    (name, _name) => new
-                    {
-                        energyName = name,
-                        count = _name.Count()
-                    }
-                )?.ToDictionary(e => e.energyName);
-            var result = costAsString.All(c => usableAsString != null && usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
-            return result;
-        }
-    }
-
     private BattleGameBoard battleGameBoard;
 
     // Start is called before the first frame update
@@ -181,7 +155,8 @@ public class Energy : MonoBehaviour
 
         if (dropEvent?.eventType == "TargetPokemon" && canAttachEnergy(dropEvent.targetPokemon))
         {
-            OnHoverExit();
+            isDragging = false;
+            isSelected = false;
             onEnergyPlay(dropEvent.targetPokemon);
         }
         else
@@ -213,7 +188,7 @@ public class Energy : MonoBehaviour
     {
         var hasRoomToAttach = target.attachedEnergy.Count < target.maxNumberOfAttachedEnergy;
         var supportsEnergyType = energyName == "Normal" || target.energyTypes.Contains(energyName);
-        return canBePlayed && hasRoomToAttach && supportsEnergyType;
+        return hasRoomToAttach && supportsEnergyType;
     }
 
     /// <summary>
@@ -234,4 +209,14 @@ public class Energy : MonoBehaviour
     public void onOpponentTurnEnd() { }
 
     public void onBattleEnd() { }
+
+    /// <summary>
+    /// Animate the energy to a new location
+    /// </summary>
+    /// <param name="_targetPosition"></param>
+    /// <param name="_distancePerSecond"></param>
+    public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
+    {
+        gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+    }
 }
