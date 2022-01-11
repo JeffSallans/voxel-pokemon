@@ -82,6 +82,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: initHealth
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: pokemonModel
       value: 
       objectReference: {fileID: 7248309686232252224}
@@ -192,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 818531783516017189, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779238985304653662, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: m_text
+      value: 90 / 90
       objectReference: {fileID: 0}
     - target: {fileID: 1856306344461829840, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_RootOrder

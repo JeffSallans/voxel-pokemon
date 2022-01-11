@@ -880,10 +880,14 @@ MonoBehaviour:
   specialAttackStat: 0
   specialDefenseStat: 0
   evasionStat: 0
-  maxNumberOfAttachedEnergy: 2
+  maxNumberOfAttachedEnergy: 3
   energyTypes: []
   possibleEnergyTypes: []
   attachedEnergy: []
+  initDeck: []
+  deck: []
+  hand: []
+  discard: []
   nameText: {fileID: 9189710481617084919}
   healthText: {fileID: 1779238985304653662}
   nextAttackText: {fileID: 4946374131119768133}
@@ -900,6 +904,7 @@ MonoBehaviour:
   - {fileID: 1203703381}
   - {fileID: 467759419}
   pokemonModel: {fileID: 0}
+  pokemonRootModel: {fileID: 959807836758542941}
   pokemonSelectModel: {fileID: 6506553788435994067}
   onHoverWrapper: {fileID: 2107737986849458069}
 --- !u!95 &1946488900052971994
