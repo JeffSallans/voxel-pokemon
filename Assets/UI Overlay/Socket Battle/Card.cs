@@ -130,6 +130,11 @@ public class Card : MonoBehaviour
     public string targetAnimationType2 = "";
 
     /// <summary>
+    /// Set to override default functionality
+    /// </summary>
+    public ICard overrideFunctionality = null;
+
+    /// <summary>
     /// Current energies during a battle
     /// </summary>
     public List<Energy> attachedEnergies;
@@ -331,6 +336,9 @@ public class Card : MonoBehaviour
     }
 
     public void play(Pokemon user, Pokemon target) {
+        // Run override if applicable
+        if (overrideFunctionality) { overrideFunctionality.play(this, battleGameBoard, user, target); return; }
+
         // Deal Damage if applicable
         if (damage > 0)
         {

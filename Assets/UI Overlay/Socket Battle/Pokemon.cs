@@ -57,6 +57,26 @@ public class Pokemon : MonoBehaviour
     public List<StatusEffect> attachedStatus;
 
     /// <summary>
+    /// Cards for the pokemon
+    /// </summary>
+    public List<Card> initDeck;
+
+    /// <summary>
+    /// Cards to be drawn
+    /// </summary>
+    public List<Card> deck;
+
+    /// <summary>
+    /// The hand the player has
+    /// </summary>
+    public List<Card> hand;
+
+    /// <summary>
+    /// The cards the player used to be reshuffled
+    /// </summary>
+    public List<Card> discard;
+
+    /// <summary>
     /// Shows the name
     /// </summary>
     public TextMeshProUGUI nameText;
@@ -74,9 +94,14 @@ public class Pokemon : MonoBehaviour
     public List<TextMeshProUGUI> statusLocations;
 
     /// <summary>
-    /// The pokemon to play
+    /// The pokemon to play should be "model-script-target"
     /// </summary>
     public GameObject pokemonModel;
+
+    /// <summary>
+    /// The pokemon position root should be "model"
+    /// </summary>
+    public GameObject pokemonRootModel;
 
     /// <summary>
     /// The select indicator
@@ -101,7 +126,7 @@ public class Pokemon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var healthDesc = ("{health} / {initHealth}")
+        var healthDesc = ("{health}/{initHealth}")
             .Replace("{health}", health.ToString())
             .Replace("{initHealth}", initHealth.ToString());
         if (healthText) healthText.text = healthDesc;
@@ -153,11 +178,11 @@ public class Pokemon : MonoBehaviour
     }
 
     /// <summary>
-    /// Set the pokemon in the spot according to the hud and model placeholder positions
+    /// Set the pokemon in the spot according to the hud and model placeholder positions. Assumes animateModelTranslation is only false once.
     /// </summary>
     /// <param name="placeholder"></param>
     /// <param name="modelPlaceholder"></param>
-    public void setPlacement(Pokemon placeholder, GameObject modelPlaceholder)
+    public void setPlacement(Pokemon placeholder, GameObject modelPlaceholder, bool animateModelTranslation = false)
     {
         // Set HUD position
         transform.position = placeholder.transform.position;
@@ -167,9 +192,20 @@ public class Pokemon : MonoBehaviour
 
         // Set model position
         // ASSUMING structure is model -> model-animation-target -> <actual model>
-        pokemonModel.gameObject.transform.parent.parent.rotation *= modelPlaceholder.transform.localRotation;
-        pokemonModel.gameObject.transform.parent.parent.rotation *= Quaternion.Euler(0, 180f, 0);
-        pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
+        if (animateModelTranslation) {
+            var translationAnimation = pokemonModel.GetComponent<TranslationAnimation>();
+            if (translationAnimation) {
+                translationAnimation.Translate(modelPlaceholder.transform.position, 0.01f);
+            }
+            else {
+                pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
+            }
+        }
+        else {
+            pokemonRootModel.gameObject.transform.rotation *= modelPlaceholder.transform.localRotation;
+            pokemonRootModel.gameObject.transform.rotation *= Quaternion.Euler(0, 180f, 0);
+            pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
+        }
 
         // Set select position
         pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.position;

@@ -17,17 +17,29 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Cards to be drawn
     /// </summary>
-    public List<Card> deck;
+    public List<Card> deck
+    {
+        get { return activePokemon.deck; }
+        set { activePokemon.deck = value; }
+    }
 
     /// <summary>
     /// The hand the player has
     /// </summary>
-    public List<Card> hand;
+    public List<Card> hand
+    {
+        get { return activePokemon.hand; }
+        set { activePokemon.hand = value; }
+    }
 
     /// <summary>
     /// The cards the player used to be reshuffled
     /// </summary>
-    public List<Card> discard;
+    public List<Card> discard
+    {
+        get { return activePokemon.discard; }
+        set { activePokemon.discard = value; }
+    }
 
     /// <summary>
     /// The possible energies to deal a hand with
@@ -253,9 +265,12 @@ public class BattleGameBoard : MonoBehaviour
             j++;
         });
 
-
         // Shuffle player deck
-        deck = player.deck.ToList();
+        allPokemon.ForEach(p =>
+        {
+            // Create a copy of initial deck to use for the game
+            p.deck = p.initDeck.ToList();
+        });
         Shuffle(deck);
         deck.ForEach(c =>
         {
@@ -558,10 +573,65 @@ public class BattleGameBoard : MonoBehaviour
         switchPokemonOverlay.SetActive(false);
     }
 
-    public void switchPokemon(Pokemon selectedPokemon)
+    /// <summary>
+    /// Swaps two elements of a list.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <see cref="https://stackoverflow.com/a/2094316"/>
+    /// <param name="list"></param>
+    /// <param name="indexA"></param>
+    /// <param name="indexB"></param>
+    private void Swap<T>(IList<T> list, int indexA, int indexB)
     {
-        activePokemon = selectedPokemon;
-        switchPokemonOverlay.SetActive(false);
+        T tmp = list[indexA];
+        list[indexA] = list[indexB];
+        list[indexB] = tmp;
+    }
+
+    /// <summary>
+    /// Switches two of the player's pokemon
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="target"></param>
+    public void switchPokemon(Pokemon user, Pokemon target)
+    {
+        // Discard pokemon hand
+        hand.ForEach(c =>
+        {
+            c.transform.rotation = discardLocation.transform.rotation;
+            c.Translate(discardLocation.transform.position);
+        });
+        discard.AddRange(hand);
+        hand.RemoveAll(card => true);
+
+        // Switch board roles
+        var userIndex = player.party.IndexOf(user);
+        var targetIndex = player.party.IndexOf(target);
+        Swap(player.party, userIndex, targetIndex);
+        activePokemon = target;
+        
+        // Update model locations to match switch
+        var i = 0;
+        player.party.ForEach(p =>
+        {
+            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i], true);
+            i++;
+        });
+
+        // Animate swap       
+        //user.GetComponent<Animator>().SetTrigger("onSwitchOut");
+        //target.GetComponent<Animator>().SetTrigger("onSwitchIn");
+
+        // Draw new pokemon hand
+
+        // Draw cards up to handSize
+        while (hand.Count < handSize)
+        {
+            if (deck.Count < 1) { reshuffleDiscard(); }
+            drawCard(activePokemon);
+        }
+
+        //switchPokemonOverlay.SetActive(false);
     }
 
     public void onBattleEnd(bool isPlayerWinner) {
