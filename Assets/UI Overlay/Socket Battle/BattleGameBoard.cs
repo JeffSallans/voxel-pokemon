@@ -107,13 +107,25 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     /// <summary>
-    /// All the card events to trigger
+    /// All the active deck card events to trigger
     /// </summary>
     public List<Card> allCards
     {
         get
         {
             return deck.Union(hand).Union(discard).ToList();
+        }
+    }
+
+    /// <summary>
+    /// All the complete deck card events to trigger
+    /// </summary>
+    public List<Card> allPartyCards
+    {
+        get
+        {
+            var cards = player.party.SelectMany(p => p.deck.Union(p.hand).Union(p.discard));
+            return cards.ToList();
         }
     }
 
@@ -290,7 +302,7 @@ public class BattleGameBoard : MonoBehaviour
 
             // Send event to all energy, cards, and pokemon
             allPokemon.ForEach(p => p.onBattleStart(this));
-            allCards.ForEach(c => c.onBattleStart(this));
+            allPartyCards.ForEach(c => c.onBattleStart(this));
             allEnergy.ForEach(e => e.onBattleStart(this));
             opponent.opponentStrategyBot.onBattleStart(this);
             opponent.movesConfig.ForEach(m => m.onBattleStart(this));
@@ -367,6 +379,9 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     private void drawEnergy()
     {
+        // Check if there are energies to draw
+        if (energyDeck.Count <= 0) return;
+
         // Draw card
         var energyDrawn = energyDeck.First();
         energyDrawn.isUsed = false;

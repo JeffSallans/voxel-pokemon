@@ -445,8 +445,8 @@ public class Card : MonoBehaviour
     /// <returns></returns>
     public bool canTarget(Pokemon target)
     {
-        var isSelf = battleGameBoard.activePokemon == target;
-        var isOpp = battleGameBoard.opponentActivePokemon == target;
+        var isSelf = battleGameBoard?.activePokemon == target;
+        var isOpp = battleGameBoard?.opponentActivePokemon == target;
         var onOppTeam = battleGameBoard.opponent.party.Contains(target);
         var onTeam = battleGameBoard.player.party.Contains(target);
 
