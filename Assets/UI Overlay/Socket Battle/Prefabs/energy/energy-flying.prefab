@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1513053493913181091, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cf171c80b98c384dbd068992ef5d6da, type: 2}
     - target: {fileID: 2528624367096883804, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -91,6 +95,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2727712442900086583, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 33a147601b03c154f886dfc105fd1691, type: 3}
+    - target: {fileID: 3906964417076845428, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
+      propertyPath: energyName
+      value: Flying
+      objectReference: {fileID: 0}
+    - target: {fileID: 3906964417076845428, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
+      propertyPath: energyType
+      value: Flying
+      objectReference: {fileID: 0}
     - target: {fileID: 4276494747118148778, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
       propertyPath: m_Name
       value: energy-flying
@@ -99,5 +115,9 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9177067566773886669, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4713ecb61d52bb7419e5ae21877384f7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}

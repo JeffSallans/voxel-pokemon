@@ -104,7 +104,7 @@ public class Energy : MonoBehaviour
 
     public void OnHoverExit()
     {
-        if (canBeDragged)
+        if (canBeDragged && !isDragging)
         {
             transform.position = dragStartPosition;
             isDragging = false;
@@ -155,6 +155,7 @@ public class Energy : MonoBehaviour
         }
         else
         {
+            isDragging = false;
             OnHoverExit();
         }
     }

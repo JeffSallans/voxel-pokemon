@@ -79,6 +79,7 @@ MonoBehaviour:
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  overrideFunctionality: {fileID: 0}
   attachedEnergies: []
   battleStartEnergies: []
   descriptionGameObject: {fileID: 5703409768264312485}
@@ -1196,6 +1197,10 @@ PrefabInstance:
     - target: {fileID: 7813933921053483068, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813933921053483068, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc129c559ba4e4b4593dfb645df9a9e0, type: 3}
