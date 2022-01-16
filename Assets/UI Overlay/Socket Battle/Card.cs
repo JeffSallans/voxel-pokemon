@@ -62,6 +62,11 @@ public class Card : MonoBehaviour
     public string cardType;
 
     /// <summary>
+    /// The possible targets of this card. Self, Bench, Team, ActiveOpponent, AnyOpponent, BenchOpponent, AnyPokemon,
+    /// </summary>
+    public string targetType;
+
+    /// <summary>
     /// The type of damage "Physical" or "Special"
     /// </summary>
     public string damageType;
@@ -278,9 +283,10 @@ public class Card : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        dropEvent = collision.gameObject.GetComponent<DropEvent>();
-        if (dropEvent?.eventType == "TargetPokemon")
+        var triggeredDropEvent = dropEvent = collision.gameObject.GetComponent<DropEvent>();
+        if (triggeredDropEvent?.eventType == "TargetPokemon" && canTarget(triggeredDropEvent.targetPokemon))
         {
+            dropEvent = triggeredDropEvent;
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
         }
     }
@@ -309,7 +315,7 @@ public class Card : MonoBehaviour
     {
         if (!canBePlayed || !isDragging) return;
 
-        if (dropEvent?.eventType == "TargetPokemon")
+        if (dropEvent?.eventType == "TargetPokemon" && canTarget(dropEvent.targetPokemon))
         {
             isDragging = false;
             isSelected = false;
@@ -431,4 +437,46 @@ public class Card : MonoBehaviour
             return;
         }
     }
+
+    /// <summary>
+    /// Returns true if the card can be used on the given target
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public bool canTarget(Pokemon target)
+    {
+        var isSelf = battleGameBoard.activePokemon == target;
+        var isOpp = battleGameBoard.opponentActivePokemon == target;
+        var onOppTeam = battleGameBoard.opponent.party.Contains(target);
+        var onTeam = battleGameBoard.player.party.Contains(target);
+
+        if (targetType == "Self")
+        {
+            return isSelf;
+        }
+        else if (targetType == "Bench")
+        {
+            return !isSelf && onTeam;
+        }
+        else if (targetType == "Team")
+        {
+            return onTeam;
+        }
+        else if (targetType == "ActiveOpponent")
+        {
+            return isOpp;
+        }
+        else if (targetType == "BenchOpponent")
+        {
+            return !isOpp && onOppTeam;
+        }
+        else if (targetType == "AnyOpponent")
+        {
+            return onOppTeam;
+        }
+
+        // targetType == Any
+        return true;
+    }
+
 }
