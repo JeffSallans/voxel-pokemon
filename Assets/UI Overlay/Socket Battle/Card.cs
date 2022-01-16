@@ -261,6 +261,7 @@ public class Card : MonoBehaviour
             transform.localPosition += new Vector3(0, 0, -50);
             isDragging = false;
             isSelected = true;
+            animateMoveCost("onToBeUsedHoverEnter");
         }
     }
 
@@ -271,6 +272,7 @@ public class Card : MonoBehaviour
             transform.position = dragStartPosition;
             isDragging = false;
             isSelected = false;
+            animateMoveCost("onToBeUsedHoverLeave");
         }
     }
 
@@ -386,5 +388,47 @@ public class Card : MonoBehaviour
     public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
     {
         gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+    }
+
+    /// <summary>
+    /// Animate the energy that will be used
+    /// </summary>
+    /// <param name="move"></param>
+    private void animateMoveCost(string animationName)
+    {
+        var coloredCost = cost.Where(e => e.energyName != "Normal").ToList();
+        coloredCost.ForEach(energy => animateEnergyCost(energy, animationName));
+
+        var colorlessCost = cost.Where(e => e.energyName == "Normal").ToList();
+        colorlessCost.ForEach(energy => animateEnergyCost(energy, animationName));
+    }
+
+    /// <summary>
+    /// Animate an energy that will be used
+    /// </summary>
+    /// <param name="energy"></param>
+    /// <param name="animationName"></param>
+    private void animateEnergyCost(Energy energy, string animationName)
+    {
+        // Subtract from common
+        var target = battleGameBoard.commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
+        if (target != null)
+        {
+            target.animator.SetTrigger(animationName);
+            return;
+        }
+        // Subtract from active
+        var targetOnPokemon = battleGameBoard.activePokemon.attachedEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
+        if (targetOnPokemon != null)
+        {
+            targetOnPokemon.animator.SetTrigger(animationName);
+            return;
+        }
+        var colorlessTargetOnPokemon = battleGameBoard.activePokemon.attachedEnergy.Where(e => !e.isUsed).FirstOrDefault();
+        if (energy.energyName == "Normal" && colorlessTargetOnPokemon != null)
+        {
+            colorlessTargetOnPokemon.animator.SetTrigger(animationName);
+            return;
+        }
     }
 }

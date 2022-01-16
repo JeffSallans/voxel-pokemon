@@ -24,8 +24,7 @@ public class Energy : MonoBehaviour
         get { return _isUsed; }
         set
         {
-            defaultObject.SetActive(!value);
-            usedObject.SetActive(value);
+            animator.SetBool("isUsed", value);
             _isUsed = value;
         }
     }
@@ -35,12 +34,7 @@ public class Energy : MonoBehaviour
     /// <summary>
     /// Reference to the default object
     /// </summary>
-    public GameObject defaultObject;
-
-    /// <summary>
-    /// Reference to the used object
-    /// </summary>
-    public GameObject usedObject;
+    public Animator animator;
 
     /// <summary>
     /// True if the energy can be place at the beginning of a match

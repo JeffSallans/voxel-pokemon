@@ -135,10 +135,10 @@ public class Pokemon : MonoBehaviour
         var i = 0;
         attachedEnergy.ForEach(e =>
         {
-            e.transform.localScale = energyLocations[i].transform.localScale;
+            e.transform.localScale = energyLocations[i].transform.localScale * 0.75f;
             e.transform.localRotation = energyLocations[i].transform.localRotation;
             //e.transform.position = energyLocations[i].transform.position;
-            e.Translate(energyLocations[i].transform.position);
+            e.Translate(energyLocations[i].transform.position + new Vector3(0,0,-0.1f));
 
             i++;
         });
