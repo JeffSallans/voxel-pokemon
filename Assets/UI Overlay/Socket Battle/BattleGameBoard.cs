@@ -284,7 +284,7 @@ public class BattleGameBoard : MonoBehaviour
             p.deck = p.initDeck.ToList();
         });
         Shuffle(deck);
-        deck.ForEach(c =>
+        allPartyCards.ForEach(c =>
         {
             c.transform.position = deckLocation.transform.position;
             c.transform.rotation = deckLocation.transform.rotation;

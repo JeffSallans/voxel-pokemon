@@ -75,12 +75,14 @@ MonoBehaviour:
   damageType: Water
   initDamage: 8
   attackStat: 0
-  specialAttackStat: 0
+  specialStat: 0
   defenseStat: 0
-  specialDefenseStat: 0
   evasionStat: 0
   blockStat: 0
+  attackMultStat: 0
+  grantsInvulnerability: 0
   turn: 0
+  isSingleUse: 0
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
@@ -653,7 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2050685544257161242}
   - component: {fileID: 3356166857055934153}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: water-gun-pic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1246,6 +1248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: water-card-v3
       objectReference: {fileID: 0}
+    - target: {fileID: 2879005555687922231, guid: 40e7687778920b5409e32161c6dd6497, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3224463946188046477, guid: 40e7687778920b5409e32161c6dd6497, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1301,6 +1307,10 @@ PrefabInstance:
     - target: {fileID: 3224463946188046477, guid: 40e7687778920b5409e32161c6dd6497, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519386713922790126, guid: 40e7687778920b5409e32161c6dd6497, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40e7687778920b5409e32161c6dd6497, type: 3}
