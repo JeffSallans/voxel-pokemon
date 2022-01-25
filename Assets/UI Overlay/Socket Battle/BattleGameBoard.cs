@@ -431,7 +431,7 @@ public class BattleGameBoard : MonoBehaviour
         move.play(user, target);
 
         // Discard card
-        discard.Add(move);
+        if (!move.isSingleUse) discard.Add(move);
         hand.Remove(move);
         move.Translate(discardLocation.transform.position);
         move.transform.rotation = discardLocation.transform.rotation;

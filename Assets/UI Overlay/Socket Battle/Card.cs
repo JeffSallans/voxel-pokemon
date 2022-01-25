@@ -28,10 +28,10 @@ public class Card : MonoBehaviour
                     .Replace("{turn}", turn.ToString())
                     .Replace("{attack}", attackStat.ToString())
                     .Replace("{defense}", defenseStat.ToString())
-                    .Replace("{specialAttack}", specialAttackStat.ToString())
-                    .Replace("{specialDefense}", specialDefenseStat.ToString())
+                    .Replace("{special}", specialStat.ToString())
                     .Replace("{evasion}", evasionStat.ToString())
-                    .Replace("{block}", blockStat.ToString());
+                    .Replace("{block}", blockStat.ToString())
+                    .Replace("{attackMult}", attackMultStat.ToString());
             return desc;
         }
     }
@@ -90,19 +90,14 @@ public class Card : MonoBehaviour
     public int attackStat;
 
     /// <summary>
-    /// The special attack stat the card will change
+    /// The special stat the card will change
     /// </summary>
-    public int specialAttackStat;
+    public int specialStat;
 
     /// <summary>
     /// The defense stat the card will change
     /// </summary>
     public int defenseStat;
-
-    /// <summary>
-    /// The special defense stat the card will change
-    /// </summary>
-    public int specialDefenseStat;
 
     /// <summary>
     /// The evasion stat the card will change
@@ -115,9 +110,24 @@ public class Card : MonoBehaviour
     public int blockStat;
 
     /// <summary>
+    /// The attack multiplier to apply to the next attack
+    /// </summary>
+    public int attackMultStat;
+
+    /// <summary>
+    /// True if the user gets immunity to the next attack
+    /// </summary>
+    public bool grantsInvulnerability;
+
+    /// <summary>
     /// How long a StatusEffect will be placed
     /// </summary>
     public int turn;
+
+    /// <summary>
+    /// True if the card will be removed from the game after playing
+    /// </summary>
+    public bool isSingleUse = false;
 
     /// <summary>
     /// The animation event to trigger on the user
@@ -345,40 +355,61 @@ public class Card : MonoBehaviour
     }
 
     public void play(Pokemon user, Pokemon target) {
+        var attackedMissed = false;
+
         // Run override if applicable
         if (overrideFunctionality) { overrideFunctionality.play(this, battleGameBoard, user, target); return; }
 
         // Deal Damage if applicable
-        if (damage > 0)
+        if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            var dealtDamage = damage - target.blockStat;
+            var dealtDamage = damage * user.attackMultStat - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
 
             // Hit target
             var newHealth = target.health - Mathf.Max(dealtDamage, 0);
             target.health = Mathf.Max(newHealth, 0);
         }
+        if (damage > 0 && target.isInvulnerable)
+        {
+            attackedMissed = true;
+        }
 
         // Add status effects if applicable
-        var totalStatChange = Mathf.Abs(attackStat) + Mathf.Abs(defenseStat) + Mathf.Abs(specialAttackStat) + Mathf.Abs(specialDefenseStat) + Mathf.Abs(evasionStat) + Mathf.Abs(blockStat);
-        if (totalStatChange > 0)
+        addStatHelper(target, "attackStat", attackStat);
+        addStatHelper(target, "defenseStat", defenseStat);
+        addStatHelper(target, "specialStat", specialStat);
+        addStatHelper(target, "evasionStat", evasionStat);
+        addStatHelper(target, "blockStat", blockStat);
+        addStatHelper(target, "attackMultStat", attackMultStat);
+        if (grantsInvulnerability)
         {
-            // target.attackStat += attackStat;
-            // target.defenseStat += defenseStat;
-            // target.specialAttackStat += specialAttackStat;
-            // target.specialDefenseStat += specialDefenseStat;
-            // target.evasionStat += evasionStat;
-            target.attachedStatus.Add(new StatusEffect(target, this, "blockStatEffect", new Dictionary<string, string>() {
-                { "statType", "blockStat" },
-                { "stackCount", blockStat.ToString() },
+            target.attachedStatus.Add(new StatusEffect(target, this, "invulnerabilityEffect", new Dictionary<string, string>() {
+                { "statType", "invulnerability" },
+                { "stackCount", "1" },
                 { "turnsLeft", "1" }
             }));
         }
 
         if (userAnimationType != "") user.GetComponent<Animator>().SetTrigger(userAnimationType);
-        if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
-        if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+        if (!attackedMissed)
+        {
+            if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
+            if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+        }
+    }
+
+    private void addStatHelper(Pokemon target, string statName, int statValue)
+    {
+        if (statValue > 0)
+        {
+            target.attachedStatus.Add(new StatusEffect(target, this, statName + "Effect", new Dictionary<string, string>() {
+                { "statType", statName.ToString() },
+                { "stackCount", statValue.ToString() },
+                { "turnsLeft", turn.ToString() }
+            }));
+        }
     }
 
     public void onTurnEnd() { }

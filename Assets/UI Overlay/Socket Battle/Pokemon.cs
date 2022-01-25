@@ -24,12 +24,71 @@ public class Pokemon : MonoBehaviour
     }
 
     public int initHealth;
+    public int initAttackStat;
+    public int initDefenseStat;
+    public int initSpecialStat;
+    public int initEvasionStat;
 
-    public int attackStat;
-    public int defenseStat;
-    public int specialAttackStat;
-    public int specialDefenseStat;
-    public int evasionStat;
+    public int attackStat
+    {
+        get
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (statusEffect == null) return 0;
+            return statusEffect.stackCount;
+        }
+        set
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            else { statusEffect.stackCount = value; }
+        }
+    }
+    public int defenseStat
+    {
+        get
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (statusEffect == null) return 0;
+            return statusEffect.stackCount;
+        }
+        set
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            else { statusEffect.stackCount = value; }
+        }
+    }
+    public int specialStat
+    {
+        get
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (statusEffect == null) return 0;
+            return statusEffect.stackCount;
+        }
+        set
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            else { statusEffect.stackCount = value; }
+        }
+    }
+    public int evasionStat
+    {
+        get
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "evasionStat").FirstOrDefault();
+            if (statusEffect == null) return 0;
+            return statusEffect.stackCount;
+        }
+        set
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "evasionStat").FirstOrDefault();
+            if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            else { statusEffect.stackCount = value; }
+        }
+    }
     public int blockStat
     {
         get
@@ -43,6 +102,30 @@ public class Pokemon : MonoBehaviour
             var blockStatusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
             if (blockStatusEffect == null) { print("SHOUND NEVER GET HERE"); }
             else { blockStatusEffect.stackCount = value; }
+        }
+    }
+    public int attackMultStat
+    {
+        get
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "attackMultStat").FirstOrDefault();
+            if (statusEffect == null) return 1;
+            return statusEffect.stackCount;
+        }
+        set
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "attackMultStat").FirstOrDefault();
+            if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            else { statusEffect.stackCount = value; }
+        }
+    }
+    public bool isInvulnerable
+    {
+        get
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "invulnerability").FirstOrDefault();
+            if (statusEffect == null) return false;
+            return statusEffect.stackCount > 0;
         }
     }
 
@@ -169,12 +252,30 @@ public class Pokemon : MonoBehaviour
         health = initHealth;
         attachedStatus = new List<StatusEffect>();
 
+        // Set initial stats
+        addInitialStatHelper("attackStat", initAttackStat);
+        addInitialStatHelper("defenseStat", initDefenseStat);
+        addInitialStatHelper("specialStat", initSpecialStat);
+        addInitialStatHelper("evasionStat", initEvasionStat);
+
         // Hide locked energies
         energyLocations.ForEach(e =>
         {
             var index = energyLocations.IndexOf(e);
             e.SetActive(index < maxNumberOfAttachedEnergy);
         });
+    }
+
+    private void addInitialStatHelper(string statName, int statValue)
+    {
+        if (statValue > 0)
+        {
+            attachedStatus.Add(new StatusEffect(this, null, statName + "Effect", new Dictionary<string, string>() {
+                { "statType", statName.ToString() },
+                { "stackCount", statValue.ToString() },
+                { "turnsLeft", "99" }
+            }));
+        }
     }
 
     /// <summary>

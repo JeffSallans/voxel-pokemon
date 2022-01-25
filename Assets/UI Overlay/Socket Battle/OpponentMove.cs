@@ -82,8 +82,14 @@ public class OpponentMove : MonoBehaviour
     {
         var target = battleGameBoard.activePokemon;
 
+        if (target.isInvulnerable)
+        {
+            if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
+            return "Missed " + target.nameText + " is invulnerable";
+        }
+
         // Determine damage
-        var dealtDamage = damage - target.blockStat;
+        var dealtDamage = damage * actingPokemon.attackMultStat - target.blockStat;
         target.blockStat = Mathf.Max(-dealtDamage, 0);
 
         // Hit target

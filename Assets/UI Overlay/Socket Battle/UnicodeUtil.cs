@@ -33,7 +33,7 @@ public class UnicodeUtil
         { "ZZAtk", "\ue904" },
         { "ZZDef", "\ue903" },
         { "ZZSpc", "\ue905" },
-        { "ZZEva", "\ue90f" },
+        { "ZZEva", "\ue910" },
 
         { "ZZBlock", "\ue902" },
         { "ZZAttackMult", "\uf069" },

@@ -36,7 +36,7 @@ public class StatusEffect
     /// <summary>
     /// How many turns the status has left
     /// </summary>
-    public int turnsLeft;
+    public int turnsLeft = 99;
 
     /// <summary>
     /// 
@@ -121,11 +121,12 @@ public class StatusEffect
     /// <returns></returns>
     private string getUnicodeForStatType(string givenStatType) {
         if (givenStatType == "attackStat") return "ZZAtk";
-        if (givenStatType == "defenseStat") return "\uf132";
-        if (givenStatType == "specialAttackStat") return "\uf20b";
-        if (givenStatType == "specialDefenseStat") return "\uf132";
-        if (givenStatType == "evadeStat") return "\uf04e";
+        if (givenStatType == "defenseStat") return "ZZDef";
+        if (givenStatType == "specialStat") return "ZZSpc";
+        if (givenStatType == "evasionStat") return "ZZEva";
         if (givenStatType == "blockStat") return "ZZBlock";
+        if (givenStatType == "AttackMultStat") return "ZZAttackMult";
+        if (givenStatType == "invulnerability") return "ZZInvul";
         return "\uf111";
     }
 
