@@ -97,7 +97,7 @@ public class WorldDialog : MonoBehaviour
         dialogObject.SetActive(true);
         clickCaptureObject.SetActive(true);
 
-        textboxObject.text = currentmessage?.message;
+        textboxObject.text = UnicodeUtil.replaceWithUnicode(currentmessage?.message);
 
         // Show text if not displayed
         textboxObject.gameObject.SetActive(true);        

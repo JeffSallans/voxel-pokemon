@@ -151,7 +151,7 @@ public class Pokemon : MonoBehaviour
             {
                 var statusEffect = attachedStatus[j];
                 statusEffect.Update();
-                statusLocation.text = statusEffect.statusEffectDisplay;
+                statusLocation.text = UnicodeUtil.replaceWithUnicode(statusEffect.statusEffectDisplay);
             }
             else {
                 statusLocation.text = "";

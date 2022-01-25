@@ -120,12 +120,12 @@ public class StatusEffect
     /// <param name="givenStatType"></param>
     /// <returns></returns>
     private string getUnicodeForStatType(string givenStatType) {
-        if (givenStatType == "attackStat") return "\uf1fb";
+        if (givenStatType == "attackStat") return "ZZAtk";
         if (givenStatType == "defenseStat") return "\uf132";
         if (givenStatType == "specialAttackStat") return "\uf20b";
         if (givenStatType == "specialDefenseStat") return "\uf132";
         if (givenStatType == "evadeStat") return "\uf04e";
-        if (givenStatType == "blockStat") return "\uf111";
+        if (givenStatType == "blockStat") return "ZZBlock";
         return "\uf111";
     }
 

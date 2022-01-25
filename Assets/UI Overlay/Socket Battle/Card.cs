@@ -238,15 +238,16 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        descriptionGameObject.text = cardDesc;
+        descriptionGameObject.text = UnicodeUtil.replaceWithUnicode(cardDesc);
         playButtonGameObject.interactable = canBePlayed;
 
-        // Update attached Energies to placeholder locations
+        // Update cost Energies to placeholder locations
         var i = 0;
-        attachedEnergies.ForEach(e =>
+        cost.ForEach(e =>
         {
-            e.transform.localPosition = gameObject.transform.localPosition + energyLocations[i].transform.localPosition;
-            e.transform.rotation = energyLocations[i].transform.rotation;
+            e.transform.localScale = energyLocations[i].transform.localScale;
+            e.transform.localRotation = energyLocations[i].transform.localRotation;
+            e.transform.position = energyLocations[i].transform.position;
             i++;
         });
 
