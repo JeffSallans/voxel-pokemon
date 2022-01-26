@@ -150,6 +150,11 @@ public class Card : MonoBehaviour
     public ICard overrideFunctionality = null;
 
     /// <summary>
+    /// Button that flips a card
+    /// </summary>
+    public IFlipButton flipButtonFunctionality = null;
+
+    /// <summary>
     /// Current energies during a battle
     /// </summary>
     public List<Energy> attachedEnergies;
@@ -158,6 +163,11 @@ public class Card : MonoBehaviour
     /// Energies at the start of battle
     /// </summary>
     public List<Energy> battleStartEnergies;
+
+    /// <summary>
+    /// Animation controller for the card
+    /// </summary>
+    public Animator cardAnimator;
 
     /// <summary>
     /// Returns true if the card can be played with the usable energy
@@ -242,7 +252,7 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        cardAnimator.SetBool("hideFlipButton", flipButtonFunctionality == null);
     }
 
     // Update is called once per frame
@@ -267,6 +277,16 @@ public class Card : MonoBehaviour
             transform.localPosition += (mousePosition - previousMousePosition);
         }
         previousMousePosition = mousePosition;
+
+        // Update flip button activeness
+        if (flipButtonFunctionality != null)
+        {
+            var flipButtonEnabled = isFlipButtonEnabled();
+            if (flipButtonEnabled != cardAnimator.GetBool("isFlipButtonEnabled"))
+            {
+                cardAnimator.SetBool("isFlipButtonEnabled", flipButtonEnabled);
+            }
+        }
     }
 
     public void OnHoverEnter()
@@ -343,7 +363,9 @@ public class Card : MonoBehaviour
         battleGameBoard = _battleGameBoard;
     }
 
-    public void onDraw(Pokemon activePokemon) { }
+    public void onDraw(Pokemon activePokemon) {
+        cardAnimator.SetTrigger("onDrawCard");
+    }
 
     public void onOpponentDraw(Pokemon opponentActivePokemon) { }
 
@@ -397,6 +419,12 @@ public class Card : MonoBehaviour
         {
             if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
             if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+        }
+
+        // Trigger flip functionality if applicable
+        if (flipButtonFunctionality != null && flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard))
+        {
+            flipButtonFunctionality.onPlay(this, battleGameBoard, target);
         }
     }
 
@@ -510,5 +538,45 @@ public class Card : MonoBehaviour
         // targetType == Any
         return true;
     }
+
+
+    ///////////////////////////////////
+    // Flip Button Section
+    ///////////////////////////////////
+
+    public bool isFlipButtonEnabled()
+    {
+        if (flipButtonFunctionality == null) return false;
+        return flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard);
+    }
+
+    public void onFlipButtonHoverEnter()
+    {
+        cardAnimator.SetTrigger("onFlipButtonHoverEnter");
+        flipButtonFunctionality?.onFlipButtonHoverEnter(this, battleGameBoard);
+    }
+
+    public void onFlipButtonHoverExit()
+    {
+        cardAnimator.SetTrigger("onFlipButtonHoverExit");
+        flipButtonFunctionality?.onFlipButtonHoverExit(this, battleGameBoard);
+    }
+
+    public void onFlipButtonPress()
+    {
+        cardAnimator.SetTrigger("onFlip");
+        flipButtonFunctionality?.onFlipButtonPress(this, battleGameBoard);
+    }
+
+    public void onFlip()
+    {
+        flipButtonFunctionality?.onFlipEvent(this, battleGameBoard);
+    }
+
+    public void onUnflip()
+    {
+        flipButtonFunctionality?.onUnflipEvent(this, battleGameBoard);
+    }
+
 
 }

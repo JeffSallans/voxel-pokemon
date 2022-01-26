@@ -33,13 +33,13 @@ public class Pokemon : MonoBehaviour
     {
         get
         {
-            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            var statusEffect = attachedStatus.Where(s => s.statType == "attackStat").FirstOrDefault();
             if (statusEffect == null) return 0;
             return statusEffect.stackCount;
         }
         set
         {
-            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            var statusEffect = attachedStatus.Where(s => s.statType == "attackStat").FirstOrDefault();
             if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
             else { statusEffect.stackCount = value; }
         }
@@ -48,13 +48,13 @@ public class Pokemon : MonoBehaviour
     {
         get
         {
-            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            var statusEffect = attachedStatus.Where(s => s.statType == "defenseStat").FirstOrDefault();
             if (statusEffect == null) return 0;
             return statusEffect.stackCount;
         }
         set
         {
-            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            var statusEffect = attachedStatus.Where(s => s.statType == "defenseStat").FirstOrDefault();
             if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
             else { statusEffect.stackCount = value; }
         }
@@ -63,13 +63,13 @@ public class Pokemon : MonoBehaviour
     {
         get
         {
-            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            var statusEffect = attachedStatus.Where(s => s.statType == "specialStat").FirstOrDefault();
             if (statusEffect == null) return 0;
             return statusEffect.stackCount;
         }
         set
         {
-            var statusEffect = attachedStatus.Where(s => s.statType == "blockStat").FirstOrDefault();
+            var statusEffect = attachedStatus.Where(s => s.statType == "specialStat").FirstOrDefault();
             if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
             else { statusEffect.stackCount = value; }
         }
