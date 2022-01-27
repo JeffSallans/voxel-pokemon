@@ -125,7 +125,7 @@ public class StatusEffect
         if (givenStatType == "specialStat") return "ZZSpc";
         if (givenStatType == "evasionStat") return "ZZEva";
         if (givenStatType == "blockStat") return "ZZBlock";
-        if (givenStatType == "AttackMultStat") return "ZZAttackMult";
+        if (givenStatType == "AttackMultStat") return "%";
         if (givenStatType == "invulnerability") return "ZZInvul";
         return "\uf111";
     }

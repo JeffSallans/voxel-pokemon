@@ -109,7 +109,7 @@ public class Pokemon : MonoBehaviour
         get
         {
             var statusEffect = attachedStatus.Where(s => s.statType == "attackMultStat").FirstOrDefault();
-            if (statusEffect == null) return 1;
+            if (statusEffect == null) return 100;
             return statusEffect.stackCount;
         }
         set

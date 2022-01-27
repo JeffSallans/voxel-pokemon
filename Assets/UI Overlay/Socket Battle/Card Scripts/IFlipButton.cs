@@ -4,6 +4,10 @@ using UnityEngine;
 
 public abstract class IFlipButton : MonoBehaviour
 {
+    public abstract string getFlipButtonText();
+
+    public abstract bool isCardFlipped();
+
     public abstract bool isFlipButtonEnabled(Card card, BattleGameBoard battleGameBoard);
 
     public abstract void onFlipButtonHoverEnter(Card card, BattleGameBoard battleGameBoard);

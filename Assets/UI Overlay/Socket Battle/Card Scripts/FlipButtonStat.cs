@@ -5,23 +5,45 @@ using UnityEngine;
 
 public class FlipButtonStat : IFlipButton
 {
+    /// <summary>
+    /// Text to remove when flipped
+    /// </summary>
+    public string flipButtonText;
+
     public int attackCost;
     public int defenseCost;
     public int specialCost;
     public int evasionCost;
 
     public int damageIncrease;
+    public int multiplierIncrease;
+
+    /// <summary>
+    /// True when the card is flipped and effect should take place
+    /// </summary>
+    private bool isFlipped;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        isFlipped = false;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public override string getFlipButtonText()
+    {
+        if (isFlipped) return "";
+        return flipButtonText;
+    }
+
+    public override bool isCardFlipped()
+    {
+        return isFlipped;
     }
 
     public override bool isFlipButtonEnabled(Card card, BattleGameBoard battleGameBoard)
@@ -47,7 +69,9 @@ public class FlipButtonStat : IFlipButton
 
     public override void onFlipEvent(Card card, BattleGameBoard battleGameBoard)
     {
+        isFlipped = true;
         card.initDamage += damageIncrease;
+        card.attackMultStat += multiplierIncrease;
     }
 
     public override void onFlipButtonHoverEnter(Card card, BattleGameBoard battleGameBoard)
@@ -70,7 +94,9 @@ public class FlipButtonStat : IFlipButton
 
     public override void onUnflipEvent(Card card, BattleGameBoard battleGameBoard)
     {
+        isFlipped = false;
         card.initDamage -= damageIncrease;
+        card.attackMultStat -= multiplierIncrease;
     }
 
     public override void onPlay(Card card, BattleGameBoard battleGameBoard, Pokemon targetPokemon)

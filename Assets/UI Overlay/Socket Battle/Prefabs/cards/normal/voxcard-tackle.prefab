@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2050685544257161242, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050685544257161242, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -142,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.data[0]
       value: 
-      objectReference: {fileID: 983920387104636056}
+      objectReference: {fileID: 5357229068581043949}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
       value: Deal <color=red>{damage}</color> ZZNormal dmg
@@ -189,9 +197,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
---- !u!114 &983920387104636056 stripped
+--- !u!114 &5357229068581043949 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8915428553018861203, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4343389913825797350, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
   m_PrefabInstance: {fileID: 8511347451451578891}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

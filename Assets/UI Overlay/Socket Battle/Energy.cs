@@ -29,8 +29,6 @@ public class Energy : MonoBehaviour
         }
     }
 
-    public Pokemon attachedToPokemon;
-
     /// <summary>
     /// Reference to the default object
     /// </summary>
@@ -196,7 +194,6 @@ public class Energy : MonoBehaviour
 
         canBeDragged = false;
         isUsed = false;
-        attachedToPokemon = target;
     }
 
     public void onTurnEnd() { }

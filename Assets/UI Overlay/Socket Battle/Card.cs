@@ -31,7 +31,8 @@ public class Card : MonoBehaviour
                     .Replace("{special}", specialStat.ToString())
                     .Replace("{evasion}", evasionStat.ToString())
                     .Replace("{block}", blockStat.ToString())
-                    .Replace("{attackMult}", attackMultStat.ToString());
+                    .Replace("{attackMult}", attackMultStat.ToString())
+                    .Replace("{flipText}", flipButtonFunctionality?.getFlipButtonText());
             return desc;
         }
     }
@@ -110,7 +111,7 @@ public class Card : MonoBehaviour
     public int blockStat;
 
     /// <summary>
-    /// The attack multiplier to apply to the next attack
+    /// The attack multiplier to apply to the next attack * 100
     /// </summary>
     public int attackMultStat;
 
@@ -386,7 +387,7 @@ public class Card : MonoBehaviour
         if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            var dealtDamage = damage * user.attackMultStat - target.blockStat;
+            var dealtDamage = damage * Mathf.RoundToInt(user.attackMultStat / 100f) - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
 
             // Hit target
