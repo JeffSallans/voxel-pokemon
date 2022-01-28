@@ -89,8 +89,9 @@ public class OpponentMove : MonoBehaviour
         }
 
         // Determine damage
-        var dealtDamage = damage * Mathf.RoundToInt(actingPokemon.attackMultStat / 100f) - target.blockStat;
+        var dealtDamage = Mathf.RoundToInt(damage * actingPokemon.attackMultStat / 100f) - target.blockStat;
         target.blockStat = Mathf.Max(-dealtDamage, 0);
+        actingPokemon.attackMultStat = 100;
 
         // Hit target
         var newHealth = target.health - Mathf.Max(dealtDamage, 0);

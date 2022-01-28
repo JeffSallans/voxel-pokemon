@@ -116,6 +116,11 @@ public class Card : MonoBehaviour
     public int attackMultStat;
 
     /// <summary>
+    /// How much the user is healed
+    /// </summary>
+    public int userHeal;
+
+    /// <summary>
     /// True if the user gets immunity to the next attack
     /// </summary>
     public bool grantsInvulnerability;
@@ -387,8 +392,9 @@ public class Card : MonoBehaviour
         if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            var dealtDamage = damage * Mathf.RoundToInt(user.attackMultStat / 100f) - target.blockStat;
+            var dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f) - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
+            user.attackMultStat = 100;
 
             // Hit target
             var newHealth = target.health - Mathf.Max(dealtDamage, 0);
@@ -413,6 +419,12 @@ public class Card : MonoBehaviour
                 { "stackCount", "1" },
                 { "turnsLeft", "1" }
             }));
+        }
+
+        // Heal/dmg user if possible
+        if (!attackedMissed && userHeal > 0)
+        {
+            user.health += userHeal;
         }
 
         if (userAnimationType != "") user.GetComponent<Animator>().SetTrigger(userAnimationType);
