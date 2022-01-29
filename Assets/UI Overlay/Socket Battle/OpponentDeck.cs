@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Contains the meta game configurations the computer brings into a battle.  Includes base pokemon stats/state, possible moves, strategy bot, items, and others.
@@ -20,14 +21,14 @@ public class OpponentDeck : MonoBehaviour
     /// <summary>
     /// The possible moves for this opponent to battle with
     /// </summary>
-    public List<OpponentMove> movesConfig;
+    public List<IOpponentMove> movesConfig;
 
-    public OpponentBot opponentStrategyBot;
+    public IOpponentStrategy opponentStrategyBot;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        movesConfig = gameObject.GetComponentsInChildren<IOpponentMove>().ToList();
     }
 
     // Update is called once per frame

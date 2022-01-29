@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initCardDescription
-      value: Switch out your active pokemon
+      value: Switch out your active pokemon. {flipText}
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: targetAnimationType
@@ -163,25 +163,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1466309857897643472, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
 --- !u!1 &949891965085280613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7780502995363848462, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
   m_PrefabInstance: {fileID: 7410488425891072107}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4327189041733034056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949891965085280613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 995d492ceaa536849bd903665a4e61c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2207620230058107678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,3 +188,15 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 1
+--- !u!114 &4327189041733034056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949891965085280613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995d492ceaa536849bd903665a4e61c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

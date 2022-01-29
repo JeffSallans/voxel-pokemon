@@ -435,6 +435,8 @@ public class BattleGameBoard : MonoBehaviour
 
         // Send card playedEvent to all cards
         allCards.ForEach(c => c.onCardPlayed(move, user, target));
+        opponent?.opponentStrategyBot?.onCardPlayed(move, user, target);
+
 
         // Check if you won after a card play
         var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
@@ -662,6 +664,32 @@ public class BattleGameBoard : MonoBehaviour
         }
 
         //switchPokemonOverlay.SetActive(false);
+    }
+
+    /// <summary>
+    /// Switches two of the opponent's pokemon
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="target"></param>
+    public void switchOpponentPokemon(Pokemon user, Pokemon target)
+    {
+        // Switch board roles
+        var userIndex = opponent.party.IndexOf(user);
+        var targetIndex = opponent.party.IndexOf(target);
+        Swap(opponent.party, userIndex, targetIndex);
+        opponentActivePokemon = target;
+
+        // Update model locations to match switch
+        var i = 0;
+        opponent.party.ForEach(p =>
+        {
+            p.setPlacement(opponentPokemonLocations[i], opponentPokemonModelLocations[i], true);
+            i++;
+        });
+
+        // Animate swap       
+        //user.GetComponent<Animator>().SetTrigger("onSwitchOut");
+        //target.GetComponent<Animator>().SetTrigger("onSwitchIn");
     }
 
     public void onBattleEnd(bool isPlayerWinner) {
