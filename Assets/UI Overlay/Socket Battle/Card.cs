@@ -131,6 +131,11 @@ public class Card : MonoBehaviour
     public int turn;
 
     /// <summary>
+    /// Set to true if the status affects the user instead of the target
+    /// </summary>
+    public bool statusAffectsUser = false;
+
+    /// <summary>
     /// True if the card will be removed from the game after playing
     /// </summary>
     public bool isSingleUse = false;
@@ -367,13 +372,9 @@ public class Card : MonoBehaviour
     public void onBattleStart(BattleGameBoard _battleGameBoard) {
         attachedEnergies = battleStartEnergies.ToList();
         battleGameBoard = _battleGameBoard;
-    }
 
-    public void onDraw(Pokemon activePokemon) {
-        cardAnimator.SetTrigger("onDrawCard");
+        if (overrideFunctionality) { overrideFunctionality.onBattleStart(this, battleGameBoard); }
     }
-
-    public void onOpponentDraw(Pokemon opponentActivePokemon) { }
 
     public void onPlay(Pokemon user, Pokemon target)
     {
@@ -383,10 +384,35 @@ public class Card : MonoBehaviour
     }
 
     public void play(Pokemon user, Pokemon target) {
-        var attackedMissed = false;
+        var attackMissed = false;
 
         // Run override if applicable
-        if (overrideFunctionality) { overrideFunctionality.play(this, battleGameBoard, user, target); return; }
+        if (overrideFunctionality) {
+            overrideFunctionality.play(this, battleGameBoard, user, target);
+        }
+        // Don't use default functionality if specified
+        var useCommonCardEffect = overrideFunctionality?.overridesPlayFunc() != true;
+        if (useCommonCardEffect) {
+            commonCardPlay(user, target);
+        }      
+
+        if (userAnimationType != "") user.GetComponent<Animator>().SetTrigger(userAnimationType);
+        if (!attackMissed)
+        {
+            if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
+            if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+        }
+
+        // Trigger flip functionality if applicable
+        if (flipButtonFunctionality != null && flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard))
+        {
+            flipButtonFunctionality.onPlay(this, battleGameBoard, target);
+        }
+    }
+
+    private bool commonCardPlay(Pokemon user, Pokemon target)
+    {
+        var attackMissed = false;
 
         // Deal Damage if applicable
         if (damage > 0 && !target.isInvulnerable)
@@ -402,19 +428,20 @@ public class Card : MonoBehaviour
         }
         if (damage > 0 && target.isInvulnerable)
         {
-            attackedMissed = true;
+            attackMissed = true;
         }
 
         // Add status effects if applicable
-        addStatHelper(target, "attackStat", attackStat);
-        addStatHelper(target, "defenseStat", defenseStat);
-        addStatHelper(target, "specialStat", specialStat);
-        addStatHelper(target, "evasionStat", evasionStat);
-        addStatHelper(target, "blockStat", blockStat);
-        addStatHelper(target, "attackMultStat", attackMultStat);
+        var statusTarget = (statusAffectsUser) ? user : target;
+        addStatHelper(statusTarget, "attackStat", attackStat);
+        addStatHelper(statusTarget, "defenseStat", defenseStat);
+        addStatHelper(statusTarget, "specialStat", specialStat);
+        addStatHelper(statusTarget, "evasionStat", evasionStat);
+        addStatHelper(statusTarget, "blockStat", blockStat);
+        addStatHelper(statusTarget, "attackMultStat", attackMultStat);
         if (grantsInvulnerability)
         {
-            target.attachedStatus.Add(new StatusEffect(target, this, "invulnerabilityEffect", new Dictionary<string, string>() {
+            target.attachedStatus.Add(new StatusEffect(statusTarget, this, "invulnerabilityEffect", new Dictionary<string, string>() {
                 { "statType", "invulnerability" },
                 { "stackCount", "1" },
                 { "turnsLeft", "1" }
@@ -422,23 +449,12 @@ public class Card : MonoBehaviour
         }
 
         // Heal/dmg user if possible
-        if (!attackedMissed && userHeal > 0)
+        if (!attackMissed && userHeal > 0)
         {
             user.health += userHeal;
         }
 
-        if (userAnimationType != "") user.GetComponent<Animator>().SetTrigger(userAnimationType);
-        if (!attackedMissed)
-        {
-            if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
-            if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
-        }
-
-        // Trigger flip functionality if applicable
-        if (flipButtonFunctionality != null && flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard))
-        {
-            flipButtonFunctionality.onPlay(this, battleGameBoard, target);
-        }
+        return attackMissed;
     }
 
     private void addStatHelper(Pokemon target, string statName, int statValue)
@@ -452,12 +468,6 @@ public class Card : MonoBehaviour
             }));
         }
     }
-
-    public void onTurnEnd() { }
-
-    public void onOpponentTurnEnd() { }
-
-    public void onBattleEnd() { }
 
     /// <summary>
     /// Animate the card to a new location
@@ -552,6 +562,37 @@ public class Card : MonoBehaviour
         return true;
     }
 
+    ///////////////////////////////////
+    // Card Override Section
+    ///////////////////////////////////
+
+    public void onDraw(Pokemon activePokemon)
+    {
+        cardAnimator.SetTrigger("onDrawCard");
+        if (overrideFunctionality) { overrideFunctionality.onDraw(this, battleGameBoard, activePokemon); }
+    }
+
+    public void onOpponentDraw(Pokemon opponentActivePokemon) {
+        if (overrideFunctionality) { overrideFunctionality.onOpponentDraw(this, battleGameBoard, opponentActivePokemon); }
+    }
+
+    public void onTurnEnd() {
+        if (overrideFunctionality) { overrideFunctionality.onTurnEnd(this, battleGameBoard); }
+        if (flipButtonFunctionality && flipButtonFunctionality.isCardFlipped()) { flipButtonFunctionality.onUnflipEvent(this, battleGameBoard); }
+    }
+
+    public void onOpponentTurnEnd() {
+        if (overrideFunctionality) { overrideFunctionality.onOpponentTurnEnd(this, battleGameBoard); }
+    }
+
+    public void onBattleEnd() {
+        if (overrideFunctionality) { overrideFunctionality.onBattleEnd(this, battleGameBoard); }
+    }
+
+    public void onCardPlayed(Card move, Pokemon user, Pokemon target)
+    {
+        if (overrideFunctionality) { overrideFunctionality.onCardPlayed(this, battleGameBoard, move, user, target); }
+    }
 
     ///////////////////////////////////
     // Flip Button Section
@@ -563,20 +604,9 @@ public class Card : MonoBehaviour
         return flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard);
     }
 
-    public void onFlipButtonHoverEnter()
-    {
-        cardAnimator.SetTrigger("onFlipButtonHoverEnter");
-        flipButtonFunctionality?.onFlipButtonHoverEnter(this, battleGameBoard);
-    }
-
-    public void onFlipButtonHoverExit()
-    {
-        cardAnimator.SetTrigger("onFlipButtonHoverExit");
-        flipButtonFunctionality?.onFlipButtonHoverExit(this, battleGameBoard);
-    }
-
     public void onFlipButtonPress()
     {
+        if (!canBePlayed) { return; }
         cardAnimator.SetTrigger("onFlip");
         flipButtonFunctionality?.onFlipButtonPress(this, battleGameBoard);
     }

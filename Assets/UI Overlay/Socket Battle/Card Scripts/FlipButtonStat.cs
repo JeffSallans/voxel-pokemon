@@ -16,6 +16,7 @@ public class FlipButtonStat : IFlipButton
     public int evasionCost;
 
     public int damageIncrease;
+    public int blockIncrease;
     public int multiplierIncrease;
 
     /// <summary>
@@ -48,6 +49,8 @@ public class FlipButtonStat : IFlipButton
 
     public override bool isFlipButtonEnabled(Card card, BattleGameBoard battleGameBoard)
     {
+        if (isFlipped) return false;
+
         if (attackCost > 0 && battleGameBoard?.activePokemon && battleGameBoard?.activePokemon.attackStat < attackCost) {
             return false;
         }
@@ -71,17 +74,8 @@ public class FlipButtonStat : IFlipButton
     {
         isFlipped = true;
         card.initDamage += damageIncrease;
+        card.blockStat += blockIncrease;
         card.attackMultStat += multiplierIncrease;
-    }
-
-    public override void onFlipButtonHoverEnter(Card card, BattleGameBoard battleGameBoard)
-    {
-        // Do Nothing
-    }
-
-    public override void onFlipButtonHoverExit(Card card, BattleGameBoard battleGameBoard)
-    {
-        // Do Nothing
     }
 
     public override void onFlipButtonPress(Card card, BattleGameBoard battleGameBoard)
@@ -96,11 +90,7 @@ public class FlipButtonStat : IFlipButton
     {
         isFlipped = false;
         card.initDamage -= damageIncrease;
+        card.blockStat -= blockIncrease;
         card.attackMultStat -= multiplierIncrease;
-    }
-
-    public override void onPlay(Card card, BattleGameBoard battleGameBoard, Pokemon targetPokemon)
-    {
-        // Do Nothing
     }
 }

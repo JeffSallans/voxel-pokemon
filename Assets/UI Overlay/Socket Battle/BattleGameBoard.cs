@@ -282,8 +282,8 @@ public class BattleGameBoard : MonoBehaviour
         {
             // Create a copy of initial deck to use for the game
             p.deck = p.initDeck.ToList();
+            Shuffle(p.deck);
         });
-        Shuffle(deck);
         allPartyCards.ForEach(c =>
         {
             c.transform.position = deckLocation.transform.position;
@@ -431,10 +431,10 @@ public class BattleGameBoard : MonoBehaviour
         move.play(user, target);
 
         // Discard card
-        if (!move.isSingleUse) discard.Add(move);
-        hand.Remove(move);
-        move.Translate(discardLocation.transform.position);
-        move.transform.rotation = discardLocation.transform.rotation;
+        cardDiscard(move, user, true);
+
+        // Send card playedEvent to all cards
+        allCards.ForEach(c => c.onCardPlayed(move, user, target));
 
         // Check if you won after a card play
         var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
@@ -453,6 +453,20 @@ public class BattleGameBoard : MonoBehaviour
 
         var colorlessCost = cost.Where(e => e.energyName == "Normal").ToList();
         colorlessCost.ForEach(energy => payEnergyCost(energy));
+    }
+
+    /// <summary>
+    /// Discards the given card
+    /// </summary>
+    /// <param name="target">The move to discard</param>
+    /// <param name="user">The pokemon that used the move</param>
+    /// <param name="wasPlayed">True if the discard was after playing</param>
+    public void cardDiscard(Card target, Pokemon user, bool wasPlayed)
+    {
+        if (!(wasPlayed && target.isSingleUse)) user.discard.Add(target);
+        user.hand.Remove(target);
+        target.Translate(discardLocation.transform.position);
+        target.transform.rotation = discardLocation.transform.rotation;
     }
 
     private void payEnergyCost(Energy energy)

@@ -12,18 +12,10 @@ using System;
 /// </summary>
 public class CardSwitch : ICard
 {
-    public override void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon) { }
-
-    public override void onOpponentDraw(Card card, BattleGameBoard battleGameBoard, Pokemon opponentActivePokemon) { }
+    public override bool overridesPlayFunc() { return true; }
 
     public override void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target) {
         // Switch board roles
         battleGameBoard.switchPokemon(user, target);
     }
-
-    public override void onTurnEnd(Card card, BattleGameBoard battleGameBoard) { }
-
-    public override void onOpponentTurnEnd(Card card, BattleGameBoard battleGameBoard) { }
-
-    public override void onBattleEnd(Card card, BattleGameBoard battleGameBoard) { }
 }

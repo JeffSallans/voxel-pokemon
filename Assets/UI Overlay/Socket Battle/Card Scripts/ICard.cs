@@ -4,15 +4,21 @@ using UnityEngine;
 
 public abstract class ICard : MonoBehaviour
 {
-    public abstract void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon);
+    public virtual void onBattleStart(Card card, BattleGameBoard battleGameBoard) { }
 
-    public abstract void onOpponentDraw(Card card, BattleGameBoard battleGameBoard, Pokemon opponentActivePokemon);
+    public virtual void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon) { }
 
-    public abstract void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target);
+    public virtual void onOpponentDraw(Card card, BattleGameBoard battleGameBoard, Pokemon opponentActivePokemon) { }
 
-    public abstract void onTurnEnd(Card card, BattleGameBoard battleGameBoard);
+    public virtual bool overridesPlayFunc() { return false; }
 
-    public abstract void onOpponentTurnEnd(Card card, BattleGameBoard battleGameBoard);
+    public virtual void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target) { }
 
-    public abstract void onBattleEnd(Card card, BattleGameBoard battleGameBoard);
+    public virtual void onTurnEnd(Card card, BattleGameBoard battleGameBoard) { }
+
+    public virtual void onOpponentTurnEnd(Card card, BattleGameBoard battleGameBoard) { }
+
+    public virtual void onBattleEnd(Card card, BattleGameBoard battleGameBoard) { }
+
+    public virtual void onCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target) { }
 }

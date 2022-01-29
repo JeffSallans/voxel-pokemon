@@ -36,7 +36,7 @@ public class UnicodeUtil
         { "ZZEva", "\ue910" },
 
         { "ZZBlock", "\ue902" },
-        { "ZZAttackMult", "\uf069" },
+        { "ZZAttackMult", "\ue926" },
         { "ZZInvul", "\ue922" },
         { "ZZBlind", "\ue914" },
         { "ZZSleep", "\ue923" }

@@ -4,22 +4,18 @@ using UnityEngine;
 
 public abstract class IFlipButton : MonoBehaviour
 {
-    public abstract string getFlipButtonText();
+    public virtual string getFlipButtonText() { return "";  }
 
-    public abstract bool isCardFlipped();
+    public virtual bool isCardFlipped() { return false; }
 
-    public abstract bool isFlipButtonEnabled(Card card, BattleGameBoard battleGameBoard);
+    public virtual bool isFlipButtonEnabled(Card card, BattleGameBoard battleGameBoard) { return false; }
 
-    public abstract void onFlipButtonHoverEnter(Card card, BattleGameBoard battleGameBoard);
+    public virtual void onFlipButtonPress(Card card, BattleGameBoard battleGameBoard) { }
 
-    public abstract void onFlipButtonHoverExit(Card card, BattleGameBoard battleGameBoard);
+    public virtual void onFlipEvent(Card card, BattleGameBoard battleGameBoard) { }
 
-    public abstract void onFlipButtonPress(Card card, BattleGameBoard battleGameBoard);
+    public virtual void onUnflipEvent(Card card, BattleGameBoard battleGameBoard) { }
 
-    public abstract void onFlipEvent(Card card, BattleGameBoard battleGameBoard);
-
-    public abstract void onUnflipEvent(Card card, BattleGameBoard battleGameBoard);
-
-    public abstract void onPlay(Card card, BattleGameBoard battleGameBoard, Pokemon targetPokemon);
+    public virtual void onPlay(Card card, BattleGameBoard battleGameBoard, Pokemon targetPokemon) { }
 
 }

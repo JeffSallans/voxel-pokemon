@@ -14,6 +14,7 @@ public class StatusEffect
     {
         get
         {
+            if (statType == "attackMultStat") { return "" + (stackCount / 100f) + getUnicodeForStatType(statType); }
             return "" + stackCount + getUnicodeForStatType(statType);
         }
     }
@@ -54,6 +55,11 @@ public class StatusEffect
     public void Update()
     {
         if (stackCount == 0)
+        {
+            onDeactivate();
+        }
+
+        if (statType == "attackMultStat" && stackCount == 100)
         {
             onDeactivate();
         }
@@ -125,7 +131,7 @@ public class StatusEffect
         if (givenStatType == "specialStat") return "ZZSpc";
         if (givenStatType == "evasionStat") return "ZZEva";
         if (givenStatType == "blockStat") return "ZZBlock";
-        if (givenStatType == "AttackMultStat") return "%";
+        if (givenStatType == "attackMultStat") return "ZZAttackMult";
         if (givenStatType == "invulnerability") return "ZZInvul";
         return "\uf111";
     }
