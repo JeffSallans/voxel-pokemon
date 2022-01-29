@@ -594,6 +594,11 @@ public class Card : MonoBehaviour
         if (overrideFunctionality) { overrideFunctionality.onCardPlayed(this, battleGameBoard, move, user, target); }
     }
 
+    public void onDiscard(bool wasPlayed) {
+        if (overrideFunctionality) { overrideFunctionality.onDiscard(this, battleGameBoard, wasPlayed); }
+    }
+
+
     ///////////////////////////////////
     // Flip Button Section
     ///////////////////////////////////

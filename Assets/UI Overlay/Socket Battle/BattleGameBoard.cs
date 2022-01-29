@@ -467,6 +467,7 @@ public class BattleGameBoard : MonoBehaviour
         user.hand.Remove(target);
         target.Translate(discardLocation.transform.position);
         target.transform.rotation = discardLocation.transform.rotation;
+        target.onDiscard(wasPlayed);
     }
 
     private void payEnergyCost(Energy energy)

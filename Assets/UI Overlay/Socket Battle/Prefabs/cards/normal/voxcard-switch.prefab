@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: overrideFunctionality
       value: 
       objectReference: {fileID: 4327189041733034056}
+    - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: flipButtonFunctionality
+      value: 
+      objectReference: {fileID: 2207620230058107678}
     - target: {fileID: 4123315518454217902, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_text
       value: Switch out your active pokemon
@@ -178,3 +182,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995d492ceaa536849bd903665a4e61c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2207620230058107678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949891965085280613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386e9f57b270e284a970c1e12a846dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipButtonText: '1 ZZEva: Reduce cost.'
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 1

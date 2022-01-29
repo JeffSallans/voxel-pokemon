@@ -14,6 +14,8 @@ public abstract class ICard : MonoBehaviour
 
     public virtual void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target) { }
 
+    public virtual void onDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed) { }
+
     public virtual void onTurnEnd(Card card, BattleGameBoard battleGameBoard) { }
 
     public virtual void onOpponentTurnEnd(Card card, BattleGameBoard battleGameBoard) { }
