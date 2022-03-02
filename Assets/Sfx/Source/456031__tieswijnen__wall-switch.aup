@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="456031__tieswijnen__wall-switch_data" version="1.3.0" audacityversion="2.2.2" sel0="1.4220250000" sel1="1.8560196429" vpos="0" h="0.0000000000" zoom="216.5925352930" rate="96000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="456031__tieswijnen__wall-switch" channel="2" linked="0" mute="0" solo="0" height="367" minimized="0" isSelected="1" rate="96000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="775650">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808c5d.au" len="262144" min="-0.115361" max="0.095941" rms="0.001972"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0808603.au" len="262144" min="-0.372069" max="0.2383" rms="0.003025"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="e0808e45.au" len="251362" min="-0.196839" max="0.195418" rms="0.003367"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
