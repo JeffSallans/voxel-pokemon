@@ -86,6 +86,12 @@ public class OpponentMove : IOpponentMove
             return actingPokemon.pokemonName + " missed. " + target.pokemonName + " is invulnerable.";
         }
 
+        // Pay cost
+        actingPokemon.attackStat -= attackCost;
+        actingPokemon.defenseStat -= defenseCost;
+        actingPokemon.specialStat -= specialCost;
+        actingPokemon.evasionStat -= evasionCost;
+
         // Determine damage
         commonCardPlay(actingPokemon, target, out moveMessage);
 
@@ -107,7 +113,7 @@ public class OpponentMove : IOpponentMove
         if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f) - target.blockStat;
+            dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target)) - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
             user.attackMultStat = 100;
 
@@ -139,7 +145,8 @@ public class OpponentMove : IOpponentMove
         // Heal/dmg user if possible
         if (!attackMissed && userHeal > 0)
         {
-            user.health += userHeal;
+            var newHealth = user.health + userHeal;
+            user.health = Mathf.Min(user.initHealth, newHealth);
         }
 
         message = moveDescriptionWithTemplates.Replace("{damage}", Mathf.Max(dealtDamage, 0).ToString());

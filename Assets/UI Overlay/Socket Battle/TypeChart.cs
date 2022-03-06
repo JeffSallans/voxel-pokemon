@@ -46,7 +46,6 @@ public static class TypeChart
         },
         { EnergyType.GRASS, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.STEEL, 2f },
                 { EnergyType.GROUND, 2f },
                 { EnergyType.ROCK, 2f },
 

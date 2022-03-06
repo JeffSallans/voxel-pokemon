@@ -418,7 +418,7 @@ public class Card : MonoBehaviour
         if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            var dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f) - target.blockStat;
+            var dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target)) - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
             user.attackMultStat = 100;
 
