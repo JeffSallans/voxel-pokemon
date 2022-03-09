@@ -245,6 +245,10 @@ public static class TypeChart
     {
         float effectiveness = 1;
         var hasValue = typeChart[move].TryGetValue(target, out effectiveness);
+        if (!hasValue)
+        {
+            return 1;
+        }
         return effectiveness;
     }
 

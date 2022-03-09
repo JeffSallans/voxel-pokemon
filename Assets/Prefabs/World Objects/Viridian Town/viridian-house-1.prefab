@@ -1,0 +1,3070 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6662094890233184577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7110351844545887858}
+  - component: {fileID: 8433399378359895721}
+  m_Layer: 0
+  m_Name: viridian-house-1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7110351844545887858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662094890233184577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3214122270638417885}
+  - {fileID: 7556852192315568190}
+  - {fileID: 4504967618563562079}
+  - {fileID: 8998062292449324525}
+  - {fileID: 224725927496871463}
+  - {fileID: 8354570833354696141}
+  - {fileID: 5701771566577601313}
+  - {fileID: 235853533088061906}
+  - {fileID: 642051107165153624}
+  - {fileID: 948222506088548885}
+  - {fileID: 21948056703963183}
+  - {fileID: 5441585793534385478}
+  - {fileID: 731373810304487083}
+  - {fileID: 4781298222114898997}
+  - {fileID: 2126563844643256434}
+  - {fileID: 425021545675217358}
+  - {fileID: 2696948257772471970}
+  - {fileID: 4872567595376443854}
+  - {fileID: 2240557885668228962}
+  - {fileID: 3983461110460349475}
+  - {fileID: 2706079285254876106}
+  - {fileID: 2266880975854433062}
+  - {fileID: 5791923200299581368}
+  - {fileID: 2373477937354342611}
+  - {fileID: 3025815544876141823}
+  - {fileID: 7892694815384741847}
+  - {fileID: 7734009901819749973}
+  - {fileID: 8265175418074596077}
+  - {fileID: 7302109689103064080}
+  - {fileID: 3926250254360379318}
+  - {fileID: 2466527677927799714}
+  - {fileID: 3186469689885406849}
+  - {fileID: 4516884059807956721}
+  - {fileID: 4027571165779401298}
+  - {fileID: 1098661292009808780}
+  - {fileID: 8976788186553983666}
+  - {fileID: 3909344297945012761}
+  - {fileID: 8018742032114051902}
+  - {fileID: 4201275871188499988}
+  - {fileID: 5117935556244738099}
+  - {fileID: 4828487809506391373}
+  - {fileID: 6288641634606158303}
+  - {fileID: 538780452612524859}
+  - {fileID: 4615884036077000727}
+  - {fileID: 6612183430168442671}
+  - {fileID: 2027774587794017982}
+  - {fileID: 2246484288005644920}
+  - {fileID: 3134341803452153887}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8433399378359895721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662094890233184577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 23.689217, y: 6.051554, z: 12.210631}
+  m_Center: {x: 4.6091003, y: 3.1227124, z: 4.7527843}
+--- !u!1001 &67721716899097808
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_RootOrder
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-19
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+--- !u!4 &538780452612524859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6f1b346dcaf13b4fa24a95c3d831310, type: 3}
+  m_PrefabInstance: {fileID: 67721716899097808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &175433288409071141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-43
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+--- !u!4 &425021545675217358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 517417f16dc32a6419e89987f92189c1, type: 3}
+  m_PrefabInstance: {fileID: 175433288409071141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &330128877994641868
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-22
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+--- !u!4 &224725927496871463 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20ac0ddcff73e5a45b2cfcf21860bf4c, type: 3}
+  m_PrefabInstance: {fileID: 330128877994641868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &346586906739441209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-35
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+--- !u!4 &235853533088061906 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc7b3430bde38f2439eec7cb6477c9f8, type: 3}
+  m_PrefabInstance: {fileID: 346586906739441209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &560487980824065988
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-44
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+--- !u!4 &21948056703963183 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f1ea2436ee885e243a661d8856c07043, type: 3}
+  m_PrefabInstance: {fileID: 560487980824065988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &627552732861564007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: feae78947fe029149acf929589c78634, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-38
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: feae78947fe029149acf929589c78634, type: 3}
+--- !u!4 &1098661292009808780 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: feae78947fe029149acf929589c78634, type: 3}
+  m_PrefabInstance: {fileID: 627552732861564007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &766309186304552446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-47
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+--- !u!4 &948222506088548885 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2852b9b62d520f643a9224754257494d, type: 3}
+  m_PrefabInstance: {fileID: 766309186304552446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &985415196631918912
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-34
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+--- !u!4 &731373810304487083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cbcbe19352d6cc4faf546ebc9001e30, type: 3}
+  m_PrefabInstance: {fileID: 985415196631918912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1108940395058089651
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+--- !u!4 &642051107165153624 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06c646226c972cf40a86572c5b3ff63d, type: 3}
+  m_PrefabInstance: {fileID: 1108940395058089651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1770678796274964617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-33
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+--- !u!4 &2240557885668228962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed493bff814a5814993d379512e9b6ec, type: 3}
+  m_PrefabInstance: {fileID: 1770678796274964617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1776569944871257491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_RootOrder
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+--- !u!4 &2246484288005644920 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 44e657309d283a04290c6ab6e116717a, type: 3}
+  m_PrefabInstance: {fileID: 1776569944871257491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1801208136646366413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+--- !u!4 &2266880975854433062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6a39d286b14586d4783d9559af862e14, type: 3}
+  m_PrefabInstance: {fileID: 1801208136646366413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1876219774684045209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-30
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+--- !u!4 &2126563844643256434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48466ec9b2b05c34da1c062fe46578c0, type: 3}
+  m_PrefabInstance: {fileID: 1876219774684045209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1994711193276361045
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_RootOrder
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-23
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+--- !u!4 &2027774587794017982 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7910888cb40d8984889b091b4d04bb87, type: 3}
+  m_PrefabInstance: {fileID: 1994711193276361045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2452022774061173793
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-41
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+--- !u!4 &2706079285254876106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b82b4b139ddddec479a562f9cd7c07f5, type: 3}
+  m_PrefabInstance: {fileID: 2452022774061173793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2515195914706903369
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-32
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+--- !u!4 &2696948257772471970 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aa0e0b03f7f26b34a9f7d86b607334f2, type: 3}
+  m_PrefabInstance: {fileID: 2515195914706903369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2715781246565440585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+--- !u!4 &2466527677927799714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a8c08f19445f894a879238fe55d672a, type: 3}
+  m_PrefabInstance: {fileID: 2715781246565440585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2844850988031338296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+--- !u!4 &2373477937354342611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06ea413bd7cccbe499dbf8d52fe43b52, type: 3}
+  m_PrefabInstance: {fileID: 2844850988031338296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3103088240885645366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+--- !u!4 &3214122270638417885 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f6987760d26728e42b6e912c119ff8f5, type: 3}
+  m_PrefabInstance: {fileID: 3103088240885645366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3148618885034824042
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-26
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+--- !u!4 &3186469689885406849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3752316796774104f98dd5a4aac772fc, type: 3}
+  m_PrefabInstance: {fileID: 3148618885034824042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3239726674883979252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_RootOrder
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+--- !u!4 &3134341803452153887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d6df8acbd66418c4289f641fe8d7a141, type: 3}
+  m_PrefabInstance: {fileID: 3239726674883979252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3348252916238510868
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+--- !u!4 &3025815544876141823 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8f4ce43bd39cb3947b44104824989ce0, type: 3}
+  m_PrefabInstance: {fileID: 3348252916238510868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3489858563560340921
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+--- !u!4 &4027571165779401298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1da7ec9fbcf184744b821bb0fbf46937, type: 3}
+  m_PrefabInstance: {fileID: 3489858563560340921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3513548484624980936
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-37
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+--- !u!4 &3983461110460349475 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 91e53ecf2879bfb438cbb3aa0ff6c495, type: 3}
+  m_PrefabInstance: {fileID: 3513548484624980936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3587819211588337138
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-40
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+--- !u!4 &3909344297945012761 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f73f08b45182d14385c5cbcb66d0a28, type: 3}
+  m_PrefabInstance: {fileID: 3587819211588337138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3600186657020745821
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+--- !u!4 &3926250254360379318 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 818ee9a7895cb1241865296a70c788af, type: 3}
+  m_PrefabInstance: {fileID: 3600186657020745821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4111334917993086388
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-24
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+--- !u!4 &4504967618563562079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3338526e9ebb3b847b46bdb24aba6722, type: 3}
+  m_PrefabInstance: {fileID: 4111334917993086388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4117850693946530074
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+--- !u!4 &4516884059807956721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b021782874011314b9989c5c45cc7d7c, type: 3}
+  m_PrefabInstance: {fileID: 4117850693946530074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4451622793206913535
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+--- !u!4 &4201275871188499988 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8f2c27f25f0f0374b88021ae7322042a, type: 3}
+  m_PrefabInstance: {fileID: 4451622793206913535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4651152132600395736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-21
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+--- !u!4 &5117935556244738099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 53c1581c61ac75b4ca95c7bf3f74a2d0, type: 3}
+  m_PrefabInstance: {fileID: 4651152132600395736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4905668025883256357
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-39
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+--- !u!4 &4872567595376443854 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 775db82aba63e9a4abdce57d49a17b66, type: 3}
+  m_PrefabInstance: {fileID: 4905668025883256357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4938343681478611622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-14
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+--- !u!4 &4828487809506391373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8a5378917f615547be7376d4abc9be9, type: 3}
+  m_PrefabInstance: {fileID: 4938343681478611622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5030569282289853406
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-45
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+--- !u!4 &4781298222114898997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7aa4e1f0daaee734ebf0c64952207db8, type: 3}
+  m_PrefabInstance: {fileID: 5030569282289853406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5153335607014555644
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_RootOrder
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-18
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+--- !u!4 &4615884036077000727 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0290ccd294345584b9b79b2a38821865, type: 3}
+  m_PrefabInstance: {fileID: 5153335607014555644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5236132184111885514
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-29
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+--- !u!4 &5701771566577601313 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77678925cc3b2e849bbd86cc2b9df9fd, type: 3}
+  m_PrefabInstance: {fileID: 5236132184111885514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5480559756505561773
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-36
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+--- !u!4 &5441585793534385478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 75db72aead2416e4f870ea7b8841e37b, type: 3}
+  m_PrefabInstance: {fileID: 5480559756505561773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5822880823276467764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-28
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+--- !u!4 &6288641634606158303 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ba765fddd0dda64d89fe7b94c69a21d, type: 3}
+  m_PrefabInstance: {fileID: 5822880823276467764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6335353064472336467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-31
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+--- !u!4 &5791923200299581368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 532d50d3d8c1ef847a606c29e424c69c, type: 3}
+  m_PrefabInstance: {fileID: 6335353064472336467}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6649996620699308228
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_RootOrder
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+--- !u!4 &6612183430168442671 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a25e0990b8dadf741b5019562b537342, type: 3}
+  m_PrefabInstance: {fileID: 6649996620699308228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7123840769111129083
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-42
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+--- !u!4 &7302109689103064080 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 934ed446b8dac8249af98796c8d038be, type: 3}
+  m_PrefabInstance: {fileID: 7123840769111129083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7548862118357601493
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+--- !u!4 &8018742032114051902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b27ba9bcd222f274c8ceb810a6e7fd8a, type: 3}
+  m_PrefabInstance: {fileID: 7548862118357601493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7638884948999290940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+--- !u!4 &7892694815384741847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 810845242982ed44cbdc86df95247aa6, type: 3}
+  m_PrefabInstance: {fileID: 7638884948999290940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7844708125078487486
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+--- !u!4 &7734009901819749973 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 257aa2aba32ba354b8a1dd8df94806b2, type: 3}
+  m_PrefabInstance: {fileID: 7844708125078487486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8022578322404054997
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-17
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+--- !u!4 &7556852192315568190 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5d84e5866ceb0fe4c872f255a70362d6, type: 3}
+  m_PrefabInstance: {fileID: 8022578322404054997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8393544866974351910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-46
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+--- !u!4 &8354570833354696141 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c00b8bc87f589c1438aebc6a46e3582d, type: 3}
+  m_PrefabInstance: {fileID: 8393544866974351910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8446910385715275014
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-27
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+--- !u!4 &8265175418074596077 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0544baef9c9e078419574f59901900bd, type: 3}
+  m_PrefabInstance: {fileID: 8446910385715275014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8870204736260031833
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+--- !u!4 &8976788186553983666 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fcdb1a402007d1e458e8544f22dd5696, type: 3}
+  m_PrefabInstance: {fileID: 8870204736260031833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8887062793094302214
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7110351844545887858}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+      propertyPath: m_Name
+      value: viridian-house-1-5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+--- !u!4 &8998062292449324525 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 113570ad955b3e34d862726d53950a5d, type: 3}
+  m_PrefabInstance: {fileID: 8887062793094302214}
+  m_PrefabAsset: {fileID: 0}
