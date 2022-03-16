@@ -565,7 +565,6 @@ public class BattleGameBoard : MonoBehaviour
         allCards.ForEach(c => c.onOpponentTurnEnd());
         allEnergy.ForEach(e => e.onOpponentTurnEnd());
         opponent.opponentStrategyBot.onOpponentTurnEnd();
-        opponent.movesConfig.ForEach(m => m.onOpponentTurnEnd());
 
         // Check game end conditions
         onEitherTurnEnd();
@@ -589,9 +588,25 @@ public class BattleGameBoard : MonoBehaviour
         if (numberOfPlayerPokeAlive == 0) { onBattleEnd(false); }
 
         // When player active pokemon is 0 hp - switch in
+        var isPlayerPokeFainted = activePokemon.isFainted;
+        if (isPlayerPokeFainted && numberOfPlayerPokeAlive > 0) {
+            var nextAlivePoke = player.party.Where(p => !p.isFainted).First();
+            switchPokemon(activePokemon, nextAlivePoke);
+        }
 
         // When opponent active pokemon is 0 hp - switch in
-
+        var isOpponentPokeFainted = opponentActivePokemon.isFainted;
+        if (isOpponentPokeFainted && numberOfOpponentPokeAlive > 0)
+        {
+            var nextOpponentAlivePoke = opponent.party.Where(p => !p.isFainted).First();
+            switchOpponentPokemon(opponentActivePokemon, nextOpponentAlivePoke);
+            
+            // Compute next move if acting pokemon fainted
+            if (opponent.opponentStrategyBot.nextOpponentMove.actingPokemon.isFainted)
+            {
+                opponent.opponentStrategyBot.computeOpponentsNextMove();
+            }
+        }
     }
 
 

@@ -8,6 +8,7 @@ using System.Linq;
 /// <summary>
 /// The stats for the given pokemon
 /// </summary>
+[RequireComponent(typeof(HealthBar))]
 public class Pokemon : MonoBehaviour
 {
     public string pokemonName;
@@ -20,7 +21,13 @@ public class Pokemon : MonoBehaviour
         set {
             if (_health != 0 && value <= 0) gameObject.GetComponent<Animator>().SetTrigger("onDeath"); 
             _health = Mathf.Max(value, 0);
+            healthBar.UpdateHealthBar(this);
         }
+    }
+
+    public bool isFainted
+    {
+        get { return _health <= 0; }
     }
 
     public int initHealth;
@@ -197,6 +204,7 @@ public class Pokemon : MonoBehaviour
     public DropEvent onHoverWrapper;
 
     private BattleGameBoard battleGameBoard;
+    private HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -204,6 +212,8 @@ public class Pokemon : MonoBehaviour
         if (nameText) nameText.text = pokemonName;
         attachedStatus = new List<StatusEffect>();
         gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
+        healthBar = gameObject.GetComponent<HealthBar>();
+        health = initHealth;
     }
 
     // Update is called once per frame
@@ -292,20 +302,23 @@ public class Pokemon : MonoBehaviour
         if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
 
         // Set model position
-        // ASSUMING structure is model -> model-animation-target -> <actual model>
-        if (animateModelTranslation) {
-            var translationAnimation = pokemonModel.GetComponent<TranslationAnimation>();
-            if (translationAnimation) {
-                translationAnimation.Translate(modelPlaceholder.transform.position, 0.01f);
+        if (!isFainted)
+        {
+            // ASSUMING structure is model -> model-animation-target -> <actual model>
+            if (animateModelTranslation) {
+                var translationAnimation = pokemonModel.GetComponent<TranslationAnimation>();
+                if (translationAnimation) {
+                    translationAnimation.Translate(modelPlaceholder.transform.position, 0.01f);
+                }
+                else {
+                    pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
+                }
             }
             else {
+                pokemonRootModel.gameObject.transform.rotation *= modelPlaceholder.transform.localRotation;
+                pokemonRootModel.gameObject.transform.rotation *= Quaternion.Euler(0, 180f, 0);
                 pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
             }
-        }
-        else {
-            pokemonRootModel.gameObject.transform.rotation *= modelPlaceholder.transform.localRotation;
-            pokemonRootModel.gameObject.transform.rotation *= Quaternion.Euler(0, 180f, 0);
-            pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
         }
 
         // Set select position

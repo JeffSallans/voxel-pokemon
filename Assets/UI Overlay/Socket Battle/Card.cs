@@ -533,7 +533,10 @@ public class Card : MonoBehaviour
         var onOppTeam = battleGameBoard.opponent.party.Contains(target);
         var onTeam = battleGameBoard.player.party.Contains(target);
 
-        if (targetType == "Self")
+        if (target.isFainted) {
+            return false;
+        }
+        else if (targetType == "Self")
         {
             return isSelf;
         }

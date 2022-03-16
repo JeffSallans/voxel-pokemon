@@ -95,7 +95,7 @@ public class IOpponentMove : MonoBehaviour
 
     public virtual void onOpponentTurnEnd() {
         // Reset priority picks
-        turnPriority = initialPriority;
+        // turnPriority = initialPriority;
     }
 
     public virtual void onBattleEnd() { }

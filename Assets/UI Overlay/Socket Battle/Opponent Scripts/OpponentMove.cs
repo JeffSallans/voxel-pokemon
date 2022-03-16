@@ -78,7 +78,7 @@ public class OpponentMove : IOpponentMove
     public override string playMove()
     {
         var moveMessage = "";
-        var target = (overrideTarget != null) ? overrideTarget : actingPokemon;
+        var target = (overrideTarget != null) ? overrideTarget : battleGameBoard.activePokemon;
 
         if (target.isInvulnerable && damage > 0)
         {

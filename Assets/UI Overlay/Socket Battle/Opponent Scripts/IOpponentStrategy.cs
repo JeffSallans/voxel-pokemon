@@ -39,7 +39,7 @@ public class IOpponentStrategy : MonoBehaviour
     /// </summary>
     protected List<IOpponentMove> availableMoves
     {
-        get { return allMoves.Where(m => m.canUseMove).ToList(); }
+        get { return allMoves.Where(m => m.canUseMove && !m.actingPokemon.isFainted).ToList(); }
     }
 
     // Start is called before the first frame update
@@ -71,14 +71,18 @@ public class IOpponentStrategy : MonoBehaviour
             battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.actingPokemon);
         }
         lastMoveUsed = nextOpponentMove;
+        if (nextOpponentMove.actingPokemon.isFainted)
+        {
+            return nextOpponentMove.actingPokemon.pokemonName + " fainted before it could attack";
+        }
         return nextOpponentMove.playMove();
     }
 
     public virtual void computeOpponentsNextMove()
     {
         // Randomly select move
-        var moveIndex = Mathf.FloorToInt(Random.value * opponentDeck.movesConfig.Count);
-        nextOpponentMove = opponentDeck.movesConfig[moveIndex];
+        var moveIndex = Mathf.FloorToInt(Random.value * availableMoves.Count);
+        nextOpponentMove = availableMoves[moveIndex];
     }
 
     public virtual void onCardPlayed(Card move, Pokemon user, Pokemon target)

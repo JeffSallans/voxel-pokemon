@@ -179,6 +179,8 @@ public class Energy : MonoBehaviour
     /// </summary>
     public bool canAttachEnergy(Pokemon target)
     {
+        if (target.isFainted) { return false; }
+
         var hasRoomToAttach = target.attachedEnergy.Count < target.maxNumberOfAttachedEnergy;
         var supportsEnergyType = energyName == "Normal" || target.energyTypes.Contains(energyName);
         return hasRoomToAttach && supportsEnergyType;
