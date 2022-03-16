@@ -149,7 +149,8 @@ public class OpponentMove : IOpponentMove
             user.health = Mathf.Min(user.initHealth, newHealth);
         }
 
-        message = moveDescriptionWithTemplates.Replace("{damage}", Mathf.Max(dealtDamage, 0).ToString());
+        message = moveDescriptionWithTemplates.Replace("{damage}", Mathf.Max(dealtDamage, 0).ToString())
+            .Replace("{userHeal}", Mathf.Max(userHeal, 0).ToString());
         return attackMissed;
     }
 
