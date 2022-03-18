@@ -8,29 +8,28 @@ Unity game project to reproduce pokemon red using a voxel art style using a card
 
 # Early Look
 
-<a href="https://www.loom.com/share/f53a54d0b80b4e32a4f76bde84a9693a">
-  <p>Voxel-Pokemon - Youngster Joey Battle Early Look - Watch Video</p>
-  <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/f53a54d0b80b4e32a4f76bde84a9693a-with-play.gif">
+<a href="https://www.loom.com/share/02eb559ed98240f899f67625ef38d691">
+    <p>[Voxel-Poke] Surge 2v2 Battle - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/02eb559ed98240f899f67625ef38d691-with-play.gif">
 </a>
-  
+
+
 # Contibuting
 
-<a href="https://www.loom.com/share/4d6a5e2b579b45319cdbc3243deb367b">
-  <p>voxel-pokemon - How To Use world-dialog-messager - Watch Video</p>
-  <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/4d6a5e2b579b45319cdbc3243deb367b-with-play.gif">
-</a>
+[How To Use world-dialog-messager Video](https://www.loom.com/share/4d6a5e2b579b45319cdbc3243deb367b)
 
-<a href="https://www.loom.com/share/a558351138b34629884924bb0ba5c2c8">
-  <p>voxel-pokemon - How To Use TranslationAnimation - Watch Video</p>
-  <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a558351138b34629884924bb0ba5c2c8-with-play.gif">
-</a>
+[How To Use TranslationAnimation Video](https://www.loom.com/share/a558351138b34629884924bb0ba5c2c8)
 
-<a href="https://www.loom.com/share/1fa79c83ba064ecd8b7da3185ddd7148">
-  <p>[Voxel-Pokemon] Setup Energy - Watch Video</p>
-  <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/1fa79c83ba064ecd8b7da3185ddd7148-with-play.gif">
-</a>
+[How To Setup Add a Card](https://www.loom.com/share/d29376230c134fb6bfc016a061ffdf7a)
 
-<a href="https://www.loom.com/share/8e5aab78c436437188791ebc60e9d60a">
-  <p>[Voxel Pokemon] Icons In Unity - Watch Video</p>
-  <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/8e5aab78c436437188791ebc60e9d60a-with-play.gif">
-</a>
+[How To Setup Add a Pokemon](https://www.loom.com/share/f22b9b8b3ee64a4a830af99cacf759d2)
+
+[How To Setup Add An Energy](https://www.loom.com/share/1fa79c83ba064ecd8b7da3185ddd7148)
+
+[How To Add & Use Icons in Text](https://www.loom.com/share/8e5aab78c436437188791ebc60e9d60a)
+
+
+# Older Videos
+
+[Youngster Joey Battle Early Look](https://www.loom.com/share/f53a54d0b80b4e32a4f76bde84a9693a)
+
