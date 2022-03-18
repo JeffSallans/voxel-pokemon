@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 5127610090511877501}
   - component: {fileID: 4657380934509011608}
   - component: {fileID: 919132148570873321}
-  - component: {fileID: 919132148570873320}
+  - component: {fileID: 8353563524787128640}
   m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
@@ -141,7 +141,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 2, z: 2}
   m_Center: {x: -1, y: 1, z: 0}
---- !u!114 &919132148570873320
+--- !u!114 &8353563524787128640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,10 +150,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5504311997989855175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6993e5bb630916345a99c1b85261775c, type: 3}
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCollider: {fileID: 0}
-  worldTextBox: {fileID: 0}
-  signText: Pallet Town
-  textDisplayDuration: 0.5
+  eventName: pallete1
+  eventType: Message
+  interactionHint: Read
+  message: 
+  opponent: {fileID: 0}
+  sceneName: 
