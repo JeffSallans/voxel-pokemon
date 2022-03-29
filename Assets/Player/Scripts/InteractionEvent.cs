@@ -32,12 +32,25 @@ public class InteractionEvent : MonoBehaviour
     /// <summary>
     /// Scene to navigate to if it is a battle or another event
     /// </summary>
-    public string sceneName; 
+    public string sceneName;
+
+    /// <summary>
+    /// The name of the boolean to toggle on if active
+    /// </summary>
+    public string animationBooleanName;
+
+    /// <summary>
+    /// The animation controller to update
+    /// </summary>
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-                
+        if (animator == null)
+        {
+            animator = gameObject.GetComponent<Animator>();
+        }  
     }
 
     // Update is called once per frame

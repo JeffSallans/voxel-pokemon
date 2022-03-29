@@ -129,21 +129,27 @@ public class InteractionChecker : MonoBehaviour
 
     private void OnMessage(InteractionEvent iEvent)
     {
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        
         thirdPersonMovement.enabled = false;
         worldDialog.ShowMessage(iEvent.message, () =>
         {
             thirdPersonMovement.enabled = true;
+            if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             return true;
         });
     }
 
     private void OnBattle(InteractionEvent iEvent)
     {
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+
         thirdPersonMovement.enabled = false;
         worldDialog.ShowMessage(iEvent.message, () =>
         {
             thirdPersonMovement.enabled = true;
 
+            if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             SceneManager.LoadScene(iEvent.sceneName);
             return true;
         });
