@@ -38,6 +38,11 @@ public class InteractionChecker : MonoBehaviour
     /// </summary>
     public InteractionEvent hoverPossibleEvent;
 
+    /// <summary>
+    /// The event that is active, to avoid triggering it twice
+    /// </summary>
+    private InteractionEvent activeEvent = null;
+
     private Dictionary<string, string> interactionFlags = new Dictionary<string, string>();
 
     // Start is called before the first frame update
@@ -96,13 +101,13 @@ public class InteractionChecker : MonoBehaviour
     /// <param name="iEvent"></param>
     public void OnHoverInteraction(InteractionEvent iEvent)
     {
-        if (iEvent == null)
+        if (iEvent == null || activeEvent != null)
         {
             hoverPossibleEvent = null;
             interactionHoverText.text = "";
             crosshairText.color = new Color(red, green, blue, alpha);
         }
-        if (iEvent != hoverPossibleEvent)
+        else if (iEvent != hoverPossibleEvent)
         {
             hoverPossibleEvent = iEvent;
             interactionHoverText.text = iEvent.interactionHint;
@@ -129,28 +134,45 @@ public class InteractionChecker : MonoBehaviour
 
     private void OnMessage(InteractionEvent iEvent)
     {
+        activeEvent = hoverPossibleEvent;
         if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
-        
+
         thirdPersonMovement.enabled = false;
-        worldDialog.ShowMessage(iEvent.message, () =>
+        OnMessageHelper(iEvent, 0);
+    }
+
+    private void OnMessageHelper(InteractionEvent iEvent, int messageIndex)
+    {
+        // Base case the message index is the end of the list
+        if (messageIndex == iEvent.message.Count)
         {
             thirdPersonMovement.enabled = true;
             if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            activeEvent = null;
+            return;
+        }
+
+        // Recursive case: display message and then increment index
+        worldDialog.ShowMessage(iEvent.message[messageIndex], () =>
+        {
+            OnMessageHelper(iEvent, messageIndex + 1);
             return true;
         });
     }
 
     private void OnBattle(InteractionEvent iEvent)
     {
+        activeEvent = hoverPossibleEvent;
         if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
-        worldDialog.ShowMessage(iEvent.message, () =>
+        worldDialog.ShowMessage(iEvent.message[0], () =>
         {
             thirdPersonMovement.enabled = true;
 
             if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             SceneManager.LoadScene(iEvent.sceneName);
+            activeEvent = null;
             return true;
         });
 

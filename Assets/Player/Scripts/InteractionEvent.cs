@@ -22,7 +22,7 @@ public class InteractionEvent : MonoBehaviour
     /// <summary>
     /// Display text when the user clicks as a global message
     /// </summary>
-    public string message;
+    public List<string> message;
 
     /// <summary>
     /// Opponent details if the event is a battle
