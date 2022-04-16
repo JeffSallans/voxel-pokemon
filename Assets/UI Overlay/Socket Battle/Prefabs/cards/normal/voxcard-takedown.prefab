@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: userHeal
-      value: -10
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: damageType
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 7605089365230013540}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal <color=red>{damage}</color> ZZNormal dmg, take 10 dmg
+      value: Deal <color=red>{damage}</color> ZZNormal dmg, take 10 dmg. {flipText}
       objectReference: {fileID: 0}
     - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_text
@@ -277,8 +277,34 @@ PrefabInstance:
       objectReference: {fileID: -2432090755550338912, guid: 5d9d8be7e1927ea4781a5a0210a23891, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+--- !u!1 &8688498694816323765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_PrefabInstance: {fileID: 7310530416594396080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8688498694816323764 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
   m_PrefabInstance: {fileID: 7310530416594396080}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5905577874165481817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688498694816323765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipButtonText: '1 ATK: -20 recoil dmg'
+  attackCost: 1
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  damageIncrease: 0
+  blockIncrease: 0
+  multiplierIncrease: 0
+  userHealIncrease: 20
