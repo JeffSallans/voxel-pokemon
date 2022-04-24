@@ -260,6 +260,11 @@ public class Card : MonoBehaviour
     /// </summary>
     private DropEvent dropEvent;
 
+    private void Awake()
+    {
+        battleGameBoard = GameObject.FindObjectOfType<BattleGameBoard>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -528,6 +533,12 @@ public class Card : MonoBehaviour
     /// <returns></returns>
     public bool canTarget(Pokemon target)
     {
+        if (battleGameBoard.opponent == null ||
+            battleGameBoard.opponent.party == null ||
+            battleGameBoard.player == null ||
+            battleGameBoard.player.party == null) {
+            return false;
+        }
         var isSelf = battleGameBoard?.activePokemon == target;
         var isOpp = battleGameBoard?.opponentActivePokemon == target;
         var onOppTeam = battleGameBoard.opponent.party.Contains(target);

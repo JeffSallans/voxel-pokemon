@@ -45,9 +45,21 @@ public class InteractionChecker : MonoBehaviour
 
     private Dictionary<string, string> interactionFlags = new Dictionary<string, string>();
 
+    /// <summary>
+    /// Trakes the scene loading in the background
+    /// </summary>
+    private AsyncOperation sceneAsync;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (interactionHoverText == null || crosshairText == null)
+        {
+            print("Interaction Checker: Disabled - interactionHoverText and crosshairText are undefined");
+            this.enabled = false;
+            return;
+        }
+
         Cursor.visible = !removeCursor;
         red = crosshairText.color.r;
         green = crosshairText.color.g;
@@ -83,6 +95,8 @@ public class InteractionChecker : MonoBehaviour
     /// </summary>
     private InteractionEvent GetHoverInteraction()
     {
+        if (playerCamera == null) return null;
+
         RaycastHit hit = new RaycastHit();
         var raycastHit = Physics.Raycast(playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)), out hit, interactableDistance);
         
@@ -171,10 +185,27 @@ public class InteractionChecker : MonoBehaviour
             thirdPersonMovement.enabled = true;
 
             if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
-            SceneManager.LoadScene(iEvent.sceneName);
+            var opponent = iEvent.gameObject;
+            StartCoroutine(LoadScene(iEvent.sceneName, opponent));
             activeEvent = null;
             return true;
         });
 
+    }
+
+    IEnumerator LoadScene(string sceneName, GameObject opponent)
+    {
+        yield return new WaitForSeconds(1);
+
+        // Copy opponent to be moved as a global value
+        var rootOpponent = Instantiate(opponent);
+        rootOpponent.name = "Opponent";
+
+        GameObject player = GameObject.Find("Player Dad");
+        DontDestroyOnLoad(player);
+        DontDestroyOnLoad(rootOpponent);
+        SceneManager.LoadScene(sceneName);
+        this.enabled = false;
+        
     }
 }

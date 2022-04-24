@@ -203,9 +203,14 @@ public class BattleGameBoard : MonoBehaviour
     public List<GameObject> opponentPokemonModelLocations;
 
     /// <summary>
-    /// The UI to choose a pokemon to switch to
+    /// The locations of the player party
     /// </summary>
-    public GameObject switchPokemonOverlay;
+    public GameObject playerPartyParentGameobject;
+
+    /// <summary>
+    /// The locations of the party
+    /// </summary>
+    public GameObject opponentPartyParentGameobject;
 
     /// <summary>
     /// How many energies to pick from
@@ -242,16 +247,69 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public bool playerHasWon = true;
 
+    // Triggers before start https://www.monkeykidgc.com/2020/07/unity-lifecycle-awake-vs-onenable-vs-start.html
+    void Awake()
+    {
+        if (player == null)
+        {
+            player = GameObject.Find("Player Dad").GetComponent<PlayerDeck>();
+        }
+
+        if (opponent == null)
+        {
+            opponent = GameObject.FindObjectOfType<OpponentDeck>();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        onBattleStart();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    /// <summary>
+    /// Move the players and pokemon into the right spots
+    /// </summary>
+    private void onSetupPlayer()
+    {
+        // Disabled players
+
+        // Move party parent reference into placement
+        var playerParty = GameObject.Find("Player Dad/party");
+        if (playerParty)
+        {
+            playerParty.gameObject.transform.parent = playerPartyParentGameobject.transform;
+            playerParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        }
+
+        var opponentParty = GameObject.Find("Opponent/party");
+        if (opponentParty)
+        {
+            opponentParty.gameObject.transform.parent = opponentPartyParentGameobject.transform;
+            opponentParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        }
+
+        // Move pokemon into placement
+        var i = 0;
+        player.party.ForEach(p =>
+        {
+            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i]);
+            p.showModels();
+            i++;
+        });
+        var j = 0;
+        opponent.party.ForEach(p =>
+        {
+            p.setPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
+            p.showModels();
+            j++;
+        });
     }
 
     /// <summary>
@@ -264,18 +322,7 @@ public class BattleGameBoard : MonoBehaviour
         // Place pokemon
         activePokemon = player.party.First();
         opponentActivePokemon = opponent.party.First();
-        var i = 0;
-        player.party.ForEach(p =>
-        {
-            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i]);
-            i++;
-        });
-        var j = 0;
-        opponent.party.ForEach(p =>
-        {
-            p.setPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
-            j++;
-        });
+        onSetupPlayer();
 
         // Shuffle player deck
         allPokemon.ForEach(p =>
@@ -612,12 +659,10 @@ public class BattleGameBoard : MonoBehaviour
 
     public void showSwitchPokemon()
     {
-        switchPokemonOverlay.SetActive(true);
     }
 
     public void hideSwitchPokemon()
     {
-        switchPokemonOverlay.SetActive(false);
     }
 
     /// <summary>

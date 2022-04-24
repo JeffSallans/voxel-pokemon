@@ -199,6 +199,16 @@ public class Pokemon : MonoBehaviour
     public GameObject pokemonSelectModel;
 
     /// <summary>
+    /// The card parent
+    /// </summary>
+    public GameObject cardsParent;
+
+    /// <summary>
+    /// The overlay parent
+    /// </summary>
+    public GameObject overlayParent;
+
+    /// <summary>
     /// The object containing the 2D box collider to move into position
     /// </summary>
     public DropEvent onHoverWrapper;
@@ -207,13 +217,19 @@ public class Pokemon : MonoBehaviour
     private HealthBar healthBar;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (nameText) nameText.text = pokemonName;
         attachedStatus = new List<StatusEffect>();
         gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
         healthBar = gameObject.GetComponent<HealthBar>();
         health = initHealth;
+
+        if (initDeck.Count == 0)
+        {
+            initDeck = gameObject.GetComponentsInChildren<Card>().ToList();
+        }
+        hideModels();
     }
 
     // Update is called once per frame
@@ -274,6 +290,26 @@ public class Pokemon : MonoBehaviour
             var index = energyLocations.IndexOf(e);
             e.SetActive(index < maxNumberOfAttachedEnergy);
         });
+    }
+
+    /// <summary>
+    /// Show all visible models
+    /// </summary>
+    public void showModels()
+    {
+        cardsParent.SetActive(true);
+        pokemonRootModel.SetActive(true);
+        overlayParent.SetActive(true);
+    }
+
+    /// <summary>
+    /// Hide all visible models
+    /// </summary>
+    public void hideModels()
+    {
+        cardsParent.SetActive(false);
+        pokemonRootModel.SetActive(false);
+        overlayParent.SetActive(false);
     }
 
     private void addInitialStatHelper(string statName, int statValue)

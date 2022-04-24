@@ -26,9 +26,16 @@ public class OpponentDeck : MonoBehaviour
     public IOpponentStrategy opponentStrategyBot;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        movesConfig = gameObject.GetComponentsInChildren<IOpponentMove>().ToList();
+        if (party.Count == 0)
+        {
+            party = gameObject.GetComponentsInChildren<Pokemon>().ToList();
+        }
+        if (movesConfig.Count == 0)
+        {
+            movesConfig = gameObject.GetComponentsInChildren<IOpponentMove>().ToList();
+        }
     }
 
     // Update is called once per frame

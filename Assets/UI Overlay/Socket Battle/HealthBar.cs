@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
     private Vector3 initialHealthBarEffectMiddleScale;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         initialHealthBarMiddlePosition = healthBarMiddle.transform.localPosition;
         initialHealthBarMiddleScale = healthBarMiddle.transform.localScale;
