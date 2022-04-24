@@ -300,6 +300,18 @@ public class Pokemon : MonoBehaviour
         cardsParent.SetActive(true);
         pokemonRootModel.SetActive(true);
         overlayParent.SetActive(true);
+
+        // For each card
+        var cards = gameObject.GetComponentsInChildren<Card>();
+        cards.ToList().ForEach(
+            e => e.GetComponentsInChildren<MeshRenderer>()
+                .ToList()
+                .ForEach(m => m.enabled = true)
+        );
+
+        // For each energy hide mesh render
+        var energies = gameObject.GetComponentsInChildren<Energy>();
+        energies.ToList().ForEach(e => e.GetComponentInChildren<MeshRenderer>().enabled = true);
     }
 
     /// <summary>
@@ -310,6 +322,18 @@ public class Pokemon : MonoBehaviour
         cardsParent.SetActive(false);
         pokemonRootModel.SetActive(false);
         overlayParent.SetActive(false);
+
+        // For each card
+        var cards = gameObject.GetComponentsInChildren<Card>();
+        cards.ToList().ForEach(
+            e => e.GetComponentsInChildren<MeshRenderer>()
+                .ToList()
+                .ForEach(m => m.enabled = false)
+        );
+
+        // For each energy hide mesh render
+        var energies = gameObject.GetComponentsInChildren<Energy>();
+        energies.ToList().ForEach(e => e.GetComponentInChildren<MeshRenderer>().enabled = false);
     }
 
     private void addInitialStatHelper(string statName, int statValue)

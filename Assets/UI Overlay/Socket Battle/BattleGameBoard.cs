@@ -295,6 +295,8 @@ public class BattleGameBoard : MonoBehaviour
             opponentParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
 
+        // Resize Energies
+
         // Move pokemon into placement
         var i = 0;
         player.party.ForEach(p =>
@@ -317,6 +319,7 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public void onBattleStart()
     {
+        startBattleButton.SetActive(false);
         gameHasEnded = false;
 
         // Place pokemon
@@ -360,7 +363,6 @@ public class BattleGameBoard : MonoBehaviour
             // Trigger draw
             onDraw();
 
-            startBattleButton.SetActive(false);
             endTurnButton.SetActive(true);
 
             return true;
@@ -372,20 +374,25 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public void onDraw() {
         // Refresh energy
-        availableEnergy.ForEach(e => { e.isUsed = false; }); 
+        availableEnergy.ForEach(e => { e.isUsed = false; });
 
         // Pick 3 energies
-        while (energyHand.Count < energyHandSize)
+        var maxThreshold = 10;
+        var i = 0;
+        while (energyHand.Count < energyHandSize && i < maxThreshold)
         {
             if (energyDeck.Count < 1) { reshuffleEnergyDiscard(); }
             drawEnergy();
+            i++;
         }
 
         // Draw cards up to handSize
-        while (hand.Count < handSize)
+        i = 0;
+        while (hand.Count < handSize && i < maxThreshold)
         {
             if (deck.Count < 1) { reshuffleDiscard(); }
             drawCard(activePokemon);
+            i++;
         }
     }
 

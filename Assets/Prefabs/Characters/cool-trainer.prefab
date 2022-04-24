@@ -302,12 +302,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: cool-trainer-kat
-  eventType: Battle
+  eventType: Message
   interactionHint: Talk
   message:
-  - Let's Battle!
+  - Hi I'm Cool Trainer Kat
   opponent: {fileID: 6808737486173340938}
-  sceneName: battle
+  sceneName: 
   animationBooleanName: isTalking
   animator: {fileID: 6589502337308649416}
 --- !u!114 &6808737486173340938
@@ -1389,6 +1389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pokemon-raichu
       objectReference: {fileID: 0}
+    - target: {fileID: 4284302265976545161, guid: b550a368197cf0342a98e171897e65dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4284302265976545166, guid: b550a368197cf0342a98e171897e65dc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2023,6 +2027,10 @@ PrefabInstance:
     - target: {fileID: 7769797705293627799, guid: 9b00b276a4788db4383cb367b46d28bf, type: 3}
       propertyPath: m_Name
       value: pokemon-ivysaur
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769797705293627799, guid: 9b00b276a4788db4383cb367b46d28bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b00b276a4788db4383cb367b46d28bf, type: 3}
