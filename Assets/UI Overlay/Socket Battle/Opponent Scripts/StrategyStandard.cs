@@ -55,7 +55,7 @@ public class StrategyStandard : IOpponentStrategy
         {
             return thirdChoice;
         }
-        else if (d20RollOnHowWellBotPerformed <= 6 && firstChoice != null)
+        else if (d20RollOnHowWellBotPerformed <= 6 && secondChoice != null)
         {
             return secondChoice;
         }

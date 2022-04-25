@@ -60,33 +60,36 @@ public class Energy : MonoBehaviour
     private Vector3 dragStartPosition = new Vector3();
 
     /// <summary>
-    /// The last position of the mouse to compute the delta
-    /// </summary>
-    private Vector3 previousMousePosition = new Vector3();
-
-    /// <summary>
     /// The dropEvent for the selected drag
     /// </summary>
     private DropEvent dropEvent;
 
     private BattleGameBoard battleGameBoard;
 
+    private Camera canvasCamera;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // Update energy position
-        var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         if (isDragging)
         {
-            transform.localPosition += (mousePosition - previousMousePosition);
+            canvasCamera = GameObject.Find("Canvas Camera").GetComponent<Camera>();
+            var mousePosition = canvasCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
+            gameObject.transform.position = mousePosition;
         }
-        previousMousePosition = mousePosition;
+
+        // Check for drop
+        if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            onDrop();
+        }
     }
 
     public void OnHoverEnter()

@@ -206,7 +206,7 @@ public class BattleGameBoard : MonoBehaviour
     /// The locations of the player party
     /// </summary>
     public GameObject playerPartyParentGameobject;
-
+    
     /// <summary>
     /// The locations of the party
     /// </summary>
@@ -295,8 +295,6 @@ public class BattleGameBoard : MonoBehaviour
             opponentParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
 
-        // Resize Energies
-
         // Move pokemon into placement
         var i = 0;
         player.party.ForEach(p =>
@@ -312,6 +310,45 @@ public class BattleGameBoard : MonoBehaviour
             p.showModels();
             j++;
         });
+    }
+
+    /// <summary>
+    /// Move the pokemon back to the players
+    /// </summary>
+    private void onPackupPlayer()
+    {
+        // Enable players
+
+        // Move party parent reference into placement
+        var playerParty = GameObject.Find("deck/party");
+        if (playerParty)
+        {
+            playerParty.gameObject.transform.parent = player.transform;
+            playerParty.gameObject.transform.rotation = player.transform.rotation;
+        }
+
+        var opponentParty = GameObject.Find("opp-deck/party");
+        if (opponentParty)
+        {
+            opponentParty.gameObject.transform.parent = opponent.transform;
+            opponentParty.gameObject.transform.rotation = opponent.transform.rotation;
+        }
+
+        // Move pokemon into placement
+        var i = 0;
+        player.party.ForEach(p =>
+        {
+            p.hideModels();
+            i++;
+        });
+        var j = 0;
+        opponent.party.ForEach(p =>
+        {
+            p.hideModels();
+            j++;
+        });
+
+        player.GetComponent<InteractionChecker>().LoadPreviousScene();
     }
 
     /// <summary>
@@ -775,6 +812,8 @@ public class BattleGameBoard : MonoBehaviour
         {
             worldDialog.ShowMessage("Red won!", () => {
                 print("The player won");
+                onPackupPlayer();
+                player.GetComponent<InteractionChecker>().LoadPreviousScene();
                 return true;
             });
         }
@@ -782,6 +821,8 @@ public class BattleGameBoard : MonoBehaviour
         {
             worldDialog.ShowMessage(opponent.opponentName + " won.", () => {
                 print("The opponent won");
+                onPackupPlayer();
+                player.GetComponent<InteractionChecker>().LoadPreviousScene();
                 return true;
             });
         }

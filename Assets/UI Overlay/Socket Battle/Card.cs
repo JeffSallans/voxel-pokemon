@@ -260,6 +260,8 @@ public class Card : MonoBehaviour
     /// </summary>
     private DropEvent dropEvent;
 
+    private Camera canvasCamera;
+
     private void Awake()
     {
         battleGameBoard = GameObject.FindObjectOfType<BattleGameBoard>();
@@ -288,11 +290,17 @@ public class Card : MonoBehaviour
         });
 
         // Update card position
-        var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         if (isDragging) {
-            transform.localPosition += (mousePosition - previousMousePosition);
+            canvasCamera = GameObject.Find("Canvas Camera").GetComponent<Camera>();
+            var mousePosition = canvasCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
+            gameObject.transform.position = mousePosition;
         }
-        previousMousePosition = mousePosition;
+
+        // Check for drop
+        if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            onDrop();
+        }
 
         // Update flip button activeness
         if (flipButtonFunctionality != null)

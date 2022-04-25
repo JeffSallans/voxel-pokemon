@@ -50,6 +50,21 @@ public class InteractionChecker : MonoBehaviour
     /// </summary>
     private AsyncOperation sceneAsync;
 
+    /// <summary>
+    /// The reference to the previous scene opponent
+    /// </summary>
+    private GameObject prevSceneOpponent;
+
+    /// <summary>
+    /// The reference to the previous scene player
+    /// </summary>
+    private GameObject prevScenePlayer;
+
+    /// <summary>
+    /// The reference to the previous scene name
+    /// </summary>
+    private string prevSceneName = "";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -197,15 +212,38 @@ public class InteractionChecker : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        // Copy opponent to be moved as a global value
-        var rootOpponent = Instantiate(opponent);
-        rootOpponent.name = "Opponent";
+        // Set Previous Scene data
+        prevSceneName = SceneManager.GetActiveScene().name;
+        prevSceneOpponent = Instantiate(opponent);
+        prevScenePlayer = GameObject.Find("Player Dad");
 
-        GameObject player = GameObject.Find("Player Dad");
-        DontDestroyOnLoad(player);
-        DontDestroyOnLoad(rootOpponent);
+        // Copy opponent to be moved as a global value
+        prevSceneOpponent.name = "Opponent";
+
+        DontDestroyOnLoad(prevScenePlayer);
+        DontDestroyOnLoad(prevSceneOpponent);
         SceneManager.LoadScene(sceneName);
         this.enabled = false;
         
+    }
+
+    /// <summary>
+    /// Return to the previous scene
+    /// </summary>
+    /// <returns></returns>
+    public void LoadPreviousScene()
+    {
+        if (prevSceneName == "") return;
+        StartCoroutine(LoadPreviousSceneHelper());
+    }
+
+    IEnumerator LoadPreviousSceneHelper()
+    {
+        yield return new WaitForSeconds(1);
+
+        Destroy(prevSceneOpponent);
+        SceneManager.LoadScene(prevSceneName);
+        prevSceneName = "";
+        this.enabled = true;
     }
 }
