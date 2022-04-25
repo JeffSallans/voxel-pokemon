@@ -63,7 +63,7 @@ public class InteractionChecker : MonoBehaviour
     /// <summary>
     /// The reference to the previous scene name
     /// </summary>
-    private string prevSceneName = "";
+    private string prevSceneName;
 
     // Start is called before the first frame update
     void Start()
@@ -233,7 +233,7 @@ public class InteractionChecker : MonoBehaviour
     /// <returns></returns>
     public void LoadPreviousScene()
     {
-        if (prevSceneName == "") return;
+        if (prevSceneName == null || prevSceneName == "") return;
         StartCoroutine(LoadPreviousSceneHelper());
     }
 
@@ -243,6 +243,38 @@ public class InteractionChecker : MonoBehaviour
 
         Destroy(prevSceneOpponent);
         SceneManager.LoadScene(prevSceneName);
+
+        // Remove previous scene player
+        var newScene = SceneManager.GetActiveScene();
+        while (newScene.name != prevSceneName)
+        {
+            newScene = SceneManager.GetActiveScene();
+            yield return new WaitForSeconds(1);
+        }
+        var rootObjects = newScene.GetRootGameObjects();
+        foreach (var obj in rootObjects)
+        {
+            if (obj.name == "Player Dad")
+            {
+                // Copy things over
+                gameObject.GetComponent<ThirdPersonMovement>().cam = obj.GetComponent<ThirdPersonMovement>().cam;
+                playerCamera = obj.GetComponent<InteractionChecker>().playerCamera;
+                worldDialog = obj.GetComponent<InteractionChecker>().worldDialog;
+                crosshairText = obj.GetComponent<InteractionChecker>().crosshairText;
+                interactionHoverText = obj.GetComponent<InteractionChecker>().interactionHoverText;
+
+                // Delete duplicate
+                Destroy(obj);
+
+                // Move updated Player Dad into scene
+                SceneManager.MoveGameObjectToScene(gameObject, newScene);
+
+                // Setup third person camera
+                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = GameObject.Find("Player Dad/camera_focus").transform;
+                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = GameObject.Find("Player Dad/camera_focus").transform;
+            }
+        }
+
         prevSceneName = "";
         this.enabled = true;
     }
