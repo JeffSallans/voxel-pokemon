@@ -290,6 +290,9 @@ public class Pokemon : MonoBehaviour
             var index = energyLocations.IndexOf(e);
             e.SetActive(index < maxNumberOfAttachedEnergy);
         });
+
+        // Remove attached energies
+        attachedEnergy = new List<Energy>();
     }
 
     /// <summary>
@@ -396,7 +399,15 @@ public class Pokemon : MonoBehaviour
         }
     }
 
-    public void onBattleEnd() { }
+    public void onBattleEnd() {
+
+        // Display
+        gameObject.GetComponent<Animator>().SetBool("hasSpawned", true);
+
+        // Remove attached energies
+        battleGameBoard.energyDiscard.AddRange(attachedEnergy);
+        attachedEnergy.RemoveAll(e => true);
+    }
 
     /// <summary>
     /// Animate the energy to a new location

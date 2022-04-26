@@ -248,8 +248,8 @@ public class InteractionChecker : MonoBehaviour
         var newScene = SceneManager.GetActiveScene();
         while (newScene.name != prevSceneName)
         {
+            yield return new WaitForSeconds(0.5f);
             newScene = SceneManager.GetActiveScene();
-            yield return new WaitForSeconds(1);
         }
         var rootObjects = newScene.GetRootGameObjects();
         foreach (var obj in rootObjects)
@@ -270,8 +270,8 @@ public class InteractionChecker : MonoBehaviour
                 SceneManager.MoveGameObjectToScene(gameObject, newScene);
 
                 // Setup third person camera
-                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = GameObject.Find("Player Dad/camera_focus").transform;
-                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = GameObject.Find("Player Dad/camera_focus").transform;
+                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = prevScenePlayer.transform.Find("camera_focus").transform;
+                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = prevScenePlayer.transform.Find("camera_focus").transform;
             }
         }
 
