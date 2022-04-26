@@ -248,7 +248,7 @@ public class InteractionChecker : MonoBehaviour
         var newScene = SceneManager.GetActiveScene();
         while (newScene.name != prevSceneName)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             newScene = SceneManager.GetActiveScene();
         }
         var rootObjects = newScene.GetRootGameObjects();
