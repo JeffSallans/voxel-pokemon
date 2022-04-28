@@ -65,6 +65,12 @@ public class InteractionChecker : MonoBehaviour
     /// </summary>
     private string prevSceneName;
 
+    /// <summary>
+    /// The reference to the previous scene camera position to avoid a sliding transition on load
+    /// </summary>
+    private Vector3 prevSceneCameraPosition;
+    private Quaternion prevSceneCameraRotation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -216,6 +222,8 @@ public class InteractionChecker : MonoBehaviour
         prevSceneName = SceneManager.GetActiveScene().name;
         prevSceneOpponent = Instantiate(opponent);
         prevScenePlayer = GameObject.Find("Player Dad");
+        prevSceneCameraPosition = Camera.main.gameObject.transform.position;
+        prevSceneCameraRotation = Camera.main.gameObject.transform.rotation;
 
         // Copy opponent to be moved as a global value
         prevSceneOpponent.name = "Opponent";
@@ -239,7 +247,7 @@ public class InteractionChecker : MonoBehaviour
 
     IEnumerator LoadPreviousSceneHelper()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         Destroy(prevSceneOpponent);
         SceneManager.LoadScene(prevSceneName);
@@ -270,6 +278,8 @@ public class InteractionChecker : MonoBehaviour
                 SceneManager.MoveGameObjectToScene(gameObject, newScene);
 
                 // Setup third person camera
+                Camera.main.gameObject.transform.position = prevSceneCameraPosition;
+                Camera.main.gameObject.transform.rotation = prevSceneCameraRotation;
                 GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = prevScenePlayer.transform.Find("camera_focus").transform;
                 GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = prevScenePlayer.transform.Find("camera_focus").transform;
             }
