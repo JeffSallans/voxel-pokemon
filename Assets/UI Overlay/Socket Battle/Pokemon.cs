@@ -383,6 +383,12 @@ public class Pokemon : MonoBehaviour
                 pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
             }
         }
+        else
+        {
+            // ASSUMING structure is model -> model-animation-target -> <actual model>
+            var deadPos = new Vector3(modelPlaceholder.transform.position.x, pokemonModel.gameObject.transform.position.y, modelPlaceholder.transform.position.z);
+            pokemonModel.gameObject.transform.position = deadPos;
+        }
 
         // Set select position
         pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.position;
@@ -402,7 +408,7 @@ public class Pokemon : MonoBehaviour
     public void onBattleEnd() {
 
         // Display
-        gameObject.GetComponent<Animator>().SetBool("hasSpawned", true);
+        gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
 
         // Remove attached energies
         battleGameBoard.energyDiscard.AddRange(attachedEnergy);

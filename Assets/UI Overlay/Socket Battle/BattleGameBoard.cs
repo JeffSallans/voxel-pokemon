@@ -290,15 +290,23 @@ public class BattleGameBoard : MonoBehaviour
         var playerParty = GameObject.Find("Player Dad/party");
         if (playerParty)
         {
-            playerParty.gameObject.transform.parent = playerPartyParentGameobject.transform;
             prevPlayerPartyRotation = playerParty.gameObject.transform.rotation;
+            // zero out position to avoid any issues moving the objects into the canvas
+            playerParty.gameObject.transform.position = new Vector3(0f, 0f, 0f);
+            // Move to new parent
+            playerParty.gameObject.transform.parent = playerPartyParentGameobject.transform;
+            // zero out rotation to remove any rotation from the player
             playerParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
 
         var opponentParty = GameObject.Find("Opponent/party");
         if (opponentParty)
         {
+            // zero out position to avoid any issues moving the objects into the canvas
+            opponentParty.gameObject.transform.position = new Vector3(0f, 0f, 0f);
+            // Move to new parent
             opponentParty.gameObject.transform.parent = opponentPartyParentGameobject.transform;
+            // zero out rotation to remove any rotation from the player
             opponentParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
 
@@ -331,7 +339,8 @@ public class BattleGameBoard : MonoBehaviour
         if (playerParty)
         {
             playerParty.gameObject.transform.parent = player.transform;
-            playerParty.gameObject.transform.localRotation = prevPlayerPartyRotation;
+            // set rotation back to avoid any issues in the future
+            playerParty.gameObject.transform.rotation = prevPlayerPartyRotation;
         }
 
         var opponentParty = GameObject.Find("opp-deck/party");
@@ -339,20 +348,6 @@ public class BattleGameBoard : MonoBehaviour
         {
             opponentParty.gameObject.transform.parent = opponent.transform;
         }
-
-        // Move pokemon into placement
-        var i = 0;
-        player.party.ForEach(p =>
-        {
-            p.hideModels();
-            i++;
-        });
-        var j = 0;
-        opponent.party.ForEach(p =>
-        {
-            p.hideModels();
-            j++;
-        });
 
         player.GetComponent<InteractionChecker>().LoadPreviousScene();
     }
@@ -772,8 +767,6 @@ public class BattleGameBoard : MonoBehaviour
             if (deck.Count < 1) { reshuffleDiscard(); }
             drawCard(activePokemon);
         }
-
-        //switchPokemonOverlay.SetActive(false);
     }
 
     /// <summary>
@@ -803,13 +796,6 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     public void onBattleEnd(bool isPlayerWinner) {
-        // Send event to all energy, cards, status, and pokemon
-        allPokemon.ForEach(p => p.onBattleEnd());
-        allCards.ForEach(c => c.onBattleEnd());
-        allEnergy.ForEach(e => e.onBattleEnd());
-        opponent.opponentStrategyBot.onBattleEnd();
-        opponent.movesConfig.ForEach(m => m.onBattleEnd());
-
         // Set results
         gameHasEnded = true;
         playerHasWon = isPlayerWinner;
@@ -818,7 +804,19 @@ public class BattleGameBoard : MonoBehaviour
         {
             worldDialog.ShowMessage("Red won!", () => {
                 print("The player won");
+
+                player.party.ForEach(p => { p.hideModels(); });
+                opponent.party.ForEach(p => { p.hideModels(); });
+
+                // Send event to all energy, cards, status, and pokemon
+                allPokemon.ForEach(p => p.onBattleEnd());
+                allCards.ForEach(c => c.onBattleEnd());
+                allEnergy.ForEach(e => e.onBattleEnd());
+                opponent.opponentStrategyBot.onBattleEnd();
+                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+
                 onPackupPlayer();
+
                 return true;
             });
         }
@@ -826,7 +824,19 @@ public class BattleGameBoard : MonoBehaviour
         {
             worldDialog.ShowMessage(opponent.opponentName + " won.", () => {
                 print("The opponent won");
+
+                player.party.ForEach(p => { p.hideModels(); });
+                opponent.party.ForEach(p => { p.hideModels(); });
+
+                // Send event to all energy, cards, status, and pokemon
+                allPokemon.ForEach(p => p.onBattleEnd());
+                allCards.ForEach(c => c.onBattleEnd());
+                allEnergy.ForEach(e => e.onBattleEnd());
+                opponent.opponentStrategyBot.onBattleEnd();
+                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+
                 onPackupPlayer();
+
                 return true;
             });
         }
