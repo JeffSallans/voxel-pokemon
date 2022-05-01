@@ -429,6 +429,15 @@ public class BattleGameBoard : MonoBehaviour
             i++;
         }
 
+        // Re-activate any lingering energies
+        if (!energyHandDiscard)
+        {
+            energyHand.ForEach(e =>
+            {
+                e.SetCanBeDragged(true);
+            });
+        }
+
         // Draw cards up to handSize
         i = 0;
         while (hand.Count < handSize && i < maxThreshold)
@@ -617,6 +626,12 @@ public class BattleGameBoard : MonoBehaviour
             });
             energyDiscard.AddRange(energyHand);
             energyHand.RemoveAll(card => true);
+        } else
+        {
+            energyHand.ForEach(e =>
+            {
+                e.SetCanBeDragged(false);
+            });
         }
     }
 

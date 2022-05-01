@@ -27,7 +27,8 @@ public class PlayerDeck : MonoBehaviour
         }
         if (energies.Count == 0)
         {
-            energies = gameObject.GetComponentsInChildren<Energy>().ToList();
+            var allEnergies = gameObject.GetComponentsInChildren<Energy>().ToList();
+            energies = allEnergies.Where(e => e.initCanBeDragged).ToList();
         }
     }
 

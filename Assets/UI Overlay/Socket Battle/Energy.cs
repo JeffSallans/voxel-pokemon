@@ -216,4 +216,13 @@ public class Energy : MonoBehaviour
     {
         gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
     }
+
+    /// <summary>
+    /// Change if this energy can be interacted with or not
+    /// </summary>
+    /// <param name="_canBeDragged"></param>
+    public void SetCanBeDragged(bool _canBeDragged)
+    {
+        canBeDragged = _canBeDragged;
+    }
 }
