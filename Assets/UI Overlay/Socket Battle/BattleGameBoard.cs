@@ -220,7 +220,12 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// How many energies to pick from
     /// </summary>
-    public int energyHandSize = 3;
+    public int energyHandSize = 2;
+
+    /// <summary>
+    /// True if the energy hand should be discarded after using one
+    /// </summary>
+    public bool energyHandDiscard = false;
 
     /// <summary>
     /// How many cards to draw
@@ -603,13 +608,16 @@ public class BattleGameBoard : MonoBehaviour
         source.playEnergy(target);
 
         // Discard other energies
-        energyHand.ForEach(e =>
+        if (energyHandDiscard)
         {
-            e.Translate(energyDiscardLocation.transform.position);
-            e.transform.rotation = energyDiscardLocation.transform.rotation;
-        });
-        energyDiscard.AddRange(energyHand);
-        energyHand.RemoveAll(card => true);
+            energyHand.ForEach(e =>
+            {
+                e.Translate(energyDiscardLocation.transform.position);
+                e.transform.rotation = energyDiscardLocation.transform.rotation;
+            });
+            energyDiscard.AddRange(energyHand);
+            energyHand.RemoveAll(card => true);
+        }
     }
 
     public void onTurnEnd() {

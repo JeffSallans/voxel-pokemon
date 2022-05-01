@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: initHealth
-      value: 60
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: evasionStat
@@ -37,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: energyTypes.Array.data[0]
-      value: Electric
+      value: Physical
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: energyTypes.Array.data[1]
-      value: Steel
+      value: Mental
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: pokemonTypes.Array.data[0]
@@ -53,11 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleEnergyTypes.Array.data[0]
-      value: Electric
+      value: Physical
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleEnergyTypes.Array.data[1]
-      value: Steel
+      value: Mental
       objectReference: {fileID: 0}
     - target: {fileID: 818531783516017186, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_Name

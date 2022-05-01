@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.data[0]
@@ -305,4 +305,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6799eef9fc4a3934d8fd53108dff5ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerCardPlayed: 4
+  damagePerCardPlayed: 6

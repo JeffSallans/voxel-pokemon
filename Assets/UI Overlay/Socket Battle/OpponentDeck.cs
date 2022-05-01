@@ -36,6 +36,9 @@ public class OpponentDeck : MonoBehaviour
         {
             movesConfig = gameObject.GetComponentsInChildren<IOpponentMove>().ToList();
         }
+        // Turn off all energies
+        var energies = gameObject.GetComponentsInChildren<Energy>().ToList();
+        energies.ForEach(e => e.gameObject.SetActive(false));
     }
 
     // Update is called once per frame

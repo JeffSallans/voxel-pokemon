@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: blockStat
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initDamage
@@ -186,11 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: '1 ZZDef: +6 ZZBlock'
+  flipButtonText: '1 ZZDef: +12 ZZBlock'
   attackCost: 0
   defenseCost: 1
   specialCost: 0
   evasionCost: 0
   damageIncrease: 0
-  blockIncrease: 6
+  blockIncrease: 12
   multiplierIncrease: 0
+  userHealIncrease: 0
