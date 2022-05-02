@@ -287,7 +287,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Move the players and pokemon into the right spots
     /// </summary>
-    private void onSetupPlayer()
+    protected void onSetupPlayer()
     {
         // Disabled players
 
@@ -335,7 +335,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Move the pokemon back to the players
     /// </summary>
-    private void onPackupPlayer()
+    protected void onPackupPlayer()
     {
         // Enable players
 
@@ -452,7 +452,7 @@ public class BattleGameBoard : MonoBehaviour
     /// Draw the top card from the deck
     /// </summary>
     /// <param name="activePokemon"></param>
-    private void drawCard(Pokemon activePokemon) {
+    protected void drawCard(Pokemon activePokemon) {
         // Draw card
         var cardDrawn = deck.First();
         hand.Add(cardDrawn);
@@ -468,7 +468,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Modifies discard and deck
     /// </summary>
-    private void reshuffleDiscard()
+    protected void reshuffleDiscard()
     {
         deck.AddRange(discard);
         discard.RemoveAll(card => true);
@@ -483,7 +483,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Draw the top energy from the deck
     /// </summary>
-    private void drawEnergy()
+    protected void drawEnergy()
     {
         // Check if there are energies to draw
         if (energyDeck.Count <= 0) return;
@@ -501,7 +501,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Modifies energy discard and energy deck
     /// </summary>
-    private void reshuffleEnergyDiscard()
+    protected void reshuffleEnergyDiscard()
     {
         energyDeck.AddRange(energyDiscard);
         energyDiscard.RemoveAll(card => true);
@@ -554,7 +554,7 @@ public class BattleGameBoard : MonoBehaviour
     /// Update the energies that are used to play the move
     /// </summary>
     /// <param name="move"></param>
-    private void payMoveCost(List<Energy> cost)
+    protected void payMoveCost(List<Energy> cost)
     {
         var coloredCost = cost.Where(e => e.energyName != "Normal").ToList();
         coloredCost.ForEach(energy => payEnergyCost(energy));
@@ -578,7 +578,7 @@ public class BattleGameBoard : MonoBehaviour
         target.onDiscard(wasPlayed);
     }
 
-    private void payEnergyCost(Energy energy)
+    protected void payEnergyCost(Energy energy)
     {
         // Subtract from common
         var target = commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
@@ -741,7 +741,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="list"></param>
     /// <param name="indexA"></param>
     /// <param name="indexB"></param>
-    private void Swap<T>(IList<T> list, int indexA, int indexB)
+    protected void Swap<T>(IList<T> list, int indexA, int indexB)
     {
         T tmp = list[indexA];
         list[indexA] = list[indexB];
@@ -871,7 +871,7 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
-    private void Shuffle<T>(IList<T> list)
+    protected void Shuffle<T>(IList<T> list)
     {
         int n = list.Count;
         while (n > 1)
