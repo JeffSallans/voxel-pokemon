@@ -5,6 +5,26 @@ using UnityEngine;
 
 public class OpponentMove : IOpponentMove
 {
+    /// <summary>
+    /// The move to show above the attacking pokemon
+    /// </summary>
+    override public string moveDescription
+    {
+        get
+        {
+            var desc = moveDescriptionWithTemplates
+                .Replace("{userName}", actingPokemon.pokemonName)
+                .Replace("{attack}", attackStat.ToString())
+                .Replace("{special}", specialStat.ToString())
+                .Replace("{defense}", defenseStat.ToString())
+                .Replace("{evasion}", evasionStat.ToString())
+                .Replace("{userHeal}", userHeal.ToString())
+                .Replace("{block}", blockStat.ToString())
+                .Replace("{damage}", damage.ToString());
+            return desc;
+        }
+    }
+
     public int attackCost;
     public int defenseCost;
     public int specialCost;

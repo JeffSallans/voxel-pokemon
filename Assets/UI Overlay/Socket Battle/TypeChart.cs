@@ -7,6 +7,14 @@ using UnityEngine;
 /// </summary>
 public static class TypeChart
 {
+    const float superEffectiveMult = 1.5f;
+
+    const float notEffectiveMult = 0.667f;
+
+    const float superEffectiveMultMax = 2f;
+
+    const float notEffectiveMultMin = 0.5f;
+
     /// <summary>
     /// 
     /// Created from https://upload.wikimedia.org/wikipedia/commons/9/97/Pokemon_Type_Chart.svg
@@ -16,221 +24,221 @@ public static class TypeChart
         { EnergyType.NORMAL, // Attacking Type
             new Dictionary<string, float>{
                 { EnergyType.GHOST, 0f }, // Defending Type
-                { EnergyType.ROCK, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.ROCK, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.FIRE, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.GRASS, 2f },
-                { EnergyType.ICE, 2f },
-                { EnergyType.BUG, 2f },
-                { EnergyType.STEEL, 2f },
+                { EnergyType.GRASS, superEffectiveMult },
+                { EnergyType.ICE, superEffectiveMult },
+                { EnergyType.BUG, superEffectiveMult },
+                { EnergyType.STEEL, superEffectiveMult },
 
-                { EnergyType.FIRE, .5f },
-                { EnergyType.WATER, .5f },
-                { EnergyType.ROCK, .5f },
-                { EnergyType.DRAGON, .5f }
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.WATER, notEffectiveMult },
+                { EnergyType.ROCK, notEffectiveMult },
+                { EnergyType.DRAGON, notEffectiveMult }
             }
         },
         { EnergyType.WATER, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.FIRE, 2f },
-                { EnergyType.GROUND, 2f },
-                { EnergyType.ROCK, 2f },
+                { EnergyType.FIRE, superEffectiveMult },
+                { EnergyType.GROUND, superEffectiveMult },
+                { EnergyType.ROCK, superEffectiveMult },
 
-                { EnergyType.WATER, .5f },
-                { EnergyType.GRASS, .5f },
-                { EnergyType.DRAGON, .5f }
+                { EnergyType.WATER, notEffectiveMult },
+                { EnergyType.GRASS, notEffectiveMult },
+                { EnergyType.DRAGON, notEffectiveMult }
             }
         },
         { EnergyType.GRASS, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.GROUND, 2f },
-                { EnergyType.ROCK, 2f },
+                { EnergyType.GROUND, superEffectiveMult },
+                { EnergyType.ROCK, superEffectiveMult },
 
-                { EnergyType.FIRE, .5f },
-                { EnergyType.GRASS, .5f },
-                { EnergyType.POISON, .5f },
-                { EnergyType.FLYING, .5f },
-                { EnergyType.BUG, .5f },
-                { EnergyType.DRAGON, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.GRASS, notEffectiveMult },
+                { EnergyType.POISON, notEffectiveMult },
+                { EnergyType.FLYING, notEffectiveMult },
+                { EnergyType.BUG, notEffectiveMult },
+                { EnergyType.DRAGON, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.ELECTRIC, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.WATER, 2f },
-                { EnergyType.GHOST, 2f },
+                { EnergyType.WATER, superEffectiveMult },
+                { EnergyType.GHOST, superEffectiveMult },
 
                 { EnergyType.GROUND, 0f },
 
-                { EnergyType.GRASS, .5f },
-                { EnergyType.ELECTRIC, .5f },
-                { EnergyType.DRAGON, .5f }
+                { EnergyType.GRASS, notEffectiveMult },
+                { EnergyType.ELECTRIC, notEffectiveMult },
+                { EnergyType.DRAGON, notEffectiveMult }
             }
         },
         { EnergyType.ICE, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.GRASS, 2f },
-                { EnergyType.GROUND, 2f },
-                { EnergyType.FLYING, 2f },
-                { EnergyType.DRAGON, 2f },
+                { EnergyType.GRASS, superEffectiveMult },
+                { EnergyType.GROUND, superEffectiveMult },
+                { EnergyType.FLYING, superEffectiveMult },
+                { EnergyType.DRAGON, superEffectiveMult },
 
-                { EnergyType.FIRE, .5f },
-                { EnergyType.WATER, .5f },
-                { EnergyType.ICE, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.WATER, notEffectiveMult },
+                { EnergyType.ICE, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.FIGHTING, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.NORMAL, 2f },
-                { EnergyType.ICE, 2f },
-                { EnergyType.ROCK, 2f },
-                { EnergyType.DARK, 2f },
-                { EnergyType.STEEL, 2f },
+                { EnergyType.NORMAL, superEffectiveMult },
+                { EnergyType.ICE, superEffectiveMult },
+                { EnergyType.ROCK, superEffectiveMult },
+                { EnergyType.DARK, superEffectiveMult },
+                { EnergyType.STEEL, superEffectiveMult },
 
                 { EnergyType.GHOST, 0f },
 
-                { EnergyType.POISON, .5f },
-                { EnergyType.FLYING, .5f },
-                { EnergyType.PSYCHIC, .5f },
-                { EnergyType.BUG, .5f },
-                { EnergyType.FAIRY, .5f }
+                { EnergyType.POISON, notEffectiveMult },
+                { EnergyType.FLYING, notEffectiveMult },
+                { EnergyType.PSYCHIC, notEffectiveMult },
+                { EnergyType.BUG, notEffectiveMult },
+                { EnergyType.FAIRY, notEffectiveMult }
             }
         },
         { EnergyType.POISON, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.GRASS, 2f },
-                { EnergyType.FAIRY, 2f },
+                { EnergyType.GRASS, superEffectiveMult },
+                { EnergyType.FAIRY, superEffectiveMult },
 
                 { EnergyType.STEEL, 0f },
 
-                { EnergyType.POISON, .5f },
-                { EnergyType.GROUND, .5f },
-                { EnergyType.ROCK, .5f },
-                { EnergyType.GHOST, .5f }
+                { EnergyType.POISON, notEffectiveMult },
+                { EnergyType.GROUND, notEffectiveMult },
+                { EnergyType.ROCK, notEffectiveMult },
+                { EnergyType.GHOST, notEffectiveMult }
             }
         },
         { EnergyType.GROUND, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.FIRE, 2f },
-                { EnergyType.ELECTRIC, 2f },
-                { EnergyType.POISON, 2f },
-                { EnergyType.ROCK, 2f },
-                { EnergyType.STEEL, 2f },
+                { EnergyType.FIRE, superEffectiveMult },
+                { EnergyType.ELECTRIC, superEffectiveMult },
+                { EnergyType.POISON, superEffectiveMult },
+                { EnergyType.ROCK, superEffectiveMult },
+                { EnergyType.STEEL, superEffectiveMult },
 
                 { EnergyType.FLYING, 0f },
 
-                { EnergyType.GRASS, .5f },
-                { EnergyType.BUG, .5f }
+                { EnergyType.GRASS, notEffectiveMult },
+                { EnergyType.BUG, notEffectiveMult }
             }
         },
         { EnergyType.FLYING, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.GRASS, 2f },
-                { EnergyType.FIGHTING, 2f },
-                { EnergyType.BUG, 2f },
+                { EnergyType.GRASS, superEffectiveMult },
+                { EnergyType.FIGHTING, superEffectiveMult },
+                { EnergyType.BUG, superEffectiveMult },
 
-                { EnergyType.ELECTRIC, .5f },
-                { EnergyType.ROCK, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.ELECTRIC, notEffectiveMult },
+                { EnergyType.ROCK, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.PSYCHIC, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.FIGHTING, 2f },
-                { EnergyType.POISON, 2f },
+                { EnergyType.FIGHTING, superEffectiveMult },
+                { EnergyType.POISON, superEffectiveMult },
 
                 { EnergyType.DARK, 0f },
 
-                { EnergyType.PSYCHIC, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.PSYCHIC, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.BUG, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.GRASS, 2f },
-                { EnergyType.PSYCHIC, 2f },
-                { EnergyType.DARK, 2f },
+                { EnergyType.GRASS, superEffectiveMult },
+                { EnergyType.PSYCHIC, superEffectiveMult },
+                { EnergyType.DARK, superEffectiveMult },
 
-                { EnergyType.FIRE, .5f },
-                { EnergyType.FIGHTING, .5f },
-                { EnergyType.POISON, .5f },
-                { EnergyType.FLYING, .5f },
-                { EnergyType.GHOST, .5f },
-                { EnergyType.STEEL, .5f },
-                { EnergyType.FAIRY, .5f }
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.FIGHTING, notEffectiveMult },
+                { EnergyType.POISON, notEffectiveMult },
+                { EnergyType.FLYING, notEffectiveMult },
+                { EnergyType.GHOST, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult },
+                { EnergyType.FAIRY, notEffectiveMult }
             }
         },
         { EnergyType.ROCK, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.FIRE, 2f },
-                { EnergyType.ICE, 2f },
-                { EnergyType.FLYING, 2f },
-                { EnergyType.BUG, 2f },
+                { EnergyType.FIRE, superEffectiveMult },
+                { EnergyType.ICE, superEffectiveMult },
+                { EnergyType.FLYING, superEffectiveMult },
+                { EnergyType.BUG, superEffectiveMult },
 
-                { EnergyType.FIGHTING, .5f },
-                { EnergyType.GROUND, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.FIGHTING, notEffectiveMult },
+                { EnergyType.GROUND, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.GHOST, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.GRASS, 2f },
-                { EnergyType.PSYCHIC, 2f },
-                { EnergyType.DARK, 2f },
+                { EnergyType.GRASS, superEffectiveMult },
+                { EnergyType.PSYCHIC, superEffectiveMult },
+                { EnergyType.DARK, superEffectiveMult },
 
-                { EnergyType.FIRE, .5f },
-                { EnergyType.FIGHTING, .5f },
-                { EnergyType.POISON, .5f },
-                { EnergyType.FLYING, .5f },
-                { EnergyType.GHOST, .5f },
-                { EnergyType.STEEL, .5f },
-                { EnergyType.FAIRY, .5f }
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.FIGHTING, notEffectiveMult },
+                { EnergyType.POISON, notEffectiveMult },
+                { EnergyType.FLYING, notEffectiveMult },
+                { EnergyType.GHOST, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult },
+                { EnergyType.FAIRY, notEffectiveMult }
             }
         },
         { EnergyType.DRAGON, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.DRAGON, 2f },
+                { EnergyType.DRAGON, superEffectiveMult },
 
                 { EnergyType.FAIRY, 0f },
 
-                { EnergyType.STEEL, .5f }
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.DARK, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.PSYCHIC, 2f },
-                { EnergyType.GHOST, 2f },
+                { EnergyType.PSYCHIC, superEffectiveMult },
+                { EnergyType.GHOST, superEffectiveMult },
 
-                { EnergyType.FIGHTING, .5f },
-                { EnergyType.DARK, .5f },
-                { EnergyType.FAIRY, .5f }
+                { EnergyType.FIGHTING, notEffectiveMult },
+                { EnergyType.DARK, notEffectiveMult },
+                { EnergyType.FAIRY, notEffectiveMult }
             }
         },
         { EnergyType.STEEL, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.ICE, 2f },
-                { EnergyType.ROCK, 2f },
-                { EnergyType.FAIRY, 2f },
+                { EnergyType.ICE, superEffectiveMult },
+                { EnergyType.ROCK, superEffectiveMult },
+                { EnergyType.FAIRY, superEffectiveMult },
 
-                { EnergyType.FIRE, .5f },
-                { EnergyType.WATER, .5f },
-                { EnergyType.ELECTRIC, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.WATER, notEffectiveMult },
+                { EnergyType.ELECTRIC, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
         { EnergyType.FAIRY, // Attacking Type
             new Dictionary<string, float>{
-                { EnergyType.FIGHTING, 2f },
-                { EnergyType.DRAGON, 2f },
-                { EnergyType.DARK, 2f },
+                { EnergyType.FIGHTING, superEffectiveMult },
+                { EnergyType.DRAGON, superEffectiveMult },
+                { EnergyType.DARK, superEffectiveMult },
 
-                { EnergyType.FIRE, .5f },
-                { EnergyType.POISON, .5f },
-                { EnergyType.STEEL, .5f }
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.POISON, notEffectiveMult },
+                { EnergyType.STEEL, notEffectiveMult }
             }
         },
     };
@@ -294,7 +302,7 @@ public static class TypeChart
         {
             var firstEff = getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[0]);
             var secondEff = getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[1]);
-            return firstEff * secondEff;
+            return Mathf.Max(Mathf.Min(firstEff * secondEff, superEffectiveMultMax), notEffectiveMultMin);
         }
         else
         {

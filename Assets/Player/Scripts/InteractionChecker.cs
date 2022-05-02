@@ -59,6 +59,10 @@ public class InteractionChecker : MonoBehaviour
     /// The reference to the previous scene player
     /// </summary>
     private GameObject prevScenePlayer;
+    /// <summary>
+    /// The location of the previous player to account for any elevation if the player fell down
+    /// </summary>
+    private Vector3 prevScenePlayerPos;
 
     /// <summary>
     /// The reference to the previous scene name
@@ -163,6 +167,9 @@ public class InteractionChecker : MonoBehaviour
         } else if (hoverPossibleEvent.eventType == "Battle")
         {
             OnBattle(hoverPossibleEvent);
+        } else if (hoverPossibleEvent.eventType == "SceneChange")
+        {
+            OnSceneChange(hoverPossibleEvent);
         }
         hoverPossibleEvent = null;
     }
@@ -214,7 +221,25 @@ public class InteractionChecker : MonoBehaviour
 
     }
 
-    IEnumerator LoadScene(string sceneName, GameObject opponent)
+    private void OnSceneChange(InteractionEvent iEvent)
+    {
+        activeEvent = hoverPossibleEvent;
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+
+        thirdPersonMovement.enabled = false;
+        worldDialog.ShowMessage(iEvent.message[0], () =>
+        {
+            thirdPersonMovement.enabled = true;
+
+            if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            StartCoroutine(LoadScene(iEvent.sceneName));
+            activeEvent = null;
+            return true;
+        });
+
+    }
+
+    IEnumerator LoadScene(string sceneName, GameObject opponent = null)
     {
         yield return new WaitForSeconds(1);
 
@@ -222,11 +247,12 @@ public class InteractionChecker : MonoBehaviour
         prevSceneName = SceneManager.GetActiveScene().name;
         prevSceneOpponent = Instantiate(opponent);
         prevScenePlayer = GameObject.Find("Player Dad");
+        prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
         prevSceneCameraRotation = Camera.main.gameObject.transform.rotation;
 
         // Copy opponent to be moved as a global value
-        prevSceneOpponent.name = "Opponent";
+        if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
 
         DontDestroyOnLoad(prevScenePlayer);
         DontDestroyOnLoad(prevSceneOpponent);
@@ -282,6 +308,9 @@ public class InteractionChecker : MonoBehaviour
                 Camera.main.gameObject.transform.rotation = prevSceneCameraRotation;
                 GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = prevScenePlayer.transform.Find("camera_focus").transform;
                 GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = prevScenePlayer.transform.Find("camera_focus").transform;
+
+                // Setup pos
+                prevScenePlayer.gameObject.transform.position = prevScenePlayerPos;
             }
         }
 

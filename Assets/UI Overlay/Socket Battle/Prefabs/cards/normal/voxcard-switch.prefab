@@ -32,6 +32,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: cost.Array.data[0]
+      value: 
+      objectReference: {fileID: 3211036305266505350}
+    - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initCardDescription
       value: Switch out your active pokemon. {flipText}
       objectReference: {fileID: 0}
@@ -50,6 +54,10 @@ PrefabInstance:
     - target: {fileID: 4123315518454217902, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_text
       value: Switch out your active pokemon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5132354575483975987, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6380789854945447106, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_Sprite
@@ -163,6 +171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7901518794381190780, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1466309857897643472, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
@@ -171,6 +183,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7780502995363848462, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
   m_PrefabInstance: {fileID: 7410488425891072107}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3211036305266505350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5357229068581043949, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+  m_PrefabInstance: {fileID: 7410488425891072107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2207620230058107678
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class IOpponentMove : MonoBehaviour
     /// <summary>
     /// The move to show above the attacking pokemon
     /// </summary>
-    public string moveDescription
+    virtual public string moveDescription
     {
         get
         {

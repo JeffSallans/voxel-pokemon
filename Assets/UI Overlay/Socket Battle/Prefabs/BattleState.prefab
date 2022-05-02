@@ -43,18 +43,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1264b63ca8ae54392cabab2ee2f18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck: []
-  hand: []
-  discard: []
   player: {fileID: 0}
-  activePokemon: {fileID: 0}
   opponent: {fileID: 0}
+  debugVariablesBelow: 
+  energyDeck: []
+  energyHand: []
+  energyDiscard: []
+  activePokemon: {fileID: 0}
   opponentActivePokemon: {fileID: 0}
-  playerPokemonLocations: []
-  opponentPokemonLocations: []
+  renderLocationsBelow: 
+  playerPokemonLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  opponentPokemonLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   deckLocation: {fileID: 0}
-  handLocations: []
+  handLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   discardLocation: {fileID: 0}
+  energyDeckLocation: {fileID: 0}
+  energyHandLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  energyDiscardLocation: {fileID: 0}
   commonEnergy: []
-  switchPokemonOverlay: {fileID: 0}
-  handSize: 5
+  pokemonModelLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  opponentPokemonModelLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerPartyParentGameobject: {fileID: 0}
+  opponentPartyParentGameobject: {fileID: 0}
+  energyHandSize: 2
+  energyHandDiscard: 0
+  handSize: 4
+  startBattleButton: {fileID: 0}
+  endTurnButton: {fileID: 0}
+  worldDialog: {fileID: 0}
+  gameHasEnded: 0
+  playerHasWon: 1

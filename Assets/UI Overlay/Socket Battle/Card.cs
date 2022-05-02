@@ -32,6 +32,7 @@ public class Card : MonoBehaviour
                     .Replace("{evasion}", evasionStat.ToString())
                     .Replace("{block}", blockStat.ToString())
                     .Replace("{attackMult}", attackMultStat.ToString())
+                    .Replace("{userHeal}", userHeal.ToString())
                     .Replace("{flipText}", flipButtonFunctionality?.getFlipButtonText());
             return desc;
         }
