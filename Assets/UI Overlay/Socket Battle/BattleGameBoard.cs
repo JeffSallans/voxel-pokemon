@@ -233,6 +233,11 @@ public class BattleGameBoard : MonoBehaviour
     public int handSize = 4;
 
     /// <summary>
+    /// True if the deck is shuffle at the beginning and when adding the discard back
+    /// </summary>
+    public bool shuffleDeck = true;
+
+    /// <summary>
     /// Starts the battle
     /// </summary>
     public GameObject startBattleButton;
@@ -375,7 +380,10 @@ public class BattleGameBoard : MonoBehaviour
         {
             // Create a copy of initial deck to use for the game
             p.deck = p.initDeck.ToList();
-            Shuffle(p.deck);
+            if (shuffleDeck)
+            {
+                Shuffle(p.deck);
+            }
         });
         allPartyCards.ForEach(c =>
         {
@@ -472,7 +480,10 @@ public class BattleGameBoard : MonoBehaviour
     {
         deck.AddRange(discard);
         discard.RemoveAll(card => true);
-        Shuffle(deck);
+        if (shuffleDeck)
+        {
+            Shuffle(deck);
+        }
         deck.ForEach(c =>
         {
             c.transform.position = deckLocation.transform.position;
