@@ -13082,6 +13082,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1973188774414822340, guid: 42fd93bfce54be74ebf8a6d1b58ccb88, type: 3}
   m_PrefabInstance: {fileID: 1401058848}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &309719042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2853479835234001871, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 2853479836449709953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &310507874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39167,6 +39172,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8768321309702833452, guid: a0088f7c1af6a5f40a76348141909d47, type: 3}
   m_PrefabInstance: {fileID: 956319538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &933137909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2853479835746136876, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 2853479836449709953}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &935148043 stripped
 Transform:
@@ -96398,8 +96408,8 @@ MonoBehaviour:
   - {fileID: 1244634290}
   - {fileID: 292844472}
   - {fileID: 700293390}
-  playerPartyParentGameobject: {fileID: 0}
-  opponentPartyParentGameobject: {fileID: 0}
+  playerPartyParentGameobject: {fileID: 933137909}
+  opponentPartyParentGameobject: {fileID: 309719042}
   energyHandSize: 2
   energyHandDiscard: 0
   handSize: 4

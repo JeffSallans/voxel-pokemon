@@ -35,7 +35,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
     /// <summary>
     /// Assumes player and opponent are set before calling this
     /// </summary>
-    public new void onBattleStart()
+    public override void onBattleStart()
     {
         startBattleButton.SetActive(false);
         gameHasEnded = false;
@@ -50,7 +50,10 @@ public class BattleGameBoardTutorial : BattleGameBoard
         {
             // Create a copy of initial deck to use for the game
             p.deck = p.initDeck.ToList();
-            Shuffle(p.deck);
+            if (shuffleDeck)
+            {
+                Shuffle(p.deck);
+            }
         });
         allPartyCards.ForEach(c =>
         {
@@ -95,7 +98,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
     /// <summary>
     /// On the draw step
     /// </summary>
-    public new void onDraw()
+    public override void onDraw()
     {
         // Each turn share some instructions
         if (!showedEnergyInstruction)
@@ -175,7 +178,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
     }
 
 
-    public new void onEnergyPlay(Energy source, Pokemon target)
+    public override void onEnergyPlay(Energy source, Pokemon target)
     {
         // Remove energy
         energyHand.Remove(source);

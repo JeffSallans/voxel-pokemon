@@ -365,7 +365,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Assumes player and opponent are set before calling this
     /// </summary>
-    public void onBattleStart()
+    public virtual void onBattleStart()
     {
         startBattleButton.SetActive(false);
         gameHasEnded = false;
@@ -423,7 +423,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// On the draw step
     /// </summary>
-    public void onDraw() {
+    public virtual void onDraw() {
         // Refresh energy
         availableEnergy.ForEach(e => { e.isUsed = false; });
 
@@ -619,7 +619,7 @@ public class BattleGameBoard : MonoBehaviour
     }
 
 
-    public void onEnergyPlay(Energy source, Pokemon target)
+    public virtual void onEnergyPlay(Energy source, Pokemon target)
     {
         // Remove energy
         energyHand.Remove(source);
