@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: initCardDescription
       value: Deal <color=red>{damage}</color> ZZWater dmg
       objectReference: {fileID: 0}
+    - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: flipButtonFunctionality
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4123315518454217902, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_text
       value: Deal <color=red>10</color> \ue900 dmg
@@ -287,7 +291,8 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1466309857897643472, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
 --- !u!224 &6451857155781417162 stripped
 RectTransform:

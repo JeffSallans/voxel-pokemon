@@ -540,7 +540,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="move"></param>
     /// <param name="user"></param>
     /// <param name="target"></param>
-    public void onPlay(Card move, Pokemon user, Pokemon target) {
+    public virtual void onPlay(Card move, Pokemon user, Pokemon target) {
         // Pay cost
         payMoveCost(move.cost);
         
@@ -836,7 +836,7 @@ public class BattleGameBoard : MonoBehaviour
 
         if (isPlayerWinner)
         {
-            worldDialog.ShowMessage("Red won!", () => {
+            worldDialog.ShowMessage("You won!", () => {
                 print("The player won");
 
                 player.party.ForEach(p => { p.hideModels(); });

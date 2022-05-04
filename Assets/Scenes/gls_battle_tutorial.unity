@@ -58478,13 +58478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Hyper Fang
-  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg
+  moveName: Fire Fang
+  moveDescriptionWithTemplates: Deal {damage} ZZFire dmg
   actingPokemon: {fileID: 351712740}
   initialPriority: 4
   turnPriority: 0
-  damage: 48
-  damageEnergy: Normal
+  damage: 68
+  damageEnergy: Fire
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
@@ -58515,7 +58515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Growl
-  moveDescriptionWithTemplates: Add {attack} ZZAttack
+  moveDescriptionWithTemplates: Add {attack} ZZAtk
   actingPokemon: {fileID: 351712740}
   initialPriority: 3
   turnPriority: 0
@@ -96315,6 +96315,42 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1539893502}
+    - target: {fileID: 2853479834692368856, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -189.00024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853479834692368857, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853479834981513114, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853479834981513117, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853479835079810467, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2853479836449709958}
+    - target: {fileID: 2853479835079810467, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onTurnEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853479835341617766, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2853479836449709958}
+    - target: {fileID: 2853479835341617766, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onBattleStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853479835341617766, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleGameBoardTutorial, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2853479835633009163, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -96323,9 +96359,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2853479836452882070, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17201.125
+      objectReference: {fileID: 0}
     - target: {fileID: 2853479836452882071, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
@@ -96378,13 +96418,13 @@ MonoBehaviour:
   opponentActivePokemon: {fileID: 0}
   renderLocationsBelow: 
   playerPokemonLocations:
-  - {fileID: 2853479836449709974}
-  - {fileID: 2853479836449709973}
-  - {fileID: 2853479836449709972}
-  opponentPokemonLocations:
-  - {fileID: 2853479836449709971}
-  - {fileID: 2853479836449709970}
   - {fileID: 2853479836449709969}
+  - {fileID: 2853479836449709970}
+  - {fileID: 2853479836449709971}
+  opponentPokemonLocations:
+  - {fileID: 2853479836449709972}
+  - {fileID: 2853479836449709973}
+  - {fileID: 2853479836449709974}
   deckLocation: {fileID: 2853479836449709968}
   handLocations:
   - {fileID: 2853479836449709967}
@@ -96431,7 +96471,7 @@ MonoBehaviour:
     a card over a pokemon to check for the selector to see if it can be targeted
   showedCardInstruction: 0
   endTurnInstruction: Press the end turn button for your opponent to go
-  showedTurnInstruction: 0
+  showedEndTurnInstruction: 0
   cardButtonInstruction: Before playing a card, you can also click the button to
     active the card ability
   showedCardButtonInstruction: 0

@@ -11,25 +11,25 @@ public class BattleGameBoardTutorial : BattleGameBoard
     public string gameStartInstruction;
 
     public string energyInstruction;
-    public bool showedEnergyInstruction;
+    public bool showedEnergyInstruction = false;
 
     public bool canShowCards;
 
     public string cardCostInstruction;
     public string cardDragInstruction;
-    public bool showedCardInstruction;
+    public bool showedCardInstruction = false;
 
     public string endTurnInstruction;
-    public bool showedTurnInstruction;
+    public bool showedEndTurnInstruction = false;
 
     public string cardButtonInstruction;
-    public bool showedCardButtonInstruction;
+    public bool showedCardButtonInstruction = false;
 
     public string typeInstruction;
-    public bool showedTypeInstruction;
+    public bool showedTypeInstruction = false;
 
     public string oppAttackInstruction;
-    public bool showedOppAttackInstruction;
+    public bool showedOppAttackInstruction = false;
 
 
     /// <summary>
@@ -103,7 +103,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
         // Each turn share some instructions
         if (!showedEnergyInstruction)
         {
-            worldDialog.ShowMessage(energyInstruction, () => { onDrawHelper(); return true; });
+            worldDialog.ShowMessage(energyInstruction, () => { showedEnergyInstruction = true; onDrawHelper(); return true; });
         }
         else if (!showedCardInstruction)
         {
@@ -138,36 +138,31 @@ public class BattleGameBoardTutorial : BattleGameBoard
 
     private void onDrawHelper()
     {
-        if (showedCardInstruction && !showedCardButtonInstruction)
+        // Refresh energy
+        availableEnergy.ForEach(e => { e.isUsed = false; });
+
+        // Pick 3 energies
+        var maxThreshold = 10;
+        var i = 0;
+        while (energyHand.Count < energyHandSize && i < maxThreshold)
         {
-            // Refresh energy
-            availableEnergy.ForEach(e => { e.isUsed = false; });
+            if (energyDeck.Count < 1) { reshuffleEnergyDiscard(); }
+            drawEnergy();
+            i++;
+        }
 
-            // Pick 3 energies
-            var maxThreshold = 10;
-            var i = 0;
-            while (energyHand.Count < energyHandSize && i < maxThreshold)
+        // Re-activate any lingering energies
+        if (!energyHandDiscard)
+        {
+            energyHand.ForEach(e =>
             {
-                if (energyDeck.Count < 1) { reshuffleEnergyDiscard(); }
-                drawEnergy();
-                i++;
-            }
-
-            // Re-activate any lingering energies
-            if (!energyHandDiscard)
-            {
-                energyHand.ForEach(e =>
-                {
-                    e.SetCanBeDragged(true);
-                });
-            }
+                e.SetCanBeDragged(true);
+            });
         }
 
         // Draw cards up to handSize
         if (canShowCards)
         {
-            var maxThreshold = 10;
-            var i = 0;
             while (hand.Count < handSize && i < maxThreshold)
             {
                 if (deck.Count < 1) { reshuffleDiscard(); }
@@ -177,39 +172,26 @@ public class BattleGameBoardTutorial : BattleGameBoard
         }
     }
 
-
     public override void onEnergyPlay(Energy source, Pokemon target)
     {
-        // Remove energy
-        energyHand.Remove(source);
-
-        // Trigger energy action
-        source.playEnergy(target);
-
-        // Discard other energies
-        if (energyHandDiscard)
-        {
-            energyHand.ForEach(e =>
-            {
-                e.Translate(energyDiscardLocation.transform.position);
-                e.transform.rotation = energyDiscardLocation.transform.rotation;
-            });
-            energyDiscard.AddRange(energyHand);
-            energyHand.RemoveAll(card => true);
-        }
-        else
-        {
-            energyHand.ForEach(e =>
-            {
-                e.SetCanBeDragged(false);
-            });
-        }
+        base.onEnergyPlay(source, target);
 
         // Trigger next instruction if applicable
         if (!canShowCards)
         {
             canShowCards = true;
             onDraw();
+        }
+    }
+
+    public override void onPlay(Card move, Pokemon user, Pokemon target)
+    {
+        base.onPlay(move, user, target);
+
+        // Trigger next instruction if applicable
+        if (!showedEndTurnInstruction)
+        {
+            worldDialog.ShowMessage(endTurnInstruction, () => { showedEndTurnInstruction = true; return true; });
         }
     }
 }
