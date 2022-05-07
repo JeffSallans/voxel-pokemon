@@ -75,15 +75,31 @@ public class IOpponentStrategy : MonoBehaviour
         {
             return nextOpponentMove.actingPokemon.pokemonName + " fainted before it could attack";
         }
+        // Do no trigger if it was already played
+        if (nextOpponentMove.playInstantly)
+        {
+            return null;
+        }
         return nextOpponentMove.playMove();
     }
 
-    public virtual void computeOpponentsNextMove()
+    public virtual string computeOpponentsNextMove()
     {
         // Randomly select move
         var moveIndex = Mathf.FloorToInt(Random.value * availableMoves.Count);
         nextOpponentMove = availableMoves[moveIndex];
         nextOpponentMove.onNextMoveSelect();
+        // Trigger if it was already played
+        if (nextOpponentMove.playInstantly)
+        {
+            // switch in the pokemon that is using the move
+            if (nextOpponentMove.actingPokemon != battleGameBoard.opponentActivePokemon && nextOpponentMove.switchInOnUse)
+            {
+                battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.actingPokemon);
+            }
+            return nextOpponentMove.playMove();
+        }
+        return null;
     }
 
     public virtual void onCardPlayed(Card move, Pokemon user, Pokemon target)

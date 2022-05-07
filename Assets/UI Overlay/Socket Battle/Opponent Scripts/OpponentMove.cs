@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class OpponentMove : IOpponentMove
 {
@@ -25,6 +26,11 @@ public class OpponentMove : IOpponentMove
             return desc;
         }
     }
+
+    /// <summary>
+    /// The possible targets of this card. Self, Bench, Team, ActiveOpponent, AnyOpponent, BenchOpponent, AnyPokemon, OverrideTarget
+    /// </summary>
+    public string targetType = "ActiveOpponent";
 
     public int attackCost;
     public int defenseCost;
@@ -77,6 +83,11 @@ public class OpponentMove : IOpponentMove
     public int turn = 99;
 
     /// <summary>
+    /// Set to true if the status affects the user instead of the target
+    /// </summary>
+    public bool statusAffectsUser = false;
+
+    /// <summary>
     /// (Optional) Set to create a new target instead of battleGameBoard.activePokemon
     /// </summary>
     public Pokemon overrideTarget;
@@ -99,7 +110,7 @@ public class OpponentMove : IOpponentMove
     public override string playMove()
     {
         var moveMessage = "";
-        var target = (overrideTarget != null) ? overrideTarget : battleGameBoard.activePokemon;
+        var target = getTarget();
 
         if (target.isInvulnerable && damage > 0)
         {
@@ -148,15 +159,16 @@ public class OpponentMove : IOpponentMove
         }
 
         // Add status effects if applicable
-        addStatHelper(target, "attackStat", attackStat);
-        addStatHelper(target, "defenseStat", defenseStat);
-        addStatHelper(target, "specialStat", specialStat);
-        addStatHelper(target, "evasionStat", evasionStat);
-        addStatHelper(target, "blockStat", blockStat);
-        addStatHelper(target, "attackMultStat", attackMultStat);
+        var statusTarget = (statusAffectsUser) ? user : target;
+        addStatHelper(statusTarget, "attackStat", attackStat);
+        addStatHelper(statusTarget, "defenseStat", defenseStat);
+        addStatHelper(statusTarget, "specialStat", specialStat);
+        addStatHelper(statusTarget, "evasionStat", evasionStat);
+        addStatHelper(statusTarget, "blockStat", blockStat);
+        addStatHelper(statusTarget, "attackMultStat", attackMultStat);
         if (grantsInvulnerability)
         {
-            target.attachedStatus.Add(new StatusEffect(target, null, "invulnerabilityEffect", new Dictionary<string, string>() {
+            target.attachedStatus.Add(new StatusEffect(statusTarget, null, "invulnerabilityEffect", new Dictionary<string, string>() {
                 { "statType", "invulnerability" },
                 { "stackCount", "1" },
                 { "turnsLeft", "1" }
@@ -171,7 +183,13 @@ public class OpponentMove : IOpponentMove
         }
 
         message = moveDescriptionWithTemplates.Replace("{damage}", Mathf.Max(dealtDamage, 0).ToString())
-            .Replace("{userHeal}", Mathf.Max(userHeal, 0).ToString());
+            .Replace("{userHeal}", Mathf.Max(userHeal, 0).ToString())
+            .Replace("{userName}", actingPokemon.pokemonName)
+            .Replace("{attack}", attackStat.ToString())
+            .Replace("{special}", specialStat.ToString())
+            .Replace("{defense}", defenseStat.ToString())
+            .Replace("{evasion}", evasionStat.ToString())
+            .Replace("{block}", blockStat.ToString());
         return attackMissed;
     }
 
@@ -185,5 +203,39 @@ public class OpponentMove : IOpponentMove
                 { "turnsLeft", turn.ToString() }
             }));
         }
+    }
+
+    /// <summary>
+    /// Returns the target of the move
+    /// </summary>
+    /// <returns></returns>
+    private Pokemon getTarget()
+    {
+        var opponentBench = battleGameBoard.player.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
+        var opponentTeam = battleGameBoard.player.party.Where(p => !p.isFainted).ToList();
+        if (overrideTarget)
+        {
+            return overrideTarget;
+        }
+        else if (targetType == "ActiveOpponent")
+        {
+            return battleGameBoard.activePokemon;
+        }
+        else if (targetType == "BenchOpponent" && opponentBench.Count > 0)
+        {
+            var randomTarget = UnityEngine.Random.Range(0, opponentBench.Count - 1);
+            return opponentBench[randomTarget];
+        }
+        else if (targetType == "AnyOpponent")
+        {
+            var randomTarget = UnityEngine.Random.Range(0, opponentTeam.Count - 1);
+            return opponentTeam[randomTarget];
+        }
+        else if (targetType == "Self")
+        {
+            return battleGameBoard.opponentActivePokemon;
+        }
+
+        return battleGameBoard.activePokemon;
     }
 }

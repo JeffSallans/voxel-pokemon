@@ -309,29 +309,4 @@ public static class TypeChart
             throw new System.Exception("Invalid number of types on target");
         }
     }
-
-    /// <summary>
-    /// Returns the move effectiveness. For the move on the target. 
-    /// @assumes the target has 1 or two types
-    /// </summary>
-    /// <param name="move"></param>
-    /// <param name="target"></param>
-    /// <returns></returns>
-    public static float getEffectiveness(OpponentOnSelectMove move, Pokemon target)
-    {
-        if (target.pokemonTypes.Count == 1)
-        {
-            return getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[0]);
-        }
-        else if (target.pokemonTypes.Count == 2)
-        {
-            var firstEff = getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[0]);
-            var secondEff = getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[1]);
-            return Mathf.Max(Mathf.Min(firstEff * secondEff, superEffectiveMultMax), notEffectiveMultMin);
-        }
-        else
-        {
-            throw new System.Exception("Invalid number of types on target");
-        }
-    }
 }

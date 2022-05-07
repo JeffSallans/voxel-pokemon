@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class StrategyRandom : IOpponentStrategy
 {
-    public override void computeOpponentsNextMove()
+    public override string computeOpponentsNextMove()
     {
         // Randomly select move
         var moveIndex = Mathf.FloorToInt(Random.value * availableMoves.Count);
         nextOpponentMove = availableMoves[moveIndex];
+        nextOpponentMove.onNextMoveSelect();
+        // Do no trigger if it was already played
+        if (nextOpponentMove.playInstantly)
+        {
+            return nextOpponentMove.playMove();
+        }
+        return null;
     }
 }

@@ -11,7 +11,7 @@ public class StrategySurge : IOpponentStrategy
 
     private List<Card> playerMovesLastTurn = new List<Card>();
 
-    public override void computeOpponentsNextMove()
+    public override string computeOpponentsNextMove()
     {
         // Reset priority picks
         availableMoves.ForEach(m => { m.turnPriority = m.initialPriority; });
@@ -62,6 +62,13 @@ public class StrategySurge : IOpponentStrategy
                 .ForEach(m => { m.turnPriority += Random.Range(0f, 2f); });
 
         nextOpponentMove = pickMoveUsingPriority(availableMoves);
+        nextOpponentMove.onNextMoveSelect();
+        // Do no trigger if it was already played
+        if (nextOpponentMove.playInstantly)
+        {
+            return nextOpponentMove.playMove();
+        }
+        return null;
     }
 
     private IOpponentMove pickMoveUsingPriority(List<IOpponentMove> moveList)

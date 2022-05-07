@@ -1,18 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class OpponentOnSelectMove : MonoBehaviour
+public class OpponentTeamMove : IOpponentMove
 {
     /// <summary>
-    /// The amount of damage to deal
+    /// The move to show above the attacking pokemon
     /// </summary>
-    public int damage;
+    override public string moveDescription
+    {
+        get
+        {
 
-    /// <summary>
-    /// The energy type of the damage
-    /// </summary>
-    public string damageEnergy;
+            var desc = base.moveDescription
+                .Replace("{userName}", actingPokemon.pokemonName)
+                .Replace("{attack}", attackStat.ToString())
+                .Replace("{special}", specialStat.ToString())
+                .Replace("{defense}", defenseStat.ToString())
+                .Replace("{evasion}", evasionStat.ToString())
+                .Replace("{userHeal}", userHeal.ToString())
+                .Replace("{block}", blockStat.ToString())
+                .Replace("{damage}", damage.ToString());
+            return desc;
+        }
+    }
+
+    public int attackCost;
+    public int defenseCost;
+    public int specialCost;
+    public int evasionCost;
 
     /// <summary>
     /// The attack stat the card will change
@@ -60,78 +77,54 @@ public class OpponentOnSelectMove : MonoBehaviour
     public int turn = 99;
 
     /// <summary>
-    /// The animation event to trigger on the user
+    /// Returns true if the move can be used
     /// </summary>
-    public string userAnimationType = "onAttack";
-
-    /// <summary>
-    /// The animation event to trigger on the target
-    /// </summary>
-    public string targetAnimationType = "onHit";
-
-    /// <summary>
-    /// The animation event to trigger on the target (used for particle or identifying effects)
-    /// </summary>
-    public string targetAnimationType2 = "";
-
-    /// <summary>
-    /// (Optional) Set to create a new target instead of battleGameBoard.activePokemon
-    /// </summary>
-    public Pokemon overrideTarget;
-
-    // Start is called before the first frame update
-    void Start()
+    public override bool canUseMove
     {
-        
+        get
+        {
+            var costIsPaid = actingPokemon.attackStat >= attackCost &&
+                actingPokemon.defenseStat >= defenseCost &&
+                actingPokemon.specialStat >= specialCost &&
+                actingPokemon.evasionStat >= evasionCost;
+            return costIsPaid;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    /// <summary>
-    /// Replace onselect_ variables in move template
-    /// </summary>
-    /// <param name="moveDescriptionWithTemplates"></param>
-    /// <returns></returns>
-    public string formatMoveDescription(string moveDescriptionWithTemplates)
-    {
-        var desc = moveDescriptionWithTemplates
-                .Replace("{onselect_attack}", attackStat.ToString())
-                .Replace("{onselect_special}", specialStat.ToString())
-                .Replace("{onselect_defense}", defenseStat.ToString())
-                .Replace("{onselect_evasion}", evasionStat.ToString())
-                .Replace("{onselect_userHeal}", userHeal.ToString())
-                .Replace("{onselect_block}", blockStat.ToString())
-                .Replace("{onselect_damage}", damage.ToString());
-        return desc;
-    }
-
-    // Execute
-    public string playMove(BattleGameBoard battleGameBoard, Pokemon actingPokemon)
+    public override string playMove()
     {
         var moveMessage = "";
-        var target = (overrideTarget != null) ? overrideTarget : battleGameBoard.activePokemon;
+        var teamPokemon = battleGameBoard.opponent.party.Where(p => !p.isFainted && p != actingPokemon).ToList();
 
-        if (target.isInvulnerable && damage > 0)
-        {
-            if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
-            return actingPokemon.pokemonName + " missed. " + target.pokemonName + " is invulnerable.";
-        }
+        // Pay cost
+        actingPokemon.attackStat -= attackCost;
+        actingPokemon.defenseStat -= defenseCost;
+        actingPokemon.specialStat -= specialCost;
+        actingPokemon.evasionStat -= evasionCost;
 
-        // Determine damage
-        commonCardPlay(actingPokemon, target, out moveMessage);
-
+        // Play card on self
+        commonCardPlay(actingPokemon, actingPokemon, out moveMessage);
         if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
-        if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
-        if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
 
-        return moveMessage;
+        // Play card on team
+        teamPokemon.ForEach(t =>
+        {
+            var tempMessage = "";
+            commonCardPlay(actingPokemon, t, out tempMessage);
+            if (targetAnimationType != "") t.GetComponent<Animator>().SetTrigger(targetAnimationType);
+            if (targetAnimationType2 != "") t.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+        });
+
+        return moveMessage + " to the team";
     }
 
-
+    /// <summary>
+    /// The same as OpponentMove
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="target"></param>
+    /// <param name="message"></param>
+    /// <returns></returns>
     private bool commonCardPlay(Pokemon user, Pokemon target, out string message)
     {
         message = "";
@@ -178,7 +171,14 @@ public class OpponentOnSelectMove : MonoBehaviour
             user.health = Mathf.Min(user.initHealth, newHealth);
         }
 
-        message = "";
+        message = moveDescriptionWithTemplates.Replace("{damage}", Mathf.Max(dealtDamage, 0).ToString())
+            .Replace("{userHeal}", Mathf.Max(userHeal, 0).ToString())
+            .Replace("{userName}", actingPokemon.pokemonName)
+            .Replace("{attack}", attackStat.ToString())
+            .Replace("{special}", specialStat.ToString())
+            .Replace("{defense}", defenseStat.ToString())
+            .Replace("{evasion}", evasionStat.ToString())
+            .Replace("{block}", blockStat.ToString());
         return attackMissed;
     }
 

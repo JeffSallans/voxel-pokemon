@@ -527,11 +527,21 @@ public class BattleGameBoard : MonoBehaviour
     public void onOpponentDraw() {
         // Take action on queued move
         var message = opponent.opponentStrategyBot.opponentPlay();
-        worldDialog.ShowMessage(message, () => {
+        
+        System.Func<bool> callback = () =>
+        {
             // Trigger right away for now
             onOpponentTurnEnd();
             return true;
-        });
+        };
+
+        // Display dialog if message exists
+        if (message == null) 
+        {
+            callback();
+            return;
+        }
+        worldDialog.ShowMessage(message, callback);
     }
 
     /// <summary>
@@ -684,22 +694,34 @@ public class BattleGameBoard : MonoBehaviour
 
     public void onOpponentTurnEnd() {
         // Compute next move
-        opponent.opponentStrategyBot.computeOpponentsNextMove();
+        var message = opponent.opponentStrategyBot.computeOpponentsNextMove();
 
-        // Send event to all energy, cards, status, and pokemon
-        allPokemon.ForEach(p => p.onOpponentTurnEnd());
-        allCards.ForEach(c => c.onOpponentTurnEnd());
-        allEnergy.ForEach(e => e.onOpponentTurnEnd());
-        opponent.opponentStrategyBot.onOpponentTurnEnd();
-
-        // Check game end conditions
-        onEitherTurnEnd();
-
-        // Trigger draw
-        if (!gameHasEnded)
+        System.Func<bool> callback = () =>
         {
-            onDraw();
+            // Send event to all energy, cards, status, and pokemon
+            allPokemon.ForEach(p => p.onOpponentTurnEnd());
+            allCards.ForEach(c => c.onOpponentTurnEnd());
+            allEnergy.ForEach(e => e.onOpponentTurnEnd());
+            opponent.opponentStrategyBot.onOpponentTurnEnd();
+
+            // Check game end conditions
+            onEitherTurnEnd();
+
+            // Trigger draw
+            if (!gameHasEnded)
+            {
+                onDraw();
+            }
+            return true;
+        };
+
+        // Display dialog if message exists
+        if (message == null)
+        {
+            callback();
+            return;
         }
+        worldDialog.ShowMessage(message, callback);
     }
 
     public void onEitherTurnEnd()

@@ -22,12 +22,6 @@ public class IOpponentMove : MonoBehaviour
                 .Replace("{userName}", actingPokemon.pokemonName)
                 .Replace("{damage}", damage.ToString());
 
-            // Apply on select formats
-            if (onSelectMove)
-            {
-                desc = onSelectMove.formatMoveDescription(desc);
-            }
-
             return desc;
         }
     }
@@ -77,7 +71,10 @@ public class IOpponentMove : MonoBehaviour
     /// </summary>
     public string targetAnimationType2 = "";
 
-    public OpponentOnSelectMove onSelectMove;
+    /// <summary>
+    /// True if the attack should happen before the player's turn
+    /// </summary>
+    public bool playInstantly;
 
     protected BattleGameBoard battleGameBoard;
 
@@ -114,8 +111,5 @@ public class IOpponentMove : MonoBehaviour
     /// <summary>
     /// Runs when the move is selected from the strategy script
     /// </summary>
-    public virtual void onNextMoveSelect()
-    {
-        onSelectMove.playMove(battleGameBoard, actingPokemon);
-    }
+    public virtual void onNextMoveSelect() { }
 }
