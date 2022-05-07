@@ -66,7 +66,7 @@ public class IOpponentStrategy : MonoBehaviour
     public virtual string opponentPlay()
     {
         // switch in the pokemon that is using the move
-        if (nextOpponentMove.actingPokemon != battleGameBoard.opponentActivePokemon)
+        if (nextOpponentMove.actingPokemon != battleGameBoard.opponentActivePokemon && nextOpponentMove.switchInOnUse)
         {
             battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.actingPokemon);
         }
@@ -83,6 +83,7 @@ public class IOpponentStrategy : MonoBehaviour
         // Randomly select move
         var moveIndex = Mathf.FloorToInt(Random.value * availableMoves.Count);
         nextOpponentMove = availableMoves[moveIndex];
+        nextOpponentMove.onNextMoveSelect();
     }
 
     public virtual void onCardPlayed(Card move, Pokemon user, Pokemon target)

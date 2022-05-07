@@ -12,7 +12,8 @@ public class OpponentMove : IOpponentMove
     {
         get
         {
-            var desc = moveDescriptionWithTemplates
+            
+            var desc = base.moveDescription
                 .Replace("{userName}", actingPokemon.pokemonName)
                 .Replace("{attack}", attackStat.ToString())
                 .Replace("{special}", specialStat.ToString())

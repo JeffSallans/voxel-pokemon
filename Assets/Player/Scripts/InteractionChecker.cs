@@ -214,7 +214,7 @@ public class InteractionChecker : MonoBehaviour
 
             if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             var opponent = iEvent.gameObject;
-            StartCoroutine(LoadScene(iEvent.sceneName, opponent));
+            StartCoroutine(LoadScene(iEvent.sceneName, opponent, true));
             activeEvent = null;
             return true;
         });
@@ -239,13 +239,13 @@ public class InteractionChecker : MonoBehaviour
 
     }
 
-    IEnumerator LoadScene(string sceneName, GameObject opponent = null)
+    IEnumerator LoadScene(string sceneName, GameObject opponent = null, bool movePlayerToNewScene = false)
     {
         yield return new WaitForSeconds(1);
 
         // Set Previous Scene data
         prevSceneName = SceneManager.GetActiveScene().name;
-        prevSceneOpponent = Instantiate(opponent);
+        prevSceneOpponent = (opponent) ? Instantiate(opponent) : null;
         prevScenePlayer = GameObject.Find("Player Dad");
         prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
@@ -254,8 +254,8 @@ public class InteractionChecker : MonoBehaviour
         // Copy opponent to be moved as a global value
         if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
 
-        DontDestroyOnLoad(prevScenePlayer);
-        DontDestroyOnLoad(prevSceneOpponent);
+        if (movePlayerToNewScene) { DontDestroyOnLoad(prevScenePlayer); }
+        if (prevSceneOpponent) { DontDestroyOnLoad(prevSceneOpponent); }
         SceneManager.LoadScene(sceneName);
         this.enabled = false;
         
@@ -275,7 +275,7 @@ public class InteractionChecker : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        Destroy(prevSceneOpponent);
+        if (prevSceneOpponent) { Destroy(prevSceneOpponent); }
         SceneManager.LoadScene(prevSceneName);
 
         // Remove previous scene player
