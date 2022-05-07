@@ -12,6 +12,8 @@ public class BattleGameBoard : MonoBehaviour
 
     public OpponentDeck opponent;
 
+    public InteractionChecker playerInteractionChecker;
+
     public string debugVariablesBelow;
 
     /// <summary>
@@ -213,6 +215,11 @@ public class BattleGameBoard : MonoBehaviour
     private Quaternion prevPlayerPartyRotation;
 
     /// <summary>
+    /// The order of the party when entering
+    /// </summary>
+    private List<Pokemon> playerInitPartyOrder;
+
+    /// <summary>
     /// The locations of the party
     /// </summary>
     public GameObject opponentPartyParentGameobject;
@@ -297,9 +304,10 @@ public class BattleGameBoard : MonoBehaviour
         // Disabled players
 
         // Move party parent reference into placement
-        var playerParty = GameObject.Find("Player Dad/party");
+        var playerParty = player.gameObject.transform.Find("party");
         if (playerParty)
         {
+            playerInitPartyOrder = player.party.ToList();
             prevPlayerPartyRotation = playerParty.gameObject.transform.rotation;
             // zero out position to avoid any issues moving the objects into the canvas
             playerParty.gameObject.transform.position = new Vector3(0f, 0f, 0f);
@@ -309,7 +317,7 @@ public class BattleGameBoard : MonoBehaviour
             playerParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
 
-        var opponentParty = GameObject.Find("Opponent/party");
+        var opponentParty = opponent.gameObject.transform.Find("party");
         if (opponentParty)
         {
             // zero out position to avoid any issues moving the objects into the canvas
@@ -351,6 +359,7 @@ public class BattleGameBoard : MonoBehaviour
             playerParty.gameObject.transform.parent = player.transform;
             // set rotation back to avoid any issues in the future
             playerParty.gameObject.transform.rotation = prevPlayerPartyRotation;
+            player.party = playerInitPartyOrder;
         }
 
         var opponentParty = GameObject.Find("opp-deck/party");
@@ -359,6 +368,11 @@ public class BattleGameBoard : MonoBehaviour
             opponentParty.gameObject.transform.parent = opponent.transform;
         }
 
+        if (playerInteractionChecker)
+        {
+            playerInteractionChecker.LoadPreviousScene();
+            return;
+        }
         player.GetComponent<InteractionChecker>().LoadPreviousScene();
     }
 

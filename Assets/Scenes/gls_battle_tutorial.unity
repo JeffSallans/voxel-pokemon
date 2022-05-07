@@ -9428,6 +9428,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7522569017854171351, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
   m_PrefabInstance: {fileID: 223755990}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &223755992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6808737486173340938, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+  m_PrefabInstance: {fileID: 223755990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b549bd55c25923e48958048f457988a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &223755993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1580121721931516655, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
@@ -58485,9 +58496,12 @@ MonoBehaviour:
   turnPriority: 0
   damage: 68
   damageEnergy: Fire
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 2
   defenseCost: 0
   specialCost: 0
@@ -58501,6 +58515,7 @@ MonoBehaviour:
   userHeal: 0
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &1367200614
 MonoBehaviour:
@@ -58521,9 +58536,12 @@ MonoBehaviour:
   turnPriority: 0
   damage: 0
   damageEnergy: Normal
+  switchInOnUse: 1
   userAnimationType: onBuff
   targetAnimationType: 
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 0
   defenseCost: 0
   specialCost: 0
@@ -58537,6 +58555,7 @@ MonoBehaviour:
   userHeal: 0
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 351712740}
 --- !u!114 &1367200615
 MonoBehaviour:
@@ -58557,9 +58576,12 @@ MonoBehaviour:
   turnPriority: 0
   damage: 22
   damageEnergy: Dark
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 0
   defenseCost: 0
   specialCost: 0
@@ -58573,6 +58595,7 @@ MonoBehaviour:
   userHeal: 0
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &1367200616
 MonoBehaviour:
@@ -58593,9 +58616,12 @@ MonoBehaviour:
   turnPriority: 0
   damage: 18
   damageEnergy: Normal
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 0
   defenseCost: 0
   specialCost: 0
@@ -58609,6 +58635,7 @@ MonoBehaviour:
   userHeal: 0
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 0}
 --- !u!1001 &1367627406
 PrefabInstance:
@@ -81790,7 +81817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalRotation.x
@@ -81798,7 +81825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalRotation.z
@@ -81810,7 +81837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -81823,6 +81850,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4197506587261614469, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
   m_PrefabInstance: {fileID: 1856752725}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1856752727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8401881321641422174, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+  m_PrefabInstance: {fileID: 1856752725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4401051e9e075344b2911b561612aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1857371630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96408,8 +96446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744f423aabbd27a499e65c221b50dd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  opponent: {fileID: 0}
+  player: {fileID: 1856752727}
+  opponent: {fileID: 223755992}
   debugVariablesBelow: 
   energyDeck: []
   energyHand: []

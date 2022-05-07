@@ -46,11 +46,6 @@ public class InteractionChecker : MonoBehaviour
     private Dictionary<string, string> interactionFlags = new Dictionary<string, string>();
 
     /// <summary>
-    /// Trakes the scene loading in the background
-    /// </summary>
-    private AsyncOperation sceneAsync;
-
-    /// <summary>
     /// The reference to the previous scene opponent
     /// </summary>
     private GameObject prevSceneOpponent;
@@ -254,11 +249,31 @@ public class InteractionChecker : MonoBehaviour
         // Copy opponent to be moved as a global value
         if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
 
-        if (movePlayerToNewScene) { DontDestroyOnLoad(prevScenePlayer); }
+        DontDestroyOnLoad(prevScenePlayer);
         if (prevSceneOpponent) { DontDestroyOnLoad(prevSceneOpponent); }
         SceneManager.LoadScene(sceneName);
+
+        // If player is not moving to new scene copy data over
+        if (!movePlayerToNewScene)
+        {
+            var newScene = SceneManager.GetActiveScene();
+            while (newScene.name != sceneName)
+            {
+                yield return new WaitForSeconds(0.3f);
+                newScene = SceneManager.GetActiveScene();
+            }
+            var rootObjects = newScene.GetRootGameObjects();
+            foreach (var obj in rootObjects)
+            {
+                if (obj.name == "Battle Canvas")
+                {
+                    var battleGameBoard = obj.GetComponent<BattleGameBoard>();
+                    battleGameBoard.playerInteractionChecker = this;
+                }
+            }
+        }
+
         this.enabled = false;
-        
     }
 
     /// <summary>
@@ -310,7 +325,7 @@ public class InteractionChecker : MonoBehaviour
                 GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = prevScenePlayer.transform.Find("camera_focus").transform;
 
                 // Setup pos
-                prevScenePlayer.gameObject.transform.position = prevScenePlayerPos;
+                gameObject.transform.position = prevScenePlayerPos;
             }
         }
 

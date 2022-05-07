@@ -455,7 +455,7 @@ public class Card : MonoBehaviour
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
         if (grantsInvulnerability)
         {
-            target.attachedStatus.Add(new StatusEffect(statusTarget, this, "invulnerabilityEffect", new Dictionary<string, string>() {
+            statusTarget.attachedStatus.Add(new StatusEffect(statusTarget, this, "invulnerabilityEffect", new Dictionary<string, string>() {
                 { "statType", "invulnerability" },
                 { "stackCount", "1" },
                 { "turnsLeft", "1" }
