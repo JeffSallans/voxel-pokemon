@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the entire battle state and events
@@ -429,6 +430,7 @@ public class BattleGameBoard : MonoBehaviour
             onDraw();
 
             endTurnButton.SetActive(true);
+            endTurnButton.GetComponent<Button>().interactable = false;
 
             return true;
         });
@@ -645,6 +647,9 @@ public class BattleGameBoard : MonoBehaviour
 
     public virtual void onEnergyPlay(Energy source, Pokemon target)
     {
+        // Enable end turn button
+        endTurnButton.GetComponent<Button>().interactable = true;
+
         // Remove energy
         energyHand.Remove(source);
         
@@ -671,6 +676,9 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     public void onTurnEnd() {
+        // Disable end turn button
+        endTurnButton.GetComponent<Button>().interactable = false;
+
         // Discard hand
         hand.ForEach(c =>
         {

@@ -67533,7 +67533,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 288
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -69627,6 +69627,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1856752726}
     m_Modifications:
+    - target: {fileID: 6393761822012381006, guid: db590dbfe69ec4a43a6463bf6e57745c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824600827606034046, guid: db590dbfe69ec4a43a6463bf6e57745c, type: 3}
+      propertyPath: m_Size.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824600827606034046, guid: db590dbfe69ec4a43a6463bf6e57745c, type: 3}
+      propertyPath: m_Size.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824600827606034046, guid: db590dbfe69ec4a43a6463bf6e57745c, type: 3}
+      propertyPath: m_Size.z
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6882942980807967042, guid: db590dbfe69ec4a43a6463bf6e57745c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -96405,6 +96421,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3169283119261346152, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311659752168953944, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_Size.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311659752168953944, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_Size.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311659752168953944, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_Size.z
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
@@ -96448,6 +96480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1856752727}
   opponent: {fileID: 223755992}
+  playerInteractionChecker: {fileID: 0}
   debugVariablesBelow: 
   energyDeck: []
   energyHand: []

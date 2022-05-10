@@ -261,6 +261,9 @@ public class Card : MonoBehaviour
     /// </summary>
     private DropEvent dropEvent;
 
+    private float interactableDistance = 200;
+    private int raycastLayer;
+
     private Camera canvasCamera;
 
     private void Awake()
@@ -271,6 +274,7 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        raycastLayer = LayerMask.GetMask("UI Raycast");
         cardAnimator.SetBool("hideFlipButton", flipButtonFunctionality == null);
     }
 
@@ -312,6 +316,9 @@ public class Card : MonoBehaviour
                 cardAnimator.SetBool("isFlipButtonEnabled", flipButtonEnabled);
             }
         }
+
+        var newDropEvent = GetDropInteraction();
+        OnHoverInteraction(newDropEvent);
     }
 
     public void OnHoverEnter()
@@ -328,7 +335,7 @@ public class Card : MonoBehaviour
 
     public void OnHoverExit()
     {
-        if (isSelected)
+        if (canBePlayed && !isDragging)
         {
             transform.position = dragStartPosition;
             isDragging = false;
@@ -337,31 +344,49 @@ public class Card : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider collision)
+    /// <summary>
+    /// Checks if the user is hovering on something to interact with
+    /// </summary>
+    private DropEvent GetDropInteraction()
     {
-        var triggeredDropEvent = dropEvent = collision.gameObject.GetComponent<DropEvent>();
-        if (triggeredDropEvent?.eventType == "TargetPokemon" && canTarget(triggeredDropEvent.targetPokemon))
-        {
-            dropEvent = triggeredDropEvent;
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
-        }
+        if (canvasCamera == null) return null;
+
+        RaycastHit hit = new RaycastHit();
+        var raycastHit = Physics.Raycast(canvasCamera.ScreenPointToRay(Input.mousePosition), out hit, interactableDistance, raycastLayer);
+
+        // Check if ray hit
+        if (!raycastHit) return null;
+
+        // Check if we can get component from hit
+        var result = hit.collider.GetComponent<DropEvent>();
+
+        return result;
     }
 
-    void OnTriggerExit(Collider collision)
+    /// <summary>
+    /// When the user "hovers" on something to interact with
+    /// </summary>
+    /// <param name="iEvent"></param>
+    public void OnHoverInteraction(DropEvent newDropEvent)
     {
-        var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
-        if (triggeredDropEvent != dropEvent) return;
+        // When we hover over something
+        if (newDropEvent?.eventType == "TargetPokemon" && canTarget(newDropEvent.targetPokemon))
+        {
+            dropEvent = newDropEvent;
+            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+        }
 
-        if (dropEvent?.eventType == "TargetPokemon")
+        // When the hover event is gone
+        if (newDropEvent == null && dropEvent != null)
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            dropEvent = null;
         }
-        dropEvent = null;
     }
 
     public void onDrag()
     {
-        if (canBePlayed && isSelected && !isDragging)
+        if (canBePlayed)
         {
             isDragging = true;
         }
@@ -369,7 +394,7 @@ public class Card : MonoBehaviour
 
     public void onDrop()
     {
-        if (!canBePlayed || !isDragging) return;
+        if (!canBePlayed) return;
 
         if (dropEvent?.eventType == "TargetPokemon" && canTarget(dropEvent.targetPokemon))
         {
@@ -379,6 +404,7 @@ public class Card : MonoBehaviour
         }
         else
         {
+            isDragging = false;
             OnHoverExit();
         }
     }

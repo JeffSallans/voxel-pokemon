@@ -62,16 +62,21 @@ public class Energy : MonoBehaviour
     /// <summary>
     /// The dropEvent for the selected drag
     /// </summary>
-    private DropEvent dropEvent;
+    public DropEvent dropEvent;
+
+    public bool inDebugMode = false;
+    private float interactableDistance = 200;
+    private int raycastLayer;
 
     private BattleGameBoard battleGameBoard;
 
     private Camera canvasCamera;
 
+
     // Start is called before the first frame update
     void Start()
     {
-
+        raycastLayer = LayerMask.GetMask("UI Raycast");
     }
 
     // Update is called once per frame
@@ -90,6 +95,19 @@ public class Energy : MonoBehaviour
         {
             onDrop();
         }
+
+        if (inDebugMode)
+        {
+            Ray ray = canvasCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, raycastLayer))
+                print("I'm looking at " + hit.transform.name);
+            else
+                print("I'm looking at nothing!");
+        }
+
+        var newDropEvent = GetDropInteraction();
+        OnHoverInteraction(newDropEvent);
     }
 
     public void OnHoverEnter()
@@ -113,27 +131,44 @@ public class Energy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider collision)
+    /// <summary>
+    /// Checks if the user is hovering on something to interact with
+    /// </summary>
+    private DropEvent GetDropInteraction()
     {
-        var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
+        if (canvasCamera == null) return null;
 
-        if (triggeredDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(triggeredDropEvent.targetPokemon))
-        {
-            dropEvent = collision.gameObject.GetComponent<DropEvent>();
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
-        }
+        RaycastHit hit = new RaycastHit();
+        var raycastHit = Physics.Raycast(canvasCamera.ScreenPointToRay(Input.mousePosition), out hit, interactableDistance, raycastLayer);
+
+        // Check if ray hit
+        if (!raycastHit) return null;
+
+        // Check if we can get component from hit
+        var result = hit.collider.GetComponent<DropEvent>();
+
+        return result;
     }
 
-    void OnTriggerExit(Collider collision)
+    /// <summary>
+    /// When the user "hovers" on something to interact with
+    /// </summary>
+    /// <param name="iEvent"></param>
+    public void OnHoverInteraction(DropEvent newDropEvent)
     {
-        var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
-        if (triggeredDropEvent != dropEvent) return;
+        // When we hover over something
+        if (newDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(newDropEvent.targetPokemon))
+        {
+            dropEvent = newDropEvent;
+            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+        }
 
-        if (dropEvent?.eventType == "TargetPokemon")
+        // When the hover event is gone
+        if (newDropEvent == null && dropEvent != null)
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            dropEvent = null;
         }
-        dropEvent = null;
     }
 
     public void onDrag()
