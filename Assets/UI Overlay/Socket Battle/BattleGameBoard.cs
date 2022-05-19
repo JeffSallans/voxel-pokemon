@@ -567,6 +567,9 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="user"></param>
     /// <param name="target"></param>
     public virtual void onPlay(Card move, Pokemon user, Pokemon target) {
+        // Enable end turn button
+        endTurnButton.GetComponent<Button>().interactable = true;
+
         // Pay cost
         payMoveCost(move.cost);
         

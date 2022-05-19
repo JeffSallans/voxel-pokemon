@@ -157,7 +157,7 @@ public class Energy : MonoBehaviour
     public void OnHoverInteraction(DropEvent newDropEvent)
     {
         // When we hover over something
-        if (newDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(newDropEvent.targetPokemon))
+        if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(newDropEvent.targetPokemon))
         {
             dropEvent = newDropEvent;
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");

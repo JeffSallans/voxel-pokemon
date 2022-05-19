@@ -370,10 +370,15 @@ public class Card : MonoBehaviour
     public void OnHoverInteraction(DropEvent newDropEvent)
     {
         // When we hover over something
-        if (newDropEvent?.eventType == "TargetPokemon" && canTarget(newDropEvent.targetPokemon))
+        if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canTarget(newDropEvent.targetPokemon))
         {
             dropEvent = newDropEvent;
+            var isSuperEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) > 1;
+            var isNotVeryEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) < 1;
+            dropEvent.targetPokemon.GetComponent<Animator>().SetBool("isSuperEffective", isSuperEffective);
+            dropEvent.targetPokemon.GetComponent<Animator>().SetBool("isNotVeryEffective", isNotVeryEffective);
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+
         }
 
         // When the hover event is gone

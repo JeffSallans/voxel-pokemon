@@ -277,6 +277,7 @@ public class Pokemon : MonoBehaviour
         battleGameBoard = _battleGameBoard;
         health = initHealth;
         attachedStatus = new List<StatusEffect>();
+        attachedEnergy = new List<Energy>();
 
         // Set initial stats
         addInitialStatHelper("attackStat", initAttackStat);
