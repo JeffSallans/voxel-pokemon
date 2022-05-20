@@ -33,7 +33,25 @@ public class StrategyStandard : IOpponentStrategy
         {
             availableMoves.Where(m => m.actingPokemon == battleGameBoard.opponentActivePokemon)
                 .ToList()
-                .ForEach(m => { m.turnPriority -= 2; });
+                .ForEach(m => { m.turnPriority -= 1; });
+        }
+
+        // Prefer active pokemon moves if they just switched in
+        var isActivePokemonSecondTurn = moveUsedHistory.Count > 2 && battleGameBoard.opponentActivePokemon != moveUsedHistory[0]?.actingPokemon && moveUsedHistory[0]?.actingPokemon != moveUsedHistory[1]?.actingPokemon;
+        if (isActivePokemonSecondTurn)
+        {
+            availableMoves.Where(m => m.actingPokemon == battleGameBoard.opponentActivePokemon)
+                .ToList()
+                .ForEach(m => { m.turnPriority += 1; });
+        }
+
+        // Prefer bench pokemon moves if the active pokemon has been in 4
+        var isActivePokemonThirdTurn = moveUsedHistory.Count > 4 && moveUsedHistory[0]?.actingPokemon == moveUsedHistory[1]?.actingPokemon && moveUsedHistory[0]?.actingPokemon == moveUsedHistory[2]?.actingPokemon && moveUsedHistory[0]?.actingPokemon == moveUsedHistory[3]?.actingPokemon;
+        if (isActivePokemonThirdTurn)
+        {
+            availableMoves.Where(m => m.actingPokemon == battleGameBoard.opponentActivePokemon)
+                .ToList()
+                .ForEach(m => { m.turnPriority -= 1; });
         }
 
         // Add a random float to each priority  

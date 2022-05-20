@@ -240,6 +240,8 @@ public class Pokemon : MonoBehaviour
             .Replace("{initHealth}", initHealth.ToString());
         if (healthText) healthText.text = healthDesc;
 
+        healthBar.UpdateHealthBar(this);
+
         // Update attached Energies to placeholder locations
         var i = 0;
         attachedEnergy.ForEach(e =>

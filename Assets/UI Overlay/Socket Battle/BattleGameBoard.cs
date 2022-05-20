@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -353,6 +354,12 @@ public class BattleGameBoard : MonoBehaviour
     {
         // Enable players
 
+        // Move energies into discard
+        allEnergy.ForEach(e => e.transform.position = discardLocation.transform.position);
+
+        // Rotate active pokemon 90 degrees
+        // TODO
+
         // Move party parent reference into placement
         var playerParty = GameObject.Find("deck/party");
         if (playerParty)
@@ -540,24 +547,10 @@ public class BattleGameBoard : MonoBehaviour
         });
     }
 
-    public void onOpponentDraw() {
+    public async void onOpponentDraw() {
         // Take action on queued move
-        var message = opponent.opponentStrategyBot.opponentPlay();
-        
-        System.Func<bool> callback = () =>
-        {
-            // Trigger right away for now
-            onOpponentTurnEnd();
-            return true;
-        };
-
-        // Display dialog if message exists
-        if (message == null) 
-        {
-            callback();
-            return;
-        }
-        worldDialog.ShowMessage(message, callback);
+        await opponent.opponentStrategyBot.opponentPlay();
+        onOpponentTurnEnd();
     }
 
     /// <summary>

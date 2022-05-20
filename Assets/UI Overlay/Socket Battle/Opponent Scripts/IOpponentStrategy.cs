@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Threading.Tasks;
 
 public class IOpponentStrategy : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class IOpponentStrategy : MonoBehaviour
     /// The last move selected
     /// </summary>
     protected IOpponentMove lastMoveUsed;
+
+    protected List<IOpponentMove> moveUsedHistory = new List<IOpponentMove>();
 
     /// <summary>
     /// All the cards the last player played
@@ -61,26 +64,34 @@ public class IOpponentStrategy : MonoBehaviour
     public virtual void onBattleStart(BattleGameBoard _battleGameBoard)
     {
         battleGameBoard = _battleGameBoard;
+        moveUsedHistory = new List<IOpponentMove>();
     }
 
-    public virtual string opponentPlay()
+    public async virtual Task opponentPlay()
     {
         // switch in the pokemon that is using the move
         if (nextOpponentMove.actingPokemon != battleGameBoard.opponentActivePokemon && nextOpponentMove.switchInOnUse)
         {
             battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.actingPokemon);
+            await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.actingPokemon.pokemonName + " switched in");
         }
         lastMoveUsed = nextOpponentMove;
+        moveUsedHistory.Insert(0, lastMoveUsed);
         if (nextOpponentMove.actingPokemon.isFainted)
         {
-            return nextOpponentMove.actingPokemon.pokemonName + " fainted before it could attack";
+            var faintedMessage = nextOpponentMove.actingPokemon.pokemonName + " fainted before it could attack";
+            await battleGameBoard.worldDialog.ShowMessageAsync(faintedMessage);
+            return;
         }
         // Do no trigger if it was already played
         if (nextOpponentMove.playInstantly)
         {
-            return null;
+            return;
         }
-        return nextOpponentMove.playMove();
+
+        nextOpponentMove.actingPokemon.GetComponent<Animator>().SetTrigger("onMoveHighlight");
+        var message = nextOpponentMove.playMove();
+        await battleGameBoard.worldDialog.ShowMessageAsync(message);
     }
 
     public virtual string computeOpponentsNextMove()
