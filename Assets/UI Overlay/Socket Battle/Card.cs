@@ -188,6 +188,9 @@ public class Card : MonoBehaviour
     {
         get
         {
+            // Override this check if DeckBuilder is here
+            if (inDeckBuilderWorkflow) { return true; }
+
             // Check color energy count
             var costAsString = cost?.Select(c => c.energyName)
                 .Where(e => e != "Normal")
@@ -252,11 +255,6 @@ public class Card : MonoBehaviour
     private Vector3 dragStartPosition = new Vector3();
 
     /// <summary>
-    /// The last position of the mouse to compute the delta
-    /// </summary>
-    private Vector3 previousMousePosition = new Vector3();
-
-    /// <summary>
     /// The dropEvent for the selected drag
     /// </summary>
     private DropEvent dropEvent;
@@ -264,11 +262,31 @@ public class Card : MonoBehaviour
     private float interactableDistance = 200;
     private int raycastLayer;
 
+    /// <summary>
+    /// The canvas camera to map mouse position to
+    /// </summary>
     private Camera canvasCamera;
+
+    /// <summary>
+    /// A reference to deck builder workflow if exists
+    /// </summary>
+    private object deckBuilderAddCard;
+
+    /// <summary>
+    /// True if the card is in the deck builder workflow
+    /// </summary>
+    private bool inDeckBuilderWorkflow
+    {
+        get
+        {
+            return deckBuilderAddCard != null;
+        }
+    }
 
     private void Awake()
     {
         battleGameBoard = GameObject.FindObjectOfType<BattleGameBoard>();
+        deckBuilderAddCard = GameObject.FindObjectOfType<DeckBuilderAddCard>();
     }
 
     // Start is called before the first frame update
@@ -370,7 +388,18 @@ public class Card : MonoBehaviour
     public void OnHoverInteraction(DropEvent newDropEvent)
     {
         // When we hover over something
-        if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canTarget(newDropEvent.targetPokemon))
+        if (inDeckBuilderWorkflow && newDropEvent?.eventType == "TargetPokemon")
+        {
+            dropEvent = newDropEvent;
+            FindObjectOfType<HoverAndDragMessageTarget>().OnHoverEnter(new HoverAndDragEvent()
+            {
+                eventType = dropEvent.eventType,
+                dropEvent = dropEvent,
+                targetCard = this
+            });
+        }
+        // Standard battle hover
+        else if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canTarget(newDropEvent.targetPokemon))
         {
             dropEvent = newDropEvent;
             var isSuperEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) > 1;
@@ -382,7 +411,17 @@ public class Card : MonoBehaviour
         }
 
         // When the hover event is gone
-        if (newDropEvent == null && dropEvent != null)
+        if (newDropEvent == null && dropEvent != null && inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
+        {
+            FindObjectOfType<HoverAndDragMessageTarget>().OnHoverExit(new HoverAndDragEvent()
+            {
+                eventType = dropEvent.eventType,
+                dropEvent = dropEvent,
+                targetCard = this
+            });
+            dropEvent = null;
+        }
+        else if (newDropEvent == null && dropEvent != null && dropEvent.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
             dropEvent = null;
@@ -401,7 +440,20 @@ public class Card : MonoBehaviour
     {
         if (!canBePlayed) return;
 
-        if (dropEvent?.eventType == "TargetPokemon" && canTarget(dropEvent.targetPokemon))
+        // When you drop on a pokemon
+        if (inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
+        {
+            isDragging = false;
+            isSelected = false;
+            FindObjectOfType<HoverAndDragMessageTarget>().OnDrop(new HoverAndDragEvent()
+            {
+                eventType = dropEvent.eventType,
+                dropEvent = dropEvent,
+                targetCard = this
+            });
+        }
+        // Standard battle drop
+        else if (dropEvent?.eventType == "TargetPokemon" && canTarget(dropEvent.targetPokemon))
         {
             isDragging = false;
             isSelected = false;
@@ -544,6 +596,8 @@ public class Card : MonoBehaviour
     /// <param name="animationName"></param>
     private void animateEnergyCost(Energy energy, string animationName)
     {
+        if (inDeckBuilderWorkflow) { return; }
+
         // Subtract from common
         var target = battleGameBoard.commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
         if (target != null)
@@ -573,6 +627,10 @@ public class Card : MonoBehaviour
     /// <returns></returns>
     public bool canTarget(Pokemon target)
     {
+        // Handle deck builder flow
+        if (inDeckBuilderWorkflow) { return true; }
+
+        // Handle null flow
         if (battleGameBoard.opponent == null ||
             battleGameBoard.opponent.party == null ||
             battleGameBoard.player == null ||

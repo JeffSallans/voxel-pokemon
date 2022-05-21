@@ -13,6 +13,8 @@ public class Pokemon : MonoBehaviour
 {
     public string pokemonName;
 
+    public int level = 1;
+
     public List<string> pokemonTypes;
 
     private int _health;
