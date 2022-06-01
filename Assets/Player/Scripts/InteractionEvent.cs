@@ -44,6 +44,22 @@ public class InteractionEvent : MonoBehaviour
     /// </summary>
     public Animator animator;
 
+    /// <summary>
+    /// True if the game object should be hidden on return
+    /// </summary>
+    public bool removeOnReturn;
+
+    /// <summary>
+    /// True if the interaction event should be disabled on return
+    /// </summary>
+    public bool disableOnReturn;
+
+    /// <summary>
+    /// The next interaction event to enable after this one
+    /// </summary>
+    public InteractionEvent nextInteractionEvent;
+
+
     // Start is called before the first frame update
     void Start()
     {

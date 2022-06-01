@@ -46,6 +46,11 @@ public class InteractionChecker : MonoBehaviour
     private Dictionary<string, string> interactionFlags = new Dictionary<string, string>();
 
     /// <summary>
+    /// The reference to the previous scene active event
+    /// </summary>
+    private InteractionEvent prevActiveEvent;
+
+    /// <summary>
     /// The reference to the previous scene opponent
     /// </summary>
     private GameObject prevSceneOpponent;
@@ -209,7 +214,7 @@ public class InteractionChecker : MonoBehaviour
 
             if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             var opponent = iEvent.gameObject;
-            StartCoroutine(LoadScene(iEvent.sceneName, opponent, true));
+            StartCoroutine(LoadScene(iEvent, iEvent.sceneName, opponent, true));
             activeEvent = null;
             return true;
         });
@@ -227,18 +232,19 @@ public class InteractionChecker : MonoBehaviour
             thirdPersonMovement.enabled = true;
 
             if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
-            StartCoroutine(LoadScene(iEvent.sceneName));
+            StartCoroutine(LoadScene(iEvent, iEvent.sceneName));
             activeEvent = null;
             return true;
         });
 
     }
 
-    IEnumerator LoadScene(string sceneName, GameObject opponent = null, bool movePlayerToNewScene = false)
+    IEnumerator LoadScene(InteractionEvent iEvent, string sceneName, GameObject opponent = null, bool movePlayerToNewScene = false)
     {
         yield return new WaitForSeconds(1);
 
         // Set Previous Scene data
+        prevActiveEvent = iEvent;
         prevSceneName = SceneManager.GetActiveScene().name;
         prevSceneOpponent = (opponent) ? Instantiate(opponent) : null;
         prevScenePlayer = GameObject.Find("Player Dad");
@@ -250,6 +256,9 @@ public class InteractionChecker : MonoBehaviour
         if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
 
         DontDestroyOnLoad(prevScenePlayer);
+        prevActiveEvent.gameObject.transform.parent = null;
+        DontDestroyOnLoad(prevActiveEvent.gameObject);
+        prevActiveEvent.gameObject.SetActive(false);
         if (prevSceneOpponent) { DontDestroyOnLoad(prevSceneOpponent); }
         SceneManager.LoadScene(sceneName);
 
@@ -265,10 +274,15 @@ public class InteractionChecker : MonoBehaviour
             var rootObjects = newScene.GetRootGameObjects();
             foreach (var obj in rootObjects)
             {
-                if (obj.name == "Battle Canvas")
+                var battleGameBoard = obj.GetComponent<BattleGameBoard>();
+                var deckBuildGameBoard = obj.GetComponent<DeckBuilderAddCard>();
+                if (obj.name == "Battle Canvas" && battleGameBoard)
                 {
-                    var battleGameBoard = obj.GetComponent<BattleGameBoard>();
                     battleGameBoard.playerInteractionChecker = this;
+                }
+                else if (obj.name == "Battle Canvas" && deckBuildGameBoard)
+                {
+                    deckBuildGameBoard.playerInteractionChecker = this;
                 }
             }
         }
@@ -328,6 +342,42 @@ public class InteractionChecker : MonoBehaviour
                 gameObject.transform.position = prevScenePlayerPos;
             }
         }
+
+        // Destroy copy of previous event
+        if (prevActiveEvent)
+        {
+            var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>();
+            foreach (var interactionEvent in interactionEventList)
+            {
+                if (interactionEvent?.gameObject?.name == prevActiveEvent?.gameObject?.name && interactionEvent?.gameObject.GetComponent<InteractionEvent>()?.eventName == prevActiveEvent?.eventName)
+                {
+                    if (prevActiveEvent.removeOnReturn)
+                    {
+                        Destroy(interactionEvent?.gameObject);
+                    }
+                    else if (prevActiveEvent.disableOnReturn)
+                    {
+                        interactionEvent?.gameObject.SetActive(true);
+                        interactionEvent.enabled = false;
+                        interactionEvent.nextInteractionEvent.enabled = true;
+                    }
+                }
+            }
+        }
+
+        // Remove previous interaction
+        if (prevActiveEvent && prevActiveEvent.removeOnReturn && prevActiveEvent.gameObject)
+        {
+            Destroy(prevActiveEvent.gameObject);
+        } else if (prevActiveEvent && prevActiveEvent.disableOnReturn)
+        {
+            prevActiveEvent.gameObject.SetActive(true);
+            prevActiveEvent.enabled = false;
+            prevActiveEvent.nextInteractionEvent.enabled = true;
+            Destroy(prevActiveEvent.gameObject);
+        }
+
+        // Disable previous interaction
 
         prevSceneName = "";
         this.enabled = true;

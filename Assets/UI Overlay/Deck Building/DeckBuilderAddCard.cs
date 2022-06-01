@@ -154,6 +154,12 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
             p.showModels();
             i++;
         });
+
+        // Move cards into placement
+        player.party.ForEach(p =>
+        {
+            p.initDeck.ForEach(c => c.Translate(drawLocations.transform.position));
+        });
     }
 
     /// <summary>
@@ -167,11 +173,18 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         var playerParty = GameObject.Find("deck/party");
         if (playerParty)
         {
+            // Rotate active pokemon 90 degrees
+            player.party.ForEach(p => p.pokemonRootModel.transform.rotation = Quaternion.Euler(0f, 0f, 0f));
+
             playerParty.gameObject.transform.parent = player.transform;
             // set rotation back to avoid any issues in the future
             playerParty.gameObject.transform.rotation = prevPlayerPartyRotation;
         }
 
+        // Hide card and modal assets
+        player.party.ForEach(p => p.hideModels());
+
+        // Load previous screen
         if (playerInteractionChecker)
         {
             playerInteractionChecker.LoadPreviousScene();
