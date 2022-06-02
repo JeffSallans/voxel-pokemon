@@ -242,6 +242,11 @@ public class BattleGameBoard : MonoBehaviour
     public int handSize = 4;
 
     /// <summary>
+    /// True if the hand should be discarded at the end of the turn
+    /// </summary>
+    public bool handDiscard = false;
+
+    /// <summary>
     /// True if the deck is shuffle at the beginning and when adding the discard back
     /// </summary>
     public bool shuffleDeck = true;
@@ -277,7 +282,7 @@ public class BattleGameBoard : MonoBehaviour
     {
         if (player == null)
         {
-            player = GameObject.Find("Player Dad").GetComponent<PlayerDeck>();
+            player = GameObject.FindObjectOfType<PlayerDeck>();
         }
 
         if (opponent == null)
@@ -676,22 +681,53 @@ public class BattleGameBoard : MonoBehaviour
         endTurnButton.GetComponent<Button>().interactable = false;
 
         // Discard hand
-        hand.ForEach(c =>
+        if (handDiscard)
         {
-            c.transform.rotation = discardLocation.transform.rotation;
-            c.Translate(discardLocation.transform.position);
-        });
-        discard.AddRange(hand);
-        hand.RemoveAll(card => true);
+            hand.ForEach(c =>
+            {
+                c.transform.rotation = discardLocation.transform.rotation;
+                c.Translate(discardLocation.transform.position);
+            });
+            discard.AddRange(hand);
+            hand.RemoveAll(card => true);
+        }
+        // Remove blank spots
+        else
+        {
+            hand = hand.Where(c => c != null).ToList();
+
+            for (var i = 0; i < hand.Count; i++)
+            {
+                var cardLoc = handLocations[i].transform.position + new Vector3(0, 0, -1);
+                hand[i].Translate(cardLoc);
+                hand[i].transform.rotation = handLocations[i].transform.rotation;
+            }
+        }
 
         // Discard other energies
-        energyHand.ForEach(e =>
+        if (energyHandDiscard)
         {
-            e.Translate(energyDiscardLocation.transform.position);
-            e.transform.rotation = energyDiscardLocation.transform.rotation;
-        });
-        energyDiscard.AddRange(energyHand);
-        energyHand.RemoveAll(card => true);
+            energyHand.ForEach(e =>
+            {
+                e.Translate(energyDiscardLocation.transform.position);
+                e.transform.rotation = energyDiscardLocation.transform.rotation;
+            });
+            energyDiscard.AddRange(energyHand);
+            energyHand.RemoveAll(card => true);
+        }
+        // Remove blank spots
+        else
+        {
+            energyHand = energyHand.Where(c => c != null).ToList();
+
+            for (var i = 0; i < energyHand.Count; i++)
+            {
+                var cardLoc = energyHandLocations[i].transform.position + new Vector3(0, 0, -1);
+                energyHand[i].Translate(cardLoc);
+                energyHand[i].transform.rotation = energyHandLocations[i].transform.rotation;
+            }
+        }
+
 
         // Send event to all energy, cards, status, and pokemon
         allPokemon.ForEach(p => p.onTurnEnd());

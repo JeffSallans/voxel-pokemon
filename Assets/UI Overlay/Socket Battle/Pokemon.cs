@@ -49,7 +49,7 @@ public class Pokemon : MonoBehaviour
         set
         {
             var statusEffect = attachedStatus.Where(s => s.statType == "attackStat").FirstOrDefault();
-            if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            if (statusEffect == null) { print("SHOULD NEVER GET HERE"); }
             else { statusEffect.stackCount = value; }
         }
     }

@@ -253,14 +253,15 @@ public class InteractionChecker : MonoBehaviour
 
         // Set Previous Scene data
         prevActiveEvent = iEvent;
+        var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
+        print(interactionEvents.Length);
+        prevInteractionEventStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToDictionary(i => i.eventName);
         prevSceneName = SceneManager.GetActiveScene().name;
         prevSceneOpponent = (opponent) ? Instantiate(opponent) : null;
         prevScenePlayer = GameObject.Find("Player Dad");
         prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
         prevSceneCameraRotation = Camera.main.gameObject.transform.rotation;
-        var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
-        prevInteractionEventStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToDictionary(i => i.eventName);
 
         // Copy opponent to be moved as a global value
         if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
@@ -365,6 +366,7 @@ public class InteractionChecker : MonoBehaviour
             if (prevEventState == null)
             {
                 Destroy(interactionEvent.gameObject);
+                SceneManager.MoveGameObjectToScene(prevActiveEvent.gameObject, SceneManager.GetActiveScene());             
             }
             else
             {

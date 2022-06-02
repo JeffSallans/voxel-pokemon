@@ -409,6 +409,12 @@ public class Card : MonoBehaviour
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
 
         }
+        // Discard hover
+        else if (isDragging && newDropEvent?.eventType == "Discard")
+        {
+            dropEvent = newDropEvent;
+            dropEvent.targetGameObject.GetComponent<Animator>().SetTrigger("onHoverEnter");
+        }
 
         // When the hover event is gone
         if (newDropEvent == null && dropEvent != null && inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
@@ -424,6 +430,12 @@ public class Card : MonoBehaviour
         else if (newDropEvent == null && dropEvent != null && dropEvent.eventType == "TargetPokemon")
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            dropEvent = null;
+        }
+        // Discard hover exit
+        else if (newDropEvent == null && dropEvent != null && dropEvent.eventType == "Discard")
+        {
+            dropEvent.targetGameObject.GetComponent<Animator>().SetTrigger("onHoverExit");
             dropEvent = null;
         }
     }
@@ -458,6 +470,13 @@ public class Card : MonoBehaviour
             isDragging = false;
             isSelected = false;
             onPlay(battleGameBoard.activePokemon, dropEvent.targetPokemon);
+        }
+        // Discard
+        else if (dropEvent?.eventType == "Discard")
+        {
+            battleGameBoard.cardDiscard(this, battleGameBoard.activePokemon, false);
+            isDragging = false;
+            isSelected = false;
         }
         else
         {
