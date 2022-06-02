@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 [RequireComponent(typeof(ThirdPersonMovement))]
 public class InteractionChecker : MonoBehaviour
@@ -51,6 +52,11 @@ public class InteractionChecker : MonoBehaviour
     private InteractionEvent prevActiveEvent;
 
     /// <summary>
+    /// The key is the interaction state name, the value includes if it is enabled or not and if the game object is active or not
+    /// </summary>
+    private Dictionary<string, InteractionEventNoComponent> prevInteractionEventStates;
+
+    /// <summary>
     /// The reference to the previous scene opponent
     /// </summary>
     private GameObject prevSceneOpponent;
@@ -92,6 +98,8 @@ public class InteractionChecker : MonoBehaviour
         alpha = crosshairText.color.a;
 
         thirdPersonMovement = GetComponent<ThirdPersonMovement>();
+
+        prevInteractionEventStates = new Dictionary<string, InteractionEventNoComponent>();
     }
 
     // Update is called once per frame
@@ -251,6 +259,8 @@ public class InteractionChecker : MonoBehaviour
         prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
         prevSceneCameraRotation = Camera.main.gameObject.transform.rotation;
+        var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
+        prevInteractionEventStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToDictionary(i => i.eventName);
 
         // Copy opponent to be moved as a global value
         if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
@@ -343,24 +353,40 @@ public class InteractionChecker : MonoBehaviour
             }
         }
 
-        // Destroy copy of previous event
-        if (prevActiveEvent)
+        // Update the game events when returning to the scene
+        var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>();
+        foreach (var interactionEvent in interactionEventList)
         {
-            var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>();
-            foreach (var interactionEvent in interactionEventList)
+            // Update the other events
+            InteractionEventNoComponent prevEventState = null;
+            prevInteractionEventStates.TryGetValue(interactionEvent.eventName, out prevEventState);
+
+            // If event state doesn't exist it must of been deleted
+            if (prevEventState == null)
             {
-                if (interactionEvent?.gameObject?.name == prevActiveEvent?.gameObject?.name && interactionEvent?.gameObject.GetComponent<InteractionEvent>()?.eventName == prevActiveEvent?.eventName)
+                Destroy(interactionEvent.gameObject);
+            }
+            else
+            {
+                interactionEvent.enabled = prevEventState.interactionEventEnabled;
+                interactionEvent.gameObject.SetActive(prevEventState.gameObjectActive);
+            }
+
+            // Update the active event
+            if (interactionEvent?.gameObject?.name == prevActiveEvent?.gameObject?.name && interactionEvent?.gameObject.GetComponent<InteractionEvent>()?.eventName == prevActiveEvent?.eventName)
+            {
+                // When the event triggers a different event
+                if (prevActiveEvent.disableOnReturn)
                 {
-                    if (prevActiveEvent.removeOnReturn)
-                    {
-                        Destroy(interactionEvent?.gameObject);
-                    }
-                    else if (prevActiveEvent.disableOnReturn)
-                    {
-                        interactionEvent?.gameObject.SetActive(true);
-                        interactionEvent.enabled = false;
-                        interactionEvent.nextInteractionEvent.enabled = true;
-                    }
+                    interactionEvent.enabled = false;
+                    interactionEvent.nextInteractionEvent.gameObject.SetActive(true);
+                    interactionEvent.nextInteractionEvent.enabled = true;
+                }
+
+                // When removing to avoid replay
+                if (prevActiveEvent.removeOnReturn)
+                {
+                    Destroy(interactionEvent?.gameObject);
                 }
             }
         }
