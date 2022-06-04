@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -65,6 +66,25 @@ public class WorldDialog : MonoBehaviour
     void Update()
     {
         
+    }
+
+    /// <summary>
+    /// Show the dialog with the given text. Can be called if an dialog is already open to queue a message. Callback is called when the user clicks after reading the message
+    /// </summary>
+    /// <param name="text">Message text to display (must be less than 180 characters or 5 lines)</param>
+    public async Task ShowMessageAsync(string text)
+    {
+        var dialogFinished = false;
+        ShowMessage(text, () =>
+        {
+            dialogFinished = true;
+            return true;
+        });
+
+        while(!dialogFinished)
+        {
+            await Task.Yield();
+        }
     }
 
     /// <summary>

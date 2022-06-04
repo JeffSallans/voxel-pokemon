@@ -11,7 +11,7 @@ public class StrategyStandard : IOpponentStrategy
 
     private List<Card> playerMovesLastTurn = new List<Card>();
 
-    public override void computeOpponentsNextMove()
+    public override string computeOpponentsNextMove()
     {
         // Reset priority picks
         availableMoves.ForEach(m => { m.turnPriority = m.initialPriority; });
@@ -33,7 +33,25 @@ public class StrategyStandard : IOpponentStrategy
         {
             availableMoves.Where(m => m.actingPokemon == battleGameBoard.opponentActivePokemon)
                 .ToList()
-                .ForEach(m => { m.turnPriority -= 2; });
+                .ForEach(m => { m.turnPriority -= 1; });
+        }
+
+        // Prefer active pokemon moves if they just switched in
+        var isActivePokemonSecondTurn = moveUsedHistory.Count > 2 && battleGameBoard.opponentActivePokemon != moveUsedHistory[0]?.actingPokemon && moveUsedHistory[0]?.actingPokemon != moveUsedHistory[1]?.actingPokemon;
+        if (isActivePokemonSecondTurn)
+        {
+            availableMoves.Where(m => m.actingPokemon == battleGameBoard.opponentActivePokemon)
+                .ToList()
+                .ForEach(m => { m.turnPriority += 1; });
+        }
+
+        // Prefer bench pokemon moves if the active pokemon has been in 4
+        var isActivePokemonThirdTurn = moveUsedHistory.Count > 4 && moveUsedHistory[0]?.actingPokemon == moveUsedHistory[1]?.actingPokemon && moveUsedHistory[0]?.actingPokemon == moveUsedHistory[2]?.actingPokemon && moveUsedHistory[0]?.actingPokemon == moveUsedHistory[3]?.actingPokemon;
+        if (isActivePokemonThirdTurn)
+        {
+            availableMoves.Where(m => m.actingPokemon == battleGameBoard.opponentActivePokemon)
+                .ToList()
+                .ForEach(m => { m.turnPriority -= 1; });
         }
 
         // Add a random float to each priority  
@@ -41,6 +59,13 @@ public class StrategyStandard : IOpponentStrategy
                 .ForEach(m => { m.turnPriority += Random.Range(0f, 2f); });
 
         nextOpponentMove = pickMoveUsingPriority(availableMoves);
+        nextOpponentMove.onNextMoveSelect();
+        // Do no trigger if it was already played
+        if (nextOpponentMove.playInstantly)
+        {
+            return nextOpponentMove.playMove();
+        }
+        return null;
     }
 
     private IOpponentMove pickMoveUsingPriority(List<IOpponentMove> moveList)
@@ -55,7 +80,7 @@ public class StrategyStandard : IOpponentStrategy
         {
             return thirdChoice;
         }
-        else if (d20RollOnHowWellBotPerformed <= 6 && firstChoice != null)
+        else if (d20RollOnHowWellBotPerformed <= 6 && secondChoice != null)
         {
             return secondChoice;
         }

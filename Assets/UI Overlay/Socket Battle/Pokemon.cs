@@ -13,6 +13,8 @@ public class Pokemon : MonoBehaviour
 {
     public string pokemonName;
 
+    public int level = 1;
+
     public List<string> pokemonTypes;
 
     private int _health;
@@ -47,7 +49,7 @@ public class Pokemon : MonoBehaviour
         set
         {
             var statusEffect = attachedStatus.Where(s => s.statType == "attackStat").FirstOrDefault();
-            if (statusEffect == null) { print("SHOUND NEVER GET HERE"); }
+            if (statusEffect == null) { print("SHOULD NEVER GET HERE"); }
             else { statusEffect.stackCount = value; }
         }
     }
@@ -199,6 +201,16 @@ public class Pokemon : MonoBehaviour
     public GameObject pokemonSelectModel;
 
     /// <summary>
+    /// The card parent
+    /// </summary>
+    public GameObject cardsParent;
+
+    /// <summary>
+    /// The overlay parent
+    /// </summary>
+    public GameObject overlayParent;
+
+    /// <summary>
     /// The object containing the 2D box collider to move into position
     /// </summary>
     public DropEvent onHoverWrapper;
@@ -207,13 +219,19 @@ public class Pokemon : MonoBehaviour
     private HealthBar healthBar;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (nameText) nameText.text = pokemonName;
         attachedStatus = new List<StatusEffect>();
         gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
         healthBar = gameObject.GetComponent<HealthBar>();
         health = initHealth;
+
+        if (initDeck.Count == 0)
+        {
+            initDeck = gameObject.GetComponentsInChildren<Card>().ToList();
+        }
+        hideModels();
     }
 
     // Update is called once per frame
@@ -223,6 +241,8 @@ public class Pokemon : MonoBehaviour
             .Replace("{health}", health.ToString())
             .Replace("{initHealth}", initHealth.ToString());
         if (healthText) healthText.text = healthDesc;
+
+        healthBar.UpdateHealthBar(this);
 
         // Update attached Energies to placeholder locations
         var i = 0;
@@ -261,6 +281,7 @@ public class Pokemon : MonoBehaviour
         battleGameBoard = _battleGameBoard;
         health = initHealth;
         attachedStatus = new List<StatusEffect>();
+        attachedEnergy = new List<Energy>();
 
         // Set initial stats
         addInitialStatHelper("attackStat", initAttackStat);
@@ -274,6 +295,53 @@ public class Pokemon : MonoBehaviour
             var index = energyLocations.IndexOf(e);
             e.SetActive(index < maxNumberOfAttachedEnergy);
         });
+
+        // Remove attached energies
+        attachedEnergy = new List<Energy>();
+    }
+
+    /// <summary>
+    /// Show all visible models
+    /// </summary>
+    public void showModels()
+    {
+        cardsParent.SetActive(true);
+        pokemonRootModel.SetActive(true);
+        overlayParent.SetActive(true);
+
+        // For each card
+        var cards = gameObject.GetComponentsInChildren<Card>();
+        cards.ToList().ForEach(
+            e => e.GetComponentsInChildren<MeshRenderer>()
+                .ToList()
+                .ForEach(m => m.enabled = true)
+        );
+
+        // For each energy hide mesh render
+        var energies = gameObject.GetComponentsInChildren<Energy>();
+        energies.ToList().ForEach(e => e.GetComponentInChildren<MeshRenderer>().enabled = true);
+    }
+
+    /// <summary>
+    /// Hide all visible models
+    /// </summary>
+    public void hideModels()
+    {
+        cardsParent.SetActive(false);
+        pokemonRootModel.SetActive(false);
+        overlayParent.SetActive(false);
+
+        // For each card
+        var cards = gameObject.GetComponentsInChildren<Card>();
+        cards.ToList().ForEach(
+            e => e.GetComponentsInChildren<MeshRenderer>()
+                .ToList()
+                .ForEach(m => m.enabled = false)
+        );
+
+        // For each energy hide mesh render
+        var energies = gameObject.GetComponentsInChildren<Energy>();
+        energies.ToList().ForEach(e => e.GetComponentInChildren<MeshRenderer>().enabled = false);
     }
 
     private void addInitialStatHelper(string statName, int statValue)
@@ -320,6 +388,12 @@ public class Pokemon : MonoBehaviour
                 pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
             }
         }
+        else
+        {
+            // ASSUMING structure is model -> model-animation-target -> <actual model>
+            var deadPos = new Vector3(modelPlaceholder.transform.position.x, pokemonModel.gameObject.transform.position.y, modelPlaceholder.transform.position.z);
+            pokemonModel.gameObject.transform.position = deadPos;
+        }
 
         // Set select position
         pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.position;
@@ -336,7 +410,15 @@ public class Pokemon : MonoBehaviour
         }
     }
 
-    public void onBattleEnd() { }
+    public void onBattleEnd() {
+
+        // Display
+        gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
+
+        // Remove attached energies
+        battleGameBoard.energyDiscard.AddRange(attachedEnergy);
+        attachedEnergy.RemoveAll(e => true);
+    }
 
     /// <summary>
     /// Animate the energy to a new location

@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3598083052707276574}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 1.35}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 5127610090511877501}
   m_RootOrder: 0
@@ -91,7 +91,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5127610090511877501}
   - component: {fileID: 4657380934509011608}
-  - component: {fileID: 919132148570873321}
   - component: {fileID: 8353563524787128640}
   m_Layer: 0
   m_Name: Sign
@@ -123,24 +122,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504311997989855175}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!65 &919132148570873321
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5504311997989855175}
-  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 2, z: 2}
-  m_Center: {x: -1, y: 1, z: 0}
+  m_Size: {x: 2, y: 3.0904944, z: 2}
+  m_Center: {x: 0, y: 1.5452472, z: 0}
 --- !u!114 &8353563524787128640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +145,5 @@ MonoBehaviour:
   message: 
   opponent: {fileID: 0}
   sceneName: 
+  animationBooleanName: 
+  animator: {fileID: 0}

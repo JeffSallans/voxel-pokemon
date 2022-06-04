@@ -14,13 +14,14 @@ public class IOpponentMove : MonoBehaviour
     /// <summary>
     /// The move to show above the attacking pokemon
     /// </summary>
-    public string moveDescription
+    virtual public string moveDescription
     {
         get
         {
             var desc = moveDescriptionWithTemplates
                 .Replace("{userName}", actingPokemon.pokemonName)
                 .Replace("{damage}", damage.ToString());
+
             return desc;
         }
     }
@@ -51,6 +52,11 @@ public class IOpponentMove : MonoBehaviour
     public string damageEnergy;
 
     /// <summary>
+    /// True if using the move will switch in the user
+    /// </summary>
+    public bool switchInOnUse = true;
+
+    /// <summary>
     /// The animation event to trigger on the user
     /// </summary>
     public string userAnimationType = "onAttack";
@@ -64,6 +70,11 @@ public class IOpponentMove : MonoBehaviour
     /// The animation event to trigger on the target (used for particle or identifying effects)
     /// </summary>
     public string targetAnimationType2 = "";
+
+    /// <summary>
+    /// True if the attack should happen before the player's turn
+    /// </summary>
+    public bool playInstantly;
 
     protected BattleGameBoard battleGameBoard;
 
@@ -93,10 +104,12 @@ public class IOpponentMove : MonoBehaviour
 
     public virtual void onTurnEnd() { }
 
-    public virtual void onOpponentTurnEnd() {
-        // Reset priority picks
-        // turnPriority = initialPriority;
-    }
+    public virtual void onOpponentTurnEnd() { }
 
     public virtual void onBattleEnd() { }
+
+    /// <summary>
+    /// Runs when the move is selected from the strategy script
+    /// </summary>
+    public virtual void onNextMoveSelect() { }
 }

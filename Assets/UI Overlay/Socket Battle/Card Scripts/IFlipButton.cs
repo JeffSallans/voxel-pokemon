@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Template for the flip button effect
+/// </summary>
 public abstract class IFlipButton : MonoBehaviour
 {
     /// <summary>

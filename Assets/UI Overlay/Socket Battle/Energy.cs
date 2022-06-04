@@ -60,33 +60,54 @@ public class Energy : MonoBehaviour
     private Vector3 dragStartPosition = new Vector3();
 
     /// <summary>
-    /// The last position of the mouse to compute the delta
-    /// </summary>
-    private Vector3 previousMousePosition = new Vector3();
-
-    /// <summary>
     /// The dropEvent for the selected drag
     /// </summary>
-    private DropEvent dropEvent;
+    public DropEvent dropEvent;
+
+    public bool inDebugMode = false;
+    private float interactableDistance = 200;
+    private int raycastLayer;
 
     private BattleGameBoard battleGameBoard;
+
+    private Camera canvasCamera;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        raycastLayer = LayerMask.GetMask("UI Raycast");
     }
 
     // Update is called once per frame
     void Update()
     {
         // Update energy position
-        var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         if (isDragging)
         {
-            transform.localPosition += (mousePosition - previousMousePosition);
+            canvasCamera = GameObject.Find("Canvas Camera").GetComponent<Camera>();
+            var mousePosition = canvasCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
+            gameObject.transform.position = mousePosition;
         }
-        previousMousePosition = mousePosition;
+
+        // Check for drop
+        if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            onDrop();
+        }
+
+        if (inDebugMode)
+        {
+            Ray ray = canvasCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, raycastLayer))
+                print("I'm looking at " + hit.transform.name);
+            else
+                print("I'm looking at nothing!");
+        }
+
+        var newDropEvent = GetDropInteraction();
+        OnHoverInteraction(newDropEvent);
     }
 
     public void OnHoverEnter()
@@ -110,27 +131,44 @@ public class Energy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider collision)
+    /// <summary>
+    /// Checks if the user is hovering on something to interact with
+    /// </summary>
+    private DropEvent GetDropInteraction()
     {
-        var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
+        if (canvasCamera == null) return null;
 
-        if (triggeredDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(triggeredDropEvent.targetPokemon))
-        {
-            dropEvent = collision.gameObject.GetComponent<DropEvent>();
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
-        }
+        RaycastHit hit = new RaycastHit();
+        var raycastHit = Physics.Raycast(canvasCamera.ScreenPointToRay(Input.mousePosition), out hit, interactableDistance, raycastLayer);
+
+        // Check if ray hit
+        if (!raycastHit) return null;
+
+        // Check if we can get component from hit
+        var result = hit.collider.GetComponent<DropEvent>();
+
+        return result;
     }
 
-    void OnTriggerExit(Collider collision)
+    /// <summary>
+    /// When the user "hovers" on something to interact with
+    /// </summary>
+    /// <param name="iEvent"></param>
+    public void OnHoverInteraction(DropEvent newDropEvent)
     {
-        var triggeredDropEvent = collision.gameObject.GetComponent<DropEvent>();
-        if (triggeredDropEvent != dropEvent) return;
+        // When we hover over something
+        if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(newDropEvent.targetPokemon))
+        {
+            dropEvent = newDropEvent;
+            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+        }
 
-        if (dropEvent?.eventType == "TargetPokemon")
+        // When the hover event is gone
+        if (newDropEvent == null && dropEvent != null)
         {
             dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            dropEvent = null;
         }
-        dropEvent = null;
     }
 
     public void onDrag()
@@ -212,5 +250,14 @@ public class Energy : MonoBehaviour
     public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
     {
         gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+    }
+
+    /// <summary>
+    /// Change if this energy can be interacted with or not
+    /// </summary>
+    /// <param name="_canBeDragged"></param>
+    public void SetCanBeDragged(bool _canBeDragged)
+    {
+        canBeDragged = _canBeDragged;
     }
 }

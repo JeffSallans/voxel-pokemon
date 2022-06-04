@@ -20,9 +20,13 @@ Unity game project to reproduce pokemon red using a voxel art style using a card
 
 [How To Use TranslationAnimation Video](https://www.loom.com/share/a558351138b34629884924bb0ba5c2c8)
 
+[How To Setup a Trainer Battle](https://www.loom.com/share/de80a42ef33546f28584035ee43677ca)
+
 [How To Setup Add a Card](https://www.loom.com/share/d29376230c134fb6bfc016a061ffdf7a)
 
 [How To Setup Add a Pokemon](https://www.loom.com/share/f22b9b8b3ee64a4a830af99cacf759d2)
+
+[How To Setup a Trainer](https://www.loom.com/share/03bdf462b0f54c949a909da3eb9d887a)
 
 [How To Setup Add An Energy](https://www.loom.com/share/1fa79c83ba064ecd8b7da3185ddd7148)
 
