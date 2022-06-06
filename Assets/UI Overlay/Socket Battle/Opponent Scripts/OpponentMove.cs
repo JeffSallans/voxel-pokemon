@@ -104,7 +104,8 @@ public class OpponentMove : IOpponentMove
     {
         get
         {
-            var costIsPaid = actingPokemon.attachedEnergy.Count >= energyRequirement &&
+            var costIsPaid = actingPokemon.attachedEnergy.Count < energyMax &&
+                actingPokemon.attachedEnergy.Count >= energyRequirement &&
                 actingPokemon.attackStat >= attackCost &&
                 actingPokemon.defenseStat >= defenseCost &&
                 actingPokemon.specialStat >= specialCost &&

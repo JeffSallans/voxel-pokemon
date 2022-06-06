@@ -57,6 +57,11 @@ public class IOpponentMove : MonoBehaviour
     public int energyRequirement = 0;
 
     /// <summary>
+    /// Disables the move from the pool if the energy is over this limit
+    /// </summary>
+    public int energyMax = 5;
+
+    /// <summary>
     /// When used discards the energy requirement amount on the user pokemon
     /// </summary>
     public bool discardEnergyOnUse = false;
