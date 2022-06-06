@@ -52,6 +52,16 @@ public class IOpponentMove : MonoBehaviour
     public string damageEnergy;
 
     /// <summary>
+    /// The amount of energy needed on the user to perform the move
+    /// </summary>
+    public int energyRequirement = 0;
+
+    /// <summary>
+    /// When used discards the energy requirement amount on the user pokemon
+    /// </summary>
+    public bool discardEnergyOnUse = false;
+
+    /// <summary>
     /// True if using the move will switch in the user
     /// </summary>
     public bool switchInOnUse = true;

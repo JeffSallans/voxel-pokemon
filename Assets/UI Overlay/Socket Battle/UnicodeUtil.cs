@@ -39,8 +39,10 @@ public class UnicodeUtil
         { "ZZAttackMult", "\ue926" },
         { "ZZInvul", "\ue922" },
         { "ZZBlind", "\ue914" },
-        { "ZZSleep", "\ue923" }
+        { "ZZSleep", "\ue923" },
 
+        { "ZZEnergy", "\uf10c" },
+        { "ZZCard", "\uf005" }
     };
 
     /// <summary>

@@ -38,6 +38,11 @@ public class OpponentMove : IOpponentMove
     public int evasionCost;
 
     /// <summary>
+    /// The energy stat the card will change
+    /// </summary>
+    public int energyStat;
+
+    /// <summary>
     /// The attack stat the card will change
     /// </summary>
     public int attackStat;
@@ -99,7 +104,8 @@ public class OpponentMove : IOpponentMove
     {
         get
         {
-            var costIsPaid = actingPokemon.attackStat >= attackCost &&
+            var costIsPaid = actingPokemon.attachedEnergy.Count >= energyRequirement &&
+                actingPokemon.attackStat >= attackCost &&
                 actingPokemon.defenseStat >= defenseCost &&
                 actingPokemon.specialStat >= specialCost &&
                 actingPokemon.evasionStat >= evasionCost;
@@ -119,6 +125,16 @@ public class OpponentMove : IOpponentMove
         }
 
         // Pay cost
+        if (discardEnergyOnUse)
+        {
+            var targetsToRemove = actingPokemon.attachedEnergy.GetRange(actingPokemon.attachedEnergy.Count - energyRequirement, energyRequirement);
+            targetsToRemove.ForEach(t =>
+            {
+                t.Translate(battleGameBoard.energyDiscardLocation.transform.position);
+                // TODO: these should maybe be destroyed once off screen
+            });
+            actingPokemon.attachedEnergy.RemoveRange(actingPokemon.attachedEnergy.Count - energyRequirement, energyRequirement);
+        }
         actingPokemon.attackStat -= attackCost;
         actingPokemon.defenseStat -= defenseCost;
         actingPokemon.specialStat -= specialCost;
@@ -175,6 +191,12 @@ public class OpponentMove : IOpponentMove
             }));
         }
 
+        // Add energy effects if applicable
+        for (var i = 0; i < energyStat; i++)
+        {
+            addEnergy(statusTarget);
+        }
+
         // Heal/dmg user if possible
         if (!attackMissed && userHeal > 0)
         {
@@ -203,6 +225,17 @@ public class OpponentMove : IOpponentMove
                 { "turnsLeft", turn.ToString() }
             }));
         }
+    }
+
+    private void addEnergy(Pokemon target)
+    {
+        // Don't add energy if we are already maxed
+        if (target.maxNumberOfAttachedEnergy == target.attachedEnergy.Count) return;
+
+        var energyParent = target.gameObject;
+        var energy = Instantiate(battleGameBoard.opponent.normalEnergyPrefab, energyParent.transform);
+        energy.transform.position = battleGameBoard.energyDeckLocation.transform.position;
+        target.attachedEnergy.Add(energy.GetComponent<Energy>());
     }
 
     /// <summary>
