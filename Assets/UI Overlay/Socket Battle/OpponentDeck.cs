@@ -25,6 +25,11 @@ public class OpponentDeck : MonoBehaviour
 
     public IOpponentStrategy opponentStrategyBot;
 
+    /// <summary>
+    /// The energy prefab to instantiate and use
+    /// </summary>
+    public GameObject normalEnergyPrefab;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,6 +48,13 @@ public class OpponentDeck : MonoBehaviour
 
         // Turn off all possible energies
         party.ForEach(p => p.energyTypes = new List<string>());
+
+        // Set the max energy slots per move
+        party.ForEach(p =>
+        {
+            var maxEnergy = movesConfig.Where(m => m.actingPokemon == p).Select(m => m.energyRequirement).Max();
+            p.maxNumberOfAttachedEnergy = maxEnergy;
+        });
     }
 
     // Update is called once per frame

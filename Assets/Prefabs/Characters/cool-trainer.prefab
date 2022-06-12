@@ -179,13 +179,19 @@ MonoBehaviour:
   turnPriority: 0
   damage: 32
   damageEnergy: Dark
+  energyRequirement: 0
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 0
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
+  energyStat: 0
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -195,6 +201,7 @@ MonoBehaviour:
   userHeal: 0
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &2234274604617022585
 MonoBehaviour:
@@ -215,13 +222,19 @@ MonoBehaviour:
   turnPriority: 0
   damage: 96
   damageEnergy: Electric
+  energyRequirement: 0
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 0
   defenseCost: 0
   specialCost: 3
   evasionCost: 0
+  energyStat: 0
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -231,6 +244,7 @@ MonoBehaviour:
   userHeal: 0
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 0}
 --- !u!1 &5808646380956014613
 GameObject:
@@ -310,6 +324,9 @@ MonoBehaviour:
   sceneName: 
   animationBooleanName: isTalking
   animator: {fileID: 6589502337308649416}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  nextInteractionEvent: {fileID: 0}
 --- !u!114 &6808737486173340938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +343,7 @@ MonoBehaviour:
   party: []
   movesConfig: []
   opponentStrategyBot: {fileID: 836831633256089512}
+  normalEnergyPrefab: {fileID: 4276494747118148778, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
 --- !u!114 &836831633256089512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,13 +424,19 @@ MonoBehaviour:
   turnPriority: 0
   damage: 16
   damageEnergy: Grass
+  energyRequirement: 0
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 0
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
+  energyStat: 0
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -422,6 +446,7 @@ MonoBehaviour:
   userHeal: 16
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &242944878807364630
 MonoBehaviour:
@@ -442,13 +467,19 @@ MonoBehaviour:
   turnPriority: 0
   damage: 0
   damageEnergy: Normal
+  energyRequirement: 0
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
+  playInstantly: 0
+  targetType: ActiveOpponent
   attackCost: 0
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
+  energyStat: 0
   attackStat: 0
   specialStat: 2
   defenseStat: 0
@@ -458,6 +489,7 @@ MonoBehaviour:
   userHeal: 0
   grantsInvulnerability: 0
   turn: 99
+  statusAffectsUser: 0
   overrideTarget: {fileID: 8508700537753058229}
 --- !u!1 &6741204117493749708
 GameObject:

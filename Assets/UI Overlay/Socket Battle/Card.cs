@@ -64,6 +64,11 @@ public class Card : MonoBehaviour
     public string cardType;
 
     /// <summary>
+    /// The theme of the card (Rush, Control, Support, Combo)
+    /// </summary>
+    public string theme;
+
+    /// <summary>
     /// The possible targets of this card. Self, Bench, Team, ActiveOpponent, AnyOpponent, BenchOpponent, AnyPokemon,
     /// </summary>
     public string targetType;
@@ -316,7 +321,7 @@ public class Card : MonoBehaviour
         if (isDragging) {
             canvasCamera = GameObject.Find("Canvas Camera").GetComponent<Camera>();
             var mousePosition = canvasCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100f));
-            gameObject.transform.position = mousePosition;
+            gameObject.transform.position = mousePosition + new Vector3(0, 0, -5);
         }
 
         // Check for drop
@@ -341,7 +346,7 @@ public class Card : MonoBehaviour
 
     public void OnHoverEnter()
     {
-        if (canBePlayed && !isSelected && !isDragging)
+        if (!isSelected && !isDragging)
         {
             dragStartPosition = transform.position;
             transform.localPosition += new Vector3(0, 0, -50);
@@ -353,7 +358,7 @@ public class Card : MonoBehaviour
 
     public void OnHoverExit()
     {
-        if (canBePlayed && !isDragging)
+        if (!isDragging)
         {
             transform.position = dragStartPosition;
             isDragging = false;
@@ -399,7 +404,7 @@ public class Card : MonoBehaviour
             });
         }
         // Standard battle hover
-        else if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canTarget(newDropEvent.targetPokemon))
+        else if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canBePlayed && canTarget(newDropEvent.targetPokemon))
         {
             dropEvent = newDropEvent;
             var isSuperEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) > 1;
@@ -442,16 +447,11 @@ public class Card : MonoBehaviour
 
     public void onDrag()
     {
-        if (canBePlayed)
-        {
-            isDragging = true;
-        }
+        isDragging = true;
     }
 
     public void onDrop()
     {
-        if (!canBePlayed) return;
-
         // When you drop on a pokemon
         if (inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
         {
@@ -465,7 +465,7 @@ public class Card : MonoBehaviour
             });
         }
         // Standard battle drop
-        else if (dropEvent?.eventType == "TargetPokemon" && canTarget(dropEvent.targetPokemon))
+        else if (dropEvent?.eventType == "TargetPokemon" && canBePlayed && canTarget(dropEvent.targetPokemon))
         {
             isDragging = false;
             isSelected = false;
