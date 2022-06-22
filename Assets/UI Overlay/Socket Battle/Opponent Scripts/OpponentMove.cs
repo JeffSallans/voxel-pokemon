@@ -93,6 +93,11 @@ public class OpponentMove : IOpponentMove
     public bool statusAffectsUser = false;
 
     /// <summary>
+    /// Set to true if the status affects the user's bench instead of the target
+    /// </summary>
+    public bool statusAffectsBothBench = false;
+
+    /// <summary>
     /// (Optional) Set to create a new target instead of battleGameBoard.activePokemon
     /// </summary>
     public Pokemon overrideTarget;
@@ -176,7 +181,13 @@ public class OpponentMove : IOpponentMove
         }
 
         // Add status effects if applicable
-        var statusTarget = (statusAffectsUser) ? user : target;
+        var statusTarget = target;
+        if (statusAffectsUser) {
+            statusTarget = user;
+        }
+        else if (statusAffectsBothBench && battleGameBoard.opponent.party.Count >= 1) {
+            statusTarget = battleGameBoard.opponent.party[1];
+        }
         addStatHelper(statusTarget, "attackStat", attackStat);
         addStatHelper(statusTarget, "defenseStat", defenseStat);
         addStatHelper(statusTarget, "specialStat", specialStat);
@@ -192,11 +203,39 @@ public class OpponentMove : IOpponentMove
             }));
         }
 
+
         // Add energy effects if applicable
         for (var i = 0; i < energyStat; i++)
         {
             addEnergy(statusTarget);
         }
+
+        // DO THE SAME THING FOR THE SECOND PARTY MEMBER
+        if (statusAffectsBothBench && battleGameBoard.opponent.party.Count >= 2)
+        {
+            statusTarget = battleGameBoard.opponent.party[2];
+            addStatHelper(statusTarget, "attackStat", attackStat);
+            addStatHelper(statusTarget, "defenseStat", defenseStat);
+            addStatHelper(statusTarget, "specialStat", specialStat);
+            addStatHelper(statusTarget, "evasionStat", evasionStat);
+            addStatHelper(statusTarget, "blockStat", blockStat);
+            addStatHelper(statusTarget, "attackMultStat", attackMultStat);
+            if (grantsInvulnerability)
+            {
+                target.attachedStatus.Add(new StatusEffect(statusTarget, null, "invulnerabilityEffect", new Dictionary<string, string>() {
+                    { "statType", "invulnerability" },
+                    { "stackCount", "1" },
+                    { "turnsLeft", "1" }
+                }));
+            }
+
+            // Add energy effects if applicable
+            for (var i = 0; i < energyStat; i++)
+            {
+                addEnergy(statusTarget);
+            }
+        }
+
 
         // Heal/dmg user if possible
         if (!attackMissed && userHeal > 0)
