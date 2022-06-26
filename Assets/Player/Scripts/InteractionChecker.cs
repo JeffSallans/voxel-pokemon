@@ -35,6 +35,11 @@ public class InteractionChecker : MonoBehaviour
     public TextMeshProUGUI interactionHoverText;
 
     /// <summary>
+    /// Animator with onFadeIn and onFadeOut triggers to be called on scene transitions
+    /// </summary>
+    public Animator sceneTransitionAnimator;
+
+    /// <summary>
     /// Target the user "hovers" on
     /// </summary>
     public InteractionEvent hoverPossibleEvent;
@@ -249,6 +254,7 @@ public class InteractionChecker : MonoBehaviour
 
     IEnumerator LoadScene(InteractionEvent iEvent, string sceneName, GameObject opponent = null, bool movePlayerToNewScene = false)
     {
+        sceneTransitionAnimator.SetTrigger("onFadeOut");
         yield return new WaitForSeconds(1);
 
         // Set Previous Scene data

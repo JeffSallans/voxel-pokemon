@@ -11,8 +11,11 @@ public class SceneNav : MonoBehaviour
     public string sceneName;
     public float delayInSeconds = 1.2f;
 
+    /// <summary>
+    /// Animator with onFadeIn and onFadeOut triggers to be called on scene transitions
+    /// </summary>
     public Animator animator = null;
-    public string titleAnimatorTriggerName = "fadeOut";
+    public string titleAnimatorTriggerName = "onFadeOut";
     public float animationInSeconds = 1.0f;
 
     // Start is called before the first frame update

@@ -227,6 +227,11 @@ public class BattleGameBoard : MonoBehaviour
     public GameObject opponentPartyParentGameobject;
 
     /// <summary>
+    /// Controls the Scene Transition
+    /// </summary>
+    public FadeInOnSceneLoad sceneTransitionAnimator;
+
+    /// <summary>
     /// How many energies to pick from
     /// </summary>
     public int energyHandSize = 2;
@@ -289,12 +294,18 @@ public class BattleGameBoard : MonoBehaviour
         {
             opponent = GameObject.FindObjectOfType<OpponentDeck>();
         }
+
+        if (sceneTransitionAnimator == null)
+        {
+            sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
         onBattleStart();
+        sceneTransitionAnimator.FadeIn();
     }
 
     // Update is called once per frame
@@ -357,6 +368,7 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     protected void onPackupPlayer()
     {
+        sceneTransitionAnimator.FadeOut();
         // Enable players
 
         // Move energies into discard
