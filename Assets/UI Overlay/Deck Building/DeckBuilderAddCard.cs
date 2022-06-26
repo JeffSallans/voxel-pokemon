@@ -104,22 +104,12 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
     /// </summary>
     public WorldDialog worldDialog;
 
-    /// <summary>
-    /// Controls the Scene Transition
-    /// </summary>
-    public FadeInOnSceneLoad sceneTransitionAnimator;
-
     // Triggers before start https://www.monkeykidgc.com/2020/07/unity-lifecycle-awake-vs-onenable-vs-start.html
     void Awake()
     {
         if (player == null)
         {
             player = GameObject.FindObjectOfType<PlayerDeck>();
-        }
-
-        if (sceneTransitionAnimator == null)
-        {
-            sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
         }
     }
 
@@ -176,7 +166,6 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
     /// </summary>
     protected void onPackupPlayer()
     {
-        sceneTransitionAnimator.FadeOut();
         // Enable players
 
         // Move party parent reference into placement

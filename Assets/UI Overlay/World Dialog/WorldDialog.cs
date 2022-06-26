@@ -128,7 +128,6 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     public void CaptureClick()
     {
-        print("CLICK DIALOG");
         if (currentmessage.eventToCallAfterMessage != null)
         {
             currentmessage.eventToCallAfterMessage();

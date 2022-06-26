@@ -37,7 +37,7 @@ public class InteractionChecker : MonoBehaviour
     /// <summary>
     /// Animator with onFadeIn and onFadeOut triggers to be called on scene transitions
     /// </summary>
-    public Animator sceneTransitionAnimator;
+    public FadeInOnSceneLoad sceneTransitionAnimator;
 
     /// <summary>
     /// Target the user "hovers" on
@@ -94,6 +94,11 @@ public class InteractionChecker : MonoBehaviour
             print("Interaction Checker: Disabled - interactionHoverText and crosshairText are undefined");
             this.enabled = false;
             return;
+        }
+
+        if (sceneTransitionAnimator == null)
+        {
+            sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
         }
 
         Cursor.visible = !removeCursor;
@@ -254,7 +259,7 @@ public class InteractionChecker : MonoBehaviour
 
     IEnumerator LoadScene(InteractionEvent iEvent, string sceneName, GameObject opponent = null, bool movePlayerToNewScene = false)
     {
-        sceneTransitionAnimator.SetTrigger("onFadeOut");
+        sceneTransitionAnimator.FadeOut();
         yield return new WaitForSeconds(1);
 
         // Set Previous Scene data
@@ -282,12 +287,18 @@ public class InteractionChecker : MonoBehaviour
         // If player is not moving to new scene copy data over
         if (!movePlayerToNewScene)
         {
+            // Wait for new scene to load
             var newScene = SceneManager.GetActiveScene();
             while (newScene.name != sceneName)
             {
                 yield return new WaitForSeconds(0.3f);
                 newScene = SceneManager.GetActiveScene();
             }
+
+            // Set new scene animator
+            sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
+            
+            // Find root objects
             var rootObjects = newScene.GetRootGameObjects();
             foreach (var obj in rootObjects)
             {
@@ -319,7 +330,8 @@ public class InteractionChecker : MonoBehaviour
 
     IEnumerator LoadPreviousSceneHelper()
     {
-        yield return new WaitForSeconds(0.5f);
+        sceneTransitionAnimator.FadeOut();
+        yield return new WaitForSeconds(1f);
 
         if (prevSceneOpponent) { Destroy(prevSceneOpponent); }
         SceneManager.LoadScene(prevSceneName);
@@ -331,6 +343,10 @@ public class InteractionChecker : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             newScene = SceneManager.GetActiveScene();
         }
+
+        // Set new scene animator
+        sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
+
         var rootObjects = newScene.GetRootGameObjects();
         foreach (var obj in rootObjects)
         {
