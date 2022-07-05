@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Interaction event without component to better store data without errors between scenes
@@ -99,9 +100,45 @@ public class InteractionEvent : MonoBehaviour
     public bool disableOnReturn;
 
     /// <summary>
-    /// The next interaction event to enable after this one
+    /// The interaction event to disable after triggering this event. Usually a can't do event.
+    /// </summary>
+    public InteractionEvent altDisableInteractionEvent;
+
+    /// <summary>
+    /// Use as an alternative to altDisableInteractionEvent. Finds the event by name instead of reference.
+    /// </summary>
+    public string altDisableInteractionEventName;
+
+    /// <summary>
+    /// The next interaction event to enable after this one. Usually the next text to show after an event.
     /// </summary>
     public InteractionEvent nextInteractionEvent;
+
+    /// <summary>
+    /// Use as an alternative to nextInteractionEvent. Finds the event by name instead of reference.
+    /// </summary>
+    public string nextInteractionEventName;
+
+    /// <summary>
+    /// The alt next interaction event to enable after this one. Usually an item or door that is now interactable.
+    /// </summary>
+    public InteractionEvent nextInteractionEvent2;
+
+    /// <summary>
+    /// Use as an alternative to nextInteractionEvent2. Finds the event by name instead of reference.
+    /// </summary>
+    public string nextInteractionEvent2Name;
+
+    /// <summary>
+    /// The interaction event to immediately trigger after this event. Usually dialog after a battle.
+    /// </summary>
+    public InteractionEvent autoTriggerInteractionEvent;
+
+    /// <summary>
+    /// Use as an alternative to autoTriggerInteractionEvent. Finds the event by name instead of reference.
+    /// </summary>
+    public string autoTriggerInteractionEventName;
+
 
     // Start is called before the first frame update
     void Start()
@@ -109,7 +146,31 @@ public class InteractionEvent : MonoBehaviour
         if (animator == null)
         {
             animator = gameObject.GetComponent<Animator>();
-        }  
+        }
+
+        if (altDisableInteractionEventName != "")
+        {
+            altDisableInteractionEvent = GetInteractionEventByName(altDisableInteractionEventName);
+            if (!altDisableInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + altDisableInteractionEventName);
+        }
+
+        if (nextInteractionEventName != "")
+        {
+            nextInteractionEvent = GetInteractionEventByName(nextInteractionEventName);
+            if (!nextInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + nextInteractionEventName);
+        }
+
+        if (nextInteractionEvent2Name != "")
+        {
+            nextInteractionEvent2 = GetInteractionEventByName(nextInteractionEvent2Name);
+            if (!nextInteractionEvent2) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + nextInteractionEvent2Name);
+        }
+
+        if (autoTriggerInteractionEventName != "")
+        {
+            autoTriggerInteractionEvent = GetInteractionEventByName(autoTriggerInteractionEventName);
+            if (!autoTriggerInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + autoTriggerInteractionEventName);
+        }
     }
 
     // Update is called once per frame
@@ -133,6 +194,32 @@ public class InteractionEvent : MonoBehaviour
 
         result.interactionEventEnabled = enabled;
         result.gameObjectActive = gameObject.activeSelf;
+
+        return result;
+    }
+
+    /// <summary>
+    /// Loads all Interaction Events and find the one for the given name
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    private void NameUniquenessCheck()
+    {
+        var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
+
+        var result = allInteractionEvents.FirstOrDefault(e => e.eventName == eventName && e != this);
+    }
+
+    /// <summary>
+    /// Loads all Interaction Events and find the one for the given name
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    private InteractionEvent GetInteractionEventByName(string name)
+    {
+        var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
+
+        var result = allInteractionEvents.FirstOrDefault(e => e.eventName == name);
 
         return result;
     }

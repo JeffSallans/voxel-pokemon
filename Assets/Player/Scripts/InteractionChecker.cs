@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Threading.Tasks;
 
 [RequireComponent(typeof(ThirdPersonMovement))]
 public class InteractionChecker : MonoBehaviour
@@ -147,7 +148,8 @@ public class InteractionChecker : MonoBehaviour
         if (!raycastHit) return null;
 
         // Check if we can get component from hit
-        var result = hit.collider.GetComponent<InteractionEvent>();
+        var resultList = hit.collider.GetComponents<InteractionEvent>();
+        var result = resultList.FirstOrDefault(e => e.enabled);
 
         return result;
     }
@@ -173,6 +175,16 @@ public class InteractionChecker : MonoBehaviour
     }
 
     /// <summary>
+    /// Call to trigger an interaction event
+    /// </summary>
+    /// <param name="iEvent"></param>
+    public void OnInteractionEvent(InteractionEvent iEvent)
+    {
+        hoverPossibleEvent = iEvent;
+        OnInteractionClick(iEvent);
+    }
+
+    /// <summary>
     /// When the user interacts with something
     /// </summary>
     /// <param name="iEvent"></param>
@@ -181,7 +193,7 @@ public class InteractionChecker : MonoBehaviour
         if (hoverPossibleEvent == null) { return; }
         if (hoverPossibleEvent.eventType == "Message")
         {
-            OnMessage(hoverPossibleEvent);
+            OnMessageAsync(hoverPossibleEvent);
         } else if (hoverPossibleEvent.eventType == "Battle")
         {
             OnBattle(hoverPossibleEvent);
@@ -192,13 +204,23 @@ public class InteractionChecker : MonoBehaviour
         hoverPossibleEvent = null;
     }
 
-    private void OnMessage(InteractionEvent iEvent)
+    private async void OnMessageAsync(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
         if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
-        OnMessageHelper(iEvent, 0);
+        foreach(var message in iEvent.message)
+        {
+            await worldDialog.ShowMessageAsync(message);
+        }
+
+        postInteracationChanges(iEvent);
+
+        // Finish reading state
+        thirdPersonMovement.enabled = true;
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+        activeEvent = null;
     }
 
     private void OnMessageHelper(InteractionEvent iEvent, int messageIndex)
@@ -399,19 +421,7 @@ public class InteractionChecker : MonoBehaviour
             // Update the active event
             if (interactionEvent?.gameObject?.name == prevActiveEvent?.gameObject?.name && interactionEvent?.gameObject.GetComponent<InteractionEvent>()?.eventName == prevActiveEvent?.eventName)
             {
-                // When the event triggers a different event
-                if (prevActiveEvent.disableOnReturn)
-                {
-                    interactionEvent.enabled = false;
-                    interactionEvent.nextInteractionEvent.gameObject.SetActive(true);
-                    interactionEvent.nextInteractionEvent.enabled = true;
-                }
-
-                // When removing to avoid replay
-                if (prevActiveEvent.removeOnReturn)
-                {
-                    Destroy(interactionEvent?.gameObject);
-                }
+                postInteracationChanges(interactionEvent);
             }
         }
 
@@ -431,5 +441,52 @@ public class InteractionChecker : MonoBehaviour
 
         prevSceneName = "";
         this.enabled = true;
+    }
+
+    /// <summary>
+    /// Updates all the interaction events with the results from the events
+    /// </summary>
+    /// <param name="iEvent"></param>
+    private void postInteracationChanges(InteractionEvent iEvent)
+    {
+        // When the event triggers a different event
+        if (iEvent.disableOnReturn)
+        {
+            iEvent.enabled = false;
+        }
+
+        // When removing to avoid replay
+        if (iEvent.removeOnReturn)
+        {
+            Destroy(iEvent?.gameObject);
+        }
+
+        // Remove an interaction
+        if (iEvent.altDisableInteractionEvent)
+        {
+            iEvent.altDisableInteractionEvent.enabled = false;
+        }
+
+        // Enable a new interaction
+        if (iEvent.nextInteractionEvent)
+        {
+            iEvent.nextInteractionEvent.gameObject.SetActive(true);
+            iEvent.nextInteractionEvent.enabled = true;
+        }
+
+        // Enable a second interaction
+        if (iEvent.nextInteractionEvent2)
+        {
+            iEvent.nextInteractionEvent2.gameObject.SetActive(true);
+            iEvent.nextInteractionEvent2.enabled = true;
+        }
+
+        // Trigger another event
+        if (iEvent.autoTriggerInteractionEvent)
+        {
+            iEvent.autoTriggerInteractionEvent.gameObject.SetActive(true);
+            iEvent.autoTriggerInteractionEvent.enabled = true;
+            OnInteractionEvent(iEvent.autoTriggerInteractionEvent);
+        }
     }
 }
