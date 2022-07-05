@@ -1,6 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4579260024182566417
+--- !u!1001 &6911759585366181711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8316312708877562757}
+    m_Modifications:
+    - target: {fileID: 3534112671413218081, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_Name
+      value: caterpie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534112671413218086, guid: b305994b7317c41438316bf124359e21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b305994b7317c41438316bf124359e21, type: 3}
+--- !u!1001 &6920744043890587540
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +66,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleCards.Array.size
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleCards.Array.data[0]
@@ -34,90 +91,34 @@ PrefabInstance:
     - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleCards.Array.data[5]
       value: 
-      objectReference: {fileID: 4066168925958206769, guid: 537b7153eb556104e8cf7ae348dceb3c, type: 3}
+      objectReference: {fileID: 8638868623267886438, guid: 582144bd158af9140a1ed78777c12ddb, type: 3}
     - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleCards.Array.data[6]
       value: 
-      objectReference: {fileID: 8844078345722486347, guid: 4e32219aec6ae404d90e7bc360d0740b, type: 3}
+      objectReference: {fileID: 4207239859711673295, guid: e1cc102f7a68aed4ba7db209ff36d6b3, type: 3}
     - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleCards.Array.data[7]
       value: 
-      objectReference: {fileID: 6344692499633867491, guid: e002a7bfd72922e44a1472b043ac5c93, type: 3}
-    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: possibleCards.Array.data[8]
-      value: 
-      objectReference: {fileID: 5616584815432379089, guid: 8dc919a032ee3c24cb782b27d167dd49, type: 3}
-    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: possibleCards.Array.data[9]
-      value: 
-      objectReference: {fileID: 1100421202642986869, guid: 4f3650fe1216366469d8b7857a27ae6c, type: 3}
-    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: possibleCards.Array.data[10]
-      value: 
-      objectReference: {fileID: 6407626323776546897, guid: 919d6b99d5c7020478aebdf8ffcfdb77, type: 3}
+      objectReference: {fileID: 4248527698332970605, guid: b1834fc25bd1b6549a1c9a84fa74194b, type: 3}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: initHealth
-      value: 95
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: defenseStat
-      value: 2
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: pokemonName
-      value: Graveler
+      value: Caterpie
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: initDefenseStat
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: energyTypes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: pokemonTypes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: energyTypes.Array.data[0]
-      value: Physical
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: energyTypes.Array.data[1]
-      value: Mental
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: energyTypes.Array.data[2]
-      value: Fighting
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: pokemonTypes.Array.data[0]
-      value: Rock
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: pokemonTypes.Array.data[1]
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: possibleEnergyTypes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: possibleEnergyTypes.Array.data[0]
-      value: Physical
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: possibleEnergyTypes.Array.data[1]
-      value: Mental
-      objectReference: {fileID: 0}
-    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-      propertyPath: possibleEnergyTypes.Array.data[2]
-      value: Fighting
+      value: Bug
       objectReference: {fileID: 0}
     - target: {fileID: 818531783516017186, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_Name
-      value: pokemon-graveler
+      value: pokemon-caterpie
       objectReference: {fileID: 0}
     - target: {fileID: 818531783516017189, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_Pivot.x
@@ -205,81 +206,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9189710481617084919, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_text
-      value: Graveler
+      value: Caterpie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
---- !u!4 &3237765874161379840 stripped
+--- !u!4 &8316312708877562757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1396703378444715025, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
-  m_PrefabInstance: {fileID: 4579260024182566417}
+  m_PrefabInstance: {fileID: 6920744043890587540}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5461574998738081434
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 3237765874161379840}
-    m_Modifications:
-    - target: {fileID: 1337174841155511340, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_Name
-      value: Graveler
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}

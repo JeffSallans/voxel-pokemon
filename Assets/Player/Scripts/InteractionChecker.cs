@@ -336,6 +336,19 @@ public class InteractionChecker : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            // Wait for new scene to load
+            var newScene = SceneManager.GetActiveScene();
+            while (newScene.name != sceneName)
+            {
+                yield return new WaitForSeconds(0.3f);
+                newScene = SceneManager.GetActiveScene();
+            }
+
+            // Set new scene animator
+            sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
+        }
 
         this.enabled = false;
     }
@@ -433,7 +446,7 @@ public class InteractionChecker : MonoBehaviour
         {
             prevActiveEvent.gameObject.SetActive(true);
             prevActiveEvent.enabled = false;
-            prevActiveEvent.nextInteractionEvent.enabled = true;
+            if (prevActiveEvent.nextInteractionEvent) prevActiveEvent.nextInteractionEvent.enabled = true;
             Destroy(prevActiveEvent.gameObject);
         }
 

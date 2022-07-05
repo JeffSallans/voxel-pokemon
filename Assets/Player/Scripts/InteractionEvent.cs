@@ -143,6 +143,8 @@ public class InteractionEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NameUniquenessCheck();
+
         if (animator == null)
         {
             animator = gameObject.GetComponent<Animator>();
@@ -208,6 +210,11 @@ public class InteractionEvent : MonoBehaviour
         var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
 
         var result = allInteractionEvents.FirstOrDefault(e => e.eventName == eventName && e != this);
+
+        if (result)
+        {
+            throw new System.Exception("On event " + eventName + " event name is already found by " + result.eventName + " with message " + result.message.FirstOrDefault());
+        }
     }
 
     /// <summary>

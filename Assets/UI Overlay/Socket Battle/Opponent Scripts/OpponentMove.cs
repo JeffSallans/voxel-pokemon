@@ -83,6 +83,11 @@ public class OpponentMove : IOpponentMove
     public bool grantsInvulnerability;
 
     /// <summary>
+    /// The number of energies to remove from the target
+    /// </summary>
+    public int removeEnergyCount;
+
+    /// <summary>
     /// How long a StatusEffect will be placed
     /// </summary>
     public int turn = 99;
@@ -201,6 +206,15 @@ public class OpponentMove : IOpponentMove
                 { "stackCount", "1" },
                 { "turnsLeft", "1" }
             }));
+        }
+        if (removeEnergyCount > 0)
+        {
+            for (var i = 0; i < removeEnergyCount; i++)
+            {
+                statusTarget.attachedEnergy[i].Translate(battleGameBoard.energyDiscardLocation.transform.position);
+            }
+            statusTarget.attachedEnergy.RemoveRange(0, removeEnergyCount);
+            statusTarget.attachedEnergy = statusTarget.attachedEnergy.Where(e => e != null).ToList();
         }
 
 
