@@ -196,10 +196,24 @@ public class Energy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Event that triggers on the start of the battle workflow
+    /// </summary>
+    /// <param name="_deckBuilderAddCard"></param>
     public void onBattleStart(BattleGameBoard _battleGameBoard)
     {
         battleGameBoard = _battleGameBoard;
         canBeDragged = initCanBeDragged;
+        transform.position = battleGameBoard.energyDeckLocation.transform.position;
+    }
+
+    /// <summary>
+    /// Event that triggers on the start of the deck builder workflow
+    /// </summary>
+    /// <param name="_deckBuilderAddCard"></param>
+    public void onDeckBuildStart(DeckBuilderAddCard _deckBuilderAddCard)
+    {
+        onBattleStart(null);
     }
 
     /// <summary>

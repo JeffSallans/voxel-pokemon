@@ -354,6 +354,25 @@ public class InteractionChecker : MonoBehaviour
     }
 
     /// <summary>
+    /// Return to the title screen
+    /// </summary>
+    public void LoadTitleScreen()
+    {
+        StartCoroutine(LoadTitleScreenHelper());
+    }
+
+    IEnumerator LoadTitleScreenHelper()
+    {
+        sceneTransitionAnimator.FadeOut();
+        yield return new WaitForSeconds(1f);
+
+        if (prevSceneOpponent) { Destroy(prevSceneOpponent); }
+        if (prevScenePlayer) { Destroy(prevScenePlayer); }
+
+        SceneManager.LoadScene("gls_title");
+    }
+
+    /// <summary>
     /// Return to the previous scene
     /// </summary>
     /// <returns></returns>

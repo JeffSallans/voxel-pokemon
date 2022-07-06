@@ -386,7 +386,6 @@ public class BattleGameBoard : MonoBehaviour
             playerInteractionChecker.LoadPreviousScene();
             return;
         }
-        player.GetComponent<InteractionChecker>().LoadPreviousScene();
     }
 
     /// <summary>
@@ -926,6 +925,7 @@ public class BattleGameBoard : MonoBehaviour
                 opponent.movesConfig.ForEach(m => m.onBattleEnd());
 
                 onPackupPlayer();
+                player.GetComponent<InteractionChecker>().LoadPreviousScene();
 
                 return true;
             });
@@ -946,6 +946,7 @@ public class BattleGameBoard : MonoBehaviour
                 opponent.movesConfig.ForEach(m => m.onBattleEnd());
 
                 onPackupPlayer();
+                player.GetComponent<InteractionChecker>().LoadTitleScreen();
 
                 return true;
             });

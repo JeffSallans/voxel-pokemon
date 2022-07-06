@@ -209,11 +209,13 @@ public class OpponentMove : IOpponentMove
         }
         if (removeEnergyCount > 0)
         {
-            for (var i = 0; i < removeEnergyCount; i++)
+            var actualEnergyNumberToRemove = Mathf.Min(removeEnergyCount, statusTarget.attachedEnergy.Count);
+            for (var i = 0; i < actualEnergyNumberToRemove; i++)
             {
                 statusTarget.attachedEnergy[i].Translate(battleGameBoard.energyDiscardLocation.transform.position);
             }
-            statusTarget.attachedEnergy.RemoveRange(0, removeEnergyCount);
+            battleGameBoard.energyDiscard.AddRange(statusTarget.attachedEnergy.GetRange(0, actualEnergyNumberToRemove));
+            statusTarget.attachedEnergy.RemoveRange(0, actualEnergyNumberToRemove);
             statusTarget.attachedEnergy = statusTarget.attachedEnergy.Where(e => e != null).ToList();
         }
 

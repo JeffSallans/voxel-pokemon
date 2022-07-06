@@ -488,6 +488,7 @@ public class Card : MonoBehaviour
     public void onBattleStart(BattleGameBoard _battleGameBoard) {
         attachedEnergies = battleStartEnergies.ToList();
         battleGameBoard = _battleGameBoard;
+        deckBuilderAddCard = null;
 
         if (overrideFunctionality) { overrideFunctionality.onBattleStart(this, battleGameBoard); }
     }

@@ -2907,7 +2907,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20090118, y: -0.66455454, z: 0.19251558, w: 0.6935011}
+  m_LocalRotation: {x: 0.20132399, y: -0.663028, z: 0.19207339, w: 0.6949607}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3485,7 +3485,6 @@ GameObject:
   - component: {fileID: 1235289865}
   - component: {fileID: 1235289867}
   - component: {fileID: 1235289866}
-  - component: {fileID: 1235289868}
   m_Layer: 0
   m_Name: caterpie
   m_TagString: Untagged
@@ -3566,9 +3565,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: String Shot
-  moveDescriptionWithTemplates: Remove an energy
+  moveDescriptionWithTemplates: Remove all energies
   actingPokemon: {fileID: 263456943}
-  initialPriority: 3
+  initialPriority: 2
   turnPriority: 0
   damage: 0
   damageEnergy: Normal
@@ -3594,54 +3593,8 @@ MonoBehaviour:
   attackMultStat: 0
   userHeal: 0
   grantsInvulnerability: 0
-  removeEnergyCount: 1
+  removeEnergyCount: 4
   turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  overrideTarget: {fileID: 0}
---- !u!114 &1235289868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235289864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Harden
-  moveDescriptionWithTemplates: Adds 24 ZZBlock
-  actingPokemon: {fileID: 263456943}
-  initialPriority: 2
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Normal
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onBuff
-  targetAnimationType: 
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: Self
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 24
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 1
   statusAffectsUser: 0
   statusAffectsBothBench: 0
   overrideTarget: {fileID: 0}

@@ -200,7 +200,13 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         // Place pokemon
         activePokemon = null;
         onSetupPlayer();
-        player.party.ForEach(p => p.GetComponent<Animator>().SetBool("hasSpawned", true));
+        player.party.ForEach(p => p.onDeckBuildStart(this));
+
+        // Remove energies
+        player.energies.ToList().ForEach(e =>
+        {
+            e.transform.position = drawLocations.transform.position;
+        });
 
         await worldDialog.ShowMessageAsync("Select a pokemon to level");
 
