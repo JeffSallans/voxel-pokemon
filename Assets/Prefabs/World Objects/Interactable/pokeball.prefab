@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: pokeball1
-  eventType: SceneChange
+  eventType: 2
   interactionHint: Inspect
   message:
   - You found a rare candy!
@@ -56,7 +56,14 @@ MonoBehaviour:
   animator: {fileID: 0}
   removeOnReturn: 1
   disableOnReturn: 0
+  altDisableInteractionEvent: {fileID: 0}
+  altDisableInteractionEventName: 
   nextInteractionEvent: {fileID: 0}
+  nextInteractionEventName: 
+  nextInteractionEvent2: {fileID: 0}
+  nextInteractionEvent2Name: 
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
 --- !u!65 &1944707597424873038
 BoxCollider:
   m_ObjectHideFlags: 0

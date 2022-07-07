@@ -57,7 +57,15 @@ public class InteractionEvent : MonoBehaviour
     /// <summary>
     /// Possible types include (Message, Battle, SceneChange?)
     /// </summary>
-    public string eventType; //
+    public string eventTypeString
+    {
+        get
+        {
+            return eventType.ToString();
+        }
+    }
+    public enum PossibleEventTypes { Message, Battle, SceneChange }
+    public PossibleEventTypes eventType = PossibleEventTypes.Message;
 
     /// <summary>
     /// Display text before the user clicks on the target
@@ -189,7 +197,7 @@ public class InteractionEvent : MonoBehaviour
     {
         var result = new InteractionEventNoComponent();
         result.eventName = eventName;
-        result.eventType = eventType;
+        result.eventType = eventTypeString;
         result.sceneName = sceneName;
         result.disableOnReturn = disableOnReturn;
         result.removeOnReturn = removeOnReturn;

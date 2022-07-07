@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: viridian-gym-door-go
-  eventType: Message
+  eventType: 0
   interactionHint: Open
   message:
   - This code is still under development.
@@ -2907,7 +2907,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20132399, y: -0.663028, z: 0.19207339, w: 0.6949607}
+  m_LocalRotation: {x: 0.201324, y: -0.663028, z: 0.19207339, w: 0.6949607}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4201,7 +4201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272344490462144784, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
       propertyPath: eventType
-      value: Battle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5272344490462144784, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
       propertyPath: sceneName
@@ -4299,7 +4299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: league-admin-larry-2
-  eventType: Message
+  eventType: 0
   interactionHint: Talk
   message:
   - Nice battle. I have something for you.
@@ -4331,7 +4331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: league-admin-larry-3
-  eventType: Message
+  eventType: 0
   interactionHint: Talk
   message:
   - Check out the pokemon center to expand your team before your battle with Eric.
@@ -6064,7 +6064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272344490462144784, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
       propertyPath: eventType
-      value: Battle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5272344490462144784, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
       propertyPath: sceneName
@@ -6162,7 +6162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: league-admin-alex-3
-  eventType: Message
+  eventType: 0
   interactionHint: Talk
   message:
   - Next time you see me, I won't be stuck with this caterpie.
@@ -6193,7 +6193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: league-admin-alex-2
-  eventType: Message
+  eventType: 0
   interactionHint: Talk
   message:
   - Now don't you feel like you earned this?
@@ -6279,7 +6279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5205101606458550522, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: eventType
-      value: Message
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5205101606458550522, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: sceneName
@@ -6341,6 +6341,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6689272590570276528, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: eventType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6706683954823149934, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: eventName
       value: viridian-mart-door-go
@@ -6383,7 +6387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: viridian-center-go
-  eventType: Message
+  eventType: 0
   interactionHint: Open
   message:
   - Pokemon Center is still under development.

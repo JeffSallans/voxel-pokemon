@@ -191,13 +191,13 @@ public class InteractionChecker : MonoBehaviour
     private void OnInteractionClick(InteractionEvent iEvent)
     {
         if (hoverPossibleEvent == null) { return; }
-        if (hoverPossibleEvent.eventType == "Message")
+        if (hoverPossibleEvent.eventTypeString == "Message")
         {
             OnMessageAsync(hoverPossibleEvent);
-        } else if (hoverPossibleEvent.eventType == "Battle")
+        } else if (hoverPossibleEvent.eventTypeString == "Battle")
         {
             OnBattle(hoverPossibleEvent);
-        } else if (hoverPossibleEvent.eventType == "SceneChange")
+        } else if (hoverPossibleEvent.eventTypeString == "SceneChange")
         {
             OnSceneChange(hoverPossibleEvent);
         }
