@@ -200,6 +200,12 @@ public class InteractionChecker : MonoBehaviour
         } else if (hoverPossibleEvent.eventTypeString == "SceneChange")
         {
             OnSceneChange(hoverPossibleEvent);
+        } else if (hoverPossibleEvent.eventTypeString == "Question")
+        {
+            OnQuestionAsync(hoverPossibleEvent);
+        } else if (hoverPossibleEvent.eventTypeString == "AddPokemon")
+        {
+            OnAddPokemonAsync(hoverPossibleEvent);
         }
         hoverPossibleEvent = null;
     }
@@ -223,25 +229,6 @@ public class InteractionChecker : MonoBehaviour
         activeEvent = null;
     }
 
-    private void OnMessageHelper(InteractionEvent iEvent, int messageIndex)
-    {
-        // Base case the message index is the end of the list
-        if (messageIndex == iEvent.message.Count)
-        {
-            thirdPersonMovement.enabled = true;
-            if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
-            activeEvent = null;
-            return;
-        }
-
-        // Recursive case: display message and then increment index
-        worldDialog.ShowMessage(iEvent.message[messageIndex], () =>
-        {
-            OnMessageHelper(iEvent, messageIndex + 1);
-            return true;
-        });
-    }
-
     private void OnBattle(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
@@ -259,6 +246,67 @@ public class InteractionChecker : MonoBehaviour
             return true;
         });
 
+    }
+
+    /// <summary>
+    /// Shows a text box with a question at the end
+    /// </summary>
+    /// <param name="iEvent"></param>
+    private async void OnQuestionAsync(InteractionEvent iEvent)
+    {
+        activeEvent = hoverPossibleEvent;
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+
+        thirdPersonMovement.enabled = false;
+        foreach (var message in iEvent.message)
+        {
+            if (message == iEvent.message.Last())
+            {
+                await worldDialog.PromptShowMessageAsync(message,
+                    iEvent.options,
+                    () => { iEvent.autoTriggerInteractionEvent = iEvent.optionFirstTriggerInteractionEvent; return true; },
+                    () => { iEvent.autoTriggerInteractionEvent = iEvent.optionSecondTriggerInteractionEvent; return true; }
+                );
+            } else
+            {
+                await worldDialog.ShowMessageAsync(message);
+            }
+        }
+
+        postInteracationChanges(iEvent);
+
+        // Finish reading state
+        thirdPersonMovement.enabled = true;
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+        activeEvent = null;
+    }
+
+    /// <summary>
+    /// Creates a pokemon from the given list and add to the player's party
+    /// </summary>
+    /// <param name="iEvent"></param>
+    private async void OnAddPokemonAsync(InteractionEvent iEvent)
+    {
+        activeEvent = hoverPossibleEvent;
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+
+        thirdPersonMovement.enabled = false;
+        foreach (var message in iEvent.message)
+        {
+            await worldDialog.ShowMessageAsync(message);
+        }
+
+        // Select current player
+        var player = GameObject.FindObjectOfType<PlayerDeck>();
+        player.AddPokemon(iEvent.pokemonToAdd);
+
+
+        postInteracationChanges(iEvent);
+
+        // Finish reading state
+        thirdPersonMovement.enabled = true;
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+        activeEvent = null;
     }
 
     private void OnSceneChange(InteractionEvent iEvent)
@@ -446,8 +494,7 @@ public class InteractionChecker : MonoBehaviour
             }
             else
             {
-                interactionEvent.enabled = prevEventState.interactionEventEnabled;
-                interactionEvent.gameObject.SetActive(prevEventState.gameObjectActive);
+                interactionEvent.CopyInteractionEventValues(prevEventState);
             }
 
             // Update the active event

@@ -6,11 +6,11 @@ using UnityEngine;
 /// <summary>
 /// Contains all possible cards in the game (not including modification variations)
 /// </summary>
-public class CardInventory : MonoBehaviour
+public class PokemonFactory : MonoBehaviour
 {
-    public List<Card> cardInventory;
+    private List<Card> cardInventory;
 
-    public List<Energy> energyInventory;
+    private List<Energy> energyInventory;
 
     public List<Pokemon> pokemonInventory;
 
@@ -26,7 +26,7 @@ public class CardInventory : MonoBehaviour
         
     }
 
-    public GameObject getCard(string cardName)
+    public GameObject GetCard(string cardName)
     {
         var targetCard = cardInventory.Where(item => item.cardName == cardName)
             .Select(item => item.gameObject)
@@ -34,12 +34,12 @@ public class CardInventory : MonoBehaviour
         return Instantiate(targetCard);
     }
 
-    public GameObject getRandomCard() {
+    public GameObject GetRandomCard() {
         int index = Mathf.FloorToInt(Random.value * cardInventory.Count);
         return Instantiate(cardInventory[index].gameObject);
     }
 
-    public GameObject getEnergy(string energyName)
+    public GameObject GetEnergy(string energyName)
     {
         var targetEnergy = energyInventory.Where(item => item.energyName == energyName)
             .Select(item => item.gameObject)
@@ -47,21 +47,21 @@ public class CardInventory : MonoBehaviour
         return Instantiate(targetEnergy);
     }
 
-    public GameObject getRandomEnergy() {
+    public GameObject GetRandomEnergy() {
         int index = Mathf.FloorToInt(Random.value * energyInventory.Count);
         return Instantiate(energyInventory[index].gameObject);
     }
 
-    public GameObject getPokemon(string pokemonName)
+    public GameObject GetPokemon(string pokemonName, Transform parent = null)
     {
         var targetPokemon = pokemonInventory.Where(item => item.pokemonName == pokemonName)
             .Select(item => item.gameObject)
             .Single();
-        return Instantiate(targetPokemon);
+        return Instantiate(targetPokemon, parent);
     }
 
-    public GameObject getRandomPokemon() {
+    public GameObject GetRandomPokemon(Transform parent = null) {
         int index = Mathf.FloorToInt(Random.value * pokemonInventory.Count);
-        return Instantiate(pokemonInventory[index].gameObject);
+        return Instantiate(pokemonInventory[index].gameObject, parent);
     }
 }

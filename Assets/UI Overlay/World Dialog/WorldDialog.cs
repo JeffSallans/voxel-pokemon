@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
+public enum MessageType { BottomMessage, PromptMessage }
+
 /// <summary>
 /// Details for the world message display event
 /// </summary>
@@ -16,9 +18,24 @@ public class MessageEvent
     public string message;
 
     /// <summary>
+    /// Which message box to use to display
+    /// </summary>
+    public MessageType messageType;
+
+    /// <summary>
     /// Function to call after displayed
     /// </summary>
     public Func<bool> eventToCallAfterMessage;
+
+    /// <summary>
+    /// Function to call if yes was selected
+    /// </summary>
+    public Func<bool> confirmationEventToCallAfterMessage;
+
+    /// <summary>
+    /// Function to call if no was selected
+    /// </summary>
+    public Func<bool> cancelEventToCallAfterMessage;
 }
 
 /// <summary>
@@ -41,6 +58,36 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     public TextMeshProUGUI textboxObject;
 
+    /// <summary>
+    /// The dialog background to show
+    /// </summary>
+    public GameObject promptDialogBackground;
+
+    /// <summary>
+    /// The textbox to update with the dialog message
+    /// </summary>
+    public TextMeshProUGUI promptTextboxObject;
+
+    /// <summary>
+    /// The option dialog background to show
+    /// </summary>
+    public GameObject promptOptionBackground;
+
+    /// <summary>
+    /// The options to display
+    /// </summary>
+    public List<GameObject> promptOptionObject;
+
+    /// <summary>
+    /// True if we should wait for keyboard presses
+    /// </summary>
+    public bool promptIsCapturingInput = false;
+
+    /// <summary>
+    /// The current selection
+    /// </summary>
+    public int promptCurrentSelection = 0;
+    
     /// <summary>
     /// The message to display
     /// </summary>
@@ -65,7 +112,32 @@ public class WorldDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (promptIsCapturingInput)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Pressed");
+                PromptCaptureClick();
+            }
+            else if (Input.GetKeyDown(KeyCode.W))
+            {
+                promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Normal");
+                promptCurrentSelection = Mathf.Abs(promptCurrentSelection - 1) % promptOptionObject.Count;
+                promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Highlighted");
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Normal");
+                promptCurrentSelection = (promptCurrentSelection + 1) % promptOptionObject.Count;
+                promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Highlighted");
+            }
+        } else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                CaptureClick();
+            }
+        }
     }
 
     /// <summary>
@@ -97,6 +169,7 @@ public class WorldDialog : MonoBehaviour
         print("DIALOG SHOW: "+text);
         var newMessage = new MessageEvent();
         newMessage.message = text;
+        newMessage.messageType = MessageType.BottomMessage;
         newMessage.eventToCallAfterMessage = callback;
         messages.Enqueue(newMessage);
 
@@ -114,13 +187,45 @@ public class WorldDialog : MonoBehaviour
     private void OpenNextMessage()
     {
         // Open dialog if it is not already open
-        dialogObject.SetActive(true);
-        clickCaptureObject.SetActive(true);
+        if (currentmessage.messageType == MessageType.BottomMessage)
+        {
+            dialogObject.SetActive(true);
+            clickCaptureObject.SetActive(true);
 
-        textboxObject.text = UnicodeUtil.replaceWithUnicode(currentmessage?.message);
+            textboxObject.text = UnicodeUtil.replaceWithUnicode(currentmessage?.message);
+
+            promptDialogBackground.SetActive(false);
+            promptOptionBackground.SetActive(false);
+            promptOptionObject.ForEach(p => p.SetActive(false));
+            promptIsCapturingInput = false;
+
+            promptTextboxObject.gameObject.SetActive(false);
+            promptTextboxObject.text = "";          
+        }
+        else
+        {
+            dialogObject.SetActive(false);
+            clickCaptureObject.SetActive(false);
+
+            textboxObject.text = "";
+
+            promptDialogBackground.SetActive(true);
+            promptOptionBackground.SetActive(true);
+            promptOptionObject.ForEach(p => p.SetActive(true));
+            promptIsCapturingInput = true;
+            promptCurrentSelection = 0;
+            promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Highlighted");
+
+            promptTextboxObject.gameObject.SetActive(true);
+            promptTextboxObject.text = UnicodeUtil.replaceWithUnicode(currentmessage?.message);
+        }
+
 
         // Show text if not displayed
-        textboxObject.gameObject.SetActive(true);        
+        textboxObject.gameObject.SetActive(true);
+
+        // Check if we are capturing decisions
+        promptIsCapturingInput = (currentmessage.messageType == MessageType.PromptMessage);
     }
 
     /// <summary>
@@ -128,7 +233,7 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     public void CaptureClick()
     {
-        if (currentmessage.eventToCallAfterMessage != null)
+        if (currentmessage?.eventToCallAfterMessage != null)
         {
             currentmessage.eventToCallAfterMessage();
         }
@@ -166,5 +271,70 @@ public class WorldDialog : MonoBehaviour
     {
         messages.Clear();
         HideDialog();
+    }
+
+    /// <summary>
+    /// Show the dialog with a yes/no prompt. Can be called if an dialog is already open to queue a message.
+    /// </summary>
+    /// <param name="text">Message text to display (must be less than 180 characters or 5 lines)</param>
+    /// <param name="options">The options to show to select</param>
+    /// <param name="onConfirm">Function to trigger on space press when Yes is selected</param>
+    /// <param name="onCancel">Function to trigger on space press when No is selected</param>
+    /// <param name="callback">Function to trigger after dialog is read</param>
+    public void PromptShowMessage(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, Func<bool> callback = null)
+    {
+        print("DIALOG SHOW: " + text);
+        var newMessage = new MessageEvent();
+        newMessage.message = text;
+        newMessage.messageType = MessageType.PromptMessage;
+        newMessage.confirmationEventToCallAfterMessage = onConfirm;
+        newMessage.cancelEventToCallAfterMessage = onCancel;
+        newMessage.eventToCallAfterMessage = callback;
+        messages.Enqueue(newMessage);
+
+        // Open if current message is null
+        if (currentmessage == newMessage)
+        {
+            OpenNextMessage();
+        }
+    }
+
+    /// <summary>
+    /// Show the dialog with a yes/no prompt. Can be called if an dialog is already open to queue a message.
+    /// </summary>
+    /// <param name="text">Message text to display (must be less than 180 characters or 5 lines)</param>
+    /// <param name="options">The options to show to select</param>
+    /// <param name="onConfirm">Function to trigger on space press when Yes is selected</param>
+    /// <param name="onCancel">Function to trigger on space press when No is selected</param>
+    public async Task PromptShowMessageAsync(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null)
+    {
+        var dialogFinished = false;
+        PromptShowMessage(text, options, onConfirm, onCancel, () =>
+        {
+            dialogFinished = true;
+            return true;
+        });
+
+        while (!dialogFinished)
+        {
+            await Task.Yield();
+        }
+    }
+
+    /// <summary>
+    /// Handling the prompt response
+    /// </summary>
+    private void PromptCaptureClick()
+    {
+        if (promptCurrentSelection == 0)
+        {
+            currentmessage.confirmationEventToCallAfterMessage();
+        }
+        else if (promptCurrentSelection == 1)
+        {
+            currentmessage.cancelEventToCallAfterMessage();
+        }
+
+        CaptureClick();
     }
 }

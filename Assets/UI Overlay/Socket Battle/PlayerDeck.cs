@@ -18,6 +18,8 @@ public class PlayerDeck : MonoBehaviour
     /// </summary>
     public List<Energy> energies;
 
+    private PokemonFactory pokemonFactory;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,6 +32,10 @@ public class PlayerDeck : MonoBehaviour
             var allEnergies = gameObject.GetComponentsInChildren<Energy>().ToList();
             energies = allEnergies.Where(e => e.initCanBeDragged).ToList();
         }
+        if (pokemonFactory == null)
+        {
+            pokemonFactory = gameObject.GetComponent<PokemonFactory>();
+        }
     }
 
     // Update is called once per frame
@@ -39,5 +45,27 @@ public class PlayerDeck : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    /// <summary>
+    /// Returns if it creates a pokemon from the given list and add to the player's party.
+    /// </summary>
+    /// <param name="pokemonName">The name of the pokemon prefab to add to the party</param>
+    public bool AddPokemon(string pokemonName)
+    {
+        // Check if player has 3 pokemon, if so abort
+        if (party.Count >= 3) return false;
+
+        // Select current player and parent
+        var partyParent = gameObject.transform.Find("party");
+
+        // Instantiate pokemon at given parent
+        var addedPokemonObject = pokemonFactory.GetPokemon(pokemonName, partyParent);
+        var addedPokemon = addedPokemonObject.GetComponent<Pokemon>();
+
+        // Add pokemon to party list
+        party.Add(addedPokemon);
+
+        return true;
     }
 }

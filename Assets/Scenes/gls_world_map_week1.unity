@@ -263,6 +263,12 @@ MonoBehaviour:
   nextInteractionEvent2Name: 
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
 --- !u!1 &121880187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2913,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.201324, y: -0.663028, z: 0.19207339, w: 0.6949607}
+  m_LocalRotation: {x: 0.20132399, y: -0.663028, z: 0.19207339, w: 0.6949607}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3352,6 +3358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 978749243}
     m_Modifications:
+    - target: {fileID: 694946855301594890, guid: ba0085a366bb6614198bf09830ff0f7d, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2612413389645323121, guid: ba0085a366bb6614198bf09830ff0f7d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3455,6 +3465,10 @@ PrefabInstance:
     - target: {fileID: 2612413391408407615, guid: ba0085a366bb6614198bf09830ff0f7d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640993679747559261, guid: ba0085a366bb6614198bf09830ff0f7d, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0085a366bb6614198bf09830ff0f7d, type: 3}
@@ -4318,6 +4332,12 @@ MonoBehaviour:
   nextInteractionEvent2Name: 
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
 --- !u!114 &1518357237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4349,6 +4369,12 @@ MonoBehaviour:
   nextInteractionEvent2Name: 
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
 --- !u!4 &1518357238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8482556945004894348, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
@@ -5806,6 +5832,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+--- !u!1 &2015797731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9060553939863221879, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+  m_PrefabInstance: {fileID: 2015797730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2015797732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015797731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dafeb426fbfcbd42ab5ee2702b4ba87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemonInventory:
+  - {fileID: 3146366896733249124, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+  - {fileID: 7125353115341276158, guid: 35b607f874ed4314bb9350d81be2a729, type: 3}
+  - {fileID: 3395158668527527246, guid: 1d055e1b1b6cbe74cace40e161328954, type: 3}
+  - {fileID: 5907911653830653387, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
 --- !u!1001 &2051728930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6180,6 +6228,12 @@ MonoBehaviour:
   nextInteractionEvent2Name: 
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
 --- !u!114 &2105515247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6212,6 +6266,12 @@ MonoBehaviour:
   nextInteractionEvent2Name: 
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
 --- !u!4 &2105515248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8482556945004894348, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
@@ -6235,6 +6295,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2108771423590352463, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047621697272998310, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3991774420338629281, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
@@ -6405,3 +6469,127 @@ MonoBehaviour:
   nextInteractionEvent2Name: 
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+--- !u!1 &6459993709818081661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1568867391083462433, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+  m_PrefabInstance: {fileID: 6459993709818081656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6459993709818081662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459993709818081661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: palletsign2b
+  eventType: 3
+  interactionHint: Question
+  message:
+  - Is charmander the best pokemon?
+  opponent: {fileID: 0}
+  sceneName: 
+  animationBooleanName: 
+  animator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  altDisableInteractionEvent: {fileID: 0}
+  altDisableInteractionEventName: 
+  nextInteractionEvent: {fileID: 0}
+  nextInteractionEventName: 
+  nextInteractionEvent2: {fileID: 0}
+  nextInteractionEvent2Name: 
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options:
+  - Yes
+  - No
+  optionFirstTriggerInteractionEvent: {fileID: 6459993709818081664}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 6459993709818081663}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+--- !u!114 &6459993709818081663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459993709818081661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: palletsign2d
+  eventType: 0
+  interactionHint: 
+  message:
+  - Bad Choice
+  opponent: {fileID: 0}
+  sceneName: 
+  animationBooleanName: 
+  animator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  altDisableInteractionEvent: {fileID: 0}
+  altDisableInteractionEventName: 
+  nextInteractionEvent: {fileID: 0}
+  nextInteractionEventName: 
+  nextInteractionEvent2: {fileID: 0}
+  nextInteractionEvent2Name: 
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+--- !u!114 &6459993709818081664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459993709818081661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: palletsign2c
+  eventType: 0
+  interactionHint: 
+  message:
+  - Good Choice
+  opponent: {fileID: 0}
+  sceneName: 
+  animationBooleanName: 
+  animator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  altDisableInteractionEvent: {fileID: 0}
+  altDisableInteractionEventName: 
+  nextInteractionEvent: {fileID: 0}
+  nextInteractionEventName: 
+  nextInteractionEvent2: {fileID: 0}
+  nextInteractionEvent2Name: 
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
