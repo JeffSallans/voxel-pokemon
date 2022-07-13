@@ -309,22 +309,22 @@ public class InteractionChecker : MonoBehaviour
         activeEvent = null;
     }
 
-    private void OnSceneChange(InteractionEvent iEvent)
+    private async void OnSceneChange(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
         if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
-        worldDialog.ShowMessage(iEvent.message[0], () =>
+        foreach (var message in iEvent.message)
         {
-            thirdPersonMovement.enabled = true;
+            await worldDialog.ShowMessageAsync(message);
+        }
 
-            if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
-            StartCoroutine(LoadScene(iEvent, iEvent.sceneName));
-            activeEvent = null;
-            return true;
-        });
+        thirdPersonMovement.enabled = true;
 
+        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+        StartCoroutine(LoadScene(iEvent, iEvent.sceneName, null, iEvent.scenePlayerName != ""));
+        activeEvent = null;
     }
 
     IEnumerator LoadScene(InteractionEvent iEvent, string sceneName, GameObject opponent = null, bool movePlayerToNewScene = false)
@@ -339,7 +339,7 @@ public class InteractionChecker : MonoBehaviour
         prevInteractionEventStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToDictionary(i => i.eventName);
         prevSceneName = SceneManager.GetActiveScene().name;
         prevSceneOpponent = (opponent) ? Instantiate(opponent) : null;
-        prevScenePlayer = GameObject.Find("Player Dad");
+        prevScenePlayer = gameObject;
         prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
         prevSceneCameraRotation = Camera.main.gameObject.transform.rotation;
@@ -394,11 +394,37 @@ public class InteractionChecker : MonoBehaviour
                 newScene = SceneManager.GetActiveScene();
             }
 
+            if (iEvent.scenePlayerName != "")
+            {
+                // Get references
+                var playerSpawn = Resources.FindObjectsOfTypeAll(typeof(PlayerDeck)).Where(o => ((PlayerDeck)o).name == iEvent.scenePlayerName).FirstOrDefault() as PlayerDeck;
+
+                if (playerSpawn == null) throw new System.Exception("Unable to find spawn point " + iEvent.scenePlayerName);
+
+                // Setup third person camera
+                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = transform.Find("camera_focus").transform;
+                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = transform.Find("camera_focus").transform;
+
+                // Copy things over
+                thirdPersonMovement.cam = playerSpawn.GetComponent<ThirdPersonMovement>().cam;
+                playerCamera = playerSpawn.GetComponent<InteractionChecker>().playerCamera;
+                worldDialog = playerSpawn.GetComponent<InteractionChecker>().worldDialog;
+                crosshairText = playerSpawn.GetComponent<InteractionChecker>().crosshairText;
+                interactionHoverText = playerSpawn.GetComponent<InteractionChecker>().interactionHoverText;
+
+
+                // Setup pos
+                gameObject.transform.position = playerSpawn.transform.position;
+
+                // Clean up spawn location
+                playerSpawn.gameObject.SetActive(false);
+            }
+
             // Set new scene animator
             sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
         }
 
-        this.enabled = false;
+        if (iEvent.scenePlayerName == "") this.enabled = false;
     }
 
     /// <summary>

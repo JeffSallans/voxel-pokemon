@@ -86,19 +86,19 @@ public class InteractionEvent : MonoBehaviour
             }
             else if (eventType == PossibleEventTypes.Battle)
             {
-                return message.Count > 0 && sceneName != "" && opponent != null;
+                return message.Count >= 0 && sceneName != "" && opponent != null;
             }
             else if (eventType == PossibleEventTypes.SceneChange)
             {
-                return message.Count > 0 && sceneName != "";
+                return message.Count >= 0 && sceneName != "";
             }
             else if (eventType == PossibleEventTypes.Question)
             {
-                return message.Count > 0 && options.Count == 2 && optionFirstTriggerInteractionEvent != null && autoTriggerInteractionEvent == null;
+                return message.Count >= 0 && options.Count == 2 && optionFirstTriggerInteractionEvent != null && autoTriggerInteractionEvent == null;
             }
             else if (eventType == PossibleEventTypes.AddPokemon)
             {
-                return message.Count > 0 && pokemonToAdd != "";
+                return message.Count >= 0 && pokemonToAdd != "";
             }
 
             return true;  
@@ -124,6 +124,11 @@ public class InteractionEvent : MonoBehaviour
     /// (REQUIRED by Battle and SceneChange) Scene to navigate to if it is a battle or another event
     /// </summary>
     public string sceneName;
+
+    /// <summary>
+    /// (REQUIRED by SceneChange) Player position to copy to
+    /// </summary>
+    public string scenePlayerName;
 
     /// <summary>
     /// (Optional) The name of the boolean to toggle on if active
