@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3360094635590013972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4947129986735700695}
+    m_Modifications:
+    - target: {fileID: 9143364255098091446, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_Name
+      value: weepingbell
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143364255098091447, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 69f5ef566a696f74c882edbdc362266b, type: 3}
 --- !u!1001 &6324649068850675398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,9 +64,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: pokemonName
+      value: Weepingbell
+      objectReference: {fileID: 0}
+    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: initSpecialStat
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: pokemonTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: pokemonTypes.Array.data[0]
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: pokemonTypes.Array.data[1]
+      value: Poison
+      objectReference: {fileID: 0}
     - target: {fileID: 818531783516017186, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_Name
-      value: pokemon
+      value: pokemon-weepingbell
       objectReference: {fileID: 0}
     - target: {fileID: 818531783516017189, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: m_Pivot.x
@@ -95,5 +172,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9189710481617084919, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: m_text
+      value: Weepingbell
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+--- !u!4 &4947129986735700695 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1396703378444715025, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+  m_PrefabInstance: {fileID: 6324649068850675398}
+  m_PrefabAsset: {fileID: 0}
