@@ -220,6 +220,27 @@ public class InteractionEvent : MonoBehaviour
     /// </summary>
     public string pokemonToAdd = "";
 
+    /// <summary>
+    /// (Required for AddPokemon) The message to display when the pokemon was added.
+    /// </summary>
+    public string pokemonToAddSuccessMessage {
+        get
+        {
+            return "** {pokemon} joined the team **".Replace("{pokemon}", pokemonToAdd);
+        }
+    }
+
+    /// <summary>
+    /// (Required for AddPokemon) The message to display when the pokemon can't be added.
+    /// </summary>
+    public string pokemonToAddPartyFullMessage
+    {
+        get
+        {
+            return "** Team is full, {pokemon} can't join **".Replace("{pokemon}", pokemonToAdd);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

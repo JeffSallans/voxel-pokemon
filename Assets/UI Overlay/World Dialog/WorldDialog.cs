@@ -114,7 +114,7 @@ public class WorldDialog : MonoBehaviour
     {
         if (promptIsCapturingInput)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
             {
                 promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Pressed");
                 PromptCaptureClick();
@@ -262,6 +262,14 @@ public class WorldDialog : MonoBehaviour
         clickCaptureObject.SetActive(false);
         textboxObject.text = "";
         textboxObject.gameObject.SetActive(false);
+
+        promptDialogBackground.SetActive(false);
+        promptOptionBackground.SetActive(false);
+        promptOptionObject.ForEach(p => p.SetActive(false));
+        promptIsCapturingInput = false;
+
+        promptTextboxObject.text = "";
+        promptTextboxObject.gameObject.SetActive(false);
     }
 
     /// <summary>

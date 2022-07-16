@@ -128,7 +128,7 @@ public class InteractionChecker : MonoBehaviour
 
         var hoverInteraction = GetHoverInteraction();
         OnHoverInteraction(hoverInteraction);
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
         {
             OnInteractionClick(hoverPossibleEvent);
         }
@@ -194,26 +194,28 @@ public class InteractionChecker : MonoBehaviour
         if (hoverPossibleEvent.eventTypeString == "Message")
         {
             OnMessageAsync(hoverPossibleEvent);
-        } else if (hoverPossibleEvent.eventTypeString == "Battle")
+        }
+        else if (hoverPossibleEvent.eventTypeString == "Battle")
         {
             OnBattle(hoverPossibleEvent);
-        } else if (hoverPossibleEvent.eventTypeString == "SceneChange")
+        }
+        else if (hoverPossibleEvent.eventTypeString == "SceneChange")
         {
             OnSceneChange(hoverPossibleEvent);
-        } else if (hoverPossibleEvent.eventTypeString == "Question")
+        }
+        else if (hoverPossibleEvent.eventTypeString == "Question")
         {
             OnQuestionAsync(hoverPossibleEvent);
         } else if (hoverPossibleEvent.eventTypeString == "AddPokemon")
         {
             OnAddPokemonAsync(hoverPossibleEvent);
         }
-        hoverPossibleEvent = null;
     }
 
     private async void OnMessageAsync(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
         foreach(var message in iEvent.message)
@@ -222,27 +224,23 @@ public class InteractionChecker : MonoBehaviour
         }
 
         postInteracationChanges(iEvent);
-
-        // Finish reading state
-        thirdPersonMovement.enabled = true;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
-        activeEvent = null;
     }
 
     private void OnBattle(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
         worldDialog.ShowMessage(iEvent.message[0], () =>
         {
             thirdPersonMovement.enabled = true;
 
-            if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             var opponent = iEvent.gameObject;
             StartCoroutine(LoadScene(iEvent, iEvent.sceneName, opponent, true));
             activeEvent = null;
+            hoverPossibleEvent = null;
             return true;
         });
 
@@ -255,7 +253,7 @@ public class InteractionChecker : MonoBehaviour
     private async void OnQuestionAsync(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
         foreach (var message in iEvent.message)
@@ -274,11 +272,6 @@ public class InteractionChecker : MonoBehaviour
         }
 
         postInteracationChanges(iEvent);
-
-        // Finish reading state
-        thirdPersonMovement.enabled = true;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
-        activeEvent = null;
     }
 
     /// <summary>
@@ -288,7 +281,7 @@ public class InteractionChecker : MonoBehaviour
     private async void OnAddPokemonAsync(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
         foreach (var message in iEvent.message)
@@ -298,21 +291,24 @@ public class InteractionChecker : MonoBehaviour
 
         // Select current player
         var player = GameObject.FindObjectOfType<PlayerDeck>();
-        player.AddPokemon(iEvent.pokemonToAdd);
+        var pokemonWasAdded = player.AddPokemon(iEvent.pokemonToAdd);
 
+        if (pokemonWasAdded)
+        {
+            await worldDialog.ShowMessageAsync(iEvent.pokemonToAddSuccessMessage);
+        }
+        else
+        {
+            await worldDialog.ShowMessageAsync(iEvent.pokemonToAddPartyFullMessage);
+        }
 
         postInteracationChanges(iEvent);
-
-        // Finish reading state
-        thirdPersonMovement.enabled = true;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
-        activeEvent = null;
     }
 
     private async void OnSceneChange(InteractionEvent iEvent)
     {
         activeEvent = hoverPossibleEvent;
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
         foreach (var message in iEvent.message)
@@ -320,10 +316,11 @@ public class InteractionChecker : MonoBehaviour
             await worldDialog.ShowMessageAsync(message);
         }
 
-        thirdPersonMovement.enabled = true;
-
-        if (iEvent.animator) { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+        // Load Scene
         StartCoroutine(LoadScene(iEvent, iEvent.sceneName, null, iEvent.scenePlayerName != ""));
+
+        thirdPersonMovement.enabled = true;
+        if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
         activeEvent = null;
     }
 
@@ -394,30 +391,38 @@ public class InteractionChecker : MonoBehaviour
                 newScene = SceneManager.GetActiveScene();
             }
 
+            // Delete any Player Dad records
+            var rootObjects = newScene.GetRootGameObjects();
+            foreach (var obj in rootObjects)
+            {
+                if (obj.name == "Player Dad")
+                {
+                    Destroy(obj);
+                    break;
+                }
+            }
+
+            // Move location to spawn location
             if (iEvent.scenePlayerName != "")
             {
                 // Get references
-                var playerSpawn = Resources.FindObjectsOfTypeAll(typeof(PlayerDeck)).Where(o => ((PlayerDeck)o).name == iEvent.scenePlayerName).FirstOrDefault() as PlayerDeck;
-
-                if (playerSpawn == null) throw new System.Exception("Unable to find spawn point " + iEvent.scenePlayerName);
+                var playerSpawnObject = GameObject.Find(iEvent.scenePlayerName);
+                if (playerSpawnObject == null) throw new System.Exception("Unable to find spawn point " + iEvent.scenePlayerName);
+                var playerSpawn = playerSpawnObject.GetComponent<PlayerDeck>();
 
                 // Setup third person camera
                 GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = transform.Find("camera_focus").transform;
                 GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = transform.Find("camera_focus").transform;
 
                 // Copy things over
-                thirdPersonMovement.cam = playerSpawn.GetComponent<ThirdPersonMovement>().cam;
                 playerCamera = playerSpawn.GetComponent<InteractionChecker>().playerCamera;
                 worldDialog = playerSpawn.GetComponent<InteractionChecker>().worldDialog;
                 crosshairText = playerSpawn.GetComponent<InteractionChecker>().crosshairText;
                 interactionHoverText = playerSpawn.GetComponent<InteractionChecker>().interactionHoverText;
-
+                thirdPersonMovement.cam = playerCamera?.transform;
 
                 // Setup pos
                 gameObject.transform.position = playerSpawn.transform.position;
-
-                // Clean up spawn location
-                playerSpawn.gameObject.SetActive(false);
             }
 
             // Set new scene animator
@@ -554,6 +559,9 @@ public class InteractionChecker : MonoBehaviour
     /// <param name="iEvent"></param>
     private void postInteracationChanges(InteractionEvent iEvent)
     {
+        // Remove interaction lock
+        hoverPossibleEvent = null;
+
         // When the event triggers a different event
         if (iEvent.disableOnReturn)
         {
@@ -592,6 +600,14 @@ public class InteractionChecker : MonoBehaviour
             iEvent.autoTriggerInteractionEvent.gameObject.SetActive(true);
             iEvent.autoTriggerInteractionEvent.enabled = true;
             OnInteractionEvent(iEvent.autoTriggerInteractionEvent);
+        }
+
+        // Finish reading state
+        if (hoverPossibleEvent == null)
+        {
+            thirdPersonMovement.enabled = true;
+            if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            activeEvent = null;
         }
     }
 }

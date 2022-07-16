@@ -227,48 +227,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &106642998 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3223517433316059655, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-  m_PrefabInstance: {fileID: 6459993709818081656}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &106642999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106642998}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: viridian-gym-door-go
-  eventType: 0
-  interactionHint: Open
-  message:
-  - This code is still under development.
-  opponent: {fileID: 0}
-  sceneName: 
-  animationBooleanName: 
-  animator: {fileID: 0}
-  removeOnReturn: 0
-  disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
-  autoTriggerInteractionEvent: {fileID: 0}
-  autoTriggerInteractionEventName: 
-  options: []
-  optionFirstTriggerInteractionEvent: {fileID: 0}
-  optionFirstTriggerInteractionEventName: 
-  optionSecondTriggerInteractionEvent: {fileID: 0}
-  optionSecondTriggerInteractionEventName: 
-  pokemonToAdd: 
 --- !u!1 &121880187
 GameObject:
   m_ObjectHideFlags: 0
@@ -4320,6 +4278,7 @@ MonoBehaviour:
   - '** Jim recieves Poke Center membership card **'
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
   removeOnReturn: 0
@@ -4357,6 +4316,7 @@ MonoBehaviour:
   - Check out the pokemon center to expand your team before your battle with Eric.
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
   removeOnReturn: 0
@@ -5786,6 +5746,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9060553939863221879, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6216,6 +6180,7 @@ MonoBehaviour:
   - Next time you see me, I won't be stuck with this caterpie.
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
   removeOnReturn: 0
@@ -6254,6 +6219,7 @@ MonoBehaviour:
   - '** Jim recieved the gym key **'
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
   removeOnReturn: 0
@@ -6293,6 +6259,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1747474378420952464, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: worldDialog
+      value: 
+      objectReference: {fileID: 1234727940}
+    - target: {fileID: 1747474378420952464, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1790161853}
+    - target: {fileID: 1747474378420952464, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: crosshairText
+      value: 
+      objectReference: {fileID: 723209566}
+    - target: {fileID: 1747474378420952464, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: interactionHoverText
+      value: 
+      objectReference: {fileID: 1967984322}
     - target: {fileID: 2108771423590352463, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6301,34 +6283,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3991774420338629281, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: m_Size.x
-      value: 3.7000008
-      objectReference: {fileID: 0}
-    - target: {fileID: 3991774420338629281, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: m_Size.y
-      value: 5.1499996
-      objectReference: {fileID: 0}
-    - target: {fileID: 3991774420338629281, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: m_Size.z
-      value: 1.3730202
-      objectReference: {fileID: 0}
-    - target: {fileID: 3991774420338629281, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: m_Center.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3991774420338629281, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: m_Center.z
-      value: 11.16151
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048381312298122764, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: eventName
-      value: viridian-center-req
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048381312298122764, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: message.Array.data[0]
-      value: Pokemon Center requires a membership card to enter.
-      objectReference: {fileID: 0}
     - target: {fileID: 4497933686225944474, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6336,26 +6290,6 @@ PrefabInstance:
     - target: {fileID: 5063230468889524240, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205101606458550522, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: eventName
-      value: viridian-gym-door-req
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205101606458550522, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: eventType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205101606458550522, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: sceneName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205101606458550522, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: message.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205101606458550522, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: message.Array.data[0]
-      value: You need a key from a league admin before you can enter.
       objectReference: {fileID: 0}
     - target: {fileID: 6459993709857111152, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_Name
@@ -6409,14 +6343,22 @@ PrefabInstance:
       propertyPath: eventType
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6706683954823149934, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: eventName
-      value: viridian-mart-door-go
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706683954823149934, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-      propertyPath: interactionHint
-      value: Open
-      objectReference: {fileID: 0}
+    - target: {fileID: 7468475148216411939, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: worldDialog
+      value: 
+      objectReference: {fileID: 1234727940}
+    - target: {fileID: 7468475148216411939, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1790161853}
+    - target: {fileID: 7468475148216411939, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: crosshairText
+      value: 
+      objectReference: {fileID: 723209566}
+    - target: {fileID: 7468475148216411939, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: interactionHoverText
+      value: 
+      objectReference: {fileID: 1967984322}
     - target: {fileID: 7628319407739415897, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6433,48 +6375,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6459993709316088153, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
   m_PrefabInstance: {fileID: 6459993709818081656}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6459993709818081659 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8530906354695668657, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
-  m_PrefabInstance: {fileID: 6459993709818081656}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6459993709818081660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6459993709818081659}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: viridian-center-go
-  eventType: 0
-  interactionHint: Open
-  message:
-  - Pokemon Center is still under development.
-  opponent: {fileID: 0}
-  sceneName: 
-  animationBooleanName: 
-  animator: {fileID: 0}
-  removeOnReturn: 0
-  disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
-  autoTriggerInteractionEvent: {fileID: 0}
-  autoTriggerInteractionEventName: 
-  options: []
-  optionFirstTriggerInteractionEvent: {fileID: 0}
-  optionFirstTriggerInteractionEventName: 
-  optionSecondTriggerInteractionEvent: {fileID: 0}
-  optionSecondTriggerInteractionEventName: 
-  pokemonToAdd: 
 --- !u!1 &6459993709818081661 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1568867391083462433, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
@@ -6499,6 +6399,7 @@ MonoBehaviour:
   - Is charmander the best pokemon?
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
   removeOnReturn: 0
@@ -6538,6 +6439,7 @@ MonoBehaviour:
   - Bad Choice
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
   removeOnReturn: 0
@@ -6575,6 +6477,7 @@ MonoBehaviour:
   - Good Choice
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
   removeOnReturn: 0

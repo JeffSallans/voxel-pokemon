@@ -485,12 +485,23 @@ public class Card : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Call when battle starts to setup the game
+    /// </summary>
     public void onBattleStart(BattleGameBoard _battleGameBoard) {
         attachedEnergies = battleStartEnergies.ToList();
         battleGameBoard = _battleGameBoard;
         deckBuilderAddCard = null;
 
         if (overrideFunctionality) { overrideFunctionality.onBattleStart(this, battleGameBoard); }
+    }
+
+    /// <summary>
+    /// Call when deck builder is finished to reset card state
+    /// </summary>
+    public void onDeckBuilderAddCardEnd()
+    {
+        deckBuilderAddCard = null;
     }
 
     public void onPlay(Pokemon user, Pokemon target)

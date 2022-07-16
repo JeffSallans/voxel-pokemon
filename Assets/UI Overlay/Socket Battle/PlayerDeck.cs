@@ -66,6 +66,10 @@ public class PlayerDeck : MonoBehaviour
         // Add pokemon to party list
         party.Add(addedPokemon);
 
+        // Add pokemon energies to deck
+        var newEnergies = addedPokemonObject.GetComponentsInChildren<Energy>();
+        energies.AddRange(newEnergies);
+
         return true;
     }
 }

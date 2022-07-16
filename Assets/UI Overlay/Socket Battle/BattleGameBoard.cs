@@ -488,6 +488,9 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     /// <param name="activePokemon"></param>
     protected void drawCard(Pokemon activePokemon) {
+        // Don't draw if the deck doesn't have cards (assuming reshuffle was used before this) 
+        if (deck.Count == 0) return;
+
         // Draw card
         var cardDrawn = deck.First();
         hand.Add(cardDrawn);

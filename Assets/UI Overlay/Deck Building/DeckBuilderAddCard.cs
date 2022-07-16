@@ -268,6 +268,9 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         // Delete other pack cards from pokemon
         pack.ForEach(p => Destroy(p.gameObject));
 
+        // Clean up card state
+        targetCard.onDeckBuilderAddCardEnd();
+
         // Transition back
         onPackupPlayer();
     }
