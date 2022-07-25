@@ -308,7 +308,8 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     protected void onSetupPlayer()
     {
-        // Disabled players
+        // Disabled player model
+        player.gameObject.transform.Find("default").gameObject.SetActive(false);
 
         // Move party parent reference into placement
         var playerParty = player.gameObject.transform.Find("party");
@@ -357,7 +358,8 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     protected void onPackupPlayer()
     {
-        // Enable players
+        // Enable player model
+        player.gameObject.transform.Find("default").gameObject.SetActive(true);
 
         // Move energies into discard
         allEnergy.ForEach(e => e.transform.position = discardLocation.transform.position);

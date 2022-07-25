@@ -30,7 +30,24 @@ public class OpponentMove : IOpponentMove
     /// <summary>
     /// The possible targets of this card. Self, Bench, Team, ActiveOpponent, AnyOpponent, BenchOpponent, AnyPokemon, OverrideTarget
     /// </summary>
-    public string targetType = "ActiveOpponent";
+    public MoveTargetType targetType = MoveTargetType.ActiveOpponent;
+
+    public enum MoveTargetType
+    {
+        Self,
+        Bench,
+        Team,
+        ActiveOpponent,
+        AnyOpponent,
+        BenchOpponent,
+        AnyPokemon,
+        BenchAll,
+        TeamAll,
+        AnyOpponentAll,
+        BenchOpponentAll,
+        AnyPokemonAll,
+        OverrideTarget,
+    }
 
     public int attackCost;
     public int defenseCost;
@@ -124,41 +141,52 @@ public class OpponentMove : IOpponentMove
         }
     }
 
-    public override string playMove()
+    /// <summary>
+    /// Executes the opponent move
+    /// </summary>
+    /// <returns></returns>
+    public override List<string> playMove()
     {
-        var moveMessage = "";
-        var target = getTarget();
+        var targetList = getTarget();
 
-        if (target.isInvulnerable && damage > 0)
+        var moveMessageList = targetList.Select(target =>
         {
-            if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
-            return actingPokemon.pokemonName + " missed. " + target.pokemonName + " is invulnerable.";
-        }
+            var moveMessage = "";
 
-        // Pay cost
-        if (discardEnergyOnUse)
-        {
-            var targetsToRemove = actingPokemon.attachedEnergy.GetRange(actingPokemon.attachedEnergy.Count - energyRequirement, energyRequirement);
-            targetsToRemove.ForEach(t =>
+            if (target.isInvulnerable && damage > 0)
             {
-                t.Translate(battleGameBoard.energyDiscardLocation.transform.position);
-                // TODO: these should maybe be destroyed once off screen
-            });
-            actingPokemon.attachedEnergy.RemoveRange(actingPokemon.attachedEnergy.Count - energyRequirement, energyRequirement);
-        }
-        actingPokemon.attackStat -= attackCost;
-        actingPokemon.defenseStat -= defenseCost;
-        actingPokemon.specialStat -= specialCost;
-        actingPokemon.evasionStat -= evasionCost;
+                if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
+                return actingPokemon.pokemonName + " missed. " + target.pokemonName + " is invulnerable.";
+            }
 
-        // Determine damage
-        commonCardPlay(actingPokemon, target, out moveMessage);
+            // Pay cost
+            if (discardEnergyOnUse)
+            {
+                var targetsToRemove = actingPokemon.attachedEnergy.GetRange(actingPokemon.attachedEnergy.Count - energyRequirement, energyRequirement);
+                targetsToRemove.ForEach(t =>
+                {
+                    t.Translate(battleGameBoard.energyDiscardLocation.transform.position);
+                    // TODO: these should maybe be destroyed once off screen
+                });
+                actingPokemon.attachedEnergy.RemoveRange(actingPokemon.attachedEnergy.Count - energyRequirement, energyRequirement);
+            }
+            actingPokemon.attackStat -= attackCost;
+            actingPokemon.defenseStat -= defenseCost;
+            actingPokemon.specialStat -= specialCost;
+            actingPokemon.evasionStat -= evasionCost;
 
-        if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
-        if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
-        if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+            // Determine damage
+            commonCardPlay(actingPokemon, target, out moveMessage);
 
-        return moveMessage;
+            if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
+            if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
+            if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+            
+            return moveMessage;
+        }).ToList();
+
+        if (moveMessageList.Count == 0) return new List<string> { "" };
+        return moveMessageList;
     }
 
 
@@ -298,33 +326,46 @@ public class OpponentMove : IOpponentMove
     /// Returns the target of the move
     /// </summary>
     /// <returns></returns>
-    private Pokemon getTarget()
+    private List<Pokemon> getTarget()
     {
+        var bench = battleGameBoard.opponent.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
+        var team = battleGameBoard.opponent.party.Where(p => !p.isFainted).ToList();
+
         var opponentBench = battleGameBoard.player.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
         var opponentTeam = battleGameBoard.player.party.Where(p => !p.isFainted).ToList();
         if (overrideTarget)
         {
-            return overrideTarget;
+            return new List<Pokemon>() { overrideTarget };
         }
-        else if (targetType == "ActiveOpponent")
+        else if (targetType == MoveTargetType.ActiveOpponent)
         {
-            return battleGameBoard.activePokemon;
+            return new List<Pokemon>() { battleGameBoard.activePokemon };
         }
-        else if (targetType == "BenchOpponent" && opponentBench.Count > 0)
+        else if (targetType == MoveTargetType.Bench && opponentBench.Count > 0)
+        {
+            var randomTarget = UnityEngine.Random.Range(0, bench.Count - 1);
+            return new List<Pokemon>() { bench[randomTarget] };
+        }
+        else if (targetType == MoveTargetType.Team)
+        {
+            var randomTarget = UnityEngine.Random.Range(0, team.Count - 1);
+            return new List<Pokemon>() { team[randomTarget] };
+        }
+        else if (targetType == MoveTargetType.BenchOpponent && opponentBench.Count > 0)
         {
             var randomTarget = UnityEngine.Random.Range(0, opponentBench.Count - 1);
-            return opponentBench[randomTarget];
+            return new List<Pokemon>() { opponentBench[randomTarget] };
         }
-        else if (targetType == "AnyOpponent")
+        else if (targetType == MoveTargetType.AnyOpponent)
         {
             var randomTarget = UnityEngine.Random.Range(0, opponentTeam.Count - 1);
-            return opponentTeam[randomTarget];
+            return new List<Pokemon>() { opponentTeam[randomTarget] };
         }
-        else if (targetType == "Self")
+        else if (targetType == MoveTargetType.Self)
         {
-            return battleGameBoard.opponentActivePokemon;
+            return new List<Pokemon>() { battleGameBoard.opponentActivePokemon };
         }
 
-        return battleGameBoard.activePokemon;
+        return new List<Pokemon>() { battleGameBoard.activePokemon };
     }
 }

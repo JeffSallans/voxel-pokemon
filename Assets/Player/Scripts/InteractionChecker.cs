@@ -60,7 +60,7 @@ public class InteractionChecker : MonoBehaviour
     /// <summary>
     /// The key is the interaction state name, the value includes if it is enabled or not and if the game object is active or not
     /// </summary>
-    private Dictionary<string, InteractionEventNoComponent> prevInteractionEventStates;
+    private Dictionary<string, InteractionEventNoComponent> prevInteractionEventStates = null;
 
     /// <summary>
     /// The reference to the previous scene opponent
@@ -70,11 +70,11 @@ public class InteractionChecker : MonoBehaviour
     /// <summary>
     /// The reference to the previous scene player
     /// </summary>
-    private GameObject prevScenePlayer;
+    public GameObject prevScenePlayer;
     /// <summary>
     /// The location of the previous player to account for any elevation if the player fell down
     /// </summary>
-    private Vector3 prevScenePlayerPos;
+    public Vector3 prevScenePlayerPos;
 
     /// <summary>
     /// The reference to the previous scene name
@@ -110,7 +110,10 @@ public class InteractionChecker : MonoBehaviour
 
         thirdPersonMovement = GetComponent<ThirdPersonMovement>();
 
-        prevInteractionEventStates = new Dictionary<string, InteractionEventNoComponent>();
+        if (prevInteractionEventStates == null)
+        {
+            prevInteractionEventStates = new Dictionary<string, InteractionEventNoComponent>();
+        }
     }
 
     // Update is called once per frame
@@ -190,7 +193,7 @@ public class InteractionChecker : MonoBehaviour
     /// <param name="iEvent"></param>
     private void OnInteractionClick(InteractionEvent iEvent)
     {
-        if (hoverPossibleEvent == null) { return; }
+        if (hoverPossibleEvent == null || activeEvent != null) { return; }
         if (hoverPossibleEvent.eventTypeString == "Message")
         {
             OnMessageAsync(hoverPossibleEvent);
@@ -333,13 +336,21 @@ public class InteractionChecker : MonoBehaviour
         prevActiveEvent = iEvent;
         var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
         print(interactionEvents.Length);
-        prevInteractionEventStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToDictionary(i => i.eventName);
+        var interactionEventsStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToList();
+        foreach (var interaction in interactionEventsStates)
+        {
+            prevInteractionEventStates[interaction.eventName] = interaction;
+        }
         prevSceneName = SceneManager.GetActiveScene().name;
         prevSceneOpponent = (opponent) ? Instantiate(opponent) : null;
         prevScenePlayer = gameObject;
         prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
         prevSceneCameraRotation = Camera.main.gameObject.transform.rotation;
+
+        // Turn-off movement to avoid spawn issues
+        prevScenePlayer.GetComponent<FallToGround>().enabled = false;
+        prevScenePlayer.GetComponent<CharacterController>().enabled = false;
 
         // Copy opponent to be moved as a global value
         if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
@@ -423,6 +434,23 @@ public class InteractionChecker : MonoBehaviour
 
                 // Setup pos
                 gameObject.transform.position = playerSpawn.transform.position;
+
+                // Remove player spawn
+                playerSpawnObject.SetActive(false);
+            }
+
+            // Update the game events when returning to the scene
+            var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>();
+            foreach (var interactionEvent in interactionEventList)
+            {
+                // Update the other events
+                InteractionEventNoComponent prevEventState = null;
+                prevInteractionEventStates.TryGetValue(interactionEvent.eventName, out prevEventState);
+
+                if (prevEventState != null)
+                {
+                    interactionEvent.CopyInteractionEventValues(prevEventState);
+                }
             }
 
             // Set new scene animator
@@ -430,6 +458,10 @@ public class InteractionChecker : MonoBehaviour
         }
 
         if (iEvent.scenePlayerName == "") this.enabled = false;
+
+        // Turn-off movement to avoid spawn issues
+        prevScenePlayer.GetComponent<FallToGround>().enabled = true;
+        prevScenePlayer.GetComponent<CharacterController>().enabled = true;
     }
 
     /// <summary>
@@ -463,6 +495,10 @@ public class InteractionChecker : MonoBehaviour
 
     IEnumerator LoadPreviousSceneHelper()
     {
+        // Turn-off movement to avoid spawn issues
+        prevScenePlayer.GetComponent<FallToGround>().enabled = false;
+        prevScenePlayer.GetComponent<CharacterController>().enabled = false;
+
         sceneTransitionAnimator.FadeOut();
         yield return new WaitForSeconds(1f);
 
@@ -477,37 +513,50 @@ public class InteractionChecker : MonoBehaviour
             newScene = SceneManager.GetActiveScene();
         }
 
-        // Set new scene animator
-        sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
-
+        // Delete any Player Dad records
         var rootObjects = newScene.GetRootGameObjects();
         foreach (var obj in rootObjects)
         {
             if (obj.name == "Player Dad")
             {
-                // Copy things over
-                gameObject.GetComponent<ThirdPersonMovement>().cam = obj.GetComponent<ThirdPersonMovement>().cam;
-                playerCamera = obj.GetComponent<InteractionChecker>().playerCamera;
-                worldDialog = obj.GetComponent<InteractionChecker>().worldDialog;
-                crosshairText = obj.GetComponent<InteractionChecker>().crosshairText;
-                interactionHoverText = obj.GetComponent<InteractionChecker>().interactionHoverText;
-
-                // Delete duplicate
                 Destroy(obj);
-
-                // Move updated Player Dad into scene
-                SceneManager.MoveGameObjectToScene(gameObject, newScene);
-
-                // Setup third person camera
-                Camera.main.gameObject.transform.position = prevSceneCameraPosition;
-                Camera.main.gameObject.transform.rotation = prevSceneCameraRotation;
-                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = prevScenePlayer.transform.Find("camera_focus").transform;
-                GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = prevScenePlayer.transform.Find("camera_focus").transform;
-
-                // Setup pos
-                gameObject.transform.position = prevScenePlayerPos;
+                break;
             }
         }
+
+        // Set new scene animator
+        sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
+
+        // Get references
+        var playerSpawnObject = GameObject.Find("PlayerSpawn");
+        if (playerSpawnObject == null) throw new System.Exception("Unable to find spawn point PlayerSpawn");
+        var playerSpawn = playerSpawnObject.GetComponent<PlayerDeck>();
+
+        // Setup third person camera
+        GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = transform.Find("camera_focus").transform;
+        GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = transform.Find("camera_focus").transform;
+
+        // Copy things over
+        playerCamera = playerSpawn.GetComponent<InteractionChecker>().playerCamera;
+        worldDialog = playerSpawn.GetComponent<InteractionChecker>().worldDialog;
+        crosshairText = playerSpawn.GetComponent<InteractionChecker>().crosshairText;
+        interactionHoverText = playerSpawn.GetComponent<InteractionChecker>().interactionHoverText;
+        thirdPersonMovement.cam = playerCamera?.transform;
+
+        // Remove player spawn
+        playerSpawnObject.SetActive(false);
+
+        // Move updated Player Dad into scene
+        SceneManager.MoveGameObjectToScene(gameObject, newScene);
+
+        // Setup third person camera
+        Camera.main.gameObject.transform.position = prevSceneCameraPosition;
+        Camera.main.gameObject.transform.rotation = prevSceneCameraRotation;
+        GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_Follow = prevScenePlayer.transform.Find("camera_focus").transform;
+        GameObject.FindObjectOfType<Cinemachine.CinemachineFreeLook>().m_LookAt = prevScenePlayer.transform.Find("camera_focus").transform;
+
+        // Setup pos
+        gameObject.transform.position = prevScenePlayerPos;
 
         // Update the game events when returning to the scene
         var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>();
@@ -551,6 +600,9 @@ public class InteractionChecker : MonoBehaviour
 
         prevSceneName = "";
         this.enabled = true;
+
+        prevScenePlayer.GetComponent<FallToGround>().enabled = true;
+        prevScenePlayer.GetComponent<CharacterController>().enabled = true;
     }
 
     /// <summary>
@@ -595,7 +647,7 @@ public class InteractionChecker : MonoBehaviour
         }
 
         // Trigger another event
-        if (iEvent.autoTriggerInteractionEvent)
+         if (iEvent.autoTriggerInteractionEvent)
         {
             iEvent.autoTriggerInteractionEvent.gameObject.SetActive(true);
             iEvent.autoTriggerInteractionEvent.enabled = true;

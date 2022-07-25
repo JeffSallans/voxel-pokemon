@@ -332,7 +332,7 @@ public class WorldDialog : MonoBehaviour
     /// <summary>
     /// Handling the prompt response
     /// </summary>
-    private void PromptCaptureClick()
+    public void PromptCaptureClick()
     {
         if (promptCurrentSelection == 0)
         {

@@ -13,7 +13,7 @@ public class StrategyRandom : IOpponentStrategy
         // Do no trigger if it was already played
         if (nextOpponentMove.playInstantly)
         {
-            return nextOpponentMove.playMove();
+            return nextOpponentMove.playMove()[0];
         }
         return null;
     }

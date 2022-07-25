@@ -161,6 +161,16 @@ public class InteractionEvent : MonoBehaviour
     public string altDisableInteractionEventName;
 
     /// <summary>
+    /// (Optional) The interaction event to disable after triggering this event. Usually a can't do event.
+    /// </summary>
+    public InteractionEvent alt2DisableInteractionEvent;
+
+    /// <summary>
+    /// (Optional) Use as an alternative to altDisableInteractionEvent. Finds the event by name instead of reference.
+    /// </summary>
+    public string alt2DisableInteractionEventName;
+
+    /// <summary>
     /// (Optional) The next interaction event to enable after this one. Usually the next text to show after an event.
     /// </summary>
     public InteractionEvent nextInteractionEvent;
@@ -251,37 +261,43 @@ public class InteractionEvent : MonoBehaviour
             animator = gameObject.GetComponent<Animator>();
         }
 
-        if (altDisableInteractionEventName != "")
+        if (altDisableInteractionEventName != null && altDisableInteractionEventName != "")
         {
             altDisableInteractionEvent = GetInteractionEventByName(altDisableInteractionEventName);
-            if (!altDisableInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + altDisableInteractionEventName);
+            if (!altDisableInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find alt interaction event: " + altDisableInteractionEventName);
         }
 
-        if (nextInteractionEventName != "")
+        if (alt2DisableInteractionEventName != null && alt2DisableInteractionEventName != "")
+        {
+            alt2DisableInteractionEvent = GetInteractionEventByName(alt2DisableInteractionEventName);
+            if (!alt2DisableInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find alt2 interaction event: " + alt2DisableInteractionEventName);
+        }
+
+        if (nextInteractionEventName != null && nextInteractionEventName != "")
         {
             nextInteractionEvent = GetInteractionEventByName(nextInteractionEventName);
-            if (!nextInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + nextInteractionEventName);
+            if (!nextInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find next interaction event: " + nextInteractionEventName);
         }
 
-        if (nextInteractionEvent2Name != "")
+        if (nextInteractionEvent2Name != null && nextInteractionEvent2Name != "")
         {
             nextInteractionEvent2 = GetInteractionEventByName(nextInteractionEvent2Name);
-            if (!nextInteractionEvent2) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + nextInteractionEvent2Name);
+            if (!nextInteractionEvent2) throw new System.Exception("On event " + eventName + " cannot find next2 interaction event: " + nextInteractionEvent2Name);
         }
 
-        if (autoTriggerInteractionEventName != "")
+        if (autoTriggerInteractionEventName != null && autoTriggerInteractionEventName != "")
         {
             autoTriggerInteractionEvent = GetInteractionEventByName(autoTriggerInteractionEventName);
-            if (!autoTriggerInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + autoTriggerInteractionEventName);
+            if (!autoTriggerInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find auto interaction event: " + autoTriggerInteractionEventName);
         }
 
-        if (optionFirstTriggerInteractionEventName != "")
+        if (optionFirstTriggerInteractionEventName != null && optionFirstTriggerInteractionEventName != "")
         {
             optionFirstTriggerInteractionEvent = GetInteractionEventByName(optionFirstTriggerInteractionEventName);
             if (!optionFirstTriggerInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + optionFirstTriggerInteractionEventName);
         }
 
-        if (optionSecondTriggerInteractionEventName != "")
+        if (optionSecondTriggerInteractionEventName != null && optionSecondTriggerInteractionEventName != "")
         {
             optionSecondTriggerInteractionEvent = GetInteractionEventByName(optionSecondTriggerInteractionEventName);
             if (!optionSecondTriggerInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find interaction event: " + optionSecondTriggerInteractionEventName);

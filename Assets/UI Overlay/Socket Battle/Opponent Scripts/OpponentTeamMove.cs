@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// DEPRECATED: Use the team target with OpponentMove
+/// </summary>
 public class OpponentTeamMove : IOpponentMove
 {
     /// <summary>
@@ -91,7 +94,7 @@ public class OpponentTeamMove : IOpponentMove
         }
     }
 
-    public override string playMove()
+    public override List<string> playMove()
     {
         var moveMessage = "";
         var teamPokemon = battleGameBoard.opponent.party.Where(p => !p.isFainted && p != actingPokemon).ToList();
@@ -115,7 +118,7 @@ public class OpponentTeamMove : IOpponentMove
             if (targetAnimationType2 != "") t.GetComponent<Animator>().SetTrigger(targetAnimationType2);
         });
 
-        return moveMessage + " to the team";
+        return new List<string> { moveMessage + " to the team" };
     }
 
     /// <summary>

@@ -115,7 +115,7 @@ public class IOpponentMove : MonoBehaviour
         battleGameBoard = _battleGameBoard;
     }
 
-    public virtual string playMove() { return ""; }
+    public virtual List<string> playMove() { return new List<string> { "" }; }
 
     public virtual void onTurnEnd() { }
 

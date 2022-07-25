@@ -90,8 +90,11 @@ public class IOpponentStrategy : MonoBehaviour
         }
 
         nextOpponentMove.actingPokemon.GetComponent<Animator>().SetTrigger("onMoveHighlight");
-        var message = nextOpponentMove.playMove();
-        await battleGameBoard.worldDialog.ShowMessageAsync(message);
+        var messageList = nextOpponentMove.playMove();
+        foreach (var message in messageList)
+        {
+            await battleGameBoard.worldDialog.ShowMessageAsync(message);
+        }
     }
 
     public virtual string computeOpponentsNextMove()
@@ -108,7 +111,7 @@ public class IOpponentStrategy : MonoBehaviour
             {
                 battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.actingPokemon);
             }
-            return nextOpponentMove.playMove();
+            return nextOpponentMove.playMove()[0];
         }
         return null;
     }
