@@ -196,6 +196,9 @@ public class Card : MonoBehaviour
             // Override this check if DeckBuilder is here
             if (inDeckBuilderWorkflow) { return true; }
 
+            // Override this check for a different one
+            if (canBePlayedOverride != null) { return canBePlayedOverride(); }
+
             // Check color energy count
             var costAsString = cost?.Select(c => c.energyName)
                 .Where(e => e != "Normal")
@@ -228,6 +231,11 @@ public class Card : MonoBehaviour
     }
 
     /// <summary>
+    /// Set to a function if we should override the card canBePlayed functionality
+    /// </summary>
+    public Func<bool> canBePlayedOverride = null;
+
+    /// <summary>
     /// Where the card description should be rendered
     /// </summary>
     public TextMeshProUGUI descriptionGameObject;
@@ -241,6 +249,12 @@ public class Card : MonoBehaviour
     /// A list of locations of all the attached energy
     /// </summary>
     public List<GameObject> energyLocations;
+
+    private Pokemon _owner;
+    /// <summary>
+    /// The pokemon that owns the card
+    /// </summary>
+    public Pokemon owner { get { return _owner; } }
 
     private BattleGameBoard battleGameBoard;
 
@@ -492,6 +506,9 @@ public class Card : MonoBehaviour
         attachedEnergies = battleStartEnergies.ToList();
         battleGameBoard = _battleGameBoard;
         deckBuilderAddCard = null;
+
+        // Calculate owner
+        _owner = battleGameBoard.player.party.Find(pokemon => pokemon.deck.Contains(this));
 
         if (overrideFunctionality) { overrideFunctionality.onBattleStart(this, battleGameBoard); }
     }

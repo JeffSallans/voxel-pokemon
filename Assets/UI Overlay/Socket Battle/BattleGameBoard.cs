@@ -21,29 +21,35 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Cards to be drawn
     /// </summary>
-    public List<Card> deck
+    public virtual List<Card> deck
     {
-        get { return activePokemon.deck; }
-        set { activePokemon.deck = value; }
+        get { return _getDeck(); }
+        set { _setDeck(value); }
     }
+    protected virtual List<Card> _getDeck() { return activePokemon.deck; }
+    protected virtual void _setDeck(List<Card> d) { activePokemon.deck = d; }
 
     /// <summary>
     /// The hand the player has
     /// </summary>
-    public List<Card> hand
+    public virtual List<Card> hand
     {
-        get { return activePokemon.hand; }
-        set { activePokemon.hand = value; }
+        get { return _getHand(); }
+        set { _setHand(value); }
     }
+    protected virtual List<Card> _getHand() { return activePokemon.hand; }
+    protected virtual void _setHand(List<Card> h) { activePokemon.hand = h; }
 
     /// <summary>
     /// The cards the player used to be reshuffled
     /// </summary>
-    public List<Card> discard
+    public virtual List<Card> discard
     {
-        get { return activePokemon.discard; }
-        set { activePokemon.discard = value; }
+        get { return _getDiscard(); }
+        set { _setDiscard(value); }
     }
+    protected virtual List<Card> _getDiscard() { return activePokemon.discard; }
+    protected virtual void _setDiscard(List<Card> d) { activePokemon.discard = d; }
 
     /// <summary>
     /// The possible energies to deal a hand with
@@ -306,7 +312,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Move the players and pokemon into the right spots
     /// </summary>
-    protected void onSetupPlayer()
+    protected virtual void onSetupPlayer()
     {
         // Disabled player model
         player.gameObject.transform.Find("default").gameObject.SetActive(false);
@@ -356,7 +362,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Move the pokemon back to the players
     /// </summary>
-    protected void onPackupPlayer()
+    protected virtual void onPackupPlayer()
     {
         // Enable player model
         player.gameObject.transform.Find("default").gameObject.SetActive(true);
@@ -680,7 +686,7 @@ public class BattleGameBoard : MonoBehaviour
         }
     }
 
-    public void onTurnEnd() {
+    public virtual void onTurnEnd() {
         // Disable end turn button
         endTurnButton.GetComponent<Button>().interactable = false;
 
@@ -750,7 +756,7 @@ public class BattleGameBoard : MonoBehaviour
         }
     }
 
-    public void onOpponentTurnEnd() {
+    public virtual void onOpponentTurnEnd() {
         // Compute next move
         var message = opponent.opponentStrategyBot.computeOpponentsNextMove();
 
@@ -782,7 +788,7 @@ public class BattleGameBoard : MonoBehaviour
         worldDialog.ShowMessage(message, callback);
     }
 
-    public void onEitherTurnEnd()
+    public virtual void onEitherTurnEnd()
     {
 
         // When all opponents pokemon are 0 hp
