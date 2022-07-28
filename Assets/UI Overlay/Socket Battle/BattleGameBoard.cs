@@ -23,33 +23,55 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public virtual List<Card> deck
     {
-        get { return _getDeck(); }
-        set { _setDeck(value); }
+        get {
+            if (_getOverrideDeck != null) return _getOverrideDeck();
+            return activePokemon.deck;
+        }
+        set {
+            if (_setOverrideDeck != null) { _setOverrideDeck(value); return; }
+            activePokemon.deck = value;
+        }
     }
-    protected virtual List<Card> _getDeck() { return activePokemon.deck; }
-    protected virtual void _setDeck(List<Card> d) { activePokemon.deck = d; }
+    protected System.Func<List<Card>> _getOverrideDeck = null;
+    protected System.Func<List<Card>, bool> _setOverrideDeck = null;
 
     /// <summary>
     /// The hand the player has
     /// </summary>
     public virtual List<Card> hand
     {
-        get { return _getHand(); }
-        set { _setHand(value); }
+        get
+        {
+            if (_getOverrideHand != null) return _getOverrideHand();
+            return activePokemon.hand;
+        }
+        set
+        {
+            if (_setOverrideHand != null) { _setOverrideHand(value); return; }
+            activePokemon.hand = value;
+        }
     }
-    protected virtual List<Card> _getHand() { return activePokemon.hand; }
-    protected virtual void _setHand(List<Card> h) { activePokemon.hand = h; }
+    protected System.Func<List<Card>> _getOverrideHand = null;
+    protected System.Func<List<Card>, bool> _setOverrideHand = null;
 
     /// <summary>
     /// The cards the player used to be reshuffled
     /// </summary>
     public virtual List<Card> discard
     {
-        get { return _getDiscard(); }
-        set { _setDiscard(value); }
+        get
+        {
+            if (_getOverrideDiscard != null) return _getOverrideDiscard();
+            return activePokemon.discard;
+        }
+        set
+        {
+            if (_setOverrideDiscard != null) { _setOverrideDiscard(value); return; }
+            activePokemon.discard = value;
+        }
     }
-    protected virtual List<Card> _getDiscard() { return activePokemon.discard; }
-    protected virtual void _setDiscard(List<Card> d) { activePokemon.discard = d; }
+    protected System.Func<List<Card>> _getOverrideDiscard = null;
+    protected System.Func<List<Card>, bool> _setOverrideDiscard = null;
 
     /// <summary>
     /// The possible energies to deal a hand with
@@ -330,6 +352,7 @@ public class BattleGameBoard : MonoBehaviour
             // zero out rotation to remove any rotation from the player
             playerParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
+        player.party.ForEach(p => setupCardsOffPokemon(p));
 
         var opponentParty = opponent.gameObject.transform.Find("party");
         if (opponentParty)
@@ -359,6 +382,18 @@ public class BattleGameBoard : MonoBehaviour
         });
     }
 
+    private void setupCardsOffPokemon(Pokemon pokemon)
+    {
+        var cardsObject = pokemon.initDeck[0].gameObject.transform.parent;
+        cardsObject.parent = playerPartyParentGameobject.transform;
+    }
+
+    private void packCardsOnPokemon(Pokemon pokemon)
+    {
+        var cardsObject = pokemon.initDeck[0].gameObject.transform.parent;
+        cardsObject.parent = pokemon.transform;
+    }
+
     /// <summary>
     /// Move the pokemon back to the players
     /// </summary>
@@ -382,6 +417,7 @@ public class BattleGameBoard : MonoBehaviour
             playerParty.gameObject.transform.rotation = prevPlayerPartyRotation;
             player.party = playerInitPartyOrder;
         }
+        player.party.ForEach(p => packCardsOnPokemon(p));
 
         var opponentParty = GameObject.Find("opp-deck/party");
         if (opponentParty)
@@ -619,8 +655,8 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="wasPlayed">True if the discard was after playing</param>
     public void cardDiscard(Card target, Pokemon user, bool wasPlayed)
     {
-        if (!(wasPlayed && target.isSingleUse)) user.discard.Add(target);
-        user.hand.Remove(target);
+        if (!(wasPlayed && target.isSingleUse)) discard.Add(target);
+        hand.Remove(target);
         target.Translate(discardLocation.transform.position);
         target.transform.rotation = discardLocation.transform.rotation;
         target.onDiscard(wasPlayed);

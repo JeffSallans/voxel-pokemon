@@ -250,6 +250,10 @@ public class Card : MonoBehaviour
     /// </summary>
     public List<GameObject> energyLocations;
 
+    public Func<bool> _onDragFunc = null;
+
+    public Func<bool> _onDropFunc = null;
+
     private Pokemon _owner;
     /// <summary>
     /// The pokemon that owns the card
@@ -462,6 +466,7 @@ public class Card : MonoBehaviour
     public void onDrag()
     {
         isDragging = true;
+        if (_onDragFunc != null) { _onDragFunc(); }
     }
 
     public void onDrop()
@@ -496,6 +501,7 @@ public class Card : MonoBehaviour
         {
             isDragging = false;
             OnHoverExit();
+            if (_onDropFunc != null) { _onDropFunc(); }
         }
     }
 

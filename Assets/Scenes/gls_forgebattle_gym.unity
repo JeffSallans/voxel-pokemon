@@ -506,6 +506,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 121880189}
+    - target: {fileID: 2853479835079810467, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 187957649}
+    - target: {fileID: 2853479835079810467, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleGameBoardForge, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853479835341617766, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 187957649}
+    - target: {fileID: 2853479835341617766, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleGameBoardForge, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
 --- !u!1 &187957648 stripped

@@ -13,59 +13,30 @@ public class BattleGameBoardForge : BattleGameBoard
     /// The combined deck of all cards
     /// </summary>
     public List<Card> mergedDeck = null;
-    protected override List<Card> _getDeck()
-    {
-        return mergedDeck;
-    }
-
-    protected override void _setDeck(List<Card> d)
-    {
-        mergedDeck = d;
-    }
 
     /// <summary>
     /// The combined hand of all cards
     /// </summary>
     public List<Card> mergedHand = null;
-    protected override List<Card> _getHand()
-    {
-        return mergedHand;
-    }
-
-    protected override void _setHand(List<Card> h)
-    {
-        mergedHand = h;
-    }
 
     /// <summary>
     /// The combined discard of all cards
     /// </summary>
     public List<Card> mergedDiscard = null;
-    protected override List<Card> _getDiscard()
-    {
-        return mergedDiscard;
-    }
 
-    protected override void _setDiscard(List<Card> d)
-    {
-        mergedDiscard = d;
-    }
-
-
+    private Pokemon previousActivePokemon = null;
 
     /// <summary>
     /// Assumes player and opponent are set before calling this
     /// </summary>
     public override void onBattleStart()
     {
-        /*
-        _getDeck = () =>
-        {
-
-        }
-        */
-
-        handSize = 5;
+        _getOverrideDeck = () => { return mergedDeck; };
+        _setOverrideDeck = (d) => { mergedDeck = d; return true; };
+        _getOverrideHand = () => { return mergedHand; };
+        _setOverrideHand = (h) => { mergedHand = h; return true; };
+        _getOverrideDiscard = () => { return mergedDiscard; };
+        _setOverrideDiscard = (d) => { mergedDiscard = d; return true; };
 
         // Remove all energy things
         energyHandSize = 0;
@@ -73,11 +44,19 @@ public class BattleGameBoardForge : BattleGameBoard
         // Setup deck
         mergedHand = new List<Card>();
         mergedDiscard = new List<Card>();
-        mergedDeck = new List<Card>();
+        deck = new List<Card>();
         player.party.ForEach(p => {
-            mergedDeck.AddRange(p.initDeck);
+            var deckWithoutSwitches = p.initDeck.Where(c => c.cardName != "Switch").ToList();
+            deck.AddRange(deckWithoutSwitches);
         });
-        
+        if (shuffleDeck)
+        {
+            Shuffle(deck);
+        }
+
+        // Set first previous active pokemon
+        previousActivePokemon = player.party[0];
+
         base.onBattleStart();
     }
 
@@ -122,6 +101,18 @@ public class BattleGameBoardForge : BattleGameBoard
         var pokemonIconName = "icon-" + owner?.pokemonName?.ToLower();
         var pokemonIcon = card.gameObject.transform.Find(pokemonIconName);
         pokemonIcon.gameObject.SetActive(true);
+
+        // Add custom drag
+        card._onDragFunc = () => { 
+            previousActivePokemon = activePokemon;
+            switchPokemonAndKeepCards(activePokemon, owner);
+            return true;
+        };
+        card._onDropFunc = () => {
+            switchPokemonAndKeepCards(owner, previousActivePokemon);
+            return true;
+        };
+
     }
 
     private void packupCardToHidePokemonFace(Card card)
@@ -136,22 +127,29 @@ public class BattleGameBoardForge : BattleGameBoard
         var pokemonIconName = "icon-" + owner?.pokemonName?.ToLower();
         var pokemonIcon = card.gameObject.transform.Find(pokemonIconName);
         pokemonIcon.gameObject.SetActive(false);
+
+        // Remove custom drag
+        card._onDragFunc = null;
+        card._onDragFunc = null;
     }
 
     public override void onPlay(Card move, Pokemon user, Pokemon target)
     {
-        // Only play cards of that user
-        if (pokemonAllowedToPlayCards != null && pokemonAllowedToPlayCards != user) return;
-        pokemonAllowedToPlayCards = user;
+        // Calculate owner
+        var owner = player.party.Find(pokemon => pokemon.initDeck.Contains(move));
 
-        if (activePokemon == user)
+        // Only play cards of that user
+        if (pokemonAllowedToPlayCards != null && pokemonAllowedToPlayCards != owner) return;
+        pokemonAllowedToPlayCards = owner;
+
+        if (activePokemon != owner)
         {
             // Switch user in
-            switchPokemonAndKeepCards(activePokemon, user);
+            switchPokemonAndKeepCards(activePokemon, owner);
         }
         
 
-        base.onPlay(move, user, target);
+        base.onPlay(move, owner, target);
     }
 
     private void switchPokemonAndKeepCards(Pokemon user, Pokemon target)
