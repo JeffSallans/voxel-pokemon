@@ -55,7 +55,7 @@ public class InteractionChecker : MonoBehaviour
     /// <summary>
     /// The reference to the previous scene active event
     /// </summary>
-    private InteractionEvent prevActiveEvent;
+    public InteractionEvent prevActiveEvent;
 
     /// <summary>
     /// The key is the interaction state name, the value includes if it is enabled or not and if the game object is active or not
@@ -334,15 +334,15 @@ public class InteractionChecker : MonoBehaviour
 
         // Set Previous Scene data
         prevActiveEvent = iEvent;
-        var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
+        var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>(true);
         print(interactionEvents.Length);
         var interactionEventsStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToList();
         foreach (var interaction in interactionEventsStates)
-        {
+        { 
             prevInteractionEventStates[interaction.eventName] = interaction;
         }
         prevSceneName = SceneManager.GetActiveScene().name;
-        prevSceneOpponent = (opponent) ? Instantiate(opponent) : null;
+        prevSceneOpponent = (opponent) ? opponent : null;
         prevScenePlayer = gameObject;
         prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
@@ -352,14 +352,14 @@ public class InteractionChecker : MonoBehaviour
         prevScenePlayer.GetComponent<FallToGround>().enabled = false;
         prevScenePlayer.GetComponent<CharacterController>().enabled = false;
 
-        // Copy opponent to be moved as a global value
-        if (prevSceneOpponent) { prevSceneOpponent.name = "Opponent"; }
-
         DontDestroyOnLoad(prevScenePlayer);
         prevActiveEvent.gameObject.transform.parent = null;
         DontDestroyOnLoad(prevActiveEvent.gameObject);
         prevActiveEvent.gameObject.SetActive(false);
-        if (prevSceneOpponent) { DontDestroyOnLoad(prevSceneOpponent); }
+        if (prevSceneOpponent) {
+            prevSceneOpponent.SetActive(true);
+            DontDestroyOnLoad(prevSceneOpponent);
+        }
         SceneManager.LoadScene(sceneName);
 
         // If player is not moving to new scene copy data over
@@ -440,7 +440,7 @@ public class InteractionChecker : MonoBehaviour
             }
 
             // Update the game events when returning to the scene
-            var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>();
+            var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>(true);
             foreach (var interactionEvent in interactionEventList)
             {
                 // Update the other events
@@ -569,8 +569,6 @@ public class InteractionChecker : MonoBehaviour
             // If event state doesn't exist it must of been deleted
             if (prevEventState == null)
             {
-                Destroy(interactionEvent.gameObject);
-                SceneManager.MoveGameObjectToScene(prevActiveEvent.gameObject, SceneManager.GetActiveScene());             
             }
             else
             {
@@ -578,7 +576,9 @@ public class InteractionChecker : MonoBehaviour
             }
 
             // Update the active event
-            if (interactionEvent?.gameObject?.name == prevActiveEvent?.gameObject?.name && interactionEvent?.gameObject.GetComponent<InteractionEvent>()?.eventName == prevActiveEvent?.eventName)
+            if (prevActiveEvent != null &&
+                interactionEvent?.gameObject?.name == prevActiveEvent?.gameObject?.name && 
+                interactionEvent?.gameObject.GetComponent<InteractionEvent>()?.eventName == prevActiveEvent?.eventName)
             {
                 postInteracationChanges(interactionEvent);
             }
@@ -587,16 +587,14 @@ public class InteractionChecker : MonoBehaviour
         // Remove previous interaction
         if (prevActiveEvent && prevActiveEvent.removeOnReturn && prevActiveEvent.gameObject)
         {
-            Destroy(prevActiveEvent.gameObject);
-        } else if (prevActiveEvent && prevActiveEvent.disableOnReturn)
+            prevActiveEvent.gameObject.SetActive(false);
+        }
+        else if (prevActiveEvent && prevActiveEvent.disableOnReturn)
         {
             prevActiveEvent.gameObject.SetActive(true);
             prevActiveEvent.enabled = false;
             if (prevActiveEvent.nextInteractionEvent) prevActiveEvent.nextInteractionEvent.enabled = true;
-            Destroy(prevActiveEvent.gameObject);
         }
-
-        // Disable previous interaction
 
         prevSceneName = "";
         this.enabled = true;
@@ -623,7 +621,7 @@ public class InteractionChecker : MonoBehaviour
         // When removing to avoid replay
         if (iEvent.removeOnReturn)
         {
-            Destroy(iEvent?.gameObject);
+            iEvent.gameObject.SetActive(false);
         }
 
         // Remove an interaction

@@ -405,6 +405,8 @@ public class BattleGameBoard : MonoBehaviour
         // Move energies into discard
         allEnergy.ForEach(e => e.transform.position = discardLocation.transform.position);
 
+        player.party.ForEach(p => packCardsOnPokemon(p));
+
         // Move party parent reference into placement
         var playerParty = GameObject.Find("deck/party");
         if (playerParty)
@@ -417,7 +419,6 @@ public class BattleGameBoard : MonoBehaviour
             playerParty.gameObject.transform.rotation = prevPlayerPartyRotation;
             player.party = playerInitPartyOrder;
         }
-        player.party.ForEach(p => packCardsOnPokemon(p));
 
         var opponentParty = GameObject.Find("opp-deck/party");
         if (opponentParty)

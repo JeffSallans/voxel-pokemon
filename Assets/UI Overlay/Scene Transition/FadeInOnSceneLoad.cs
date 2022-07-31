@@ -10,11 +10,18 @@ public class FadeInOnSceneLoad : MonoBehaviour
     /// </summary>
     private Animator sceneTransitionAnimator;
 
+    /// <summary>
+    /// Reference to the current scene cursor
+    /// </summary>
+    private OverlayCursor cursor;
+
     // Start is called before the first frame update
     void Start()
     {
         sceneTransitionAnimator = gameObject.GetComponent<Animator>();
         sceneTransitionAnimator.SetTrigger("onFadeIn");
+
+        cursor = GameObject.FindObjectOfType<OverlayCursor>();
     }
 
     // Update is called once per frame

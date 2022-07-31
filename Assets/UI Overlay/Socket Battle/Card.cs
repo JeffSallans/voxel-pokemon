@@ -265,12 +265,12 @@ public class Card : MonoBehaviour
     /// <summary>
     /// True if the mouse cursor is over the card
     /// </summary>
-    private bool isSelected = false;
+    public bool isSelected = false;
 
     /// <summary>
     /// True if the mouse is dragging the card
     /// </summary>
-    private bool isDragging = false;
+    public bool isDragging = false;
 
     /// <summary>
     /// The initial position of the card before the user action
@@ -500,6 +500,7 @@ public class Card : MonoBehaviour
         else
         {
             isDragging = false;
+            isSelected = false;
             OnHoverExit();
             if (_onDropFunc != null) { _onDropFunc(); }
         }
