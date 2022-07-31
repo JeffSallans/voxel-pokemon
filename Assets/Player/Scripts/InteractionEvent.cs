@@ -270,10 +270,18 @@ public class InteractionEvent : MonoBehaviour
             matchingDontDestroyOnLoadEvent.gameObject.transform.parent = gameObject.transform.parent;
             Destroy(gameObject);
         }
+
+        StartHelper();
     }
 
-    // Start is called before the first frame update
     void Start()
+    {
+        //StartHelper();
+    }
+
+
+    // Start is called before the first frame update
+    private void StartHelper()
     {
         NameUniquenessCheck();
 
@@ -410,7 +418,7 @@ public class InteractionEvent : MonoBehaviour
     /// <returns></returns>
     private InteractionEvent GetInteractionEventByName(string name)
     {
-        var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
+        var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>(true);
 
         var result = allInteractionEvents.FirstOrDefault(e => e.eventName == name);
 

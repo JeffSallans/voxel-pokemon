@@ -630,6 +630,12 @@ public class InteractionChecker : MonoBehaviour
             iEvent.altDisableInteractionEvent.enabled = false;
         }
 
+        // Remove an interaction
+        if (iEvent.alt2DisableInteractionEvent)
+        {
+            iEvent.alt2DisableInteractionEvent.enabled = false;
+        }
+
         // Enable a new interaction
         if (iEvent.nextInteractionEvent)
         {
