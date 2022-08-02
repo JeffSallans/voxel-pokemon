@@ -256,19 +256,23 @@ public class InteractionEvent : MonoBehaviour
     {
         // If the interaction event is duplicated in DontDestroyOnLoad, delete this event and copy the other one over
 
-        var dontDestroyOnLoadEvents = GameObject.FindObjectsOfType<InteractionChecker>()
-                .Select(c => (c.prevActiveEvent != null) ? c.prevActiveEvent.gameObject : null)
+        var dontDestroyOnLoadEvents = GameObject.FindObjectsOfType<InteractionChecker>(true)
+                .Select(c => (c.prevActiveEventName != null) ? c.prevActiveEventName : null)
                 .Where(e => e != null)
-                .SelectMany(c => c.GetComponents<InteractionEvent>())
                 .ToList();
-        var matchingDontDestroyOnLoadEvent = dontDestroyOnLoadEvents.Find(e => e != this && e.eventName == eventName);
+        var matchingDontDestroyOnLoadEventName = dontDestroyOnLoadEvents.Find(e => e == eventName);
 
         // Check if this event matches a DontDestroyOnLoad event
-        if (matchingDontDestroyOnLoadEvent != null)
+        if (matchingDontDestroyOnLoadEventName != null)
         {
-            SceneManager.MoveGameObjectToScene(matchingDontDestroyOnLoadEvent.gameObject, SceneManager.GetActiveScene());
-            matchingDontDestroyOnLoadEvent.gameObject.transform.parent = gameObject.transform.parent;
-            Destroy(gameObject);
+            var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>(true);
+            var matchingDontDestroyOnLoadEvent = interactionEventList.Where(e => e.eventName == matchingDontDestroyOnLoadEventName && e != this).FirstOrDefault();
+            if (matchingDontDestroyOnLoadEvent != null)
+            {
+                SceneManager.MoveGameObjectToScene(matchingDontDestroyOnLoadEvent.gameObject, SceneManager.GetActiveScene());
+                matchingDontDestroyOnLoadEvent.gameObject.transform.parent = gameObject.transform.parent;
+                Destroy(gameObject);
+            }
         }
 
         StartHelper();

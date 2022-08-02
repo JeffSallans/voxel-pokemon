@@ -58,6 +58,11 @@ public class InteractionChecker : MonoBehaviour
     public InteractionEvent prevActiveEvent;
 
     /// <summary>
+    /// The name of the previous scene active event
+    /// </summary>
+    public string prevActiveEventName;
+
+    /// <summary>
     /// The key is the interaction state name, the value includes if it is enabled or not and if the game object is active or not
     /// </summary>
     private Dictionary<string, InteractionEventNoComponent> prevInteractionEventStates = null;
@@ -114,6 +119,8 @@ public class InteractionChecker : MonoBehaviour
         {
             prevInteractionEventStates = new Dictionary<string, InteractionEventNoComponent>();
         }
+
+        prevActiveEventName = "";
     }
 
     // Update is called once per frame
@@ -334,6 +341,7 @@ public class InteractionChecker : MonoBehaviour
 
         // Set Previous Scene data
         prevActiveEvent = iEvent;
+        prevActiveEventName = prevActiveEvent.eventName;
         var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>(true);
         print(interactionEvents.Length);
         var interactionEventsStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToList();
@@ -559,7 +567,7 @@ public class InteractionChecker : MonoBehaviour
         gameObject.transform.position = prevScenePlayerPos;
 
         // Update the game events when returning to the scene
-        var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>();
+        var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>(true);
         foreach (var interactionEvent in interactionEventList)
         {
             // Update the other events
@@ -574,29 +582,17 @@ public class InteractionChecker : MonoBehaviour
             {
                 interactionEvent.CopyInteractionEventValues(prevEventState);
             }
-
-            // Update the active event
-            if (prevActiveEvent != null &&
-                interactionEvent?.gameObject?.name == prevActiveEvent?.gameObject?.name && 
-                interactionEvent?.gameObject.GetComponent<InteractionEvent>()?.eventName == prevActiveEvent?.eventName)
-            {
-                postInteracationChanges(interactionEvent);
-            }
         }
 
-        // Remove previous interaction
-        if (prevActiveEvent && prevActiveEvent.removeOnReturn && prevActiveEvent.gameObject)
+        // Update the active event
+        if (prevActiveEventName != "")
         {
-            prevActiveEvent.gameObject.SetActive(false);
-        }
-        else if (prevActiveEvent && prevActiveEvent.disableOnReturn)
-        {
-            prevActiveEvent.gameObject.SetActive(true);
-            prevActiveEvent.enabled = false;
-            if (prevActiveEvent.nextInteractionEvent) prevActiveEvent.nextInteractionEvent.enabled = true;
+            prevActiveEvent = interactionEventList.Where(e => e.eventName == prevActiveEventName).FirstOrDefault();
+            postInteracationChanges(prevActiveEvent);
         }
 
         prevSceneName = "";
+        prevActiveEventName = "";
         this.enabled = true;
 
         prevScenePlayer.GetComponent<FallToGround>().enabled = true;
