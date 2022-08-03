@@ -87,7 +87,12 @@ public class WorldDialog : MonoBehaviour
     /// The current selection
     /// </summary>
     public int promptCurrentSelection = 0;
-    
+
+    /// <summary>
+    /// True when it is the first iteration capturing input. Use this to avoid key presses triggering
+    /// </summary>
+    private bool isFirstCycleCapturingInput = true;
+
     /// <summary>
     /// The message to display
     /// </summary>
@@ -112,8 +117,13 @@ public class WorldDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (promptIsCapturingInput)
+        if (promptIsCapturingInput && isFirstCycleCapturingInput)
         {
+            isFirstCycleCapturingInput = false;
+        }
+        else if (promptIsCapturingInput) {
+            isFirstCycleCapturingInput = false;
+
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
             {
                 promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Pressed");
@@ -133,6 +143,7 @@ public class WorldDialog : MonoBehaviour
             }
         } else
         {
+            isFirstCycleCapturingInput = true;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 CaptureClick();

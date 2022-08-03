@@ -252,6 +252,11 @@ public class InteractionEvent : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Used to clean up this event between scene transitions
+    /// </summary>
+    public bool destroyOnLoadOfDuplicate = false;
+
     void Awake()
     {
         // If the interaction event is duplicated in DontDestroyOnLoad, delete this event and copy the other one over
@@ -262,10 +267,11 @@ public class InteractionEvent : MonoBehaviour
                 .ToList();
         var matchingDontDestroyOnLoadEventName = dontDestroyOnLoadEvents.Find(e => e == eventName);
 
+        var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>(true);
+
         // Check if this event matches a DontDestroyOnLoad event
         if (matchingDontDestroyOnLoadEventName != null)
         {
-            var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>(true);
             var matchingDontDestroyOnLoadEvent = interactionEventList.Where(e => e.eventName == matchingDontDestroyOnLoadEventName && e != this).FirstOrDefault();
             if (matchingDontDestroyOnLoadEvent != null)
             {
@@ -394,7 +400,7 @@ public class InteractionEvent : MonoBehaviour
     /// <returns></returns>
     private void NameUniquenessCheck()
     {
-        var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>();
+        var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>(true);
 
         var result = allInteractionEvents.FirstOrDefault(e => e.eventName == eventName && e != this);
 

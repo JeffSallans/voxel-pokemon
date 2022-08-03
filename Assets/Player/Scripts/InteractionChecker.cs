@@ -191,6 +191,7 @@ public class InteractionChecker : MonoBehaviour
     public void OnInteractionEvent(InteractionEvent iEvent)
     {
         hoverPossibleEvent = iEvent;
+        activeEvent = null;
         OnInteractionClick(iEvent);
     }
 
@@ -364,6 +365,7 @@ public class InteractionChecker : MonoBehaviour
         prevActiveEvent.gameObject.transform.parent = null;
         DontDestroyOnLoad(prevActiveEvent.gameObject);
         prevActiveEvent.gameObject.SetActive(false);
+        prevActiveEvent.destroyOnLoadOfDuplicate = true;
         if (prevSceneOpponent) {
             prevSceneOpponent.SetActive(true);
             DontDestroyOnLoad(prevSceneOpponent);
