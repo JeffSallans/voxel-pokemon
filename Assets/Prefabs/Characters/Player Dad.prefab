@@ -581,6 +581,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.712
       objectReference: {fileID: 0}
+    - target: {fileID: 2042290099, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
+      propertyPath: turnSmoothTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4232779577653564007, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
       propertyPath: m_Name
       value: Player Dad
@@ -681,20 +685,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4232779577653564007, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
   m_PrefabInstance: {fileID: 5116185195774583824}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8401881321641422174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9060553939863221879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4401051e9e075344b2911b561612aea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  party: []
-  energies: []
 --- !u!114 &1513162599069932940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,6 +703,20 @@ MonoBehaviour:
   - {fileID: 3395158668527527246, guid: 1d055e1b1b6cbe74cace40e161328954, type: 3}
   - {fileID: 5907911653830653387, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
   - {fileID: 2735332542946400486, guid: 1ef17f49b24171640ac3dd3bf370735f, type: 3}
+--- !u!114 &8401881321641422174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060553939863221879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4401051e9e075344b2911b561612aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party: []
+  energies: []
 --- !u!1001 &5123104952837693101
 PrefabInstance:
   m_ObjectHideFlags: 0

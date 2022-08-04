@@ -252,41 +252,14 @@ public class InteractionEvent : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Used to clean up this event between scene transitions
-    /// </summary>
-    public bool destroyOnLoadOfDuplicate = false;
-
     void Awake()
     {
-        // If the interaction event is duplicated in DontDestroyOnLoad, delete this event and copy the other one over
 
-        var dontDestroyOnLoadEvents = GameObject.FindObjectsOfType<InteractionChecker>(true)
-                .Select(c => (c.prevActiveEventName != null) ? c.prevActiveEventName : null)
-                .Where(e => e != null)
-                .ToList();
-        var matchingDontDestroyOnLoadEventName = dontDestroyOnLoadEvents.Find(e => e == eventName);
-
-        var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>(true);
-
-        // Check if this event matches a DontDestroyOnLoad event
-        if (matchingDontDestroyOnLoadEventName != null)
-        {
-            var matchingDontDestroyOnLoadEvent = interactionEventList.Where(e => e.eventName == matchingDontDestroyOnLoadEventName && e != this).FirstOrDefault();
-            if (matchingDontDestroyOnLoadEvent != null)
-            {
-                SceneManager.MoveGameObjectToScene(matchingDontDestroyOnLoadEvent.gameObject, SceneManager.GetActiveScene());
-                matchingDontDestroyOnLoadEvent.gameObject.transform.parent = gameObject.transform.parent;
-                Destroy(gameObject);
-            }
-        }
-
-        StartHelper();
     }
 
     void Start()
     {
-        //StartHelper();
+        StartHelper();
     }
 
 
@@ -406,18 +379,7 @@ public class InteractionEvent : MonoBehaviour
 
         if (result)
         {
-            var interactionEvents = GameObject.FindObjectsOfType<InteractionChecker>()
-                .Select(c => c?.prevActiveEvent?.gameObject)
-                .Where(e => e != null)
-                .SelectMany(c => c.GetComponents<InteractionEvent>())
-                .Select(c => c.eventName)
-                .ToList();
-            var isTransitionEvent = interactionEvents.Contains(eventName);
-
-            if (!isTransitionEvent)
-            {
-                throw new System.Exception("On event " + eventName + " event name is already found by " + result.eventName + " with message " + result.message.FirstOrDefault());
-            }
+            throw new System.Exception("On event " + eventName + " event name is already found by " + result.eventName + " with message " + result.message.FirstOrDefault());
         }
     }
 

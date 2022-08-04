@@ -271,6 +271,12 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         // Clean up card state
         targetCard.onDeckBuilderAddCardEnd();
 
+        // Clean up pokemon state from the focus
+        player.party.ForEach(p => {
+            p.GetComponent<Animator>().SetBool("hasSpawned", false);
+            p.transform.Find("onHover").gameObject.SetActive(true);
+        });
+
         // Transition back
         onPackupPlayer();
     }

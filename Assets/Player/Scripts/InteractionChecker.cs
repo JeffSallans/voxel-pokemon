@@ -53,11 +53,6 @@ public class InteractionChecker : MonoBehaviour
     private Dictionary<string, string> interactionFlags = new Dictionary<string, string>();
 
     /// <summary>
-    /// The reference to the previous scene active event
-    /// </summary>
-    public InteractionEvent prevActiveEvent;
-
-    /// <summary>
     /// The name of the previous scene active event
     /// </summary>
     public string prevActiveEventName;
@@ -341,8 +336,7 @@ public class InteractionChecker : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         // Set Previous Scene data
-        prevActiveEvent = iEvent;
-        prevActiveEventName = prevActiveEvent.eventName;
+        prevActiveEventName = iEvent.eventName;
         var interactionEvents = GameObject.FindObjectsOfType<InteractionEvent>(true);
         print(interactionEvents.Length);
         var interactionEventsStates = interactionEvents.Select(i => i.GetInteractionEventWithoutComponent()).ToList();
@@ -351,7 +345,6 @@ public class InteractionChecker : MonoBehaviour
             prevInteractionEventStates[interaction.eventName] = interaction;
         }
         prevSceneName = SceneManager.GetActiveScene().name;
-        prevSceneOpponent = (opponent) ? opponent : null;
         prevScenePlayer = gameObject;
         prevScenePlayerPos = prevScenePlayer.transform.position;
         prevSceneCameraPosition = Camera.main.gameObject.transform.position;
@@ -362,11 +355,9 @@ public class InteractionChecker : MonoBehaviour
         prevScenePlayer.GetComponent<CharacterController>().enabled = false;
 
         DontDestroyOnLoad(prevScenePlayer);
-        prevActiveEvent.gameObject.transform.parent = null;
-        DontDestroyOnLoad(prevActiveEvent.gameObject);
-        prevActiveEvent.gameObject.SetActive(false);
-        prevActiveEvent.destroyOnLoadOfDuplicate = true;
+        prevSceneOpponent = opponent;
         if (prevSceneOpponent) {
+            prevSceneOpponent.transform.parent = null;
             prevSceneOpponent.SetActive(true);
             DontDestroyOnLoad(prevSceneOpponent);
         }
@@ -589,7 +580,7 @@ public class InteractionChecker : MonoBehaviour
         // Update the active event
         if (prevActiveEventName != "")
         {
-            prevActiveEvent = interactionEventList.Where(e => e.eventName == prevActiveEventName).FirstOrDefault();
+            var prevActiveEvent = interactionEventList.Where(e => e.eventName == prevActiveEventName).FirstOrDefault();
             postInteracationChanges(prevActiveEvent);
         }
 

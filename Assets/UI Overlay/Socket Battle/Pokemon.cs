@@ -447,6 +447,7 @@ public class Pokemon : MonoBehaviour
         // Remove attached energies
         battleGameBoard.energyDiscard.AddRange(attachedEnergy);
         attachedEnergy.RemoveAll(e => true);
+        Update();
     }
 
     /// <summary>
