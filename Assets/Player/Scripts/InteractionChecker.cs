@@ -240,8 +240,6 @@ public class InteractionChecker : MonoBehaviour
         thirdPersonMovement.enabled = false;
         worldDialog.ShowMessage(iEvent.message[0], () =>
         {
-            thirdPersonMovement.enabled = true;
-
             if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             var opponent = iEvent.gameObject;
             StartCoroutine(LoadScene(iEvent, iEvent.sceneName, opponent, true));
@@ -325,7 +323,6 @@ public class InteractionChecker : MonoBehaviour
         // Load Scene
         StartCoroutine(LoadScene(iEvent, iEvent.sceneName, null, iEvent.scenePlayerName != ""));
 
-        thirdPersonMovement.enabled = true;
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
         activeEvent = null;
     }
@@ -463,6 +460,13 @@ public class InteractionChecker : MonoBehaviour
         // Turn-off movement to avoid spawn issues
         prevScenePlayer.GetComponent<FallToGround>().enabled = true;
         prevScenePlayer.GetComponent<CharacterController>().enabled = true;
+
+        if (!opponent)
+        {
+            thirdPersonMovement.enabled = true;
+            if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            activeEvent = null;
+        }
     }
 
     /// <summary>

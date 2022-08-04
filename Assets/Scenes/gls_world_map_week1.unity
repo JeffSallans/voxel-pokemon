@@ -2203,7 +2203,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: -0.0018691341, y: 0.88798946, z: -0.45926034, w: -0.023478223}
+  m_LocalRotation: {x: -0.0018691346, y: 0.88798946, z: -0.45926034, w: -0.023478221}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3551,7 +3551,6 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0
 --- !u!114 &1518357237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,7 +3591,6 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0
 --- !u!4 &1518357238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8482556945004894348, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
@@ -4116,7 +4114,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790161850}
-  m_LocalRotation: {x: 0.0000000047652002, y: 0.9687975, z: -0.24785368, w: 0.000000018653564}
+  m_LocalRotation: {x: 0.0000000047667097, y: 0.9687975, z: -0.24785368, w: 0.000000018659446}
   m_LocalPosition: {x: 662.28, y: 13.712, z: 417.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4924,7 +4922,6 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0
 --- !u!1001 &2005341558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5196,7 +5193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6339816646778629813, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6339816646778629813, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5204,23 +5201,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6339816646778629813, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7310616833473780332, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7310616833473780332, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834123920534274872, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834123920534274872, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8483165136377258461, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_IsActive
@@ -5424,7 +5421,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064599643}
-  m_LocalRotation: {x: 0.00016532095, y: 0.9022654, z: -0.43118107, w: -0.000078985046}
+  m_LocalRotation: {x: 0.00016532096, y: 0.9022654, z: -0.43118107, w: -0.000078985046}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5574,7 +5571,6 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0
 --- !u!114 &2105515247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5616,7 +5612,6 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0
 --- !u!4 &2105515248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8482556945004894348, guid: f8fa8cc77d110b1498e85a83fd0524e3, type: 3}
@@ -5890,7 +5885,6 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 6459993709818081663}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0
 --- !u!114 &6459993709818081663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5931,7 +5925,6 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0
 --- !u!114 &6459993709818081664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5972,4 +5965,3 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
-  destroyOnLoadOfDuplicate: 0

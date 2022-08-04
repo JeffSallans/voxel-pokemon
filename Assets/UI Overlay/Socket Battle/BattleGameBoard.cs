@@ -338,6 +338,7 @@ public class BattleGameBoard : MonoBehaviour
     {
         // Disabled player model
         player.gameObject.transform.Find("default").gameObject.SetActive(false);
+        opponent.gameObject.transform.Find("position-offset").gameObject.SetActive(false);
 
         // Move party parent reference into placement
         var playerParty = player.gameObject.transform.Find("party");
@@ -401,6 +402,7 @@ public class BattleGameBoard : MonoBehaviour
     {
         // Enable player model
         player.gameObject.transform.Find("default").gameObject.SetActive(true);
+        opponent.gameObject.transform.Find("position-offset").gameObject.SetActive(true);
 
         // Move energies into discard
         allEnergy.ForEach(e => e.transform.position = discardLocation.transform.position);
@@ -741,7 +743,7 @@ public class BattleGameBoard : MonoBehaviour
         // Remove blank spots
         else
         {
-            hand = hand.Where(c => c != null).ToList();
+            hand.RemoveAll(c => c == null);
 
             for (var i = 0; i < hand.Count; i++)
             {
