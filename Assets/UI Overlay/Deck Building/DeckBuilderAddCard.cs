@@ -157,7 +157,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         // Move cards into placement
         player.party.ForEach(p =>
         {
-            p.initDeck.ForEach(c => c.Translate(drawLocations.transform.position));
+            p.initDeck.ForEach(c => c.Translate(drawLocations.transform.position, "deck"));
         });
     }
 
@@ -257,10 +257,10 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         pack.Remove(targetCard);
 
         // Discard pack
-        pack.ForEach(p => p.Translate(discardLocations.transform.position));
+        pack.ForEach(p => p.Translate(discardLocations.transform.position, "onCardSelect"));
 
         // Move your card
-        targetCard.Translate(drawLocations.transform.position);
+        targetCard.Translate(drawLocations.transform.position, "onCardSelect");
 
         // Comment on card
         await worldDialog.ShowMessageAsync("Added " + targetCard.cardName + " to " + activePokemon.pokemonName + "'s deck!");
@@ -322,7 +322,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         var i = 0;
         pack.ForEach(c =>
         {
-            c.Translate(packLocations[i].transform.position);
+            c.Translate(packLocations[i].transform.position, "drawPack");
             i++;
         });
     }

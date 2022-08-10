@@ -543,7 +543,7 @@ public class BattleGameBoard : MonoBehaviour
         hand.Add(cardDrawn);
         deck.Remove(cardDrawn);
         var cardLoc = handLocations[hand.Count - 1].transform.position + new Vector3(0, 0, -1);
-        cardDrawn.Translate(cardLoc);
+        cardDrawn.Translate(cardLoc, "drawCard");
         cardDrawn.transform.rotation = handLocations[hand.Count - 1].transform.rotation;
 
         // Trigger event
@@ -660,7 +660,7 @@ public class BattleGameBoard : MonoBehaviour
     {
         if (!(wasPlayed && target.isSingleUse)) discard.Add(target);
         hand.Remove(target);
-        target.Translate(discardLocation.transform.position);
+        target.Translate(discardLocation.transform.position, "cardDiscard");
         target.transform.rotation = discardLocation.transform.rotation;
         target.onDiscard(wasPlayed);
     }
@@ -735,7 +735,7 @@ public class BattleGameBoard : MonoBehaviour
             hand.ForEach(c =>
             {
                 c.transform.rotation = discardLocation.transform.rotation;
-                c.Translate(discardLocation.transform.position);
+                c.Translate(discardLocation.transform.position, "onTurnEndA");
             });
             discard.AddRange(hand);
             hand.RemoveAll(card => true);
@@ -743,12 +743,12 @@ public class BattleGameBoard : MonoBehaviour
         // Remove blank spots
         else
         {
-            hand.RemoveAll(c => c == null);
+            //hand.RemoveAll(c => c == null);
 
             for (var i = 0; i < hand.Count; i++)
             {
                 var cardLoc = handLocations[i].transform.position + new Vector3(0, 0, -1);
-                hand[i].Translate(cardLoc);
+                hand[i].Translate(cardLoc, "onTurnEndB");
                 hand[i].transform.rotation = handLocations[i].transform.rotation;
             }
         }
@@ -767,13 +767,12 @@ public class BattleGameBoard : MonoBehaviour
         // Remove blank spots
         else
         {
-            energyHand = energyHand.Where(c => c != null).ToList();
+            energyHand.RemoveAll(c => c == null);
 
             for (var i = 0; i < energyHand.Count; i++)
             {
-                var cardLoc = energyHandLocations[i].transform.position + new Vector3(0, 0, -1);
+                var cardLoc = energyHandLocations[i].transform.position;
                 energyHand[i].Translate(cardLoc);
-                energyHand[i].transform.rotation = energyHandLocations[i].transform.rotation;
             }
         }
 
@@ -863,6 +862,7 @@ public class BattleGameBoard : MonoBehaviour
 
     public void showSwitchPokemon()
     {
+
     }
 
     public void hideSwitchPokemon()
@@ -895,7 +895,7 @@ public class BattleGameBoard : MonoBehaviour
         hand.ForEach(c =>
         {
             c.transform.rotation = discardLocation.transform.rotation;
-            c.Translate(discardLocation.transform.position);
+            c.Translate(discardLocation.transform.position, "switchPokemon");
         });
         discard.AddRange(hand);
         hand.RemoveAll(card => true);

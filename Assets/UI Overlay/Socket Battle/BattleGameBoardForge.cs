@@ -130,7 +130,7 @@ public class BattleGameBoardForge : BattleGameBoard
 
         // Remove custom drag
         card._onDragFunc = null;
-        card._onDragFunc = null;
+        card._onDropFunc = null;
     }
 
     public override void onPlay(Card move, Pokemon user, Pokemon target)

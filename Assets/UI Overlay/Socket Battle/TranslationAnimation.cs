@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,16 @@ public class TranslationAnimation : MonoBehaviour
     /// Disable to prevent interactions when transitioning
     /// </summary>
     public EventTrigger targetEventTrigger;
+
+    /// <summary>
+    /// Disable to prevent interactions when transitioning
+    /// </summary>
+    public Func<bool> onTranslateStart = null;
+
+    /// <summary>
+    /// Disable to prevent interactions when transitioning
+    /// </summary>
+    public Func<bool> onTranslateEnd = null;
 
     /// <summary>
     /// The game object to translate
@@ -81,7 +92,10 @@ public class TranslationAnimation : MonoBehaviour
 
             // Stop the update from running so movement controls are no longer
             enabled = false;
-            if (targetEventTrigger) { targetEventTrigger.enabled = true; }
+            if (targetEventTrigger) { 
+                targetEventTrigger.enabled = true;
+                if (onTranslateEnd != null) _ = onTranslateEnd();
+            }
         } else
         {
             target.transform.position = nextPosition;
@@ -93,12 +107,17 @@ public class TranslationAnimation : MonoBehaviour
     /// </summary>
     /// <param name="_targetPosition"></param>
     /// <param name="_distancePerSecond"></param>
-    public void Translate(Vector3 _targetPosition, float _distancePerSecond)
+    public void Translate(Vector3 _targetPosition, float _distancePerSecond, Func<bool> _onTranslateStart = null, Func<bool> _onTranslateEnd = null)
     {
         targetPosition = _targetPosition;
         distancePerSecond = _distancePerSecond;
+        onTranslateStart = _onTranslateStart;
+        onTranslateEnd = _onTranslateEnd;
         enabled = true;
-        if (targetEventTrigger) { targetEventTrigger.enabled = false; }
+        if (targetEventTrigger) {
+            targetEventTrigger.enabled = false;
+            if (onTranslateStart != null) _ = onTranslateStart();
+        }
     }
 
     /// <summary>

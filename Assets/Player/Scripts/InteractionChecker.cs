@@ -133,7 +133,7 @@ public class InteractionChecker : MonoBehaviour
 
         var hoverInteraction = GetHoverInteraction();
         OnHoverInteraction(hoverInteraction);
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             OnInteractionClick(hoverPossibleEvent);
         }

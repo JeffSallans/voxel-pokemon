@@ -15,12 +15,12 @@ public class CardFlamethrower : ICard
         var moveIndex = user.hand.IndexOf(card);
         var discardTargetIndex = Random.Range(0, user.hand.Count - 1);
 
-        while (moveIndex == discardTargetIndex)
+        while (moveIndex == discardTargetIndex && user.hand[discardTargetIndex] == null)
         {
             discardTargetIndex = Random.Range(0, user.hand.Count - 1);
         }
 
-        battleGameBoard.cardDiscard(user.hand[discardTargetIndex], user, false);
+        battleGameBoard.cardDiscard(user.hand[discardTargetIndex], user.hand[discardTargetIndex].owner, false);
     }
 }
 

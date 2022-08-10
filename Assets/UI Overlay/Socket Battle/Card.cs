@@ -254,6 +254,8 @@ public class Card : MonoBehaviour
 
     public Func<bool> _onDropFunc = null;
 
+    public string lastTranslate = "";
+
     private Pokemon _owner;
     /// <summary>
     /// The pokemon that owns the card
@@ -271,6 +273,11 @@ public class Card : MonoBehaviour
     /// True if the mouse is dragging the card
     /// </summary>
     public bool isDragging = false;
+
+    /// <summary>
+    /// Set to true for card hover and drag to work.
+    /// </summary>
+    public bool cardInteractEnabled = true;
 
     /// <summary>
     /// The initial position of the card before the user action
@@ -343,13 +350,13 @@ public class Card : MonoBehaviour
         }
 
         // Check for drop
-        if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+        if (cardInteractEnabled && isDragging && Input.GetKeyUp(KeyCode.Mouse0))
         {
             onDrop();
         }
 
         // Update flip button activeness
-        if (flipButtonFunctionality != null)
+        if (cardInteractEnabled && flipButtonFunctionality != null)
         {
             var flipButtonEnabled = isFlipButtonEnabled();
             if (flipButtonEnabled != cardAnimator.GetBool("isFlipButtonEnabled"))
@@ -358,8 +365,11 @@ public class Card : MonoBehaviour
             }
         }
 
-        var newDropEvent = GetDropInteraction();
-        OnHoverInteraction(newDropEvent);
+        if (cardInteractEnabled)
+        {
+            var newDropEvent = GetDropInteraction();
+            OnHoverInteraction(newDropEvent);
+        }
     }
 
     public void OnHoverEnter()
@@ -493,7 +503,7 @@ public class Card : MonoBehaviour
         // Discard
         else if (dropEvent?.eventType == "Discard")
         {
-            battleGameBoard.cardDiscard(this, battleGameBoard.activePokemon, false);
+            battleGameBoard.cardDiscard(this, owner, false);
             isDragging = false;
             isSelected = false;
         }
@@ -626,9 +636,13 @@ public class Card : MonoBehaviour
     /// </summary>
     /// <param name="_targetPosition"></param>
     /// <param name="_distancePerSecond"></param>
-    public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
+    public void Translate(Vector3 _targetPosition, string callLocation, float _distancePerSecond = 150.0f)
     {
-        gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+        lastTranslate = callLocation;
+        gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond,
+            () => { cardInteractEnabled = false; return true; },
+            () => { cardInteractEnabled = true; return true; }
+        );
     }
 
     /// <summary>
