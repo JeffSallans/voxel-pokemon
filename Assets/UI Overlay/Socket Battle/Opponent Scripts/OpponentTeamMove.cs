@@ -181,6 +181,7 @@ public class OpponentTeamMove : IOpponentMove
             .Replace("{special}", specialStat.ToString())
             .Replace("{defense}", defenseStat.ToString())
             .Replace("{evasion}", evasionStat.ToString())
+            .Replace("{userHeal}", userHeal.ToString())
             .Replace("{block}", blockStat.ToString());
         return attackMissed;
     }

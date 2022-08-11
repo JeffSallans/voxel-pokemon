@@ -206,11 +206,16 @@ public class OpponentMove : IOpponentMove
 
             // Hit target
             var newHealth = target.health - Mathf.Max(dealtDamage, 0);
-            target.health = Mathf.Max(newHealth, 0);
+            target.health = Mathf.Min(Mathf.Max(newHealth, 0), target.initHealth);
         }
         if (damage > 0 && target.isInvulnerable)
         {
             attackMissed = true;
+        }
+        if (damage < 0)
+        {
+            var newHealth = target.health - damage;
+            target.health = Mathf.Min(Mathf.Max(newHealth, 0), target.initHealth);
         }
 
         // Add status effects if applicable
