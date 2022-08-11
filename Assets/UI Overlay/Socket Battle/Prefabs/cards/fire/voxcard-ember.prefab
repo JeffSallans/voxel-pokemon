@@ -252,9 +252,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118599846508305544, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 225406187112627262, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 868194513880167289, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558096806259628542, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2050685544257161242, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_LocalScale.x
@@ -382,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689760004196919908, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3786002773651742872, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_IsActive
@@ -414,12 +426,12 @@ PrefabInstance:
       objectReference: {fileID: 5327876768322102115}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal <color=blue>{damage}</color> ZZFire dmg. {flipText}
+      value: Deal <color=blue>{damage}</color> ZZFire dmg.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: flipButtonFunctionality
       value: 
-      objectReference: {fileID: 500047827963394644}
+      objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: energyLocations.Array.data[0]
       value: 
@@ -475,15 +487,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867044582068023209, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
---- !u!1 &6692607870426045573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
-  m_PrefabInstance: {fileID: 4685833024238954368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6692607870426045572 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
@@ -509,24 +516,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7762521915832413629, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
   m_PrefabInstance: {fileID: 4685833024238954368}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &500047827963394644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6692607870426045573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flipButtonText: '1ATK: +8 dmg.'
-  attackCost: 1
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  damageIncrease: 8
-  blockIncrease: 0
-  multiplierIncrease: 0
-  userHealIncrease: 0

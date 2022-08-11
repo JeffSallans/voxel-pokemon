@@ -743,8 +743,6 @@ public class BattleGameBoard : MonoBehaviour
         // Remove blank spots
         else
         {
-            //hand.RemoveAll(c => c == null);
-
             for (var i = 0; i < hand.Count; i++)
             {
                 var cardLoc = handLocations[i].transform.position + new Vector3(0, 0, -1);
@@ -767,8 +765,6 @@ public class BattleGameBoard : MonoBehaviour
         // Remove blank spots
         else
         {
-            energyHand.RemoveAll(c => c == null);
-
             for (var i = 0; i < energyHand.Count; i++)
             {
                 var cardLoc = energyHandLocations[i].transform.position;

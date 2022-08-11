@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: attackMultStat
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.data[0]
@@ -133,12 +133,12 @@ PrefabInstance:
       objectReference: {fileID: 4554058779638618277}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Reduces next attack by 40%. {flipText}
+      value: Reduces next attack by 50%.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: flipButtonFunctionality
       value: 
-      objectReference: {fileID: 3365370189537439443}
+      objectReference: {fileID: 0}
     - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_text
       value: 'Reduces next attack by 40%. 1 EVA: Reduce an additional 40%'
@@ -165,11 +165,6 @@ PrefabInstance:
       objectReference: {fileID: -2432090755550338912, guid: 5d9d8be7e1927ea4781a5a0210a23891, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
---- !u!1 &2202842274020640582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
-  m_PrefabInstance: {fileID: 249270597350210627}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4554058779638618277 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4343389913825797350, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
@@ -181,24 +176,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3365370189537439443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202842274020640582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flipButtonText: '1 EVA: Reduce an additional 40%'
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 1
-  damageIncrease: 0
-  blockIncrease: 0
-  multiplierIncrease: -40
-  userHealIncrease: 0

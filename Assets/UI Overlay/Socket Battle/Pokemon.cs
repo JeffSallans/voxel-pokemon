@@ -391,6 +391,10 @@ public class Pokemon : MonoBehaviour
         // Set HUD position
         transform.position = placeholder.transform.position;
 
+        // Set HUD Text position because sometimes it shifts between scenes
+        // TODO: Review why this is happening and remove this code
+        transform.Find("pokemon-overlay").transform.position = placeholder.transform.Find("pokemon-overlay").transform.position;
+
         // Set box collider position
         if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
 

@@ -31,9 +31,9 @@ public class UnicodeUtil
 
         // Status Effects
         { "ZZAtk", "\ue904" },
-        { "ZZDef", "\ue903" },
+        { "ZZDef", "\uF3ED" },
         { "ZZSpc", "\uF02D" },
-        { "ZZEva", "\ue910" },
+        { "ZZEva", "\uF102" },
 
         { "ZZBlock", "\ue902" },
         { "ZZAttackMult", "\ue926" },

@@ -638,6 +638,7 @@ public class Card : MonoBehaviour
     /// <param name="_distancePerSecond"></param>
     public void Translate(Vector3 _targetPosition, string callLocation, float _distancePerSecond = 150.0f)
     {
+        if (_targetPosition == transform.position) return;
         lastTranslate = callLocation;
         gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond,
             () => { cardInteractEnabled = false; return true; },

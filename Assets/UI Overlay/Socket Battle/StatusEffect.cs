@@ -14,8 +14,20 @@ public class StatusEffect
     {
         get
         {
-            if (statType == "attackMultStat") { return "" + (stackCount / 100f) + getUnicodeForStatType(statType); }
-            return "" + stackCount + getUnicodeForStatType(statType);
+            if (statType == "attackMultStat" && stackCount > 100) { return "+" + getUnicodeForStatType(statType); }
+            if (statType == "attackMultStat" && stackCount < 100) { return "-" + getUnicodeForStatType(statType); }
+
+            if (stackCount > 3)
+            {
+                return "" + stackCount + getUnicodeForStatType(statType);
+            }
+
+            var message = "";
+            for (var i = 0; i < stackCount; i++)
+            {
+                message += getUnicodeForStatType(statType);
+            }
+            return message;
         }
     }
 
