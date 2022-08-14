@@ -137,6 +137,11 @@ public class InteractionChecker : MonoBehaviour
         {
             OnInteractionClick(hoverPossibleEvent);
         }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            GameObject.FindObjectOfType<PauseMenu>(true).Open();
+        }
     }
 
     /// <summary>

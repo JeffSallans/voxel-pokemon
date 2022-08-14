@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
 
 /// <summary>
 /// Interaction event without component to better store data without errors between scenes
 /// </summary>
+[Serializable]
 public class InteractionEventNoComponent
 {
     /// <summary>

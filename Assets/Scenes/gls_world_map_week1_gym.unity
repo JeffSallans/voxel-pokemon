@@ -1111,7 +1111,7 @@ MonoBehaviour:
   actingPokemon: {fileID: 219163277}
   initialPriority: 4
   turnPriority: 0
-  damage: -20
+  damage: -30
   damageEnergy: Grass
   energyRequirement: 2
   energyMax: 5
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   evasionStat: 0
   blockStat: 0
   attackMultStat: 0
-  userHeal: 20
+  userHeal: 30
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
@@ -2565,7 +2565,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.201319, y: -0.6630461, z: 0.19207864, w: 0.6949434}
+  m_LocalRotation: {x: 0.19995306, y: -0.66795313, z: 0.19350015, w: 0.6902283}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3459,7 +3459,7 @@ MonoBehaviour:
   evasionCost: 0
   energyStat: 0
   attackStat: 0
-  specialStat: 2
+  specialStat: 0
   defenseStat: 0
   evasionStat: 0
   blockStat: 0
@@ -5360,7 +5360,7 @@ MonoBehaviour:
   moveName: Tackle
   moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg
   actingPokemon: {fileID: 1796155802}
-  initialPriority: 4
+  initialPriority: 3
   turnPriority: 0
   damage: 30
   damageEnergy: Normal

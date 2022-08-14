@@ -325,6 +325,31 @@ public class Pokemon : MonoBehaviour
         attachedEnergy = new List<Energy>();
     }
 
+    public void onMenuStart()
+    {
+        gameObject.GetComponent<Animator>().SetBool("hasSpawned", true);
+
+        health = initHealth;
+        attachedStatus = new List<StatusEffect>();
+        attachedEnergy = new List<Energy>();
+
+        // Set initial stats
+        addInitialStatHelper("attackStat", initAttackStat);
+        addInitialStatHelper("defenseStat", initDefenseStat);
+        addInitialStatHelper("specialStat", initSpecialStat);
+        addInitialStatHelper("evasionStat", initEvasionStat);
+
+        // Hide locked energies
+        energyLocations.ForEach(e =>
+        {
+            var index = energyLocations.IndexOf(e);
+            e.SetActive(index < maxNumberOfAttachedEnergy);
+        });
+
+        // Remove attached energies
+        attachedEnergy = new List<Energy>();
+    }
+
     /// <summary>
     /// Show all visible models
     /// </summary>

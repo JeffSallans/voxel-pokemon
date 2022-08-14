@@ -877,7 +877,7 @@ public class BattleGameBoard : MonoBehaviour
     {
         T tmp = list[indexA];
         list[indexA] = list[indexB];
-        list[indexB] = tmp;
+        list[indexB] = tmp; 
     }
 
     /// <summary>
