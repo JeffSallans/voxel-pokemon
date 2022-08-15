@@ -374,7 +374,7 @@ public class Card : MonoBehaviour
 
     public void OnHoverEnter()
     {
-        if (!isSelected && !isDragging)
+        if (!isSelected && !isDragging && cardInteractEnabled)
         {
             dragStartPosition = transform.position;
             transform.localPosition += new Vector3(0, 0, -50);
@@ -386,7 +386,7 @@ public class Card : MonoBehaviour
 
     public void OnHoverExit()
     {
-        if (!isDragging)
+        if (!isDragging && cardInteractEnabled)
         {
             transform.position = dragStartPosition;
             isDragging = false;
@@ -672,6 +672,7 @@ public class Card : MonoBehaviour
     private void animateEnergyCost(Energy energy, string animationName)
     {
         if (inDeckBuilderWorkflow) { return; }
+        if (!cardInteractEnabled) { return; }
 
         // Subtract from common
         var target = battleGameBoard.commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
