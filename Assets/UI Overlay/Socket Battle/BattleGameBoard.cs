@@ -280,6 +280,16 @@ public class BattleGameBoard : MonoBehaviour
     public bool shuffleDeck = true;
 
     /// <summary>
+    /// The number of cards a user can play per turn
+    /// </summary>
+    public int numberOfCardsCanPlay = 1;
+
+    /// <summary>
+    /// The number of cards a user can play for this current turn
+    /// </summary>
+    public int remainingNumberOfCardsCanPlay = 1;
+
+    /// <summary>
     /// Starts the battle
     /// </summary>
     public GameObject startBattleButton;
@@ -348,20 +358,15 @@ public class BattleGameBoard : MonoBehaviour
             prevPlayerPartyRotation = playerParty.gameObject.transform.rotation;
             // zero out position to avoid any issues moving the objects into the canvas
             playerParty.gameObject.transform.position = new Vector3(0f, 0f, 0f);
-            // Move to new parent
-            playerParty.gameObject.transform.parent = playerPartyParentGameobject.transform;
             // zero out rotation to remove any rotation from the player
             playerParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
-        player.party.ForEach(p => setupCardsOffPokemon(p));
 
         var opponentParty = opponent.gameObject.transform.Find("party");
         if (opponentParty)
         {
             // zero out position to avoid any issues moving the objects into the canvas
             opponentParty.gameObject.transform.position = new Vector3(0f, 0f, 0f);
-            // Move to new parent
-            opponentParty.gameObject.transform.parent = opponentPartyParentGameobject.transform;
             // zero out rotation to remove any rotation from the player
             opponentParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
@@ -370,17 +375,20 @@ public class BattleGameBoard : MonoBehaviour
         var i = 0;
         player.party.ForEach(p =>
         {
-            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i]);
+            p.setupPokemonPlacement(playerPokemonLocations[i], pokemonModelLocations[i]);
             p.showModels();
             i++;
         });
         var j = 0;
         opponent.party.ForEach(p =>
         {
-            p.setPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
+            p.setupPokemonPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
             p.showModels();
             j++;
         });
+
+        // Moves cards into placement
+        player.party.ForEach(p => setupCardsOffPokemon(p));
     }
 
     private void setupCardsOffPokemon(Pokemon pokemon)
@@ -408,25 +416,17 @@ public class BattleGameBoard : MonoBehaviour
         allEnergy.ForEach(e => e.transform.position = discardLocation.transform.position);
 
         player.party.ForEach(p => packCardsOnPokemon(p));
+        player.party.ForEach(p => p.packupPokemonPlacement());
 
         // Move party parent reference into placement
-        var playerParty = GameObject.Find("deck/party");
+        var playerParty = player.gameObject.transform.Find("party");
         if (playerParty)
         {
-            // Rotate active pokemon 90 degrees
-            player.party.ForEach(p => p.pokemonRootModel.transform.rotation = Quaternion.Euler(0f, 0f, 0f));
-
-            playerParty.gameObject.transform.parent = player.transform;
             // set rotation back to avoid any issues in the future
             playerParty.gameObject.transform.rotation = prevPlayerPartyRotation;
             player.party = playerInitPartyOrder;
         }
 
-        var opponentParty = GameObject.Find("opp-deck/party");
-        if (opponentParty)
-        {
-            opponentParty.gameObject.transform.parent = opponent.transform;
-        }
 
         if (playerInteractionChecker)
         {
@@ -498,6 +498,9 @@ public class BattleGameBoard : MonoBehaviour
     /// On the draw step
     /// </summary>
     public virtual void onDraw() {
+        // Refresh card count
+        remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
+
         // Refresh energy
         availableEnergy.ForEach(e => { e.isUsed = false; });
 
@@ -614,6 +617,10 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="user"></param>
     /// <param name="target"></param>
     public virtual void onPlay(Card move, Pokemon user, Pokemon target) {
+        // Decrement counter
+        if (remainingNumberOfCardsCanPlay == 0) return;
+        remainingNumberOfCardsCanPlay--;
+        
         // Enable end turn button
         endTurnButton.GetComponent<Button>().interactable = true;
 
@@ -769,6 +776,7 @@ public class BattleGameBoard : MonoBehaviour
             {
                 var cardLoc = energyHandLocations[i].transform.position;
                 energyHand[i].Translate(cardLoc);
+                energyHand[i].transform.rotation = energyHandLocations[i].transform.rotation;
             }
         }
 
@@ -906,7 +914,7 @@ public class BattleGameBoard : MonoBehaviour
         var i = 0;
         player.party.ForEach(p =>
         {
-            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i], true);
+            p.updatePlacement(playerPokemonLocations[i], pokemonModelLocations[i], true);
             i++;
         });
 
@@ -941,7 +949,7 @@ public class BattleGameBoard : MonoBehaviour
         var i = 0;
         opponent.party.ForEach(p =>
         {
-            p.setPlacement(opponentPokemonLocations[i], opponentPokemonModelLocations[i], true);
+            p.updatePlacement(opponentPokemonLocations[i], opponentPokemonModelLocations[i], true);
             i++;
         });
 

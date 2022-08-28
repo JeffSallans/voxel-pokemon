@@ -38,6 +38,9 @@ public class BattleGameBoardForge : BattleGameBoard
         _getOverrideDiscard = () => { return mergedDiscard; };
         _setOverrideDiscard = (d) => { mergedDiscard = d; return true; };
 
+        // Play multiple cards
+        numberOfCardsCanPlay = 10;
+
         // Remove all energy things
         energyHandSize = 0;
 
@@ -164,7 +167,7 @@ public class BattleGameBoardForge : BattleGameBoard
         var i = 0;
         player.party.ForEach(p =>
         {
-            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i], true);
+            p.updatePlacement(playerPokemonLocations[i], pokemonModelLocations[i], true);
             i++;
         });
     }

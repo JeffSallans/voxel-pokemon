@@ -406,48 +406,106 @@ public class Pokemon : MonoBehaviour
         }
     }
 
+    private Transform previousHudParent = null;
+
+    private RectTransform prevPokemonPlaceholder = null;
+
+    private Transform previousModelParent = null;
+
+    private Transform prevPokemonModelPlaceholder = null;
+
+    public void setupPokemonPlacement(Pokemon placeholder, GameObject modelPlaceholder)
+    {
+        // Set HUD Parent
+        prevPokemonPlaceholder = GetComponent<RectTransform>();
+        previousHudParent = transform.parent;
+        // Set HUD Position
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        transform.SetParent(placeholder.transform.parent, false);
+        transform.rotation = placeholder.transform.rotation;
+        transform.position = placeholder.transform.position;
+        // Show HUD
+        transform.Find("pokemon-overlay").gameObject.SetActive(true);
+        // Set HUD Text position because sometimes it shifts between scenes
+        // TODO: Review why this is happening and remove this code
+        transform.Find("pokemon-overlay").transform.position = placeholder.transform.Find("pokemon-overlay").transform.position;
+
+        // Set Model Parent
+        prevPokemonModelPlaceholder = pokemonRootModel.GetComponent<Transform>();
+        previousModelParent = pokemonRootModel.transform.parent;
+        // Set Model Position
+        // ASSUMING structure is model -> model-animation-target -> <actual model>
+        pokemonRootModel.transform.SetParent(modelPlaceholder.transform.parent, false);
+        pokemonRootModel.transform.localScale = modelPlaceholder.transform.localScale;
+        pokemonRootModel.transform.rotation = modelPlaceholder.transform.rotation;
+        if (isFainted) {
+            var deadPos = new Vector3(modelPlaceholder.transform.position.x, pokemonRootModel.gameObject.transform.position.y, modelPlaceholder.transform.position.z);
+            pokemonRootModel.gameObject.transform.position = deadPos;
+        } else
+        {
+            pokemonRootModel.transform.position = modelPlaceholder.transform.position;
+        }
+
+        // Set box collider position
+        if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
+
+        // Set select position
+        pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.position;
+    }
+
+    public void packupPokemonPlacement()
+    {
+        // Set HUD Parent
+        transform.SetParent(previousHudParent, false);
+        // Set HUD Position
+        transform.rotation = prevPokemonPlaceholder.rotation;
+        transform.position = prevPokemonPlaceholder.position;
+        // Hide HUD
+        transform.Find("pokemon-overlay").gameObject.SetActive(false);
+
+        // Set Model Parent
+        pokemonRootModel.transform.SetParent(previousModelParent, false);
+        // Set Model Position
+        // ASSUMING structure is model -> model-animation-target -> <actual model>
+        pokemonRootModel.transform.localScale = prevPokemonModelPlaceholder.transform.localScale;
+        pokemonRootModel.transform.rotation = prevPokemonModelPlaceholder.rotation;
+        pokemonRootModel.transform.position = prevPokemonModelPlaceholder.position;
+    }
+
     /// <summary>
     /// Set the pokemon in the spot according to the hud and model placeholder positions. Assumes animateModelTranslation is only false once.
     /// </summary>
     /// <param name="placeholder"></param>
     /// <param name="modelPlaceholder"></param>
-    public void setPlacement(Pokemon placeholder, GameObject modelPlaceholder, bool animateModelTranslation = false)
+    public void updatePlacement(Pokemon placeholder, GameObject modelPlaceholder, bool animateModelTranslation = false)
     {
+        // Check assumptions
+        if (placeholder.transform.parent != transform.parent) Debug.LogError("Updating placement of " + pokemonName + " before setupPokemonPlacement is called. Check placeholder.");
+        if (modelPlaceholder.transform.parent != pokemonRootModel.transform.parent) Debug.LogError("Updating placement of " + pokemonName + " before setupPokemonPlacement is called. Check modelPlaceholder.");
+
         // Set HUD position
+        transform.rotation = placeholder.transform.rotation;
         transform.position = placeholder.transform.position;
 
         // Set HUD Text position because sometimes it shifts between scenes
         // TODO: Review why this is happening and remove this code
         transform.Find("pokemon-overlay").transform.position = placeholder.transform.Find("pokemon-overlay").transform.position;
 
-        // Set box collider position
-        if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
-
-        // Set model position
-        if (!isFainted)
+        // Set Model Position
+        // ASSUMING structure is model -> model-animation-target -> <actual model>
+        pokemonModel.transform.rotation = modelPlaceholder.transform.rotation;
+        if (isFainted)
         {
-            // ASSUMING structure is model -> model-animation-target -> <actual model>
-            if (animateModelTranslation) {
-                var translationAnimation = pokemonModel.GetComponent<TranslationAnimation>();
-                if (translationAnimation) {
-                    translationAnimation.Translate(modelPlaceholder.transform.position, 0.01f);
-                }
-                else {
-                    pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
-                }
-            }
-            else {
-                pokemonRootModel.gameObject.transform.rotation *= modelPlaceholder.transform.localRotation;
-                pokemonRootModel.gameObject.transform.rotation *= Quaternion.Euler(0, 180f, 0);
-                pokemonModel.gameObject.transform.position = modelPlaceholder.transform.position;
-            }
+            var deadPos = new Vector3(modelPlaceholder.transform.position.x, pokemonRootModel.gameObject.transform.position.y, modelPlaceholder.transform.position.z);
+            pokemonRootModel.gameObject.transform.position = deadPos;
         }
         else
         {
-            // ASSUMING structure is model -> model-animation-target -> <actual model>
-            var deadPos = new Vector3(modelPlaceholder.transform.position.x, pokemonModel.gameObject.transform.position.y, modelPlaceholder.transform.position.z);
-            pokemonModel.gameObject.transform.position = deadPos;
+            pokemonRootModel.transform.position = modelPlaceholder.transform.position;
         }
+
+        // Set box collider position
+        if (onHoverWrapper) onHoverWrapper.gameObject.transform.position = placeholder.onHoverWrapper.gameObject.transform.position;
 
         // Set select position
         pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.position;

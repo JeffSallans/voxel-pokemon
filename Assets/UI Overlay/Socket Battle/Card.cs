@@ -475,12 +475,16 @@ public class Card : MonoBehaviour
 
     public void onDrag()
     {
+        if (!cardInteractEnabled) return;
+
         isDragging = true;
         if (_onDragFunc != null) { _onDragFunc(); }
     }
 
     public void onDrop()
     {
+        if (!cardInteractEnabled) return;
+
         // When you drop on a pokemon
         if (inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
         {

@@ -139,8 +139,6 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
             prevPlayerPartyRotation = playerParty.gameObject.transform.rotation;
             // zero out position to avoid any issues moving the objects into the canvas
             playerParty.gameObject.transform.position = new Vector3(0f, 0f, 0f);
-            // Move to new parent
-            playerParty.gameObject.transform.parent = playerPartyParentGameobject.transform;
             // zero out rotation to remove any rotation from the player
             playerParty.gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         }
@@ -149,7 +147,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         var i = 0;
         player.party.ForEach(p =>
         {
-            p.setPlacement(playerPokemonLocations[i], pokemonModelLocations[i]);
+            p.setupPokemonPlacement(playerPokemonLocations[i], pokemonModelLocations[i]);
             p.showModels();
             i++;
         });
@@ -168,6 +166,9 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
     {
         // Enable players
 
+        // Pack up pokemon
+        player.party.ForEach(p => p.packupPokemonPlacement());
+
         // Move party parent reference into placement
         var playerParty = GameObject.Find("deck/party");
         if (playerParty)
@@ -175,7 +176,6 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
             // Rotate active pokemon 90 degrees
             player.party.ForEach(p => p.pokemonRootModel.transform.rotation = Quaternion.Euler(0f, 0f, 0f));
 
-            playerParty.gameObject.transform.parent = player.transform;
             // set rotation back to avoid any issues in the future
             playerParty.gameObject.transform.rotation = prevPlayerPartyRotation;
         }

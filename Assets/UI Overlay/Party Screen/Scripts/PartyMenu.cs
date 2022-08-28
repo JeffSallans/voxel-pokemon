@@ -131,6 +131,7 @@ public class PartyMenu : MonoBehaviour
             previousModelParent[i] = player.party[i].pokemonModel.transform.parent;
             // Set Model Position
             player.party[i].pokemonModel.transform.SetParent(pokemonModelPlaceholders[i].transform.parent, false);
+            player.party[i].pokemonModel.transform.localScale = pokemonModelPlaceholders[i].transform.localScale;
             player.party[i].pokemonModel.transform.rotation = pokemonModelPlaceholders[i].transform.rotation;
             player.party[i].pokemonModel.transform.position = pokemonModelPlaceholders[i].transform.position;
             // Show Model
@@ -153,6 +154,7 @@ public class PartyMenu : MonoBehaviour
             // Set Model Parent
             player.party[i].pokemonModel.transform.SetParent(previousModelParent[i], false);
             // Set Model Position
+            player.party[i].pokemonModel.transform.localScale = prevPokemonModelPlaceholders[i].localScale;
             player.party[i].pokemonModel.transform.rotation = prevPokemonModelPlaceholders[i].rotation;
             player.party[i].pokemonModel.transform.position = prevPokemonModelPlaceholders[i].position;
             // Hide Model
