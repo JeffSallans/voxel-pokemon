@@ -13,6 +13,9 @@ Unity game project to reproduce pokemon red using a voxel art style using a card
     <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/02eb559ed98240f899f67625ef38d691-with-play.gif">
 </a>
 
+# Wiki
+
+https://docs.google.com/spreadsheets/d/11NZZCBBnFyzAcYtGdywHhQhxF7kp26EbFPAY0qi3AYc/edit?usp=sharing
 
 # Contibuting
 
