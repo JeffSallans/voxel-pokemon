@@ -263,7 +263,12 @@ public class Energy : MonoBehaviour
     /// <param name="_distancePerSecond"></param>
     public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
     {
-        gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+        if (_targetPosition == transform.position) return;
+        var prevCanBeDragged = canBeDragged;
+        gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond,
+            () => { canBeDragged = false; return true; },
+            () => { canBeDragged = prevCanBeDragged; return true; }
+        );
     }
 
     /// <summary>
