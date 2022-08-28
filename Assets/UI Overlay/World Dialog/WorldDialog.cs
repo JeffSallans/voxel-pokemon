@@ -41,6 +41,7 @@ public class MessageEvent
 /// <summary>
 /// Used to hook dialog UI to the game scripts
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class WorldDialog : MonoBehaviour
 {
     /// <summary>
@@ -108,10 +109,30 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     private Queue<MessageEvent> messages = new Queue<MessageEvent>();
 
+    /// <summary>
+    /// Sound to play when the dialog opens
+    /// </summary>
+    public AudioSource talkAudioSource;
+
+    /// <summary>
+    /// Sound to play when selecting a yes/no option
+    /// </summary>
+    public AudioSource menuingAudioSource;
+
+    /// <summary>
+    /// Sounds to play when selecting yes
+    /// </summary>
+    public AudioSource selectAudioSource;
+
+    /// <summary>
+    /// Sounds to play when selecting no
+    /// </summary>
+    public AudioSource cancelAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -131,12 +152,18 @@ public class WorldDialog : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.W))
             {
+                // Play menu sound
+                menuingAudioSource.Play();
+
                 promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Normal");
                 promptCurrentSelection = Mathf.Abs(promptCurrentSelection - 1) % promptOptionObject.Count;
                 promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Highlighted");
             }
             else if (Input.GetKeyDown(KeyCode.S))
             {
+                // Play menu sound
+                menuingAudioSource.Play();
+
                 promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Normal");
                 promptCurrentSelection = (promptCurrentSelection + 1) % promptOptionObject.Count;
                 promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Highlighted");
@@ -197,6 +224,9 @@ public class WorldDialog : MonoBehaviour
     /// <param name="text">Max 80 characters a line and 3 lines.</param>
     private void OpenNextMessage()
     {
+        // Play talk sound
+        talkAudioSource.Play();
+
         // Open dialog if it is not already open
         if (currentmessage.messageType == MessageType.BottomMessage)
         {
@@ -347,10 +377,16 @@ public class WorldDialog : MonoBehaviour
     {
         if (promptCurrentSelection == 0)
         {
+            // Play select sound
+            selectAudioSource.Play();
+
             currentmessage.confirmationEventToCallAfterMessage();
         }
         else if (promptCurrentSelection == 1)
         {
+            // Play cancel sound
+            cancelAudioSource.Play();
+
             currentmessage.cancelEventToCallAfterMessage();
         }
 

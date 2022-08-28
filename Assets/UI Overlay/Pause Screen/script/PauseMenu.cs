@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PauseMenu : MonoBehaviour
 {
     PartyMenu partyMenu;
 
     GameObject optionsMenu;
+
+    public AudioSource openAudioSource;
+    public AudioSource closeAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,7 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void Open()
     {
+        openAudioSource.Play();
         gameObject.SetActive(true);
         GameObject.FindObjectOfType<OverlayCursor>().showCursor = true;
         GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
@@ -42,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void Close()
     {
+        closeAudioSource.Play();
         gameObject.SetActive(false);
         GameObject.FindObjectOfType<OverlayCursor>().showCursor = false;
         GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;
