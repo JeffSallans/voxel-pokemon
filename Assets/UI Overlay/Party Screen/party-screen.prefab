@@ -6833,6 +6833,7 @@ MonoBehaviour:
   - {fileID: 2544071785815750195}
   - {fileID: 1332966474}
   - {fileID: 1706172157}
+  movesMenues: {fileID: 0}
   pokemonPlaceholders:
   - {fileID: 2425013771263801768}
   - {fileID: 2425013771458985085}
@@ -6841,7 +6842,25 @@ MonoBehaviour:
   - {fileID: 7693512209797680394}
   - {fileID: 7693512210309186386}
   - {fileID: 7693512209086784538}
+  movesSelectedPokemonIndex: 0
+  cardPlaceholders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   firstSwitchIndex: 0
+  closeAudioSource: {fileID: 0}
 --- !u!1 &5040990822118903898
 GameObject:
   m_ObjectHideFlags: 0
