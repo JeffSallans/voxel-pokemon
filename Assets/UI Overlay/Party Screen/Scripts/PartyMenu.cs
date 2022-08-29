@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PartyMenu : MonoBehaviour
 {
     PlayerDeck player;
@@ -45,6 +46,8 @@ public class PartyMenu : MonoBehaviour
     /// The selected first switch pokemon
     /// </summary>
     public int firstSwitchIndex;
+
+    public AudioSource closeAudioSource;
 
     private List<Transform> previousHudParent = new List<Transform> { null, null, null };
 
@@ -93,6 +96,7 @@ public class PartyMenu : MonoBehaviour
     /// </summary>
     public void Close()
     {
+        closeAudioSource.Play();
         gameObject.SetActive(false);
         GameObject.FindObjectOfType<OverlayCursor>().showCursor = false;
         GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// The configuration for a scene transition
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class SceneNav : MonoBehaviour
 {
     public string sceneName;
@@ -18,10 +19,12 @@ public class SceneNav : MonoBehaviour
     public string titleAnimatorTriggerName = "onFadeOut";
     public float animationInSeconds = 1.0f;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,6 +43,7 @@ public class SceneNav : MonoBehaviour
 
     private IEnumerator NavigateToScene()
     {
+        audioSource.Play();
         yield return new WaitForSeconds(delayInSeconds);
 
         if (animator != null)
