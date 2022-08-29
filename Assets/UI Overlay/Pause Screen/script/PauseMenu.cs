@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     GameObject optionsMenu;
 
     public AudioSource openAudioSource;
+    public AudioSource selectAudioSource;
     public AudioSource closeAudioSource;
 
     // Start is called before the first frame update
@@ -30,8 +31,10 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void Open()
     {
-        openAudioSource.Play();
         gameObject.SetActive(true);
+
+        openAudioSource.Play();
+
         GameObject.FindObjectOfType<OverlayCursor>().showCursor = true;
         GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
         var player = GameObject.FindObjectOfType<CharacterController>().gameObject;
@@ -47,7 +50,6 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void Close()
     {
-        closeAudioSource.Play();
         gameObject.SetActive(false);
         GameObject.FindObjectOfType<OverlayCursor>().showCursor = false;
         GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;
@@ -67,12 +69,14 @@ public class PauseMenu : MonoBehaviour
 
     public void OnOptions()
     {
+        selectAudioSource.Play();
         optionsMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 
     public void OnReturn()
     {
+        closeAudioSource.Play();
         Close();
     }
 

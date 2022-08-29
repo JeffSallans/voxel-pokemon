@@ -47,6 +47,14 @@ public class PartyMenu : MonoBehaviour
     /// </summary>
     public int firstSwitchIndex;
 
+    /// <summary>
+    /// Sound to play when option is clicked
+    /// </summary>
+    public AudioSource selectAudioSource;
+
+    /// <summary>
+    /// Sound to play when close is clicked
+    /// </summary>
     public AudioSource closeAudioSource;
 
     private List<Transform> previousHudParent = new List<Transform> { null, null, null };
@@ -77,6 +85,9 @@ public class PartyMenu : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
+
+        selectAudioSource.Play();
+
         GameObject.FindObjectOfType<OverlayCursor>().showCursor = true;
         GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
         var playerObject = GameObject.FindObjectOfType<CharacterController>().gameObject;
@@ -96,7 +107,6 @@ public class PartyMenu : MonoBehaviour
     /// </summary>
     public void Close()
     {
-        closeAudioSource.Play();
         gameObject.SetActive(false);
         GameObject.FindObjectOfType<OverlayCursor>().showCursor = false;
         GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;
@@ -193,11 +203,13 @@ public class PartyMenu : MonoBehaviour
 
     public void OnDetails(int pokemonIndex)
     {
-
+        selectAudioSource.Play();
     }
 
     public void OnSwitch(int pokemonIndex)
     {
+        selectAudioSource.Play();
+
         firstSwitchIndex = pokemonIndex;
 
         menues.ForEach(m => m.SetActive(false));
@@ -212,6 +224,8 @@ public class PartyMenu : MonoBehaviour
 
     public void OnSwitchSecondClick(int pokemonIndex)
     {
+        selectAudioSource.Play();
+
         SwitchPokemon(player.party[firstSwitchIndex], player.party[pokemonIndex]);
 
         menues.ForEach(m => m.SetActive(true));
@@ -256,6 +270,8 @@ public class PartyMenu : MonoBehaviour
 
     public void OnMoves(int pokemonIndex)
     {
+        selectAudioSource.Play();
+
         movesSelectedPokemonIndex = pokemonIndex;
 
         // Remove current menues
@@ -308,6 +324,7 @@ public class PartyMenu : MonoBehaviour
 
     public void OnReturn()
     {
+        closeAudioSource.Play();
         Close();
     }
 }

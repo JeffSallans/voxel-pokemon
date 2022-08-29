@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Used to demo the walking animation for the character.  Hold W to see it work.
@@ -8,6 +9,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimationExample : MonoBehaviour
 {
+
+    public List<AudioSource> audioSourceList = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,12 @@ public class AnimationExample : MonoBehaviour
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+            var isSoundPlaying = audioSourceList.Any(a => a.isPlaying);
+            if (!isSoundPlaying)
+            {
+                var randomIndex = Random.Range(0, audioSourceList.Count - 1);
+                audioSourceList[randomIndex].Play();
+            }
         }
         else
         {
