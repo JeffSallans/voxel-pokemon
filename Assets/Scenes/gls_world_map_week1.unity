@@ -1840,7 +1840,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710635096}
-  m_LocalRotation: {x: 0.00016751507, y: 0.9142447, z: -0.40516242, w: -0.00007422833}
+  m_LocalRotation: {x: 0.00016751462, y: 0.9142447, z: -0.40516242, w: -0.00007424552}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2985,7 +2985,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: -0.0018691346, y: 0.88798946, z: -0.45926034, w: -0.023478221}
+  m_LocalRotation: {x: -0.0017696223, y: 0.8880128, z: -0.45927268, w: -0.022332506}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4429,7 +4429,7 @@ MonoBehaviour:
   interactionHint: Talk
   message:
   - Nice battle. I have something for you.
-  - '** Jim recieves Poké Center membership card **'
+  - "** Jim recieves Pok\xE9 Center membership card **"
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -5754,7 +5754,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790161850}
-  m_LocalRotation: {x: -0.000000004763781, y: 0.9687975, z: -0.24785368, w: -0.000000018648016}
+  m_LocalRotation: {x: 0.0000000047652002, y: 0.9687975, z: -0.24785368, w: 0.000000018653564}
   m_LocalPosition: {x: 662.28, y: 13.712, z: 417.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7447,7 +7447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064599643}
-  m_LocalRotation: {x: 0.00016531885, y: 0.9022654, z: -0.43118107, w: -0.00007902346}
+  m_LocalRotation: {x: 0.00016532095, y: 0.9022654, z: -0.43118107, w: -0.000078985046}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8053,11 +8053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4093809586912664936, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: message.Array.data[2]
-      value: Oh and before I forget...
+      value: Oh, and before I forget...
       objectReference: {fileID: 0}
     - target: {fileID: 4093809586912664936, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: message.Array.data[3]
-      value: '** Don received a charmander from League Admin Tim **'
+      value: '** Jim received a Charmander from League Admin Tim **'
       objectReference: {fileID: 0}
     - target: {fileID: 4497933686225944474, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_IsActive
