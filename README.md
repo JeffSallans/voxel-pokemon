@@ -5,6 +5,7 @@ Unity game project to reproduce pokemon red using a voxel art style using a card
 * Unity
 * Magicavoxel
 * Photoshop / Xara
+* ChipTone
 
 # Early Look
 
@@ -39,4 +40,3 @@ https://docs.google.com/spreadsheets/d/11NZZCBBnFyzAcYtGdywHhQhxF7kp26EbFPAY0qi3
 # Older Videos
 
 [Youngster Joey Battle Early Look](https://www.loom.com/share/f53a54d0b80b4e32a4f76bde84a9693a)
-
