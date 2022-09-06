@@ -265,6 +265,16 @@ public class BattleGameBoard : MonoBehaviour
     public bool energyHandDiscard = false;
 
     /// <summary>
+    /// True if the energy should disable after playing one
+    /// </summary>
+    public bool onlyPlayOneEnergy = false;
+
+    /// <summary>
+    /// True if playing a card discards that cost by default
+    /// </summary>
+    public bool discardCardCost = true;
+
+    /// <summary>
     /// How many cards to draw
     /// </summary>
     public int handSize = 4;
@@ -472,14 +482,22 @@ public class BattleGameBoard : MonoBehaviour
             e.transform.rotation = deckLocation.transform.rotation;
         });
 
+        // Send event to all energy, cards, and pokemon
+        allPokemon.ForEach(p => p.onBattleStart(this));
+        allPartyCards.ForEach(c => c.onBattleStart(this));
+        allEnergy.ForEach(e => e.onBattleStart(this));
+        opponent.opponentStrategyBot.onBattleStart(this);
+        opponent.movesConfig.ForEach(m => m.onBattleStart(this));
+
         worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", () => {
 
-            // Send event to all energy, cards, and pokemon
-            allPokemon.ForEach(p => p.onBattleStart(this));
-            allPartyCards.ForEach(c => c.onBattleStart(this));
-            allEnergy.ForEach(e => e.onBattleStart(this));
-            opponent.opponentStrategyBot.onBattleStart(this);
-            opponent.movesConfig.ForEach(m => m.onBattleStart(this));
+            // Deal 1 energy to each pokemon
+            player.party.ForEach(p =>
+            {
+                var energy = energyDeck[0];
+                energyDeck.Remove(energy);
+                energy.playEnergy(p);
+            });
 
             // Trigger opponent first move
             opponent.opponentStrategyBot.computeOpponentsNextMove();
@@ -620,12 +638,12 @@ public class BattleGameBoard : MonoBehaviour
         // Decrement counter
         if (remainingNumberOfCardsCanPlay == 0) return;
         remainingNumberOfCardsCanPlay--;
-        
+       
         // Enable end turn button
         endTurnButton.GetComponent<Button>().interactable = true;
 
         // Pay cost
-        payMoveCost(move.cost);
+        payMoveCost(move.cost, user, discardCardCost);
         
         // Trigger move action
         move.play(user, target);
@@ -642,19 +660,22 @@ public class BattleGameBoard : MonoBehaviour
         var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
         if (numberOfOpponentPokeAlive == 0) { onTurnEnd(); }
 
+        // Check if you can't play any more cards or energy
+        // if (remainingNumberOfCardsCanPlay == 0 && energyHand.Count == 0) { onTurnEnd(); }
     }
 
     /// <summary>
     /// Update the energies that are used to play the move
     /// </summary>
     /// <param name="move"></param>
-    protected void payMoveCost(List<Energy> cost)
+    /// <param name="discardCardCost">Set to true if the energy should be discarded instead of disabled</param>
+    protected void payMoveCost(List<Energy> cost, Pokemon user, bool discardCardCost)
     {
         var coloredCost = cost.Where(e => e.energyName != "Normal").ToList();
-        coloredCost.ForEach(energy => payEnergyCost(energy));
+        coloredCost.ForEach(energy => payEnergyCost(energy, user, discardCardCost));
 
         var colorlessCost = cost.Where(e => e.energyName == "Normal").ToList();
-        colorlessCost.ForEach(energy => payEnergyCost(energy));
+        colorlessCost.ForEach(energy => payEnergyCost(energy, user, discardCardCost));
     }
 
     /// <summary>
@@ -672,7 +693,12 @@ public class BattleGameBoard : MonoBehaviour
         target.onDiscard(wasPlayed);
     }
 
-    protected void payEnergyCost(Energy energy)
+    /// <summary>
+    /// Modifies the given energy used for the card cost
+    /// </summary>
+    /// <param name="energy">energy to remove</param>
+    /// <param name="discardCardCost">Set to true if the energy should be discarded instead of disabled</param>
+    protected void payEnergyCost(Energy energy, Pokemon pokemon, bool discardCardCost)
     {
         // Subtract from common
         var target = commonEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
@@ -685,13 +711,27 @@ public class BattleGameBoard : MonoBehaviour
         var targetOnPokemon = activePokemon.attachedEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
         if (targetOnPokemon != null)
         {
-            targetOnPokemon.isUsed = true;
+            if (discardCardCost)
+            {
+                pokemon.DiscardEnergy(targetOnPokemon);
+            }
+            else
+            {
+                targetOnPokemon.isUsed = true;
+            }
             return;
         }
         var colorlessTargetOnPokemon = activePokemon.attachedEnergy.Where(e => !e.isUsed).FirstOrDefault();
         if (energy.energyName == "Normal" && colorlessTargetOnPokemon != null)
         {
-            colorlessTargetOnPokemon.isUsed = true;
+            if (discardCardCost)
+            {
+                pokemon.DiscardEnergy(colorlessTargetOnPokemon);
+            }
+            else
+            {
+                colorlessTargetOnPokemon.isUsed = true;
+            }
             return;
         }
     }
@@ -723,13 +763,16 @@ public class BattleGameBoard : MonoBehaviour
             });
             energyDiscard.AddRange(energyHand);
             energyHand.RemoveAll(card => true);
-        } else
+        } else if (onlyPlayOneEnergy)
         {
             energyHand.ForEach(e =>
             {
                 e.SetCanBeDragged(false);
             });
         }
+
+        // Check if you can't play any more cards or energy
+        // if (!ignoreNextTurnCheck && remainingNumberOfCardsCanPlay == 0 && energyHand.Count == 0) { onTurnEnd(); }
     }
 
     public virtual void onTurnEnd() {

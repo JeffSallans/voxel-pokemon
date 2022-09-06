@@ -21,7 +21,7 @@ public class Pokemon : MonoBehaviour
     public int health {
         get { return _health; }
         set {
-            if (_health != 0 && value <= 0) gameObject.GetComponent<Animator>().SetTrigger("onDeath"); 
+            if (_health != 0 && value <= 0) modelAnimator.SetTrigger("onDeath"); 
             _health = Mathf.Max(value, 0);
             healthBar.UpdateHealthBar(this);
         }
@@ -215,6 +215,16 @@ public class Pokemon : MonoBehaviour
     /// </summary>
     public DropEvent onHoverWrapper;
 
+    /// <summary>
+    /// The animator for pokemon hud and select movements
+    /// </summary>
+    public Animator hudAnimator;
+
+    /// <summary>
+    /// The animator for pokemon model movements
+    /// </summary>
+    public Animator modelAnimator;
+
     private BattleGameBoard battleGameBoard;
     private HealthBar healthBar;
 
@@ -223,7 +233,9 @@ public class Pokemon : MonoBehaviour
     {
         if (nameText) nameText.text = pokemonName;
         attachedStatus = new List<StatusEffect>();
-        gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
+        modelAnimator = transform.Find("model").GetComponent<Animator>();
+        hudAnimator = gameObject.GetComponent<Animator>();
+        hudAnimator.SetBool("hasSpawned", false);
         healthBar = gameObject.GetComponent<HealthBar>();
         health = initHealth;
 
@@ -276,7 +288,7 @@ public class Pokemon : MonoBehaviour
 
     public void onBattleStart(BattleGameBoard _battleGameBoard)
     {
-        gameObject.GetComponent<Animator>().SetBool("hasSpawned", true);
+        modelAnimator.SetBool("hasSpawned", true);
 
         battleGameBoard = _battleGameBoard;
         health = initHealth;
@@ -302,7 +314,7 @@ public class Pokemon : MonoBehaviour
 
     public void onDeckBuildStart(DeckBuilderAddCard _deckBuilderAddCard)
     {
-        gameObject.GetComponent<Animator>().SetBool("hasSpawned", true);
+        modelAnimator.SetBool("hasSpawned", true);
 
         health = initHealth;
         attachedStatus = new List<StatusEffect>();
@@ -327,7 +339,7 @@ public class Pokemon : MonoBehaviour
 
     public void onMenuStart()
     {
-        gameObject.GetComponent<Animator>().SetBool("hasSpawned", true);
+        modelAnimator.SetBool("hasSpawned", true);
 
         health = initHealth;
         attachedStatus = new List<StatusEffect>();
@@ -525,7 +537,7 @@ public class Pokemon : MonoBehaviour
     public void onBattleEnd() {
 
         // Display
-        gameObject.GetComponent<Animator>().SetBool("hasSpawned", false);
+        modelAnimator.SetBool("hasSpawned", false);
 
         // Remove hand
         battleGameBoard.discard.AddRange(hand);
@@ -545,5 +557,40 @@ public class Pokemon : MonoBehaviour
     public void Translate(Vector3 _targetPosition, float _distancePerSecond = 150.0f)
     {
         gameObject.GetComponent<TranslationAnimation>().Translate(_targetPosition, _distancePerSecond);
+    }
+
+    /// <summary>
+    /// Removes the energy at the given index from the pokemon
+    /// </summary>
+    /// <param name="energyToRemoveIndex"></param>
+    public void DiscardEnergy(int energyToRemoveIndex)
+    {
+        if (energyToRemoveIndex >= attachedEnergy.Count)
+        {
+            Debug.LogError("Trying to remove energy at index " + energyToRemoveIndex + " but attached energy is only " + attachedEnergy.Count);
+            return;
+        }
+
+        var energyToRemove = attachedEnergy[energyToRemoveIndex];
+        
+        // Reset animation state
+        energyToRemove.animator.SetTrigger("onToBeUsedHoverLeave");
+        energyToRemove.animator.SetBool("isUsed", false);
+
+        // Move energy to discard
+        energyToRemove.transform.localScale = battleGameBoard.energyDiscardLocation.transform.localScale;
+        energyToRemove.transform.localRotation = battleGameBoard.energyDiscardLocation.transform.localRotation;
+        energyToRemove.Translate(battleGameBoard.energyDiscardLocation.transform.position);
+        
+        battleGameBoard.energyDiscard.Add(energyToRemove);
+        attachedEnergy.Remove(energyToRemove);
+    }
+
+    /// <summary>
+    /// Removes the energy at the given index from the pokemon
+    /// </summary>
+    public void DiscardEnergy(Energy energyToRemove)
+    {
+        DiscardEnergy(attachedEnergy.IndexOf(energyToRemove));
     }
 }

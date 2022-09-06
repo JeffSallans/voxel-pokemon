@@ -199,6 +199,9 @@ public class Card : MonoBehaviour
             // Override this check for a different one
             if (canBePlayedOverride != null) { return canBePlayedOverride(); }
 
+            // Check if there are any remaining card plays this turn
+            if (battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
+
             // Check color energy count
             var costAsString = cost?.Select(c => c.energyName)
                 .Where(e => e != "Normal")
@@ -300,7 +303,7 @@ public class Card : MonoBehaviour
     /// <summary>
     /// A reference to deck builder workflow if exists
     /// </summary>
-    private object deckBuilderAddCard;
+    private DeckBuilderAddCard deckBuilderAddCard;
 
     /// <summary>
     /// True if the card is in the deck builder workflow
@@ -310,6 +313,16 @@ public class Card : MonoBehaviour
         get
         {
             return deckBuilderAddCard != null;
+        }
+    }
+
+    private GameOptions gameOptions
+    {
+        get
+        {
+            if (battleGameBoard != null) return battleGameBoard.player.gameOptions;
+            if (deckBuilderAddCard != null) return deckBuilderAddCard.player.gameOptions;
+            return null;
         }
     }
 
@@ -349,10 +362,29 @@ public class Card : MonoBehaviour
             gameObject.transform.position = mousePosition + new Vector3(0, 0, -5);
         }
 
-        // Check for drop
-        if (cardInteractEnabled && isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+        // Check for drag & drop
+        if (gameOptions && gameOptions.useCardDragControls)
         {
-            onDrop();
+            // Check for drop
+            if (cardInteractEnabled && isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                onDrop();
+            }
+        }
+        // use two click controls
+        else
+        {
+            // Check for drop
+            if (cardInteractEnabled && isDragging && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                onDrop();
+            }
+
+            // Check for "drag"
+            if (cardInteractEnabled && isSelected && !isDragging && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                onDragHelper();
+            }
         }
 
         // Update flip button activeness
@@ -437,9 +469,9 @@ public class Card : MonoBehaviour
             dropEvent = newDropEvent;
             var isSuperEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) > 1;
             var isNotVeryEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) < 1;
-            dropEvent.targetPokemon.GetComponent<Animator>().SetBool("isSuperEffective", isSuperEffective);
-            dropEvent.targetPokemon.GetComponent<Animator>().SetBool("isNotVeryEffective", isNotVeryEffective);
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+            dropEvent.targetPokemon.hudAnimator.SetBool("isSuperEffective", isSuperEffective);
+            dropEvent.targetPokemon.hudAnimator.SetBool("isNotVeryEffective", isNotVeryEffective);
+            dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverEnter");
 
         }
         // Discard hover
@@ -462,7 +494,7 @@ public class Card : MonoBehaviour
         }
         else if (newDropEvent == null && dropEvent != null && dropEvent.eventType == "TargetPokemon")
         {
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverExit");
             dropEvent = null;
         }
         // Discard hover exit
@@ -474,6 +506,11 @@ public class Card : MonoBehaviour
     }
 
     public void onDrag()
+    {
+        if (gameOptions.useCardDragControls) onDragHelper();
+    }
+
+    private void onDragHelper()
     {
         if (!cardInteractEnabled) return;
 
@@ -562,11 +599,11 @@ public class Card : MonoBehaviour
             commonCardPlay(user, target);
         }      
 
-        if (userAnimationType != "") user.GetComponent<Animator>().SetTrigger(userAnimationType);
+        if (userAnimationType != "") user.modelAnimator.SetTrigger(userAnimationType);
         if (!attackMissed)
         {
-            if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
-            if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+            if (targetAnimationType != "") target.modelAnimator.SetTrigger(targetAnimationType);
+            if (targetAnimationType2 != "") target.modelAnimator.SetTrigger(targetAnimationType2);
         }
 
         // Trigger flip functionality if applicable

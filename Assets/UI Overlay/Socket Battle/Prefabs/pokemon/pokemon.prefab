@@ -404,6 +404,8 @@ MonoBehaviour:
   cardsParent: {fileID: 4977520206982842493}
   overlayParent: {fileID: 829950532025964933}
   onHoverWrapper: {fileID: 2107737986849458069}
+  hudAnimator: {fileID: 0}
+  modelAnimator: {fileID: 0}
 --- !u!95 &1946488900052971994
 Animator:
   serializedVersion: 3
@@ -591,6 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6023074796770086775}
+  - component: {fileID: 3392673055034816252}
   m_Layer: 5
   m_Name: model
   m_TagString: Untagged
@@ -613,6 +616,25 @@ Transform:
   m_Father: {fileID: 818531783516017189}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &3392673055034816252
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959807836758542941}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae05f161955968044a56cc6f97cb3955, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1125627929588929177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,14 +1919,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e3ac3248374d1e46bd78619735d4eda, type: 3}
---- !u!1 &6185849458758859045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6612358615575868743, guid: 7e3ac3248374d1e46bd78619735d4eda, type: 3}
-  m_PrefabInstance: {fileID: 1016507775124606050}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4806830291107145649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5525378811329178579, guid: 7e3ac3248374d1e46bd78619735d4eda, type: 3}
+  m_PrefabInstance: {fileID: 1016507775124606050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6185849458758859045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6612358615575868743, guid: 7e3ac3248374d1e46bd78619735d4eda, type: 3}
   m_PrefabInstance: {fileID: 1016507775124606050}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6548122101434631074 stripped

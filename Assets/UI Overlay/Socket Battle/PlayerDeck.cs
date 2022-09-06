@@ -18,6 +18,11 @@ public class PlayerDeck : MonoBehaviour
     /// </summary>
     public List<Energy> energies;
 
+    /// <summary>
+    /// The options the users has for this game
+    /// </summary>
+    public GameOptions gameOptions;
+
     private PokemonFactory pokemonFactory;
 
     // Start is called before the first frame update
@@ -31,6 +36,10 @@ public class PlayerDeck : MonoBehaviour
         {
             var allEnergies = gameObject.GetComponentsInChildren<Energy>().ToList();
             energies = allEnergies.Where(e => e.initCanBeDragged).ToList();
+        }
+        if (gameOptions == null)
+        {
+            gameOptions = gameObject.GetComponent<GameOptions>();
         }
         if (pokemonFactory == null)
         {

@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
     PartyMenu partyMenu;
 
-    GameObject optionsMenu;
+    OptionsMenu optionsMenu;
 
     public AudioSource openAudioSource;
     public AudioSource selectAudioSource;
@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         partyMenu = GameObject.FindObjectOfType<PartyMenu>(true);
+        optionsMenu = GameObject.FindObjectOfType<OptionsMenu>(true);
     }
 
     // Update is called once per frame
@@ -70,7 +71,7 @@ public class PauseMenu : MonoBehaviour
     public void OnOptions()
     {
         selectAudioSource.Play();
-        optionsMenu.SetActive(true);
+        optionsMenu.Open();
         gameObject.SetActive(false);
     }
 

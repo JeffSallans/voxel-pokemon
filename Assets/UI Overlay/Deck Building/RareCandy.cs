@@ -46,6 +46,15 @@ public class RareCandy : MonoBehaviour
     /// </summary>
     private DeckBuilderAddCard deckBuilderAddCard;
 
+    private GameOptions gameOptions
+    {
+        get
+        {
+            if (deckBuilderAddCard != null) return deckBuilderAddCard.player.gameOptions;
+            return null;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,10 +73,29 @@ public class RareCandy : MonoBehaviour
             gameObject.transform.position = mousePosition;
         }
 
-        // Check for drop
-        if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+        // Check for drag & drop
+        if (gameOptions && gameOptions.useCardDragControls)
         {
-            onDrop();
+            // Check for drop
+            if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                onDrop();
+            }
+        }
+        // use two click controls
+        else
+        {
+            // Check for drop
+            if (isDragging && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                onDrop();
+            }
+
+            // Check for "drag"
+            if (isSelected && !isDragging && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                onDragHelper();
+            }
         }
 
         var newDropEvent = GetDropInteraction();
@@ -139,6 +167,11 @@ public class RareCandy : MonoBehaviour
     /// On mouse press
     /// </summary>
     public void onDrag()
+    {
+        if (gameOptions.useCardDragControls) onDragHelper();
+    }
+
+    private void onDragHelper()
     {
         isDragging = true;
     }

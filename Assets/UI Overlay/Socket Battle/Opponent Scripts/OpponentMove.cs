@@ -155,7 +155,7 @@ public class OpponentMove : IOpponentMove
 
             if (target.isInvulnerable && damage > 0)
             {
-                if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
+                if (userAnimationType != "") actingPokemon.modelAnimator.SetTrigger(userAnimationType);
                 return actingPokemon.pokemonName + " missed. " + target.pokemonName + " is invulnerable.";
             }
 
@@ -178,9 +178,9 @@ public class OpponentMove : IOpponentMove
             // Determine damage
             commonCardPlay(actingPokemon, target, out moveMessage);
 
-            if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
-            if (targetAnimationType != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType);
-            if (targetAnimationType2 != "") target.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+            if (userAnimationType != "") actingPokemon.modelAnimator.SetTrigger(userAnimationType);
+            if (targetAnimationType != "") target.modelAnimator.SetTrigger(targetAnimationType);
+            if (targetAnimationType2 != "") target.modelAnimator.SetTrigger(targetAnimationType2);
             
             return moveMessage;
         }).ToList();
@@ -245,13 +245,9 @@ public class OpponentMove : IOpponentMove
             var actualEnergyNumberToRemove = Mathf.Min(removeEnergyCount, statusTarget.attachedEnergy.Count);
             for (var i = 0; i < actualEnergyNumberToRemove; i++)
             {
-                statusTarget.attachedEnergy[i].Translate(battleGameBoard.energyDiscardLocation.transform.position);
+                statusTarget.DiscardEnergy(0);
             }
-            battleGameBoard.energyDiscard.AddRange(statusTarget.attachedEnergy.GetRange(0, actualEnergyNumberToRemove));
-            statusTarget.attachedEnergy.RemoveRange(0, actualEnergyNumberToRemove);
-            statusTarget.attachedEnergy = statusTarget.attachedEnergy.Where(e => e != null).ToList();
         }
-
 
         // Add energy effects if applicable
         for (var i = 0; i < energyStat; i++)

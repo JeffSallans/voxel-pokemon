@@ -72,6 +72,14 @@ public class Energy : MonoBehaviour
 
     private Camera canvasCamera;
 
+    private GameOptions gameOptions
+    {
+        get
+        {
+            if (battleGameBoard != null) return battleGameBoard.player.gameOptions;
+            return null;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -90,10 +98,29 @@ public class Energy : MonoBehaviour
             gameObject.transform.position = mousePosition;
         }
 
-        // Check for drop
-        if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+        // Check for drag & drop
+        if (gameOptions && gameOptions.useCardDragControls)
         {
-            onDrop();
+            // Check for drop
+            if (isDragging && Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                onDrop();
+            }
+        }
+        // use two click controls
+        else
+        {
+            // Check for drop
+            if (isDragging && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                onDrop();
+            }
+
+            // Check for "drag"
+            if (isSelected && !isDragging && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                onDragHelper();
+            }
         }
 
         if (inDebugMode)
@@ -172,6 +199,11 @@ public class Energy : MonoBehaviour
     }
 
     public void onDrag()
+    {
+        if (gameOptions.useCardDragControls) onDragHelper();
+    }
+
+    private void onDragHelper()
     {
         if (canBeDragged)
         {
