@@ -576,6 +576,7 @@ public class Pokemon : MonoBehaviour
         // Reset animation state
         energyToRemove.animator.SetTrigger("onToBeUsedHoverLeave");
         energyToRemove.animator.SetBool("isUsed", false);
+        energyToRemove.SetCanBeDragged(true);
         
         // Move energy to discard
         energyToRemove.transform.localScale = battleGameBoard.energyDiscardLocation.transform.localScale;
