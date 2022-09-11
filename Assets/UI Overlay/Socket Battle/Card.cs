@@ -64,9 +64,29 @@ public class Card : MonoBehaviour
     public string cardType;
 
     /// <summary>
+    /// How good the card is to determine how often it should be pulled
+    /// </summary>
+    public CardRarity cardRarity = CardRarity.Average;
+
+    public enum CardRarity
+    {
+        BelowAverage, // Below Average
+        Average, // Average
+        Great // Above Average
+    }
+
+    /// <summary>
     /// The theme of the card (Rush, Control, Support, Combo)
     /// </summary>
-    public string theme;
+    public CardTheme theme = CardTheme.Rush;
+
+    public enum CardTheme
+    {
+        Rush,
+        Control,
+        Support,
+        Combo
+    }
 
     /// <summary>
     /// The possible targets of this card. Self, Bench, Team, ActiveOpponent, AnyOpponent, BenchOpponent, AnyPokemon,
@@ -145,6 +165,11 @@ public class Card : MonoBehaviour
     /// True if the card will be removed from the game after playing
     /// </summary>
     public bool isSingleUse = false;
+
+    /// <summary>
+    /// True if the card will add 1 to the remainingCardsToPlay counter
+    /// </summary>
+    public bool playAnotherCard = false;
 
     /// <summary>
     /// The animation event to trigger on the user
@@ -507,7 +532,7 @@ public class Card : MonoBehaviour
 
     public void onDrag()
     {
-        if (gameOptions.useCardDragControls) onDragHelper();
+        if (gameOptions && gameOptions.useCardDragControls) onDragHelper();
     }
 
     private void onDragHelper()
@@ -621,7 +646,9 @@ public class Card : MonoBehaviour
         if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            var dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target)) - target.blockStat;
+            var dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target)) 
+                + (user.attackStat - target.defenseStat) * 10
+                - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
             user.attackMultStat = 100;
 
@@ -641,11 +668,11 @@ public class Card : MonoBehaviour
 
         // Add status effects if applicable
         var statusTarget = (statusAffectsUser) ? user : target;
-        addStatHelper(statusTarget, "attackStat", attackStat);
-        addStatHelper(statusTarget, "defenseStat", defenseStat);
-        addStatHelper(statusTarget, "specialStat", specialStat);
-        addStatHelper(statusTarget, "evasionStat", evasionStat);
-        addStatHelper(statusTarget, "blockStat", blockStat);
+        addStatHelper(statusTarget, "attackStat", attackStat, 6);
+        addStatHelper(statusTarget, "defenseStat", defenseStat, 6);
+        addStatHelper(statusTarget, "specialStat", specialStat, 6);
+        addStatHelper(statusTarget, "evasionStat", evasionStat, 6);
+        addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
         if (grantsInvulnerability)
         {
@@ -662,16 +689,30 @@ public class Card : MonoBehaviour
             user.health += userHeal;
         }
 
+        // Allow another card to be played
+        if (playAnotherCard)
+        {
+            battleGameBoard.remainingNumberOfCardsCanPlay++;
+        }
+
         return attackMissed;
     }
 
-    private void addStatHelper(Pokemon target, string statName, int statValue)
+    /// <summary>
+    /// Help set the stats
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="statName"></param>
+    /// <param name="statValue"></param>
+    /// <param name="maxStack">set to -1 to have no max stack</param>
+    private void addStatHelper(Pokemon target, string statName, int statValue, int maxStack = -1)
     {
         if (statValue > 0)
         {
-            target.attachedStatus.Add(new StatusEffect(target, this, statName + "Effect", new Dictionary<string, string>() {
+            target.attachedStatus.Add(new StatusEffect(target, null, statName + "Effect", new Dictionary<string, string>() {
                 { "statType", statName.ToString() },
                 { "stackCount", statValue.ToString() },
+                { "maxStack", maxStack.ToString() },
                 { "turnsLeft", turn.ToString() }
             }));
         }

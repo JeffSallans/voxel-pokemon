@@ -69,16 +69,16 @@ public class BattleGameBoardTutorial : BattleGameBoard
             e.transform.rotation = deckLocation.transform.rotation;
         });
 
+        // Send event to all energy, cards, and pokemon
+        allPokemon.ForEach(p => p.onBattleStart(this));
+        allPartyCards.ForEach(c => c.onBattleStart(this));
+        allEnergy.ForEach(e => e.onBattleStart(this));
+        opponent.opponentStrategyBot.onBattleStart(this);
+        opponent.movesConfig.ForEach(m => m.onBattleStart(this));
+
         worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", () => {
 
             worldDialog.ShowMessage(gameStartInstruction, () => {
-
-                // Send event to all energy, cards, and pokemon
-                allPokemon.ForEach(p => p.onBattleStart(this));
-                allPartyCards.ForEach(c => c.onBattleStart(this));
-                allEnergy.ForEach(e => e.onBattleStart(this));
-                opponent.opponentStrategyBot.onBattleStart(this);
-                opponent.movesConfig.ForEach(m => m.onBattleStart(this));
 
                 // Trigger opponent first move
                 opponent.opponentStrategyBot.computeOpponentsNextMove();
@@ -138,6 +138,9 @@ public class BattleGameBoardTutorial : BattleGameBoard
 
     private void onDrawHelper()
     {
+        // Refresh card count
+        remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
+
         // Refresh energy
         availableEnergy.ForEach(e => { e.isUsed = false; });
 
@@ -163,6 +166,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
         // Draw cards up to handSize
         if (canShowCards)
         {
+            i = 0;
             while (hand.Count < handSize && i < maxThreshold)
             {
                 if (deck.Count < 1) { reshuffleDiscard(); }

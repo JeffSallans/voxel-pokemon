@@ -16,12 +16,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: theme
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: cardName
       value: Protect
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: blockStat
-      value: 12
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initDamage
@@ -45,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 862055544274595373}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initCardDescription
-      value: Prevent <color=red>{block}</color> dmg this turn. {flipText}
+      value: 'Prevent <color=red>{block}</color> dmg this turn. '
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: targetAnimationType
@@ -54,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: flipButtonFunctionality
       value: 
-      objectReference: {fileID: 4260570217902096061}
+      objectReference: {fileID: 0}
     - target: {fileID: 4123315518454217902, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_text
       value: Prevent <color=red>5</color> dmg this turn
@@ -181,11 +185,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
---- !u!1 &3051179708189880782 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7780502995363848462, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
-  m_PrefabInstance: {fileID: 4732739529932263616}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &862055544274595373 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5357229068581043949, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
@@ -197,24 +196,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4260570217902096061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3051179708189880782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flipButtonText: '1 ZZDef: +12 ZZBlock'
-  attackCost: 0
-  defenseCost: 1
-  specialCost: 0
-  evasionCost: 0
-  damageIncrease: 0
-  blockIncrease: 12
-  multiplierIncrease: 0
-  userHealIncrease: 0

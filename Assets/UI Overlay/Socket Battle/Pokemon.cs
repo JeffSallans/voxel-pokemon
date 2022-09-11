@@ -234,8 +234,8 @@ public class Pokemon : MonoBehaviour
         if (nameText) nameText.text = pokemonName;
         attachedStatus = new List<StatusEffect>();
         modelAnimator = transform.Find("model").GetComponent<Animator>();
+        modelAnimator.SetBool("hasSpawned", false);
         hudAnimator = gameObject.GetComponent<Animator>();
-        hudAnimator.SetBool("hasSpawned", false);
         healthBar = gameObject.GetComponent<HealthBar>();
         health = initHealth;
 
@@ -576,7 +576,7 @@ public class Pokemon : MonoBehaviour
         // Reset animation state
         energyToRemove.animator.SetTrigger("onToBeUsedHoverLeave");
         energyToRemove.animator.SetBool("isUsed", false);
-
+        
         // Move energy to discard
         energyToRemove.transform.localScale = battleGameBoard.energyDiscardLocation.transform.localScale;
         energyToRemove.transform.localRotation = battleGameBoard.energyDiscardLocation.transform.localRotation;

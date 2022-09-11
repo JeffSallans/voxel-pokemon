@@ -187,20 +187,20 @@ public class Energy : MonoBehaviour
         if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canAttachEnergy(newDropEvent.targetPokemon))
         {
             dropEvent = newDropEvent;
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+            dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverEnter");
         }
 
         // When the hover event is gone
         if (newDropEvent == null && dropEvent != null)
         {
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverExit");
             dropEvent = null;
         }
     }
 
     public void onDrag()
     {
-        if (gameOptions.useCardDragControls) onDragHelper();
+        if (gameOptions && gameOptions.useCardDragControls) onDragHelper();
     }
 
     private void onDragHelper()

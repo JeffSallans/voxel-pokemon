@@ -41,7 +41,7 @@ public class UnicodeUtil
         { "ZZBlind", "\ue914" },
         { "ZZSleep", "\ue923" },
 
-        { "ZZEnergy", "\uf10c" },
+        { "ZZEnergy", "\uF140" },
         { "ZZCard", "\uf005" }
     };
 

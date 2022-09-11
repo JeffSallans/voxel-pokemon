@@ -16,6 +16,7 @@ public class StatusEffect
         {
             if (statType == "attackMultStat" && stackCount > 100) { return "+" + getUnicodeForStatType(statType); }
             if (statType == "attackMultStat" && stackCount < 100) { return "-" + getUnicodeForStatType(statType); }
+            if (statType == "blockStat") { return getUnicodeForStatType(statType); }
 
             if (stackCount > 2)
             {
@@ -108,6 +109,13 @@ public class StatusEffect
     public void onStackUpdate(Pokemon _targetPokemon, Card moveUsed, Dictionary<string, string> config)
     {
         stackCount += int.Parse(config["stackCount"]);
+
+        // Check if stack reach max
+        if (int.Parse(config["maxStack"]) > 0 && 
+            stackCount > int.Parse(config["maxStack"]))
+        {
+            stackCount = int.Parse(config["maxStack"]);
+        }
     }
 
     /// <summary>

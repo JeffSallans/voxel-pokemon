@@ -153,11 +153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: initDamage
-      value: 16
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: targetType
-      value: ActiveOpponent
+      value: AnyOpponent
       objectReference: {fileID: 0}
     - target: {fileID: 3712373968127744897, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: cost.Array.data[0]
@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Deal <color=red>10</color> \ue900 dmg
       objectReference: {fileID: 0}
+    - target: {fileID: 4494765518786544610, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5132354575483975987, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -183,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bf0c0a18a0f988f42bfed5586a6b21df, type: 3}
+    - target: {fileID: 7170040270651917301, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 7389561546159478488, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -287,9 +295,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8448379972606191157, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 8496469904991457418, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
       propertyPath: m_RootOrder
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627551667425478275, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1466309857897643472, guid: b63b7f4119dc4df44857fc93c1d718b4, type: 3}

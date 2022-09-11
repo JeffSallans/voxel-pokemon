@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Discard all cards from your hand
+/// </summary>
 public class CardFlamethrower : ICard
 {
     public override bool overridesPlayFunc() { return false; }
@@ -11,16 +14,14 @@ public class CardFlamethrower : ICard
         // Skip discard if this is the only card in the hand
         if (user.hand.Count < 1) return;
 
-        // Discard another card in our hand
-        var moveIndex = user.hand.IndexOf(card);
-        var discardTargetIndex = Random.Range(0, user.hand.Count - 1);
-
-        while (moveIndex == discardTargetIndex && user.hand[discardTargetIndex] == null)
+        // Discard each card in your hand
+        for (var i = user.hand.Count - 1; i >= 0; i--)
         {
-            discardTargetIndex = Random.Range(0, user.hand.Count - 1);
+            if (user.hand[i] != card)
+            {
+                battleGameBoard.cardDiscard(user.hand[i], user.hand[i].owner, false);
+            }
         }
-
-        battleGameBoard.cardDiscard(user.hand[discardTargetIndex], user.hand[discardTargetIndex].owner, false);
     }
 }
 

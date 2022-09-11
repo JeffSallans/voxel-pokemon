@@ -18,6 +18,11 @@ public abstract class IFlipButton : MonoBehaviour
     public int evasionCost;
 
     /// <summary>
+    /// True when the card cost should be spent instead of just measured as a requirement
+    /// </summary>
+    public bool spendCost = true;
+
+    /// <summary>
     /// True when the card is flipped and effect should take place
     /// </summary>
     protected bool isFlipped;
@@ -81,10 +86,13 @@ public abstract class IFlipButton : MonoBehaviour
 
     public virtual void onFlipButtonPress(Card card, BattleGameBoard battleGameBoard)
     {
-        battleGameBoard.activePokemon.attackStat -= attackCost;
-        battleGameBoard.activePokemon.defenseStat -= defenseCost;
-        battleGameBoard.activePokemon.specialStat -= specialCost;
-        battleGameBoard.activePokemon.evasionStat -= evasionCost;
+        if (spendCost)
+        {
+            battleGameBoard.activePokemon.attackStat -= attackCost;
+            battleGameBoard.activePokemon.defenseStat -= defenseCost;
+            battleGameBoard.activePokemon.specialStat -= specialCost;
+            battleGameBoard.activePokemon.evasionStat -= evasionCost;
+        }
     }
 
     public virtual void onPlay(Card card, BattleGameBoard battleGameBoard, Pokemon targetPokemon) { }

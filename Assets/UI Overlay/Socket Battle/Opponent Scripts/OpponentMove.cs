@@ -200,7 +200,9 @@ public class OpponentMove : IOpponentMove
         if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target)) - target.blockStat;
+            dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target))
+                + (user.attackStat - target.defenseStat) * 10
+                - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
             user.attackMultStat = 100;
 
@@ -226,11 +228,11 @@ public class OpponentMove : IOpponentMove
         else if (statusAffectsBothBench && battleGameBoard.opponent.party.Count >= 1) {
             statusTarget = battleGameBoard.opponent.party[1];
         }
-        addStatHelper(statusTarget, "attackStat", attackStat);
-        addStatHelper(statusTarget, "defenseStat", defenseStat);
-        addStatHelper(statusTarget, "specialStat", specialStat);
-        addStatHelper(statusTarget, "evasionStat", evasionStat);
-        addStatHelper(statusTarget, "blockStat", blockStat);
+        addStatHelper(statusTarget, "attackStat", attackStat, 6);
+        addStatHelper(statusTarget, "defenseStat", defenseStat, 6);
+        addStatHelper(statusTarget, "specialStat", specialStat, 6);
+        addStatHelper(statusTarget, "evasionStat", evasionStat, 6);
+        addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
         if (grantsInvulnerability)
         {
@@ -259,11 +261,11 @@ public class OpponentMove : IOpponentMove
         if (statusAffectsBothBench && battleGameBoard.opponent.party.Count >= 2)
         {
             statusTarget = battleGameBoard.opponent.party[2];
-            addStatHelper(statusTarget, "attackStat", attackStat);
-            addStatHelper(statusTarget, "defenseStat", defenseStat);
-            addStatHelper(statusTarget, "specialStat", specialStat);
-            addStatHelper(statusTarget, "evasionStat", evasionStat);
-            addStatHelper(statusTarget, "blockStat", blockStat);
+            addStatHelper(statusTarget, "attackStat", attackStat, 6);
+            addStatHelper(statusTarget, "defenseStat", defenseStat, 6);
+            addStatHelper(statusTarget, "specialStat", specialStat, 6);
+            addStatHelper(statusTarget, "evasionStat", evasionStat, 6);
+            addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
             addStatHelper(statusTarget, "attackMultStat", attackMultStat);
             if (grantsInvulnerability)
             {
@@ -300,13 +302,21 @@ public class OpponentMove : IOpponentMove
         return attackMissed;
     }
 
-    private void addStatHelper(Pokemon target, string statName, int statValue)
+    /// <summary>
+    /// Help set the stats
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="statName"></param>
+    /// <param name="statValue"></param>
+    /// <param name="maxStack">set to -1 to have no max stack</param>
+    private void addStatHelper(Pokemon target, string statName, int statValue, int maxStack = -1)
     {
         if (statValue > 0)
         {
             target.attachedStatus.Add(new StatusEffect(target, null, statName + "Effect", new Dictionary<string, string>() {
                 { "statType", statName.ToString() },
                 { "stackCount", statValue.ToString() },
+                { "maxStack", maxStack.ToString() },
                 { "turnsLeft", turn.ToString() }
             }));
         }

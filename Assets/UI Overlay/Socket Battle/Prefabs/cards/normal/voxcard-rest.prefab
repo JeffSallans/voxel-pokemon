@@ -131,6 +131,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118599846508305544, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 225406187112627262, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558096806259628542, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -224,12 +236,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 865827134aeb6e34ca00ffedc7f7fec6, type: 3}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: theme
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardName
       value: Rest
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardType
       value: Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: userHeal
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: damageType
@@ -267,6 +287,10 @@ PrefabInstance:
       propertyPath: flipButtonFunctionality
       value: 
       objectReference: {fileID: 3495122736327366726}
+    - target: {fileID: 5223889719225539049, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5766292831650180836, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -299,12 +323,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: '2 ZZDef: Restore +40 health'
+  flipButtonText: 'Use 2 ZZSpc: +30 health'
   attackCost: 0
-  defenseCost: 2
-  specialCost: 0
+  defenseCost: 0
+  specialCost: 1
   evasionCost: 0
+  spendCost: 1
   damageIncrease: 0
   blockIncrease: 0
   multiplierIncrease: 0
-  userHealIncrease: 40
+  userHealIncrease: 30

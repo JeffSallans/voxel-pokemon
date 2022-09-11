@@ -273,7 +273,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
 
         // Clean up pokemon state from the focus
         player.party.ForEach(p => {
-            p.GetComponent<Animator>().SetBool("hasSpawned", false);
+            p.modelAnimator.SetBool("hasSpawned", false);
             p.transform.Find("onHover").gameObject.SetActive(true);
         });
 
@@ -298,7 +298,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
         var targetIndex = player.party.FindIndex(p => p == targetPokemon);
 
         // Remove other pokemon
-        player.party.Where(p => p != targetPokemon).ToList().ForEach(p => p.GetComponent<Animator>().SetTrigger("onDeath"));
+        player.party.Where(p => p != targetPokemon).ToList().ForEach(p => p.modelAnimator.SetTrigger("onDeath"));
 
         // Remove other pokemon onHovers
         player.party.Where(p => p != targetPokemon).ToList().ForEach(p => p.transform.Find("onHover").gameObject.SetActive(false));

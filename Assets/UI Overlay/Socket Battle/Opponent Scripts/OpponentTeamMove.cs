@@ -107,15 +107,15 @@ public class OpponentTeamMove : IOpponentMove
 
         // Play card on self
         commonCardPlay(actingPokemon, actingPokemon, out moveMessage);
-        if (userAnimationType != "") actingPokemon.GetComponent<Animator>().SetTrigger(userAnimationType);
+        if (userAnimationType != "") actingPokemon.modelAnimator.SetTrigger(userAnimationType);
 
         // Play card on team
         teamPokemon.ForEach(t =>
         {
             var tempMessage = "";
             commonCardPlay(actingPokemon, t, out tempMessage);
-            if (targetAnimationType != "") t.GetComponent<Animator>().SetTrigger(targetAnimationType);
-            if (targetAnimationType2 != "") t.GetComponent<Animator>().SetTrigger(targetAnimationType2);
+            if (targetAnimationType != "") t.modelAnimator.SetTrigger(targetAnimationType);
+            if (targetAnimationType2 != "") t.modelAnimator.SetTrigger(targetAnimationType2);
         });
 
         return new List<string> { moveMessage + " to the team" };
@@ -138,7 +138,9 @@ public class OpponentTeamMove : IOpponentMove
         if (damage > 0 && !target.isInvulnerable)
         {
             // Determine damage
-            dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target)) - target.blockStat;
+            dealtDamage = Mathf.RoundToInt(damage * user.attackMultStat / 100f * TypeChart.getEffectiveness(this, target))
+            + (user.attackStat - target.defenseStat) * 10
+            - target.blockStat;
             target.blockStat = Mathf.Max(-dealtDamage, 0);
             user.attackMultStat = 100;
 
@@ -152,11 +154,11 @@ public class OpponentTeamMove : IOpponentMove
         }
 
         // Add status effects if applicable
-        addStatHelper(target, "attackStat", attackStat);
-        addStatHelper(target, "defenseStat", defenseStat);
-        addStatHelper(target, "specialStat", specialStat);
-        addStatHelper(target, "evasionStat", evasionStat);
-        addStatHelper(target, "blockStat", blockStat);
+        addStatHelper(target, "attackStat", attackStat, 6);
+        addStatHelper(target, "defenseStat", defenseStat, 6);
+        addStatHelper(target, "specialStat", specialStat, 6);
+        addStatHelper(target, "evasionStat", evasionStat, 6);
+        addStatHelper(target, "blockStat", blockStat, target.initHealth);
         addStatHelper(target, "attackMultStat", attackMultStat);
         if (grantsInvulnerability)
         {
@@ -186,13 +188,21 @@ public class OpponentTeamMove : IOpponentMove
         return attackMissed;
     }
 
-    private void addStatHelper(Pokemon target, string statName, int statValue)
+    /// <summary>
+    /// Help set the stats
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="statName"></param>
+    /// <param name="statValue"></param>
+    /// <param name="maxStack">set to -1 to have no max stack</param>
+    private void addStatHelper(Pokemon target, string statName, int statValue, int maxStack = -1)
     {
         if (statValue > 0)
         {
             target.attachedStatus.Add(new StatusEffect(target, null, statName + "Effect", new Dictionary<string, string>() {
                 { "statType", statName.ToString() },
                 { "stackCount", statValue.ToString() },
+                { "maxStack", maxStack.ToString() },
                 { "turnsLeft", turn.ToString() }
             }));
         }

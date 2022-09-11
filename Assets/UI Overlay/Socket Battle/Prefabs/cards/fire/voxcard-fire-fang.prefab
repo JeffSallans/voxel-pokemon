@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118599846508305544, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 225406187112627262, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558096806259628542, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -113,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 18
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
@@ -139,6 +151,10 @@ PrefabInstance:
       propertyPath: flipButtonFunctionality
       value: 
       objectReference: {fileID: 2068167119440536002}
+    - target: {fileID: 5223889719225539049, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5766292831650180836, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -182,12 +198,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: '1 ZZAtk: +18 dmg'
-  attackCost: 1
+  flipButtonText: 'If ZZAtk > 1: +30 dmg'
+  attackCost: 2
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  damageIncrease: 18
+  spendCost: 0
+  damageIncrease: 30
   blockIncrease: 0
   multiplierIncrease: 0
   userHealIncrease: 0

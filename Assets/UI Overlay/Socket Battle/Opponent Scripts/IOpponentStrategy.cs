@@ -89,7 +89,7 @@ public class IOpponentStrategy : MonoBehaviour
             return;
         }
 
-        nextOpponentMove.actingPokemon.GetComponent<Animator>().SetTrigger("onMoveHighlight");
+        nextOpponentMove.actingPokemon.hudAnimator.SetTrigger("onMoveHighlight");
         var messageList = nextOpponentMove.playMove();
         foreach (var message in messageList)
         {

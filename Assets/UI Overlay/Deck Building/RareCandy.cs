@@ -131,13 +131,13 @@ public class RareCandy : MonoBehaviour
         if (isDragging && newDropEvent?.eventType == "TargetPokemon" && canTarget(newDropEvent.targetPokemon))
         {
             dropEvent = newDropEvent;
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverEnter");
+            dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverEnter");
         }
 
         // When the hover event is gone
         if (newDropEvent == null && dropEvent != null)
         {
-            dropEvent.targetPokemon.GetComponent<Animator>().SetTrigger("onHoverExit");
+            dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverExit");
             dropEvent = null;
         }
     }
