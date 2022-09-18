@@ -156,6 +156,10 @@ PrefabInstance:
       value: Deal <color=red>{damage}</color> ZZRock dmg. {flipText}
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType2
+      value: onRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: flipButtonFunctionality
       value: 
       objectReference: {fileID: 1993009000694880992}

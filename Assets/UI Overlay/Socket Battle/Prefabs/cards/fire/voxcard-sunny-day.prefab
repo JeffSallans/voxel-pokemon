@@ -119,6 +119,14 @@ PrefabInstance:
       propertyPath: targetType
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType
+      value: onBuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType2
+      value: onPowerUp
+      objectReference: {fileID: 0}
     - target: {fileID: 5766292831650180836, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
