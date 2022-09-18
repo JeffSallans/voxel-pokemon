@@ -13,6 +13,18 @@ public class GameOptions : MonoBehaviour
     /// </summary>
     public bool useCardDragControls = false;
 
+    /// <summary>
+    /// Level at which to play background music.
+    /// </summary>
+    public float musicVolume = DefaultMusicVolume;
+    public const float DefaultMusicVolume = 0.5f;
+
+    /// <summary>
+    /// Level at which to play sound effects.
+    /// </summary>
+    public float soundEffectVolume = DefaultSoundEffectVolume;
+    public const float DefaultSoundEffectVolume = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {

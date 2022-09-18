@@ -78063,6 +78063,7 @@ GameObject:
   - component: {fileID: 1790161853}
   - component: {fileID: 1790161854}
   - component: {fileID: 1790161852}
+  - component: {fileID: 1790161855}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -78094,7 +78095,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 492d2d7586783bf49be3b2bfe3293302, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c2eecfd4cecef7b4da223e7d447811cf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -78257,6 +78258,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1790161855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790161850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8079e60660afb64297131aaa2d382cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1791516682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96176,6 +96189,7 @@ MonoBehaviour:
   - {fileID: 2853479836449709965}
   - {fileID: 2853479836449709964}
   - {fileID: 2853479836449709963}
+  switchCardLocation: {fileID: 0}
   discardLocation: {fileID: 2853479836449709962}
   energyDeckLocation: {fileID: 2853479836449709968}
   energyHandLocations:
