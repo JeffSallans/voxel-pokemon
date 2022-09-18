@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: initCardDescription
       value: Deal <color=red>{damage}</color> ZZGround dmg to any opp
       objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType2
+      value: onRock
+      objectReference: {fileID: 0}
     - target: {fileID: 5223889719225539049, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
       value: 17
