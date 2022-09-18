@@ -203,6 +203,7 @@ MonoBehaviour:
   - {fileID: 132751697001839263}
   - {fileID: 132751696832741604}
   - {fileID: 132751696755924754}
+  switchCardLocation: {fileID: 132751696755924754}
   discardLocation: {fileID: 8423267386274745838}
   energyDeckLocation: {fileID: 8423267385515874142}
   energyHandLocations:
@@ -223,9 +224,13 @@ MonoBehaviour:
   opponentPartyParentGameobject: {fileID: 2853479835234001871}
   energyHandSize: 2
   energyHandDiscard: 0
-  handSize: 4
+  onlyPlayOneEnergy: 0
+  discardCardCost: 1
+  handSize: 3
   handDiscard: 0
   shuffleDeck: 1
+  numberOfCardsCanPlay: 1
+  remainingNumberOfCardsCanPlay: 1
   startBattleButton: {fileID: 2853479835341617764}
   endTurnButton: {fileID: 2853479835079810465}
   worldDialog: {fileID: 2853479835965630321}
@@ -3331,6 +3336,10 @@ MonoBehaviour:
   promptOptionObject: []
   promptIsCapturingInput: 0
   promptCurrentSelection: 0
+  talkAudioSource: {fileID: 0}
+  menuingAudioSource: {fileID: 0}
+  selectAudioSource: {fileID: 0}
+  cancelAudioSource: {fileID: 0}
 --- !u!1001 &4133165312814106945
 PrefabInstance:
   m_ObjectHideFlags: 0
