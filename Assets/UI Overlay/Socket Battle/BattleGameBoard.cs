@@ -36,6 +36,21 @@ public class BattleGameBoard : MonoBehaviour
     protected System.Func<List<Card>, bool> _setOverrideDeck = null;
 
     /// <summary>
+    /// Switch card to be played
+    /// </summary>
+    public virtual Card switchCard
+    {
+        get
+        {
+            return activePokemon.switchCard;
+        }
+        set
+        {
+            activePokemon.switchCard = value;
+        }
+    }
+
+    /// <summary>
     /// The hand the player has
     /// </summary>
     public virtual List<Card> hand
@@ -198,6 +213,11 @@ public class BattleGameBoard : MonoBehaviour
     /// Where to render the card prefabs
     /// </summary>
     public List<GameObject> handLocations;
+
+    /// <summary>
+    /// Where to render the switch card prefab
+    /// </summary>
+    public GameObject switchCardLocation;
 
     /// <summary>
     /// Where to render the discard prefabs
@@ -519,6 +539,12 @@ public class BattleGameBoard : MonoBehaviour
         // Refresh card count
         remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
 
+        // Refresh Switch Card
+        if (switchCard == null)
+        {
+            drawSwitchCard(activePokemon);
+        }
+
         // Refresh energy
         availableEnergy.ForEach(e => { e.isUsed = false; });
 
@@ -566,6 +592,36 @@ public class BattleGameBoard : MonoBehaviour
         var cardLoc = handLocations[hand.Count - 1].transform.position + new Vector3(0, 0, -1);
         cardDrawn.Translate(cardLoc, "drawCard");
         cardDrawn.transform.rotation = handLocations[hand.Count - 1].transform.rotation;
+
+        // Trigger event
+        cardDrawn.onDraw(activePokemon);
+    }
+
+    /// <summary>
+    /// Draw the top card from the deck
+    /// </summary>
+    /// <param name="activePokemon"></param>
+    protected void drawSwitchCard(Pokemon activePokemon)
+    {
+        // Check if drawing to a full area
+        if (switchCard != null) return;
+
+        // Draw card
+        var cardInDiscard = discard.Find(c => c.cardName == "Switch") != null;
+        var cardDrawn = discard.Find(c => c.cardName == "Switch");
+        if (cardInDiscard)
+        {
+            discard.Remove(cardDrawn);
+        }
+        else
+        {
+            cardDrawn = deck.Find(c => c.cardName == "Switch");
+            deck.Remove(cardDrawn);
+        }
+        switchCard = cardDrawn;
+        var cardLoc = switchCardLocation.transform.position + new Vector3(0, 0, -1);
+        cardDrawn.Translate(cardLoc, "drawCard");
+        cardDrawn.transform.rotation = switchCardLocation.transform.rotation;
 
         // Trigger event
         cardDrawn.onDraw(activePokemon);
@@ -643,7 +699,10 @@ public class BattleGameBoard : MonoBehaviour
         endTurnButton.GetComponent<Button>().interactable = true;
 
         // Pay cost
-        payMoveCost(move.cost, user, discardCardCost);
+        if (!move.keepEnergiesOnPlay)
+        {
+            payMoveCost(move.cost, user, discardCardCost);
+        }
         
         // Trigger move action
         move.play(user, target);
@@ -686,8 +745,17 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="wasPlayed">True if the discard was after playing</param>
     public void cardDiscard(Card target, Pokemon user, bool wasPlayed)
     {
-        if (!(wasPlayed && target.isSingleUse)) discard.Add(target);
-        hand.Remove(target);
+        if (!(wasPlayed && target.isSingleUse)) user.discard.Add(target);
+        
+        if (target == user.initSwitchCard)
+        {
+            switchCard = null;
+        }
+        else
+        {
+            user.hand.Remove(target);
+        }
+        
         target.Translate(discardLocation.transform.position, "cardDiscard");
         target.transform.rotation = discardLocation.transform.rotation;
         target.onDiscard(wasPlayed);
@@ -966,6 +1034,12 @@ public class BattleGameBoard : MonoBehaviour
         //target.GetComponent<Animator>().SetTrigger("onSwitchIn");
 
         // Draw new pokemon hand
+
+        // Draw switch card
+        if (switchCard == null)
+        {
+            drawSwitchCard(activePokemon);
+        }
 
         // Draw cards up to handSize
         while (hand.Count < handSize)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44099903, g: 0.48973358, b: 0.56982386, a: 1}
+  m_IndirectSpecularColor: {r: 0.44099948, g: 0.48973447, b: 0.5698253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1015,11 +1015,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Acid
-  moveDescriptionWithTemplates: Deal {damage} ZZPoison, remove 1 energy
+  moveDescriptionWithTemplates: '{damage} ZZPoison, remove 1 energy'
   actingPokemon: {fileID: 219163277}
   initialPriority: 3
   turnPriority: 0
-  damage: 18
+  damage: 50
   damageEnergy: Poison
   energyRequirement: 0
   energyMax: 5
@@ -1034,9 +1034,9 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 0
+  energyStat: -1
   attackStat: 0
-  specialStat: 2
+  specialStat: 0
   defenseStat: 0
   evasionStat: 0
   blockStat: 0
@@ -1061,11 +1061,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Razor Leaf
-  moveDescriptionWithTemplates: Deal {damage} ZZGrass dmg
+  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 ZZEnergy'
   actingPokemon: {fileID: 219163277}
   initialPriority: 3
   turnPriority: 0
-  damage: 32
+  damage: 40
   damageEnergy: Grass
   energyRequirement: 0
   energyMax: 5
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 0
+  energyStat: 1
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   removeEnergyCount: 0
   turn: 99
   statusAffectsUser: 0
-  statusAffectsBothBench: 0
+  statusAffectsBothBench: 1
   overrideTarget: {fileID: 0}
 --- !u!114 &511952259
 MonoBehaviour:
@@ -1111,14 +1111,14 @@ MonoBehaviour:
   actingPokemon: {fileID: 219163277}
   initialPriority: 4
   turnPriority: 0
-  damage: -30
+  damage: -40
   damageEnergy: Grass
   energyRequirement: 2
   energyMax: 5
   discardEnergyOnUse: 1
   switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
+  userAnimationType: onBuff
+  targetAnimationType: onBuff
   targetAnimationType2: 
   playInstantly: 0
   targetType: 7
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   evasionStat: 0
   blockStat: 0
   attackMultStat: 0
-  userHeal: 30
+  userHeal: 40
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
@@ -2565,7 +2565,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20100012, y: -0.66419786, z: 0.19241227, w: 0.6938427}
+  m_LocalRotation: {x: 0.1991243, y: -0.6708967, z: 0.19435285, w: 0.68736756}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3438,11 +3438,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Bubblebeam
-  moveDescriptionWithTemplates: Deal {damage} ZZWater to bench, uses 1 energy
+  moveDescriptionWithTemplates: '{damage} ZZWater to bench, uses 1 energy'
   actingPokemon: {fileID: 856005616}
   initialPriority: 4
   turnPriority: 0
-  damage: 34
+  damage: 50
   damageEnergy: Water
   energyRequirement: 1
   energyMax: 5
@@ -3484,11 +3484,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Water Gun
-  moveDescriptionWithTemplates: Deal {damage} ZZWater dmg
+  moveDescriptionWithTemplates: '{damage} ZZWater dmg'
   actingPokemon: {fileID: 856005616}
   initialPriority: 3
   turnPriority: 0
-  damage: 28
+  damage: 60
   damageEnergy: Water
   energyRequirement: 0
   energyMax: 5
@@ -5455,11 +5455,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Tackle
-  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg
+  moveDescriptionWithTemplates: '{damage} ZZNormal dmg'
   actingPokemon: {fileID: 1796155802}
   initialPriority: 3
   turnPriority: 0
-  damage: 30
+  damage: 50
   damageEnergy: Normal
   energyRequirement: 0
   energyMax: 5
@@ -5472,7 +5472,7 @@ MonoBehaviour:
   targetType: 3
   attackCost: 0
   defenseCost: 0
-  specialCost: 3
+  specialCost: 0
   evasionCost: 0
   energyStat: 0
   attackStat: 0
@@ -5501,11 +5501,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Growth
-  moveDescriptionWithTemplates: Deal {damage} ZZGrass dmg, give 1 energy
+  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 ZZEnergy'
   actingPokemon: {fileID: 1796155802}
   initialPriority: 3
   turnPriority: 0
-  damage: 16
+  damage: 40
   damageEnergy: Grass
   energyRequirement: 0
   energyMax: 5

@@ -25,7 +25,7 @@ public class AnimationExample : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().SetBool("isWalking", true);
             var isSoundPlaying = audioSourceList.Any(a => a.isPlaying);
-            if (!isSoundPlaying)
+            if (!isSoundPlaying && audioSourceList.Count > 0)
             {
                 var randomIndex = Random.Range(0, audioSourceList.Count - 1);
                 audioSourceList[randomIndex].Play();

@@ -159,6 +159,16 @@ public class Pokemon : MonoBehaviour
     public List<Card> deck;
 
     /// <summary>
+    /// Reference to switch card
+    /// </summary>
+    public Card initSwitchCard;
+
+    /// <summary>
+    /// Cards to aways show to switch out
+    /// </summary>
+    public Card switchCard;
+
+    /// <summary>
     /// The hand the player has
     /// </summary>
     public List<Card> hand;
@@ -242,6 +252,10 @@ public class Pokemon : MonoBehaviour
         if (initDeck.Count == 0)
         {
             initDeck = gameObject.GetComponentsInChildren<Card>().ToList();
+        }
+        if (initSwitchCard == null)
+        {
+            initSwitchCard = initDeck.Find(c => c.cardName == "Switch");
         }
         hideModels();
     }

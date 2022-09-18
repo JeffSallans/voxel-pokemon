@@ -1840,7 +1840,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710635096}
-  m_LocalRotation: {x: 0.00016751507, y: 0.9142447, z: -0.40516242, w: -0.00007422833}
+  m_LocalRotation: {x: 0.00016751462, y: 0.9142447, z: -0.40516242, w: -0.00007424552}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2985,7 +2985,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: -0.0018691341, y: 0.88798946, z: -0.45926034, w: -0.023478223}
+  m_LocalRotation: {x: -0.00088643935, y: 0.8881689, z: -0.45935532, w: -0.01216412}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3525,11 +3525,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Poison Sting
-  moveDescriptionWithTemplates: Deal {damage} ZZPoison, remove 1 ZZAtk
+  moveDescriptionWithTemplates: '{damage} ZZPoison dmg, remove 1 ZZAtk'
   actingPokemon: {fileID: 263456943}
   initialPriority: 3
   turnPriority: 0
-  damage: 18
+  damage: 40
   damageEnergy: Poison
   energyRequirement: 0
   energyMax: 5
@@ -3573,7 +3573,7 @@ MonoBehaviour:
   moveName: String Shot
   moveDescriptionWithTemplates: Remove all energies
   actingPokemon: {fileID: 263456943}
-  initialPriority: 2
+  initialPriority: 3
   turnPriority: 0
   damage: 0
   damageEnergy: Normal
@@ -3768,11 +3768,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Poison String
-  moveDescriptionWithTemplates: Deal {damage} ZZPoison, remove 1 ZZAtk
+  moveDescriptionWithTemplates: '{damage} ZZPoison, , gain 1 ZZEnergy'
   actingPokemon: {fileID: 2005341559}
   initialPriority: 3
   turnPriority: 0
-  damage: 18
+  damage: 30
   damageEnergy: Poison
   energyRequirement: 0
   energyMax: 5
@@ -3787,8 +3787,8 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 0
-  attackStat: -1
+  energyStat: 1
+  attackStat: 0
   specialStat: 0
   defenseStat: 0
   evasionStat: 0
@@ -3798,7 +3798,7 @@ MonoBehaviour:
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
-  statusAffectsUser: 0
+  statusAffectsUser: 1
   statusAffectsBothBench: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &1324497275
@@ -3814,11 +3814,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Tackle
-  moveDescriptionWithTemplates: Deal {damage} ZZNormal
+  moveDescriptionWithTemplates: '{damage} ZZNormal, gain 1 ZZEnergy'
   actingPokemon: {fileID: 2005341559}
   initialPriority: 3
   turnPriority: 0
-  damage: 24
+  damage: 30
   damageEnergy: Normal
   energyRequirement: 0
   energyMax: 5
@@ -3833,7 +3833,7 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 0
+  energyStat: 1
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -3844,7 +3844,7 @@ MonoBehaviour:
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
-  statusAffectsUser: 0
+  statusAffectsUser: 1
   statusAffectsBothBench: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &1324497276
@@ -3860,15 +3860,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Big Tackle
-  moveDescriptionWithTemplates: Deal {damage} ZZNormal
+  moveDescriptionWithTemplates: '{damage} ZZNormal dmg'
   actingPokemon: {fileID: 2005341559}
-  initialPriority: 2
+  initialPriority: 4
   turnPriority: 0
-  damage: 32
+  damage: 80
   damageEnergy: Normal
-  energyRequirement: 0
+  energyRequirement: 4
   energyMax: 5
-  discardEnergyOnUse: 0
+  discardEnergyOnUse: 1
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
@@ -5767,7 +5767,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790161850}
-  m_LocalRotation: {x: -0.000000004763781, y: 0.9687975, z: -0.24785368, w: -0.000000018648016}
+  m_LocalRotation: {x: 0.0000000047652002, y: 0.9687975, z: -0.24785368, w: 0.000000018653564}
   m_LocalPosition: {x: 662.28, y: 13.712, z: 417.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7461,7 +7461,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064599643}
-  m_LocalRotation: {x: 0.00016531885, y: 0.9022654, z: -0.43118107, w: -0.00007902346}
+  m_LocalRotation: {x: 0.00016532095, y: 0.9022654, z: -0.43118107, w: -0.000078985046}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

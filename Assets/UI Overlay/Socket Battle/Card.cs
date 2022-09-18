@@ -172,6 +172,11 @@ public class Card : MonoBehaviour
     public bool playAnotherCard = false;
 
     /// <summary>
+    /// True if the card should keep the energy cost when played
+    /// </summary>
+    public bool keepEnergiesOnPlay = false;
+
+    /// <summary>
     /// The animation event to trigger on the user
     /// </summary>
     public string userAnimationType = "onAttack";
