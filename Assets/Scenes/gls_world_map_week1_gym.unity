@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Razor Leaf
-  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 energy'
   actingPokemon: {fileID: 219163277}
   initialPriority: 3
   turnPriority: 0
@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Heal Bell
+  moveName: Heal Spore
   moveDescriptionWithTemplates: Heal team {userHeal}, uses 2 energy
   actingPokemon: {fileID: 219163277}
   initialPriority: 4
@@ -3338,7 +3338,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.2014741, y: -0.66248447, z: 0.19191591, w: 0.69547886}
+  m_LocalRotation: {x: 0.20147413, y: -0.6624845, z: 0.19191593, w: 0.69547886}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3705,10 +3705,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: fa4057f9b2cd041478d18a9a207f1ada, type: 3}
     - target: {fileID: 1023064537, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037694847, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
@@ -7829,7 +7825,7 @@ MonoBehaviour:
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
-  targetAnimationType2: 
+  targetAnimationType2: onNormal
   playInstantly: 0
   targetType: 3
   attackCost: 0
@@ -7863,7 +7859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Growth
-  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 energy'
   actingPokemon: {fileID: 1796155802}
   initialPriority: 3
   turnPriority: 0

@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2154839557541264132}
   - component: {fileID: 5015709387190944138}
-  - component: {fileID: -6547581641622625052}
   - component: {fileID: 3422266605330964411}
   - component: {fileID: 6028156293959939138}
   - component: {fileID: 8089175271285393970}
@@ -159,7 +158,8 @@ MonoBehaviour:
   - {fileID: 4343389913825797350}
   initCardDescription: Deal <color=red>{damage}</color> \uf043 dmg
   cardType: Water
-  theme: 
+  cardRarity: 1
+  theme: 0
   targetType: ActiveOpponent
   damageType: Water
   initDamage: 8
@@ -174,6 +174,8 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   isSingleUse: 0
+  playAnotherCard: 0
+  keepEnergiesOnPlay: 0
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
@@ -189,83 +191,10 @@ MonoBehaviour:
   - {fileID: 4175264819569995190}
   - {fileID: 1459765964164613519}
   - {fileID: 7762521915832413629}
---- !u!114 &-6547581641622625052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154839557541264133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5015709387190944138}
-          m_TargetAssemblyTypeName: Card, Assembly-CSharp
-          m_MethodName: OnHoverEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5015709387190944138}
-          m_TargetAssemblyTypeName: Card, Assembly-CSharp
-          m_MethodName: OnHoverExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 13
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5015709387190944138}
-          m_TargetAssemblyTypeName: Card, Assembly-CSharp
-          m_MethodName: onDrag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 6
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5015709387190944138}
-          m_TargetAssemblyTypeName: Card, Assembly-CSharp
-          m_MethodName: onDrop
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  lastTranslate: 
+  isSelected: 0
+  isDragging: 0
+  cardInteractEnabled: 1
 --- !u!65 &3422266605330964411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -311,7 +240,7 @@ MonoBehaviour:
   animTargetPositionY: 0
   animTargetPositionZ: 0
   distancePerSecond: 0
-  targetEventTrigger: {fileID: -6547581641622625052}
+  targetEventTrigger: {fileID: 0}
   _target: {fileID: 0}
 --- !u!95 &1086784014606005771
 Animator:
@@ -1524,6 +1453,7 @@ GameObject:
   - component: {fileID: 3658866352889485114}
   - component: {fileID: 6745497528423480475}
   - component: {fileID: 5407574474164747401}
+  - component: {fileID: 8817810859879078534}
   m_Layer: 5
   m_Name: onHover
   m_TagString: Untagged
@@ -1633,6 +1563,83 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8817810859879078534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990666380063630792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5015709387190944138}
+          m_TargetAssemblyTypeName: Card, Assembly-CSharp
+          m_MethodName: OnHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5015709387190944138}
+          m_TargetAssemblyTypeName: Card, Assembly-CSharp
+          m_MethodName: OnHoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5015709387190944138}
+          m_TargetAssemblyTypeName: Card, Assembly-CSharp
+          m_MethodName: onDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 6
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5015709387190944138}
+          m_TargetAssemblyTypeName: Card, Assembly-CSharp
+          m_MethodName: onDrop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &756184117081358226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1750,11 +1757,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
---- !u!224 &2984192223787734478 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2528624367096883804, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
-  m_PrefabInstance: {fileID: 756184117081358226}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4343389913825797350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3906964417076845428, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
@@ -1766,6 +1768,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &2984192223787734478 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2528624367096883804, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
+  m_PrefabInstance: {fileID: 756184117081358226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1336712682572943898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1879,14 +1886,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
---- !u!1 &1459765964164613519 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 490563001002874773, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
-  m_PrefabInstance: {fileID: 1336712682572943898}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &868194513880167289 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
+  m_PrefabInstance: {fileID: 1336712682572943898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1459765964164613519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 490563001002874773, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
   m_PrefabInstance: {fileID: 1336712682572943898}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1946710075867393990
@@ -2453,14 +2460,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
---- !u!224 &2431897744439139136 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
-  m_PrefabInstance: {fileID: 4557450718056708643}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4175264819569995190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 490563001002874773, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
+  m_PrefabInstance: {fileID: 4557450718056708643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2431897744439139136 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
   m_PrefabInstance: {fileID: 4557450718056708643}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5396918237882066226
@@ -3318,14 +3325,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
---- !u!1 &7762521915832413629 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 490563001002874773, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
-  m_PrefabInstance: {fileID: 7887158633767238184}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8355399589701475147 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
+  m_PrefabInstance: {fileID: 7887158633767238184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7762521915832413629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 490563001002874773, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
   m_PrefabInstance: {fileID: 7887158633767238184}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8689121339450198188

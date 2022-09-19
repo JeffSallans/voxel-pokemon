@@ -42,7 +42,8 @@ public class UnicodeUtil
         { "ZZSleep", "\ue923" },
 
         { "ZZEnergy", "\uF140" },
-        { "ZZCard", "\uf005" }
+        { "ZZCard", "\uf005" },
+        { "ZZTap", "\uF064" }
     };
 
     /// <summary>
