@@ -58305,7 +58305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Fire Fang
-  moveDescriptionWithTemplates: '{damage} ZZFire dmg, use 2 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZFire dmg, use 2 energy'
   actingPokemon: {fileID: 351712740}
   initialPriority: 4
   turnPriority: 0
@@ -58317,7 +58317,7 @@ MonoBehaviour:
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
-  targetAnimationType2: 
+  targetAnimationType2: onFire
   playInstantly: 0
   targetType: 3
   attackCost: 0
@@ -58351,7 +58351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Tackle
-  moveDescriptionWithTemplates: '{damage} ZZNormal dmg, add 1 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZNormal dmg, add 1 energy'
   actingPokemon: {fileID: 351712740}
   initialPriority: 3
   turnPriority: 0
@@ -58363,7 +58363,7 @@ MonoBehaviour:
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
-  targetAnimationType2: 
+  targetAnimationType2: onNormal
   playInstantly: 0
   targetType: 3
   attackCost: 0

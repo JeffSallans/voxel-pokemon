@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Razor Leaf
-  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 energy'
   actingPokemon: {fileID: 219163277}
   initialPriority: 3
   turnPriority: 0
@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Heal Bell
+  moveName: Heal Spore
   moveDescriptionWithTemplates: Heal team {userHeal}, uses 2 energy
   actingPokemon: {fileID: 219163277}
   initialPriority: 4
@@ -7772,7 +7772,7 @@ MonoBehaviour:
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
-  targetAnimationType2: 
+  targetAnimationType2: onNormal
   playInstantly: 0
   targetType: 3
   attackCost: 0
@@ -7806,7 +7806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Growth
-  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 energy'
   actingPokemon: {fileID: 1796155802}
   initialPriority: 3
   turnPriority: 0

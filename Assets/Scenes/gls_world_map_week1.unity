@@ -2985,7 +2985,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: -0.0019390197, y: 0.88797235, z: -0.45925128, w: -0.024282819}
+  m_LocalRotation: {x: -0.0019390201, y: 0.88797235, z: -0.45925134, w: -0.02428282}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3768,7 +3768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Poison String
-  moveDescriptionWithTemplates: '{damage} ZZPoison, , gain 1 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZPoison, gain 1 energy'
   actingPokemon: {fileID: 2005341559}
   initialPriority: 3
   turnPriority: 0
@@ -3814,7 +3814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Tackle
-  moveDescriptionWithTemplates: '{damage} ZZNormal, gain 1 ZZEnergy'
+  moveDescriptionWithTemplates: '{damage} ZZNormal, gain 1 energy'
   actingPokemon: {fileID: 2005341559}
   initialPriority: 3
   turnPriority: 0
@@ -5462,7 +5462,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790161850}
-  m_LocalRotation: {x: -0.000000004762275, y: 0.9687975, z: -0.24785368, w: -0.000000018642146}
+  m_LocalRotation: {x: -0.000000004763781, y: 0.9687975, z: -0.24785368, w: -0.000000018648016}
   m_LocalPosition: {x: 662.28, y: 13.712, z: 417.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7128,7 +7128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064599643}
-  m_LocalRotation: {x: 0.00016531884, y: 0.9022654, z: -0.43118107, w: -0.000079023455}
+  m_LocalRotation: {x: 0.00016531885, y: 0.9022654, z: -0.43118107, w: -0.00007902346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
