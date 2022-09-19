@@ -4610,6 +4610,7 @@ MonoBehaviour:
   eventType: 4
   interactionHint: 
   message: []
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -6507,6 +6508,7 @@ MonoBehaviour:
   eventType: 4
   interactionHint: 
   message: []
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -7572,7 +7574,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20147413, y: -0.6624845, z: 0.19191593, w: 0.69547886}
+  m_LocalRotation: {x: 0.20109354, y: -0.663861, z: 0.19231468, w: 0.6941651}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10902,6 +10904,7 @@ MonoBehaviour:
   eventType: 4
   interactionHint: 
   message: []
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -11303,11 +11306,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e761d6e6deef064439f136343cc87057, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fd8f078c47b8ae94e8c8fc9a146fdda7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.11
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
