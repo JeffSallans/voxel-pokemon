@@ -94764,14 +94764,6 @@ PrefabInstance:
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
-      propertyPath: handSize
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
-      propertyPath: switchCardLocation
-      value: 
-      objectReference: {fileID: 2853479836449709954}
-    - target: {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: pokemonModelLocations.Array.data[0]
       value: 
       objectReference: {fileID: 2124824072}
@@ -94895,10 +94887,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 2853479835633009163, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2853479835746136879, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -94941,8 +94929,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
---- !u!1 &2853479836449709954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 132751696755924754, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
-  m_PrefabInstance: {fileID: 2853479836449709953}
-  m_PrefabAsset: {fileID: 0}
