@@ -85,7 +85,8 @@ public class InteractionEvent : MonoBehaviour
             if (eventName == "") return false;
             if (eventType == PossibleEventTypes.Message)
             {
-                return message.Count >= 0;
+                if (messageSounds.Count == 0) return message.Count >= 0;
+                return message.Count >= 0 && messageSounds.Count == message.Count;
             }
             else if (eventType == PossibleEventTypes.Battle)
             {
@@ -117,6 +118,11 @@ public class InteractionEvent : MonoBehaviour
     /// Display text when the user clicks as a global message
     /// </summary>
     public List<string> message;
+
+    /// <summary>
+    /// Companion to message - if non-null, use it instead of the default WorldDialog talkAudioSource.
+    /// </summary>
+    public List<AudioClip> messageSounds;
 
     /// <summary>
     /// (REQUIRED by Battle) Opponent details if the event is a battle

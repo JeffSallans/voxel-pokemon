@@ -230,9 +230,9 @@ public class InteractionChecker : MonoBehaviour
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
 
         thirdPersonMovement.enabled = false;
-        foreach(var message in iEvent.message)
+        for (int i = 0; i < iEvent.message.Count; i++)
         {
-            await worldDialog.ShowMessageAsync(message);
+            await worldDialog.ShowMessageAsync(iEvent.message[i], iEvent.messageSounds[i]);
         }
 
         postInteracationChanges(iEvent);

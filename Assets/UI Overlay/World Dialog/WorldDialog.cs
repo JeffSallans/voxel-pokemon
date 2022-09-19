@@ -18,6 +18,11 @@ public class MessageEvent
     public string message;
 
     /// <summary>
+    /// Audio to play upon display, if not the default talk sound.
+    /// </summary>
+    public AudioClip messageSound;
+
+    /// <summary>
     /// Which message box to use to display
     /// </summary>
     public MessageType messageType;
@@ -182,14 +187,15 @@ public class WorldDialog : MonoBehaviour
     /// Show the dialog with the given text. Can be called if an dialog is already open to queue a message. Callback is called when the user clicks after reading the message
     /// </summary>
     /// <param name="text">Message text to display (must be less than 180 characters or 5 lines)</param>
-    public async Task ShowMessageAsync(string text)
+    /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
+    public async Task ShowMessageAsync(string text, AudioClip sound = null)
     {
         var dialogFinished = false;
         ShowMessage(text, () =>
         {
             dialogFinished = true;
             return true;
-        });
+        }, sound);
 
         while(!dialogFinished)
         {
@@ -202,13 +208,17 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     /// <param name="text">Message text to display (must be less than 180 characters or 5 lines)</param>
     /// <param name="callback">Function to trigger after dialog is read</param>
-    public void ShowMessage(string text, Func<bool> callback = null)
+    /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
+    public void ShowMessage(string text, Func<bool> callback = null, AudioClip sound = null)
     {
-        print("DIALOG SHOW: "+text);
-        var newMessage = new MessageEvent();
-        newMessage.message = text;
-        newMessage.messageType = MessageType.BottomMessage;
-        newMessage.eventToCallAfterMessage = callback;
+        print($"PROMPT SHOW: {text} ({(sound == null ? "default sound" : sound.name)})");
+        var newMessage = new MessageEvent
+        {
+            message = text,
+            messageSound = sound,
+            messageType = MessageType.BottomMessage,
+            eventToCallAfterMessage = callback
+        };
         messages.Enqueue(newMessage);
 
         // Open if current message is null
@@ -221,11 +231,20 @@ public class WorldDialog : MonoBehaviour
     /// <summary>
     /// Show the dialog with the given text. Can be called if an dialog is already open.
     /// </summary>
-    /// <param name="text">Max 80 characters a line and 3 lines.</param>
     private void OpenNextMessage()
     {
         // Play talk sound
-        talkAudioSource.Play();
+        if (currentmessage.messageSound == null)
+        {
+            talkAudioSource.Play();
+        }
+        else
+        {
+            var playerObject = FindObjectOfType<CharacterController>().gameObject;
+            var gameOptions = playerObject.GetComponent<GameOptions>();
+
+            talkAudioSource.PlayOneShot(currentmessage.messageSound, gameOptions.musicVolume);
+        }
 
         // Open dialog if it is not already open
         if (currentmessage.messageType == MessageType.BottomMessage)
@@ -330,15 +349,19 @@ public class WorldDialog : MonoBehaviour
     /// <param name="onConfirm">Function to trigger on space press when Yes is selected</param>
     /// <param name="onCancel">Function to trigger on space press when No is selected</param>
     /// <param name="callback">Function to trigger after dialog is read</param>
-    public void PromptShowMessage(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, Func<bool> callback = null)
+    /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
+    public void PromptShowMessage(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, Func<bool> callback = null, AudioClip sound = null)
     {
-        print("DIALOG SHOW: " + text);
-        var newMessage = new MessageEvent();
-        newMessage.message = text;
-        newMessage.messageType = MessageType.PromptMessage;
-        newMessage.confirmationEventToCallAfterMessage = onConfirm;
-        newMessage.cancelEventToCallAfterMessage = onCancel;
-        newMessage.eventToCallAfterMessage = callback;
+        print($"PROMPT SHOW: {text} ({(sound == null ? "default sound" : sound.name)})");
+        var newMessage = new MessageEvent
+        {
+            message = text,
+            messageSound = sound,
+            messageType = MessageType.PromptMessage,
+            confirmationEventToCallAfterMessage = onConfirm,
+            cancelEventToCallAfterMessage = onCancel,
+            eventToCallAfterMessage = callback
+        };
         messages.Enqueue(newMessage);
 
         // Open if current message is null
