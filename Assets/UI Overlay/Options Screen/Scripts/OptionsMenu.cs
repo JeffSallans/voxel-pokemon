@@ -1,13 +1,11 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class OptionsMenu : MonoBehaviour
 {
-    PlayerDeck player;
+    PlayerDeck deck;
 
     /// <summary>
     /// All the menues for the party pokemon
@@ -19,104 +17,69 @@ public class OptionsMenu : MonoBehaviour
     /// </summary>
     public Button dragNoButton;
 
-    /// <summary>
-    /// Sound to play when option is clicked
-    /// </summary>
-    public AudioSource selectAudioSource;
+    private MenuCommon menuCommon;
 
-    /// <summary>
-    /// Sound to play when close is clicked
-    /// </summary>
-    public AudioSource closeAudioSource;
-
-    // Start is called before the first frame update
-    void Start()
+    public void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        menuCommon = gameObject.AddComponent<MenuCommon>();
+        menuCommon.Initialize(Close);
     }
 
     /// <summary>
-    /// Opens the pause menu
+    /// Opens the options menu
     /// </summary>
     public void Open()
     {
         gameObject.SetActive(true);
 
-        selectAudioSource.Play();
+        menuCommon.EnableDialogMode();
 
-        GameObject.FindObjectOfType<OverlayCursor>().showCursor = true;
-        GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
-        var playerObject = GameObject.FindObjectOfType<CharacterController>().gameObject;
-        playerObject.GetComponent<InteractionChecker>().enabled = false;
-        playerObject.GetComponent<FallToGround>().enabled = false;
-        playerObject.GetComponent<CharacterController>().enabled = false;
-        playerObject.GetComponent<ThirdPersonMovement>().enabled = false;
-        playerObject.GetComponent<AnimationExample>().enabled = false;
-
-        player = playerObject.GetComponent<PlayerDeck>();
+        deck = menuCommon.Player.GetComponent<PlayerDeck>();
 
         SetupPlayer();
     }
 
     /// <summary>
-    /// Closes the pause menu
+    /// Closes the options menu
     /// </summary>
-    public void Close()
+    public bool Close()
     {
         gameObject.SetActive(false);
-        GameObject.FindObjectOfType<OverlayCursor>().showCursor = false;
-        GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;
-        var playerObject = GameObject.FindObjectOfType<CharacterController>().gameObject;
-        playerObject.GetComponent<InteractionChecker>().enabled = true;
-        playerObject.GetComponent<FallToGround>().enabled = true;
-        playerObject.GetComponent<CharacterController>().enabled = true;
-        playerObject.GetComponent<ThirdPersonMovement>().enabled = true;
-        playerObject.GetComponent<AnimationExample>().enabled = true;
 
-        PackupPlayer();
+        menuCommon.PlayCloseSound();
+        menuCommon.DisableDialogMode();
+
+        return false;
+    }
+
+    public void OnReturn()
+    {
+        Close();
     }
 
     private void SetupPlayer()
     {
-        dragYesButton.interactable = !player.gameOptions.useCardDragControls;
-        dragNoButton.interactable = player.gameOptions.useCardDragControls;
-    }
-
-    private void PackupPlayer()
-    {
-
+        dragYesButton.interactable = !deck.gameOptions.useCardDragControls;
+        dragNoButton.interactable = deck.gameOptions.useCardDragControls;
     }
 
     public void OnDragOption()
     {
-        selectAudioSource.Play();
+        menuCommon.PlaySelectSound();
 
-        player.gameOptions.useCardDragControls = true;
+        deck.gameOptions.useCardDragControls = true;
 
-        dragYesButton.interactable = !player.gameOptions.useCardDragControls;
-        dragNoButton.interactable = player.gameOptions.useCardDragControls;
+        dragYesButton.interactable = !deck.gameOptions.useCardDragControls;
+        dragNoButton.interactable = deck.gameOptions.useCardDragControls;
     }
 
     public void OnDoubleClickOption()
     {
-        selectAudioSource.Play();
+        menuCommon.PlaySelectSound();
 
-        player.gameOptions.useCardDragControls = false;
+        deck.gameOptions.useCardDragControls = false;
 
-        dragYesButton.interactable = !player.gameOptions.useCardDragControls;
-        dragNoButton.interactable = player.gameOptions.useCardDragControls;
-    }
-
-
-    public void OnReturn()
-    {
-        closeAudioSource.Play();
-        Close();
+        dragYesButton.interactable = !deck.gameOptions.useCardDragControls;
+        dragNoButton.interactable = deck.gameOptions.useCardDragControls;
     }
 }
