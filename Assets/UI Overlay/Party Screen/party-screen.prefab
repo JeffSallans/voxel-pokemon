@@ -1934,14 +1934,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1037694848}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1037694845}
         m_TargetAssemblyTypeName: PartyButtonData, Assembly-CSharp
-        m_MethodName: OnSwitch
+        m_MethodName: OnMoves
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6862,8 +6862,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   firstSwitchIndex: 0
-  selectAudioSource: {fileID: 5877521007930759865}
-  closeAudioSource: {fileID: 858676850070894099}
 --- !u!82 &5877521007930759865
 AudioSource:
   m_ObjectHideFlags: 0
