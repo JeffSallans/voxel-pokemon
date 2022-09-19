@@ -138,9 +138,10 @@ public class InteractionChecker : MonoBehaviour
             OnInteractionClick(hoverPossibleEvent);
         }
 
-        if (Input.GetKey(KeyCode.Escape))
+        // Only need to open here - this interaction checker is disabled when within menus.
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameObject.FindObjectOfType<PauseMenu>(true).Open();
+            FindObjectOfType<PauseMenu>(true).Open();
         }
     }
 

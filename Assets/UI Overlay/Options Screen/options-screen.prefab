@@ -393,7 +393,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3162287449886244665}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: OnReturn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -593,8 +593,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragYesButton: {fileID: 5573725779865070508}
   dragNoButton: {fileID: 5573725780177016809}
-  selectAudioSource: {fileID: 4577530688328097019}
-  closeAudioSource: {fileID: 7349069562240217169}
 --- !u!82 &4577530688328097019
 AudioSource:
   m_ObjectHideFlags: 0

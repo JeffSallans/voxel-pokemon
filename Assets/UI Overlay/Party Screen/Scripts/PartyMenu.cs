@@ -1,12 +1,11 @@
 using Cinemachine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class PartyMenu : MonoBehaviour
 {
-    PlayerDeck player;
+    PlayerDeck deck;
 
     /// <summary>
     /// All the menues for the party pokemon
@@ -47,16 +46,6 @@ public class PartyMenu : MonoBehaviour
     /// </summary>
     public int firstSwitchIndex;
 
-    /// <summary>
-    /// Sound to play when option is clicked
-    /// </summary>
-    public AudioSource selectAudioSource;
-
-    /// <summary>
-    /// Sound to play when close is clicked
-    /// </summary>
-    public AudioSource closeAudioSource;
-
     private List<Transform> previousHudParent = new List<Transform> { null, null, null };
 
     private List<RectTransform> prevPokemonPlaceholders = new List<RectTransform> { null, null, null };
@@ -67,57 +56,42 @@ public class PartyMenu : MonoBehaviour
 
     private List<List<Transform>> prevCardPlaceholders = new List<List<Transform>> { null, null, null };
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private MenuCommon menuCommon;
 
+    public void Awake()
+    {
+        menuCommon = gameObject.AddComponent<MenuCommon>();
+        menuCommon.Initialize(Close);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     /// <summary>
-    /// Opens the pause menu
+    /// Opens the party menu
     /// </summary>
     public void Open()
     {
         gameObject.SetActive(true);
 
-        selectAudioSource.Play();
+        menuCommon.EnableDialogMode();
 
-        GameObject.FindObjectOfType<OverlayCursor>().showCursor = true;
-        GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
-        var playerObject = GameObject.FindObjectOfType<CharacterController>().gameObject;
-        playerObject.GetComponent<InteractionChecker>().enabled = false;
-        playerObject.GetComponent<FallToGround>().enabled = false;
-        playerObject.GetComponent<CharacterController>().enabled = false;
-        playerObject.GetComponent<ThirdPersonMovement>().enabled = false;
-        playerObject.GetComponent<AnimationExample>().enabled = false;
-
-        player = playerObject.GetComponent<PlayerDeck>();
+        deck = menuCommon.Player.GetComponent<PlayerDeck>();
 
         SetupPlayer();
     }
 
     /// <summary>
-    /// Closes the pause menu
+    /// Closes the party menu
     /// </summary>
-    public void Close()
+    private bool Close()
     {
         gameObject.SetActive(false);
-        GameObject.FindObjectOfType<OverlayCursor>().showCursor = false;
-        GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;
-        var playerObject = GameObject.FindObjectOfType<CharacterController>().gameObject;
-        playerObject.GetComponent<InteractionChecker>().enabled = true;
-        playerObject.GetComponent<FallToGround>().enabled = true;
-        playerObject.GetComponent<CharacterController>().enabled = true;
-        playerObject.GetComponent<ThirdPersonMovement>().enabled = true;
-        playerObject.GetComponent<AnimationExample>().enabled = true;
+
+        menuCommon.PlayCloseSound();
+        menuCommon.DisableDialogMode();
 
         PackupPlayer();
+
+        return false;
     }
 
     private void SetupPlayer()
@@ -125,64 +99,64 @@ public class PartyMenu : MonoBehaviour
         menues.ForEach(m => m.SetActive(false));
         secondSwitchMenues.ForEach(m => m.SetActive(false));
         movesMenues.SetActive(false);
-        for (var i = 0; i < player.party.Count; i++)
+        for (var i = 0; i < deck.party.Count; i++)
         {
             menues[i].SetActive(true);
-            player.party[i].onMenuStart();
+            deck.party[i].onMenuStart();
             // Set HUD Parent
-            prevPokemonPlaceholders[i] = player.party[i].GetComponent<RectTransform>();
-            previousHudParent[i] = player.party[i].transform.parent;
+            prevPokemonPlaceholders[i] = deck.party[i].GetComponent<RectTransform>();
+            previousHudParent[i] = deck.party[i].transform.parent;
             // Set HUD Position
-            player.party[i].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            player.party[i].transform.SetParent(pokemonPlaceholders[i].transform.parent, false);
-            player.party[i].transform.rotation = pokemonPlaceholders[i].transform.rotation;
-            player.party[i].transform.position = pokemonPlaceholders[i].transform.position;
+            deck.party[i].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            deck.party[i].transform.SetParent(pokemonPlaceholders[i].transform.parent, false);
+            deck.party[i].transform.rotation = pokemonPlaceholders[i].transform.rotation;
+            deck.party[i].transform.position = pokemonPlaceholders[i].transform.position;
             // Show HUD
-            player.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(true);
+            deck.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(true);
 
             // Set Model Parent
-            prevPokemonModelPlaceholders[i] = player.party[i].pokemonModel.GetComponent<Transform>();
-            previousModelParent[i] = player.party[i].pokemonModel.transform.parent;
+            prevPokemonModelPlaceholders[i] = deck.party[i].pokemonModel.GetComponent<Transform>();
+            previousModelParent[i] = deck.party[i].pokemonModel.transform.parent;
             // Set Model Position
-            player.party[i].pokemonModel.transform.SetParent(pokemonModelPlaceholders[i].transform.parent, false);
-            player.party[i].pokemonModel.transform.localScale = pokemonModelPlaceholders[i].transform.localScale;
-            player.party[i].pokemonModel.transform.rotation = pokemonModelPlaceholders[i].transform.rotation;
-            player.party[i].pokemonModel.transform.position = pokemonModelPlaceholders[i].transform.position;
+            deck.party[i].pokemonModel.transform.SetParent(pokemonModelPlaceholders[i].transform.parent, false);
+            deck.party[i].pokemonModel.transform.localScale = pokemonModelPlaceholders[i].transform.localScale;
+            deck.party[i].pokemonModel.transform.rotation = pokemonModelPlaceholders[i].transform.rotation;
+            deck.party[i].pokemonModel.transform.position = pokemonModelPlaceholders[i].transform.position;
             // Show Model
-            SetLayerOnChildren(player.party[i].pokemonModel, LayerMask.NameToLayer("UI"));
+            SetLayerOnChildren(deck.party[i].pokemonModel, LayerMask.NameToLayer("UI"));
         }
     }
 
     private void PackupPlayer()
     {
-        for (var i = 0; i < player.party.Count; i++)
+        for (var i = 0; i < deck.party.Count; i++)
         {
             // Set HUD Parent
-            player.party[i].transform.SetParent(previousHudParent[i], false);
+            deck.party[i].transform.SetParent(previousHudParent[i], false);
             // Set HUD Position
-            player.party[i].transform.rotation = prevPokemonPlaceholders[i].rotation;
-            player.party[i].transform.position = prevPokemonPlaceholders[i].position;
+            deck.party[i].transform.rotation = prevPokemonPlaceholders[i].rotation;
+            deck.party[i].transform.position = prevPokemonPlaceholders[i].position;
             // Hide HUD
-            player.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(false);
+            deck.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(false);
 
             // Set Model Parent
-            player.party[i].pokemonModel.transform.SetParent(previousModelParent[i], false);
+            deck.party[i].pokemonModel.transform.SetParent(previousModelParent[i], false);
             // Set Model Position
-            player.party[i].pokemonModel.transform.localScale = prevPokemonModelPlaceholders[i].localScale;
-            player.party[i].pokemonModel.transform.rotation = prevPokemonModelPlaceholders[i].rotation;
-            player.party[i].pokemonModel.transform.position = prevPokemonModelPlaceholders[i].position;
+            deck.party[i].pokemonModel.transform.localScale = prevPokemonModelPlaceholders[i].localScale;
+            deck.party[i].pokemonModel.transform.rotation = prevPokemonModelPlaceholders[i].rotation;
+            deck.party[i].pokemonModel.transform.position = prevPokemonModelPlaceholders[i].position;
             // Hide Model
-            SetLayerOnChildren(player.party[i].pokemonModel, LayerMask.NameToLayer("Default"));
+            SetLayerOnChildren(deck.party[i].pokemonModel, LayerMask.NameToLayer("Default"));
 
             // Move cards into the slots
-            player.party[i].transform.Find("cards").gameObject.SetActive(false);
-            for (var j = 0; j < player.party[i].initDeck.Count; j++)
+            deck.party[i].transform.Find("cards").gameObject.SetActive(false);
+            for (var j = 0; j < deck.party[i].initDeck.Count; j++)
             {
                 if (prevCardPlaceholders[i] != null && prevCardPlaceholders[i][j] != null)
                 {
-                    player.party[i].initDeck[j].cardInteractEnabled = true;
-                    player.party[i].initDeck[j].transform.rotation = prevCardPlaceholders[i][j].transform.rotation;
-                    player.party[i].initDeck[j].transform.position = prevCardPlaceholders[i][j].transform.position;
+                    deck.party[i].initDeck[j].cardInteractEnabled = true;
+                    deck.party[i].initDeck[j].transform.rotation = prevCardPlaceholders[i][j].transform.rotation;
+                    deck.party[i].initDeck[j].transform.position = prevCardPlaceholders[i][j].transform.position;
                 }
             }
         }
@@ -203,17 +177,17 @@ public class PartyMenu : MonoBehaviour
 
     public void OnDetails(int pokemonIndex)
     {
-        selectAudioSource.Play();
+        menuCommon.PlaySelectSound();
     }
 
     public void OnSwitch(int pokemonIndex)
     {
-        selectAudioSource.Play();
+        menuCommon.PlaySelectSound();
 
         firstSwitchIndex = pokemonIndex;
 
         menues.ForEach(m => m.SetActive(false));
-        for (var i = 0; i < secondSwitchMenues.Count && i < player.party.Count; i++)
+        for (var i = 0; i < secondSwitchMenues.Count && i < deck.party.Count; i++)
         {
             if (i != firstSwitchIndex)
             {
@@ -224,9 +198,9 @@ public class PartyMenu : MonoBehaviour
 
     public void OnSwitchSecondClick(int pokemonIndex)
     {
-        selectAudioSource.Play();
+        menuCommon.PlaySelectSound();
 
-        SwitchPokemon(player.party[firstSwitchIndex], player.party[pokemonIndex]);
+        SwitchPokemon(deck.party[firstSwitchIndex], deck.party[pokemonIndex]);
 
         menues.ForEach(m => m.SetActive(true));
         secondSwitchMenues.ForEach(m => m.SetActive(false));
@@ -240,9 +214,9 @@ public class PartyMenu : MonoBehaviour
     private void SwitchPokemon(Pokemon user, Pokemon target)
     {
         // Switch board roles
-        var userIndex = player.party.IndexOf(user);
-        var targetIndex = player.party.IndexOf(target);
-        Swap(player.party, userIndex, targetIndex);
+        var userIndex = deck.party.IndexOf(user);
+        var targetIndex = deck.party.IndexOf(target);
+        Swap(deck.party, userIndex, targetIndex);
 
         // Swap previous data
         Swap(previousHudParent, userIndex, targetIndex);
@@ -261,16 +235,14 @@ public class PartyMenu : MonoBehaviour
     /// <param name="list"></param>
     /// <param name="indexA"></param>
     /// <param name="indexB"></param>
-    protected void Swap<T>(IList<T> list, int indexA, int indexB)
+    private static void Swap<T>(IList<T> list, int indexA, int indexB)
     {
-        T tmp = list[indexA];
-        list[indexA] = list[indexB];
-        list[indexB] = tmp;
+        (list[indexA], list[indexB]) = (list[indexB], list[indexA]);
     }
 
     public void OnMoves(int pokemonIndex)
     {
-        selectAudioSource.Play();
+        menuCommon.PlaySelectSound();
 
         movesSelectedPokemonIndex = pokemonIndex;
 
@@ -286,45 +258,45 @@ public class PartyMenu : MonoBehaviour
         // Move this pokemon into the first slot
         var i = movesSelectedPokemonIndex;
         {
-            player.party[i].onMenuStart();
+            deck.party[i].onMenuStart();
             // Set HUD Parent
-            prevPokemonPlaceholders[i] = player.party[i].GetComponent<RectTransform>();
-            previousHudParent[i] = player.party[i].transform.parent;
+            prevPokemonPlaceholders[i] = deck.party[i].GetComponent<RectTransform>();
+            previousHudParent[i] = deck.party[i].transform.parent;
             // Set HUD Position
-            player.party[i].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            player.party[i].transform.SetParent(pokemonPlaceholders[2].transform.parent, false);
-            player.party[i].transform.rotation = pokemonPlaceholders[2].transform.rotation;
-            player.party[i].transform.position = pokemonPlaceholders[2].transform.position;
+            deck.party[i].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            deck.party[i].transform.SetParent(pokemonPlaceholders[2].transform.parent, false);
+            deck.party[i].transform.rotation = pokemonPlaceholders[2].transform.rotation;
+            deck.party[i].transform.position = pokemonPlaceholders[2].transform.position;
             // Show HUD
-            player.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(true);
+            deck.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(true);
 
             // Set Model Parent
-            prevPokemonModelPlaceholders[i] = player.party[i].pokemonModel.GetComponent<Transform>();
-            previousModelParent[i] = player.party[i].pokemonModel.transform.parent;
+            prevPokemonModelPlaceholders[i] = deck.party[i].pokemonModel.GetComponent<Transform>();
+            previousModelParent[i] = deck.party[i].pokemonModel.transform.parent;
             // Set Model Position
-            player.party[i].pokemonModel.transform.SetParent(pokemonModelPlaceholders[2].transform.parent, false);
-            player.party[i].pokemonModel.transform.rotation = pokemonModelPlaceholders[2].transform.rotation;
-            player.party[i].pokemonModel.transform.position = pokemonModelPlaceholders[2].transform.position;
+            deck.party[i].pokemonModel.transform.SetParent(pokemonModelPlaceholders[2].transform.parent, false);
+            deck.party[i].pokemonModel.transform.rotation = pokemonModelPlaceholders[2].transform.rotation;
+            deck.party[i].pokemonModel.transform.position = pokemonModelPlaceholders[2].transform.position;
             // Show Model
-            SetLayerOnChildren(player.party[i].pokemonModel, LayerMask.NameToLayer("UI"));
+            SetLayerOnChildren(deck.party[i].pokemonModel, LayerMask.NameToLayer("UI"));
         }
 
         // Move cards into the slots
-        player.party[i].transform.Find("cards").gameObject.SetActive(true);
+        deck.party[i].transform.Find("cards").gameObject.SetActive(true);
         prevCardPlaceholders[i] = new List<Transform>();
-        for (var j = 0; j < player.party[i].initDeck.Count; j++)
+        for (var j = 0; j < deck.party[i].initDeck.Count; j++)
         {
-            prevCardPlaceholders[i].Add(player.party[i].initDeck[j].transform);
+            prevCardPlaceholders[i].Add(deck.party[i].initDeck[j].transform);
 
-            player.party[i].initDeck[j].cardInteractEnabled = false;
-            player.party[i].initDeck[j].transform.rotation = cardPlaceholders[j].transform.rotation;
-            player.party[i].initDeck[j].transform.position = cardPlaceholders[j].transform.position;
+            deck.party[i].initDeck[j].cardInteractEnabled = false;
+            deck.party[i].initDeck[j].transform.rotation = cardPlaceholders[j].transform.rotation;
+            deck.party[i].initDeck[j].transform.position = cardPlaceholders[j].transform.position;
         }
     }
 
     public void OnReturn()
     {
-        closeAudioSource.Play();
+        menuCommon.PlayCloseSound();
         Close();
     }
 }

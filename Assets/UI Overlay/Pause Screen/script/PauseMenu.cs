@@ -1,30 +1,28 @@
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class PauseMenu : MonoBehaviour
 {
-    PartyMenu partyMenu;
+    private PartyMenu partyMenu;
+    private OptionsMenu optionsMenu;
+    private MenuCommon menuCommon;
 
-    OptionsMenu optionsMenu;
-
-    public AudioSource openAudioSource;
-    public AudioSource selectAudioSource;
-    public AudioSource closeAudioSource;
-
-    // Start is called before the first frame update
-    void Start()
+    public void Awake()
     {
-        partyMenu = GameObject.FindObjectOfType<PartyMenu>(true);
-        optionsMenu = GameObject.FindObjectOfType<OptionsMenu>(true);
+        menuCommon = gameObject.AddComponent<MenuCommon>();
+        menuCommon.Initialize(() =>
+        {
+            OnReturn();
+            return false;
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    public void Start()
     {
-        
+        partyMenu = FindObjectOfType<PartyMenu>(true);
+        optionsMenu = FindObjectOfType<OptionsMenu>(true);
     }
 
     /// <summary>
@@ -34,16 +32,8 @@ public class PauseMenu : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        openAudioSource.Play();
-
-        GameObject.FindObjectOfType<OverlayCursor>().showCursor = true;
-        GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = false;
-        var player = GameObject.FindObjectOfType<CharacterController>().gameObject;
-        player.GetComponent<InteractionChecker>().enabled = false;
-        player.GetComponent<FallToGround>().enabled = false;  
-        player.GetComponent<CharacterController>().enabled = false;
-        player.GetComponent<ThirdPersonMovement>().enabled = false;
-        player.GetComponent<AnimationExample>().enabled = false;
+        menuCommon.PlayOpenSound();
+        menuCommon.EnableDialogMode();
     }
 
     /// <summary>
@@ -52,32 +42,27 @@ public class PauseMenu : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
-        GameObject.FindObjectOfType<OverlayCursor>().showCursor = false;
-        GameObject.FindObjectOfType<CinemachineFreeLook>().enabled = true;
-        var player = GameObject.FindObjectOfType<CharacterController>().gameObject;
-        player.GetComponent<InteractionChecker>().enabled = true;
-        player.GetComponent<FallToGround>().enabled = true;
-        player.GetComponent<CharacterController>().enabled = true;
-        player.GetComponent<ThirdPersonMovement>().enabled = true;
-        player.GetComponent<AnimationExample>().enabled = true;
+
+        menuCommon.DisableDialogMode();
     }
 
     public void OnParty()
     {
+        menuCommon.PlaySelectSound();
         Close();
         partyMenu.Open();
     }
 
     public void OnOptions()
     {
-        selectAudioSource.Play();
+        menuCommon.PlaySelectSound();
         optionsMenu.Open();
         gameObject.SetActive(false);
     }
 
     public void OnReturn()
     {
-        closeAudioSource.Play();
+        menuCommon.PlayCloseSound();
         Close();
     }
 
