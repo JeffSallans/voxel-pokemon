@@ -2985,7 +2985,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: -0.0017676414, y: 0.88801336, z: -0.45927292, w: -0.02230973}
+  m_LocalRotation: {x: -0.0017676437, y: 0.8880133, z: -0.4592729, w: -0.022309726}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5450,6 +5450,7 @@ GameObject:
   - component: {fileID: 1790161854}
   - component: {fileID: 1790161855}
   - component: {fileID: 1790161856}
+  - component: {fileID: 1790161857}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5464,7 +5465,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790161850}
-  m_LocalRotation: {x: 0.0000000047667097, y: 0.9687975, z: -0.24785368, w: 0.000000018659446}
+  m_LocalRotation: {x: 0.0000000047652002, y: 0.9687975, z: -0.24785368, w: 0.000000018653564}
   m_LocalPosition: {x: 662.28, y: 13.712, z: 417.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5566,11 +5567,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ce2977d4a861d6640a827c32b6e73bed, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5664,6 +5665,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8079e60660afb64297131aaa2d382cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1790161857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790161850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa0c5f1f9f7ab444ab88670e6d008f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startClip: {fileID: 8300000, guid: 5e5ebc66a91a11e49b454ee84dcb2cdb, type: 3}
+  loopClip: {fileID: 8300000, guid: f842a012f7c88aa4ea054fc535dbf35d, type: 3}
 --- !u!1001 &1794294932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7131,7 +7146,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064599643}
-  m_LocalRotation: {x: 0.00016532096, y: 0.9022654, z: -0.43118107, w: -0.000078985046}
+  m_LocalRotation: {x: 0.00016532095, y: 0.9022654, z: -0.43118107, w: -0.000078985046}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
