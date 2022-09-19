@@ -232,7 +232,9 @@ public class InteractionChecker : MonoBehaviour
         thirdPersonMovement.enabled = false;
         for (int i = 0; i < iEvent.message.Count; i++)
         {
-            await worldDialog.ShowMessageAsync(iEvent.message[i], iEvent.messageSounds[i]);
+            AudioClip sound = null;
+            if (iEvent.messageSounds.Count > 0) sound = iEvent.messageSounds[i];
+            await worldDialog.ShowMessageAsync(iEvent.message[i], sound);
         }
 
         postInteracationChanges(iEvent);
