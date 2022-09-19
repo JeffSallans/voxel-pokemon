@@ -1840,7 +1840,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710635096}
-  m_LocalRotation: {x: 0.00016751507, y: 0.9142447, z: -0.40516242, w: -0.00007422833}
+  m_LocalRotation: {x: 0.00016751462, y: 0.9142447, z: -0.40516242, w: -0.00007424552}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2985,7 +2985,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: -0.0019390197, y: 0.88797235, z: -0.45925128, w: -0.024282819}
+  m_LocalRotation: {x: -0.0017676414, y: 0.88801336, z: -0.45927292, w: -0.02230973}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4430,6 +4430,7 @@ MonoBehaviour:
   message:
   - Nice battle. I have something for you.
   - "** Jim recieves Pok\xE9 Center membership card **"
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -4470,6 +4471,7 @@ MonoBehaviour:
   interactionHint: Talk
   message:
   - Check out the pokemon center to expand your team before your battle with Eric.
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -5462,7 +5464,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790161850}
-  m_LocalRotation: {x: -0.000000004763781, y: 0.9687975, z: -0.24785368, w: -0.000000018648016}
+  m_LocalRotation: {x: 0.0000000047667097, y: 0.9687975, z: -0.24785368, w: 0.000000018659446}
   m_LocalPosition: {x: 662.28, y: 13.712, z: 417.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6523,6 +6525,7 @@ MonoBehaviour:
   message:
   - Congrats on being accepted! Erin is Kanto's grass gym leader so you should be
     at an advantage with Charmander!
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -7128,7 +7131,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064599643}
-  m_LocalRotation: {x: 0.00016531885, y: 0.9022654, z: -0.43118107, w: -0.00007902346}
+  m_LocalRotation: {x: 0.00016532096, y: 0.9022654, z: -0.43118107, w: -0.000078985046}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7366,6 +7369,7 @@ MonoBehaviour:
   interactionHint: Talk
   message:
   - Next time you see me, I won't be stuck with this caterpie.
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -7407,6 +7411,7 @@ MonoBehaviour:
   message:
   - Now don't you feel like you earned this?
   - '** Jim recieved the gym key **'
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -7899,6 +7904,14 @@ PrefabInstance:
       propertyPath: message.Array.data[3]
       value: '** Jim received a Charmander from League Admin Tim **'
       objectReference: {fileID: 0}
+    - target: {fileID: 4093809586912664936, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: messageSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093809586912664936, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
+      propertyPath: messageSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 776e91223765fd04b97e472ffaac3f20, type: 3}
     - target: {fileID: 4497933686225944474, guid: cea81f71adf9f344d9f6a1a26b86e415, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8021,6 +8034,7 @@ MonoBehaviour:
   interactionHint: Question
   message:
   - Is charmander the best pokemon?
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -8063,6 +8077,7 @@ MonoBehaviour:
   interactionHint: 
   message:
   - Bad Choice
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
@@ -8103,6 +8118,7 @@ MonoBehaviour:
   interactionHint: 
   message:
   - Good Choice
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
   scenePlayerName: 
