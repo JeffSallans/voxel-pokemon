@@ -1,24 +1,27 @@
-# Voxel Pokemon
-Unity game project to reproduce pokemon red using a voxel art style using a card based combat.
+# Gym Leader Simulator
 
-# Tools
+Unity game project to reproduce Pokémon Red using a voxel art style and card-based combat.
+
+## Tools
+
 * Unity
 * Magicavoxel
 * Photoshop / Xara
 * ChipTone
+* Audacity
 
-# Early Look
+## Early Look
 
 <a href="https://www.loom.com/share/02eb559ed98240f899f67625ef38d691">
     <p>[Voxel-Poke] Surge 2v2 Battle - Watch Video</p>
     <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/02eb559ed98240f899f67625ef38d691-with-play.gif">
 </a>
 
-# Wiki
+## Wiki
 
 https://docs.google.com/spreadsheets/d/11NZZCBBnFyzAcYtGdywHhQhxF7kp26EbFPAY0qi3AYc/edit?usp=sharing
 
-# Contibuting
+## Contibuting
 
 [How To Use world-dialog-messager Video](https://www.loom.com/share/4d6a5e2b579b45319cdbc3243deb367b)
 
@@ -28,7 +31,7 @@ https://docs.google.com/spreadsheets/d/11NZZCBBnFyzAcYtGdywHhQhxF7kp26EbFPAY0qi3
 
 [How To Setup Add a Card](https://www.loom.com/share/d29376230c134fb6bfc016a061ffdf7a)
 
-[How To Setup Add a Pokemon](https://www.loom.com/share/f22b9b8b3ee64a4a830af99cacf759d2)
+[How To Setup Add a Pokémon](https://www.loom.com/share/f22b9b8b3ee64a4a830af99cacf759d2)
 
 [How To Setup a Trainer](https://www.loom.com/share/03bdf462b0f54c949a909da3eb9d887a)
 
@@ -37,6 +40,6 @@ https://docs.google.com/spreadsheets/d/11NZZCBBnFyzAcYtGdywHhQhxF7kp26EbFPAY0qi3
 [How To Add & Use Icons in Text](https://www.loom.com/share/8e5aab78c436437188791ebc60e9d60a)
 
 
-# Older Videos
+## Older Videos
 
 [Youngster Joey Battle Early Look](https://www.loom.com/share/f53a54d0b80b4e32a4f76bde84a9693a)
