@@ -27,7 +27,7 @@ public class AudioFinish : MonoBehaviour
     IEnumerator WaitForSound()
     {
         yield return new WaitUntil(() => audioSource.isPlaying == false);
-        print($"{startClip.name} finished");
+        print($"{startClip.name} finished - starting loop");
         //onFinishSound.Invoke();
         audioSource.clip = loopClip;
         audioSource.loop = true;
