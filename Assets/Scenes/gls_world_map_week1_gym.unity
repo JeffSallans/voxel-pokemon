@@ -1712,6 +1712,7 @@ MonoBehaviour:
   eventType: 2
   interactionHint: Open
   message: []
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: gls_world_map_week2
   scenePlayerName: PlayerSpawn
@@ -3338,7 +3339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20147413, y: -0.6624845, z: 0.19191593, w: 0.69547886}
+  m_LocalRotation: {x: 0.20109352, y: -0.66386104, z: 0.1923147, w: 0.69416505}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6002,7 +6003,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 367a33bcb4dbebf4c847d38be4877ba5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e50fef46a66eb1347abb8b9d67db4ea3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -7986,6 +7987,7 @@ MonoBehaviour:
   eventType: 2
   interactionHint: Open
   message: []
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: gls_world_map_week2
   scenePlayerName: PlayerSpawn
