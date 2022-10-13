@@ -139,11 +139,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: pallete1
-  eventType: Message
+  eventName: 
+  eventType: 0
   interactionHint: Read
-  message: 
+  message: []
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  altDisableInteractionEvent: {fileID: 0}
+  altDisableInteractionEventName: 
+  alt2DisableInteractionEvent: {fileID: 0}
+  alt2DisableInteractionEventName: 
+  nextInteractionEvent: {fileID: 0}
+  nextInteractionEventName: 
+  nextInteractionEvent2: {fileID: 0}
+  nextInteractionEvent2Name: 
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 

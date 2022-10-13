@@ -17,6 +17,73 @@ public static class TypeChart
 
     /// <summary>
     /// 
+    /// Created from https://media.discordapp.net/attachments/792960613893931069/1027325241023799327/unknown.png?width=436&height=676
+    /// </summary>
+    private static Dictionary<string, Dictionary<string, float>> typeChart = new Dictionary<string, Dictionary<string, float>>
+    {
+        { EnergyType.NORMAL, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.ROCK, notEffectiveMult } // Defending Type
+            }
+        },
+        { EnergyType.FIRE, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.GRASS, superEffectiveMult },
+
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.WATER, notEffectiveMult }
+            }
+        },
+        { EnergyType.ELECTRIC, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.WATER, superEffectiveMult },
+                { EnergyType.PSYCHIC, superEffectiveMult },
+
+                { EnergyType.ELECTRIC, notEffectiveMult },
+                { EnergyType.ROCK, notEffectiveMult },
+                { EnergyType.FIRE, notEffectiveMult }
+            }
+        },
+        { EnergyType.PSYCHIC, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.GRASS, superEffectiveMult },
+                { EnergyType.FIRE, superEffectiveMult },
+
+                { EnergyType.PSYCHIC, notEffectiveMult },
+                { EnergyType.NORMAL, notEffectiveMult }
+            }
+        },
+        { EnergyType.GRASS, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.ROCK, superEffectiveMult },
+
+                { EnergyType.GRASS, notEffectiveMult },
+                { EnergyType.FIRE, notEffectiveMult }
+            }
+        },
+        { EnergyType.WATER, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.FIRE, superEffectiveMult },
+                { EnergyType.ROCK, superEffectiveMult },
+
+                { EnergyType.WATER, notEffectiveMult },
+                { EnergyType.ELECTRIC, notEffectiveMult },
+                { EnergyType.GRASS, notEffectiveMult }
+            }
+        },
+        { EnergyType.ROCK, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.ELECTRIC, superEffectiveMult },
+
+                { EnergyType.ROCK, notEffectiveMult },
+                { EnergyType.GRASS, notEffectiveMult }
+            }
+        },
+    };
+
+    /*
+    /// <summary>
+    /// 
     /// Created from https://upload.wikimedia.org/wikipedia/commons/9/97/Pokemon_Type_Chart.svg
     /// </summary>
     private static Dictionary<string, Dictionary<string, float>> typeChart = new Dictionary<string, Dictionary<string, float>>
@@ -242,6 +309,7 @@ public static class TypeChart
             }
         },
     };
+    */ 
     
     /// <summary>
     /// Returns the effectiveness multiplier. So super effective returns 2, not very effective returns .5

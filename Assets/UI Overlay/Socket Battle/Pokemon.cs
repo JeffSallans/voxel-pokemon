@@ -238,6 +238,16 @@ public class Pokemon : MonoBehaviour
     private BattleGameBoard battleGameBoard;
     private HealthBar healthBar;
 
+    /// <summary>
+    /// The parent to create deck cards under
+    /// </summary>
+    private Transform canvasParent;
+
+    /// <summary>
+    /// The default location of the deck cards
+    /// </summary>
+    private Vector3 initDeckPosition;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -257,6 +267,14 @@ public class Pokemon : MonoBehaviour
         {
             initSwitchCard = initDeck.Find(c => c.cardName == "Switch");
         }
+
+        // Set card instatiation variables
+        canvasParent = gameObject.transform.Find("cards");
+        if (initDeck.Count > 0)
+        {
+            initDeckPosition = initDeck[0].transform.position;
+        }
+
         hideModels();
     }
 
@@ -607,5 +625,28 @@ public class Pokemon : MonoBehaviour
     public void DiscardEnergy(Energy energyToRemove)
     {
         DiscardEnergy(attachedEnergy.IndexOf(energyToRemove));
+    }
+
+    /// <summary>
+    /// Add instantiated unlock card to deck
+    /// </summary>
+    /// <param name="card"></param>
+    public void AddCardToDeck(Card _card)
+    {
+        var card = Instantiate(_card, canvasParent);
+
+        initDeck.Add(card);
+    }
+
+    /// <summary>
+    /// Remove all cards currently in the deck
+    /// </summary>
+    public void DeleteDeck()
+    {
+        for (var i = 0; i < initDeck.Count; i++)
+        {
+            Destroy(initDeck[i].gameObject);
+        }
+        initDeck.RemoveAll((c) => { return true; });
     }
 }

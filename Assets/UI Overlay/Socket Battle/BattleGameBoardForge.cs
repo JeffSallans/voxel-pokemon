@@ -68,13 +68,13 @@ public class BattleGameBoardForge : BattleGameBoard
         base.onSetupPlayer();
 
         // Remove energy slots
-        player.party.ForEach(p => p.maxNumberOfAttachedEnergy = 0);
+        //player.party.ForEach(p => p.maxNumberOfAttachedEnergy = 0);
 
         // Change card energy to pokemon face
         deck.ForEach(c => setupCardToShowPokemonFace(c));
 
         // Add card can play override
-        deck.ForEach(c => c.canBePlayedOverride = () => true);
+        //deck.ForEach(c => c.canBePlayedOverride = () => true);
 
     }
 
@@ -83,19 +83,19 @@ public class BattleGameBoardForge : BattleGameBoard
         base.onPackupPlayer();
 
         // Add energy slots
-        player.party.ForEach(p => p.maxNumberOfAttachedEnergy = 4);
+        //player.party.ForEach(p => p.maxNumberOfAttachedEnergy = 4);
 
         // Change card energy to pokemon face
         deck.ForEach(c => packupCardToHidePokemonFace(c));
 
         // Remove card can play override
-        deck.ForEach(c => c.canBePlayedOverride = null);
+        //deck.ForEach(c => c.canBePlayedOverride = null);
     }
 
     private void setupCardToShowPokemonFace(Card card)
     {
         // Hide energy
-        card.cost.ForEach(e => e.gameObject.SetActive(false));
+        //card.cost.ForEach(e => e.gameObject.SetActive(false));
 
         // Calculate owner
         var owner = player.party.Find(pokemon => pokemon.initDeck.Contains(card));
@@ -121,7 +121,7 @@ public class BattleGameBoardForge : BattleGameBoard
     private void packupCardToHidePokemonFace(Card card)
     {
         // Show energy
-        card.cost.ForEach(e => e.gameObject.SetActive(true));
+        // card.cost.ForEach(e => e.gameObject.SetActive(true));
 
         // Calculate owner
         var owner = player.party.Find(pokemon => pokemon.initDeck.Contains(card));

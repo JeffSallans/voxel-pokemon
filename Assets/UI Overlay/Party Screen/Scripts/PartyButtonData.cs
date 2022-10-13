@@ -40,4 +40,10 @@ public class PartyButtonData : MonoBehaviour
     {
         GameObject.FindObjectOfType<PartyMenu>().OnMoves(pokemonIndex);
     }
+
+    public void OnCardRemove()
+    {
+        var cardIndex = pokemonIndex;
+        GameObject.FindObjectOfType<PartyMenu>().OnCardRemove(cardIndex);
+    }
 }

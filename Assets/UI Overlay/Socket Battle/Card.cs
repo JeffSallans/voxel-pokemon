@@ -223,11 +223,14 @@ public class Card : MonoBehaviour
     {
         get
         {
-            // Override this check if DeckBuilder is here
-            if (inDeckBuilderWorkflow) { return true; }
-
             // Override this check for a different one
             if (canBePlayedOverride != null) { return canBePlayedOverride(); }
+            
+            // Override this check if using messaging
+            if (overrideDefaultDragDropFunc) { return true; }
+
+            // Override this check if DeckBuilder is here
+            if (inDeckBuilderWorkflow) { return true; }
 
             // Check if there are any remaining card plays this turn
             if (battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
@@ -283,8 +286,19 @@ public class Card : MonoBehaviour
     /// </summary>
     public List<GameObject> energyLocations;
 
+    /// <summary>
+    /// Set to true when we don't want
+    /// </summary>
+    private bool overrideDefaultDragDropFunc = false;
+
+    /// <summary>
+    /// Used to enchance the default game onDrag functionality
+    /// </summary>
     public Func<bool> _onDragFunc = null;
 
+    /// <summary>
+    /// Used to enchance the default game onDrop functionality
+    /// </summary>
     public Func<bool> _onDropFunc = null;
 
     public string lastTranslate = "";
@@ -483,7 +497,18 @@ public class Card : MonoBehaviour
     public void OnHoverInteraction(DropEvent newDropEvent)
     {
         // When we hover over something
-        if (inDeckBuilderWorkflow && newDropEvent?.eventType == "TargetPokemon")
+        if (isDragging && overrideDefaultDragDropFunc && newDropEvent?.eventType != null)
+        {
+            dropEvent = newDropEvent;
+            FindObjectOfType<HoverAndDragMessageTarget>().OnHoverEnter(new HoverAndDragEvent()
+            {
+                eventType = dropEvent.eventType,
+                dropEvent = dropEvent,
+                targetCard = this
+            });
+        }
+        // When we hover over deck builder
+        else if (inDeckBuilderWorkflow && newDropEvent?.eventType == "TargetPokemon")
         {
             dropEvent = newDropEvent;
             FindObjectOfType<HoverAndDragMessageTarget>().OnHoverEnter(new HoverAndDragEvent()
@@ -512,7 +537,17 @@ public class Card : MonoBehaviour
         }
 
         // When the hover event is gone
-        if (newDropEvent == null && dropEvent != null && inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
+        if (newDropEvent == null && dropEvent != null && overrideDefaultDragDropFunc && dropEvent?.eventType != null)
+        {
+            FindObjectOfType<HoverAndDragMessageTarget>().OnHoverExit(new HoverAndDragEvent()
+            {
+                eventType = dropEvent.eventType,
+                dropEvent = dropEvent,
+                targetCard = this
+            });
+            dropEvent = null;
+        }
+        else if (newDropEvent == null && dropEvent != null && inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
         {
             FindObjectOfType<HoverAndDragMessageTarget>().OnHoverExit(new HoverAndDragEvent()
             {
@@ -544,6 +579,11 @@ public class Card : MonoBehaviour
     {
         if (!cardInteractEnabled) return;
 
+        if (overrideDefaultDragDropFunc)
+        {
+            FindObjectOfType<HoverAndDragMessageTarget>().OnDragHelper(this);
+        }
+
         isDragging = true;
         if (_onDragFunc != null) { _onDragFunc(); }
     }
@@ -552,12 +592,31 @@ public class Card : MonoBehaviour
     {
         if (!cardInteractEnabled) return;
 
-        // When you drop on a pokemon
-        if (inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
+        if (overrideDefaultDragDropFunc && dropEvent?.eventType != null)
         {
             isDragging = false;
             isSelected = false;
-            FindObjectOfType<HoverAndDragMessageTarget>().OnDrop(new HoverAndDragEvent()
+            FindObjectOfType<HoverAndDragMessageTarget>().OnDropHelper(new HoverAndDragEvent()
+            {
+                eventType = dropEvent.eventType,
+                dropEvent = dropEvent,
+                targetCard = this
+            });
+            OnHoverExit();
+        }
+        else if (overrideDefaultDragDropFunc && isDragging)
+        {
+            isDragging = false;
+            isSelected = false;
+            FindObjectOfType<HoverAndDragMessageTarget>().OnDragStopHelper(this);
+            OnHoverExit();
+        }
+        // When you drop on a pokemon
+        else if (inDeckBuilderWorkflow && dropEvent?.eventType == "TargetPokemon")
+        {
+            isDragging = false;
+            isSelected = false;
+            FindObjectOfType<HoverAndDragMessageTarget>().OnDropHelper(new HoverAndDragEvent()
             {
                 eventType = dropEvent.eventType,
                 dropEvent = dropEvent,
@@ -758,6 +817,7 @@ public class Card : MonoBehaviour
     /// <param name="animationName"></param>
     private void animateEnergyCost(Energy energy, string animationName)
     {
+        if (overrideDefaultDragDropFunc) { return; }
         if (inDeckBuilderWorkflow) { return; }
         if (!cardInteractEnabled) { return; }
 
@@ -790,6 +850,9 @@ public class Card : MonoBehaviour
     /// <returns></returns>
     public bool canTarget(Pokemon target)
     {
+        // Handle custom flow
+        if (overrideDefaultDragDropFunc) { return true; }
+
         // Handle deck builder flow
         if (inDeckBuilderWorkflow) { return true; }
 
@@ -901,5 +964,26 @@ public class Card : MonoBehaviour
         flipButtonFunctionality?.onUnflipEvent(this, battleGameBoard);
     }
 
+    /// <summary>
+    /// Call to setup different card functionality
+    /// </summary>
+    public void setupDragDropOverride()
+    {
+        // Check if a component is setup correctly to receive messages
+        if (GameObject.FindObjectOfType<HoverAndDragMessageTarget>() == null)
+        {
+            throw new Exception("HoverAndDragMessageTarget component doesn't exist in current scene");
+        }
 
+        overrideDefaultDragDropFunc = true;
+
+    }
+
+    /// <summary>
+    /// Call to clean up different card functionality
+    /// </summary>
+    public void packupDragDropOverride()
+    {
+        overrideDefaultDragDropFunc = false;
+    }
 }

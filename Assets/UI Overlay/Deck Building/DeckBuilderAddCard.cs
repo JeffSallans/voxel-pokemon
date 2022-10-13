@@ -16,6 +16,11 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
     /// </summary>
     public InteractionChecker playerInteractionChecker;
 
+    /// <summary>
+    /// Set to true of the card selected should go into the unlock list.
+    /// </summary>
+    public bool unlockCardProcess = true;
+
     public string debugVariablesBelow;
 
     /// <summary>
@@ -251,25 +256,44 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
 
     public async virtual void onCardSelect(Card _targetCard)
     {
-        // Set
         targetCard = _targetCard;
-        activePokemon.initDeck.Add(targetCard);
-        pack.Remove(targetCard);
+
+        // Add to unlock
+        if (unlockCardProcess)
+        {
+            activePokemon.GetComponent<PokemonDeckBuildSettings>().UnlockCard(_targetCard);
+        }
+        // Add to deck
+        else
+        {
+            activePokemon.AddCardToDeck(_targetCard);
+            pack.Remove(targetCard);
+
+            // Move your card
+            targetCard.Translate(drawLocations.transform.position, "onCardSelect");
+        }
 
         // Discard pack
         pack.ForEach(p => p.Translate(discardLocations.transform.position, "onCardSelect"));
 
-        // Move your card
-        targetCard.Translate(drawLocations.transform.position, "onCardSelect");
-
         // Comment on card
-        await worldDialog.ShowMessageAsync("Added " + targetCard.cardName + " to " + activePokemon.pokemonName + "'s deck!");
+        if (unlockCardProcess)
+        {
+            await worldDialog.ShowMessageAsync("Unlocked " + targetCard.cardName + " for " + activePokemon.pokemonName + "!");
+        }
+        else
+        {
+            await worldDialog.ShowMessageAsync("Added " + targetCard.cardName + " to " + activePokemon.pokemonName + "'s deck!");
+        }
 
         // Delete other pack cards from pokemon
         pack.ForEach(p => Destroy(p.gameObject));
 
         // Clean up card state
-        targetCard.onDeckBuilderAddCardEnd();
+        if (!unlockCardProcess)
+        {
+            targetCard.onDeckBuilderAddCardEnd();
+        }
 
         // Clean up pokemon state from the focus
         player.party.ForEach(p => {
@@ -365,7 +389,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
     /// <summary>
     /// When an object is dropped on a custom target
     /// </summary>
-    public override void OnDrop(HoverAndDragEvent _event)
+    protected override void OnDrop(HoverAndDragEvent _event, List<DropEvent> _events)
     {
         onCardSelect(_event.targetCard);
     }

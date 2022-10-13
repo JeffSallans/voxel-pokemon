@@ -1,9 +1,12 @@
 using Cinemachine;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class PartyMenu : MonoBehaviour
+public class PartyMenu : HoverAndDragMessageTarget
 {
     PlayerDeck deck;
 
@@ -36,10 +39,37 @@ public class PartyMenu : MonoBehaviour
     /// The party index of the pokemon to show cards for
     /// </summary>
     public int movesSelectedPokemonIndex;
+
+    /// <summary>
+    /// The selected pokemon to show cards for
+    /// </summary>
+    private Pokemon movesSelectedPokemon
+    {
+        get
+        {
+            return deck.party[movesSelectedPokemonIndex];
+        }
+    }
+
     /// <summary>
     /// The card locations to populate cards into
     /// </summary>
     public List<GameObject> cardPlaceholders;
+
+    /// <summary>
+    /// The button that saves to update the pokemon deck with newDeckList
+    /// </summary>
+    public GameObject movesSaveButton;
+
+    /// <summary> 
+    /// The background for the new deck card names
+    /// </summary>
+    public List<GameObject> newDeckCardObjects;
+    
+    /// <summary>
+    /// The text to display the selected cards
+    /// </summary>
+    private List<TextMeshProUGUI> newDeckCardNames;
 
     /// <summary>
     /// The selected first switch pokemon
@@ -58,12 +88,45 @@ public class PartyMenu : MonoBehaviour
 
     private MenuCommon menuCommon;
 
+    /// <summary>
+    /// A list of prefabs to instantiate to make the new player deck
+    /// </summary>
+    private List<Card> newDeckList;
+
+    /// <summary>
+    /// A list of instantiated card objects to display
+    /// </summary>
+    private List<Card> unlockedCards;
+
     public void Awake()
     {
         menuCommon = gameObject.AddComponent<MenuCommon>();
         menuCommon.Initialize(Close);
+
+        newDeckList = new List<Card>();
+
+        // init card text
+        newDeckCardNames = new List<TextMeshProUGUI>();
+        newDeckCardObjects.ForEach(o =>
+        {
+            var textObject = o.transform.Find("return-button/Text (TMP)");
+            newDeckCardNames.Add(textObject.GetComponent<TextMeshProUGUI>());
+        });
     }
 
+    public void Update()
+    {
+        // update new deck state
+        for (var i = 0; i < newDeckCardObjects.Count; i++)
+        {
+            var newCard = (i < newDeckList.Count) ? newDeckList[i] : null;
+            newDeckCardObjects[i].SetActive(newCard != null);
+            newDeckCardNames[i].SetText(newCard != null ? newCard.cardName : "");
+        }
+
+        // check save
+        movesSaveButton.GetComponent<Button>().interactable = newDeckList.Count == movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize;
+    }
 
     /// <summary>
     /// Opens the party menu
@@ -84,6 +147,13 @@ public class PartyMenu : MonoBehaviour
     /// </summary>
     private bool Close()
     {
+        // Delete unlocked cards
+        for (var i = 0; i < unlockedCards.Count; i++)
+        {
+            Destroy(unlockedCards[i].gameObject);
+        }
+        unlockedCards.RemoveAll((c) => { return true; });
+
         gameObject.SetActive(false);
 
         menuCommon.PlayCloseSound();
@@ -150,6 +220,7 @@ public class PartyMenu : MonoBehaviour
 
             // Move cards into the slots
             deck.party[i].transform.Find("cards").gameObject.SetActive(false);
+            /*
             for (var j = 0; j < deck.party[i].initDeck.Count; j++)
             {
                 if (prevCardPlaceholders[i] != null && prevCardPlaceholders[i][j] != null)
@@ -159,6 +230,7 @@ public class PartyMenu : MonoBehaviour
                     deck.party[i].initDeck[j].transform.position = prevCardPlaceholders[i][j].transform.position;
                 }
             }
+            */
         }
     }
 
@@ -282,6 +354,7 @@ public class PartyMenu : MonoBehaviour
         }
 
         // Move cards into the slots
+        /*
         deck.party[i].transform.Find("cards").gameObject.SetActive(true);
         prevCardPlaceholders[i] = new List<Transform>();
         for (var j = 0; j < deck.party[i].initDeck.Count; j++)
@@ -292,11 +365,147 @@ public class PartyMenu : MonoBehaviour
             deck.party[i].initDeck[j].transform.rotation = cardPlaceholders[j].transform.rotation;
             deck.party[i].initDeck[j].transform.position = cardPlaceholders[j].transform.position;
         }
+        */
+
+        // Create unlock cards and move into slots
+        deck.party[i].transform.Find("cards").gameObject.SetActive(true);
+        var unlockedCardParent = deck.party[i].transform.Find("cards").transform;
+        unlockedCards = deck.party[i].GetComponent<PokemonDeckBuildSettings>().InstantiateUnlockedCards(unlockedCardParent, cardPlaceholders[0].transform.position);
+        prevCardPlaceholders[i] = new List<Transform>();
+        for (var j = 0; j < unlockedCards.Count; j++)
+        {
+            prevCardPlaceholders[i].Add(unlockedCards[j].transform);
+
+            unlockedCards[j].setupDragDropOverride();
+            unlockedCards[j].transform.rotation = cardPlaceholders[j].transform.rotation;
+            unlockedCards[j].transform.position = cardPlaceholders[j].transform.position;
+        }
+
+        // Init new deck
+        newDeckList = deck.party[i].initDeck.Select(c =>
+        {
+            /*
+            var cardPrefab = UnityEditor.PrefabUtility.GetCorrespondingObjectFromSource(c);
+            return cardPrefab;
+            */
+            return c;
+        })
+        .ToList();
+    }
+
+    /// <summary>
+    /// Removes the given card from the list
+    /// </summary>
+    public void OnCardRemove(int cardIndex)
+    {
+        // Check if index is valid
+        if (cardIndex >= newDeckList.Count) { return; }
+
+        // Remove card
+        newDeckList.RemoveAt(cardIndex);
+    }
+
+    /// <summary>
+    /// Updates the pokemon deck to the new selection
+    /// </summary>
+    public void OnSave()
+    {
+        // Check if deck is valid
+        if (newDeckList.Count != movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize) { return; }
+
+        // Delete init deck cards
+        movesSelectedPokemon.DeleteDeck();
+
+        // For each prefab in new deck list
+        for (var i = 0; i < newDeckList.Count; i++)
+        {
+            // Instatiate object
+            movesSelectedPokemon.AddCardToDeck(newDeckList[i]);
+        }
+
+        OnReturn();
     }
 
     public void OnReturn()
     {
+        // Close menu
         menuCommon.PlayCloseSound();
         Close();
+    }
+
+    /// <summary>
+    /// When an object is hovering over a custom target
+    /// </summary>
+    protected override void OnDrag(Card card, List<DropEvent> _events)
+    {
+        _events.Where(e => e.eventType == "Deck")
+            .ToList()
+            .ForEach(e =>
+            {
+                e.targetAnimator.SetTrigger("onDrag");
+            });
+    }
+
+    /// <summary>
+    /// When an object is hovering over a custom target
+    /// </summary>
+    public override void OnHoverEnter(HoverAndDragEvent _event)
+    {
+        if (_event.eventType == "Deck")
+        {
+            _event.dropEvent.targetAnimator.SetTrigger("onHoverEnter");
+            //_event.dropEvent.targetGameObject.GetComponent<Animator>().SetTrigger("onHoverEnter");
+        }
+    }
+
+    /// <summary>
+    /// When an object is exited hovering over a custom target
+    /// </summary>
+    public override void OnHoverExit(HoverAndDragEvent _event)
+    {
+        if (_event.eventType == "Deck")
+        {
+            _event.dropEvent.targetAnimator.SetTrigger("onHoverExit");
+            //_event.dropEvent.targetGameObject.GetComponent<Animator>().SetTrigger("onHoverExit");
+        }
+    }
+
+    /// <summary>
+    /// When an object is dropped on a custom target
+    /// </summary>
+    protected override void OnDrop(HoverAndDragEvent _event, List<DropEvent> _events)
+    {
+        if (_event.eventType == "Deck" && newDeckList.Count < movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize)
+        {
+            _event.dropEvent.targetAnimator.SetTrigger("onDropSuccess");
+            //var cardPrefab = movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().GetPrefabFromCard(_event.targetCard);
+            //newDeckList.Add(cardPrefab);
+            newDeckList.Add(_event.targetCard);
+        }
+
+        // Remove all drop areas
+        if (_events != null)
+        {
+            _events.Where(e => e.eventType == "Deck" && e != _event.dropEvent)
+                .ToList()
+                .ForEach(e =>
+                {
+                    e.targetAnimator.SetTrigger("onDropStop");
+                });
+        }
+    }
+
+    protected override void OnDragStop(Card card, List<DropEvent> _events)
+    {
+        // Remove all drop areas
+        if (_events != null)
+        {
+            _events.Where(e => e.eventType == "Deck")
+                .ToList()
+                .ForEach(e =>
+                {
+                    e.targetAnimator.SetTrigger("onDropStop");
+                });
+        }
     }
 }

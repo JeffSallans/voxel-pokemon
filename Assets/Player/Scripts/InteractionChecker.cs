@@ -228,6 +228,7 @@ public class InteractionChecker : MonoBehaviour
     {
         activeEvent = hoverPossibleEvent;
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
         for (int i = 0; i < iEvent.message.Count; i++)
@@ -244,11 +245,14 @@ public class InteractionChecker : MonoBehaviour
     {
         activeEvent = hoverPossibleEvent;
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
         worldDialog.ShowMessage(iEvent.message[0], () =>
         {
             if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionIdleTriggerName); }
+
             var opponent = iEvent.gameObject;
             StartCoroutine(LoadScene(iEvent, iEvent.sceneName, opponent, true));
             activeEvent = null;
@@ -266,6 +270,7 @@ public class InteractionChecker : MonoBehaviour
     {
         activeEvent = hoverPossibleEvent;
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
         foreach (var message in iEvent.message)
@@ -294,6 +299,7 @@ public class InteractionChecker : MonoBehaviour
     {
         activeEvent = hoverPossibleEvent;
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
         foreach (var message in iEvent.message)
@@ -321,6 +327,7 @@ public class InteractionChecker : MonoBehaviour
     {
         activeEvent = hoverPossibleEvent;
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, true); }
+        if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
         foreach (var message in iEvent.message)
@@ -332,6 +339,8 @@ public class InteractionChecker : MonoBehaviour
         StartCoroutine(LoadScene(iEvent, iEvent.sceneName, null, iEvent.scenePlayerName != ""));
 
         if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+        if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionIdleTriggerName); }
+
         activeEvent = null;
     }
 
@@ -473,6 +482,8 @@ public class InteractionChecker : MonoBehaviour
         {
             thirdPersonMovement.enabled = true;
             if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.animator.SetTrigger(iEvent.animationReactionIdleTriggerName); }
+
             activeEvent = null;
         }
     }
@@ -664,6 +675,8 @@ public class InteractionChecker : MonoBehaviour
         {
             thirdPersonMovement.enabled = true;
             if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
+            if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionIdleTriggerName); }
+
             activeEvent = null;
         }
     }

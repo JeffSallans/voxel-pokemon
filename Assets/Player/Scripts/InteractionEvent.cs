@@ -150,6 +150,21 @@ public class InteractionEvent : MonoBehaviour
     public Animator animator;
 
     /// <summary>
+    /// (Optional) The name of the reaction animation trigger to call. If set reactionIdle will be called at the end of the event
+    /// </summary>
+    public string animationReactionTriggerName;
+
+    /// <summary>
+    /// (Optional) The name of the reaction idle animation trigger to call at the end of the event.
+    /// </summary>
+    public string animationReactionIdleTriggerName = "reactionIdle";
+
+    /// <summary>
+    /// (Optional) The animation controller to update
+    /// </summary>
+    public Animator reactionAnimator;
+
+    /// <summary>
     /// True if the game object should be hidden on return
     /// </summary>
     public bool removeOnReturn;
@@ -262,7 +277,10 @@ public class InteractionEvent : MonoBehaviour
 
     void Awake()
     {
-
+        if (eventName == null || eventName == "")
+        {
+            eventName = "DefaultEvent_" + Guid.NewGuid();
+        }
     }
 
     void Start()
@@ -396,7 +414,7 @@ public class InteractionEvent : MonoBehaviour
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    private InteractionEvent GetInteractionEventByName(string name)
+    public static InteractionEvent GetInteractionEventByName(string name)
     {
         var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>(true);
 

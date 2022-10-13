@@ -213,18 +213,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: gym-door-1
-  eventType: SceneChange
+  eventName: 
+  eventType: 0
   interactionHint: Open
   message: []
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: gls-gym-week-1
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
   removeOnReturn: 0
   disableOnReturn: 0
+  altDisableInteractionEvent: {fileID: 0}
+  altDisableInteractionEventName: 
+  alt2DisableInteractionEvent: {fileID: 0}
+  alt2DisableInteractionEventName: 
   nextInteractionEvent: {fileID: 0}
+  nextInteractionEventName: 
   nextInteractionEvent2: {fileID: 0}
+  nextInteractionEvent2Name: 
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
 --- !u!1001 &6491971644231687726
 PrefabInstance:
   m_ObjectHideFlags: 0
