@@ -363,7 +363,9 @@ public class PartyMenu : HoverAndDragMessageTarget
 
             deck.party[i].initDeck[j].cardInteractEnabled = false;
             deck.party[i].initDeck[j].transform.rotation = cardPlaceholders[j].transform.rotation;
-             
+            deck.party[i].initDeck[j].transform.position = cardPlaceholders[j].transform.position;
+        }
+        */
 
         // Create unlock cards and move into slots
         deck.party[i].transform.Find("cards").gameObject.SetActive(true);
