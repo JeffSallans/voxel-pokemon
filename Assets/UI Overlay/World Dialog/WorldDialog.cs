@@ -112,7 +112,7 @@ public class WorldDialog : MonoBehaviour
     /// <summary>
     /// The message queue to display for each click
     /// </summary>
-    private Queue<MessageEvent> messages = new Queue<MessageEvent>();
+    private Queue<MessageEvent> messages;
 
     /// <summary>
     /// Sound to play when the dialog opens
@@ -133,6 +133,11 @@ public class WorldDialog : MonoBehaviour
     /// Sounds to play when selecting no
     /// </summary>
     public AudioSource cancelAudioSource;
+
+    private void Awake()
+    {
+        messages = new Queue<MessageEvent>();
+    }
 
     // Start is called before the first frame update
     void Start()

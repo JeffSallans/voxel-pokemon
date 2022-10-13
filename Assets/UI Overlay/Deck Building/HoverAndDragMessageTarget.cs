@@ -44,7 +44,16 @@ public class HoverAndDragMessageTarget : MonoBehaviour
     /// </summary>
     protected virtual void OnDrop(HoverAndDragEvent _event, List<DropEvent> _events)
     {
-
+        // Remove all drop areas
+        if (_events != null)
+        {
+            _events.Where(e => e.targetAnimator != null && e != _event.dropEvent)
+                .ToList()
+                .ForEach(e =>
+                {
+                    e.targetAnimator.SetTrigger("onDropStop");
+                });
+        }
     }
 
     /// <summary>
@@ -61,6 +70,15 @@ public class HoverAndDragMessageTarget : MonoBehaviour
     /// </summary>
     protected virtual void OnDragStop(Card card, List<DropEvent> _events)
     {
-        
+        // Remove all drop areas
+        if (_events != null)
+        {
+            _events.Where(e => e.targetAnimator != null)
+                .ToList()
+                .ForEach(e =>
+                {
+                    e.targetAnimator.SetTrigger("onDropStop");
+                });
+        }
     }
 }

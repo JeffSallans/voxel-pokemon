@@ -363,9 +363,7 @@ public class PartyMenu : HoverAndDragMessageTarget
 
             deck.party[i].initDeck[j].cardInteractEnabled = false;
             deck.party[i].initDeck[j].transform.rotation = cardPlaceholders[j].transform.rotation;
-            deck.party[i].initDeck[j].transform.position = cardPlaceholders[j].transform.position;
-        }
-        */
+             
 
         // Create unlock cards and move into slots
         deck.party[i].transform.Find("cards").gameObject.SetActive(true);
@@ -454,7 +452,6 @@ public class PartyMenu : HoverAndDragMessageTarget
         if (_event.eventType == "Deck")
         {
             _event.dropEvent.targetAnimator.SetTrigger("onHoverEnter");
-            //_event.dropEvent.targetGameObject.GetComponent<Animator>().SetTrigger("onHoverEnter");
         }
     }
 
@@ -466,7 +463,6 @@ public class PartyMenu : HoverAndDragMessageTarget
         if (_event.eventType == "Deck")
         {
             _event.dropEvent.targetAnimator.SetTrigger("onHoverExit");
-            //_event.dropEvent.targetGameObject.GetComponent<Animator>().SetTrigger("onHoverExit");
         }
     }
 
@@ -475,6 +471,8 @@ public class PartyMenu : HoverAndDragMessageTarget
     /// </summary>
     protected override void OnDrop(HoverAndDragEvent _event, List<DropEvent> _events)
     {
+        base.OnDrop(_event, _events);
+
         if (_event.eventType == "Deck" && newDeckList.Count < movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize)
         {
             _event.dropEvent.targetAnimator.SetTrigger("onDropSuccess");
@@ -483,29 +481,6 @@ public class PartyMenu : HoverAndDragMessageTarget
             newDeckList.Add(_event.targetCard);
         }
 
-        // Remove all drop areas
-        if (_events != null)
-        {
-            _events.Where(e => e.eventType == "Deck" && e != _event.dropEvent)
-                .ToList()
-                .ForEach(e =>
-                {
-                    e.targetAnimator.SetTrigger("onDropStop");
-                });
-        }
-    }
-
-    protected override void OnDragStop(Card card, List<DropEvent> _events)
-    {
-        // Remove all drop areas
-        if (_events != null)
-        {
-            _events.Where(e => e.eventType == "Deck")
-                .ToList()
-                .ForEach(e =>
-                {
-                    e.targetAnimator.SetTrigger("onDropStop");
-                });
-        }
+        
     }
 }

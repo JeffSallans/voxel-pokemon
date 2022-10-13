@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class InteractionTriggerSpace : MonoBehaviour
 {
@@ -44,6 +45,13 @@ public class InteractionTriggerSpace : MonoBehaviour
     {
         if (!hasTriggeredEvent && interactionEventToTrigger && interactionEventToTrigger.enabled)
         {
+            // Check if two players exist, this in invalid event trigger
+            if (FindObjectsOfType<CharacterController>().Count() > 1)
+            {
+                Debug.LogWarning("Event triggered when more than one character controller is active. This is probably because the event was trigged by a spawn.");
+                return;
+            }
+
             var interactionChecker = FindObjectOfType<CharacterController>().gameObject.GetComponent<InteractionChecker>();
             interactionChecker.OnInteractionEvent(interactionEventToTrigger);
 
