@@ -9159,9 +9159,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 242944878807364630, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: targetType
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 941137325592836860, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234274604617022585, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: targetType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4639280551232219056, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
       propertyPath: m_RootOrder
@@ -9214,6 +9222,14 @@ PrefabInstance:
     - target: {fileID: 5808646380956014613, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933536077202048766, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: targetType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330180353438649149, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: targetType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9196846037706776061, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
       propertyPath: m_IsActive
@@ -94773,6 +94789,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1539893502}
+    - target: {fileID: 2853479835079810467, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2853479836449709955}
+    - target: {fileID: 2853479835079810467, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleGameBoardForge, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2853479835234001870, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: m_RootOrder
       value: 13
