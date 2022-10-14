@@ -49,6 +49,11 @@ public class Card : MonoBehaviour
     public List<string> gameCardModifiers;
 
     /// <summary>
+    /// If cost is not setup, this will setup cost using prefabs to be instantiated
+    /// </summary>
+    public List<Energy> prefabCost;
+
+    /// <summary>
     /// How much energy it takes to play
     /// </summary>
     public List<Energy> cost;
@@ -272,6 +277,11 @@ public class Card : MonoBehaviour
     public Func<bool> canBePlayedOverride = null;
 
     /// <summary>
+    /// Where the card name should be rendered
+    /// </summary>
+    public TextMeshProUGUI nameGameObject;
+
+    /// <summary>
     /// Where the card description should be rendered
     /// </summary>
     public TextMeshProUGUI descriptionGameObject;
@@ -374,6 +384,17 @@ public class Card : MonoBehaviour
     {
         battleGameBoard = GameObject.FindObjectOfType<BattleGameBoard>();
         deckBuilderAddCard = GameObject.FindObjectOfType<DeckBuilderAddCard>();
+
+        // Create card cost energies
+        if (cost.Count == 0)
+        {
+            for (var i = 0; i < prefabCost.Count; i++)
+            {
+                var energy = Instantiate(prefabCost[i], transform);
+                energy.initCanBeDragged = false;
+                cost.Add(energy);
+            }
+        }
     }
 
     // Start is called before the first frame update

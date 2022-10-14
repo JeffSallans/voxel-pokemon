@@ -154,6 +154,7 @@ MonoBehaviour:
   cardName: Water Gun
   battleCardModifiers: []
   gameCardModifiers: []
+  prefabCost: []
   cost:
   - {fileID: 4343389913825797350}
   initCardDescription: Deal <color=red>{damage}</color> \uf043 dmg
@@ -184,6 +185,7 @@ MonoBehaviour:
   attachedEnergies: []
   battleStartEnergies: []
   cardAnimator: {fileID: 1086784014606005771}
+  nameGameObject: {fileID: 6362216456263973976}
   descriptionGameObject: {fileID: 5703409768264312485}
   playButtonGameObject: {fileID: 4410048307063618363}
   energyLocations:
@@ -1788,6 +1790,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 842083297830899787, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
+      propertyPath: initCanBeDragged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2157,6 +2163,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 842083297830899787, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
+      propertyPath: initCanBeDragged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2360,6 +2370,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490563001002874773, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842083297830899787, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
+      propertyPath: initCanBeDragged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
@@ -3225,6 +3239,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490563001002874773, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 842083297830899787, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
+      propertyPath: initCanBeDragged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2197905418242498915, guid: 9f9d1d337e974b04bb9eebd4607db770, type: 3}
