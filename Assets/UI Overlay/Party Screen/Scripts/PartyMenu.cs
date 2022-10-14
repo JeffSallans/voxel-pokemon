@@ -5,6 +5,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+class TransformHolder
+{
+    public Vector3 position;
+    public Vector3 localPosition;
+    
+    public Vector3 localScale;
+    
+    public Quaternion rotation;
+    public Quaternion localRotation;
+}
 [RequireComponent(typeof(AudioSource))]
 public class PartyMenu : HoverAndDragMessageTarget
 {
@@ -82,7 +92,7 @@ public class PartyMenu : HoverAndDragMessageTarget
 
     private List<Transform> previousModelParent = new List<Transform> { null, null, null };
 
-    private List<Transform> prevPokemonModelPlaceholders = new List<Transform> { null, null, null };
+    private List<TransformHolder> prevPokemonModelPlaceholders = new List<TransformHolder> { null, null, null };
 
     private List<List<Transform>> prevCardPlaceholders = new List<List<Transform>> { null, null, null };
 
@@ -112,6 +122,8 @@ public class PartyMenu : HoverAndDragMessageTarget
             var textObject = o.transform.Find("return-button/Text (TMP)");
             newDeckCardNames.Add(textObject.GetComponent<TextMeshProUGUI>());
         });
+
+        unlockedCards = new List<Card>();
     }
 
     public void Update()
@@ -180,18 +192,23 @@ public class PartyMenu : HoverAndDragMessageTarget
             deck.party[i].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             deck.party[i].transform.SetParent(pokemonPlaceholders[i].transform.parent, false);
             deck.party[i].transform.rotation = pokemonPlaceholders[i].transform.rotation;
-            deck.party[i].transform.position = pokemonPlaceholders[i].transform.position;
+            deck.party[i].transform.localPosition = pokemonPlaceholders[i].transform.localPosition;
             // Show HUD
             deck.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(true);
 
             // Set Model Parent
-            prevPokemonModelPlaceholders[i] = deck.party[i].pokemonModel.GetComponent<Transform>();
+            prevPokemonModelPlaceholders[i] = new TransformHolder
+            {
+                localScale = deck.party[i].pokemonModel.transform.localScale,
+                localRotation = deck.party[i].pokemonModel.transform.localRotation,
+                localPosition = deck.party[i].pokemonModel.transform.localPosition
+            };
             previousModelParent[i] = deck.party[i].pokemonModel.transform.parent;
             // Set Model Position
             deck.party[i].pokemonModel.transform.SetParent(pokemonModelPlaceholders[i].transform.parent, false);
             deck.party[i].pokemonModel.transform.localScale = pokemonModelPlaceholders[i].transform.localScale;
-            deck.party[i].pokemonModel.transform.rotation = pokemonModelPlaceholders[i].transform.rotation;
-            deck.party[i].pokemonModel.transform.position = pokemonModelPlaceholders[i].transform.position;
+            deck.party[i].pokemonModel.transform.localRotation = pokemonModelPlaceholders[i].transform.localRotation;
+            deck.party[i].pokemonModel.transform.localPosition = pokemonModelPlaceholders[i].transform.localPosition;
             // Show Model
             SetLayerOnChildren(deck.party[i].pokemonModel, LayerMask.NameToLayer("UI"));
         }
@@ -205,7 +222,7 @@ public class PartyMenu : HoverAndDragMessageTarget
             deck.party[i].transform.SetParent(previousHudParent[i], false);
             // Set HUD Position
             deck.party[i].transform.rotation = prevPokemonPlaceholders[i].rotation;
-            deck.party[i].transform.position = prevPokemonPlaceholders[i].position;
+            deck.party[i].transform.localPosition = prevPokemonPlaceholders[i].localPosition;
             // Hide HUD
             deck.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(false);
 
@@ -213,24 +230,13 @@ public class PartyMenu : HoverAndDragMessageTarget
             deck.party[i].pokemonModel.transform.SetParent(previousModelParent[i], false);
             // Set Model Position
             deck.party[i].pokemonModel.transform.localScale = prevPokemonModelPlaceholders[i].localScale;
-            deck.party[i].pokemonModel.transform.rotation = prevPokemonModelPlaceholders[i].rotation;
-            deck.party[i].pokemonModel.transform.position = prevPokemonModelPlaceholders[i].position;
+            deck.party[i].pokemonModel.transform.localRotation = prevPokemonModelPlaceholders[i].localRotation;
+            deck.party[i].pokemonModel.transform.localPosition = prevPokemonModelPlaceholders[i].localPosition;
             // Hide Model
             SetLayerOnChildren(deck.party[i].pokemonModel, LayerMask.NameToLayer("Default"));
 
             // Move cards into the slots
             deck.party[i].transform.Find("cards").gameObject.SetActive(false);
-            /*
-            for (var j = 0; j < deck.party[i].initDeck.Count; j++)
-            {
-                if (prevCardPlaceholders[i] != null && prevCardPlaceholders[i][j] != null)
-                {
-                    deck.party[i].initDeck[j].cardInteractEnabled = true;
-                    deck.party[i].initDeck[j].transform.rotation = prevCardPlaceholders[i][j].transform.rotation;
-                    deck.party[i].initDeck[j].transform.position = prevCardPlaceholders[i][j].transform.position;
-                }
-            }
-            */
         }
     }
 
@@ -338,34 +344,26 @@ public class PartyMenu : HoverAndDragMessageTarget
             deck.party[i].transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             deck.party[i].transform.SetParent(pokemonPlaceholders[2].transform.parent, false);
             deck.party[i].transform.rotation = pokemonPlaceholders[2].transform.rotation;
-            deck.party[i].transform.position = pokemonPlaceholders[2].transform.position;
+            deck.party[i].transform.localPosition = pokemonPlaceholders[2].transform.localPosition;
             // Show HUD
             deck.party[i].transform.Find("pokemon-overlay").gameObject.SetActive(true);
 
             // Set Model Parent
-            prevPokemonModelPlaceholders[i] = deck.party[i].pokemonModel.GetComponent<Transform>();
+            prevPokemonModelPlaceholders[i] = new TransformHolder
+            {
+                localScale = deck.party[i].pokemonModel.transform.localScale,
+                localRotation = deck.party[i].pokemonModel.transform.localRotation,
+                localPosition = deck.party[i].pokemonModel.transform.localPosition
+            };
             previousModelParent[i] = deck.party[i].pokemonModel.transform.parent;
             // Set Model Position
             deck.party[i].pokemonModel.transform.SetParent(pokemonModelPlaceholders[2].transform.parent, false);
-            deck.party[i].pokemonModel.transform.rotation = pokemonModelPlaceholders[2].transform.rotation;
-            deck.party[i].pokemonModel.transform.position = pokemonModelPlaceholders[2].transform.position;
+            deck.party[i].pokemonModel.transform.localScale = pokemonModelPlaceholders[2].transform.localScale;
+            deck.party[i].pokemonModel.transform.localRotation = pokemonModelPlaceholders[2].transform.localRotation;
+            deck.party[i].pokemonModel.transform.localPosition = pokemonModelPlaceholders[2].transform.localPosition;
             // Show Model
             SetLayerOnChildren(deck.party[i].pokemonModel, LayerMask.NameToLayer("UI"));
         }
-
-        // Move cards into the slots
-        /*
-        deck.party[i].transform.Find("cards").gameObject.SetActive(true);
-        prevCardPlaceholders[i] = new List<Transform>();
-        for (var j = 0; j < deck.party[i].initDeck.Count; j++)
-        {
-            prevCardPlaceholders[i].Add(deck.party[i].initDeck[j].transform);
-
-            deck.party[i].initDeck[j].cardInteractEnabled = false;
-            deck.party[i].initDeck[j].transform.rotation = cardPlaceholders[j].transform.rotation;
-            deck.party[i].initDeck[j].transform.position = cardPlaceholders[j].transform.position;
-        }
-        */
 
         // Create unlock cards and move into slots
         deck.party[i].transform.Find("cards").gameObject.SetActive(true);

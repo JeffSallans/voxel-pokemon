@@ -320,6 +320,10 @@ public static class TypeChart
     public static float getEffectivenessMultiplier(string move, string target)
     {
         float effectiveness = 1;
+        
+        // Check if invalid type in the type chart
+        if (!typeChart.ContainsKey(move)) return effectiveness;
+
         var hasValue = typeChart[move].TryGetValue(target, out effectiveness);
         if (!hasValue)
         {
