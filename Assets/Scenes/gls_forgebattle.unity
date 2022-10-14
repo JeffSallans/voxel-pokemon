@@ -94859,9 +94859,9 @@ MonoBehaviour:
   - {fileID: 2853479836449709965}
   - {fileID: 2853479836449709964}
   opponentPokemonLocations:
-  - {fileID: 2853479836449709964}
   - {fileID: 2853479836449709963}
   - {fileID: 2853479836449709962}
+  - {fileID: 2853479836449709973}
   deckLocation: {fileID: 2853479836449709961}
   handLocations:
   - {fileID: 2853479836449709971}
@@ -94869,26 +94869,33 @@ MonoBehaviour:
   - {fileID: 2853479836449709969}
   - {fileID: 2853479836449709968}
   - {fileID: 2853479836449709967}
+  switchCardLocation: {fileID: 0}
   discardLocation: {fileID: 2853479836449709972}
   energyDeckLocation: {fileID: 2853479836449709961}
-  energyHandLocations: []
+  energyHandLocations:
+  - {fileID: 2853479836449709975}
+  - {fileID: 2853479836449709974}
   energyDiscardLocation: {fileID: 2853479836449709972}
   commonEnergy: []
   pokemonModelLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2124824072}
+  - {fileID: 1384584693}
+  - {fileID: 1637366682}
   opponentPokemonModelLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1244634290}
+  - {fileID: 292844472}
+  - {fileID: 700293390}
   playerPartyParentGameobject: {fileID: 2853479836449709960}
   opponentPartyParentGameobject: {fileID: 2853479836449709959}
-  energyHandSize: 0
+  energyHandSize: 2
   energyHandDiscard: 0
+  onlyPlayOneEnergy: 1
+  discardCardCost: 1
   handSize: 5
   handDiscard: 0
   shuffleDeck: 1
+  numberOfCardsCanPlay: 1
+  remainingNumberOfCardsCanPlay: 1
   startBattleButton: {fileID: 2853479836449709958}
   endTurnButton: {fileID: 2853479836449709957}
   worldDialog: {fileID: 2853479836449709956}
@@ -95017,5 +95024,26 @@ GameObject:
 --- !u!1 &2853479836449709972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8423267386274745838, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 2853479836449709953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2853479836449709973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3327210674398044842, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 2853479836449709953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2853479836449709974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6555598989150207575, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 2853479836449709953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2853479836449709975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6814194460401676876, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
   m_PrefabInstance: {fileID: 2853479836449709953}
   m_PrefabAsset: {fileID: 0}

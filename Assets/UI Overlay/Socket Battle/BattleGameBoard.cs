@@ -540,7 +540,7 @@ public class BattleGameBoard : MonoBehaviour
         remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
 
         // Refresh Switch Card
-        if (switchCard == null)
+        if (switchCard == null && switchCardLocation != null)
         {
             drawSwitchCard(activePokemon);
         }
@@ -1036,7 +1036,7 @@ public class BattleGameBoard : MonoBehaviour
         // Draw new pokemon hand
 
         // Draw switch card
-        if (switchCard == null)
+        if (switchCard == null && switchCardLocation != null)
         {
             drawSwitchCard(activePokemon);
         }

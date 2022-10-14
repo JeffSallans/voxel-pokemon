@@ -38,11 +38,14 @@ public class BattleGameBoardForge : BattleGameBoard
         _getOverrideDiscard = () => { return mergedDiscard; };
         _setOverrideDiscard = (d) => { mergedDiscard = d; return true; };
 
-        // Play multiple cards
-        numberOfCardsCanPlay = 10;
+        // Set hand size based on party count
+        handSize = 2 + player.party.Count;
+
+        // Play single card
+        numberOfCardsCanPlay = 1;
 
         // Remove all energy things
-        energyHandSize = 0;
+        energyHandSize = 2;
 
         // Setup deck
         mergedHand = new List<Card>();
