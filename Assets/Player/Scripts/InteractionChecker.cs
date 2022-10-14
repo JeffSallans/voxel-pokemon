@@ -466,6 +466,7 @@ public class InteractionChecker : MonoBehaviour
                 {
                     interactionEvent.CopyInteractionEventValues(prevEventState);
                 }
+                interactionEvent.UpdateInteractionFromEventStatus(prevInteractionEventStates.Values.ToList());
             }
 
             // Set new scene animator
@@ -591,13 +592,11 @@ public class InteractionChecker : MonoBehaviour
             prevInteractionEventStates.TryGetValue(interactionEvent.eventName, out prevEventState);
 
             // If event state doesn't exist it must of been deleted
-            if (prevEventState == null)
-            {
-            }
-            else
+            if (prevEventState != null)
             {
                 interactionEvent.CopyInteractionEventValues(prevEventState);
             }
+            interactionEvent.UpdateInteractionFromEventStatus(prevInteractionEventStates.Values.ToList());
         }
 
         // Update the active event
@@ -621,6 +620,9 @@ public class InteractionChecker : MonoBehaviour
     /// <param name="iEvent"></param>
     private void postInteracationChanges(InteractionEvent iEvent)
     {
+        // Complete event
+        iEvent.eventStatus = InteractionEvent.PossibleEventStatus.Completed;
+
         // Remove interaction lock
         hoverPossibleEvent = null;
 
@@ -636,34 +638,16 @@ public class InteractionChecker : MonoBehaviour
             iEvent.gameObject.SetActive(false);
         }
 
-        // Remove an interaction
-        if (iEvent.altDisableInteractionEvent)
+        // Update other events since this one is now completed
+        var currentInteractionEvent = new List<InteractionEventNoComponent> { iEvent.GetInteractionEventWithoutComponent() };
+        var interactionEventList = GameObject.FindObjectsOfType<InteractionEvent>(true);
+        foreach (var interactionEvent in interactionEventList)
         {
-            iEvent.altDisableInteractionEvent.enabled = false;
-        }
-
-        // Remove an interaction
-        if (iEvent.alt2DisableInteractionEvent)
-        {
-            iEvent.alt2DisableInteractionEvent.enabled = false;
-        }
-
-        // Enable a new interaction
-        if (iEvent.nextInteractionEvent)
-        {
-            iEvent.nextInteractionEvent.gameObject.SetActive(true);
-            iEvent.nextInteractionEvent.enabled = true;
-        }
-
-        // Enable a second interaction
-        if (iEvent.nextInteractionEvent2)
-        {
-            iEvent.nextInteractionEvent2.gameObject.SetActive(true);
-            iEvent.nextInteractionEvent2.enabled = true;
+            interactionEvent.UpdateInteractionFromEventStatus(currentInteractionEvent);
         }
 
         // Trigger another event
-         if (iEvent.autoTriggerInteractionEvent)
+        if (iEvent.autoTriggerInteractionEvent)
         {
             iEvent.autoTriggerInteractionEvent.gameObject.SetActive(true);
             iEvent.autoTriggerInteractionEvent.enabled = true;

@@ -22,6 +22,11 @@ public class InteractionEventNoComponent
     public string eventType;
 
     /// <summary>
+    /// Possible types include (to be activated, to be enabled, active and enabled, completed)
+    /// </summary>
+    public string eventStatus;
+
+    /// <summary>
     /// Scene to navigate to if it is a battle or another event
     /// </summary>
     public string sceneName;
@@ -71,9 +76,30 @@ public class InteractionEvent : MonoBehaviour
         {
             return eventType.ToString();
         }
+        set
+        {
+            Enum.TryParse(value, out eventType);
+        }
     }
     public enum PossibleEventTypes { Message, Battle, SceneChange, Question, AddPokemon }
     public PossibleEventTypes eventType = PossibleEventTypes.Message;
+
+    /// <summary>
+    /// Possible types include (to be activated, to be enabled, active and enabled, completed)
+    /// </summary>
+    public string eventStatusString
+    {
+        get
+        {
+            return eventStatus.ToString();
+        }
+        set
+        {
+            Enum.TryParse(value, out eventStatus);
+        }
+    }
+    public enum PossibleEventStatus { ToBeActivated, ToBeEnabled, ActiveAndEnabled, Completed }
+    public PossibleEventStatus eventStatus = PossibleEventStatus.ToBeActivated;
 
     /// <summary>
     /// Returns true if all the required fields
@@ -105,7 +131,7 @@ public class InteractionEvent : MonoBehaviour
                 return message.Count >= 0 && pokemonToAdd != "";
             }
 
-            return true;  
+            return true;
         }
     }
 
@@ -175,44 +201,24 @@ public class InteractionEvent : MonoBehaviour
     public bool disableOnReturn;
 
     /// <summary>
-    /// (Optional) The interaction event to disable after triggering this event. Usually a can't do event.
+    /// (Optional) Used to remove objects like barriers blocking a path.
     /// </summary>
-    public InteractionEvent altDisableInteractionEvent;
+    public List<string> dependsOnToSetInactive = new List<string>();
 
     /// <summary>
-    /// (Optional) Use as an alternative to altDisableInteractionEvent. Finds the event by name instead of reference.
+    /// (Optional) Used to disable alternative event options. Or if the same event was on two objects.
     /// </summary>
-    public string altDisableInteractionEventName;
+    public List<string> dependsOnToDisable = new List<string>();
 
     /// <summary>
-    /// (Optional) The interaction event to disable after triggering this event. Usually a can't do event.
+    /// (Optional) Used to chain text dialogs. Usually the previous text event to before this one.
     /// </summary>
-    public InteractionEvent alt2DisableInteractionEvent;
+    public List<string> dependsOnToEnable = new List<string>();
 
     /// <summary>
-    /// (Optional) Use as an alternative to altDisableInteractionEvent. Finds the event by name instead of reference.
+    /// (Optional) Used to add barriers to a path or show an object before it is interactable.
     /// </summary>
-    public string alt2DisableInteractionEventName;
-
-    /// <summary>
-    /// (Optional) The next interaction event to enable after this one. Usually the next text to show after an event.
-    /// </summary>
-    public InteractionEvent nextInteractionEvent;
-
-    /// <summary>
-    /// (Optional) Use as an alternative to nextInteractionEvent. Finds the event by name instead of reference.
-    /// </summary>
-    public string nextInteractionEventName;
-
-    /// <summary>
-    /// (Optional) The alt next interaction event to enable after this one. Usually an item or door that is now interactable.
-    /// </summary>
-    public InteractionEvent nextInteractionEvent2;
-
-    /// <summary>
-    /// (Optional) Use as an alternative to nextInteractionEvent2. Finds the event by name instead of reference.
-    /// </summary>
-    public string nextInteractionEvent2Name;
+    public List<string> dependsOnToSetActive = new List<string>();
 
     /// <summary>
     /// (Optional for Message, Battle, SceneChange, AddPokemon) The interaction event to immediately trigger after this event. Usually dialog after a battle.
@@ -238,7 +244,7 @@ public class InteractionEvent : MonoBehaviour
     /// (Optional for Question) The interaction event to trigger after selecting option 1. Usually confirmation event.
     /// </summary>
     public string optionFirstTriggerInteractionEventName;
-    
+
     /// <summary>
     /// (Required for Question) The interaction event to trigger after selecting option 2. Usually confirmation event.
     /// </summary>
@@ -299,30 +305,6 @@ public class InteractionEvent : MonoBehaviour
             animator = gameObject.GetComponent<Animator>();
         }
 
-        if (altDisableInteractionEventName != null && altDisableInteractionEventName != "")
-        {
-            altDisableInteractionEvent = GetInteractionEventByName(altDisableInteractionEventName);
-            if (!altDisableInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find alt interaction event: " + altDisableInteractionEventName);
-        }
-
-        if (alt2DisableInteractionEventName != null && alt2DisableInteractionEventName != "")
-        {
-            alt2DisableInteractionEvent = GetInteractionEventByName(alt2DisableInteractionEventName);
-            if (!alt2DisableInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find alt2 interaction event: " + alt2DisableInteractionEventName);
-        }
-
-        if (nextInteractionEventName != null && nextInteractionEventName != "")
-        {
-            nextInteractionEvent = GetInteractionEventByName(nextInteractionEventName);
-            if (!nextInteractionEvent) throw new System.Exception("On event " + eventName + " cannot find next interaction event: " + nextInteractionEventName);
-        }
-
-        if (nextInteractionEvent2Name != null && nextInteractionEvent2Name != "")
-        {
-            nextInteractionEvent2 = GetInteractionEventByName(nextInteractionEvent2Name);
-            if (!nextInteractionEvent2) throw new System.Exception("On event " + eventName + " cannot find next2 interaction event: " + nextInteractionEvent2Name);
-        }
-
         if (autoTriggerInteractionEventName != null && autoTriggerInteractionEventName != "")
         {
             autoTriggerInteractionEvent = GetInteractionEventByName(autoTriggerInteractionEventName);
@@ -351,7 +333,7 @@ public class InteractionEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /// <summary>
@@ -363,6 +345,7 @@ public class InteractionEvent : MonoBehaviour
         var result = new InteractionEventNoComponent();
         result.eventName = eventName;
         result.eventType = eventTypeString;
+        result.eventStatus = eventStatusString;
         result.sceneName = sceneName;
         result.disableOnReturn = disableOnReturn;
         result.removeOnReturn = removeOnReturn;
@@ -381,8 +364,9 @@ public class InteractionEvent : MonoBehaviour
     public void CopyInteractionEventValues(InteractionEventNoComponent iEventData)
     {
         eventName = iEventData.eventName;
-        //TODO: add getter for eventTypeString
-        //eventTypeString = iEventData.eventType;
+
+        eventTypeString = iEventData.eventType;
+        eventStatusString = iEventData.eventStatus;
         sceneName = iEventData.sceneName;
         disableOnReturn = iEventData.disableOnReturn;
         removeOnReturn = iEventData.removeOnReturn;
@@ -421,5 +405,80 @@ public class InteractionEvent : MonoBehaviour
         var result = allInteractionEvents.FirstOrDefault(e => e.eventName == name);
 
         return result;
+    }
+
+    /// <summary>
+    /// Updates the event gameobject and enabled property based on which dependent events have been completed
+    /// </summary>
+    /// <param name="allEvents"></param>
+    public void UpdateInteractionFromEventStatus(List<InteractionEventNoComponent> allEvents)
+    {
+        var completedEvents = allEvents.Where(e => e.eventStatus == PossibleEventStatus.Completed.ToString());
+
+        // Check if event names are valid
+        dependsOnToDisable.Union(dependsOnToEnable)
+           .Union(dependsOnToSetActive)
+           .Union(dependsOnToSetInactive)
+           .ToList()
+           .ForEach(dependsEventName =>
+           {
+               var interactionEvent = GetInteractionEventByName(dependsEventName);
+               if (!interactionEvent) Debug.LogWarning("On event " + eventName + " cannot find interaction event: " + dependsEventName);
+           });
+
+        // Handle the case of showing an event object
+        if (eventStatus == PossibleEventStatus.ToBeActivated)
+        {
+            var shouldBeActivated = completedEvents.Any(e => dependsOnToSetActive.Contains(e.eventName));
+            var shouldBeEnabled = completedEvents.Any(e => dependsOnToEnable.Contains(e.eventName));
+
+            if (shouldBeActivated && enabled)
+            {
+                gameObject.SetActive(true);
+                eventStatus = PossibleEventStatus.ActiveAndEnabled;
+            }
+            else if (shouldBeActivated)
+            {
+                gameObject.SetActive(true);
+                eventStatus = PossibleEventStatus.ToBeEnabled;
+            }
+            else if (shouldBeEnabled)
+            {
+                enabled = true;
+                eventStatus = PossibleEventStatus.ToBeEnabled;
+            }
+        }
+        
+        // Handle the case of making an event interactable
+        if (eventStatus == PossibleEventStatus.ToBeEnabled)
+        {
+            var shouldBeEnabled = completedEvents.Any(e => dependsOnToEnable.Contains(e.eventName));
+
+            if (shouldBeEnabled)
+            {
+                enabled = true;
+                gameObject.SetActive(true);
+                eventStatus = PossibleEventStatus.ActiveAndEnabled;
+            }
+        }
+        
+        // Handle the case of completing a event
+        if (eventStatus == PossibleEventStatus.ActiveAndEnabled)
+        {
+            var shouldBeDisabled = completedEvents.Any(e => dependsOnToDisable.Contains(e.eventName));
+            var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
+
+            if (shouldBeDisabled)
+            {
+                enabled = false;
+                eventStatus = PossibleEventStatus.Completed;
+            }
+
+            if (shouldBeInactive)
+            {
+                gameObject.SetActive(false);
+                eventStatus = PossibleEventStatus.Completed;
+            }
+        }
     }
 }
