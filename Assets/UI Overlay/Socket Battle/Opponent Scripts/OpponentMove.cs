@@ -120,6 +120,11 @@ public class OpponentMove : IOpponentMove
     public bool statusAffectsBothBench = false;
 
     /// <summary>
+    /// Set to true if the move will end with a random energy being assigned to a party member
+    /// </summary>
+    public bool endOfTurnAddRandomEnergy = false;
+
+    /// <summary>
     /// (Optional) Set to create a new target instead of battleGameBoard.activePokemon
     /// </summary>
     public Pokemon overrideTarget;
@@ -184,6 +189,15 @@ public class OpponentMove : IOpponentMove
             
             return moveMessage;
         }).ToList();
+
+        // Add energy to random target
+        if (endOfTurnAddRandomEnergy)
+        {
+            var aliveParty = battleGameBoard.opponent.party.Where(p => !p.isFainted).ToList();
+            var energyStatRandomTarget = aliveParty[UnityEngine.Random.Range(0, aliveParty.Count)];
+            addEnergy(energyStatRandomTarget);
+            moveMessageList.Add("Added energy to " + energyStatRandomTarget.pokemonName);
+        }
 
         if (moveMessageList.Count == 0) return new List<string> { "" };
         return moveMessageList;
