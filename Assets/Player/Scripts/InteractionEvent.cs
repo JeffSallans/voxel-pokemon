@@ -402,7 +402,7 @@ public class InteractionEvent : MonoBehaviour
     {
         var allInteractionEvents = GameObject.FindObjectsOfType<InteractionEvent>(true);
 
-        var result = allInteractionEvents.FirstOrDefault(e => e.eventName == name);
+        var result = allInteractionEvents.FirstOrDefault(e => e.eventName == name.Trim());
 
         return result;
     }
@@ -413,6 +413,19 @@ public class InteractionEvent : MonoBehaviour
     /// <param name="allEvents"></param>
     public void UpdateInteractionFromEventStatus(List<InteractionEventNoComponent> allEvents)
     {
+        // Make sure default status is accurate
+        if (eventStatus == PossibleEventStatus.ToBeActivated)
+        {
+            if (gameObject.activeSelf && enabled)
+            {
+                eventStatus = PossibleEventStatus.ActiveAndEnabled;
+            }
+            else if (gameObject.activeSelf)
+            {
+                eventStatus = PossibleEventStatus.ToBeEnabled;
+            }
+        }
+
         var completedEvents = allEvents.Where(e => e.eventStatus == PossibleEventStatus.Completed.ToString());
 
         // Check if event names are valid
