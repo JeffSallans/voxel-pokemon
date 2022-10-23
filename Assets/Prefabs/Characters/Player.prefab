@@ -104,6 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee01b942903101d42a43f19f744f2390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSourceList: []
+  movementKeys: 77000000610000007300000064000000
 --- !u!136 &2042290095
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -145,10 +147,10 @@ BoxCollider:
   m_GameObject: {fileID: 4232779577653564007}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25, z: 0.25}
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Size: {x: 2.1039429, y: 4.309293, z: 3.8763733}
+  m_Center: {x: -0.21096802, y: 2.1296463, z: 0.6351166}
 --- !u!114 &2042290096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +220,11 @@ MonoBehaviour:
   blue: 0
   alpha: 0
   interactionHoverText: {fileID: 0}
+  sceneTransitionAnimator: {fileID: 0}
   hoverPossibleEvent: {fileID: 0}
+  prevActiveEventName: 
+  prevScenePlayer: {fileID: 0}
+  prevScenePlayerPos: {x: 0, y: 0, z: 0}
 --- !u!1 &4232779577904626872
 GameObject:
   m_ObjectHideFlags: 0

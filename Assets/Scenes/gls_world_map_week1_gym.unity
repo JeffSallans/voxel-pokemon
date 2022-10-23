@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.5785867, g: 0.6226415, b: 0.59731466, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44099948, g: 0.48973447, b: 0.5698253, a: 1}
+  m_IndirectSpecularColor: {r: 0.1760558, g: 0.22033091, b: 0.30265856, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 4ea194e3cf8437b4d8c88fea0576fd94, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1344,8 +1344,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.9528302, g: 0.8792742, b: 0.6786668, a: 1}
-  m_Intensity: 0.4
+  m_Color: {r: 0.6784314, g: 0.9529412, b: 0.7741402, a: 1}
+  m_Intensity: 0.8
   m_Range: 1000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1598,6 +1598,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &511952258
 MonoBehaviour:
@@ -1644,6 +1645,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 1
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &511952259
 MonoBehaviour:
@@ -1690,6 +1692,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!1 &534101995 stripped
 GameObject:
@@ -1710,6 +1713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: gymdoor1_next
   eventType: 2
+  eventStatus: 0
   interactionHint: Open
   message: []
   messageSounds: []
@@ -1718,16 +1722,15 @@ MonoBehaviour:
   scenePlayerName: PlayerSpawn
   animationBooleanName: 
   animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
   removeOnReturn: 0
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  alt2DisableInteractionEvent: {fileID: 0}
-  alt2DisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
   options: []
@@ -3339,7 +3342,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20109354, y: -0.66386104, z: 0.19231468, w: 0.69416505}
+  m_LocalRotation: {x: 0.20075457, y: -0.66508216, z: 0.19266845, w: 0.69299513}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3708,6 +3711,10 @@ PrefabInstance:
     - target: {fileID: 1023064537, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
       propertyPath: m_Interactable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931058484, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2544071784886849963, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
       propertyPath: m_Interactable
@@ -4891,6 +4898,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &1521936526
 MonoBehaviour:
@@ -4937,6 +4945,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!1001 &1551500484
 PrefabInstance:
@@ -7116,8 +7125,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Read
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9cdd97bd2d6c1cd4a8531ac9b0999459, type: 2}
+  m_sharedMaterial: {fileID: -5106264860325756105, guid: 9cdd97bd2d6c1cd4a8531ac9b0999459, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7846,6 +7855,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &2108418040
 MonoBehaviour:
@@ -7892,6 +7902,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 1
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!1001 &8253187751563695098
 PrefabInstance:
@@ -7985,6 +7996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: gymdoor2_next
   eventType: 2
+  eventStatus: 0
   interactionHint: Open
   message: []
   messageSounds: []
@@ -7993,16 +8005,15 @@ MonoBehaviour:
   scenePlayerName: PlayerSpawn
   animationBooleanName: 
   animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
   removeOnReturn: 0
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  alt2DisableInteractionEvent: {fileID: 0}
-  alt2DisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
   options: []
