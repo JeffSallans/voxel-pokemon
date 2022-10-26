@@ -8,14 +8,24 @@ public class OptionsMenu : MonoBehaviour
     PlayerDeck deck;
 
     /// <summary>
-    /// All the menues for the party pokemon
+    /// To enable or disable based on the setting
     /// </summary>
     public Button dragYesButton;
 
     /// <summary>
-    /// All the menues for the party pokemon
+    /// To enable or disable based on the setting
     /// </summary>
     public Button dragNoButton;
+
+    /// <summary>
+    /// To enable or disable based on the setting
+    /// </summary>
+    public Button instaYesButton;
+
+    /// <summary>
+    /// To enable or disable based on the setting
+    /// </summary>
+    public Button instaNoButton;
 
     private MenuCommon menuCommon;
 
@@ -81,5 +91,25 @@ public class OptionsMenu : MonoBehaviour
 
         dragYesButton.interactable = !deck.gameOptions.useCardDragControls;
         dragNoButton.interactable = deck.gameOptions.useCardDragControls;
+    }
+
+    public void OnInstaDeathActivate()
+    {
+        menuCommon.PlaySelectSound();
+
+        deck.gameOptions.instaDeathEnabled = true;
+
+        instaYesButton.interactable = deck.gameOptions.instaDeathEnabled;
+        instaNoButton.interactable = !deck.gameOptions.instaDeathEnabled;
+    }
+
+    public void OnInstaDeathDeactivate()
+    {
+        menuCommon.PlaySelectSound();
+
+        deck.gameOptions.instaDeathEnabled = false;
+
+        instaYesButton.interactable = deck.gameOptions.instaDeathEnabled;
+        instaNoButton.interactable = !deck.gameOptions.instaDeathEnabled;
     }
 }

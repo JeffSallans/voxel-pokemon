@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1629802408479422684}
   - component: {fileID: 4028954950367947575}
   - component: {fileID: 613960767260193091}
+  - component: {fileID: 6378177055305414724}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Player
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   party: []
   energies: []
+  gameOptions: {fileID: 0}
 --- !u!114 &4028954950367947575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,3 +94,18 @@ MonoBehaviour:
   interactionHoverText: {fileID: 0}
   sceneTransitionAnimator: {fileID: 0}
   hoverPossibleEvent: {fileID: 0}
+  prevActiveEventName: 
+  prevScenePlayer: {fileID: 0}
+  prevScenePlayerPos: {x: 0, y: 0, z: 0}
+--- !u!114 &6378177055305414724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286368349266961397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3452eacf217207408c66f7909b8c617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

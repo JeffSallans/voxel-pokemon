@@ -14,6 +14,11 @@ public class GameOptions : MonoBehaviour
     public bool useCardDragControls = false;
 
     /// <summary>
+    /// Set to true if the user will return to main menu on death.
+    /// </summary>
+    public bool instaDeathEnabled = false;
+
+    /// <summary>
     /// Level at which to play background music.
     /// </summary>
     public float musicVolume = DefaultMusicVolume;

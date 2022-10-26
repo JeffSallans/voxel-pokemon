@@ -87,6 +87,15 @@ public class InteractionChecker : MonoBehaviour
     private Vector3 prevSceneCameraPosition;
     private Quaternion prevSceneCameraRotation;
 
+    /// <summary>
+    /// The reference to the last scene to load
+    /// </summary>
+    private string lastLoadSceneName;
+    /// <summary>
+    /// The reference to the last spawn location to load
+    /// </summary>
+    private string lastLoadSpawnName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,13 +142,13 @@ public class InteractionChecker : MonoBehaviour
 
         var hoverInteraction = GetHoverInteraction();
         OnHoverInteraction(hoverInteraction);
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E))
         {
             OnInteractionClick(hoverPossibleEvent);
         }
 
         // Only need to open here - this interaction checker is disabled when within menus.
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.M))
         {
             FindObjectOfType<PauseMenu>(true).Open();
         }
@@ -431,6 +440,10 @@ public class InteractionChecker : MonoBehaviour
             // Move location to spawn location
             if (iEvent.scenePlayerName != "")
             {
+                // Set last load
+                lastLoadSceneName = iEvent.sceneName;
+                lastLoadSpawnName = iEvent.scenePlayerName;
+
                 // Get references
                 var playerSpawnObject = GameObject.Find(iEvent.scenePlayerName);
                 if (playerSpawnObject == null) throw new System.Exception("Unable to find spawn point " + iEvent.scenePlayerName);
@@ -451,7 +464,7 @@ public class InteractionChecker : MonoBehaviour
                 gameObject.transform.position = playerSpawn.transform.position;
 
                 // Remove player spawn
-                playerSpawnObject.SetActive(false);
+                // playerSpawnObject.SetActive(false);
             }
 
             // Update the game events when returning to the scene
@@ -494,7 +507,34 @@ public class InteractionChecker : MonoBehaviour
     /// </summary>
     public void LoadTitleScreen()
     {
-        StartCoroutine(LoadTitleScreenHelper());
+        // If using insta-death, then go to main menu
+        if (gameObject.GetComponent<GameOptions>().instaDeathEnabled)
+        {
+            StartCoroutine(LoadTitleScreenHelper());
+            return;
+        }
+
+        // Destory opponent
+        Destroy(prevSceneOpponent);
+
+        // Find object to create interaction event on
+        var eventFactory = GameObject.Find("Event Factory");
+        eventFactory.SetActive(false);
+
+        // Load from last scene change
+        var backToLastLoadEvent = eventFactory.AddComponent<InteractionEvent>();
+        backToLastLoadEvent.eventType = InteractionEvent.PossibleEventTypes.SceneChange;
+        backToLastLoadEvent.sceneName = lastLoadSceneName;
+        backToLastLoadEvent.scenePlayerName = lastLoadSpawnName;
+        backToLastLoadEvent.message = new List<string>();
+        eventFactory.SetActive(true);
+
+        // Trigger event
+        OnInteractionEvent(backToLastLoadEvent);
+
+        // Clean up event
+        this.enabled = true;
+        activeEvent = null;
     }
 
     IEnumerator LoadTitleScreenHelper()
