@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44099948, g: 0.48973447, b: 0.5698253, a: 1}
+  m_IndirectSpecularColor: {r: 0.1760558, g: 0.22033091, b: 0.30265856, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3745,7 +3745,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.9528302, g: 0.8792742, b: 0.6786668, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 1
   m_Range: 1000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4608,6 +4608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: merchant-cool-trainerb
   eventType: 4
+  eventStatus: 0
   interactionHint: 
   message: []
   messageSounds: []
@@ -4616,16 +4617,15 @@ MonoBehaviour:
   scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
   removeOnReturn: 0
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  alt2DisableInteractionEvent: {fileID: 0}
-  alt2DisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
   options: []
@@ -6506,6 +6506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: merchant-youngsterb
   eventType: 4
+  eventStatus: 0
   interactionHint: 
   message: []
   messageSounds: []
@@ -6514,16 +6515,15 @@ MonoBehaviour:
   scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
   removeOnReturn: 0
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  alt2DisableInteractionEvent: {fileID: 0}
-  alt2DisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
   options: []
@@ -7574,7 +7574,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20109354, y: -0.663861, z: 0.19231468, w: 0.6941651}
+  m_LocalRotation: {x: 0.20075457, y: -0.66508216, z: 0.19266845, w: 0.69299513}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9187,6 +9187,10 @@ PrefabInstance:
     - target: {fileID: 1037694847, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
       propertyPath: m_Interactable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931058484, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2544071784886849963, guid: 354f23d3152ce7d46b18f8a5ff8114a6, type: 3}
       propertyPath: m_Interactable
@@ -10902,6 +10906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: merchant-hikerb
   eventType: 4
+  eventStatus: 0
   interactionHint: 
   message: []
   messageSounds: []
@@ -10910,16 +10915,15 @@ MonoBehaviour:
   scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
   removeOnReturn: 0
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  alt2DisableInteractionEvent: {fileID: 0}
-  alt2DisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
   options: []

@@ -3236,6 +3236,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1970892677}
     m_Modifications:
+    - target: {fileID: 6890867469365368675, guid: 717f7fad88eb7574bb02e1d8b601cbf2, type: 3}
+      propertyPath: showCursor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6890867469365368684, guid: 717f7fad88eb7574bb02e1d8b601cbf2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3323,6 +3327,10 @@ PrefabInstance:
     - target: {fileID: 6890867469365368685, guid: 717f7fad88eb7574bb02e1d8b601cbf2, type: 3}
       propertyPath: m_Name
       value: cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890867469582981876, guid: 717f7fad88eb7574bb02e1d8b601cbf2, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 717f7fad88eb7574bb02e1d8b601cbf2, type: 3}
@@ -6202,9 +6210,8 @@ MonoBehaviour:
   interactionHint: Talk
   message:
   - 20 years have passed since you defeated all 8 gym leaders.
-  - Since Jesse's birth you retired from pokemon training.
-  - But it feels great to be a dad, Jesse is growing up fast and it is fun to be
-    there for all his achievements.
+  - Today would be a typical summer day...
+  - but today <color=purple>Jesse</color> leaves on his own adventure.
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -6534,7 +6541,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.2781921, y: 0.019737456, z: -0.005717767, w: 0.96030563}
+  m_LocalRotation: {x: 0.27820045, y: 0.01828459, z: -0.0052968855, w: 0.9603344}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9506,8 +9513,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: message.Array.data[2]
-      value: Professor Ketchum stopped by. He wanted you to stop by his lab for a
-        gift.
+      value: <color=purple>Professor Ketchum</color> stopped by. He wanted you to
+        stop by his <color=purple>lab</color> for a gift.
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: autoTriggerInteractionEventName
