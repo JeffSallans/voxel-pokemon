@@ -155,7 +155,7 @@ public class WorldDialog : MonoBehaviour
         else if (promptIsCapturingInput) {
             isFirstCycleCapturingInput = false;
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E))
             {
                 promptOptionObject[promptCurrentSelection].GetComponent<Animator>().SetTrigger("Pressed");
                 PromptCaptureClick();

@@ -96,6 +96,34 @@ public class InteractionChecker : MonoBehaviour
     /// </summary>
     private string lastLoadSpawnName;
 
+    private void Awake()
+    {
+        if (playerCamera == null)
+        {
+            playerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        }
+
+        if (worldDialog == null)
+        {
+            worldDialog = GameObject.FindObjectOfType<WorldDialog>();
+        }
+
+        if (crosshairText == null)
+        {
+            crosshairText = GameObject.Find("crosshair").GetComponent<TextMeshProUGUI>();
+        }
+
+        if (interactionHoverText == null)
+        {
+            interactionHoverText = GameObject.Find("interaction-hint-message").GetComponent<TextMeshProUGUI>();
+        }
+
+        if (sceneTransitionAnimator == null)
+        {
+            sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -71,6 +71,9 @@ public class OptionsMenu : MonoBehaviour
     {
         dragYesButton.interactable = !deck.gameOptions.useCardDragControls;
         dragNoButton.interactable = deck.gameOptions.useCardDragControls;
+
+        instaYesButton.interactable = !deck.gameOptions.instaDeathEnabled;
+        instaNoButton.interactable = deck.gameOptions.instaDeathEnabled;
     }
 
     public void OnDragOption()
@@ -99,8 +102,8 @@ public class OptionsMenu : MonoBehaviour
 
         deck.gameOptions.instaDeathEnabled = true;
 
-        instaYesButton.interactable = deck.gameOptions.instaDeathEnabled;
-        instaNoButton.interactable = !deck.gameOptions.instaDeathEnabled;
+        instaYesButton.interactable = !deck.gameOptions.instaDeathEnabled;
+        instaNoButton.interactable = deck.gameOptions.instaDeathEnabled;
     }
 
     public void OnInstaDeathDeactivate()
@@ -109,7 +112,7 @@ public class OptionsMenu : MonoBehaviour
 
         deck.gameOptions.instaDeathEnabled = false;
 
-        instaYesButton.interactable = deck.gameOptions.instaDeathEnabled;
-        instaNoButton.interactable = !deck.gameOptions.instaDeathEnabled;
+        instaYesButton.interactable = !deck.gameOptions.instaDeathEnabled;
+        instaNoButton.interactable = deck.gameOptions.instaDeathEnabled;
     }
 }
