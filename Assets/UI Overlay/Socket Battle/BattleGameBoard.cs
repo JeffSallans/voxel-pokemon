@@ -290,6 +290,11 @@ public class BattleGameBoard : MonoBehaviour
     public bool onlyPlayOneEnergy = false;
 
     /// <summary>
+    /// True if 1 energy should be dealt to each pokemon at the start of the game
+    /// </summary>
+    public bool dealStartingEnergy = false;
+
+    /// <summary>
     /// True if playing a card discards that cost by default
     /// </summary>
     public bool discardCardCost = true;
@@ -512,12 +517,15 @@ public class BattleGameBoard : MonoBehaviour
         worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", () => {
 
             // Deal 1 energy to each pokemon
-            player.party.ForEach(p =>
+            if (dealStartingEnergy)
             {
-                var energy = energyDeck[0];
-                energyDeck.Remove(energy);
-                energy.playEnergy(p);
-            });
+                player.party.ForEach(p =>
+                {
+                    var energy = energyDeck[0];
+                    energyDeck.Remove(energy);
+                    energy.playEnergy(p);
+                });
+            }
 
             // Trigger opponent first move
             opponent.opponentStrategyBot.computeOpponentsNextMove();
