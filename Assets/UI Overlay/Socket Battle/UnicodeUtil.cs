@@ -32,7 +32,7 @@ public class UnicodeUtil
         // Status Effects
         { "ZZAtk", "\ue904" },
         { "ZZDef", "\uF3ED" },
-        { "ZZSpc", "\uF02D" },
+        { "ZZSpc", "\uF005" },
         { "ZZEva", "\uF102" },
 
         { "ZZBlock", "\ue902" },

@@ -23,14 +23,12 @@ public class BattleGameBoardTutorial : BattleGameBoard
     public bool showedEndTurnInstruction = false;
 
     public string cardButtonInstruction;
+    public string cardDiscardInstruction;
     public bool showedCardButtonInstruction = false;
 
+    public string oppAttackInstruction;
     public string typeInstruction;
     public bool showedTypeInstruction = false;
-
-    public string oppAttackInstruction;
-    public bool showedOppAttackInstruction = false;
-
 
     /// <summary>
     /// Assumes player and opponent are set before calling this
@@ -120,15 +118,19 @@ public class BattleGameBoardTutorial : BattleGameBoard
         }
         else if (!showedCardButtonInstruction)
         {
-            worldDialog.ShowMessage(cardButtonInstruction, () => { showedCardButtonInstruction = true; onDrawHelper(); return true; });
+            worldDialog.ShowMessage(cardButtonInstruction, () =>
+            {
+                worldDialog.ShowMessage(cardDiscardInstruction, () => { showedCardButtonInstruction = true; onDrawHelper(); return true; });
+                return true;
+            });
         }
         else if (!showedTypeInstruction)
         {
-            worldDialog.ShowMessage(typeInstruction, () => { showedTypeInstruction = true; onDrawHelper(); return true; });
-        }
-        else if (!showedOppAttackInstruction)
-        {
-            worldDialog.ShowMessage(oppAttackInstruction, () => { showedOppAttackInstruction= true; onDrawHelper(); return true; });
+            worldDialog.ShowMessage(oppAttackInstruction, () =>
+            {
+                worldDialog.ShowMessage(typeInstruction, () => { showedTypeInstruction = true; onDrawHelper(); return true; });
+                return true;
+            });
         }
         else
         {
@@ -196,6 +198,56 @@ public class BattleGameBoardTutorial : BattleGameBoard
         if (!showedEndTurnInstruction)
         {
             worldDialog.ShowMessage(endTurnInstruction, () => { showedEndTurnInstruction = true; return true; });
+        }
+    }
+
+    public override void onBattleEnd(bool isPlayerWinner)
+    {
+        // Set results
+        gameHasEnded = true;
+        playerHasWon = isPlayerWinner;
+
+        if (isPlayerWinner)
+        {
+            worldDialog.ShowMessage("You won!", () => {
+                print("The player won");
+
+                player.party.ForEach(p => { p.hideModels(); });
+                opponent.party.ForEach(p => { p.hideModels(); });
+
+                // Send event to all energy, cards, status, and pokemon
+                allPokemon.ForEach(p => p.onBattleEnd());
+                allCards.ForEach(c => c.onBattleEnd());
+                allEnergy.ForEach(e => e.onBattleEnd());
+                opponent.opponentStrategyBot.onBattleEnd();
+                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+
+                onPackupPlayer();
+                player.GetComponent<InteractionChecker>().LoadPreviousScene();
+
+                return true;
+            });
+        }
+        else
+        {
+            worldDialog.ShowMessage(opponent.opponentName + " won.", () => {
+                print("The opponent won");
+
+                player.party.ForEach(p => { p.hideModels(); });
+                opponent.party.ForEach(p => { p.hideModels(); });
+
+                // Send event to all energy, cards, status, and pokemon
+                allPokemon.ForEach(p => p.onBattleEnd());
+                allCards.ForEach(c => c.onBattleEnd());
+                allEnergy.ForEach(e => e.onBattleEnd());
+                opponent.opponentStrategyBot.onBattleEnd();
+                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+
+                onPackupPlayer();
+                player.GetComponent<InteractionChecker>().LoadPreviousScene(); // <- diff
+
+                return true;
+            });
         }
     }
 }

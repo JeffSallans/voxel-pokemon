@@ -54,7 +54,7 @@ public class IOpponentStrategy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nextOpponentMove != null && nextOpponentMove.actingPokemon != null)
+        if (battleGameBoard != null && battleGameBoard.showOppAttack && nextOpponentMove != null && nextOpponentMove.actingPokemon != null)
         {
             opponentDeck.party.ForEach(p => p.nextAttackText.text = "");
             nextOpponentMove.actingPokemon.nextAttackText.text = UnicodeUtil.replaceWithUnicode(nextOpponentMove?.moveDescription);

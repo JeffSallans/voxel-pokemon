@@ -325,6 +325,11 @@ public class BattleGameBoard : MonoBehaviour
     public int remainingNumberOfCardsCanPlay = 1;
 
     /// <summary>
+    /// Show next opp attack
+    /// </summary>
+    public bool showOppAttack = false;
+
+    /// <summary>
     /// Starts the battle
     /// </summary>
     public GameObject startBattleButton;
@@ -1083,7 +1088,7 @@ public class BattleGameBoard : MonoBehaviour
         //target.GetComponent<Animator>().SetTrigger("onSwitchIn");
     }
 
-    public void onBattleEnd(bool isPlayerWinner) {
+    public virtual void onBattleEnd(bool isPlayerWinner) {
         // Set results
         gameHasEnded = true;
         playerHasWon = isPlayerWinner;
