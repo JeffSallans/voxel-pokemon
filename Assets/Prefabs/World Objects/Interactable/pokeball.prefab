@@ -45,25 +45,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: pokeball1
+  eventName: 
   eventType: 2
+  eventStatus: 0
   interactionHint: Inspect
   message:
   - You found a rare candy!
+  messageSounds: []
   opponent: {fileID: 0}
   sceneName: gls_deck_build
+  scenePlayerName: 
   animationBooleanName: 
   animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
   removeOnReturn: 1
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
 --- !u!65 &1944707597424873038
 BoxCollider:
   m_ObjectHideFlags: 0

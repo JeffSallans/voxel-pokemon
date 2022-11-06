@@ -691,16 +691,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
---- !u!4 &9060553940487674620 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4232779579695644396, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
-  m_PrefabInstance: {fileID: 5116185195774583824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9060553939863221879 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4232779577653564007, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
   m_PrefabInstance: {fileID: 5116185195774583824}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &9060553940487674620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4232779579695644396, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
+  m_PrefabInstance: {fileID: 5116185195774583824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2412003435347499636
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060553939863221879}
+  m_Material: {fileID: 13400000, guid: 4e04fcbe6809a7a489adefc092cc5a9d, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2
+  m_Height: 4.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.39, z: 0.7050171}
 --- !u!82 &2738148832342980833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1020,6 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useCardDragControls: 0
+  instaDeathEnabled: 0
   musicVolume: 0.2
   soundEffectVolume: 1
 --- !u!114 &8401881321641422174
@@ -1037,20 +1052,18 @@ MonoBehaviour:
   party: []
   energies: []
   gameOptions: {fileID: 0}
---- !u!136 &2412003435347499636
-CapsuleCollider:
+--- !u!114 &4067392098869036817
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9060553939863221879}
-  m_Material: {fileID: 13400000, guid: 4e04fcbe6809a7a489adefc092cc5a9d, type: 2}
-  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
-  m_Height: 4.75
-  m_Direction: 1
-  m_Center: {x: 0, y: 2.39, z: 0.7050171}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5e489575f175644a6cdea8e5a7a6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5123104952837693101
 PrefabInstance:
   m_ObjectHideFlags: 0

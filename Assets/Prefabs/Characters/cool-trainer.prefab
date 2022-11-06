@@ -236,6 +236,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &2234274604617022585
 MonoBehaviour:
@@ -282,6 +283,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!1 &5808646380956014613
 GameObject:
@@ -353,8 +355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: cool-trainer-kat
+  eventName: 
   eventType: 0
+  eventStatus: 0
   interactionHint: Talk
   message:
   - Hi I'm Cool Trainer Kat
@@ -369,14 +372,10 @@ MonoBehaviour:
   reactionAnimator: {fileID: 8826309963957522194}
   removeOnReturn: 0
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  alt2DisableInteractionEvent: {fileID: 0}
-  alt2DisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
   options: []
@@ -508,6 +507,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &242944878807364630
 MonoBehaviour:
@@ -554,6 +554,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 8508700537753058229}
 --- !u!1 &6741204117493749708
 GameObject:

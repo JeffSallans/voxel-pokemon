@@ -4352,6 +4352,7 @@ MonoBehaviour:
   eventType: 0
   eventStatus: 0
   interactionHint: Talk
+  messageName: []
   message:
   - 20 years have passed since you defeated all 8 gym leaders.
   - Today would be a typical summer day...
@@ -4395,6 +4396,8 @@ MonoBehaviour:
   eventType: 0
   eventStatus: 0
   interactionHint: 
+  messageName:
+  - Red
   message:
   - Wait! I can walk you over there.
   messageSounds: []
@@ -7069,6 +7072,22 @@ PrefabInstance:
         stop by his <color=purple>lab</color> for a gift.
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
+      propertyPath: messageName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
+      propertyPath: messageName.Array.data[0]
+      value: Jesse
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
+      propertyPath: messageName.Array.data[1]
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
+      propertyPath: messageName.Array.data[2]
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: autoTriggerInteractionEventName
       value: home_jesse2
       objectReference: {fileID: 0}
@@ -7152,6 +7171,9 @@ MonoBehaviour:
   eventType: 0
   eventStatus: 0
   interactionHint: 'Talk '
+  messageName:
+  - Jesse
+  - Jesse
   message:
   - Oh sweet!
   - I'll head there now!

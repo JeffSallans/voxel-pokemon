@@ -268,12 +268,7 @@ public class InteractionChecker : MonoBehaviour
         if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
-        for (int i = 0; i < iEvent.message.Count; i++)
-        {
-            AudioClip sound = null;
-            if (iEvent.messageSounds.Count > 0) sound = iEvent.messageSounds[i];
-            await worldDialog.ShowMessageAsync(iEvent.message[i], sound);
-        }
+        await worldDialog.ShowAllMessagesAsync(iEvent);
 
         postInteracationChanges(iEvent);
     }
@@ -295,7 +290,7 @@ public class InteractionChecker : MonoBehaviour
             activeEvent = null;
             hoverPossibleEvent = null;
             return true;
-        });
+        }, null, iEvent.messageName[0]);
 
     }
 
@@ -312,16 +307,25 @@ public class InteractionChecker : MonoBehaviour
         thirdPersonMovement.enabled = false;
         foreach (var message in iEvent.message)
         {
+            var index = iEvent.message.IndexOf(message);
+            AudioClip sound = null;
+            if (index > iEvent.messageSounds.Count) sound = iEvent.messageSounds[index];
+
+            string personName = null;
+            if (index > iEvent.messageName.Count) personName = iEvent.messageName[index];
+
             if (message == iEvent.message.Last())
             {
                 await worldDialog.PromptShowMessageAsync(message,
                     iEvent.options,
                     () => { iEvent.autoTriggerInteractionEvent = iEvent.optionFirstTriggerInteractionEvent; return true; },
-                    () => { iEvent.autoTriggerInteractionEvent = iEvent.optionSecondTriggerInteractionEvent; return true; }
+                    () => { iEvent.autoTriggerInteractionEvent = iEvent.optionSecondTriggerInteractionEvent; return true; },
+                    sound,
+                    personName
                 );
             } else
             {
-                await worldDialog.ShowMessageAsync(message);
+                await worldDialog.ShowMessageAsync(message, sound, personName);
             }
         }
 
@@ -339,10 +343,7 @@ public class InteractionChecker : MonoBehaviour
         if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
-        foreach (var message in iEvent.message)
-        {
-            await worldDialog.ShowMessageAsync(message);
-        }
+        await worldDialog.ShowAllMessagesAsync(iEvent);
 
         // Select current player
         var player = GameObject.FindObjectOfType<PlayerDeck>();
@@ -367,10 +368,7 @@ public class InteractionChecker : MonoBehaviour
         if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
-        foreach (var message in iEvent.message)
-        {
-            await worldDialog.ShowMessageAsync(message);
-        }
+        await worldDialog.ShowAllMessagesAsync(iEvent);
 
         // Load Scene
         StartCoroutine(LoadScene(iEvent, iEvent.sceneName, null, iEvent.scenePlayerName != ""));

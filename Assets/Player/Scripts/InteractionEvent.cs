@@ -141,6 +141,11 @@ public class InteractionEvent : MonoBehaviour
     public string interactionHint;
 
     /// <summary>
+    /// Display name text with the message
+    /// </summary>
+    public List<string> messageName;
+
+    /// <summary>
     /// Display text when the user clicks as a global message
     /// </summary>
     public List<string> message;
@@ -444,6 +449,7 @@ public class InteractionEvent : MonoBehaviour
         {
             var shouldBeActivated = completedEvents.Any(e => dependsOnToSetActive.Contains(e.eventName));
             var shouldBeEnabled = completedEvents.Any(e => dependsOnToEnable.Contains(e.eventName));
+            var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
 
             if (shouldBeActivated && enabled)
             {
@@ -460,18 +466,29 @@ public class InteractionEvent : MonoBehaviour
                 enabled = true;
                 eventStatus = PossibleEventStatus.ToBeEnabled;
             }
+            else if (shouldBeInactive)
+            {
+                gameObject.SetActive(false);
+                eventStatus = PossibleEventStatus.Completed;
+            }
         }
         
         // Handle the case of making an event interactable
         if (eventStatus == PossibleEventStatus.ToBeEnabled)
         {
             var shouldBeEnabled = completedEvents.Any(e => dependsOnToEnable.Contains(e.eventName));
+            var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
 
             if (shouldBeEnabled)
             {
                 enabled = true;
                 gameObject.SetActive(true);
                 eventStatus = PossibleEventStatus.ActiveAndEnabled;
+            }
+            else if (shouldBeInactive)
+            {
+                gameObject.SetActive(false);
+                eventStatus = PossibleEventStatus.Completed;
             }
         }
         
@@ -486,6 +503,18 @@ public class InteractionEvent : MonoBehaviour
                 enabled = false;
                 eventStatus = PossibleEventStatus.Completed;
             }
+
+            if (shouldBeInactive)
+            {
+                gameObject.SetActive(false);
+                eventStatus = PossibleEventStatus.Completed;
+            }
+        }
+
+        // Handle the case of completing a event
+        if (eventStatus == PossibleEventStatus.Completed)
+        {
+            var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
 
             if (shouldBeInactive)
             {

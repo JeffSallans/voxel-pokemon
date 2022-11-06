@@ -18,6 +18,11 @@ public class MessageEvent
     public string message;
 
     /// <summary>
+    /// Person label to display (must be less than 50 characters)
+    /// </summary>
+    public string messagePersonName;
+
+    /// <summary>
     /// Audio to play upon display, if not the default talk sound.
     /// </summary>
     public AudioClip messageSound;
@@ -134,6 +139,16 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     public AudioSource cancelAudioSource;
 
+    /// <summary>
+    /// Background for name
+    /// </summary>
+    public GameObject personNameObject;
+
+    /// <summary>
+    /// Text that hold the name
+    /// </summary>
+    public TextMeshProUGUI personNameTextbox;
+
     private void Awake()
     {
         messages = new Queue<MessageEvent>();
@@ -189,18 +204,37 @@ public class WorldDialog : MonoBehaviour
     }
 
     /// <summary>
+    /// Show all the dialog with the given text. Can be called if an dialog is already open to queue a message. Callback is called when the user clicks after reading the message
+    /// </summary>
+    /// <param name="iEvent">The event to display messages for</param>
+    public async Task ShowAllMessagesAsync(InteractionEvent iEvent) {
+        foreach (var message in iEvent.message)
+        {
+            var index = iEvent.message.IndexOf(message);
+            AudioClip sound = null;
+            if (index < iEvent.messageSounds.Count) sound = iEvent.messageSounds[index];
+
+            string personName = null;
+            if (index < iEvent.messageName.Count) personName = iEvent.messageName[index];
+
+            await ShowMessageAsync(message, sound, personName);
+        }
+    }
+
+    /// <summary>
     /// Show the dialog with the given text. Can be called if an dialog is already open to queue a message. Callback is called when the user clicks after reading the message
     /// </summary>
     /// <param name="text">Message text to display (must be less than 180 characters or 5 lines)</param>
     /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
-    public async Task ShowMessageAsync(string text, AudioClip sound = null)
+    /// <param name="personName">If non-null, a person name label will show with the text</param>
+    public async Task ShowMessageAsync(string text, AudioClip sound = null, string personName = null)
     {
         var dialogFinished = false;
         ShowMessage(text, () =>
         {
             dialogFinished = true;
             return true;
-        }, sound);
+        }, sound, personName);
 
         while(!dialogFinished)
         {
@@ -214,12 +248,14 @@ public class WorldDialog : MonoBehaviour
     /// <param name="text">Message text to display (must be less than 180 characters or 5 lines)</param>
     /// <param name="callback">Function to trigger after dialog is read</param>
     /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
-    public void ShowMessage(string text, Func<bool> callback = null, AudioClip sound = null)
+    /// <param name="personName">If non-null, a person name label will show with the text</param>
+    public void ShowMessage(string text, Func<bool> callback = null, AudioClip sound = null, string personName = null)
     {
         print($"PROMPT SHOW: {text} ({(sound == null ? "default sound" : sound.name)})");
         var newMessage = new MessageEvent
         {
             message = text,
+            messagePersonName = personName,
             messageSound = sound,
             messageType = MessageType.BottomMessage,
             eventToCallAfterMessage = callback
@@ -265,7 +301,14 @@ public class WorldDialog : MonoBehaviour
             promptIsCapturingInput = false;
 
             promptTextboxObject.gameObject.SetActive(false);
-            promptTextboxObject.text = "";          
+            promptTextboxObject.text = "";
+
+            if (currentmessage.messagePersonName != null && currentmessage.messagePersonName != "")
+            {
+                personNameObject.SetActive(true);
+                personNameTextbox.gameObject.SetActive(true);
+                personNameTextbox.text = UnicodeUtil.replaceWithUnicode(currentmessage.messagePersonName);
+            }
         }
         else
         {
@@ -283,6 +326,13 @@ public class WorldDialog : MonoBehaviour
 
             promptTextboxObject.gameObject.SetActive(true);
             promptTextboxObject.text = UnicodeUtil.replaceWithUnicode(currentmessage?.message);
+
+            if (currentmessage.messagePersonName != null && currentmessage.messagePersonName != "")
+            {
+                personNameObject.SetActive(true);
+                personNameTextbox.gameObject.SetActive(true);
+                personNameTextbox.text = UnicodeUtil.replaceWithUnicode(currentmessage.messagePersonName);
+            }
         }
 
 
@@ -335,6 +385,10 @@ public class WorldDialog : MonoBehaviour
 
         promptTextboxObject.text = "";
         promptTextboxObject.gameObject.SetActive(false);
+
+        personNameObject.SetActive(false);
+        personNameTextbox.gameObject.SetActive(false);
+        personNameTextbox.text = "";
     }
 
     /// <summary>
@@ -355,12 +409,14 @@ public class WorldDialog : MonoBehaviour
     /// <param name="onCancel">Function to trigger on space press when No is selected</param>
     /// <param name="callback">Function to trigger after dialog is read</param>
     /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
-    public void PromptShowMessage(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, Func<bool> callback = null, AudioClip sound = null)
+    /// <param name="personName">If non-null, a person name label will show with the text</param>
+    public void PromptShowMessage(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, Func<bool> callback = null, AudioClip sound = null, string personName = null)
     {
         print($"PROMPT SHOW: {text} ({(sound == null ? "default sound" : sound.name)})");
         var newMessage = new MessageEvent
         {
             message = text,
+            messagePersonName = personName,
             messageSound = sound,
             messageType = MessageType.PromptMessage,
             confirmationEventToCallAfterMessage = onConfirm,
@@ -383,14 +439,16 @@ public class WorldDialog : MonoBehaviour
     /// <param name="options">The options to show to select</param>
     /// <param name="onConfirm">Function to trigger on space press when Yes is selected</param>
     /// <param name="onCancel">Function to trigger on space press when No is selected</param>
-    public async Task PromptShowMessageAsync(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null)
+    /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
+    /// <param name="personName">If non-null, a person name label will show with the text</param>
+    public async Task PromptShowMessageAsync(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, AudioClip sound = null, string personName = null)
     {
         var dialogFinished = false;
         PromptShowMessage(text, options, onConfirm, onCancel, () =>
         {
             dialogFinished = true;
             return true;
-        });
+        }, sound, personName);
 
         while (!dialogFinished)
         {
