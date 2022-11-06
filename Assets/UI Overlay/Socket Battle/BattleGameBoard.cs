@@ -114,6 +114,7 @@ public class BattleGameBoard : MonoBehaviour
     public List<Energy> availableEnergy
     {
         get {
+            if (activePokemon == null) return new List<Energy>();
             return commonEnergy.Union(activePokemon.attachedEnergy).ToList();
         }
     }

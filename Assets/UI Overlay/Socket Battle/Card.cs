@@ -537,7 +537,7 @@ public class Card : MonoBehaviour
     {
         var meshIndex = energyMeshKeys.IndexOf(cardType);
 
-        if (canBePlayed)
+        if (canBePlayed && meshIndex >= 0)
         {
             disabledMesh.SetActive(false);
             energyMeshs[meshIndex].SetActive(true);
