@@ -208,9 +208,9 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     /// <param name="iEvent">The event to display messages for</param>
     public async Task ShowAllMessagesAsync(InteractionEvent iEvent) {
-        foreach (var message in iEvent.message)
+        for (var index = 0; index < iEvent.message.Count; index++)
         {
-            var index = iEvent.message.IndexOf(message);
+            var message = iEvent.message[index];
             AudioClip sound = null;
             if (index < iEvent.messageSounds.Count) sound = iEvent.messageSounds[index];
 

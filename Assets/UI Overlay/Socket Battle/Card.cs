@@ -287,6 +287,11 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI descriptionGameObject;
 
     /// <summary>
+    /// Where the card target should be displayed
+    /// </summary>
+    public TextMeshProUGUI targetGameObject;
+
+    /// <summary>
     /// Button that plays the card
     /// </summary>
     public Button playButtonGameObject;
@@ -295,6 +300,21 @@ public class Card : MonoBehaviour
     /// A list of locations of all the attached energy
     /// </summary>
     public List<GameObject> energyLocations;
+
+    /// <summary>
+    /// The model to show when the card is disabled
+    /// </summary>
+    public GameObject disabledMesh;
+
+    /// <summary>
+    /// A list of card meshes to show based on the given type. In the order of normal, fire, electric, psychic, grass, water, ground.
+    /// </summary>
+    public List<GameObject> energyMeshs;
+
+    /// <summary>
+    /// The order of energyMeshs
+    /// </summary>
+    private List<string> energyMeshKeys = new List<string> { "Normal", "Fire", "Electric", "Psychic", "Grass", "Water", "Ground" };
 
     /// <summary>
     /// Set to true when we don't want
@@ -395,6 +415,8 @@ public class Card : MonoBehaviour
                 cost.Add(energy);
             }
         }
+
+        UpdateCardMesh();
     }
 
     // Start is called before the first frame update
@@ -407,7 +429,10 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateCardMesh();
+
         descriptionGameObject.text = UnicodeUtil.replaceWithUnicode(cardDesc);
+        targetGameObject.text = GetTargetText();
         playButtonGameObject.interactable = canBePlayed;
 
         // Update cost Energies to placeholder locations
@@ -468,6 +493,62 @@ public class Card : MonoBehaviour
             OnHoverInteraction(newDropEvent);
         }
     }
+
+    /// <summary>
+    /// Returns the card target in text form
+    /// </summary>
+    /// <returns></returns>
+    private string GetTargetText()
+    {
+        if (targetType == "Self")
+        {
+            return "Self";
+        }
+        else if (targetType == "Bench")
+        {
+            return "My Bench";
+        }
+        else if (targetType == "Team")
+        {
+            return "My Team";
+        }
+        else if (targetType == "ActiveOpponent")
+        {
+            return "Active Opp";
+        }
+        else if (targetType == "AnyOpponent")
+        {
+            return "Any Opp";
+        }
+        else if (targetType == "BenchOpponent")
+        {
+            return "Opp Bench";
+        }
+        else {
+            return "Any";
+        }
+    }
+
+
+    /// <summary>
+    /// Updates the card mesh display based on card state
+    /// </summary>
+    private void UpdateCardMesh()
+    {
+        var meshIndex = energyMeshKeys.IndexOf(cardType);
+
+        if (canBePlayed)
+        {
+            disabledMesh.SetActive(false);
+            energyMeshs[meshIndex].SetActive(true);
+        }
+        else
+        {
+            disabledMesh.SetActive(true);
+            energyMeshs[meshIndex].SetActive(false);
+        }
+    }
+
 
     public void OnHoverEnter()
     {

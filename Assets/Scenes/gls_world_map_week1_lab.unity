@@ -8150,7 +8150,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20046291, y: -0.6661298, z: 0.19297196, w: 0.69198817}
+  m_LocalRotation: {x: 0.20085287, y: -0.6647284, z: 0.19256598, w: 0.6933344}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12375,15 +12375,56 @@ MonoBehaviour:
   - Prof Ketchum
   - Red
   - Red
-  - Red
   message:
   - I'm only going to be gone a few weeks. I need to travel around Kanto to help
     Professor Ketchum.
-  - <color=purple>*sigh*</color>
-  - I thought we <color=purple>talked</color> about this Ketchum
+  - '*sigh*'
+  - I thought we talked about this Ketchum
   - ...
   - Jesse and I are a packaged deal.
   - So, I guess Jesse and I are going to be doing some traveling.
+  messageSounds: []
+  opponent: {fileID: 0}
+  sceneName: 
+  scenePlayerName: 
+  animationBooleanName: 
+  animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 1
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: lab_jesse_gift
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+--- !u!114 &1774450249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774450246}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: lab_jesse_gift
+  eventType: 4
+  eventStatus: 0
+  interactionHint: 
+  messageName:
+  - Red
+  message:
   - Thanks for the  <color=purple>Charmander</color>!
   messageSounds: []
   opponent: {fileID: 0}
@@ -12407,7 +12448,7 @@ MonoBehaviour:
   optionFirstTriggerInteractionEventName: 
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
-  pokemonToAdd: 
+  pokemonToAdd: Charmander
 --- !u!1 &1780345244
 GameObject:
   m_ObjectHideFlags: 0
