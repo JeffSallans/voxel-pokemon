@@ -9610,6 +9610,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4418732375061811001, guid: 21760ff2b7536cf49aacabd8de5c9f56, type: 3}
+      propertyPath: scenePlayerName
+      value: lab_outside_spawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4418732375061811007, guid: 21760ff2b7536cf49aacabd8de5c9f56, type: 3}
       propertyPath: m_Name
       value: lab-door
@@ -12375,7 +12379,7 @@ MonoBehaviour:
   message:
   - I'm only going to be gone a few weeks. I need to travel around Kanto to help
     Professor Ketchum.
-  - '*sigh*'
+  - <color=purple>*sigh*</color>
   - I thought we <color=purple>talked</color> about this Ketchum
   - ...
   - Jesse and I are a packaged deal.
