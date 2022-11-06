@@ -57,6 +57,7 @@ public class PartyMenu : HoverAndDragMessageTarget
     {
         get
         {
+            if (movesSelectedPokemonIndex >= deck.party.Count) return null;
             return deck.party[movesSelectedPokemonIndex];
         }
     }
@@ -113,7 +114,10 @@ public class PartyMenu : HoverAndDragMessageTarget
         menuCommon = gameObject.AddComponent<MenuCommon>();
         menuCommon.Initialize(Close);
 
-        newDeckList = new List<Card>();
+        if (newDeckList == null)
+        {
+            newDeckList = new List<Card>();
+        }
 
         // init card text
         newDeckCardNames = new List<TextMeshProUGUI>();
@@ -137,7 +141,7 @@ public class PartyMenu : HoverAndDragMessageTarget
         }
 
         // check save
-        movesSaveButton.GetComponent<Button>().interactable = newDeckList.Count == movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize;
+        movesSaveButton.GetComponent<Button>().interactable = movesSelectedPokemon != null && newDeckList.Count == movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize;
     }
 
     /// <summary>
