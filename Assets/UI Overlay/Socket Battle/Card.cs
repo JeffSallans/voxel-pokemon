@@ -542,10 +542,15 @@ public class Card : MonoBehaviour
             disabledMesh.SetActive(false);
             energyMeshs[meshIndex].SetActive(true);
         }
-        else
+        else if (meshIndex >= 0)
         {
             disabledMesh.SetActive(true);
             energyMeshs[meshIndex].SetActive(false);
+        }
+        else
+        {
+            disabledMesh.SetActive(true);
+            Debug.LogWarning("Invalid card type " + cardType + ". Not in the expect list " + energyMeshKeys);
         }
     }
 
