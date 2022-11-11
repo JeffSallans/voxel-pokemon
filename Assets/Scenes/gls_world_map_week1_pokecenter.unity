@@ -1975,6 +1975,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1970892677}
     m_Modifications:
+    - target: {fileID: 1364066977035996273, guid: 9b7cf133bed929c47886b99279531354, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589270988426791426, guid: 9b7cf133bed929c47886b99279531354, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4086779144730634355, guid: 9b7cf133bed929c47886b99279531354, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2022,6 +2030,10 @@ PrefabInstance:
     - target: {fileID: 5592080143674613092, guid: 9b7cf133bed929c47886b99279531354, type: 3}
       propertyPath: m_Name
       value: menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754948477133504346, guid: 9b7cf133bed929c47886b99279531354, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b7cf133bed929c47886b99279531354, type: 3}
@@ -2571,7 +2583,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.8387771, g: 0.9480516, b: 0.9716981, a: 1}
-  m_Intensity: 1.2
+  m_Intensity: 1
   m_Range: 1000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2608,7 +2620,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 215
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -3203,6 +3215,7 @@ MonoBehaviour:
   eventType: 4
   eventStatus: 0
   interactionHint: 
+  messageName: []
   message: []
   messageSounds: []
   opponent: {fileID: 0}
@@ -4856,6 +4869,7 @@ MonoBehaviour:
   eventType: 4
   eventStatus: 0
   interactionHint: 
+  messageName: []
   message: []
   messageSounds: []
   opponent: {fileID: 0}
@@ -5733,7 +5747,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20046286, y: -0.6661298, z: 0.19297193, w: 0.69198817}
+  m_LocalRotation: {x: 0.20085287, y: -0.6647284, z: 0.19256598, w: 0.6933344}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8452,6 +8466,7 @@ MonoBehaviour:
   eventType: 4
   eventStatus: 0
   interactionHint: 
+  messageName: []
   message: []
   messageSounds: []
   opponent: {fileID: 0}

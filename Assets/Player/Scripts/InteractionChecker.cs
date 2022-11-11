@@ -309,10 +309,10 @@ public class InteractionChecker : MonoBehaviour
         {
             var index = iEvent.message.IndexOf(message);
             AudioClip sound = null;
-            if (index > iEvent.messageSounds.Count) sound = iEvent.messageSounds[index];
+            if (index < iEvent.messageSounds.Count) sound = iEvent.messageSounds[index];
 
             string personName = null;
-            if (index > iEvent.messageName.Count) personName = iEvent.messageName[index];
+            if (index < iEvent.messageName.Count) personName = iEvent.messageName[index];
 
             if (message == iEvent.message.Last())
             {

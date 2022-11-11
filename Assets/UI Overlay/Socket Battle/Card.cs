@@ -241,7 +241,7 @@ public class Card : MonoBehaviour
             if (battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
 
             // Check color energy count
-            var costAsString = cost?.Select(c => c.energyName)
+            var costAsString = cost?.Select(c => c?.energyName)
                 .Where(e => e != "Normal")
                 .GroupBy(
                     c => c,

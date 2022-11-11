@@ -225,7 +225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &81451343
 PrefabInstance:
@@ -396,116 +396,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &219163276
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1581884485}
-    m_Modifications:
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -172
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 47
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337891, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6672549606004337892, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-      propertyPath: m_Name
-      value: pokemon-weepingbell
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
---- !u!114 &219163277 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6137438944197151404, guid: 75a50b3ad775bde4082946cde1084999, type: 3}
-  m_PrefabInstance: {fileID: 219163276}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &251503174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -671,7 +563,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 114.08899, y: 190.212, z: 189.227}
 --- !u!1 &377172878
 GameObject:
@@ -889,7 +781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3042652463016251412, guid: 38c9f9c6bdd5ae248a943eea42995325, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3042652463016251412, guid: 38c9f9c6bdd5ae248a943eea42995325, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1026,180 +918,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 106.131, y: -30.339996, z: 0.16000366}
---- !u!1 &511952255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 511952256}
-  - component: {fileID: 511952258}
-  - component: {fileID: 511952257}
-  - component: {fileID: 511952259}
-  m_Layer: 0
-  m_Name: weepingbell
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &511952256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511952255}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1581884482}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &511952257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511952255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Acid
-  moveDescriptionWithTemplates: '{damage} ZZPoison, remove 1 energy'
-  actingPokemon: {fileID: 219163277}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 50
-  damageEnergy: Poison
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: -1
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 1
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
---- !u!114 &511952258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511952255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Razor Leaf
-  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 energy'
-  actingPokemon: {fileID: 219163277}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 40
-  damageEnergy: Grass
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 1
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 1
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
---- !u!114 &511952259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511952255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Heal Spore
-  moveDescriptionWithTemplates: Heal team {userHeal}, uses 2 energy
-  actingPokemon: {fileID: 219163277}
-  initialPriority: 4
-  turnPriority: 0
-  damage: -40
-  damageEnergy: Grass
-  energyRequirement: 2
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 1
-  userAnimationType: onBuff
-  targetAnimationType: onBuff
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 7
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 40
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1 &534101995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8988264354152789397, guid: a982127405c08e040b40cffbf8b678b6, type: 3}
@@ -1221,6 +939,7 @@ MonoBehaviour:
   eventType: 2
   eventStatus: 0
   interactionHint: Open
+  messageName: []
   message: []
   messageSounds: []
   opponent: {fileID: 0}
@@ -1634,7 +1353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4943525235375025926, guid: 25a979c885a870e43b411d4215193ffd, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4943525235375025926, guid: 25a979c885a870e43b411d4215193ffd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2173,7 +1892,7 @@ Transform:
   - {fileID: 2064599645}
   - {fileID: 710635098}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &913307016
 MonoBehaviour:
@@ -2476,7 +2195,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20046286, y: -0.6661298, z: 0.19297193, w: 0.69198817}
+  m_LocalRotation: {x: 0.20085287, y: -0.6647284, z: 0.19256598, w: 0.6933344}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2548,7 +2267,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191582931
 GameObject:
@@ -3061,6 +2780,7 @@ GameObject:
   - component: {fileID: 1521936524}
   - component: {fileID: 1521936526}
   - component: {fileID: 1521936525}
+  - component: {fileID: 1521936527}
   m_Layer: 0
   m_Name: poliwag
   m_TagString: Untagged
@@ -3094,28 +2814,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Bubblebeam
-  moveDescriptionWithTemplates: '{damage} ZZWater to bench, uses 1 energy'
+  moveName: Tackle
+  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg, remove 1 ATK
   actingPokemon: {fileID: 856005616}
   initialPriority: 4
   turnPriority: 0
-  damage: 50
-  damageEnergy: Water
-  energyRequirement: 1
+  damage: 30
+  damageEnergy: Normal
+  energyRequirement: 0
   energyMax: 5
-  discardEnergyOnUse: 1
+  discardEnergyOnUse: 0
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
   playInstantly: 0
-  targetType: 5
+  targetType: 3
   attackCost: 0
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
   energyStat: 0
-  attackStat: 0
+  attackStat: -1
   specialStat: 0
   defenseStat: 0
   evasionStat: 0
@@ -3127,7 +2847,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
-  endOfTurnAddRandomEnergy: 0
+  endOfTurnAddRandomEnergy: 1
   overrideTarget: {fileID: 0}
 --- !u!114 &1521936526
 MonoBehaviour:
@@ -3142,11 +2862,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Water Gun
-  moveDescriptionWithTemplates: '{damage} ZZWater dmg'
+  moveDescriptionWithTemplates: Deal {damage} ZZWater dmg
   actingPokemon: {fileID: 856005616}
   initialPriority: 3
   turnPriority: 0
-  damage: 60
+  damage: 40
   damageEnergy: Water
   energyRequirement: 0
   energyMax: 5
@@ -3175,6 +2895,53 @@ MonoBehaviour:
   statusAffectsUser: 0
   statusAffectsBothBench: 0
   endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1521936527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521936523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Bubblebeam
+  moveDescriptionWithTemplates: Deal {damage} ZZWater dmg to bench, use 2 energy
+  actingPokemon: {fileID: 0}
+  initialPriority: 0
+  turnPriority: 0
+  damage: 80
+  damageEnergy: Water
+  energyRequirement: 2
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: 
+  playInstantly: 0
+  targetType: 5
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 1
   overrideTarget: {fileID: 0}
 --- !u!1001 &1551500484
 PrefabInstance:
@@ -3443,6 +3210,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4929360148103463819, guid: 16b9211c63b17314698a4f3a5fe8462d, type: 3}
   m_PrefabInstance: {fileID: 1581884481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1605608887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605608889}
+  - component: {fileID: 1605608888}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1605608888
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605608887}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 60
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1605608889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605608887}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 641.86, y: 18.72, z: 367.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1617640043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3796,7 +3656,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!81 &1790161852
 AudioListener:
@@ -4082,7 +3942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7575964027841632242, guid: 275cfce1ec782e349bedaf6fce07ab79, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7575964027841632242, guid: 275cfce1ec782e349bedaf6fce07ab79, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4372,7 +4232,7 @@ Transform:
   - {fileID: 1204620050}
   - {fileID: 377172879}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!1001 &1970645017
 PrefabInstance:
@@ -4541,7 +4401,7 @@ RectTransform:
   m_Children:
   - {fileID: 579645692}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4755,7 +4615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9060553940487674620, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4958,6 +4818,7 @@ GameObject:
   - component: {fileID: 2108418038}
   - component: {fileID: 2108418040}
   - component: {fileID: 2108418039}
+  - component: {fileID: 2108418041}
   m_Layer: 0
   m_Name: bellsprout
   m_TagString: Untagged
@@ -4991,20 +4852,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Tackle
-  moveDescriptionWithTemplates: '{damage} ZZNormal dmg'
+  moveName: Absorb
+  moveDescriptionWithTemplates: Deal {damage} ZZGrass, remove 1 ZZDef
   actingPokemon: {fileID: 1796155802}
   initialPriority: 3
   turnPriority: 0
-  damage: 50
-  damageEnergy: Normal
+  damage: 30
+  damageEnergy: Grass
   energyRequirement: 0
   energyMax: 5
   discardEnergyOnUse: 0
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
-  targetAnimationType2: onNormal
+  targetAnimationType2: 
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: -1
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &2108418040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108418037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Vine Whip
+  moveDescriptionWithTemplates: Deal {damage} ZZGrass dmg
+  actingPokemon: {fileID: 1796155802}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 40
+  damageEnergy: Grass
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: 
   playInstantly: 0
   targetType: 3
   attackCost: 0
@@ -5024,9 +4932,9 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
-  endOfTurnAddRandomEnergy: 0
+  endOfTurnAddRandomEnergy: 1
   overrideTarget: {fileID: 0}
---- !u!114 &2108418040
+--- !u!114 &2108418041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5038,40 +4946,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Growth
-  moveDescriptionWithTemplates: '{damage} ZZGrass dmg, give 1 energy'
+  moveName: Heal
+  moveDescriptionWithTemplates: Heal team 150 dmg, uses 3 energy
   actingPokemon: {fileID: 1796155802}
-  initialPriority: 3
+  initialPriority: 0
   turnPriority: 0
-  damage: 40
-  damageEnergy: Grass
-  energyRequirement: 0
+  damage: 0
+  damageEnergy: 
+  energyRequirement: 3
   energyMax: 5
-  discardEnergyOnUse: 0
+  discardEnergyOnUse: 1
   switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
   targetAnimationType2: 
   playInstantly: 0
-  targetType: 3
+  targetType: 8
   attackCost: 0
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 1
+  energyStat: 0
   attackStat: 0
   specialStat: 0
   defenseStat: 0
   evasionStat: 0
   blockStat: 0
   attackMultStat: 0
-  userHeal: 0
+  userHeal: 150
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
   statusAffectsUser: 0
-  statusAffectsBothBench: 1
-  endOfTurnAddRandomEnergy: 0
+  statusAffectsBothBench: 0
+  endOfTurnAddRandomEnergy: 1
   overrideTarget: {fileID: 0}
 --- !u!1001 &8253187751563695098
 PrefabInstance:
@@ -5086,7 +4994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8253187751608033011, guid: a982127405c08e040b40cffbf8b678b6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8253187751608033011, guid: a982127405c08e040b40cffbf8b678b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5167,6 +5075,7 @@ MonoBehaviour:
   eventType: 2
   eventStatus: 0
   interactionHint: Open
+  messageName: []
   message: []
   messageSounds: []
   opponent: {fileID: 0}
