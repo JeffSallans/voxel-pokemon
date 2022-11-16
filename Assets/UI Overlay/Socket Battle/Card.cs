@@ -93,10 +93,27 @@ public class Card : MonoBehaviour
         Combo
     }
 
+    public enum CardTargetType
+    {
+        Self,
+        Bench,
+        Team,
+        ActiveOpponent,
+        AnyOpponent,
+        BenchOpponent,
+        AnyPokemon,
+        BenchAll,
+        TeamAll,
+        AnyOpponentAll,
+        BenchOpponentAll,
+        AnyPokemonAll,
+        OverrideTarget,
+    }
+
     /// <summary>
     /// The possible targets of this card. Self, Bench, Team, ActiveOpponent, AnyOpponent, BenchOpponent, AnyPokemon,
     /// </summary>
-    public string targetType;
+    public CardTargetType targetType;
 
     /// <summary>
     /// The type of damage "Physical" or "Special"
@@ -150,6 +167,11 @@ public class Card : MonoBehaviour
     /// How much the user is healed
     /// </summary>
     public int userHeal;
+
+    /// <summary>
+    /// How much the target is healed
+    /// </summary>
+    public int heal;
 
     /// <summary>
     /// True if the user gets immunity to the next attack
@@ -500,31 +522,52 @@ public class Card : MonoBehaviour
     /// <returns></returns>
     private string GetTargetText()
     {
-        if (targetType == "Self")
+        if (targetType == CardTargetType.Self)
         {
             return "Self";
         }
-        else if (targetType == "Bench")
+        else if (targetType == CardTargetType.Bench)
         {
             return "My Bench";
         }
-        else if (targetType == "Team")
+        else if (targetType == CardTargetType.Team)
         {
             return "My Team";
         }
-        else if (targetType == "ActiveOpponent")
+        else if (targetType == CardTargetType.ActiveOpponent)
         {
             return "Active Opp";
         }
-        else if (targetType == "AnyOpponent")
+        else if (targetType == CardTargetType.AnyOpponent)
         {
             return "Any Opp";
         }
-        else if (targetType == "BenchOpponent")
+        else if (targetType == CardTargetType.BenchOpponent)
         {
             return "Opp Bench";
         }
-        else {
+        else if (targetType == CardTargetType.BenchAll)
+        {
+            return "Both Bench";
+        }
+        else if (targetType == CardTargetType.TeamAll)
+        {
+            return "Entire Team";
+        }
+        else if (targetType == CardTargetType.BenchOpponentAll)
+        {
+            return "Both Opp Bench";
+        }
+        else if (targetType == CardTargetType.AnyOpponentAll)
+        {
+            return "All Opps";
+        }
+        else if (targetType == CardTargetType.AnyPokemonAll)
+        {
+            return "All";
+        }
+        else
+        {
             return "Any";
         }
     }
@@ -782,30 +825,39 @@ public class Card : MonoBehaviour
         battleGameBoard.onPlay(this, user, target);
     }
 
-    public void play(Pokemon user, Pokemon target) {
-        var attackMissed = false;
+    public void play(Pokemon user, Pokemon selectedTarget) {
+
+        // Get all targets
+        var targets = getTarget(targetType, selectedTarget);
+        var attackMissed = targets.Select(t => false).ToList();
 
         // Run override if applicable
         if (overrideFunctionality) {
-            overrideFunctionality.play(this, battleGameBoard, user, target);
+            overrideFunctionality.play(this, battleGameBoard, user, selectedTarget);
         }
         // Don't use default functionality if specified
         var useCommonCardEffect = overrideFunctionality?.overridesPlayFunc() != true;
         if (useCommonCardEffect) {
-            commonCardPlay(user, target);
+            attackMissed = targets.Select(t =>
+            {
+                return commonCardPlay(user, t);
+            }).ToList();
         }      
 
         if (userAnimationType != "") user.modelAnimator.SetTrigger(userAnimationType);
-        if (!attackMissed)
+        targets.ForEach(t =>
         {
-            if (targetAnimationType != "") target.modelAnimator.SetTrigger(targetAnimationType);
-            if (targetAnimationType2 != "") target.modelAnimator.SetTrigger(targetAnimationType2);
-        }
+            var index = targets.IndexOf(t);
+            if (!attackMissed[index]) {
+                if (targetAnimationType != "") t.modelAnimator.SetTrigger(targetAnimationType);
+                if (targetAnimationType2 != "") t.modelAnimator.SetTrigger(targetAnimationType2);
+            } 
+        });
 
         // Trigger flip functionality if applicable
         if (flipButtonFunctionality != null && flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard))
         {
-            flipButtonFunctionality.onPlay(this, battleGameBoard, target);
+            flipButtonFunctionality.onPlay(this, battleGameBoard, selectedTarget);
         }
     }
 
@@ -852,6 +904,12 @@ public class Card : MonoBehaviour
                 { "stackCount", "1" },
                 { "turnsLeft", "1" }
             }));
+        }
+
+        // Heal if possible
+        if (!attackMissed && heal > 0)
+        {
+            target.health += heal;
         }
 
         // Heal/dmg user if possible
@@ -978,33 +1036,92 @@ public class Card : MonoBehaviour
         if (target.isFainted) {
             return false;
         }
-        else if (targetType == "Self")
+        else if (targetType == CardTargetType.Self)
         {
             return isSelf;
         }
-        else if (targetType == "Bench")
+        else if (targetType == CardTargetType.Bench || targetType == CardTargetType.BenchAll)
         {
             return !isSelf && onTeam;
         }
-        else if (targetType == "Team")
+        else if (targetType == CardTargetType.Team || targetType == CardTargetType.TeamAll)
         {
             return onTeam;
         }
-        else if (targetType == "ActiveOpponent")
+        else if (targetType == CardTargetType.ActiveOpponent)
         {
             return isOpp;
         }
-        else if (targetType == "BenchOpponent")
+        else if (targetType == CardTargetType.BenchOpponent || targetType == CardTargetType.BenchOpponentAll)
         {
             return !isOpp && onOppTeam;
         }
-        else if (targetType == "AnyOpponent")
+        else if (targetType == CardTargetType.AnyOpponent || targetType == CardTargetType.AnyOpponentAll)
         {
             return onOppTeam;
         }
 
-        // targetType == Any
+        // targetType == Any OR targetType == AnyAll
         return true;
+    }
+
+    /// <summary>
+    /// Returns the target of the move
+    /// </summary>
+    /// <returns></returns>
+    public List<Pokemon> getTarget(CardTargetType givenTargetType, Pokemon selectedTarget)
+    {
+        var bench = battleGameBoard.opponent.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
+        var team = battleGameBoard.opponent.party.Where(p => !p.isFainted).ToList();
+
+        var opponentBench = battleGameBoard.player.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
+        var opponentTeam = battleGameBoard.player.party.Where(p => !p.isFainted).ToList();
+        if (givenTargetType == CardTargetType.ActiveOpponent)
+        {
+            return new List<Pokemon>() { selectedTarget };
+        }
+        else if (givenTargetType == CardTargetType.Bench)
+        {
+            return new List<Pokemon>() { selectedTarget };
+        }
+        else if (givenTargetType == CardTargetType.Team)
+        {
+            return new List<Pokemon>() { selectedTarget };
+        }
+        else if (givenTargetType == CardTargetType.BenchOpponent)
+        {
+            return new List<Pokemon>() { selectedTarget };
+        }
+        else if (givenTargetType == CardTargetType.AnyOpponent)
+        {
+            return new List<Pokemon>() { selectedTarget };
+        }
+        else if (givenTargetType == CardTargetType.Self)
+        {
+            return new List<Pokemon>() { selectedTarget };
+        }
+        else if (givenTargetType == CardTargetType.TeamAll)
+        {
+            return team;
+        }
+        else if (givenTargetType == CardTargetType.BenchAll)
+        {
+            return bench;
+        }
+        else if (givenTargetType == CardTargetType.AnyOpponentAll)
+        {
+            return opponentTeam;
+        }
+        else if (givenTargetType == CardTargetType.BenchOpponentAll)
+        {
+            return opponentBench;
+        }
+        else if (givenTargetType == CardTargetType.AnyPokemonAll)
+        {
+            return team.Union(opponentTeam).ToList();
+        }
+
+        return new List<Pokemon>() { selectedTarget };
     }
 
     ///////////////////////////////////

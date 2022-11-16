@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Card;
 
 public class FlipChangeTarget : IFlipButton
 {
     /// <summary>
     /// The new possible targets of this card. Self, Bench, Team, ActiveOpponent, AnyOpponent, BenchOpponent, AnyPokemon
     /// </summary>
-    public string newTargetType = "AnyOpponent";
+    public CardTargetType newTargetType = CardTargetType.AnyOpponent;
 
-    private string initialTargetType = "";
+    private CardTargetType initialTargetType = CardTargetType.ActiveOpponent;
 
     public override void onFlipEvent(Card card, BattleGameBoard battleGameBoard)
     {

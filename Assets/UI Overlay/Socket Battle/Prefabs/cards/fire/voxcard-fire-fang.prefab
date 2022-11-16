@@ -145,11 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
-      value: ActiveOpponent
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.size
@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal <color=red>{damage}</color> ZZFire dmg. {flipText}
+      value: Deal {damage} ZZFire dmg. {flipText} Discard cost.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -245,13 +245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: Use 1 ZZSpc to +40 dmg
+  flipButtonText: Use 1 ZZSpc to +50 dmg
   attackCost: 0
   defenseCost: 0
   specialCost: 1
   evasionCost: 0
   spendCost: 1
-  damageIncrease: 40
+  damageIncrease: 50
   blockIncrease: 0
   multiplierIncrease: 0
   userHealIncrease: 0

@@ -390,6 +390,26 @@ public class OpponentMove : IOpponentMove
         {
             return new List<Pokemon>() { battleGameBoard.opponentActivePokemon };
         }
+        else if (targetType == MoveTargetType.TeamAll)
+        {
+            return team;
+        }
+        else if (targetType == MoveTargetType.BenchAll)
+        {
+            return bench;
+        }
+        else if (targetType == MoveTargetType.AnyOpponentAll)
+        {
+            return opponentTeam;
+        }
+        else if (targetType == MoveTargetType.BenchOpponentAll)
+        {
+            return opponentBench;
+        }
+        else if (targetType == MoveTargetType.AnyPokemonAll)
+        {
+            return team.Union(opponentTeam).ToList();
+        }
 
         return new List<Pokemon>() { battleGameBoard.activePokemon };
     }
