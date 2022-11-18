@@ -21,7 +21,7 @@ public class UnicodeUtil
         { "ZZDragon", "\ue91a" },
         { "ZZGround", "\ue90b" },
         { "ZZRock", "\ue925" },
-        { "ZZPoison", "\ue91b" },
+        /*{ "ZZPoison", "\ue91b" },*/
         { "ZZGhost", "\ue91d" },
         { "ZZIce", "\ue91c" },
         { "ZZSteel", "\ue920" },
@@ -40,6 +40,8 @@ public class UnicodeUtil
         { "ZZInvul", "\ue922" },
         { "ZZBlind", "\ue914" },
         { "ZZSleep", "\ue923" },
+        { "ZZPoison", "\ue91b" },
+        { "ZZTrap", "\uF00D" },
 
         { "ZZEnergy", "\uF140" },
         { "ZZCard", "\uf005" },

@@ -179,6 +179,16 @@ public class Card : MonoBehaviour
     public bool grantsInvulnerability;
 
     /// <summary>
+    /// Number of poison stacks to apply, 5 stacks does 50 dmg over 5 turns
+    /// </summary>
+    public int poisonStacks;
+
+    /// <summary>
+    /// True if the target cannot switch in or out next turn
+    /// </summary>
+    public bool applyTrap;
+
+    /// <summary>
     /// How long a StatusEffect will be placed
     /// </summary>
     public int turn;
@@ -893,14 +903,23 @@ public class Card : MonoBehaviour
         var statusTarget = (statusAffectsUser) ? user : target;
         addStatHelper(statusTarget, "attackStat", attackStat, 6);
         addStatHelper(statusTarget, "defenseStat", defenseStat, 6);
-        addStatHelper(statusTarget, "specialStat", specialStat, 6);
+        addStatHelper(statusTarget, "specialStat", specialStat, 1);
         addStatHelper(statusTarget, "evasionStat", evasionStat, 6);
         addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
+        addStatHelper(statusTarget, "poisonEffect", poisonStacks, 15);
         if (grantsInvulnerability)
         {
             statusTarget.attachedStatus.Add(new StatusEffect(statusTarget, this, "invulnerabilityEffect", new Dictionary<string, string>() {
                 { "statType", "invulnerability" },
+                { "stackCount", "1" },
+                { "turnsLeft", "1" }
+            }));
+        }
+        if (applyTrap)
+        {
+            statusTarget.attachedStatus.Add(new StatusEffect(statusTarget, this, "trapEffect", new Dictionary<string, string>() {
+                { "statType", "trap" },
                 { "stackCount", "1" },
                 { "turnsLeft", "1" }
             }));

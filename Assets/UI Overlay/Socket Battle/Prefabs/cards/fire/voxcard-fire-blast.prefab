@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 3072642136223800217}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal <color=red>{damage}</color> ZZFire dmg. +80 dmg when discarded.
+      value: Deal {damage} ZZFire dmg. +80 dmg when discarded. Discard cost.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -207,6 +207,18 @@ PrefabInstance:
       propertyPath: prefabCost.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: prefabCost.Array.data[0]
+      value: 
+      objectReference: {fileID: 8540822036947162094, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: prefabCost.Array.data[1]
+      value: 
+      objectReference: {fileID: 8540822036947162094, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: prefabCost.Array.data[2]
+      value: 
+      objectReference: {fileID: 8540822036947162094, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
     - target: {fileID: 5223889719225539049, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
       value: 19

@@ -155,6 +155,8 @@ public class StatusEffect
         if (givenStatType == "blockStat") return "ZZBlock";
         if (givenStatType == "attackMultStat") return "ZZAttackMult";
         if (givenStatType == "invulnerability") return "ZZInvul";
+        if (givenStatType == "trap") return "ZZTrap";
+        if (givenStatType == "poisonEffect") return "ZZPoison";
         return "\uf111";
     }
 
