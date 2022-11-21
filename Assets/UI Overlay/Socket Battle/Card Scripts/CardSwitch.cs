@@ -14,8 +14,10 @@ public class CardSwitch : ICard
 {
     public override bool overridesPlayFunc() { return true; }
 
-    public override void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target) {
+    public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets) {
         // Switch board roles
-        battleGameBoard.switchPokemon(user, target);
+        battleGameBoard.switchPokemon(user, selectedTarget);
+
+        return base.play(card, battleGameBoard, user, selectedTarget, targets);
     }
 }
