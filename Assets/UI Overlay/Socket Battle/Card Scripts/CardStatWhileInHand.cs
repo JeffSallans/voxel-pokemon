@@ -56,7 +56,7 @@ public class CardStatWhileInHand : ICard
     /// <param name="statName"></param>
     /// <param name="statValue"></param>
     /// <param name="maxStack">set to -1 to have no max stack</param>
-    private void addStatHelper(Pokemon target, string statName, int statValue, int maxStack = -1)
+    private void addStatHelper(Pokemon target, string statName, int statValue, int maxStack = -1, int turn = 99)
     {
         if (statValue > 0)
         {
