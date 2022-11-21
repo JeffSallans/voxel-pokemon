@@ -136,6 +136,12 @@ public class OpponentMove : IOpponentMove
     {
         get
         {
+            // Check if self is trapped
+            if (actingPokemon.isTrapped && switchInOnUse && battleGameBoard.opponentActivePokemon != actingPokemon) return false;
+
+            // Check if active is trapped
+            if (battleGameBoard.opponentActivePokemon.isTrapped && switchInOnUse && battleGameBoard.opponentActivePokemon != actingPokemon) return false;
+
             var costIsPaid = actingPokemon.attachedEnergy.Count < energyMax &&
                 actingPokemon.attachedEnergy.Count >= energyRequirement &&
                 actingPokemon.attackStat >= attackCost &&

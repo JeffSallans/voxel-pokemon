@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class ICard : MonoBehaviour
@@ -12,7 +13,7 @@ public abstract class ICard : MonoBehaviour
 
     public virtual bool overridesPlayFunc() { return false; }
 
-    public virtual void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target) { }
+    public virtual List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets) { return targets.Select(t => false).ToList(); }
 
     public virtual void onDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed) { }
 

@@ -34,6 +34,7 @@ public class CardRockThrow : ICard
     {
         if (card != move && numberOfCardsPlayed < maxStacks)
         {
+            card.cardAnimator.SetTrigger("onFlip");
             numberOfCardsPlayed++;
             card.initDamage += damagePerCardPlayed;
         }
@@ -53,6 +54,7 @@ public class CardRockThrow : ICard
     public override void onTurnEnd(Card card, BattleGameBoard battleGameBoard) {
         if (countResetsAtEndOfTurn)
         {
+            card.cardAnimator.SetTrigger("onFlip");
             card.initDamage -= numberOfCardsPlayed * damagePerCardPlayed;
             numberOfCardsPlayed = 0;
         }

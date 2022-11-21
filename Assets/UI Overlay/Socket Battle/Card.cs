@@ -272,6 +272,12 @@ public class Card : MonoBehaviour
             // Check if there are any remaining card plays this turn
             if (battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
 
+            // Check if self is trapped
+            if (owner.isTrapped && battleGameBoard.activePokemon != owner) return false;
+
+            // Check if active is trapped
+            if (battleGameBoard.activePokemon.isTrapped && battleGameBoard.activePokemon != owner) return false;
+
             // Check color energy count
             var costAsString = cost?.Select(c => c?.energyName)
                 .Where(e => e != "Normal")
@@ -843,7 +849,7 @@ public class Card : MonoBehaviour
 
         // Run override if applicable
         if (overrideFunctionality) {
-            overrideFunctionality.play(this, battleGameBoard, user, selectedTarget);
+            attackMissed = overrideFunctionality.play(this, battleGameBoard, user, selectedTarget, targets);
         }
         // Don't use default functionality if specified
         var useCommonCardEffect = overrideFunctionality?.overridesPlayFunc() != true;
@@ -852,7 +858,7 @@ public class Card : MonoBehaviour
             {
                 return commonCardPlay(user, t);
             }).ToList();
-        }      
+        }
 
         if (userAnimationType != "") user.modelAnimator.SetTrigger(userAnimationType);
         targets.ForEach(t =>
@@ -893,11 +899,6 @@ public class Card : MonoBehaviour
         {
             attackMissed = true;
         }
-        if (damage < 0)
-        {
-            var newHealth = target.health - damage;
-            target.health = Mathf.Min(Mathf.Max(newHealth, 0), target.initHealth);
-        }
 
         // Add status effects if applicable
         var statusTarget = (statusAffectsUser) ? user : target;
@@ -907,7 +908,7 @@ public class Card : MonoBehaviour
         addStatHelper(statusTarget, "evasionStat", evasionStat, 6);
         addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
-        addStatHelper(statusTarget, "poisonEffect", poisonStacks, 15);
+        addStatHelper(statusTarget, "poison", poisonStacks, 15);
         if (grantsInvulnerability)
         {
             statusTarget.attachedStatus.Add(new StatusEffect(statusTarget, this, "invulnerabilityEffect", new Dictionary<string, string>() {
@@ -928,13 +929,15 @@ public class Card : MonoBehaviour
         // Heal if possible
         if (!attackMissed && heal > 0)
         {
-            target.health += heal;
+            var newHealth = target.health + heal;
+            target.health = Mathf.Min(newHealth, target.initHealth);
         }
 
         // Heal/dmg user if possible
         if (!attackMissed && userHeal > 0)
         {
-            user.health += userHeal;
+            var newHealth = user.health + userHeal;
+            user.health = Mathf.Min(newHealth, user.initHealth);
         }
 
         // Allow another card to be played

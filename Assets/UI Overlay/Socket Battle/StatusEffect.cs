@@ -39,6 +39,19 @@ public class StatusEffect
     /// </summary>
     public string statType;
 
+    public enum StatusEffectType
+    {
+        Attack,
+        Defense,
+        Special,
+        Evasion,
+        Block,
+        AttackMultStat,
+        Invulnerability,
+        Trap,
+        Poison
+    }
+
     /// <summary>
     /// The number of stacks of the stat modification
     /// </summary>
@@ -134,6 +147,12 @@ public class StatusEffect
 
     public void onOpponentTurnEnd() {
         turnsLeft--;
+        if (statType == "poison")
+        {
+            targetPokemon.health -= 10;
+            targetPokemon.modelAnimator.SetTrigger("onDebuff");
+            targetPokemon.modelAnimator.SetTrigger("onPoison");
+        }
         if (turnsLeft == 0)
         {
             onDeactivate();
@@ -156,7 +175,7 @@ public class StatusEffect
         if (givenStatType == "attackMultStat") return "ZZAttackMult";
         if (givenStatType == "invulnerability") return "ZZInvul";
         if (givenStatType == "trap") return "ZZTrap";
-        if (givenStatType == "poisonEffect") return "ZZPoison";
+        if (givenStatType == "poison") return "ZZPoison";
         return "\uf111";
     }
 

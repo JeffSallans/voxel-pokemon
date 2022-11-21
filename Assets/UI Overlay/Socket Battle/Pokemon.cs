@@ -139,6 +139,19 @@ public class Pokemon : MonoBehaviour
     }
 
     /// <summary>
+    /// True if the pokemon can't move
+    /// </summary>
+    public bool isTrapped
+    {
+        get
+        {
+            var statusEffect = attachedStatus.Where(s => s.statType == "trap").FirstOrDefault();
+            if (statusEffect == null) return false;
+            return statusEffect.stackCount > 0;
+        }
+    }
+
+    /// <summary>
     /// Max number of energy a pokemon can hold
     /// </summary>
     public int maxNumberOfAttachedEnergy = 2;

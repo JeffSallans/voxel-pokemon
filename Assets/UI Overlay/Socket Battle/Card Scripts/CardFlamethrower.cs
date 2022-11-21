@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -9,10 +10,10 @@ public class CardFlamethrower : ICard
 {
     public override bool overridesPlayFunc() { return false; }
 
-    public override void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target)
+    public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets)
     {
         // Skip discard if this is the only card in the hand
-        if (user.hand.Count < 1) return;
+        if (user.hand.Count < 1) return targets.Select(t => false).ToList();
 
         // Discard each card in your hand
         for (var i = user.hand.Count - 1; i >= 0; i--)
@@ -22,6 +23,8 @@ public class CardFlamethrower : ICard
                 battleGameBoard.cardDiscard(user.hand[i], user.hand[i].owner, false);
             }
         }
+
+        return targets.Select(t => false).ToList();
     }
 }
 

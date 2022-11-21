@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static Card;
 
@@ -25,11 +26,13 @@ public class CardEnergyDiscard : ICard
 
     public override bool overridesPlayFunc() { return !useCommonCardEffect; }
 
-    public override void play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget)
+    public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets)
     {
         var discardTargets = card.getTarget(targetType, selectedTarget);
 
         discardTargets.ForEach(t => discardEneriesForTarget(t));
+
+        return targets.Select(t => false).ToList();
     }
 
     /// <summary>
