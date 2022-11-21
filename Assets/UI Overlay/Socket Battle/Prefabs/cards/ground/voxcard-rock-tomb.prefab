@@ -109,17 +109,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
---- !u!114 &8305918859215905251 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8540822036947162094, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
-  m_PrefabInstance: {fileID: 415339787564118541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2123191228185930203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,11 +118,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 118599846508305544, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 225406187112627262, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 868194513880167289, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -141,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1558096806259628542, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Pivot.x
@@ -237,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2749190755717646001, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3356166857055934153, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Sprite
@@ -249,11 +238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689760004196919908, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: theme
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardName
@@ -265,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardRarity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: damageType
@@ -273,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
@@ -281,15 +270,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: defenseStat
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: statusAffectsUser
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: userAnimationType
@@ -298,14 +287,14 @@ PrefabInstance:
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.data[0]
       value: 
-      objectReference: {fileID: 8305918859215905251}
+      objectReference: {fileID: 2391909691432537405}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.data[1]
       value: 
       objectReference: {fileID: 2391909691432537405}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal <color=red>{damage}</color> ZZRock dmg and adds {defense} ZZDef
+      value: Deal {damage} ZZRock  dmg, add 1 def when in hand.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -313,11 +302,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223889719225539049, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5316317520990569409, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_text
@@ -337,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663831963972602519, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8355399589701475147, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -345,10 +334,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867044582068023209, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+--- !u!1 &40690749490827998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_PrefabInstance: {fileID: 2123191228185930203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &40690749490827999 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
@@ -365,3 +359,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5964465438252825177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40690749490827998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666347dbdb1f526459fd66bfc0e9189e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 1

@@ -104,12 +104,28 @@ PrefabInstance:
       value: Normal
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: cardRarity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: damageType
       value: Normal
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initDamage
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initCardDescription
+      value: Deals {damage} ZZNormal dmg. Discard energy on all team members.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType2
+      value: onNormal
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: prefabCost.Array.size
@@ -129,3 +145,23 @@ PrefabInstance:
       objectReference: {fileID: 8540822036947162094, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+--- !u!1 &3417405939065684447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_PrefabInstance: {fileID: 3641890036429290202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2450467942650028100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3417405939065684447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3864613a5b971489b06cb4386982c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useCommonCardEffect: 0
+  numberOfEnergyToDiscard: 3
+  targetType: 8

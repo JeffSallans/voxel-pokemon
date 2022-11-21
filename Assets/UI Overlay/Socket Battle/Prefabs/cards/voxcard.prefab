@@ -384,7 +384,7 @@ MonoBehaviour:
   cardType: Water
   cardRarity: 1
   theme: 0
-  targetType: ActiveOpponent
+  targetType: 0
   damageType: Water
   initDamage: 8
   attackStat: 0
@@ -396,6 +396,8 @@ MonoBehaviour:
   userHeal: 0
   heal: 0
   grantsInvulnerability: 0
+  poisonStacks: 0
+  applyTrap: 0
   turn: 99
   statusAffectsUser: 0
   isSingleUse: 0
@@ -1280,7 +1282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3, y: -7.8}
+  m_AnchoredPosition: {x: -2.3, y: -11}
   m_SizeDelta: {x: 73.1762, y: 9.6646}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2768095557371611722
@@ -1311,10 +1313,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deal <color=red>8</color> \uf043 dmg
+  m_text: Deal 40 ZZElectric dmg.  +30 dmg if the user is the active pokemon.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 33578143f7a48db4dbf2b1a89688b4c0, type: 2}
+  m_sharedMaterial: {fileID: -5106264860325756105, guid: 33578143f7a48db4dbf2b1a89688b4c0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1338,12 +1340,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
+  m_fontSize: 7
   m_fontSizeBase: 8
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 7
+  m_fontSizeMax: 9
   m_fontStyle: 0
   m_HorizontalAlignment: 32
   m_VerticalAlignment: 256

@@ -108,8 +108,42 @@ PrefabInstance:
       value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: keepEnergiesOnPlay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initCardDescription
+      value: Deal 60 ZZRock dmg to attacking pokemon.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType2
+      value: onRock
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+--- !u!1 &7569897463025198820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_PrefabInstance: {fileID: 8424592831897378273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5631356163395667569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569897463025198820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5355c7b141852994fbded4df767371f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 60

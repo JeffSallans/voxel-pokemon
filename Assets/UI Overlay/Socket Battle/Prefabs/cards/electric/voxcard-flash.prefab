@@ -100,6 +100,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: a0803d5b6b8ddb94cba0db789dadb6a2, type: 3}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: theme
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: cardName
+      value: Flash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardType
       value: Electric
       objectReference: {fileID: 0}
@@ -109,7 +117,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 0
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initCardDescription
+      value: Deal {damage} ZZElectric dmg. Discard all energies from target. Discard
+        cost.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+--- !u!1 &2116548904074954115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_PrefabInstance: {fileID: 52065356882493062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7632769812844672419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116548904074954115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3864613a5b971489b06cb4386982c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useCommonCardEffect: 1
+  numberOfEnergyToDiscard: 4
+  targetType: 4

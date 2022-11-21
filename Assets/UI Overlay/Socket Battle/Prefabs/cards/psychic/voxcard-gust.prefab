@@ -100,6 +100,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c2f26a0cedba4d841b2fd8790ebcc271, type: 3}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: theme
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: cardName
+      value: Gust
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardType
       value: Psychic
       objectReference: {fileID: 0}
@@ -109,7 +117,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 0
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: keepEnergiesOnPlay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initCardDescription
+      value: Deal {damage} ZZPsychic dmg.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}

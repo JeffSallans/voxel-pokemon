@@ -56,7 +56,7 @@ public class CardKOEventBuff : ICard
         {
             card.cardAnimator.SetTrigger("onFlip");
             numberOfKOs = numberAliveOpponentsLastTurn - newAliveCount;
-            numberAliveOpponentsLastTurn = newAliveCount;
+            numberAliveOpponentsLastTurn = Mathf.Min(newAliveCount, maxStacks);
         }
     }
 

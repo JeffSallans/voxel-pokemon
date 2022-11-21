@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 118599846508305544, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 225406187112627262, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 504653411515149483, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 868194513880167289, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1558096806259628542, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Pivot.x
@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689760004196919908, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4567816082675580122, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -169,20 +169,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.data[0]
       value: 
-      objectReference: {fileID: 1512265249660405603}
+      objectReference: {fileID: 7280589167537752782}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cost.Array.data[1]
       value: 
@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 3760414575152926653}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal <color=red>{damage}</color> ZZRock dmg. {flipText}
+      value: Deal {damage} ZZRock dmg to any, bonus +30 per def then remove all def.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -202,10 +202,10 @@ PrefabInstance:
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: flipButtonFunctionality
       value: 
-      objectReference: {fileID: 1993009000694880992}
+      objectReference: {fileID: 0}
     - target: {fileID: 5223889719225539049, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5316317520990569409, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663831963972602519, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8355399589701475147, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867044582068023209, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1993009000694880992
+--- !u!114 &-8649096954537854141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,19 +263,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1553451693010325598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
+  m_Script: {fileID: 11500000, guid: dd527f6e00d7f2d4ca1f50411eda8c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: 'ZZTap: If ZZDef > 2 +40 dmg'
-  attackCost: 0
-  defenseCost: 3
-  specialCost: 0
-  evasionCost: 0
-  spendCost: 0
-  damageIncrease: 40
-  blockIncrease: 0
-  multiplierIncrease: 0
-  userHealIncrease: 0
+  damage: 30
+  damageBonusPerDefStack: 30
 --- !u!1001 &1409276086205110560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,14 +497,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
---- !u!114 &1512265249660405603 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8540822036947162094, guid: a8e35912e3ba6754cad27265db815dde, type: 3}
-  m_PrefabInstance: {fileID: 7096473854750315661}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -100,6 +100,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 166a45b4428559a47a96e5521f3a1527, type: 3}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: theme
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardType
       value: Ground
       objectReference: {fileID: 0}
@@ -108,8 +112,51 @@ PrefabInstance:
       value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: keepEnergiesOnPlay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initCardDescription
+      value: Deal {damage} ZZRock dmg. {flipText}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType2
+      value: onRock
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+--- !u!1 &4983712853971938898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_PrefabInstance: {fileID: 6399108499313218903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6172927340171664249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4983712853971938898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipButtonText: If ZZDef > 0, bonus +10 dmg.
+  attackCost: 0
+  defenseCost: 1
+  specialCost: 0
+  evasionCost: 0
+  spendCost: 0
+  damageIncrease: 10
+  blockIncrease: 0
+  multiplierIncrease: 0
+  userHealIncrease: 0

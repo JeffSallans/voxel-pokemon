@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 616220058316200716, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352210141834144582, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -99,6 +107,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2160633b2f8895b49ae0df8d312eee82, type: 3}
+    - target: {fileID: 3571428719399057291, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886341318002872834, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: cardName
+      value: Volt Tackle
+      objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: cardType
       value: Electric
@@ -109,7 +129,84 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: initCardDescription
+      value: Deal {damage} ZZElectric dmg to active opponent and switch to target.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389838040298395864, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_text
+      value: Deal 40 ZZElectric dmg.  +30 dmg if the user is the active pokemon.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_fontSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cdd97bd2d6c1cd4a8531ac9b0999459, type: 2}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5106264860325756105, guid: 9cdd97bd2d6c1cd4a8531ac9b0999459, type: 2}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703409768264312485, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755603869261764849, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455102845894099069, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481765972258607234, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+--- !u!1 &7274871188832936169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+  m_PrefabInstance: {fileID: 8724052901206989804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2831551026171243752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274871188832936169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995d492ceaa536849bd903665a4e61c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
