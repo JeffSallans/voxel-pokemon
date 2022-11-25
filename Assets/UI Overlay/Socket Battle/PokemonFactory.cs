@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class PokemonFactory : MonoBehaviour
 {
-    private List<Card> cardInventory;
+    public List<Card> cardInventory;
 
     private List<Energy> energyInventory;
 
@@ -17,7 +17,12 @@ public class PokemonFactory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        var loadingFactoryObject = GameObject.Find("loading-factory");
+        var allPokemon = loadingFactoryObject.GetComponentsInChildren<Pokemon>(true);
+        pokemonInventory = allPokemon.ToList();
+
+        var allCards = loadingFactoryObject.transform.Find("card-encyclopedia").GetComponentsInChildren<Card>(true);
+        cardInventory = allCards.ToList();
     }
 
     // Update is called once per frame

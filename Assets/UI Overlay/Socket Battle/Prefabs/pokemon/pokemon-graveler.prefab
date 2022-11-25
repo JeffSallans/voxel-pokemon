@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: possibleCards.Array.data[10]
       value: 
       objectReference: {fileID: 6407626323776546897, guid: 919d6b99d5c7020478aebdf8ffcfdb77, type: 3}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: possibleCardTypes.Array.data[0]
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: possibleCardTypes.Array.data[1]
+      value: Normal
+      objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: initHealth
       value: 190

@@ -108,6 +108,14 @@ PrefabInstance:
       propertyPath: possibleCards.Array.data[9]
       value: 
       objectReference: {fileID: 21961746651418264, guid: 9c533acb1080e3642be4a4b6d5998cbf, type: 3}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: possibleCardTypes.Array.data[0]
+      value: Psychic
+      objectReference: {fileID: 0}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: possibleCardTypes.Array.data[1]
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: initHealth
       value: 140

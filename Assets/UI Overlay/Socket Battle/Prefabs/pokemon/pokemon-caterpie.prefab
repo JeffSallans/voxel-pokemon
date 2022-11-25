@@ -100,6 +100,14 @@ PrefabInstance:
       propertyPath: possibleCards.Array.data[7]
       value: 
       objectReference: {fileID: 4248527698332970605, guid: b1834fc25bd1b6549a1c9a84fa74194b, type: 3}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: possibleCardTypes.Array.data[0]
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: possibleCardTypes.Array.data[1]
+      value: Water
+      objectReference: {fileID: 0}
     - target: {fileID: 209763601435358314, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: initHealth
       value: 140

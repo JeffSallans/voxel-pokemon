@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -11,7 +12,17 @@ public class PokemonDeckBuildSettings : MonoBehaviour
     /// Size of the pokemon's deck
     /// </summary>
     public int deckSize = 6;
-    
+
+    /// <summary>
+    /// Where all the possible cards are stored. Must be an inactive GameObject or the cards will be picked up in other places.
+    /// </summary>
+    public GameObject cardEncyclopedia = null;
+
+    /// <summary>
+    /// The card types that this pokemon can support
+    /// </summary>
+    public List<string> possibleCardTypes = new List<string>();
+
     /// <summary>
     /// Possible cards to receive in deck builder
     /// </summary>
@@ -31,6 +42,11 @@ public class PokemonDeckBuildSettings : MonoBehaviour
     void Start()
     {
         canvasParent = gameObject.transform.Find("cards");
+
+        var allCards = GameObject.FindObjectOfType<PokemonFactory>().cardInventory;
+        //var allCards = GameObject.Find("loading-factory").GetComponentsInChildren<Card>(true);
+        var allowedCards = allCards.Where(c => possibleCardTypes.Any(cardType => cardType == c.cardType));
+        possibleCards = allowedCards.ToList();
     }
 
     // Update is called once per frame

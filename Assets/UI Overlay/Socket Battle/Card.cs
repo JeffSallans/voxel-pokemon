@@ -273,10 +273,10 @@ public class Card : MonoBehaviour
             if (battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
 
             // Check if self is trapped
-            if (owner.isTrapped && battleGameBoard.activePokemon != owner) return false;
+            if (owner != null && battleGameBoard != null && owner.isTrapped && battleGameBoard?.activePokemon != owner) return false;
 
             // Check if active is trapped
-            if (battleGameBoard.activePokemon.isTrapped && battleGameBoard.activePokemon != owner) return false;
+            if (owner != null && battleGameBoard != null && battleGameBoard.activePokemon.isTrapped && battleGameBoard.activePokemon != owner) return false;
 
             // Check color energy count
             var costAsString = cost?.Select(c => c?.energyName)
@@ -442,6 +442,9 @@ public class Card : MonoBehaviour
     {
         battleGameBoard = GameObject.FindObjectOfType<BattleGameBoard>();
         deckBuilderAddCard = GameObject.FindObjectOfType<DeckBuilderAddCard>();
+
+        overrideFunctionality = GetComponent<ICard>();
+        flipButtonFunctionality = GetComponent<IFlipButton>();
 
         // Create card cost energies
         if (cost.Count == 0)

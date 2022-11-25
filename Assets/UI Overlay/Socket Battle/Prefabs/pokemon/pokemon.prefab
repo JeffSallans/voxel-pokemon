@@ -513,6 +513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219b1f1e7b009e642a2fde616fe53c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckSize: 6
+  cardEncyclopedia: {fileID: 0}
+  possibleCardTypes:
+  - 
+  - 
   possibleCards: []
   unlockedCards: []
 --- !u!1 &892300956719744041
@@ -609,6 +614,7 @@ MonoBehaviour:
   targetCard: {fileID: 0}
   targetEnergySocket: {fileID: 0}
   targetGameObject: {fileID: 818531783516017186}
+  targetAnimator: {fileID: 0}
 --- !u!65 &751248145099158809
 BoxCollider:
   m_ObjectHideFlags: 0
