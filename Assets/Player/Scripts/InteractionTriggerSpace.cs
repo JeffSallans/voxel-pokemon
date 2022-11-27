@@ -22,7 +22,9 @@ public class InteractionTriggerSpace : MonoBehaviour
     private InteractionChecker interactionChecker;
 
 
-    private bool hasTriggeredEvent;
+    //private bool hasTriggeredEvent;
+
+    private static bool hasTriggeredEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,8 @@ public class InteractionTriggerSpace : MonoBehaviour
     {
         if (!hasTriggeredEvent && interactionEventToTrigger && interactionEventToTrigger.enabled)
         {
+            hasTriggeredEvent = true;
+
             // Check if two players exist, this in invalid event trigger
             if (FindObjectsOfType<CharacterController>().Count() > 1)
             {
@@ -61,7 +65,6 @@ public class InteractionTriggerSpace : MonoBehaviour
 
             // Remove focus after two seconds
              
-            hasTriggeredEvent = true;
         }
     }
 

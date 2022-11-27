@@ -12,6 +12,12 @@ public class CardFlamethrower : ICard
 
     public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets)
     {
+        var userHand = user.hand;
+        if (BattleGameBoardForge.IsAForgeGame())
+        {
+            userHand = battleGameBoard.hand;
+        }
+
         // Skip discard if this is the only card in the hand
         if (user.hand.Count < 1) return targets.Select(t => false).ToList();
 

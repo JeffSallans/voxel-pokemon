@@ -266,6 +266,16 @@ public class InteractionEvent : MonoBehaviour
     public string pokemonToAdd = "";
 
     /// <summary>
+    /// (Optional for Question) The amount of money to have to trigger the yes condition and subtrack that amount, otherwise triggers the no condition.
+    /// </summary>
+    public int priceRequirement = 0;
+
+    /// <summary>
+    /// (Optional) The amount to adjust of the players money.
+    /// </summary>
+    public int moneyChange = 0;
+
+    /// <summary>
     /// (Required for AddPokemon) The message to display when the pokemon was added.
     /// </summary>
     public string pokemonToAddSuccessMessage {

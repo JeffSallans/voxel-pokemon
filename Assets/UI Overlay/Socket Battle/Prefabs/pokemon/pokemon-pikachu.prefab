@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2169613609091432705, guid: dfdbb357ca16f4d4987b2bf328a4f7c4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2169613609091432705, guid: dfdbb357ca16f4d4987b2bf328a4f7c4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2169613609091432705, guid: dfdbb357ca16f4d4987b2bf328a4f7c4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2169613609091432705, guid: dfdbb357ca16f4d4987b2bf328a4f7c4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,6 +76,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: unlockedCards.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: unlockedCards.Array.data[0]
+      value: 
+      objectReference: {fileID: 3210906256299011976, guid: dbcea0e27c7bedc4ab5dbbe7cf7ca691, type: 3}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: unlockedCards.Array.data[1]
+      value: 
+      objectReference: {fileID: 1516088929882337952, guid: 1051d3f86dad2c5448baab50719e5402, type: 3}
+    - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
+      propertyPath: unlockedCards.Array.data[2]
+      value: 
+      objectReference: {fileID: 4981992977175838476, guid: e06bca03ee7de144cbe480ccbd76bf0b, type: 3}
     - target: {fileID: 186504180685233706, guid: 1e4ff6fc327c4f243a2d071b7d480dbe, type: 3}
       propertyPath: possibleCardTypes.Array.data[0]
       value: Electric

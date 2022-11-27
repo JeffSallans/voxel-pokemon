@@ -2473,7 +2473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: message.Array.data[0]
-      value: Now I'm off
+      value: '**Jesse picks up <color=purple>Squirtle</color>**'
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: message.Array.data[1]
@@ -2481,7 +2481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: messageName.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: messageName.Array.data[0]
@@ -4709,10 +4709,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1970892677}
     m_Modifications:
-    - target: {fileID: 1364066976368033146, guid: 9b7cf133bed929c47886b99279531354, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4086779144730634355, guid: 9b7cf133bed929c47886b99279531354, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8150,7 +8146,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20085287, y: -0.6647284, z: 0.19256598, w: 0.6933344}
+  m_LocalRotation: {x: 0.20013599, y: -0.6673, z: 0.19331096, w: 0.69085974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12226,7 +12222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: message.Array.data[0]
-      value: Off to where?
+      value: Great choice. Now let's start our adventure!
       objectReference: {fileID: 0}
     - target: {fileID: 3220221547305880340, guid: 2f49f0812ead31c498950ca21fd0d57c, type: 3}
       propertyPath: message.Array.data[1]
@@ -12352,6 +12348,8 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!114 &1774450248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12373,16 +12371,13 @@ MonoBehaviour:
   - Red
   - Red
   - Prof Ketchum
-  - Red
-  - Red
+  - Jesse
   message:
-  - I'm only going to be gone a few weeks. I need to travel around Kanto to help
-    Professor Ketchum.
-  - '*sigh*'
-  - I thought we talked about this Ketchum
+  - Wait this was going to be my trip!
+  - I thought it would be a fun thing to do together.
+  - Prof Ketchum agrees.
   - ...
-  - Jesse and I are a packaged deal.
-  - So, I guess Jesse and I are going to be doing some traveling.
+  - Ugh
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -12406,6 +12401,8 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!114 &1774450249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12449,6 +12446,8 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: Charmander
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!1 &1780345244
 GameObject:
   m_ObjectHideFlags: 0
@@ -13318,7 +13317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3848894797212670664, guid: d025fef319c00624eafadec77ec4f2a3, type: 3}
       propertyPath: message.Array.data[0]
-      value: ...
+      value: I look forward to see how many move cards Jesse collects.
       objectReference: {fileID: 0}
     - target: {fileID: 3848894797212670664, guid: d025fef319c00624eafadec77ec4f2a3, type: 3}
       propertyPath: message.Array.data[1]
@@ -13520,6 +13519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dafeb426fbfcbd42ab5ee2702b4ba87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInventory: []
   pokemonInventory:
   - {fileID: 3395158668527527246, guid: 1d055e1b1b6cbe74cace40e161328954, type: 3}
   - {fileID: 4424213069829249659, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}

@@ -22,6 +22,12 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            horizontal = 0;
+            vertical = 1;
+        }
+
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if(direction.magnitude >= 0.1f && cam != null)

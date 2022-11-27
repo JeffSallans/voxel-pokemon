@@ -50,10 +50,9 @@ public class BattleGameBoardForge : BattleGameBoard
         // Setup deck
         mergedHand = new List<Card>();
         mergedDiscard = new List<Card>();
-        deck = new List<Card>();
+        mergedDeck = new List<Card>();
         player.party.ForEach(p => {
-            var deckWithoutSwitches = p.initDeck.Where(c => c.cardName != "Switch").ToList();
-            deck.AddRange(deckWithoutSwitches);
+            mergedDeck.AddRange(p.initDeck);
         });
         if (shuffleDeck)
         {
@@ -179,5 +178,14 @@ public class BattleGameBoardForge : BattleGameBoard
     {
         pokemonAllowedToPlayCards = null;
         base.onTurnEnd();
+    }
+
+    /// <summary>
+    /// Returns true if the game being played at the moment is a forge game.
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsAForgeGame()
+    {
+        return GameObject.FindObjectOfType<BattleGameBoardForge>() != null;
     }
 }

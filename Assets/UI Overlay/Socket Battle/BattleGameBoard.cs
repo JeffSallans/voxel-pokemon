@@ -759,17 +759,30 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="wasPlayed">True if the discard was after playing</param>
     public void cardDiscard(Card target, Pokemon user, bool wasPlayed)
     {
-        if (!(wasPlayed && target.isSingleUse)) user.discard.Add(target);
+        if (!(wasPlayed && target.isSingleUse))
+        {
+            if (BattleGameBoardForge.IsAForgeGame())
+            {
+                discard.Add(target);
+            }
+            else
+            {
+                user.discard.Add(target);
+            }
+        }
         
         if (target == user.initSwitchCard)
         {
             switchCard = null;
         }
-        else
+        else if (BattleGameBoardForge.IsAForgeGame())
+        {
+            hand.Remove(target);
+        } else
         {
             user.hand.Remove(target);
         }
-        
+
         target.Translate(discardLocation.transform.position, "cardDiscard");
         target.transform.rotation = discardLocation.transform.rotation;
         target.onDiscard(wasPlayed);

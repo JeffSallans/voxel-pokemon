@@ -318,7 +318,17 @@ public class InteractionChecker : MonoBehaviour
             {
                 await worldDialog.PromptShowMessageAsync(message,
                     iEvent.options,
-                    () => { iEvent.autoTriggerInteractionEvent = iEvent.optionFirstTriggerInteractionEvent; return true; },
+                    () => {
+                        var player = prevScenePlayer.GetComponent<PlayerDeck>();
+                        if (iEvent.priceRequirement > 0 && player.money >= iEvent.priceRequirement) {
+                            player.money -= iEvent.priceRequirement;
+                        }
+                        else if (iEvent.priceRequirement > 0 && player.money < iEvent.priceRequirement)
+                        {
+                            iEvent.autoTriggerInteractionEvent = iEvent.optionSecondTriggerInteractionEvent; return true;
+                        }
+                        iEvent.autoTriggerInteractionEvent = iEvent.optionFirstTriggerInteractionEvent; return true;
+                    },
                     () => { iEvent.autoTriggerInteractionEvent = iEvent.optionSecondTriggerInteractionEvent; return true; },
                     sound,
                     personName
@@ -346,7 +356,7 @@ public class InteractionChecker : MonoBehaviour
         await worldDialog.ShowAllMessagesAsync(iEvent);
 
         // Select current player
-        var player = GameObject.FindObjectOfType<PlayerDeck>();
+        var player = PlayerDeck.GetPlayer();
         var pokemonWasAdded = player.AddPokemon(iEvent.pokemonToAdd);
 
         if (pokemonWasAdded)
@@ -702,6 +712,13 @@ public class InteractionChecker : MonoBehaviour
         if (iEvent.removeOnReturn)
         {
             iEvent.gameObject.SetActive(false);
+        }
+
+        // Remove any money
+        if (iEvent.moneyChange != 0)
+        {
+            var player = PlayerDeck.GetPlayer();
+            player.money += iEvent.moneyChange;
         }
 
         // Update other events since this one is now completed

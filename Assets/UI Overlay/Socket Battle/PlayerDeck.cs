@@ -19,6 +19,11 @@ public class PlayerDeck : MonoBehaviour
     public List<Energy> energies;
 
     /// <summary>
+    /// The amount of money the player has
+    /// </summary>
+    public int money = 0;
+
+    /// <summary>
     /// The options the users has for this game
     /// </summary>
     public GameOptions gameOptions;
@@ -82,5 +87,15 @@ public class PlayerDeck : MonoBehaviour
         energies.AddRange(newEnergies);
 
         return true;
+    }
+
+    /// <summary>
+    /// Returns the active player
+    /// </summary>
+    /// <returns></returns>
+    public static PlayerDeck GetPlayer()
+    {
+        var player = GameObject.FindObjectOfType<PlayerDeck>();
+        return player;
     }
 }
