@@ -107,6 +107,7 @@ public class Card : MonoBehaviour
         AnyOpponentAll,
         BenchOpponentAll,
         AnyPokemonAll,
+        PokemonAllButUser,
         OverrideTarget,
     }
 
@@ -207,6 +208,11 @@ public class Card : MonoBehaviour
     /// True if the card will add 1 to the remainingCardsToPlay counter
     /// </summary>
     public bool playAnotherCard = false;
+
+    /// <summary>
+    /// Set to a number greater than 0 to show the number of cards to draw
+    /// </summary>
+    public int numberOfCardsToDraw = 0;
 
     /// <summary>
     /// True if the card should keep the energy cost when played
@@ -585,6 +591,10 @@ public class Card : MonoBehaviour
         {
             return "All";
         }
+        else if (targetType == CardTargetType.PokemonAllButUser)
+        {
+            return "All But Self";
+        }
         else
         {
             return "Any";
@@ -943,6 +953,13 @@ public class Card : MonoBehaviour
             user.health = Mathf.Min(newHealth, user.initHealth);
         }
 
+        // Draw cards
+        for (var i = 0; i < numberOfCardsToDraw; i++)
+        {
+            if (battleGameBoard.deck.Count < 1) { battleGameBoard.reshuffleDiscard(); }
+            battleGameBoard.drawCard(battleGameBoard.activePokemon);
+        }
+
         // Allow another card to be played
         if (playAnotherCard)
         {
@@ -1073,7 +1090,7 @@ public class Card : MonoBehaviour
         {
             return onTeam;
         }
-        else if (targetType == CardTargetType.ActiveOpponent)
+        else if (targetType == CardTargetType.ActiveOpponent || targetType == CardTargetType.PokemonAllButUser)
         {
             return isOpp;
         }
@@ -1144,6 +1161,10 @@ public class Card : MonoBehaviour
         else if (givenTargetType == CardTargetType.AnyPokemonAll)
         {
             return team.Union(opponentTeam).ToList();
+        }
+        else  if (givenTargetType == CardTargetType.PokemonAllButUser)
+        {
+            return bench.Union(opponentTeam).ToList();
         }
 
         return new List<Pokemon>() { selectedTarget };

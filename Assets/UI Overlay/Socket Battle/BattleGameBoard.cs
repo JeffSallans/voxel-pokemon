@@ -595,7 +595,7 @@ public class BattleGameBoard : MonoBehaviour
     /// Draw the top card from the deck
     /// </summary>
     /// <param name="activePokemon"></param>
-    protected void drawCard(Pokemon activePokemon) {
+    public void drawCard(Pokemon activePokemon) {
         // Don't draw if the deck doesn't have cards (assuming reshuffle was used before this) 
         if (deck.Count == 0) return;
 
@@ -644,7 +644,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// Modifies discard and deck
     /// </summary>
-    protected void reshuffleDiscard()
+    public void reshuffleDiscard()
     {
         deck.AddRange(discard);
         discard.RemoveAll(card => true);
