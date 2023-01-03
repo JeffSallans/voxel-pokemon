@@ -24,6 +24,11 @@ public class PlayerDeck : MonoBehaviour
     public int money = 0;
 
     /// <summary>
+    /// Set to true to skip all battles for testing the rest of the game
+    /// </summary>
+    public bool skipBattles = false;
+
+    /// <summary>
     /// The options the users has for this game
     /// </summary>
     public GameOptions gameOptions;

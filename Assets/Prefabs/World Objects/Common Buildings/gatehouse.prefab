@@ -109,11 +109,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6673a8301f2e0a549af892f09da12280, type: 3}
+--- !u!1 &787137116343528919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6673a8301f2e0a549af892f09da12280, type: 3}
+  m_PrefabInstance: {fileID: 445030460580647046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &119250445236320109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6673a8301f2e0a549af892f09da12280, type: 3}
   m_PrefabInstance: {fileID: 445030460580647046}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2092651274451177446
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787137116343528919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4888912, y: 6.580684, z: 9.835016}
+  m_Center: {x: -24.440712, y: 4.5545254, z: -7.612879}
+--- !u!114 &5258183580759421056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787137116343528919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: 
+  eventType: 2
+  eventStatus: 0
+  interactionHint: Open
+  messageName: []
+  message: []
+  messageSounds: []
+  opponent: {fileID: 0}
+  sceneName: gls_world_map_week1_gatehouse1
+  scenePlayerName: PlayerSpawn_north
+  animationBooleanName: 
+  animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!1001 &445030460724354398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,8 +368,69 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ad9827df01b624eb3d04864ab8c25c, type: 3}
+--- !u!1 &787137115468610416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c6ad9827df01b624eb3d04864ab8c25c, type: 3}
+  m_PrefabInstance: {fileID: 445030461719512609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &119250444097184202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c6ad9827df01b624eb3d04864ab8c25c, type: 3}
   m_PrefabInstance: {fileID: 445030461719512609}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6980187130937965792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787137115468610416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: 
+  eventType: 2
+  eventStatus: 0
+  interactionHint: Open
+  messageName: []
+  message: []
+  messageSounds: []
+  opponent: {fileID: 0}
+  sceneName: gls_world_map_week1_gatehouse1
+  scenePlayerName: PlayerSpawn_south
+  animationBooleanName: 
+  animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
+--- !u!65 &1508678254690132195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787137115468610416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 6.580684, z: 9.835016}
+  m_Center: {x: 2.695435e-14, y: 4.5545254, z: -7.612879}

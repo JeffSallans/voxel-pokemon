@@ -522,6 +522,13 @@ public class BattleGameBoard : MonoBehaviour
 
         worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", () => {
 
+            // Check if game is going to be skipped
+            if (player.skipBattles)
+            {
+                onBattleEnd(true);
+                return true;
+            }
+
             // Deal 1 energy to each pokemon
             if (dealStartingEnergy)
             {
