@@ -300,7 +300,7 @@ public class InteractionEvent : MonoBehaviour
     {
         if (eventName == null || eventName == "")
         {
-            eventName = "DefaultEvent_" + Guid.NewGuid();
+            eventName = "DefaultEvent_" + name + "_" + Guid.NewGuid();
         }
     }
 
