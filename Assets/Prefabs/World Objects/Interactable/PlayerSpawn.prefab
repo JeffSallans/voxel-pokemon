@@ -16,7 +16,7 @@ GameObject:
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   party: []
   energies: []
+  money: 0
+  skipBattles: 1
   gameOptions: {fileID: 0}
 --- !u!114 &4028954950367947575
 MonoBehaviour:
