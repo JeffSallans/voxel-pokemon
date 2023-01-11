@@ -81,7 +81,7 @@ public class PlayerDeck : MonoBehaviour
         var partyParent = gameObject.transform.Find("party");
 
         // Instantiate pokemon at given parent
-        var addedPokemonObject = pokemonFactory.GetPokemon(pokemonName, partyParent);
+        var addedPokemonObject = pokemonFactory.GetPokemon(pokemonName.Trim(), partyParent);
         var addedPokemon = addedPokemonObject.GetComponent<Pokemon>();
 
         // Add pokemon to party list

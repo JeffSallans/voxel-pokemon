@@ -24,12 +24,19 @@ public class InteractionTriggerSpace : MonoBehaviour
 
     //private bool hasTriggeredEvent;
 
-    private static bool hasTriggeredEvent;
+    private static bool hasTriggeredEvent {
+        get
+        {
+            return numberOfEventsTriggered > 0;
+        }
+    }
+
+    private static int numberOfEventsTriggered = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        hasTriggeredEvent = false;
+        numberOfEventsTriggered = 0;
         if (interactionEventToTriggerName != null && interactionEventToTriggerName != "")
         {
             interactionEventToTrigger = InteractionEvent.GetInteractionEventByName(interactionEventToTriggerName);
@@ -45,10 +52,13 @@ public class InteractionTriggerSpace : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (!hasTriggeredEvent && interactionEventToTrigger && interactionEventToTrigger.enabled)
+        if (!interactionEventToTrigger || !interactionEventToTrigger.enabled)
         {
-            hasTriggeredEvent = true;
+            return;
+        }
 
+        if (!hasTriggeredEvent)
+        {
             // Check if two players exist, this in invalid event trigger
             if (FindObjectsOfType<CharacterController>().Count() > 1)
             {
@@ -66,10 +76,13 @@ public class InteractionTriggerSpace : MonoBehaviour
             // Remove focus after two seconds
              
         }
+
+        numberOfEventsTriggered++;
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        hasTriggeredEvent = false;
+        numberOfEventsTriggered--;
+        if (numberOfEventsTriggered < 0) numberOfEventsTriggered = 0;
     }
 }
