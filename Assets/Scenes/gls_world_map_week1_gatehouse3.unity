@@ -1072,7 +1072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7506780232734430051, guid: e196b4a4a0bd0094ca392f50946ab535, type: 3}
       propertyPath: message.Array.data[0]
-      value: The road is blocked up ahead by a tree from last night's storm.
+      value: I don't see many people come through here. Thanks for chatting.
       objectReference: {fileID: 0}
     - target: {fileID: 7506780232734430051, guid: e196b4a4a0bd0094ca392f50946ab535, type: 3}
       propertyPath: messageName.Array.size
@@ -1741,7 +1741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4418732375061811001, guid: 21760ff2b7536cf49aacabd8de5c9f56, type: 3}
       propertyPath: scenePlayerName
-      value: PlayerSpawn_gatehouse1
+      value: PlayerSpawn_gatehouse3_south
       objectReference: {fileID: 0}
     - target: {fileID: 4418732375061811007, guid: 21760ff2b7536cf49aacabd8de5c9f56, type: 3}
       propertyPath: m_Name
@@ -3503,11 +3503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4418732375061811001, guid: 21760ff2b7536cf49aacabd8de5c9f56, type: 3}
       propertyPath: sceneName
-      value: gls_world_map_week1_viridian_forest
+      value: gls_world_map_week1
       objectReference: {fileID: 0}
     - target: {fileID: 4418732375061811001, guid: 21760ff2b7536cf49aacabd8de5c9f56, type: 3}
       propertyPath: scenePlayerName
-      value: PlayerSpawn_gatehouse1
+      value: PlayerSpawn_gatehouse3_north
       objectReference: {fileID: 0}
     - target: {fileID: 4418732375061811007, guid: 21760ff2b7536cf49aacabd8de5c9f56, type: 3}
       propertyPath: m_Name
@@ -4895,7 +4895,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.20013599, y: -0.6673, z: 0.19331096, w: 0.69085974}
+  m_LocalRotation: {x: 0.19995306, y: -0.66795313, z: 0.19350015, w: 0.6902283}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6656,18 +6656,18 @@ Transform:
   - {fileID: 1918669447}
   - {fileID: 650086850}
   - {fileID: 1838312336}
-  - {fileID: 725181665}
   - {fileID: 1029712892}
+  - {fileID: 725181665}
   - {fileID: 983232448}
-  - {fileID: 1292880222}
-  - {fileID: 1579384426}
-  - {fileID: 2054432605}
   - {fileID: 1132097347}
   - {fileID: 1909427630}
   - {fileID: 484795278}
   - {fileID: 1102573116}
+  - {fileID: 2054432605}
   - {fileID: 73959645}
+  - {fileID: 1292880222}
   - {fileID: 336812093}
+  - {fileID: 1579384426}
   - {fileID: 35454915}
   - {fileID: 2067179832}
   - {fileID: 840214626}
@@ -8570,7 +8570,7 @@ PrefabInstance:
     - target: {fileID: 613960767260193091, guid: 57fbbfd29d95e7b4b881ca19a346c024, type: 3}
       propertyPath: playerCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1790161853}
     - target: {fileID: 2286368348081508222, guid: 57fbbfd29d95e7b4b881ca19a346c024, type: 3}
       propertyPath: m_RootOrder
       value: 12
