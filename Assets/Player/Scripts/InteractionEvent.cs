@@ -459,24 +459,30 @@ public class InteractionEvent : MonoBehaviour
         {
             var shouldBeActivated = completedEvents.Any(e => dependsOnToSetActive.Contains(e.eventName));
             var shouldBeEnabled = completedEvents.Any(e => dependsOnToEnable.Contains(e.eventName));
+            var shouldBeDisabled = completedEvents.Any(e => dependsOnToDisable.Contains(e.eventName));
             var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
 
-            if (shouldBeActivated && enabled)
+
+            if (shouldBeActivated)
             {
+                gameObject.SetActive(true);
+                eventStatus = (enabled) ? PossibleEventStatus.ActiveAndEnabled : PossibleEventStatus.ToBeEnabled;
+            }
+
+            if (shouldBeEnabled)
+            {
+                enabled = true;
                 gameObject.SetActive(true);
                 eventStatus = PossibleEventStatus.ActiveAndEnabled;
             }
-            else if (shouldBeActivated)
+
+            if (shouldBeDisabled)
             {
-                gameObject.SetActive(true);
-                eventStatus = PossibleEventStatus.ToBeEnabled;
+                enabled = false;
+                eventStatus = PossibleEventStatus.Completed;
             }
-            else if (shouldBeEnabled)
-            {
-                enabled = true;
-                eventStatus = PossibleEventStatus.ToBeEnabled;
-            }
-            else if (shouldBeInactive)
+
+            if (shouldBeInactive)
             {
                 gameObject.SetActive(false);
                 eventStatus = PossibleEventStatus.Completed;
@@ -484,9 +490,10 @@ public class InteractionEvent : MonoBehaviour
         }
         
         // Handle the case of making an event interactable
-        if (eventStatus == PossibleEventStatus.ToBeEnabled)
+        else if (eventStatus == PossibleEventStatus.ToBeEnabled)
         {
             var shouldBeEnabled = completedEvents.Any(e => dependsOnToEnable.Contains(e.eventName));
+            var shouldBeDisabled = completedEvents.Any(e => dependsOnToDisable.Contains(e.eventName));
             var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
 
             if (shouldBeEnabled)
@@ -495,7 +502,14 @@ public class InteractionEvent : MonoBehaviour
                 gameObject.SetActive(true);
                 eventStatus = PossibleEventStatus.ActiveAndEnabled;
             }
-            else if (shouldBeInactive)
+
+            if (shouldBeDisabled)
+            {
+                enabled = false;
+                eventStatus = PossibleEventStatus.Completed;
+            }
+
+            if (shouldBeInactive)
             {
                 gameObject.SetActive(false);
                 eventStatus = PossibleEventStatus.Completed;
@@ -503,7 +517,7 @@ public class InteractionEvent : MonoBehaviour
         }
         
         // Handle the case of completing a event
-        if (eventStatus == PossibleEventStatus.ActiveAndEnabled)
+        else if (eventStatus == PossibleEventStatus.ActiveAndEnabled)
         {
             var shouldBeDisabled = completedEvents.Any(e => dependsOnToDisable.Contains(e.eventName));
             var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
@@ -522,7 +536,7 @@ public class InteractionEvent : MonoBehaviour
         }
 
         // Handle the case of completing a event
-        if (eventStatus == PossibleEventStatus.Completed)
+        else if (eventStatus == PossibleEventStatus.Completed)
         {
             var shouldBeInactive = completedEvents.Any(e => dependsOnToSetInactive.Contains(e.eventName));
 

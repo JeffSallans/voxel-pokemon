@@ -50,8 +50,6 @@ public class InteractionChecker : MonoBehaviour
     /// </summary>
     private InteractionEvent activeEvent = null;
 
-    private Dictionary<string, string> interactionFlags = new Dictionary<string, string>();
-
     /// <summary>
     /// The name of the previous scene active event
     /// </summary>
@@ -61,6 +59,11 @@ public class InteractionChecker : MonoBehaviour
     /// The key is the interaction state name, the value includes if it is enabled or not and if the game object is active or not
     /// </summary>
     private Dictionary<string, InteractionEventNoComponent> prevInteractionEventStates = null;
+
+    /// <summary>
+    /// Includes a list of previous interacted event states that are completed to test events. This is READ-ONLY.
+    /// </summary>
+    public List<string> debugPrevInteractionEventStates = new List<string>();
 
     /// <summary>
     /// The reference to the previous scene opponent
@@ -158,7 +161,7 @@ public class InteractionChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inDebugMode)
+        if (inDebugMode && playerCamera != null)
         {
             Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
             RaycastHit hit;
@@ -402,6 +405,10 @@ public class InteractionChecker : MonoBehaviour
         foreach (var interaction in interactionEventsStates)
         { 
             prevInteractionEventStates[interaction.eventName] = interaction;
+            if (inDebugMode && interaction.eventStatus == "Completed" && !debugPrevInteractionEventStates.Contains(interaction.eventName))
+            {
+                debugPrevInteractionEventStates.Add(interaction.eventName);
+            }
         }
         prevSceneName = SceneManager.GetActiveScene().name;
         prevScenePlayer = gameObject;
@@ -515,6 +522,12 @@ public class InteractionChecker : MonoBehaviour
                 {
                     interactionEvent.CopyInteractionEventValues(prevEventState);
                 }
+            }
+            foreach (var interactionEvent in interactionEventList)
+            {
+                // Update the other events
+                InteractionEventNoComponent prevEventState = null;
+                prevInteractionEventStates.TryGetValue(interactionEvent.eventName, out prevEventState);
                 interactionEvent.UpdateInteractionFromEventStatus(prevInteractionEventStates.Values.ToList());
             }
 
@@ -672,6 +685,12 @@ public class InteractionChecker : MonoBehaviour
             {
                 interactionEvent.CopyInteractionEventValues(prevEventState);
             }
+        }
+        foreach (var interactionEvent in interactionEventList)
+        {
+            // Update the other events
+            InteractionEventNoComponent prevEventState = null;
+            prevInteractionEventStates.TryGetValue(interactionEvent.eventName, out prevEventState);
             interactionEvent.UpdateInteractionFromEventStatus(prevInteractionEventStates.Values.ToList());
         }
 
