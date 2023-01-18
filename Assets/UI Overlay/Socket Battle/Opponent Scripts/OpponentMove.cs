@@ -120,6 +120,16 @@ public class OpponentMove : IOpponentMove
     public bool statusAffectsBothBench = false;
 
     /// <summary>
+    /// The number of times a move was used before. Incremented at the end of playMove
+    /// </summary>
+    private int numberOfTimesUsed = 0;
+
+    /// <summary>
+    /// Set to true if the move will only be used once
+    /// </summary>
+    public bool isSingleUse = false;
+
+    /// <summary>
     /// Set to true if the move will end with a random energy being assigned to a party member
     /// </summary>
     public bool endOfTurnAddRandomEnergy = false;
@@ -136,6 +146,9 @@ public class OpponentMove : IOpponentMove
     {
         get
         {
+            // Check single use
+            if (isSingleUse && numberOfTimesUsed > 0) return false;
+
             // Check if self is trapped
             if (actingPokemon.isTrapped && switchInOnUse && battleGameBoard.opponentActivePokemon != actingPokemon) return false;
 
@@ -204,6 +217,9 @@ public class OpponentMove : IOpponentMove
             addEnergy(energyStatRandomTarget);
             moveMessageList.Add("Added energy to " + energyStatRandomTarget.pokemonName);
         }
+
+        // Update move metadata
+        numberOfTimesUsed++;
 
         if (moveMessageList.Count == 0) return new List<string> { "" };
         return moveMessageList;

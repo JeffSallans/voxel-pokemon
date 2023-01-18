@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5183464544807799814
 Transform:
   m_ObjectHideFlags: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  isSingleUse: 0
   endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &2234274604617022585
@@ -283,6 +284,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  isSingleUse: 0
   endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!1 &5808646380956014613
@@ -359,6 +361,7 @@ MonoBehaviour:
   eventType: 0
   eventStatus: 0
   interactionHint: Talk
+  messageName: []
   message:
   - Hi I'm Cool Trainer Kat
   messageSounds: []
@@ -384,6 +387,8 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!114 &6808737486173340938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3270311375992970120
 Transform:
   m_ObjectHideFlags: 0
@@ -507,6 +512,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  isSingleUse: 0
   endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &242944878807364630
@@ -554,6 +560,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
+  isSingleUse: 0
   endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 8508700537753058229}
 --- !u!1 &6741204117493749708
