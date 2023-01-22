@@ -81,7 +81,7 @@ public class PlayerDeck : MonoBehaviour
         var partyParent = gameObject.transform.Find("party");
 
         // Instantiate pokemon at given parent
-        var addedPokemonObject = pokemonFactory.GetPokemon(pokemonName.Trim(), partyParent);
+        var addedPokemonObject = pokemonFactory.GetPokemon(pokemonName, partyParent);
         var addedPokemon = addedPokemonObject.GetComponent<Pokemon>();
 
         // Add pokemon to party list
@@ -100,7 +100,8 @@ public class PlayerDeck : MonoBehaviour
     /// <returns></returns>
     public static PlayerDeck GetPlayer()
     {
-        var player = GameObject.FindObjectOfType<PlayerDeck>();
+        var playerObject = GameObject.FindObjectOfType<CharacterController>().gameObject;
+        var player = playerObject.GetComponent<PlayerDeck>();
         return player;
     }
 }
