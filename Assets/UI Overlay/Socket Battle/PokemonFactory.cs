@@ -59,9 +59,10 @@ public class PokemonFactory : MonoBehaviour
 
     public GameObject GetPokemon(string pokemonName, Transform parent = null)
     {
-        var targetPokemon = pokemonInventory.Where(item => item.pokemonName == pokemonName)
+        var targetPokemon = pokemonInventory.Where(item => item.pokemonName.ToLower().Trim() == pokemonName.ToLower().Trim())
             .Select(item => item.gameObject)
             .Single();
+        if (targetPokemon == null) { Debug.LogWarning("Could not find pokemon " + pokemonName + " in inventory list"); }
         return Instantiate(targetPokemon, parent);
     }
 

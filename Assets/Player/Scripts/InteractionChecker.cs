@@ -642,8 +642,8 @@ public class InteractionChecker : MonoBehaviour
         sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
 
         // Get references
-        var playerSpawnObject = GameObject.Find("PlayerSpawn");
-        if (playerSpawnObject == null) throw new System.Exception("Unable to find spawn point PlayerSpawn");
+        var playerSpawnObject = GameObject.FindObjectOfType<SpawnLoader>().gameObject;
+        if (playerSpawnObject == null) throw new System.Exception("Unable to find a spawn point looking for instance of SpawnLoader");
         var playerSpawn = playerSpawnObject.GetComponent<PlayerDeck>();
 
         // Setup third person camera
