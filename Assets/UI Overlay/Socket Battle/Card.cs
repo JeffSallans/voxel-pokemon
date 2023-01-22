@@ -464,6 +464,7 @@ public class Card : MonoBehaviour
             }
         }
 
+        nameGameObject.text = cardName;
         UpdateCardMesh();
     }
 
