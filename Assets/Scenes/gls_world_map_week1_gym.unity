@@ -3394,6 +3394,10 @@ PrefabInstance:
       value: gymdoor2_next
       objectReference: {fileID: 0}
     - target: {fileID: 392820285046825007, guid: 16b9211c63b17314698a4f3a5fe8462d, type: 3}
+      propertyPath: autoTriggerInteractionEvent
+      value: 
+      objectReference: {fileID: 1581884484}
+    - target: {fileID: 392820285046825007, guid: 16b9211c63b17314698a4f3a5fe8462d, type: 3}
       propertyPath: altDisableInteractionEventName
       value: gymdoor1
       objectReference: {fileID: 0}
@@ -3460,6 +3464,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4170520240099774899, guid: 16b9211c63b17314698a4f3a5fe8462d, type: 3}
   m_PrefabInstance: {fileID: 1581884481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1581884483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 79190942657679729, guid: 16b9211c63b17314698a4f3a5fe8462d, type: 3}
+  m_PrefabInstance: {fileID: 1581884481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1581884484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581884483}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: viridian_gym_win
+  eventType: 0
+  eventStatus: 0
+  interactionHint: Talk
+  messageName:
+  - Gym Leader Aaron
+  - 
+  message:
+  - That was a fantastic battle! Here take this as a trophy.
+  - '** You got an <color=purple>axe</color>**'
+  messageSounds: []
+  opponent: {fileID: 0}
+  sceneName: 
+  scenePlayerName: 
+  animationBooleanName: 
+  animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!4 &1581884485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4929360148103463819, guid: 16b9211c63b17314698a4f3a5fe8462d, type: 3}
