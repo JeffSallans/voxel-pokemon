@@ -759,13 +759,13 @@ public class Card : MonoBehaviour
     {
         if (!cardInteractEnabled) return;
 
+        isDragging = true;
+        if (_onDragFunc != null) { _onDragFunc(); }
+        
         if (overrideDefaultDragDropFunc)
         {
             FindObjectOfType<HoverAndDragMessageTarget>().OnDragHelper(this);
         }
-
-        isDragging = true;
-        if (_onDragFunc != null) { _onDragFunc(); }
     }
 
     public void onDrop()

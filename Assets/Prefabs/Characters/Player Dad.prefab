@@ -6995,7 +6995,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1537385810, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.712
+      value: 4.69
       objectReference: {fileID: 0}
     - target: {fileID: 2042290099, guid: 525c5836067a5fc46b2d2cfd7a948899, type: 3}
       propertyPath: turnSmoothTime
@@ -7481,6 +7481,7 @@ MonoBehaviour:
   party: []
   energies: []
   money: 0
+  skipBattles: 0
   gameOptions: {fileID: 0}
 --- !u!1001 &5123104952837693101
 PrefabInstance:

@@ -440,12 +440,12 @@ public class PartyMenu : HoverAndDragMessageTarget
     /// </summary>
     protected override void OnDrag(Card card, List<DropEvent> _events)
     {
-        _events.Where(e => e.eventType == "Deck")
-            .ToList()
-            .ForEach(e =>
-            {
-                e.targetAnimator.SetTrigger("onDrag");
-            });
+        if (newDeckList.Count < movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize)
+        {
+            newDeckList.Add(card);
+        }
+        card.onDrop();
+        card.OnHoverEnter();
     }
 
     /// <summary>
@@ -475,16 +475,6 @@ public class PartyMenu : HoverAndDragMessageTarget
     /// </summary>
     protected override void OnDrop(HoverAndDragEvent _event, List<DropEvent> _events)
     {
-        base.OnDrop(_event, _events);
-
-        if (_event.eventType == "Deck" && newDeckList.Count < movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().deckSize)
-        {
-            _event.dropEvent.targetAnimator.SetTrigger("onDropSuccess");
-            //var cardPrefab = movesSelectedPokemon.GetComponent<PokemonDeckBuildSettings>().GetPrefabFromCard(_event.targetCard);
-            //newDeckList.Add(cardPrefab);
-            newDeckList.Add(_event.targetCard);
-        }
-
-        
+        base.OnDrop(_event, _events);       
     }
 }

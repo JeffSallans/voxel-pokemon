@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1558096806259628542, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264132, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Pivot.x
@@ -231,9 +231,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: voxcard-flamethrower
       objectReference: {fileID: 0}
+    - target: {fileID: 2199905651999634475, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 2431897744439139136, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557417908640678637, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2749190755717646001, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -285,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal {damage} ZZFire dmg, discard the rest of your hand. Discard cost.
+      value: Deal {damage} ZZFire dmg, discard a card from your hand. Discard cost.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -294,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: overrideFunctionality
       value: 
-      objectReference: {fileID: 3848438603611959234}
+      objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: prefabCost.Array.size
       value: 2
@@ -336,6 +344,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 8.55
       objectReference: {fileID: 0}
+    - target: {fileID: 7651296555381675888, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7663831963972602519, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -371,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3848438603611959234
+--- !u!114 &6646267975960432275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,6 +392,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8807428076126045251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a990d8db04912ba40986f5a21cb4b8f2, type: 3}
+  m_Script: {fileID: 11500000, guid: f130bd2dff683af48bc02dfb4a6bab63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberToDiscard: 1
