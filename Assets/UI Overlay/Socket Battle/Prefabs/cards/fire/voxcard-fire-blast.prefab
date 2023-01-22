@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initDamage
-      value: 40
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetType
@@ -193,7 +193,8 @@ PrefabInstance:
       objectReference: {fileID: 3072642136223800217}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal {damage} ZZFire dmg. +80 dmg when discarded. Discard cost.
+      value: Deal {damage} ZZFire dmg. -40 dmg for each card in your hand. Discard
+        cost.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -202,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: overrideFunctionality
       value: 
-      objectReference: {fileID: 6472828357756735164}
+      objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: prefabCost.Array.size
       value: 3
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6472828357756735164
+--- !u!114 &-1358165947828789754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,9 +284,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 794149254853117050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c337cfa9651cf4145b9e4271e487aaa0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0da7d927f4d356d40a5c229ea50a754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStacks: 1
-  damagePerDiscard: 80
-  onlyIfDiscardedByACard: 0
+  damagePer: -40
+  attackStatPer: 0
+  defenseStatPer: 0
+  userHealPer: 0
+  maxStacks: 5

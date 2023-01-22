@@ -140,6 +140,10 @@ PrefabInstance:
       value: Deal {damage} ZZElectric dmg to active opponent and switch to target.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: targetAnimationType
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: prefabCost.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -206,7 +210,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
   m_PrefabInstance: {fileID: 8724052901206989804}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2831551026171243752
+--- !u!114 &-187416679441633504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,6 +219,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7274871188832936169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 995d492ceaa536849bd903665a4e61c6, type: 3}
+  m_Script: {fileID: 11500000, guid: fb3a22251dfb2be45aa540bec42ac02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
