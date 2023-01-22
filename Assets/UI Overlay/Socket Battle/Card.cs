@@ -127,6 +127,7 @@ public class Card : MonoBehaviour
     public int damage
     {
         get { return initDamage; }
+        set { initDamage = value; }
     }
 
     /// <summary>

@@ -24,4 +24,11 @@ public abstract class ICard : MonoBehaviour
     public virtual void onBattleEnd(Card card, BattleGameBoard battleGameBoard) { }
 
     public virtual void onCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target) { }
+
+    /// <summary>
+    /// Returns true if the given card is using this override functionality
+    /// </summary>
+    /// <param name="card"></param>
+    /// <returns></returns>
+    protected bool usesThisOverrideInstance(Card card) { return card.overrideFunctionality == this; }
 }
