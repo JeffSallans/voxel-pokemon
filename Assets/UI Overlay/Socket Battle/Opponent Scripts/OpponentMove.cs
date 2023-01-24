@@ -150,10 +150,10 @@ public class OpponentMove : IOpponentMove
             if (isSingleUse && numberOfTimesUsed > 0) return false;
 
             // Check if self is trapped
-            if (actingPokemon.isTrapped && switchInOnUse && battleGameBoard.opponentActivePokemon != actingPokemon) return false;
+            if (actingPokemon.isTrapped && switchInOnUse && battleGameBoard?.opponentActivePokemon != actingPokemon) return false;
 
             // Check if active is trapped
-            if (battleGameBoard.opponentActivePokemon.isTrapped && switchInOnUse && battleGameBoard.opponentActivePokemon != actingPokemon) return false;
+            if (battleGameBoard.opponentActivePokemon.isTrapped && switchInOnUse && battleGameBoard?.opponentActivePokemon != actingPokemon) return false;
 
             var costIsPaid = actingPokemon.attachedEnergy.Count < energyMax &&
                 actingPokemon.attachedEnergy.Count >= energyRequirement &&

@@ -698,7 +698,14 @@ public class InteractionChecker : MonoBehaviour
         if (prevActiveEventName != "")
         {
             var prevActiveEvent = interactionEventList.Where(e => e.eventName == prevActiveEventName).FirstOrDefault();
-            postInteracationChanges(prevActiveEvent);
+            if (prevActiveEvent)
+            {
+                postInteracationChanges(prevActiveEvent);
+            }
+            else
+            {
+                Debug.LogWarning("Couldn't find event with name: " + prevActiveEventName);
+            }
         }
 
         prevSceneName = "";

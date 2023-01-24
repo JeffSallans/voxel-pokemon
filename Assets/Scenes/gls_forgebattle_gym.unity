@@ -569,7 +569,10 @@ MonoBehaviour:
   switchCardLocation: {fileID: 0}
   discardLocation: {fileID: 187957660}
   energyDeckLocation: {fileID: 187957658}
-  energyHandLocations: []
+  energyHandLocations:
+  - {fileID: 187957670}
+  - {fileID: 187957669}
+  - {fileID: 187957668}
   energyDiscardLocation: {fileID: 187957660}
   commonEnergy: []
   pokemonModelLocations:
@@ -732,6 +735,21 @@ GameObject:
 --- !u!1 &187957667 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2853479835746136876, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 187957647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &187957668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6555598989905206565, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 187957647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &187957669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6555598989150207575, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 187957647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &187957670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6814194460401676876, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
   m_PrefabInstance: {fileID: 187957647}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &202962431
@@ -1418,6 +1436,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8263468194728555381, guid: bb8f2095c22a16d4480c61e3fb0cda54, type: 3}
   m_PrefabInstance: {fileID: 734943571}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &766034957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 766034958}
+  m_Layer: 0
+  m_Name: Event Factory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &766034958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766034957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &774532310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8253187751128956716, guid: a982127405c08e040b40cffbf8b678b6, type: 3}
