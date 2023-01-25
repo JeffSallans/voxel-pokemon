@@ -82,7 +82,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
                 opponent.opponentStrategyBot.computeOpponentsNextMove();
 
                 // Trigger draw
-                onDraw();
+                onDraw(true);
 
                 endTurnButton.SetActive(true);
 
@@ -96,12 +96,12 @@ public class BattleGameBoardTutorial : BattleGameBoard
     /// <summary>
     /// On the draw step
     /// </summary>
-    public override void onDraw()
+    public override void onDraw(bool initialDraw = false)
     {
         // Each turn share some instructions
         if (!showedEnergyInstruction)
         {
-            worldDialog.ShowMessage(energyInstruction, () => { showedEnergyInstruction = true; onDrawHelper(); return true; });
+            worldDialog.ShowMessage(energyInstruction, () => { showedEnergyInstruction = true; onDrawHelper(initialDraw); return true; });
         }
         else if (!showedCardInstruction)
         {
@@ -110,7 +110,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
                 worldDialog.ShowMessage(cardDragInstruction, () =>
                 {
                     showedCardInstruction = true;
-                    onDrawHelper();
+                    onDrawHelper(initialDraw);
                     return true;
                 });
                 return true;
@@ -120,7 +120,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
         {
             worldDialog.ShowMessage(cardButtonInstruction, () =>
             {
-                worldDialog.ShowMessage(cardDiscardInstruction, () => { showedCardButtonInstruction = true; onDrawHelper(); return true; });
+                worldDialog.ShowMessage(cardDiscardInstruction, () => { showedCardButtonInstruction = true; onDrawHelper(initialDraw); return true; });
                 return true;
             });
         }
@@ -128,17 +128,17 @@ public class BattleGameBoardTutorial : BattleGameBoard
         {
             worldDialog.ShowMessage(oppAttackInstruction, () =>
             {
-                worldDialog.ShowMessage(typeInstruction, () => { showedTypeInstruction = true; onDrawHelper(); return true; });
+                worldDialog.ShowMessage(typeInstruction, () => { showedTypeInstruction = true; onDrawHelper(initialDraw); return true; });
                 return true;
             });
         }
         else
         {
-            onDrawHelper();
+            onDrawHelper(initialDraw);
         }
     }
 
-    private void onDrawHelper()
+    private void onDrawHelper(bool initialDraw = false)
     {
         // Refresh card count
         remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
@@ -168,12 +168,26 @@ public class BattleGameBoardTutorial : BattleGameBoard
         // Draw cards up to handSize
         if (canShowCards)
         {
-            i = 0;
-            while (hand.Count < handSize && i < maxThreshold)
+            // Draw one card a turn
+            if (!initialDraw && drawOncePerTurn)
             {
-                if (deck.Count < 1) { reshuffleDiscard(); }
-                drawCard(activePokemon);
-                i++;
+                if (hand.Count < maxHandSize)
+                {
+                    if (deck.Count < 1) { reshuffleDiscard(); }
+                    drawCard(activePokemon);
+                    i++;
+                }
+            }
+            // Draw cards up to handSize
+            else
+            {
+                i = 0;
+                while (hand.Count < handSize && i < maxThreshold)
+                {
+                    if (deck.Count < 1) { reshuffleDiscard(); }
+                    drawCard(activePokemon);
+                    i++;
+                }
             }
         }
     }
@@ -185,8 +199,16 @@ public class BattleGameBoardTutorial : BattleGameBoard
         // Trigger next instruction if applicable
         if (!canShowCards)
         {
+            // Shift energy
+            for (var i = 0; i < energyHand.Count; i++)
+            {
+                var cardLoc = energyHandLocations[i].transform.position;
+                energyHand[i].Translate(cardLoc);
+                energyHand[i].transform.rotation = energyHandLocations[i].transform.rotation;
+            }
+
             canShowCards = true;
-            onDraw();
+            onDraw(true);
         }
     }
 

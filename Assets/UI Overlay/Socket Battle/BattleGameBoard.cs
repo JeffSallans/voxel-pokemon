@@ -306,6 +306,16 @@ public class BattleGameBoard : MonoBehaviour
     public int handSize = 4;
 
     /// <summary>
+    /// How many cards can fit in your hand
+    /// </summary>
+    public int maxHandSize = 6;
+
+    /// <summary>
+    /// If true only draw one card a turn, otherwise draw to hand size
+    /// </summary>
+    public bool drawOncePerTurn = false;
+
+    /// <summary>
     /// True if the hand should be discarded at the end of the turn
     /// </summary>
     public bool handDiscard = false;
@@ -544,7 +554,7 @@ public class BattleGameBoard : MonoBehaviour
             opponent.opponentStrategyBot.computeOpponentsNextMove();
 
             // Trigger draw
-            onDraw();
+            onDraw(true);
 
             endTurnButton.SetActive(true);
             endTurnButton.GetComponent<Button>().interactable = false;
@@ -556,7 +566,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <summary>
     /// On the draw step
     /// </summary>
-    public virtual void onDraw() {
+    public virtual void onDraw(bool initialDraw = false) {
         // Refresh card count
         remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
 
@@ -588,13 +598,26 @@ public class BattleGameBoard : MonoBehaviour
             });
         }
 
-        // Draw cards up to handSize
-        i = 0;
-        while (hand.Count < handSize && i < maxThreshold)
+        // Draw one card a turn
+        if (!initialDraw && drawOncePerTurn)
         {
-            if (deck.Count < 1) { reshuffleDiscard(); }
-            drawCard(activePokemon);
-            i++;
+            if (hand.Count < maxHandSize)
+            {
+                if (deck.Count < 1) { reshuffleDiscard(); }
+                drawCard(activePokemon);
+                i++;
+            }
+        }
+        // Draw cards up to handSize
+        else
+        {
+            i = 0;
+            while (hand.Count < handSize && i < maxThreshold)
+            {
+                if (deck.Count < 1) { reshuffleDiscard(); }
+                drawCard(activePokemon);
+                i++;
+            }
         }
     }
 

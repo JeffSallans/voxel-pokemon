@@ -94784,9 +94784,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 132751696755924754, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 132751696832741604, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 132751697001839263, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 132751697145331052, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 132751697750336738, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 328449121532340939, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: m_RootOrder
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 764609575257974742, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 764609575401791525, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 764609575487260072, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 764609575570348638, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 764609575592492632, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 764609575915358319, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: m_RootOrder
@@ -94968,7 +95008,19 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7258127851828749685, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7411217694008831083, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895443007775454929, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924670909482222873, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
@@ -95019,6 +95071,7 @@ MonoBehaviour:
   - {fileID: 2853479836449709973}
   deckLocation: {fileID: 2853479836449709961}
   handLocations:
+  - {fileID: 2853479836449709976}
   - {fileID: 2853479836449709971}
   - {fileID: 2853479836449709970}
   - {fileID: 2853479836449709969}
@@ -95048,6 +95101,8 @@ MonoBehaviour:
   dealStartingEnergy: 0
   discardCardCost: 1
   handSize: 5
+  maxHandSize: 6
+  drawOncePerTurn: 1
   handDiscard: 0
   shuffleDeck: 1
   numberOfCardsCanPlay: 1
@@ -95202,5 +95257,10 @@ GameObject:
 --- !u!1 &2853479836449709975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6814194460401676876, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 2853479836449709953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2853479836449709976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7399914018938232739, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
   m_PrefabInstance: {fileID: 2853479836449709953}
   m_PrefabAsset: {fileID: 0}

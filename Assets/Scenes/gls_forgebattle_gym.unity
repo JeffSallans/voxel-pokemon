@@ -561,6 +561,7 @@ MonoBehaviour:
   - {fileID: 187957652}
   deckLocation: {fileID: 187957658}
   handLocations:
+  - {fileID: 187957671}
   - {fileID: 187957665}
   - {fileID: 187957664}
   - {fileID: 187957663}
@@ -591,6 +592,8 @@ MonoBehaviour:
   dealStartingEnergy: 0
   discardCardCost: 1
   handSize: 5
+  maxHandSize: 6
+  drawOncePerTurn: 1
   handDiscard: 0
   shuffleDeck: 1
   numberOfCardsCanPlay: 1
@@ -750,6 +753,11 @@ GameObject:
 --- !u!1 &187957670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6814194460401676876, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+  m_PrefabInstance: {fileID: 187957647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &187957671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7399914018938232739, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
   m_PrefabInstance: {fileID: 187957647}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &202962431
