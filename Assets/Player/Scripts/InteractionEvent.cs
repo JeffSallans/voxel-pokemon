@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEditor;
 
 /// <summary>
 /// Interaction event without component to better store data without errors between scenes
@@ -428,6 +429,7 @@ public class InteractionEvent : MonoBehaviour
     /// <param name="allEvents"></param>
     public void UpdateInteractionFromEventStatus(List<InteractionEventNoComponent> allEvents)
     {
+        
         // Make sure default status is accurate
         if (eventStatus == PossibleEventStatus.ToBeActivated)
         {

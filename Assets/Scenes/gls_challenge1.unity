@@ -458,7 +458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 43
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1248,6 +1248,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1322,6 +1326,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1353,7 +1361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1412,6 +1420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110842154}
   - component: {fileID: 110842155}
+  - component: {fileID: 110842156}
   m_Layer: 0
   m_Name: metapod
   m_TagString: Untagged
@@ -1445,20 +1454,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: 
-  moveDescriptionWithTemplates: 
-  actingPokemon: {fileID: 0}
-  initialPriority: 0
+  moveName: Harden
+  moveDescriptionWithTemplates: Add {defense} ZZDef and 1 energy
+  actingPokemon: {fileID: 2041777986}
+  initialPriority: 3
   turnPriority: 0
   damage: 0
-  damageEnergy: 
+  damageEnergy: Grass
   energyRequirement: 0
   energyMax: 5
   discardEnergyOnUse: 0
   switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 2
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: -1
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &110842156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110842153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Grass Knot
+  moveDescriptionWithTemplates: 'Deal {damage} ZZGrass dmg, use 1 energy '
+  actingPokemon: {fileID: 2041777986}
+  initialPriority: 4
+  turnPriority: 0
+  damage: 60
+  damageEnergy: Grass
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 1
   userAnimationType: onAttack
   targetAnimationType: onHit
-  targetAnimationType2: 
+  targetAnimationType2: onGrass
   playInstantly: 0
   targetType: 3
   attackCost: 0
@@ -2020,7 +2077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2148,7 +2205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2741,6 +2798,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3251,6 +3312,134 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 242498618}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &246233245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246233246}
+  - component: {fileID: 246233247}
+  - component: {fileID: 246233248}
+  m_Layer: 0
+  m_Name: goldeen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246233246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246233245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1678504945}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &246233247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246233245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: water gun
+  moveDescriptionWithTemplates: Deal {damage} ZZWater dmg
+  actingPokemon: {fileID: 905591254}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 40
+  damageEnergy: Water
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onWater
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &246233248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246233245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Surf
+  moveDescriptionWithTemplates: Deal {damage} ZZWater dmg, use 2 energy
+  actingPokemon: {fileID: 905591254}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 80
+  damageEnergy: Water
+  energyRequirement: 2
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: 
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
 --- !u!1001 &251503174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3325,6 +3514,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7409720827267623755, guid: b6194fb787205c442bf768b799429d64, type: 3}
   m_PrefabInstance: {fileID: 251503174}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &263982071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263982072}
+  m_Layer: 0
+  m_Name: raichu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &263982072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263982071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1012986515}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &271809242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3745,7 +3964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 47
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4303,7 +4522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4427,7 +4646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4476,6 +4695,232 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
   m_PrefabInstance: {fileID: 327229503}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &328150057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328150058}
+  - component: {fileID: 328150062}
+  - component: {fileID: 328150061}
+  - component: {fileID: 328150060}
+  - component: {fileID: 328150059}
+  m_Layer: 0
+  m_Name: charmander
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &328150058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328150057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1678504945}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328150059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328150057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Flamethrower
+  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg, use 1 energy
+  actingPokemon: {fileID: 1302176784}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 50
+  damageEnergy: Fire
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onFire
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &328150060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328150057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Swords Dance 2
+  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once
+  actingPokemon: {fileID: 1302176784}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Fire
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &328150061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328150057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Swords Dance 2
+  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once, no energy
+  actingPokemon: {fileID: 1302176784}
+  initialPriority: 5
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Fire
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 1
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &328150062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328150057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Swords Dance 1
+  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once, no energy
+  actingPokemon: {fileID: 2015797731}
+  initialPriority: 5
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Fire
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 2
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
 --- !u!1001 &330652996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5543,7 +5988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_nidoran_60aa3946-60e5-44e9-8de5-d66db4e74883
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -5602,7 +6047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_nidoran_1c05ada1-d0a4-4ed7-ad23-65bea72bc247
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -5846,7 +6291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5986,7 +6431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_Pidgey_36ad8239-f8b4-4079-94e8-1b4541f30dcf
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -6045,7 +6490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_Pidgey_c1c5aeca-a64c-4e70-9ab3-8732b88333ae
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -7149,7 +7594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7758,6 +8203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pokeball
       objectReference: {fileID: 0}
+    - target: {fileID: 1586747793897877040, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2111785918634046602, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -7801,6 +8250,10 @@ PrefabInstance:
     - target: {fileID: 2111785918634046602, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_1
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: eventType
@@ -8650,6 +9103,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1970892677}
     m_Modifications:
+    - target: {fileID: 3940380925459416242, guid: 9b7cf133bed929c47886b99279531354, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4086779144730634355, guid: 9b7cf133bed929c47886b99279531354, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8953,6 +9410,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4566277694309486355, guid: 7d767aa5f3cf9014293516522b2701f7, type: 3}
   m_PrefabInstance: {fileID: 590513908}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &590757423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 590757424}
+  m_Layer: 0
+  m_Name: ivysaur
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &590757424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590757423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1012986515}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &599578443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9032,7 +9519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_geodude_565895be-e3c5-44ab-80d7-a357091ad979
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -9091,7 +9578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_geodude_4132195d-85f6-409e-8db3-aa85356e8839
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -9211,7 +9698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9322,6 +9809,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 605299919}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &614063982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614063983}
+  m_Layer: 0
+  m_Name: party
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &614063983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614063982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1502856350}
+  m_Father: {fileID: 1182762881}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615900478
 GameObject:
   m_ObjectHideFlags: 0
@@ -9619,7 +10137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9809,7 +10327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_charmander_a9eb6bfc-1b52-49f3-a8d0-427a5eeb04ef
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -9868,7 +10386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_charmander_3ad4d654-7cf4-4531-9407-a61b2aecc83f
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -10161,6 +10679,114 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4566277694309486355, guid: 7d767aa5f3cf9014293516522b2701f7, type: 3}
   m_PrefabInstance: {fileID: 654634668}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &656592450
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1678504946}
+    m_Modifications:
+    - target: {fileID: 6361377257264370563, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_Name
+      value: pokemon-ratatta
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -172
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361377257264370564, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+--- !u!114 &656592451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5907911653830653387, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
+  m_PrefabInstance: {fileID: 656592450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &665723764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10469,6 +11095,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -10624,7 +11254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10916,7 +11546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1023878725357151758, guid: 2af769315e1edd64b9760545236a18fa, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1023878725357151758, guid: 2af769315e1edd64b9760545236a18fa, type: 3}
       propertyPath: scenePlayerName
@@ -11447,6 +12077,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11734,7 +12368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 44
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12022,17 +12656,17 @@ Transform:
   - {fileID: 271809243}
   - {fileID: 1185032888}
   - {fileID: 602296826}
-  - {fileID: 1547829306}
-  - {fileID: 1246394808}
   - {fileID: 171225396}
   - {fileID: 108815504}
   - {fileID: 681815646}
   - {fileID: 497439435}
+  - {fileID: 1246394808}
   - {fileID: 850633993}
   - {fileID: 1034540591}
   - {fileID: 1323552767}
   - {fileID: 177088481}
   - {fileID: 976903632}
+  - {fileID: 1547829306}
   - {fileID: 1486050539}
   - {fileID: 1977481608}
   - {fileID: 2095666175}
@@ -12042,18 +12676,18 @@ Transform:
   - {fileID: 1600433906}
   - {fileID: 624557820}
   - {fileID: 292701845}
-  - {fileID: 1966393094}
   - {fileID: 1024197274}
   - {fileID: 1098022980}
-  - {fileID: 1456161340}
   - {fileID: 2137423937}
   - {fileID: 321140524}
+  - {fileID: 1456161340}
   - {fileID: 843743666}
   - {fileID: 413903664}
-  - {fileID: 1640974959}
+  - {fileID: 1966393094}
   - {fileID: 327229504}
   - {fileID: 1472120377}
   - {fileID: 1747356726}
+  - {fileID: 1640974959}
   - {fileID: 92377505}
   - {fileID: 628612316}
   - {fileID: 459198764}
@@ -12748,6 +13382,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -13097,7 +13735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 51
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13299,7 +13937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13844,6 +14482,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -14179,6 +14821,114 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2503035576700813320, guid: 38be397c497dc23469af9a6cf22f2956, type: 3}
   m_PrefabInstance: {fileID: 1633012753}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &905591253
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1678504946}
+    m_Modifications:
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -172
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450467, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578961279822450468, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+      propertyPath: m_Name
+      value: pokemon-goldeen
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+--- !u!114 &905591254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9132085517719923052, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
+  m_PrefabInstance: {fileID: 905591253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &912623641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14593,6 +15343,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 938217532}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &946348177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4220564365125637724, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+  m_PrefabInstance: {fileID: 1012986513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &952292061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15159,7 +15920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15349,7 +16110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_ratatta_6ac04716-9a27-455e-8a5e-01f845f19858
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -15408,7 +16169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_ratatta_9bf34ea2-ee2d-4f3a-9c97-ff1b764c97c2
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -15844,6 +16605,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 774532310}
     m_Modifications:
+    - target: {fileID: 1637534329, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2343492588075844431, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -15892,11 +16657,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: surge
       objectReference: {fileID: 0}
+    - target: {fileID: 3751914453716290996, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: eventName
+      value: round5_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751914453716290996, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: sceneName
+      value: gls_forgebattle_gym
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751914453716290996, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: disableOnReturn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751914453716290996, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: autoTriggerInteractionEvent
+      value: 
+      objectReference: {fileID: 1951047426}
+    - target: {fileID: 3751914453716290996, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: animationReactionTriggerName
+      value: reactionAttention
+      objectReference: {fileID: 0}
+    - target: {fileID: 5554609690135271967, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071912715055891368, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
 --- !u!4 &1012986514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2343492588075844431, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+  m_PrefabInstance: {fileID: 1012986513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1012986515 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 613126892942801960, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
   m_PrefabInstance: {fileID: 1012986513}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1014957052
@@ -16098,7 +16896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 48
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16288,7 +17086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16656,6 +17454,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1071590583}
+  - component: {fileID: 1071590584}
+  - component: {fileID: 1071590585}
+  - component: {fileID: 1071590586}
+  - component: {fileID: 1071590587}
+  - component: {fileID: 1071590588}
   m_Layer: 0
   m_Name: pidgey
   m_TagString: Untagged
@@ -16677,6 +17480,246 @@ Transform:
   m_Father: {fileID: 2139145235}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1071590584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071590582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Wing Attack
+  moveDescriptionWithTemplates: Deal {damage} ZZPsychic, don't switch, use 1 energy
+  actingPokemon: {fileID: 1930603339}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 70
+  damageEnergy: Psychic
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 0
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onPsychic
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1071590585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071590582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Quick Attack
+  moveDescriptionWithTemplates: Deal {damage} ZZNormal, don't switch, use 1 energy
+  actingPokemon: {fileID: 1930603339}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 60
+  damageEnergy: Normal
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 0
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onNormal
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1071590586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071590582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Roost
+  moveDescriptionWithTemplates: Add 3 energy, use once
+  actingPokemon: {fileID: 1930603339}
+  initialPriority: 6
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 0
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: -3
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1071590587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071590582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Roost
+  moveDescriptionWithTemplates: Add 3 energy
+  actingPokemon: {fileID: 1930603339}
+  initialPriority: 2
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: -3
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1071590588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071590582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Energy Placeholder
+  moveDescriptionWithTemplates: 
+  actingPokemon: {fileID: 1930603339}
+  initialPriority: 0
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Normal
+  energyRequirement: 3
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: 
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
 --- !u!1001 &1073453581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17074,7 +18117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17189,7 +18232,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.16727893, y: -0.6750486, z: 0.16126345, w: 0.70022947}
+  m_LocalRotation: {x: 0.16745293, y: -0.6742923, z: 0.16108279, w: 0.7009577}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17462,7 +18505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_poliwag_c2a39061-81b7-4e4e-8075-8d8afc0c69ac
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -17519,7 +18562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_poliwag_d601b3ab-6d03-41f3-b9cc-3da3afa97f9c
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -18062,6 +19105,153 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1337174841155511341, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
   m_PrefabInstance: {fileID: 1182762880}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1182762882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1337174841155511340, guid: 2f70049a2f0b8b444ab5e1eecd08ede1, type: 3}
+  m_PrefabInstance: {fileID: 1182762880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1182762883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182762882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca2ec52396670f488022f46e0ca44f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextOpponentMove: {fileID: 0}
+  firstChoice: {fileID: 0}
+  secondChoice: {fileID: 0}
+  thirdChoice: {fileID: 0}
+--- !u!114 &1182762884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182762882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b549bd55c25923e48958048f457988a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentName: Graveler
+  party: []
+  movesConfig: []
+  opponentStrategyBot: {fileID: 1182762883}
+  normalEnergyPrefab: {fileID: 4276494747118148778, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
+--- !u!114 &1182762885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182762882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: round4_battle
+  eventType: 1
+  eventStatus: 0
+  interactionHint: Battle
+  messageName:
+  - Graveler
+  message:
+  - Grrraaaaahhhh!
+  messageSounds: []
+  opponent: {fileID: 1182762884}
+  sceneName: gls_forgebattle_gym
+  scenePlayerName: 
+  animationBooleanName: 
+  animator: {fileID: 1182762887}
+  animationReactionTriggerName: reactionAttention
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 1946959321}
+  removeOnReturn: 0
+  disableOnReturn: 1
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 1182762886}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
+--- !u!114 &1182762886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182762882}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: round4_win
+  eventType: 0
+  eventStatus: 0
+  interactionHint: Talk
+  messageName:
+  - Graveler
+  message:
+  - Graaahhh!
+  messageSounds: []
+  opponent: {fileID: 1182762884}
+  sceneName: 
+  scenePlayerName: 
+  animationBooleanName: 
+  animator: {fileID: 1182762887}
+  animationReactionTriggerName: reactionAttention
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 1182762887}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
+--- !u!95 &1182762887
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182762882}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 529ddd6efc5706a4c9b27195d72b6872, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1184041448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18914,7 +20104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19083,6 +20273,10 @@ PrefabInstance:
     - target: {fileID: 2111785918634046602, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_6
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: eventType
@@ -19419,6 +20613,188 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 1286629800}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1302176783
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1678504946}
+    m_Modifications:
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -172
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173675, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458715489231173676, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+      propertyPath: m_Name
+      value: pokemon-charmander
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+--- !u!114 &1302176784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3146366896733249124, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
+  m_PrefabInstance: {fileID: 1302176783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1307405299
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1699595581}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+      propertyPath: m_Name
+      value: attention
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+--- !u!4 &1307405300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6170e821f9e3bfb489d2345b0762f549, type: 3}
+  m_PrefabInstance: {fileID: 1307405299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1308292126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19684,7 +21060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20017,6 +21393,56 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1327795030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5808646380956014613, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+  m_PrefabInstance: {fileID: 1678504943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1327795031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327795030}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: round3_win
+  eventType: 0
+  eventStatus: 0
+  interactionHint: Talk
+  messageName:
+  - Cool Trainer Kat
+  message:
+  - Hmm this will affect my teir list ranking.
+  messageSounds: []
+  opponent: {fileID: 0}
+  sceneName: 
+  scenePlayerName: 
+  animationBooleanName: 
+  animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!1001 &1330001952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20154,7 +21580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20933,6 +22359,232 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 1384345392}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1384655754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384655755}
+  - component: {fileID: 1384655756}
+  - component: {fileID: 1384655757}
+  - component: {fileID: 1384655758}
+  - component: {fileID: 1384655759}
+  m_Layer: 0
+  m_Name: ratatta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1384655755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384655754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1678504945}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384655756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384655754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Swords Dance 1
+  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once, no energy
+  actingPokemon: {fileID: 656592451}
+  initialPriority: 5
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 2
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1384655757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384655754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Swords Dance 2
+  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once, no energy
+  actingPokemon: {fileID: 656592451}
+  initialPriority: 5
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 1
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1384655758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384655754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Swords Dance 2
+  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once
+  actingPokemon: {fileID: 656592451}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &1384655759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384655754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Tackle
+  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg, use 1 energy
+  actingPokemon: {fileID: 656592451}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 40
+  damageEnergy: Normal
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onNormal
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
 --- !u!1001 &1389221654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21984,7 +23636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22352,7 +24004,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4848321540749513824, guid: b4edde52d360c4c4ca7832a7a58091ca, type: 3}
       propertyPath: m_RootOrder
-      value: 54
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 4848321540749513824, guid: b4edde52d360c4c4ca7832a7a58091ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22802,7 +24454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23099,6 +24751,127 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 1501706087}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1502856349
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 614063983}
+    m_Modifications:
+    - target: {fileID: 3805769184753400883, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_Name
+      value: pokemon-graveler
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -172
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424213069829249659, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: initHealth
+      value: 310
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424213069829249659, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+      propertyPath: initDefenseStat
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+--- !u!224 &1502856350 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+  m_PrefabInstance: {fileID: 1502856349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1502856351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4424213069829249659, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
+  m_PrefabInstance: {fileID: 1502856349}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1504088930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23510,27 +25283,17 @@ Transform:
   - {fileID: 1514735965}
   - {fileID: 818953032}
   - {fileID: 1324223310}
-  - {fileID: 7077937255540639156}
   - {fileID: 1429236009}
-  - {fileID: 6834056822804402265}
   - {fileID: 915855222}
-  - {fileID: 6521101494679421513}
   - {fileID: 1660684837}
-  - {fileID: 1448249489512957367}
   - {fileID: 1977194650}
   - {fileID: 1469818247}
   - {fileID: 1963617353}
-  - {fileID: 8948876307846230841}
   - {fileID: 1427608122}
-  - {fileID: 1733591960836296344}
   - {fileID: 1877475125}
-  - {fileID: 4902371622727022101}
   - {fileID: 2015803606}
-  - {fileID: 2008008237736531803}
   - {fileID: 2075070232}
-  - {fileID: 6384171681285942939}
   - {fileID: 158512471}
-  - {fileID: 1839649426870333920}
   - {fileID: 878537070}
   - {fileID: 938217533}
   - {fileID: 1494055672}
@@ -23556,29 +25319,38 @@ Transform:
   - {fileID: 191116215}
   - {fileID: 1371484336}
   - {fileID: 2047550233}
+  - {fileID: 7077937255540639156}
   - {fileID: 219457411}
   - {fileID: 1459445169}
   - {fileID: 981193949}
   - {fileID: 374081354}
   - {fileID: 1570650015}
   - {fileID: 1497251792}
+  - {fileID: 6834056822804402265}
   - {fileID: 277512801}
   - {fileID: 1198824513}
   - {fileID: 618101091}
   - {fileID: 1711384538}
+  - {fileID: 6521101494679421513}
   - {fileID: 420504187}
   - {fileID: 1317355557}
+  - {fileID: 8948876307846230841}
   - {fileID: 431241825}
+  - {fileID: 1448249489512957367}
   - {fileID: 51812618}
   - {fileID: 1693109920}
   - {fileID: 2139455024}
   - {fileID: 43820693}
+  - {fileID: 1733591960836296344}
   - {fileID: 181623224}
+  - {fileID: 4902371622727022101}
   - {fileID: 400178936}
   - {fileID: 647400755}
   - {fileID: 741966487}
   - {fileID: 1978341381}
+  - {fileID: 6384171681285942939}
   - {fileID: 359415934}
+  - {fileID: 2008008237736531803}
   - {fileID: 132639010}
   - {fileID: 560395069}
   - {fileID: 763127550}
@@ -23590,6 +25362,7 @@ Transform:
   - {fileID: 1603675415}
   - {fileID: 433076892}
   - {fileID: 562291443}
+  - {fileID: 1839649426870333920}
   - {fileID: 192142097}
   - {fileID: 1471556251}
   - {fileID: 376012043}
@@ -24348,7 +26121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_bellsprout_ada9a344-92ed-462b-b1ec-e8c4a75352c1
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -24407,7 +26180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_bellsprout_ca53da26-d93f-4ba8-ba17-d9a99a0f5fcc
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -24678,7 +26451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25653,6 +27426,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: eventType
       value: 0
       objectReference: {fileID: 0}
@@ -25696,7 +27473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 45
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26462,7 +28239,7 @@ MonoBehaviour:
   sceneName: 
   scenePlayerName: 
   animationBooleanName: 
-  animator: {fileID: 0}
+  animator: {fileID: 1633012761}
   animationReactionTriggerName: 
   animationReactionIdleTriggerName: reactionIdle
   reactionAnimator: {fileID: 0}
@@ -26482,6 +28259,11 @@ MonoBehaviour:
   pokemonToAdd: 
   priceRequirement: 0
   moneyChange: 0
+--- !u!95 &1633012761 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7792270497497148719, guid: 38be397c497dc23469af9a6cf22f2956, type: 3}
+  m_PrefabInstance: {fileID: 1633012753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1636295638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26619,7 +28401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27166,6 +28948,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 1663555262}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1664910337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664910338}
+  - component: {fileID: 1664910339}
+  m_Layer: 0
+  m_Name: pikachu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1664910338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664910337}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1012986515}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664910339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664910337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Charge Up
+  moveDescriptionWithTemplates: Give 3 energy to each team member, use once.
+  actingPokemon: {fileID: 946348177}
+  initialPriority: 6
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 8
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: -3
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
 --- !u!1001 &1674064975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27412,6 +29273,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -27481,11 +29346,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: cool-trainer
       objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: eventName
+      value: round3_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: message.Array.data[0]
+      value: Let me try out this new meta.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: messageName.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: messageName.Array.data[0]
+      value: Cool Trainer Kat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: autoTriggerInteractionEvent
+      value: 
+      objectReference: {fileID: 1327795031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
 --- !u!4 &1678504944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4639280551232219056, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+  m_PrefabInstance: {fileID: 1678504943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1678504945 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7522569017854171351, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+  m_PrefabInstance: {fileID: 1678504943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1678504946 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1580121721931516655, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
   m_PrefabInstance: {fileID: 1678504943}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1678954511
@@ -27860,6 +29755,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 1693109919}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1699595580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1699595581}
+  m_Layer: 0
+  m_Name: attention
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1699595581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699595580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1307405300}
+  m_Father: {fileID: 1946959320}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1707348927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28427,7 +30353,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4810218185429369893, guid: ca1ecb36385bad04fb2246ebd7212f4d, type: 3}
       propertyPath: m_RootOrder
-      value: 55
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 4810218185429369893, guid: ca1ecb36385bad04fb2246ebd7212f4d, type: 3}
       propertyPath: m_LocalScale.x
@@ -29777,7 +31703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601505717686457018, guid: ae89c9353abd562408f54d433d93117a, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 601505717686457018, guid: ae89c9353abd562408f54d433d93117a, type: 3}
       propertyPath: scenePlayerName
@@ -30120,6 +32046,183 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4566277694309486355, guid: 7d767aa5f3cf9014293516522b2701f7, type: 3}
   m_PrefabInstance: {fileID: 1889265648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1891105726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1891105727}
+  - component: {fileID: 1891105728}
+  - component: {fileID: 1891105729}
+  - component: {fileID: 1891105730}
+  m_Layer: 0
+  m_Name: graveler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1891105727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891105726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1995817571}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1891105728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891105726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Rock Smash
+  moveDescriptionWithTemplates: 'Deal {damage} ZZRock dmg, remove an energy '
+  actingPokemon: {fileID: 1502856351}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 50
+  damageEnergy: Ground
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onRock
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 1
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &1891105729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891105726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Wrap
+  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg, reduce attack
+  actingPokemon: {fileID: 1502856351}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 30
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onNormal
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 50
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 2
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &1891105730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891105726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Earthquake
+  moveDescriptionWithTemplates: Deal {damage} ZZRock dmg, use 2 energy
+  actingPokemon: {fileID: 1502856351}
+  initialPriority: 4
+  turnPriority: 0
+  damage: 100
+  damageEnergy: Rock
+  energyRequirement: 2
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onRock
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
 --- !u!1001 &1892381040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30487,6 +32590,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d055e1b1b6cbe74cace40e161328954, type: 3}
+--- !u!114 &1930603339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3395158668527527246, guid: 1d055e1b1b6cbe74cace40e161328954, type: 3}
+  m_PrefabInstance: {fileID: 1930603338}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1931578684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30685,6 +32799,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4566277694309486355, guid: 7d767aa5f3cf9014293516522b2701f7, type: 3}
   m_PrefabInstance: {fileID: 1940742063}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1946959319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946959320}
+  - component: {fileID: 1946959321}
+  m_Layer: 0
+  m_Name: reactions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1946959320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946959319}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -15, y: 0, z: 25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1699595581}
+  m_Father: {fileID: 1182762881}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1946959321
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946959319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b980bc8dc9933e94abc5aa66f26272f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1949804165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30809,6 +32974,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 1949849925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1951047425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3493594949887950058, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+  m_PrefabInstance: {fileID: 1012986513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1951047426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951047425}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: round5_win
+  eventType: 0
+  eventStatus: 0
+  interactionHint: Talk
+  messageName:
+  - Ltn Surge
+  message:
+  - That was electric!
+  messageSounds: []
+  opponent: {fileID: 0}
+  sceneName: 
+  scenePlayerName: 
+  animationBooleanName: 
+  animator: {fileID: 0}
+  animationReactionTriggerName: 
+  animationReactionIdleTriggerName: reactionIdle
+  reactionAnimator: {fileID: 0}
+  removeOnReturn: 0
+  disableOnReturn: 0
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
+  autoTriggerInteractionEvent: {fileID: 0}
+  autoTriggerInteractionEventName: 
+  options: []
+  optionFirstTriggerInteractionEvent: {fileID: 0}
+  optionFirstTriggerInteractionEventName: 
+  optionSecondTriggerInteractionEvent: {fileID: 0}
+  optionSecondTriggerInteractionEventName: 
+  pokemonToAdd: 
+  priceRequirement: 0
+  moneyChange: 0
 --- !u!1001 &1953764288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30978,7 +33193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_RootOrder
-      value: 47
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31462,7 +33677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31962,7 +34177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_Pikachu_2d297421-028c-4033-9aad-18a8a2b0f70d
   eventType: 3
   eventStatus: 0
   interactionHint: Inspect
@@ -32021,7 +34236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2d8563d18f4504283e329231aa07b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: 
+  eventName: DefaultEvent_Pikachu_2d8f0667-d36b-47be-bab8-4c3c8152453b
   eventType: 4
   eventStatus: 0
   interactionHint: 
@@ -32128,6 +34343,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 1993521319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1995817570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995817571}
+  m_Layer: 0
+  m_Name: moves
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1995817571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995817570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1891105727}
+  m_Father: {fileID: 1182762881}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1996160579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32600,6 +34846,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -32961,6 +35211,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5726169942562976643, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+      propertyPath: instaDeathEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8483165136377258461, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -33023,6 +35277,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+--- !u!114 &2015797731 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 166325933744294965, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+  m_PrefabInstance: {fileID: 2015797730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2015803605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33678,6 +35943,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2320ce4d34dcc41bb134ad02af24df, type: 3}
+--- !u!114 &2041777986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6640554146710386719, guid: 3f2320ce4d34dcc41bb134ad02af24df, type: 3}
+  m_PrefabInstance: {fileID: 2041777985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2047550232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34025,7 +36301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34506,6 +36782,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
+      propertyPath: eventName
+      value: pokeball_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624090741827130329, guid: c9a9e253471072944a68d7b62211ff68, type: 3}
       propertyPath: dependsOnToSetActive.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -34905,7 +37185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_RootOrder
-      value: 50
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 3556270183730853351, guid: 8be6da8b211be7c428dae7763dbfc8af, type: 3}
       propertyPath: m_LocalPosition.x

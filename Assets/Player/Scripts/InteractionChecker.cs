@@ -125,6 +125,8 @@ public class InteractionChecker : MonoBehaviour
         {
             sceneTransitionAnimator = GameObject.FindObjectOfType<FadeInOnSceneLoad>();
         }
+
+        prevScenePlayer = PlayerDeck.GetPlayer().gameObject;
     }
 
     // Start is called before the first frame update
