@@ -398,7 +398,7 @@ public class BattleGameBoard : MonoBehaviour
     protected virtual void onSetupPlayer()
     {
         // Disabled player model
-        player.gameObject.transform.Find("default").gameObject.SetActive(false);
+        player.gameObject.GetComponent<Animator>().SetBool("isHidden", true);
         opponent.gameObject.transform.Find("position-offset").gameObject.SetActive(false);
 
         // Move party parent reference into placement
@@ -460,7 +460,7 @@ public class BattleGameBoard : MonoBehaviour
     protected virtual void onPackupPlayer()
     {
         // Enable player model
-        player.gameObject.transform.Find("default").gameObject.SetActive(true);
+        player.gameObject.GetComponent<Animator>().SetBool("isHidden", false);
         opponent.gameObject.transform.Find("position-offset").gameObject.SetActive(true);
 
         // Move energies into discard

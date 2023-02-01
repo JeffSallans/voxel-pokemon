@@ -454,7 +454,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round3_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round3_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -474,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -482,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4157,7 +4161,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round5_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round5_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -4177,7 +4185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4185,7 +4193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4715,7 +4723,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round4_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round4_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -4735,7 +4747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4743,7 +4755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4839,7 +4851,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round5_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round5_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -4859,7 +4875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4867,7 +4883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -10526,7 +10542,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round4_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round4_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -10546,7 +10566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -10554,7 +10574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -12768,7 +12788,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round4_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round4_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -12788,7 +12812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -12796,7 +12820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -14135,7 +14159,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round4_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round4_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -14155,7 +14183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -14163,7 +14191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -17296,7 +17324,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round5_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round5_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -17316,7 +17348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -17324,7 +17356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -18517,7 +18549,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round5_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round5_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -18537,7 +18573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -18545,7 +18581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -21993,7 +22029,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round3_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round3_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -22013,7 +22053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -22021,7 +22061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -24878,7 +24918,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round3_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round3_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -24898,7 +24942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -24906,7 +24950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -27897,7 +27941,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round4_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round4_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -27917,7 +27965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -27925,7 +27973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -28825,7 +28873,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round5_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round5_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -28845,7 +28897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -28853,7 +28905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -34219,7 +34271,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round3_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round3_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -34239,7 +34295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -34247,7 +34303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -35729,6 +35785,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1634075885470653729, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1869848363629376549, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: worldDialog
       value: 
@@ -35753,6 +35813,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1790161851}
+    - target: {fileID: 5263236589856918004, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5721268804664491348, guid: a5de3293f73798642b4aae10b03ab560, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -36843,7 +36907,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4691249607144306106, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_Name
-      value: trigger-EVENT_NAME
+      value: trigger-round3_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691249607144306110, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
+      propertyPath: interactionEventToTriggerName
+      value: round3_battle
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_RootOrder
@@ -36863,7 +36931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -36871,7 +36939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
       propertyPath: m_LocalRotation.z

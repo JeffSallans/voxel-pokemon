@@ -136,6 +136,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
     protected void onSetupPlayer()
     {
         // Disabled players
+        player.gameObject.GetComponent<Animator>().SetBool("isHidden", true);
 
         // Move party parent reference into placement
         var playerParty = player.gameObject.transform.Find("party");
@@ -170,6 +171,7 @@ public class DeckBuilderAddCard : HoverAndDragMessageTarget
     protected void onPackupPlayer()
     {
         // Enable players
+        player.gameObject.GetComponent<Animator>().SetBool("isHidden", false);
 
         // Pack up pokemon
         player.party.ForEach(p => p.packupPokemonPlacement());
