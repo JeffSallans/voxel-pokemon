@@ -31,4 +31,11 @@ public abstract class ICard : MonoBehaviour
     /// <param name="card"></param>
     /// <returns></returns>
     protected bool usesThisOverrideInstance(Card card) { return card.overrideFunctionality == this; }
+
+    /// <summary>
+    /// Returns true if the given card is in the players hand
+    /// </summary>
+    /// <param name="card"></param>
+    /// <returns></returns>
+    protected bool isCardInHand(Card card, BattleGameBoard battleGameBoard) { return battleGameBoard.hand.Contains(card); }
 }

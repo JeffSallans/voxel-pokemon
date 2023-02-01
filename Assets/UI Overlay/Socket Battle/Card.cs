@@ -297,7 +297,7 @@ public class Card : MonoBehaviour
                         count = _name.Count()
                     }
                 ).ToList();
-            var usableAsString = battleGameBoard?.useableEnergy?.Select(e => e.energyName)
+            var usableAsString = owner?.attachedEnergy?.Select(e => e.energyName)
                 ?.GroupBy(
                     c => c,
                     c => c,
@@ -310,7 +310,7 @@ public class Card : MonoBehaviour
             var coloredEnergyConditionMet = costAsString.All(c => usableAsString != null && usableAsString.ContainsKey(c.energyName) && c.count <= usableAsString?[c.energyName]?.count);
 
             // Check count for colorless check
-            var hasEnoughUsableEnergyForColorless = cost?.Count <= battleGameBoard?.useableEnergy?.Count ;
+            var hasEnoughUsableEnergyForColorless = cost?.Count <= owner?.attachedEnergy?.Count ;
 
             return coloredEnergyConditionMet && hasEnoughUsableEnergyForColorless;
         }

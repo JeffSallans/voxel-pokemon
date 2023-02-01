@@ -32,11 +32,18 @@ public class CardRockThrow : ICard
 
     public override void onCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target)
     {
-        if (card != move && numberOfCardsPlayed < maxStacks)
+        // Increment damage if the card is in your hand
+        if (isCardInHand(card, battleGameBoard) && card != move && numberOfCardsPlayed < maxStacks)
         {
             card.cardAnimator.SetTrigger("onFlip");
             numberOfCardsPlayed++;
             card.initDamage += damagePerCardPlayed;
+        }
+
+        // Reset damage if card is played
+        if (card == move)
+        {
+            resetCard(card);
         }
     }
 
@@ -54,9 +61,14 @@ public class CardRockThrow : ICard
     public override void onTurnEnd(Card card, BattleGameBoard battleGameBoard) {
         if (countResetsAtEndOfTurn)
         {
-            card.cardAnimator.SetTrigger("onFlip");
-            card.initDamage -= numberOfCardsPlayed * damagePerCardPlayed;
-            numberOfCardsPlayed = 0;
+            resetCard(card);
         }
+    }
+
+    private void resetCard(Card card)
+    {
+        card.cardAnimator.SetTrigger("onFlip");
+        card.initDamage -= numberOfCardsPlayed * damagePerCardPlayed;
+        numberOfCardsPlayed = 0;
     }
 }

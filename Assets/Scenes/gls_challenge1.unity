@@ -1474,7 +1474,7 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 0
+  energyStat: 1
   attackStat: 0
   specialStat: 0
   defenseStat: 2
@@ -1483,7 +1483,7 @@ MonoBehaviour:
   attackMultStat: 0
   userHeal: 0
   grantsInvulnerability: 0
-  removeEnergyCount: -1
+  removeEnergyCount: 0
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
@@ -3523,13 +3523,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 263982072}
+  - component: {fileID: 263982073}
+  - component: {fileID: 263982074}
+  - component: {fileID: 263982076}
+  - component: {fileID: 263982075}
   m_Layer: 0
   m_Name: raichu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &263982072
 Transform:
   m_ObjectHideFlags: 0
@@ -3544,6 +3548,199 @@ Transform:
   m_Father: {fileID: 1012986515}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263982073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263982071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Thunder
+  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg, take 20 dmg, use 1
+    energy
+  actingPokemon: {fileID: 743390148}
+  initialPriority: 4
+  turnPriority: 0
+  damage: 100
+  damageEnergy: Electric
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onElectric
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: -20
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 1
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &263982074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263982071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Thunderbolt
+  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg, use 1 energy
+  actingPokemon: {fileID: 743390148}
+  initialPriority: 4
+  turnPriority: 0
+  damage: 80
+  damageEnergy: Electric
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onElectric
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &263982075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263982071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: energy placeholder
+  moveDescriptionWithTemplates: 
+  actingPokemon: {fileID: 1440307946}
+  initialPriority: 0
+  turnPriority: 0
+  damage: 0
+  damageEnergy: 
+  energyRequirement: 3
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: 
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &263982076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263982071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Spark
+  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg
+  actingPokemon: {fileID: 743390148}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 20
+  damageEnergy: Electric
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onElectric
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
 --- !u!1001 &271809242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9419,13 +9616,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 590757424}
+  - component: {fileID: 590757425}
+  - component: {fileID: 590757426}
+  - component: {fileID: 590757428}
+  - component: {fileID: 590757427}
   m_Layer: 0
   m_Name: ivysaur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &590757424
 Transform:
   m_ObjectHideFlags: 0
@@ -9440,6 +9641,198 @@ Transform:
   m_Father: {fileID: 1012986515}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &590757425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590757423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Grass Blade
+  moveDescriptionWithTemplates: Deal {damage} ZZGrass, use 1 energy
+  actingPokemon: {fileID: 1440307946}
+  initialPriority: 4
+  turnPriority: 0
+  damage: 90
+  damageEnergy: Grass
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onGrass
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &590757426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590757423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Sludge Bomb
+  moveDescriptionWithTemplates: Deal {damage} ZZPsychic, use 1 energy
+  actingPokemon: {fileID: 1440307946}
+  initialPriority: 4
+  turnPriority: 0
+  damage: 80
+  damageEnergy: Psychic
+  energyRequirement: 1
+  energyMax: 5
+  discardEnergyOnUse: 1
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onPsychic
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &590757427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590757423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: energy placeholder
+  moveDescriptionWithTemplates: 
+  actingPokemon: {fileID: 1440307946}
+  initialPriority: 0
+  turnPriority: 0
+  damage: 0
+  damageEnergy: 
+  energyRequirement: 3
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: 
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &590757428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590757423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Absorb
+  moveDescriptionWithTemplates: Deal {damage} ZZGrass dmg, heal {userHeal}
+  actingPokemon: {fileID: 1440307946}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 20
+  damageEnergy: Grass
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onBuff
+  targetAnimationType: onHit
+  targetAnimationType2: onGrass
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 10
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 1
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
 --- !u!1001 &599578443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12231,6 +12624,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 741966486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &743390148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8768518819478447584, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+  m_PrefabInstance: {fileID: 1012986513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &743545471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16679,11 +17083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5554609690135271967, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071912715055891368, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
@@ -17608,7 +18012,7 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 0
+  energyStat: 3
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -17617,7 +18021,7 @@ MonoBehaviour:
   attackMultStat: 0
   userHeal: 0
   grantsInvulnerability: 0
-  removeEnergyCount: -3
+  removeEnergyCount: 0
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
@@ -17656,7 +18060,7 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
-  energyStat: 0
+  energyStat: 3
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -17665,7 +18069,7 @@ MonoBehaviour:
   attackMultStat: 0
   userHeal: 0
   grantsInvulnerability: 0
-  removeEnergyCount: -3
+  removeEnergyCount: 0
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
@@ -19252,6 +19656,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1182762888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182762882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6138306, y: 3.9244094, z: 1.2299805}
+  m_Center: {x: -0.0049743652, y: 2.3474061, z: -0.18365479}
 --- !u!1001 &1184041448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21417,7 +21834,7 @@ MonoBehaviour:
   messageName:
   - Cool Trainer Kat
   message:
-  - Hmm this will affect my teir list ranking.
+  - Hmm this will affect my tier list ranking.
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -23329,6 +23746,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 1437027397}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1440307946 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4945173002686708823, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
+  m_PrefabInstance: {fileID: 1012986513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1441233832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28958,6 +29386,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1664910338}
   - component: {fileID: 1664910339}
+  - component: {fileID: 1664910340}
+  - component: {fileID: 1664910341}
   m_Layer: 0
   m_Name: pikachu
   m_TagString: Untagged
@@ -29011,6 +29441,54 @@ MonoBehaviour:
   defenseCost: 0
   specialCost: 0
   evasionCost: 0
+  energyStat: 3
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 1
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1664910340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664910337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Thundershock 1
+  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg
+  actingPokemon: {fileID: 946348177}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 40
+  damageEnergy: Electric
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onElectric
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
   energyStat: 0
   attackStat: 0
   specialStat: 0
@@ -29020,11 +29498,59 @@ MonoBehaviour:
   attackMultStat: 0
   userHeal: 0
   grantsInvulnerability: 0
-  removeEnergyCount: -3
+  removeEnergyCount: 0
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
-  isSingleUse: 1
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &1664910341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664910337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Thundershock 2
+  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg
+  actingPokemon: {fileID: 946348177}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 40
+  damageEnergy: Electric
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onElectric
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
   endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!1001 &1674064975
@@ -29351,6 +29877,22 @@ PrefabInstance:
       value: round3_battle
       objectReference: {fileID: 0}
     - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: eventType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: sceneName
+      value: gls_forgebattle_gym
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: disableOnReturn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: interactionHint
+      value: Battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122275710460455243, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
       propertyPath: message.Array.data[0]
       value: Let me try out this new meta.
       objectReference: {fileID: 0}
@@ -29366,6 +29908,10 @@ PrefabInstance:
       propertyPath: autoTriggerInteractionEvent
       value: 
       objectReference: {fileID: 1327795031}
+    - target: {fileID: 6808737486173340938, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa4b9b2a57a81fe419d942fd98378124, type: 3}
 --- !u!4 &1678504944 stripped

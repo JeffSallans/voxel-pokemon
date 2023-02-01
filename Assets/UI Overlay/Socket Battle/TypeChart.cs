@@ -17,8 +17,78 @@ public static class TypeChart
 
     /// <summary>
     /// 
+    /// Created from https://docs.google.com/spreadsheets/d/11NZZCBBnFyzAcYtGdywHhQhxF7kp26EbFPAY0qi3AYc/edit?usp=sharing
+    /// </summary>
+    private static Dictionary<string, Dictionary<string, float>> typeChart = new Dictionary<string, Dictionary<string, float>>
+    {
+        { EnergyType.NORMAL, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.ROCK, notEffectiveMult }, // Defending Type
+                
+                { EnergyType.PSYCHIC, superEffectiveMult }
+            }
+        },
+        { EnergyType.FIRE, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.GRASS, superEffectiveMult },
+
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.WATER, notEffectiveMult }
+            }
+        },
+        { EnergyType.ELECTRIC, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.WATER, superEffectiveMult },
+
+                { EnergyType.ELECTRIC, notEffectiveMult },
+                { EnergyType.ROCK, notEffectiveMult },
+            }
+        },
+        { EnergyType.PSYCHIC, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.GRASS, superEffectiveMult },
+
+                { EnergyType.PSYCHIC, notEffectiveMult },
+                { EnergyType.NORMAL, notEffectiveMult }
+            }
+        },
+        { EnergyType.GRASS, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.ROCK, superEffectiveMult },
+                { EnergyType.WATER, superEffectiveMult },
+
+                { EnergyType.GRASS, notEffectiveMult },
+                { EnergyType.FIRE, notEffectiveMult },
+                { EnergyType.PSYCHIC, notEffectiveMult }
+            }
+        },
+        { EnergyType.WATER, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.FIRE, superEffectiveMult },
+                { EnergyType.ROCK, superEffectiveMult },
+
+                { EnergyType.WATER, notEffectiveMult },
+                { EnergyType.ELECTRIC, notEffectiveMult },
+                { EnergyType.GRASS, notEffectiveMult }
+            }
+        },
+        { EnergyType.ROCK, // Attacking Type
+            new Dictionary<string, float>{
+                { EnergyType.ELECTRIC, superEffectiveMult },
+                { EnergyType.NORMAL, superEffectiveMult },
+
+                { EnergyType.ROCK, notEffectiveMult },
+                { EnergyType.GRASS, notEffectiveMult },
+                { EnergyType.WATER, notEffectiveMult }
+            }
+        },
+    };
+
+    /// <summary>
+    /// 
     /// Created from https://media.discordapp.net/attachments/792960613893931069/1027325241023799327/unknown.png?width=436&height=676
     /// </summary>
+    /*
     private static Dictionary<string, Dictionary<string, float>> typeChart = new Dictionary<string, Dictionary<string, float>>
     {
         { EnergyType.NORMAL, // Attacking Type
@@ -80,6 +150,7 @@ public static class TypeChart
             }
         },
     };
+    */
 
     /*
     /// <summary>
