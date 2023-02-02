@@ -1115,11 +1115,11 @@ public class Card : MonoBehaviour
     /// <returns></returns>
     public List<Pokemon> getTarget(CardTargetType givenTargetType, Pokemon selectedTarget)
     {
-        var bench = battleGameBoard.opponent.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
-        var team = battleGameBoard.opponent.party.Where(p => !p.isFainted).ToList();
+        var bench = battleGameBoard.player.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
+        var team = battleGameBoard.player.party.Where(p => !p.isFainted).ToList();
 
-        var opponentBench = battleGameBoard.player.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
-        var opponentTeam = battleGameBoard.player.party.Where(p => !p.isFainted).ToList();
+        var opponentBench = battleGameBoard.opponent.party.Where(p => !p.isFainted && p != battleGameBoard.opponentActivePokemon).ToList();
+        var opponentTeam = battleGameBoard.opponent.party.Where(p => !p.isFainted).ToList();
         if (givenTargetType == CardTargetType.ActiveOpponent)
         {
             return new List<Pokemon>() { selectedTarget };

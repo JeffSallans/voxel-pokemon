@@ -177,6 +177,33 @@ public class BattleGameBoardForge : BattleGameBoard
     public override void onTurnEnd()
     {
         pokemonAllowedToPlayCards = null;
+
+        // When player active pokemon is 0 hp - switch in and discard cards
+        // (since the active pokemon will not be fainted after this switch, this is will avoid the base case happening which discards the hand)
+        var numberOfPlayerPokeAlive = player.party.Where(p => p.health > 0).Count();
+        var isPlayerPokeFainted = activePokemon.isFainted;
+        if (isPlayerPokeFainted && numberOfPlayerPokeAlive > 0)
+        {
+            var nextAlivePoke = player.party.Where(p => !p.isFainted).First();
+            switchPokemonAndKeepCards(activePokemon, nextAlivePoke);
+        }
+
+        // Remove all deck and hand cards with fainted pokemon
+        for (int i = hand.Count - 1; i >= 0; i--)
+        {
+            if (hand[i].owner.isFainted)
+            {
+                cardDiscard(hand[i], hand[i].owner, false);
+            }
+        }
+        for (int i = deck.Count - 1; i >= 0; i--)
+        {
+            if (deck[i].owner.isFainted)
+            {
+                cardDiscard(deck[i], deck[i].owner, false, true);
+            }
+        }
+
         base.onTurnEnd();
     }
 

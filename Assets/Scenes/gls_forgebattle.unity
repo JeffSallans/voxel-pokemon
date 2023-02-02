@@ -94841,6 +94841,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: energyHandDiscard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: onlyPlayOneEnergy
       value: 0
       objectReference: {fileID: 0}
@@ -95096,7 +95100,7 @@ MonoBehaviour:
   playerPartyParentGameobject: {fileID: 2853479836449709960}
   opponentPartyParentGameobject: {fileID: 2853479836449709959}
   energyHandSize: 2
-  energyHandDiscard: 0
+  energyHandDiscard: 1
   onlyPlayOneEnergy: 1
   dealStartingEnergy: 0
   discardCardCost: 1

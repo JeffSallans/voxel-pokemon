@@ -27,7 +27,7 @@ public class CardRockThrow : ICard
 
     public override void onBattleStart(Card card, BattleGameBoard battleGameBoard)
     {
-        numberOfCardsPlayed = 0;
+        resetCard(card);
     }
 
     public override void onCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target)

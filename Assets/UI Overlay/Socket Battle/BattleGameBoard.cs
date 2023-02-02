@@ -687,6 +687,15 @@ public class BattleGameBoard : MonoBehaviour
             c.transform.position = deckLocation.transform.position;
             c.transform.rotation = deckLocation.transform.rotation;
         });
+
+        // Remove all deck cards with fainted pokemon
+        for (int i = deck.Count - 1; i >= 0; i--)
+        {
+            if (deck[i].owner.isFainted)
+            {
+                cardDiscard(deck[i], deck[i].owner, false, true);
+            }
+        }
     }
 
     /// <summary>
@@ -787,7 +796,7 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="target">The move to discard</param>
     /// <param name="user">The pokemon that used the move</param>
     /// <param name="wasPlayed">True if the discard was after playing</param>
-    public void cardDiscard(Card target, Pokemon user, bool wasPlayed)
+    public void cardDiscard(Card target, Pokemon user, bool wasPlayed, bool deckDiscard = false)
     {
         if (!(wasPlayed && target.isSingleUse))
         {
@@ -807,10 +816,24 @@ public class BattleGameBoard : MonoBehaviour
         }
         else if (BattleGameBoardForge.IsAForgeGame())
         {
-            hand.Remove(target);
+            if (deckDiscard)
+            {
+                deck.Remove(target);
+            }
+            else
+            {
+                hand.Remove(target);
+            }
         } else
         {
-            user.hand.Remove(target);
+            if (deckDiscard)
+            {
+                user.deck.Remove(target);
+            }
+            else
+            {
+                user.hand.Remove(target);
+            }
         }
 
         target.Translate(discardLocation.transform.position, "cardDiscard");

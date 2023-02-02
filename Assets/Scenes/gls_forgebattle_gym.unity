@@ -343,6 +343,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
+      propertyPath: energyHandDiscard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303939715453303135, guid: 4ee509f5fd60bcb4f8796afd1459b363, type: 3}
       propertyPath: pokemonModelLocations.Array.data[0]
       value: 
       objectReference: {fileID: 1449069239}
@@ -559,7 +563,7 @@ MonoBehaviour:
   playerPartyParentGameobject: {fileID: 187957667}
   opponentPartyParentGameobject: {fileID: 187957666}
   energyHandSize: 0
-  energyHandDiscard: 0
+  energyHandDiscard: 1
   onlyPlayOneEnergy: 0
   dealStartingEnergy: 0
   discardCardCost: 1
