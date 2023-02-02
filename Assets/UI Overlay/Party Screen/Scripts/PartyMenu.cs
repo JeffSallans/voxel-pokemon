@@ -390,7 +390,8 @@ public class PartyMenu : HoverAndDragMessageTarget
             var cardPrefab = UnityEditor.PrefabUtility.GetCorrespondingObjectFromSource(c);
             return cardPrefab;
             */
-            return c;
+            var card = Instantiate(c, cardPlaceholders[0].transform);
+            return card;
         })
         .ToList();
     }
