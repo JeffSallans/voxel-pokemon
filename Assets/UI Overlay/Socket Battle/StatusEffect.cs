@@ -82,7 +82,7 @@ public class StatusEffect
     // Update is called once per frame
     public void Update()
     {
-        if (stackCount == 0)
+        if (stackCount <= 0)
         {
             onDeactivate();
         }
@@ -109,7 +109,10 @@ public class StatusEffect
 
         // Otherwise configure the status effect
         statType = config["statType"];
-        stackCount = int.Parse(config["stackCount"]);
+        if (int.Parse(config["stackCount"]) > 0)
+        {
+            stackCount = int.Parse(config["stackCount"]);
+        }
         turnsLeft = int.Parse(config["turnsLeft"]);
     }
     
@@ -128,6 +131,11 @@ public class StatusEffect
             stackCount > int.Parse(config["maxStack"]))
         {
             stackCount = int.Parse(config["maxStack"]);
+        }
+        // Check if min stack is reached
+        if (stackCount < 0)
+        {
+            stackCount = 0;
         }
     }
 
@@ -153,7 +161,7 @@ public class StatusEffect
             targetPokemon.modelAnimator.SetTrigger("onDebuff");
             targetPokemon.modelAnimator.SetTrigger("onPoison");
         }
-        if (turnsLeft == 0)
+        if (turnsLeft <= 0)
         {
             onDeactivate();
         }

@@ -26,9 +26,11 @@ public class CardRemoveStatFirst : ICard
         statEffectNames.ForEach(statNameType =>
         {
             var statName = GetNameFromStatusEffect(statNameType);
-            var stat = user.attachedStatus.Find(s => s.statusEffectName == statName);
-
-            user.attachedStatus.Remove(stat);
+            var stat = target.attachedStatus.Find(s => s.statusEffectName == statName);
+            if (stat != null)
+            {
+                target.attachedStatus.Remove(stat);
+            }
         });
     }
 

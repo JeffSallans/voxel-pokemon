@@ -980,7 +980,7 @@ public class Card : MonoBehaviour
     /// <param name="maxStack">set to -1 to have no max stack</param>
     private void addStatHelper(Pokemon target, string statName, int statValue, int maxStack = -1)
     {
-        if (statValue > 0)
+        if (statValue != 0)
         {
             target.attachedStatus.Add(new StatusEffect(target, null, statName + "Effect", new Dictionary<string, string>() {
                 { "statType", statName.ToString() },
