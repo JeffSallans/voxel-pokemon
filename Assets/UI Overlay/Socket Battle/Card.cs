@@ -918,9 +918,9 @@ public class Card : MonoBehaviour
         // Add status effects if applicable
         var statusTarget = (statusAffectsUser) ? user : target;
         addStatHelper(statusTarget, "attackStat", attackStat, 6);
-        addStatHelper(statusTarget, "defenseStat", defenseStat, 6);
+        addStatHelper(statusTarget, "defenseStat", defenseStat, 4);
         addStatHelper(statusTarget, "specialStat", specialStat, 1);
-        addStatHelper(statusTarget, "evasionStat", evasionStat, 6);
+        addStatHelper(statusTarget, "evasionStat", evasionStat, 1);
         addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
         addStatHelper(statusTarget, "poison", poisonStacks, 15);

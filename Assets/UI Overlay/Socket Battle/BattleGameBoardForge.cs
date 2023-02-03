@@ -177,7 +177,11 @@ public class BattleGameBoardForge : BattleGameBoard
     public override void onTurnEnd()
     {
         pokemonAllowedToPlayCards = null;
+        base.onTurnEnd();
+    }
 
+    public override void onEitherTurnEnd()
+    {
         // When player active pokemon is 0 hp - switch in and discard cards
         // (since the active pokemon will not be fainted after this switch, this is will avoid the base case happening which discards the hand)
         var numberOfPlayerPokeAlive = player.party.Where(p => p.health > 0).Count();
@@ -204,7 +208,7 @@ public class BattleGameBoardForge : BattleGameBoard
             }
         }
 
-        base.onTurnEnd();
+        base.onEitherTurnEnd();
     }
 
     /// <summary>
