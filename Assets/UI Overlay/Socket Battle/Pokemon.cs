@@ -417,13 +417,18 @@ public class Pokemon : MonoBehaviour
         overlayParent.SetActive(true);
 
         // For each card
+        var cards = gameObject.GetComponentsInChildren<Card>();
         if (showCards)
         {
-            var cards = gameObject.GetComponentsInChildren<Card>();
             cards.ToList().ForEach(
                 e => e.GetComponentsInChildren<MeshRenderer>()
                     .ToList()
                     .ForEach(m => m.enabled = true)
+            );
+        } else
+        {
+            cards.ToList().ForEach(
+                e => e.gameObject.SetActive(false)
             );
         }
 
