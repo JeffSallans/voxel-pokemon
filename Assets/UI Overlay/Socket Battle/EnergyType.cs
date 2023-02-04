@@ -25,4 +25,5 @@ public static class EnergyType {
     public const string BUG = "Bug";
     public const string ELECTRIC = "Electric";
     public const string FAIRY = "Fairy";
+    public const string NEUTRAL = "Neutral";
 }

@@ -705,8 +705,11 @@ public class Card : MonoBehaviour
             dropEvent = newDropEvent;
             var isSuperEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) > 1;
             var isNotVeryEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) < 1;
-            dropEvent.targetPokemon.hudAnimator.SetBool("isSuperEffective", isSuperEffective);
-            dropEvent.targetPokemon.hudAnimator.SetBool("isNotVeryEffective", isNotVeryEffective);
+            if (battleGameBoard.opponent.party.Contains(newDropEvent.targetPokemon))
+            {
+                dropEvent.targetPokemon.hudAnimator.SetBool("isSuperEffective", isSuperEffective);
+                dropEvent.targetPokemon.hudAnimator.SetBool("isNotVeryEffective", isNotVeryEffective);
+            }
             dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverEnter");
 
         }

@@ -21,6 +21,10 @@ public static class TypeChart
     /// </summary>
     private static Dictionary<string, Dictionary<string, float>> typeChart = new Dictionary<string, Dictionary<string, float>>
     {
+        { EnergyType.NEUTRAL, // For status moves
+            new Dictionary<string, float>{
+            }
+        },
         { EnergyType.NORMAL, // Attacking Type
             new Dictionary<string, float>{
                 { EnergyType.ROCK, notEffectiveMult }, // Defending Type

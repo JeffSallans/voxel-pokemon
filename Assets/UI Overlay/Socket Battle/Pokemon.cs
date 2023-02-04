@@ -410,19 +410,22 @@ public class Pokemon : MonoBehaviour
     /// <summary>
     /// Show all visible models
     /// </summary>
-    public void showModels()
+    public void showModels(bool showCards = true)
     {
         cardsParent.SetActive(true);
         pokemonRootModel.SetActive(true);
         overlayParent.SetActive(true);
 
         // For each card
-        var cards = gameObject.GetComponentsInChildren<Card>();
-        cards.ToList().ForEach(
-            e => e.GetComponentsInChildren<MeshRenderer>()
-                .ToList()
-                .ForEach(m => m.enabled = true)
-        );
+        if (showCards)
+        {
+            var cards = gameObject.GetComponentsInChildren<Card>();
+            cards.ToList().ForEach(
+                e => e.GetComponentsInChildren<MeshRenderer>()
+                    .ToList()
+                    .ForEach(m => m.enabled = true)
+            );
+        }
 
         // For each energy hide mesh render
         var energies = gameObject.GetComponentsInChildren<Energy>();

@@ -434,7 +434,7 @@ public class BattleGameBoard : MonoBehaviour
         opponent.party.ForEach(p =>
         {
             p.setupPokemonPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
-            p.showModels();
+            p.showModels(false);
             j++;
         });
 
@@ -754,7 +754,7 @@ public class BattleGameBoard : MonoBehaviour
         // Pay cost
         if (!move.keepEnergiesOnPlay)
         {
-            payMoveCost(move.cost, user, discardCardCost);
+            payMoveCost(move.cost.Take(1).ToList(), user, discardCardCost);
         }
         
         // Trigger move action

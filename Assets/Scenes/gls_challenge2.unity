@@ -1425,6 +1425,7 @@ GameObject:
   - component: {fileID: 110842154}
   - component: {fileID: 110842155}
   - component: {fileID: 110842156}
+  - component: {fileID: 110842157}
   m_Layer: 0
   m_Name: metapod
   m_TagString: Untagged
@@ -1491,7 +1492,7 @@ MonoBehaviour:
   turn: 99
   statusAffectsUser: 0
   statusAffectsBothBench: 0
-  isSingleUse: 0
+  isSingleUse: 1
   endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!114 &110842156
@@ -1511,7 +1512,7 @@ MonoBehaviour:
   actingPokemon: {fileID: 2041777986}
   initialPriority: 4
   turnPriority: 0
-  damage: 50
+  damage: 30
   damageEnergy: Grass
   energyRequirement: 1
   energyMax: 5
@@ -1527,6 +1528,54 @@ MonoBehaviour:
   specialCost: 0
   evasionCost: 0
   energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: 0
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 0
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
+--- !u!114 &110842157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110842153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Harden 2
+  moveDescriptionWithTemplates: Add 1 energy
+  actingPokemon: {fileID: 2041777986}
+  initialPriority: 3
+  turnPriority: 0
+  damage: 0
+  damageEnergy: Grass
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: 
+  targetAnimationType: onBuff
+  targetAnimationType2: onPowerUp
+  playInstantly: 0
+  targetType: 0
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 1
   attackStat: 0
   specialStat: 0
   defenseStat: 0
@@ -4850,9 +4899,6 @@ GameObject:
   m_Component:
   - component: {fileID: 328150058}
   - component: {fileID: 328150062}
-  - component: {fileID: 328150061}
-  - component: {fileID: 328150060}
-  - component: {fileID: 328150059}
   m_Layer: 0
   m_Name: charmander
   m_TagString: Untagged
@@ -4874,150 +4920,6 @@ Transform:
   m_Father: {fileID: 1678504945}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &328150059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328150057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Flamethrower
-  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg, use 1 energy
-  actingPokemon: {fileID: 1302176784}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 50
-  damageEnergy: Fire
-  energyRequirement: 1
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onFire
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
---- !u!114 &328150060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328150057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Swords Dance 2
-  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once
-  actingPokemon: {fileID: 1302176784}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Fire
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 1
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
---- !u!114 &328150061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328150057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Swords Dance 2
-  moveDescriptionWithTemplates: Gain {attack} ZZAtk, use once, no energy
-  actingPokemon: {fileID: 1302176784}
-  initialPriority: 5
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Fire
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 1
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 1
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &328150062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5036,7 +4938,7 @@ MonoBehaviour:
   actingPokemon: {fileID: 1302176784}
   initialPriority: 5
   turnPriority: 0
-  damage: 30
+  damage: 40
   damageEnergy: Fire
   energyRequirement: 1
   energyMax: 5
@@ -5046,7 +4948,7 @@ MonoBehaviour:
   targetAnimationType: onBuff
   targetAnimationType2: onPowerUp
   playInstantly: 0
-  targetType: 0
+  targetType: 3
   attackCost: 0
   defenseCost: 0
   specialCost: 0
@@ -5062,7 +4964,7 @@ MonoBehaviour:
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
-  statusAffectsUser: 0
+  statusAffectsUser: 1
   statusAffectsBothBench: 0
   isSingleUse: 0
   endOfTurnAddRandomEnergy: 1
@@ -17817,7 +17719,7 @@ MonoBehaviour:
   moveName: Wing Attack
   moveDescriptionWithTemplates: Deal {damage} ZZPsychic, don't switch, use 1 energy
   actingPokemon: {fileID: 1930603339}
-  initialPriority: 3
+  initialPriority: 4
   turnPriority: 0
   damage: 70
   damageEnergy: Psychic
@@ -17863,14 +17765,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveName: Roost
-  moveDescriptionWithTemplates: Add 2 energy
+  moveDescriptionWithTemplates: Add 3 energy
   actingPokemon: {fileID: 1930603339}
-  initialPriority: 2
+  initialPriority: 4
   turnPriority: 0
   damage: 0
   damageEnergy: Normal
   energyRequirement: 0
-  energyMax: 5
+  energyMax: 1
   discardEnergyOnUse: 0
   switchInOnUse: 1
   userAnimationType: 
@@ -17917,7 +17819,7 @@ MonoBehaviour:
   turnPriority: 0
   damage: 0
   damageEnergy: Normal
-  energyRequirement: 2
+  energyRequirement: 3
   energyMax: 5
   discardEnergyOnUse: 0
   switchInOnUse: 1
@@ -22655,7 +22557,7 @@ MonoBehaviour:
   actingPokemon: {fileID: 656592451}
   initialPriority: 5
   turnPriority: 0
-  damage: 20
+  damage: 30
   damageEnergy: Normal
   energyRequirement: 1
   energyMax: 5
@@ -22665,7 +22567,7 @@ MonoBehaviour:
   targetAnimationType: onBuff
   targetAnimationType2: onPowerUp
   playInstantly: 0
-  targetType: 0
+  targetType: 3
   attackCost: 0
   defenseCost: 0
   specialCost: 0
@@ -22681,7 +22583,7 @@ MonoBehaviour:
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
-  statusAffectsUser: 0
+  statusAffectsUser: 1
   statusAffectsBothBench: 0
   isSingleUse: 0
   endOfTurnAddRandomEnergy: 1
@@ -32344,7 +32246,7 @@ MonoBehaviour:
   grantsInvulnerability: 0
   removeEnergyCount: 0
   turn: 99
-  statusAffectsUser: 0
+  statusAffectsUser: 1
   statusAffectsBothBench: 0
   isSingleUse: 0
   endOfTurnAddRandomEnergy: 1
@@ -32366,7 +32268,7 @@ MonoBehaviour:
   actingPokemon: {fileID: 1502856351}
   initialPriority: 4
   turnPriority: 0
-  damage: 120
+  damage: 140
   damageEnergy: Rock
   energyRequirement: 3
   energyMax: 5

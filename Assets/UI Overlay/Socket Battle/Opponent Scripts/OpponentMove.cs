@@ -265,9 +265,9 @@ public class OpponentMove : IOpponentMove
             statusTarget = battleGameBoard.opponent.party[1];
         }
         addStatHelper(statusTarget, "attackStat", attackStat, 6);
-        addStatHelper(statusTarget, "defenseStat", defenseStat, 6);
-        addStatHelper(statusTarget, "specialStat", specialStat, 6);
-        addStatHelper(statusTarget, "evasionStat", evasionStat, 6);
+        addStatHelper(statusTarget, "defenseStat", defenseStat, 4);
+        addStatHelper(statusTarget, "specialStat", specialStat, 1);
+        addStatHelper(statusTarget, "evasionStat", evasionStat, 1);
         addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
         if (grantsInvulnerability)
