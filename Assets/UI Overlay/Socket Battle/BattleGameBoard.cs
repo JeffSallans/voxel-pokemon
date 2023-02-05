@@ -530,7 +530,7 @@ public class BattleGameBoard : MonoBehaviour
         opponent.opponentStrategyBot.onBattleStart(this);
         opponent.movesConfig.ForEach(m => m.onBattleStart(this));
 
-        worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", () => {
+        worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", (t) => {
 
             // Check if game is going to be skipped
             if (player.skipBattles)
@@ -999,7 +999,7 @@ public class BattleGameBoard : MonoBehaviour
         // Compute next move
         var message = opponent.opponentStrategyBot.computeOpponentsNextMove();
 
-        System.Func<bool> callback = () =>
+        System.Func<bool, bool> callback = (t) =>
         {
             // Send event to all energy, cards, status, and pokemon
             allPokemon.ForEach(p => p.onOpponentTurnEnd());
@@ -1021,7 +1021,7 @@ public class BattleGameBoard : MonoBehaviour
         // Display dialog if message exists
         if (message == null)
         {
-            callback();
+            callback(true);
             return;
         }
         worldDialog.ShowMessage(message, callback);
@@ -1168,7 +1168,7 @@ public class BattleGameBoard : MonoBehaviour
 
         if (isPlayerWinner)
         {
-            worldDialog.ShowMessage("You won!", () => {
+            worldDialog.ShowMessage("You won!", (e) => {
                 print("The player won");
 
                 player.party.ForEach(p => { p.hideModels(); });
@@ -1189,7 +1189,7 @@ public class BattleGameBoard : MonoBehaviour
         }
         else
         {
-            worldDialog.ShowMessage(opponent.opponentName + " won.", () => {
+            worldDialog.ShowMessage(opponent.opponentName + " won.", (e) => {
                 print("The opponent won");
 
                 player.party.ForEach(p => { p.hideModels(); });

@@ -35,7 +35,7 @@ public class MessageEvent
     /// <summary>
     /// Function to call after displayed
     /// </summary>
-    public Func<bool> eventToCallAfterMessage;
+    public Func<bool, bool> eventToCallAfterMessage;
 
     /// <summary>
     /// Function to call if yes was selected
@@ -230,7 +230,7 @@ public class WorldDialog : MonoBehaviour
     public async Task ShowMessageAsync(string text, AudioClip sound = null, string personName = null)
     {
         var dialogFinished = false;
-        ShowMessage(text, () =>
+        ShowMessage(text, (t) =>
         {
             dialogFinished = true;
             return true;
@@ -249,7 +249,7 @@ public class WorldDialog : MonoBehaviour
     /// <param name="callback">Function to trigger after dialog is read</param>
     /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
     /// <param name="personName">If non-null, a person name label will show with the text</param>
-    public void ShowMessage(string text, Func<bool> callback = null, AudioClip sound = null, string personName = null)
+    public void ShowMessage(string text, Func<bool, bool> callback = null, AudioClip sound = null, string personName = null)
     {
         print($"PROMPT SHOW: {text} ({(sound == null ? "default sound" : sound.name)})");
         var newMessage = new MessageEvent
@@ -348,9 +348,18 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     public void CaptureClick()
     {
+        CaptureClick(true);
+    }
+
+
+    /// <summary>
+    /// Show the dialog with the given text. Can be called if an dialog is already open.
+    /// </summary>
+    public void CaptureClick(bool promptSelectedYes)
+    {
         if (currentmessage?.eventToCallAfterMessage != null)
         {
-            currentmessage.eventToCallAfterMessage();
+            currentmessage.eventToCallAfterMessage(promptSelectedYes);
         }
         if (messages.Count > 0) { messages.Dequeue(); }
 
@@ -407,10 +416,10 @@ public class WorldDialog : MonoBehaviour
     /// <param name="options">The options to show to select</param>
     /// <param name="onConfirm">Function to trigger on space press when Yes is selected</param>
     /// <param name="onCancel">Function to trigger on space press when No is selected</param>
-    /// <param name="callback">Function to trigger after dialog is read</param>
+    /// <param name="callback">Function to trigger after dialog is read, return true if the user selected yes and false if the user selects no</param>
     /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
     /// <param name="personName">If non-null, a person name label will show with the text</param>
-    public void PromptShowMessage(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, Func<bool> callback = null, AudioClip sound = null, string personName = null)
+    public void PromptShowMessage(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, Func<bool, bool> callback = null, AudioClip sound = null, string personName = null)
     {
         print($"PROMPT SHOW: {text} ({(sound == null ? "default sound" : sound.name)})");
         var newMessage = new MessageEvent
@@ -441,12 +450,14 @@ public class WorldDialog : MonoBehaviour
     /// <param name="onCancel">Function to trigger on space press when No is selected</param>
     /// <param name="sound">If non-null, AudioClip to play instead of the default.</param>
     /// <param name="personName">If non-null, a person name label will show with the text</param>
-    public async Task PromptShowMessageAsync(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, AudioClip sound = null, string personName = null)
+    public async Task<bool> PromptShowMessageAsync(string text, List<string> options, Func<bool> onConfirm, Func<bool> onCancel = null, AudioClip sound = null, string personName = null)
     {
         var dialogFinished = false;
-        PromptShowMessage(text, options, onConfirm, onCancel, () =>
+        var promptSelectedYes = true;
+        PromptShowMessage(text, options, onConfirm, onCancel, (selectedYes) =>
         {
             dialogFinished = true;
+            promptSelectedYes = selectedYes;
             return true;
         }, sound, personName);
 
@@ -454,6 +465,8 @@ public class WorldDialog : MonoBehaviour
         {
             await Task.Yield();
         }
+ 
+        return promptSelectedYes;
     }
 
     /// <summary>
@@ -461,6 +474,7 @@ public class WorldDialog : MonoBehaviour
     /// </summary>
     public void PromptCaptureClick()
     {
+        var selectedYes = true;
         if (promptCurrentSelection == 0)
         {
             // Play select sound
@@ -474,8 +488,9 @@ public class WorldDialog : MonoBehaviour
             cancelAudioSource.Play();
 
             currentmessage.cancelEventToCallAfterMessage();
+            selectedYes = false;
         }
 
-        CaptureClick();
+        CaptureClick(selectedYes);
     }
 }

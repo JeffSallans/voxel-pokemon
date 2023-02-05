@@ -74,9 +74,9 @@ public class BattleGameBoardTutorial : BattleGameBoard
         opponent.opponentStrategyBot.onBattleStart(this);
         opponent.movesConfig.ForEach(m => m.onBattleStart(this));
 
-        worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", () => {
+        worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", (t) => {
 
-            worldDialog.ShowMessage(gameStartInstruction, () => {
+            worldDialog.ShowMessage(gameStartInstruction, (t) => {
 
                 // Trigger opponent first move
                 opponent.opponentStrategyBot.computeOpponentsNextMove();
@@ -101,13 +101,13 @@ public class BattleGameBoardTutorial : BattleGameBoard
         // Each turn share some instructions
         if (!showedEnergyInstruction)
         {
-            worldDialog.ShowMessage(energyInstruction, () => { showedEnergyInstruction = true; onDrawHelper(initialDraw); return true; });
+            worldDialog.ShowMessage(energyInstruction, (t) => { showedEnergyInstruction = true; onDrawHelper(initialDraw); return true; });
         }
         else if (!showedCardInstruction)
         {
-            worldDialog.ShowMessage(cardCostInstruction, () =>
+            worldDialog.ShowMessage(cardCostInstruction, (t) =>
             {
-                worldDialog.ShowMessage(cardDragInstruction, () =>
+                worldDialog.ShowMessage(cardDragInstruction, (t) =>
                 {
                     showedCardInstruction = true;
                     onDrawHelper(initialDraw);
@@ -118,17 +118,17 @@ public class BattleGameBoardTutorial : BattleGameBoard
         }
         else if (!showedCardButtonInstruction)
         {
-            worldDialog.ShowMessage(cardButtonInstruction, () =>
+            worldDialog.ShowMessage(cardButtonInstruction, (t) =>
             {
-                worldDialog.ShowMessage(cardDiscardInstruction, () => { showedCardButtonInstruction = true; onDrawHelper(initialDraw); return true; });
+                worldDialog.ShowMessage(cardDiscardInstruction, (t) => { showedCardButtonInstruction = true; onDrawHelper(initialDraw); return true; });
                 return true;
             });
         }
         else if (!showedTypeInstruction)
         {
-            worldDialog.ShowMessage(oppAttackInstruction, () =>
+            worldDialog.ShowMessage(oppAttackInstruction, (t) =>
             {
-                worldDialog.ShowMessage(typeInstruction, () => { showedTypeInstruction = true; onDrawHelper(initialDraw); return true; });
+                worldDialog.ShowMessage(typeInstruction, (t) => { showedTypeInstruction = true; onDrawHelper(initialDraw); return true; });
                 return true;
             });
         }
@@ -219,7 +219,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
         // Trigger next instruction if applicable
         if (!showedEndTurnInstruction)
         {
-            worldDialog.ShowMessage(endTurnInstruction, () => { showedEndTurnInstruction = true; return true; });
+            worldDialog.ShowMessage(endTurnInstruction, (t) => { showedEndTurnInstruction = true; return true; });
         }
     }
 
@@ -231,7 +231,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
 
         if (isPlayerWinner)
         {
-            worldDialog.ShowMessage("You won!", () => {
+            worldDialog.ShowMessage("You won!", (t) => {
                 print("The player won");
 
                 player.party.ForEach(p => { p.hideModels(); });
@@ -252,7 +252,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
         }
         else
         {
-            worldDialog.ShowMessage(opponent.opponentName + " won.", () => {
+            worldDialog.ShowMessage(opponent.opponentName + " won.", (t) => {
                 print("The opponent won");
 
                 player.party.ForEach(p => { p.hideModels(); });

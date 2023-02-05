@@ -285,7 +285,7 @@ public class InteractionChecker : MonoBehaviour
         if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionTriggerName); }
 
         thirdPersonMovement.enabled = false;
-        worldDialog.ShowMessage(iEvent.message[0], () =>
+        worldDialog.ShowMessage(iEvent.message[0], (t) =>
         {
             if (iEvent.animator && iEvent.animationBooleanName != "") { iEvent.animator.SetBool(iEvent.animationBooleanName, false); }
             if (iEvent.reactionAnimator && iEvent.animationReactionTriggerName != "") { iEvent.reactionAnimator.SetTrigger(iEvent.animationReactionIdleTriggerName); }
@@ -321,10 +321,10 @@ public class InteractionChecker : MonoBehaviour
 
             if (message == iEvent.message.Last())
             {
-                await worldDialog.PromptShowMessageAsync(message,
+                var player = prevScenePlayer.GetComponent<PlayerDeck>();
+                var selectedYes = await worldDialog.PromptShowMessageAsync(message,
                     iEvent.options,
                     () => {
-                        var player = prevScenePlayer.GetComponent<PlayerDeck>();
                         if (iEvent.priceRequirement > 0 && player.money >= iEvent.priceRequirement) {
                             player.money -= iEvent.priceRequirement;
                         }
@@ -338,6 +338,11 @@ public class InteractionChecker : MonoBehaviour
                     sound,
                     personName
                 );
+
+                if (selectedYes && iEvent.priceRequirement > 0 && player.money < iEvent.priceRequirement)
+                {
+                    await worldDialog.ShowMessageAsync(iEvent.priceRequirementMessage, sound, personName);
+                }
             } else
             {
                 await worldDialog.ShowMessageAsync(message, sound, personName);

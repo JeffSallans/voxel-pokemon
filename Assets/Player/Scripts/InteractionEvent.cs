@@ -272,6 +272,11 @@ public class InteractionEvent : MonoBehaviour
     public int priceRequirement = 0;
 
     /// <summary>
+    /// (Optional for Question) The message to display if the price requirement is not met.
+    /// </summary>
+    public string priceRequirementMessage = "You don't have enough money.";
+
+    /// <summary>
     /// (Optional) The amount to adjust of the players money.
     /// </summary>
     public int moneyChange = 0;
