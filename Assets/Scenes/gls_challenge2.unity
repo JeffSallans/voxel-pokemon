@@ -4899,6 +4899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328150058}
   - component: {fileID: 328150062}
+  - component: {fileID: 328150059}
   m_Layer: 0
   m_Name: charmander
   m_TagString: Untagged
@@ -4920,6 +4921,54 @@ Transform:
   m_Father: {fileID: 1678504945}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328150059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328150057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Struggle
+  moveDescriptionWithTemplates: Deal 20 ZZNormal dmg, take 10 dmg
+  actingPokemon: {fileID: 1302176784}
+  initialPriority: 0
+  turnPriority: 0
+  damage: 20
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onNormal
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: -10
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 1
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
+  overrideTarget: {fileID: 0}
 --- !u!114 &328150062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22518,6 +22567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384655755}
   - component: {fileID: 1384655756}
+  - component: {fileID: 1384655757}
   m_Layer: 0
   m_Name: ratatta
   m_TagString: Untagged
@@ -22587,6 +22637,54 @@ MonoBehaviour:
   statusAffectsBothBench: 0
   isSingleUse: 0
   endOfTurnAddRandomEnergy: 1
+  overrideTarget: {fileID: 0}
+--- !u!114 &1384655757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384655754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveName: Struggle
+  moveDescriptionWithTemplates: Deal 20 ZZNormal dmg, take 10 dmg
+  actingPokemon: {fileID: 656592451}
+  initialPriority: 0
+  turnPriority: 0
+  damage: 20
+  damageEnergy: Normal
+  energyRequirement: 0
+  energyMax: 5
+  discardEnergyOnUse: 0
+  switchInOnUse: 1
+  userAnimationType: onAttack
+  targetAnimationType: onHit
+  targetAnimationType2: onNormal
+  playInstantly: 0
+  targetType: 3
+  attackCost: 0
+  defenseCost: 0
+  specialCost: 0
+  evasionCost: 0
+  energyStat: 0
+  attackStat: 0
+  specialStat: 0
+  defenseStat: 0
+  evasionStat: 0
+  blockStat: 0
+  attackMultStat: 0
+  userHeal: -10
+  grantsInvulnerability: 0
+  removeEnergyCount: 0
+  turn: 99
+  statusAffectsUser: 1
+  statusAffectsBothBench: 0
+  isSingleUse: 0
+  endOfTurnAddRandomEnergy: 0
   overrideTarget: {fileID: 0}
 --- !u!1001 &1389221654
 PrefabInstance:

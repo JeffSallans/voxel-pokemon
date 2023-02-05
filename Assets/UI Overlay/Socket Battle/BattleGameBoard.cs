@@ -892,6 +892,12 @@ public class BattleGameBoard : MonoBehaviour
 
     public virtual void onEnergyPlay(Energy source, Pokemon target)
     {
+        // Remove and shift if energies are over max size
+        if (target.attachedEnergy.Count >= target.maxNumberOfAttachedEnergy)
+        {
+            target.DiscardEnergy(target.attachedEnergy[0]);
+        }
+
         // Enable end turn button
         endTurnButton.GetComponent<Button>().interactable = true;
 
