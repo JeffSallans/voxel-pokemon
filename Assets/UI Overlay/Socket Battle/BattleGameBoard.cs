@@ -434,7 +434,7 @@ public class BattleGameBoard : MonoBehaviour
         opponent.party.ForEach(p =>
         {
             p.setupPokemonPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
-            p.showModels();
+            p.showModels(false);
             j++;
         });
 
@@ -754,7 +754,7 @@ public class BattleGameBoard : MonoBehaviour
         // Pay cost
         if (!move.keepEnergiesOnPlay)
         {
-            payMoveCost(move.cost, user, discardCardCost);
+            payMoveCost(move.cost.Take(1).ToList(), user, discardCardCost);
         }
         
         // Trigger move action
@@ -892,6 +892,12 @@ public class BattleGameBoard : MonoBehaviour
 
     public virtual void onEnergyPlay(Energy source, Pokemon target)
     {
+        // Remove and shift if energies are over max size
+        if (target.attachedEnergy.Count >= target.maxNumberOfAttachedEnergy)
+        {
+            target.DiscardEnergy(target.attachedEnergy[0]);
+        }
+
         // Enable end turn button
         endTurnButton.GetComponent<Button>().interactable = true;
 

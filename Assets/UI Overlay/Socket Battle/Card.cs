@@ -124,11 +124,7 @@ public class Card : MonoBehaviour
     /// <summary>
     /// The damage the card will do
     /// </summary>
-    public int damage
-    {
-        get { return initDamage; }
-        set { initDamage = value; }
-    }
+    public int damage;
 
     /// <summary>
     /// Initial damage the card will do
@@ -464,6 +460,7 @@ public class Card : MonoBehaviour
             }
         }
 
+        damage = initDamage;
         nameGameObject.text = cardName;
         UpdateCardMesh();
     }
@@ -705,8 +702,11 @@ public class Card : MonoBehaviour
             dropEvent = newDropEvent;
             var isSuperEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) > 1;
             var isNotVeryEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) < 1;
-            dropEvent.targetPokemon.hudAnimator.SetBool("isSuperEffective", isSuperEffective);
-            dropEvent.targetPokemon.hudAnimator.SetBool("isNotVeryEffective", isNotVeryEffective);
+            if (battleGameBoard.opponent.party.Contains(newDropEvent.targetPokemon))
+            {
+                dropEvent.targetPokemon.hudAnimator.SetBool("isSuperEffective", isSuperEffective);
+                dropEvent.targetPokemon.hudAnimator.SetBool("isNotVeryEffective", isNotVeryEffective);
+            }
             dropEvent.targetPokemon.hudAnimator.SetTrigger("onHoverEnter");
 
         }
@@ -834,6 +834,7 @@ public class Card : MonoBehaviour
         attachedEnergies = battleStartEnergies.ToList();
         battleGameBoard = _battleGameBoard;
         deckBuilderAddCard = null;
+        damage = initDamage;
 
         // Calculate owner
         _owner = battleGameBoard.player.party.Find(pokemon => pokemon.deck.Contains(this));
@@ -961,6 +962,17 @@ public class Card : MonoBehaviour
             if (battleGameBoard.deck.Count < 1) { battleGameBoard.reshuffleDiscard(); }
             battleGameBoard.drawCard(battleGameBoard.activePokemon);
         }
+        // Remove card blank spots
+        if (numberOfCardsToDraw > 0)
+        {
+            for (var i = 0; i < battleGameBoard.hand.Count; i++)
+            {
+                var cardLoc = battleGameBoard.handLocations[i].transform.position + new Vector3(0, 0, -1);
+                battleGameBoard.hand[i].Translate(cardLoc, "onTurnEndB");
+                battleGameBoard.hand[i].transform.rotation = battleGameBoard.handLocations[i].transform.rotation;
+            }
+        }
+
 
         // Allow another card to be played
         if (playAnotherCard)

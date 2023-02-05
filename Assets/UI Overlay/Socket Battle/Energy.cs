@@ -265,7 +265,7 @@ public class Energy : MonoBehaviour
     {
         if (target.isFainted) { return false; }
 
-        var hasRoomToAttach = target.attachedEnergy.Count < target.maxNumberOfAttachedEnergy;
+        var hasRoomToAttach = true;
         var supportsEnergyType = energyName == "Normal" || target.energyTypes.Contains(energyName);
         return hasRoomToAttach && supportsEnergyType;
     }

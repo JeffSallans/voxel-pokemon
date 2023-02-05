@@ -69,6 +69,11 @@ public class IOpponentStrategy : MonoBehaviour
 
     public async virtual Task opponentPlay()
     {
+        if (!nextOpponentMove.canUseMove)
+        {
+            computeOpponentsNextMove();
+        }
+
         // switch in the pokemon that is using the move
         if (nextOpponentMove.actingPokemon != battleGameBoard.opponentActivePokemon && nextOpponentMove.switchInOnUse)
         {
