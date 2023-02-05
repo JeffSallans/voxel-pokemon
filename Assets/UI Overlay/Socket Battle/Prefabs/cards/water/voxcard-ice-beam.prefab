@@ -143,7 +143,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
   m_PrefabInstance: {fileID: 2066768385955920268}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2224219645769741552
+--- !u!114 &4338252290125022021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,17 +152,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 92646828442124937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b100c19c375a634ea6653fe4d067e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: 
   attackCost: 0
   defenseCost: 0
   specialCost: 1
-  evasionCost: 0
   spendCost: 1
-  damageIncrease: 0
-  blockIncrease: 0
-  multiplierIncrease: 0
-  userHealIncrease: 0
-  addTrapStatus: 1
+  damageBuff: 0
+  attackStatBuff: 0
+  defenseStatBuff: 0
+  userHealBuff: 0
+  setTrapBuff: 1

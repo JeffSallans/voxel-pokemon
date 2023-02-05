@@ -24,7 +24,7 @@ public class Card : MonoBehaviour
     {
         get {
             var descWithTemplates = initCardDescription + System.String.Join(",", gameCardModifiers) + System.String.Join(",", battleCardModifiers);
-            var desc = descWithTemplates.Replace("{damage}", damage.ToString())
+            var desc = descWithTemplates.Replace("{damage}", getDamageDescription())
                     .Replace("{turn}", turn.ToString())
                     .Replace("{attack}", attackStat.ToString())
                     .Replace("{defense}", defenseStat.ToString())
@@ -33,9 +33,22 @@ public class Card : MonoBehaviour
                     .Replace("{block}", blockStat.ToString())
                     .Replace("{attackMult}", attackMultStat.ToString())
                     .Replace("{userHeal}", userHeal.ToString())
+                    .Replace("{maxStacks}", maxStacks.ToString())
+                    .Replace("{currentStacks}", currentStacks.ToString())
+                    .Replace("{stacksLeft}", (maxStacks - currentStacks).ToString())
                     .Replace("{flipText}", flipButtonFunctionality?.getFlipButtonText());
             return desc;
         }
+    }
+
+    /// <summary>
+    /// Bolds the damage if it is different than the default
+    /// </summary>
+    /// <returns></returns>
+    private string getDamageDescription()
+    {
+        if (damage != initDamage) return "<b>" + damage + "</b>";
+        return damage.ToString();
     }
 
     /// <summary>
@@ -56,6 +69,7 @@ public class Card : MonoBehaviour
     /// <summary>
     /// How much energy it takes to play
     /// </summary>
+    [HideInInspector]
     public List<Energy> cost;
 
     /// <summary>
@@ -117,13 +131,14 @@ public class Card : MonoBehaviour
     public CardTargetType targetType;
 
     /// <summary>
-    /// The type of damage "Physical" or "Special"
+    /// The type of damage "Grass", "Fire", "Rock", "Psychic", "Normal", "Electric"
     /// </summary>
     public string damageType;
 
     /// <summary>
     /// The damage the card will do
     /// </summary>
+    [HideInInspector]
     public int damage;
 
     /// <summary>
@@ -170,6 +185,17 @@ public class Card : MonoBehaviour
     /// How much the target is healed
     /// </summary>
     public int heal;
+
+    /// <summary>
+    /// The number of card modifier stacks
+    /// </summary>
+    public int maxStacks = 0;
+
+    /// <summary>
+    /// The number of current card modifier stacks
+    /// </summary>
+    [HideInInspector]
+    public int currentStacks;
 
     /// <summary>
     /// True if the user gets immunity to the next attack
@@ -244,16 +270,19 @@ public class Card : MonoBehaviour
     /// <summary>
     /// Button that flips a card
     /// </summary>
+    [HideInInspector]
     public IFlipButton flipButtonFunctionality = null;
 
     /// <summary>
     /// Current energies during a battle
     /// </summary>
+    [HideInInspector]
     public List<Energy> attachedEnergies;
 
     /// <summary>
     /// Energies at the start of battle
     /// </summary>
+    [HideInInspector]
     public List<Energy> battleStartEnergies;
 
     /// <summary>
@@ -840,6 +869,7 @@ public class Card : MonoBehaviour
         battleGameBoard = _battleGameBoard;
         deckBuilderAddCard = null;
         damage = initDamage;
+        currentStacks = 0;
 
         // Calculate owner
         _owner = battleGameBoard.player.party.Find(pokemon => pokemon.deck.Contains(this));

@@ -321,15 +321,17 @@ public class InteractionChecker : MonoBehaviour
 
             if (message == iEvent.message.Last())
             {
-                var player = prevScenePlayer.GetComponent<PlayerDeck>();
-                var selectedYes = await worldDialog.PromptShowMessageAsync(message,
+                var showPriceRequirementMessage = false;
+                await worldDialog.PromptShowMessageAsync(message,
                     iEvent.options,
                     () => {
+                        var player = prevScenePlayer.GetComponent<PlayerDeck>();
                         if (iEvent.priceRequirement > 0 && player.money >= iEvent.priceRequirement) {
                             player.money -= iEvent.priceRequirement;
                         }
                         else if (iEvent.priceRequirement > 0 && player.money < iEvent.priceRequirement)
                         {
+                            showPriceRequirementMessage = true;
                             iEvent.autoTriggerInteractionEvent = iEvent.optionSecondTriggerInteractionEvent; return true;
                         }
                         iEvent.autoTriggerInteractionEvent = iEvent.optionFirstTriggerInteractionEvent; return true;
@@ -339,7 +341,7 @@ public class InteractionChecker : MonoBehaviour
                     personName
                 );
 
-                if (selectedYes && iEvent.priceRequirement > 0 && player.money < iEvent.priceRequirement)
+                if (showPriceRequirementMessage)
                 {
                     await worldDialog.ShowMessageAsync(iEvent.priceRequirementMessage, sound, personName);
                 }

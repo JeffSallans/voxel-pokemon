@@ -125,7 +125,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal 70 ZZGrass dmg. {flipText} Discard cost.
+      value: Deal 70 ZZGrass dmg. Remove ZZSpc buff to target any opponent. Discard
+        cost.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -150,7 +151,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
   m_PrefabInstance: {fileID: 8119671647876047439}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-6581984862188793091
+--- !u!114 &1424009759644919362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,13 +160,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7874923766093093194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b740526c1cf074e9d3e5606ced5c94, type: 3}
+  m_Script: {fileID: 11500000, guid: b59f9b0069c241c449618cd636536f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: Remove ZZSpc status to target any opponent.
   attackCost: 0
   defenseCost: 0
   specialCost: 1
-  evasionCost: 0
   spendCost: 1
   newTargetType: 4

@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal {damage} ZZRock dmg. {flipText}
+      value: Deal {damage} ZZRock dmg. When ZZDef exists, add 10 dmg.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -150,7 +150,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
   m_PrefabInstance: {fileID: 6399108499313218903}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-6172927340171664249
+--- !u!114 &6666920196459313103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,17 +159,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4983712853971938898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b100c19c375a634ea6653fe4d067e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: If ZZDef > 0, bonus +10 dmg.
   attackCost: 0
   defenseCost: 1
   specialCost: 0
-  evasionCost: 0
   spendCost: 0
-  damageIncrease: 10
-  blockIncrease: 0
-  multiplierIncrease: 0
-  userHealIncrease: 0
-  addTrapStatus: 0
+  damageBuff: 10
+  attackStatBuff: 0
+  defenseStatBuff: 0
+  userHealBuff: 0

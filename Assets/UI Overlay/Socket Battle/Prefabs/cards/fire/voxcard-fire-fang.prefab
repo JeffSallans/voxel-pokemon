@@ -140,6 +140,10 @@ PrefabInstance:
       value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: maxStacks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: damageType
       value: Fire
       objectReference: {fileID: 0}
@@ -169,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal {damage} ZZFire dmg. {flipText} Discard cost.
+      value: Deal {damage} ZZFire dmg. Remove ZZSpc buff to add 70 dmg. Discard cost.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2
@@ -182,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: flipButtonFunctionality
       value: 
-      objectReference: {fileID: 2068167119440536002}
+      objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: prefabCost.Array.data[0]
       value: 
@@ -206,6 +210,10 @@ PrefabInstance:
     - target: {fileID: 7663831963972602519, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843088913282626390, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8355399589701475147, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -233,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4e84a0adc2ba44d93350b46842c4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2068167119440536002
+--- !u!114 &3467420794761069128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,16 +250,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8178335345778222761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a43b1c92d9f89459f4bc427c200867, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b100c19c375a634ea6653fe4d067e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipButtonText: Remove ZZSpc status to add 70 dmg.
   attackCost: 0
   defenseCost: 0
   specialCost: 1
-  evasionCost: 0
   spendCost: 1
-  damageIncrease: 70
-  blockIncrease: 0
-  multiplierIncrease: 0
-  userHealIncrease: 0
+  damageBuff: 70
+  attackStatBuff: 0
+  defenseStatBuff: 0
+  userHealBuff: 0
