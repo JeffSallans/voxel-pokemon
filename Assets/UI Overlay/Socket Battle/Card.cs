@@ -207,6 +207,11 @@ public class Card : MonoBehaviour
     public bool playAnotherCard = false;
 
     /// <summary>
+    /// False if the user does not switch in by using it
+    /// </summary>
+    public bool switchInOnUse = true;
+
+    /// <summary>
     /// Set to a number greater than 0 to show the number of cards to draw
     /// </summary>
     public int numberOfCardsToDraw = 0;
@@ -365,12 +370,12 @@ public class Card : MonoBehaviour
     /// <summary>
     /// Used to enchance the default game onDrag functionality
     /// </summary>
-    public Func<bool> _onDragFunc = null;
+    public Func<Card, bool> _onDragFunc = null;
 
     /// <summary>
     /// Used to enchance the default game onDrop functionality
     /// </summary>
-    public Func<bool> _onDropFunc = null;
+    public Func<Card, bool> _onDropFunc = null;
 
     public string lastTranslate = "";
 
@@ -761,7 +766,7 @@ public class Card : MonoBehaviour
         if (!cardInteractEnabled) return;
 
         isDragging = true;
-        if (_onDragFunc != null) { _onDragFunc(); }
+        if (_onDragFunc != null) { _onDragFunc(this); }
         
         if (overrideDefaultDragDropFunc)
         {
@@ -823,7 +828,7 @@ public class Card : MonoBehaviour
             isDragging = false;
             isSelected = false;
             OnHoverExit();
-            if (_onDropFunc != null) { _onDropFunc(); }
+            if (_onDropFunc != null) { _onDropFunc(this); }
         }
     }
 

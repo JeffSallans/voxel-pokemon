@@ -108,13 +108,19 @@ public class BattleGameBoardForge : BattleGameBoard
         pokemonIcon.gameObject.SetActive(true);
 
         // Add custom drag
-        card._onDragFunc = () => { 
-            previousActivePokemon = activePokemon;
-            switchPokemonAndKeepCards(activePokemon, owner);
+        card._onDragFunc = (c) => { 
+            if (c.switchInOnUse)
+            {
+                previousActivePokemon = activePokemon;
+                switchPokemonAndKeepCards(activePokemon, owner);
+            }
             return true;
         };
-        card._onDropFunc = () => {
-            switchPokemonAndKeepCards(owner, previousActivePokemon);
+        card._onDropFunc = (c) => {
+            if (c.switchInOnUse)
+            {
+                switchPokemonAndKeepCards(owner, previousActivePokemon);
+            }
             return true;
         };
 

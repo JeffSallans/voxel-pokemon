@@ -125,7 +125,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal 30-90 ZZElectric dmg, determined on draw. Discard cost.
+      value: Deal {damage} ZZElectric dmg, determined on draw between 30-90. Discard
+        cost.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: prefabCost.Array.size
