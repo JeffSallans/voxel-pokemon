@@ -16,7 +16,7 @@ public class CardSwitchOpponent : ICard
 
     public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets) {
         // Switch board roles
-        battleGameBoard.switchPokemon(battleGameBoard.opponentActivePokemon, selectedTarget);
+        battleGameBoard.switchPokemon(card.otherActivePokemon, selectedTarget);
 
         return base.play(card, battleGameBoard, user, selectedTarget, targets);
     }

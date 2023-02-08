@@ -44,7 +44,7 @@ public class CardOpponentSwitchingBuff : ICard
 
     public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets)
     {
-        var isOppSwitching = battleGameBoard.opponentActivePokemon != battleGameBoard.opponent.opponentStrategyBot.nextOpponentMove.actingPokemon;
+        var isOppSwitching = card?.otherActivePokemon != battleGameBoard.opponent.opponentStrategyBot.nextOpponentMove.card.owner;
         if (isOppSwitching)
         {
             card.damage = baseDamage + bonusDamage;

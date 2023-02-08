@@ -9,14 +9,12 @@ public class IOpponentStrategy : MonoBehaviour
     /// <summary>
     /// The next move to display and execute on
     /// </summary>
-    public IOpponentMove nextOpponentMove;
+    public OpponentCardMove nextOpponentMove;
 
     /// <summary>
     /// The last move selected
     /// </summary>
-    protected IOpponentMove lastMoveUsed;
-
-    protected List<IOpponentMove> moveUsedHistory = new List<IOpponentMove>();
+    protected OpponentCardMove lastMoveUsed;
 
     /// <summary>
     /// All the cards the last player played
@@ -30,20 +28,19 @@ public class IOpponentStrategy : MonoBehaviour
     }
 
     /// <summary>
-    /// All configured moves
+    /// The cards to be drawn
     /// </summary>
-    protected List<IOpponentMove> allMoves
-    {
-        get { return battleGameBoard.opponent.movesConfig; }
-    }
+    protected List<OpponentCardMove> deck;
 
     /// <summary>
-    /// Moves available this turn
+    /// The cards available to be played
     /// </summary>
-    protected List<IOpponentMove> availableMoves
-    {
-        get { return allMoves.Where(m => m.canUseMove && !m.actingPokemon.isFainted).ToList(); }
-    }
+    protected List<OpponentCardMove> hand;
+
+    /// <summary>
+    /// The cards that have been played
+    /// </summary>
+    protected List<OpponentCardMove> discard;
 
     // Start is called before the first frame update
     void Start()
@@ -54,71 +51,258 @@ public class IOpponentStrategy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (battleGameBoard != null && battleGameBoard.showOppAttack && nextOpponentMove != null && nextOpponentMove.actingPokemon != null)
+        if (battleGameBoard != null && battleGameBoard.showOppAttack && nextOpponentMove != null && nextOpponentMove.card.owner != null)
         {
             opponentDeck.party.ForEach(p => p.nextAttackText.text = "");
-            nextOpponentMove.actingPokemon.nextAttackText.text = UnicodeUtil.replaceWithUnicode(nextOpponentMove?.moveDescription);
+            nextOpponentMove.card.owner.nextAttackText.text = UnicodeUtil.replaceWithUnicode(nextOpponentMove.card.cardName);
         }
     }
 
+    /// <summary>
+    /// Initialize the deck, hand, and discard like the player does for themselves in BattleGameBoard
+    /// </summary>
+    /// <param name="_battleGameBoard"></param>
     public virtual void onBattleStart(BattleGameBoard _battleGameBoard)
     {
         battleGameBoard = _battleGameBoard;
-        moveUsedHistory = new List<IOpponentMove>();
+
+        // Init deck
+        deck = battleGameBoard.opponent.initDeck.Select(card =>
+        {
+            var opponentMove = new OpponentCardMove();
+            opponentMove.card = card;
+            opponentMove.turnPriority = 3;
+            opponentMove.selectedTargetPokemon = null;
+            return opponentMove;
+        }).ToList();
+
+        // Move deck into the correct position
+        deck.ForEach(move =>
+        {
+            move.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "OpponentStrategyOnBattleStart");
+        });
+
+        // Init empty discard
+        discard = new List<OpponentCardMove>();
+
+        // Init hand and draw
+        hand = new List<OpponentCardMove>();
+        for (var i = 0; i < battleGameBoard.handSize; i++)
+        {
+            drawCard();
+        }
     }
 
+    /// <summary>
+    /// Draws a card from deck to hand. Has checks to prevent drawing too many cards or the deck being empty before drawing a card.
+    /// </summary>
+    protected virtual void drawCard()
+    {
+        // Check if hand is full
+        if (hand.Count == battleGameBoard.maxHandSize) return;
+
+        // Check if reshuffle is needed
+        if (deck.Count <= 0)
+        {
+            deck.AddRange(discard);
+            Shuffle(deck);
+            discard.RemoveAll(c => true);
+        }
+
+        // Draw card
+        var cardDrawn = deck.First();
+        hand.Add(cardDrawn);
+        deck.Remove(cardDrawn);
+    }
+
+    public virtual string computeOpponentsNextMove()
+    {
+        // Draw a card to hand
+        drawCard();
+
+        // Compute targets for all cards
+        hand.Where(move => move.selectedTargetPokemon = getSelectedTarget(move, battleGameBoard));
+
+        // Find all hand cards you can play
+        var playableMoves = hand.Where(move => move.canUseMove).ToList();
+
+        // Calculate priority score
+        playableMoves.ForEach(move => move.turnPriority = getPriorityScore(move, battleGameBoard));
+
+        // Select top card
+        nextOpponentMove = playableMoves.OrderByDescending(m => m.turnPriority).FirstOrDefault();
+
+        return null;
+    }
+
+    /// <summary>
+    /// Return the random selected target for
+    /// </summary>
+    /// <param name="move"></param>
+    /// <param name="battleGameBoard"></param>
+    /// <returns></returns>
+    protected virtual Pokemon getSelectedTarget(OpponentCardMove move, BattleGameBoard battleGameBoard)
+    {
+
+        // Get potential targets
+        var potentialTargets = battleGameBoard.allPokemon.Where(poke => move.card.canTarget(poke)).ToList();
+
+        // Init best results
+        var bestTargetSoFar = potentialTargets.FirstOrDefault();
+        var bestScoreSoFar = 0f;
+
+        // Compute score for each target
+        potentialTargets.ForEach(target =>
+        {
+            move.selectedTargetPokemon = target;
+            var score = getPriorityScore(move, battleGameBoard, false);
+
+            if (score > bestScoreSoFar)
+            {
+                bestScoreSoFar = score;
+                bestTargetSoFar = target;
+            }
+
+        });
+
+        // Return the target with the best score
+        move.selectedTargetPokemon = null;
+        return bestTargetSoFar;
+    }
+
+    /// <summary>
+    /// Return a number to determine how useful it is to play the given move
+    /// </summary>
+    /// <param name="move"></param>
+    /// <param name="battleGameBoard"></param>
+    /// <returns></returns>
+    protected virtual float getPriorityScore(OpponentCardMove move, BattleGameBoard battleGameBoard, bool includedRandomModifier = true)
+    {
+        var allTargets = move.card.getTarget(move.card.targetType, move.selectedTargetPokemon);
+
+        // Initialize priority score to 5 for cards
+        var turnPriority = 5f;
+
+        // Score Mod: +3 if the card is super effective against the target
+        var superEffectiveAgainstTarget = allTargets.Any(target => TypeChart.getEffectiveness(move.card, target) > 1);
+        if (superEffectiveAgainstTarget) turnPriority += 3;
+
+        // Score Mod: +1 x energy count
+        turnPriority += move.card.prefabCost.Count;
+
+        // Score Mod: +1 if the card has atk, def, or special modifiers and the target is 0
+        var targetOfStatChange = (move.card.statusAffectsUser) ? new List<Pokemon>() { move.card.owner } : allTargets;
+        var targetIsMissingStatCardHas = targetOfStatChange.Any(target =>
+        {
+            var hasStatNotInitializedYet = move.card.attackStat > 0 && target.attackStat == 0 ||
+                move.card.defenseStat > 0 && target.defenseStat == 0 ||
+                move.card.specialStat > 0 && target.specialStat == 0;
+            return hasStatNotInitializedYet;
+        });
+        if (targetIsMissingStatCardHas) turnPriority += 1;
+
+        // Score Mod: +0-2 random value
+        if (includedRandomModifier) turnPriority += Random.Range(0f, 2f);
+
+        return turnPriority;
+    }
+
+    /// <summary>
+    /// Returns the best pokemon to attach an energy to
+    /// </summary>
+    /// <returns></returns>
+    protected virtual Pokemon getPokemonToAddEnergyTo()
+    {
+        // Pick a random pokemon to add an energy to
+        var aliveParty = battleGameBoard.opponent.party.Where(p => !p.isFainted).ToList();
+        var pokemonToAddEnergyTo = aliveParty[UnityEngine.Random.Range(0, aliveParty.Count)];
+
+        // Find all hand cards you can't play
+        var movesThatCantBePlayed = hand.Where(move => !move.canUseMove && !move.card.owner.isFainted && move.card.owner.attachedEnergy.Count < move.card.owner.maxNumberOfAttachedEnergy).ToList();
+
+        // Select a card at random and add energy to owner
+        if (movesThatCantBePlayed.Count > 0)
+        {
+            var cardIndex = UnityEngine.Random.Range(0, movesThatCantBePlayed.Count); // This line could be based on priority score instead of being random
+            pokemonToAddEnergyTo = movesThatCantBePlayed[cardIndex].card.owner;
+        }
+        
+        return pokemonToAddEnergyTo;
+    }
+
+    /// <summary>
+    /// Call to play the opponents selected card
+    /// </summary>
+    /// <returns></returns>
     public async virtual Task opponentPlay()
     {
+        // Check the opponent's turn should be skipped because they don't have a card to play
+        if (nextOpponentMove == null)
+        {
+            await battleGameBoard.worldDialog.ShowMessageAsync(battleGameBoard.opponentActivePokemon.pokemonName + " is waiting for a command.");
+
+            // Add energy to random target
+            var energyStatTarget = getPokemonToAddEnergyTo();
+            addEnergy(energyStatTarget);
+            await battleGameBoard.worldDialog.ShowMessageAsync("Added energy to " + energyStatTarget.pokemonName);
+
+            return;
+        }
+
+        // Check that move can still be used after player's turn
         if (!nextOpponentMove.canUseMove)
         {
             computeOpponentsNextMove();
         }
 
-        // switch in the pokemon that is using the move
-        if (nextOpponentMove.actingPokemon != battleGameBoard.opponentActivePokemon && nextOpponentMove.switchInOnUse)
+        // Switch in the pokemon that is using the move
+        if (nextOpponentMove.card.owner != battleGameBoard.opponentActivePokemon && nextOpponentMove.card.switchInOnUse)
         {
-            battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.actingPokemon);
-            await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.actingPokemon.pokemonName + " switched in");
+            battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.card.owner);
+            await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " switched in.");
         }
-        lastMoveUsed = nextOpponentMove;
-        moveUsedHistory.Insert(0, lastMoveUsed);
-        if (nextOpponentMove.actingPokemon.isFainted)
+
+        // Check if all targets are fainted
+        if (nextOpponentMove.card.owner.isFainted)
         {
-            var faintedMessage = nextOpponentMove.actingPokemon.pokemonName + " fainted before it could attack";
+            var faintedMessage = nextOpponentMove.card.owner.pokemonName + " fainted before it could attack.";
             await battleGameBoard.worldDialog.ShowMessageAsync(faintedMessage);
             return;
         }
-        // Do no trigger if it was already played
-        if (nextOpponentMove.playInstantly)
-        {
-            return;
-        }
 
-        nextOpponentMove.actingPokemon.hudAnimator.SetTrigger("onMoveHighlight");
-        var messageList = nextOpponentMove.playMove();
-        foreach (var message in messageList)
-        {
-            await battleGameBoard.worldDialog.ShowMessageAsync(message);
-        }
+        // Annouce and show the card
+        nextOpponentMove.card.Translate(battleGameBoard.oppPlayedCardLocation.transform.position, "opponentPlay1");
+        await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " used " + nextOpponentMove.card.cardName);
+
+        // Play the card
+        nextOpponentMove.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "opponentPlay2");
+        nextOpponentMove.card.owner.hudAnimator.SetTrigger("onMoveHighlight");
+        nextOpponentMove.card.play(nextOpponentMove.card.owner, nextOpponentMove.selectedTargetPokemon);
+
+        // Track the move and move to discard
+        lastMoveUsed = nextOpponentMove;
+        hand.Remove(nextOpponentMove);
+        discard.Add(nextOpponentMove);
+
+        // Add energy to random target
+        var energyStatRandomTarget = getPokemonToAddEnergyTo();
+        addEnergy(energyStatRandomTarget);
+        await battleGameBoard.worldDialog.ShowMessageAsync("Added energy to " + energyStatRandomTarget.pokemonName);
     }
 
-    public virtual string computeOpponentsNextMove()
+    /// <summary>
+    /// Add a normal energy prefab to the given target
+    /// </summary>
+    /// <param name="target"></param>
+    private void addEnergy(Pokemon target)
     {
-        // Randomly select move
-        var moveIndex = Mathf.FloorToInt(Random.value * availableMoves.Count);
-        nextOpponentMove = availableMoves[moveIndex];
-        nextOpponentMove.onNextMoveSelect();
-        // Trigger if it was already played
-        if (nextOpponentMove.playInstantly)
-        {
-            // switch in the pokemon that is using the move
-            if (nextOpponentMove.actingPokemon != battleGameBoard.opponentActivePokemon && nextOpponentMove.switchInOnUse)
-            {
-                battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.actingPokemon);
-            }
-            return nextOpponentMove.playMove()[0];
-        }
-        return null;
+        // Don't add energy if we are already maxed
+        if (target.maxNumberOfAttachedEnergy == target.attachedEnergy.Count) return;
+
+        var energyParent = target.gameObject;
+        var energy = Instantiate(battleGameBoard.opponent.normalEnergyPrefab, energyParent.transform);
+        energy.transform.position = battleGameBoard.energyDeckLocation.transform.position;
+        target.attachedEnergy.Add(energy.GetComponent<Energy>());
     }
 
     public virtual void onCardPlayed(Card move, Pokemon user, Pokemon target)
@@ -128,7 +312,7 @@ public class IOpponentStrategy : MonoBehaviour
     }
 
     public virtual void onTurnEnd() {
-        allMoves.ForEach(m => m.onTurnEnd());
+        deck.ForEach(move => move.card.onTurnEnd());
     }
 
     public virtual void onOpponentTurnEnd() {
@@ -136,8 +320,27 @@ public class IOpponentStrategy : MonoBehaviour
         lastPlayersTurn.Clear();
 
         // Reset priority picks
-        allMoves.ForEach(m => m.onOpponentTurnEnd());
+        deck.ForEach(move => move.card.onOpponentTurnEnd());
     }
 
     public virtual void onBattleEnd() { }
+
+    /// <summary>
+    /// Fisher-Yates Shuffle on the list
+    /// https://stackoverflow.com/a/1262619
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    protected void Shuffle<T>(IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Mathf.FloorToInt(Random.value * n);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
 }

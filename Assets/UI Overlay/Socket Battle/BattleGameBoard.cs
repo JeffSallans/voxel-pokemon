@@ -226,6 +226,16 @@ public class BattleGameBoard : MonoBehaviour
     public GameObject discardLocation;
 
     /// <summary>
+    /// Where to render the opponent deck prefabs
+    /// </summary>
+    public GameObject oppDeckLocation;
+
+    /// <summary>
+    /// Where to render the opponent play card location
+    /// </summary>
+    public GameObject oppPlayedCardLocation;
+
+    /// <summary>
     /// Where to render the energy deck prefabs
     /// </summary>
     public GameObject energyDeckLocation;
@@ -528,7 +538,7 @@ public class BattleGameBoard : MonoBehaviour
         allPartyCards.ForEach(c => c.onBattleStart(this));
         allEnergy.ForEach(e => e.onBattleStart(this));
         opponent.opponentStrategyBot.onBattleStart(this);
-        opponent.movesConfig.ForEach(m => m.onBattleStart(this));
+        opponent.initDeck.ForEach(m => m.onBattleStart(this));
 
         worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", (t) => {
 
@@ -983,7 +993,7 @@ public class BattleGameBoard : MonoBehaviour
         allCards.ForEach(c => c.onTurnEnd());
         allEnergy.ForEach(e => e.onTurnEnd());
         opponent.opponentStrategyBot.onTurnEnd();
-        opponent.movesConfig.ForEach(m => m.onTurnEnd());
+        opponent.initDeck.ForEach(m => m.onTurnEnd());
 
         // Check game end conditions
         onEitherTurnEnd();
@@ -1053,7 +1063,7 @@ public class BattleGameBoard : MonoBehaviour
             switchOpponentPokemon(opponentActivePokemon, nextOpponentAlivePoke);
             
             // Compute next move if acting pokemon fainted
-            if (opponent.opponentStrategyBot.nextOpponentMove.actingPokemon.isFainted)
+            if (opponent.opponentStrategyBot.nextOpponentMove.card.owner.isFainted)
             {
                 opponent.opponentStrategyBot.computeOpponentsNextMove();
             }
@@ -1179,7 +1189,7 @@ public class BattleGameBoard : MonoBehaviour
                 allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+                opponent.initDeck.ForEach(m => m.onBattleEnd());
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadPreviousScene();
@@ -1200,7 +1210,7 @@ public class BattleGameBoard : MonoBehaviour
                 allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+                opponent.initDeck.ForEach(m => m.onBattleEnd());
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadTitleScreen();

@@ -59,7 +59,7 @@ public class CardAlreadyActiveBuff : ICard
         base.onTurnEnd(card, battleGameBoard);
 
         // Check if the active pokemon is this card's owner
-        if (usesThisOverrideInstance(card) && battleGameBoard.activePokemon == card.owner)
+        if (usesThisOverrideInstance(card) && card.myActivePokemon == card.owner)
         {
             card.cardAnimator.SetTrigger("onFlip");
             card.damage += bonusDamage;
@@ -67,6 +67,6 @@ public class CardAlreadyActiveBuff : ICard
         }
 
         // Update last turn active pokemon tracking
-        lastTurnActivePokemon = battleGameBoard.activePokemon;
+        lastTurnActivePokemon = card.myActivePokemon;
     }
 }

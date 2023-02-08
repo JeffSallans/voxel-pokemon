@@ -73,7 +73,7 @@ public abstract class IInHandEffect : MonoBehaviour
     /// <summary>
     /// Update in the in hand value on opponent move
     /// </summary>
-    public virtual void OnOpponentMove(OpponentMove move, Pokemon user, Pokemon target)
+    public virtual void OnOpponentMove(OpponentCardMove move, Pokemon user, Pokemon target)
     {
 
     }

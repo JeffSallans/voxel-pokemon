@@ -29,7 +29,7 @@ public class CardShowAttack : ICard
     public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets)
     {
         // Show "attacking" above the opponent that is switching in
-        battleGameBoard.opponent.opponentStrategyBot.nextOpponentMove.actingPokemon.nextAttackText.text = "Attacking";
+        battleGameBoard.opponent.opponentStrategyBot.nextOpponentMove.card.owner.nextAttackText.text = "Attacking";
 
         var attackMissed = targets.Select(t =>
         {

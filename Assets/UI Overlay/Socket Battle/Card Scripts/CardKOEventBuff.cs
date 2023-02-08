@@ -43,7 +43,7 @@ public class CardKOEventBuff : ICard
         // Reset count when drawn
         if (card == GetComponent<Card>())
         {
-            numberAliveOpponentsLastTurn = battleGameBoard.opponent.party.Where(p => !p.isFainted).Count();
+            numberAliveOpponentsLastTurn = card.otherTeam.Where(p => !p.isFainted).Count();
             numberOfKOs = 0;
         }
     }
@@ -51,7 +51,7 @@ public class CardKOEventBuff : ICard
     public override void onTurnEnd(Card card, BattleGameBoard battleGameBoard)
     {
         // Update the KO count
-        var newAliveCount = battleGameBoard.opponent.party.Where(p => !p.isFainted).Count();
+        var newAliveCount = card.otherTeam.Where(p => !p.isFainted).Count();
         if (numberAliveOpponentsLastTurn != newAliveCount)
         {
             card.cardAnimator.SetTrigger("onFlip");

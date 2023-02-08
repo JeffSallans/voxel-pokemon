@@ -72,7 +72,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
         allPartyCards.ForEach(c => c.onBattleStart(this));
         allEnergy.ForEach(e => e.onBattleStart(this));
         opponent.opponentStrategyBot.onBattleStart(this);
-        opponent.movesConfig.ForEach(m => m.onBattleStart(this));
+        opponent.initDeck.ForEach(m => m.onBattleStart(this));
 
         worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", (t) => {
 
@@ -242,7 +242,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
                 allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+                opponent.initDeck.ForEach(m => m.onBattleEnd());
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadPreviousScene();
@@ -263,7 +263,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
                 allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.movesConfig.ForEach(m => m.onBattleEnd());
+                opponent.initDeck.ForEach(m => m.onBattleEnd());
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadPreviousScene(); // <- diff

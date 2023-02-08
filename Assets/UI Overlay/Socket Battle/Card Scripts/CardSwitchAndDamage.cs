@@ -19,7 +19,7 @@ public class CardSwitchAndDamage : ICard
         battleGameBoard.switchPokemon(user, selectedTarget);
 
         var attackMissed = new List<bool>();
-        attackMissed.Add(damageTarget(card, user, battleGameBoard.opponentActivePokemon));
+        attackMissed.Add(damageTarget(card, user, card.otherActivePokemon));
 
         return attackMissed;
     }

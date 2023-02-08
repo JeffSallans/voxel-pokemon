@@ -54,19 +54,19 @@ public abstract class IFlipButton : MonoBehaviour
     {
         if (isFlipped) return false;
 
-        if (attackCost > 0 && battleGameBoard?.activePokemon && battleGameBoard?.activePokemon.attackStat < attackCost)
+        if (attackCost > 0 && card?.myActivePokemon && card?.myActivePokemon.attackStat < attackCost)
         {
             return false;
         }
-        if (defenseCost > 0 && battleGameBoard?.activePokemon && battleGameBoard?.activePokemon.defenseStat < defenseCost)
+        if (defenseCost > 0 && card?.myActivePokemon && card?.myActivePokemon.defenseStat < defenseCost)
         {
             return false;
         }
-        if (specialCost > 0 && battleGameBoard?.activePokemon && battleGameBoard?.activePokemon.specialStat < specialCost)
+        if (specialCost > 0 && card?.myActivePokemon && card?.myActivePokemon.specialStat < specialCost)
         {
             return false;
         }
-        if (evasionCost > 0 && battleGameBoard?.activePokemon && battleGameBoard?.activePokemon.evasionStat < evasionCost)
+        if (evasionCost > 0 && card?.myActivePokemon && card?.myActivePokemon.evasionStat < evasionCost)
         {
             return false;
         }
@@ -88,10 +88,10 @@ public abstract class IFlipButton : MonoBehaviour
     {
         if (spendCost)
         {
-            battleGameBoard.activePokemon.attackStat -= attackCost;
-            battleGameBoard.activePokemon.defenseStat -= defenseCost;
-            battleGameBoard.activePokemon.specialStat -= specialCost;
-            battleGameBoard.activePokemon.evasionStat -= evasionCost;
+            card.myActivePokemon.attackStat -= attackCost;
+            card.myActivePokemon.defenseStat -= defenseCost;
+            card.myActivePokemon.specialStat -= specialCost;
+            card.myActivePokemon.evasionStat -= evasionCost;
         }
     }
 

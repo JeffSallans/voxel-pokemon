@@ -310,10 +310,10 @@ public class Card : MonoBehaviour
             if (battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
 
             // Check if self is trapped
-            if (owner != null && battleGameBoard != null && owner.isTrapped && battleGameBoard?.activePokemon != owner) return false;
+            if (owner != null && battleGameBoard != null && owner.isTrapped && myActivePokemon != owner) return false;
 
             // Check if active is trapped
-            if (owner != null && battleGameBoard != null && battleGameBoard.activePokemon.isTrapped && battleGameBoard.activePokemon != owner) return false;
+            if (owner != null && battleGameBoard != null && myActivePokemon.isTrapped && myActivePokemon != owner) return false;
 
             // Check color energy count
             var costAsString = cost?.Select(c => c?.energyName)
@@ -472,6 +472,65 @@ public class Card : MonoBehaviour
             if (battleGameBoard != null) return battleGameBoard.player.gameOptions;
             if (deckBuilderAddCard != null) return deckBuilderAddCard.player.gameOptions;
             return null;
+        }
+    }
+
+    /// <summary>
+    /// True if the card belongs to a pokemon controlled by the player
+    /// </summary>
+    public bool isPlayerPokemon
+    {
+        get
+        {
+            return battleGameBoard.player.party.Contains(owner);
+        }
+    }
+
+    /// <summary>
+    /// The pokemon on your team
+    /// </summary>
+    public List<Pokemon> myTeam
+    {
+        get
+        {
+            if (isPlayerPokemon) return battleGameBoard.player.party;
+            return battleGameBoard.opponent.party;
+        }
+    }
+
+    /// <summary>
+    /// The active pokemon on your team
+    /// </summary>
+    public Pokemon myActivePokemon
+    {
+        get
+        {
+            if (isPlayerPokemon) return battleGameBoard.activePokemon;
+            return battleGameBoard.opponentActivePokemon;
+        }
+    }
+
+    /// <summary>
+    /// The pokemon on the other team
+    /// </summary>
+    public List<Pokemon> otherTeam
+    {
+        get
+        {
+            if (isPlayerPokemon) return battleGameBoard.opponent.party;
+            return battleGameBoard.player.party;
+        }
+    }
+
+    /// <summary>
+    /// The active pokemon on the other team
+    /// </summary>
+    public Pokemon otherActivePokemon
+    {
+        get
+        {
+            if (isPlayerPokemon) return battleGameBoard.opponentActivePokemon;
+            return battleGameBoard.activePokemon;
         }
     }
 
@@ -736,7 +795,7 @@ public class Card : MonoBehaviour
             dropEvent = newDropEvent;
             var isSuperEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) > 1;
             var isNotVeryEffective = damage > 0 && TypeChart.getEffectiveness(this, dropEvent.targetPokemon) < 1;
-            if (battleGameBoard.opponent.party.Contains(newDropEvent.targetPokemon))
+            if (otherTeam.Contains(newDropEvent.targetPokemon))
             {
                 dropEvent.targetPokemon.hudAnimator.SetBool("isSuperEffective", isSuperEffective);
                 dropEvent.targetPokemon.hudAnimator.SetBool("isNotVeryEffective", isNotVeryEffective);
@@ -843,7 +902,7 @@ public class Card : MonoBehaviour
         {
             isDragging = false;
             isSelected = false;
-            onPlay(battleGameBoard.activePokemon, dropEvent.targetPokemon);
+            onPlay(myActivePokemon, dropEvent.targetPokemon);
         }
         // Discard
         else if (dropEvent?.eventType == "Discard")
@@ -872,7 +931,7 @@ public class Card : MonoBehaviour
         currentStacks = 0;
 
         // Calculate owner
-        _owner = battleGameBoard.player.party.Find(pokemon => pokemon.deck.Contains(this));
+        _owner = battleGameBoard.allPokemon.Find(pokemon => pokemon.deck.Contains(this));
 
         if (overrideFunctionality) { overrideFunctionality.onBattleStart(this, battleGameBoard); }
     }
@@ -995,7 +1054,7 @@ public class Card : MonoBehaviour
         for (var i = 0; i < numberOfCardsToDraw; i++)
         {
             if (battleGameBoard.deck.Count < 1) { battleGameBoard.reshuffleDiscard(); }
-            battleGameBoard.drawCard(battleGameBoard.activePokemon);
+            battleGameBoard.drawCard(myActivePokemon);
         }
         // Remove card blank spots
         if (numberOfCardsToDraw > 0)
@@ -1085,13 +1144,13 @@ public class Card : MonoBehaviour
             return;
         }
         // Subtract from active
-        var targetOnPokemon = battleGameBoard.activePokemon.attachedEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
+        var targetOnPokemon = myActivePokemon.attachedEnergy.Where(e => !e.isUsed && e.energyName == energy.energyName).FirstOrDefault();
         if (targetOnPokemon != null)
         {
             targetOnPokemon.animator.SetTrigger(animationName);
             return;
         }
-        var colorlessTargetOnPokemon = battleGameBoard.activePokemon.attachedEnergy.Where(e => !e.isUsed).FirstOrDefault();
+        var colorlessTargetOnPokemon = myActivePokemon.attachedEnergy.Where(e => !e.isUsed).FirstOrDefault();
         if (energy.energyName == "Normal" && colorlessTargetOnPokemon != null)
         {
             colorlessTargetOnPokemon.animator.SetTrigger(animationName);
@@ -1114,15 +1173,15 @@ public class Card : MonoBehaviour
 
         // Handle null flow
         if (battleGameBoard.opponent == null ||
-            battleGameBoard.opponent.party == null ||
+            otherTeam == null ||
             battleGameBoard.player == null ||
-            battleGameBoard.player.party == null) {
+            myTeam == null) {
             return false;
         }
-        var isSelf = battleGameBoard?.activePokemon == target;
-        var isOpp = battleGameBoard?.opponentActivePokemon == target;
-        var onOppTeam = battleGameBoard.opponent.party.Contains(target);
-        var onTeam = battleGameBoard.player.party.Contains(target);
+        var isSelf = myActivePokemon == target;
+        var isOpp = otherActivePokemon == target;
+        var onOppTeam = otherTeam.Contains(target);
+        var onTeam = myTeam.Contains(target);
 
         if (target.isFainted) {
             return false;
@@ -1162,11 +1221,11 @@ public class Card : MonoBehaviour
     /// <returns></returns>
     public List<Pokemon> getTarget(CardTargetType givenTargetType, Pokemon selectedTarget)
     {
-        var bench = battleGameBoard.player.party.Where(p => !p.isFainted && p != battleGameBoard.activePokemon).ToList();
-        var team = battleGameBoard.player.party.Where(p => !p.isFainted).ToList();
+        var bench = myTeam.Where(p => !p.isFainted && p != myActivePokemon).ToList();
+        var team = myTeam.Where(p => !p.isFainted).ToList();
 
-        var opponentBench = battleGameBoard.opponent.party.Where(p => !p.isFainted && p != battleGameBoard.opponentActivePokemon).ToList();
-        var opponentTeam = battleGameBoard.opponent.party.Where(p => !p.isFainted).ToList();
+        var opponentBench = otherTeam.Where(p => !p.isFainted && p != otherActivePokemon).ToList();
+        var opponentTeam = otherTeam.Where(p => !p.isFainted).ToList();
         if (givenTargetType == CardTargetType.ActiveOpponent)
         {
             return new List<Pokemon>() { selectedTarget };

@@ -439,16 +439,16 @@ public static class TypeChart
     /// <param name="move"></param>
     /// <param name="target"></param>
     /// <returns></returns>
-    public static float getEffectiveness(IOpponentMove move, Pokemon target)
+    public static float getEffectiveness(OpponentCardMove move, Pokemon target)
     {
         if (target.pokemonTypes.Count == 1)
         {
-            return getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[0]);
+            return getEffectivenessMultiplier(move.card.damageType, target.pokemonTypes[0]);
         }
         else if (target.pokemonTypes.Count == 2)
         {
-            var firstEff = getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[0]);
-            var secondEff = getEffectivenessMultiplier(move.damageEnergy, target.pokemonTypes[1]);
+            var firstEff = getEffectivenessMultiplier(move.card.damageType, target.pokemonTypes[0]);
+            var secondEff = getEffectivenessMultiplier(move.card.damageType, target.pokemonTypes[1]);
             return Mathf.Max(Mathf.Min(firstEff * secondEff, superEffectiveMultMax), notEffectiveMultMin);
         }
         else

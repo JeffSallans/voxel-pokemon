@@ -21,7 +21,8 @@ public class OpponentDeck : MonoBehaviour
     /// <summary>
     /// The possible moves for this opponent to battle with
     /// </summary>
-    public List<IOpponentMove> movesConfig;
+    public List<Card> initDeck;
+
 
     public IOpponentStrategy opponentStrategyBot;
 
@@ -37,28 +38,17 @@ public class OpponentDeck : MonoBehaviour
         {
             party = gameObject.GetComponentsInChildren<Pokemon>().ToList();
         }
-        if (movesConfig.Count == 0)
+        if (initDeck.Count == 0)
         {
-            movesConfig = gameObject.GetComponentsInChildren<IOpponentMove>().ToList();
+            initDeck = gameObject.GetComponentsInChildren<Card>().ToList();
         }
         
-        // Turn off all cards
-        var cards = gameObject.GetComponentsInChildren<Card>().ToList();
-        cards.ForEach(c => c.gameObject.SetActive(false));
-
         // Turn off all energies
         var energies = gameObject.GetComponentsInChildren<Energy>().ToList();
         energies.ForEach(e => e.gameObject.SetActive(false));
 
         // Turn off all possible energies
         party.ForEach(p => p.energyTypes = new List<string>());
-
-        // Set the max energy slots per move
-        party.ForEach(p =>
-        {
-            var maxEnergy = movesConfig.Where(m => m.actingPokemon == p).Select(m => m.energyRequirement).Max();
-            p.maxNumberOfAttachedEnergy = maxEnergy;
-        });
     }
 
     // Update is called once per frame

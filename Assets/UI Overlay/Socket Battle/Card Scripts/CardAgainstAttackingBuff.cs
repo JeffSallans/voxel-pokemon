@@ -20,7 +20,7 @@ public class CardAgainstAttackingBuff : ICard
     {
 
         // Miss if the selected target is not attacking
-        if (battleGameBoard.opponent.opponentStrategyBot.nextOpponentMove.actingPokemon != selectedTarget)
+        if (battleGameBoard.opponent.opponentStrategyBot.nextOpponentMove.card.owner != selectedTarget)
         {
             return targets.Select(t => true).ToList();
         }
