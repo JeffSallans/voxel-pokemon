@@ -136,9 +136,9 @@ public class IOpponentStrategy : MonoBehaviour
     }
 
     /// <summary>
-    /// Return the random selected target for
+    /// Return the random selected target for.
     /// </summary>
-    /// <param name="move"></param>
+    /// <param name="move">Modifies move.selectedTargetPokemon to the result</param>
     /// <param name="battleGameBoard"></param>
     /// <returns></returns>
     protected virtual Pokemon getSelectedTarget(OpponentCardMove move, BattleGameBoard battleGameBoard)
@@ -166,7 +166,7 @@ public class IOpponentStrategy : MonoBehaviour
         });
 
         // Return the target with the best score
-        move.selectedTargetPokemon = null;
+        move.selectedTargetPokemon = bestTargetSoFar;
         return bestTargetSoFar;
     }
 
@@ -268,6 +268,12 @@ public class IOpponentStrategy : MonoBehaviour
             var faintedMessage = nextOpponentMove.card.owner.pokemonName + " fainted before it could attack.";
             await battleGameBoard.worldDialog.ShowMessageAsync(faintedMessage);
             return;
+        }
+
+        // Discard cost to play
+        if (!nextOpponentMove.card.keepEnergiesOnPlay)
+        {
+            nextOpponentMove.card.owner.DiscardEnergy(nextOpponentMove.card.owner.attachedEnergy[0]);
         }
 
         // Annouce and show the card

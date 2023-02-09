@@ -307,7 +307,7 @@ public class Card : MonoBehaviour
             if (inDeckBuilderWorkflow) { return true; }
 
             // Check if there are any remaining card plays this turn
-            if (battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
+            if (isPlayerPokemon &&  battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
 
             // Check if self is trapped
             if (owner != null && battleGameBoard != null && owner.isTrapped && myActivePokemon != owner) return false;
@@ -341,6 +341,9 @@ public class Card : MonoBehaviour
 
             // Check count for colorless check
             var hasEnoughUsableEnergyForColorless = cost?.Count <= owner?.attachedEnergy?.Count ;
+
+            // Only check energy count
+            if (!isPlayerPokemon) return hasEnoughUsableEnergyForColorless;
 
             return coloredEnergyConditionMet && hasEnoughUsableEnergyForColorless;
         }
@@ -482,7 +485,8 @@ public class Card : MonoBehaviour
     {
         get
         {
-            return battleGameBoard.player.party.Contains(owner);
+            var isOpponentPokemon = battleGameBoard?.opponent?.party.Contains(owner);
+            return isOpponentPokemon != true;
         }
     }
 

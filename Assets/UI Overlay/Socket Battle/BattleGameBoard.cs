@@ -444,7 +444,7 @@ public class BattleGameBoard : MonoBehaviour
         opponent.party.ForEach(p =>
         {
             p.setupPokemonPlacement(opponentPokemonLocations[j], opponentPokemonModelLocations[j]);
-            p.showModels(false);
+            p.showModels();
             j++;
         });
 
