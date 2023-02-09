@@ -616,7 +616,7 @@ public class Pokemon : MonoBehaviour
     /// Removes the energy at the given index from the pokemon
     /// </summary>
     /// <param name="energyToRemoveIndex"></param>
-    public void DiscardEnergy(int energyToRemoveIndex)
+    public void DiscardEnergy(int energyToRemoveIndex, bool addToEnergyDiscardPile = true)
     {
         if (energyToRemoveIndex >= attachedEnergy.Count)
         {
@@ -636,16 +636,16 @@ public class Pokemon : MonoBehaviour
         energyToRemove.transform.localRotation = battleGameBoard.energyDiscardLocation.transform.localRotation;
         energyToRemove.Translate(battleGameBoard.energyDiscardLocation.transform.position);
         
-        battleGameBoard.energyDiscard.Add(energyToRemove);
+        if (addToEnergyDiscardPile) battleGameBoard.energyDiscard.Add(energyToRemove);
         attachedEnergy.Remove(energyToRemove);
     }
 
     /// <summary>
     /// Removes the energy at the given index from the pokemon
     /// </summary>
-    public void DiscardEnergy(Energy energyToRemove)
+    public void DiscardEnergy(Energy energyToRemove, bool addToEnergyDiscardPile = true)
     {
-        DiscardEnergy(attachedEnergy.IndexOf(energyToRemove));
+        DiscardEnergy(attachedEnergy.IndexOf(energyToRemove), addToEnergyDiscardPile);
     }
 
     /// <summary>

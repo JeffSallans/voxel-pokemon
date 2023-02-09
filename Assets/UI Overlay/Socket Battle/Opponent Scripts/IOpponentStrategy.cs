@@ -96,6 +96,10 @@ public class IOpponentStrategy : MonoBehaviour
         {
             drawCard();
         }
+
+        // Add energy to random target
+        var energyStatRandomTarget = getPokemonToAddEnergyTo();
+        addEnergy(energyStatRandomTarget);
     }
 
     /// <summary>
@@ -278,15 +282,16 @@ public class IOpponentStrategy : MonoBehaviour
         // Annouce and show the card
         nextOpponentMove.card.Translate(battleGameBoard.oppPlayedCardLocation.transform.position, "opponentPlay1");
         await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " used " + nextOpponentMove.card.cardName);
+        nextOpponentMove.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "opponentPlay2");
 
         // Discard cost to play
         if (!nextOpponentMove.card.keepEnergiesOnPlay)
         {
             nextOpponentMove.card.owner.DiscardEnergy(nextOpponentMove.card.owner.attachedEnergy[0]);
+            await battleGameBoard.worldDialog.ShowMessageAsync("Energy discared to play " + nextOpponentMove.card.cardName);
         }
 
         // Play the card
-        nextOpponentMove.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "opponentPlay2");
         nextOpponentMove.card.owner.hudAnimator.SetTrigger("onMoveHighlight");
         nextOpponentMove.card.play(nextOpponentMove.card.owner, nextOpponentMove.selectedTargetPokemon);
 
