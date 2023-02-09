@@ -69,12 +69,17 @@ public class IOpponentStrategy : MonoBehaviour
         // Init deck
         deck = battleGameBoard.opponent.initDeck.Select(card =>
         {
+            card.cardInteractEnabled = false;
+
             var opponentMove = new OpponentCardMove();
             opponentMove.card = card;
             opponentMove.turnPriority = 3;
             opponentMove.selectedTargetPokemon = null;
             return opponentMove;
         }).ToList();
+
+        // Shuffle deck
+        Shuffle(deck);
 
         // Move deck into the correct position
         deck.ForEach(move =>
@@ -121,7 +126,7 @@ public class IOpponentStrategy : MonoBehaviour
         drawCard();
 
         // Compute targets for all cards
-        hand.Where(move => move.selectedTargetPokemon = getSelectedTarget(move, battleGameBoard));
+        hand.ForEach(move => move.selectedTargetPokemon = getSelectedTarget(move, battleGameBoard));
 
         // Find all hand cards you can play
         var playableMoves = hand.Where(move => move.canUseMove).ToList();
@@ -270,15 +275,15 @@ public class IOpponentStrategy : MonoBehaviour
             return;
         }
 
+        // Annouce and show the card
+        nextOpponentMove.card.Translate(battleGameBoard.oppPlayedCardLocation.transform.position, "opponentPlay1");
+        await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " used " + nextOpponentMove.card.cardName);
+
         // Discard cost to play
         if (!nextOpponentMove.card.keepEnergiesOnPlay)
         {
             nextOpponentMove.card.owner.DiscardEnergy(nextOpponentMove.card.owner.attachedEnergy[0]);
         }
-
-        // Annouce and show the card
-        nextOpponentMove.card.Translate(battleGameBoard.oppPlayedCardLocation.transform.position, "opponentPlay1");
-        await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " used " + nextOpponentMove.card.cardName);
 
         // Play the card
         nextOpponentMove.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "opponentPlay2");

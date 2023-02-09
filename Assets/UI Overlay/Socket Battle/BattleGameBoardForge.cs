@@ -69,38 +69,24 @@ public class BattleGameBoardForge : BattleGameBoard
     {
         base.onSetupPlayer();
 
-        // Remove energy slots
-        //player.party.ForEach(p => p.maxNumberOfAttachedEnergy = 0);
-
         // Change card energy to pokemon face
         deck.ForEach(c => setupCardToShowPokemonFace(c));
-
-        // Add card can play override
-        //deck.ForEach(c => c.canBePlayedOverride = () => true);
-
+        opponent.initDeck.ForEach(c => setupCardToShowPokemonFace(c));
     }
 
     protected override void onPackupPlayer()
     {
         base.onPackupPlayer();
 
-        // Add energy slots
-        //player.party.ForEach(p => p.maxNumberOfAttachedEnergy = 4);
-
         // Change card energy to pokemon face
         deck.ForEach(c => packupCardToHidePokemonFace(c));
-
-        // Remove card can play override
-        //deck.ForEach(c => c.canBePlayedOverride = null);
+        opponent.initDeck.ForEach(c => packupCardToHidePokemonFace(c));
     }
 
     private void setupCardToShowPokemonFace(Card card)
     {
-        // Hide energy
-        //card.cost.ForEach(e => e.gameObject.SetActive(false));
-
-        // Calculate owner
-        var owner = player.party.Find(pokemon => pokemon.initDeck.Contains(card));
+        // Calculate owner before it is setup
+        var owner = allPokemon.Find(pokemon => pokemon.initDeck.Contains(card));
 
         // Show pokemon icon
         var pokemonIconName = "icon-" + owner?.pokemonName?.ToLower();
@@ -112,14 +98,14 @@ public class BattleGameBoardForge : BattleGameBoard
             if (c.switchInOnUse)
             {
                 previousActivePokemon = activePokemon;
-                switchPokemonAndKeepCards(activePokemon, owner);
+                switchPokemonAndKeepCards(activePokemon, card.owner);
             }
             return true;
         };
         card._onDropFunc = (c) => {
             if (c.switchInOnUse)
             {
-                switchPokemonAndKeepCards(owner, previousActivePokemon);
+                switchPokemonAndKeepCards(card.owner, previousActivePokemon);
             }
             return true;
         };
@@ -128,11 +114,8 @@ public class BattleGameBoardForge : BattleGameBoard
 
     private void packupCardToHidePokemonFace(Card card)
     {
-        // Show energy
-        // card.cost.ForEach(e => e.gameObject.SetActive(true));
-
-        // Calculate owner
-        var owner = player.party.Find(pokemon => pokemon.initDeck.Contains(card));
+        // Calculate owner before it is setup
+        var owner = allPokemon.Find(pokemon => pokemon.initDeck.Contains(card));
 
         // Hide pokemon icon
         var pokemonIconName = "icon-" + owner?.pokemonName?.ToLower();

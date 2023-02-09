@@ -22,8 +22,6 @@ public class OpponentCardMove
     /// </summary>
     public Card card;
 
-    protected BattleGameBoard battleGameBoard;
-
     public virtual bool canUseMove
     {
         get {
