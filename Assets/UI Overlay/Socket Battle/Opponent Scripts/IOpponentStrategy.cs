@@ -246,6 +246,12 @@ public class IOpponentStrategy : MonoBehaviour
     /// <returns></returns>
     public async virtual Task opponentPlay()
     {
+        // Check that move can still be used after player's turn
+        if (!nextOpponentMove.canUseMove)
+        {
+            computeOpponentsNextMove();
+        }
+
         // Check the opponent's turn should be skipped because they don't have a card to play
         if (nextOpponentMove == null)
         {
@@ -257,12 +263,6 @@ public class IOpponentStrategy : MonoBehaviour
             await battleGameBoard.worldDialog.ShowMessageAsync("Added energy to " + energyStatTarget.pokemonName);
 
             return;
-        }
-
-        // Check that move can still be used after player's turn
-        if (!nextOpponentMove.canUseMove)
-        {
-            computeOpponentsNextMove();
         }
 
         // Switch in the pokemon that is using the move
@@ -285,16 +285,17 @@ public class IOpponentStrategy : MonoBehaviour
         await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " used " + nextOpponentMove.card.cardName);
         nextOpponentMove.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "opponentPlay2");
 
+        // Play the card
+        hand.Remove(nextOpponentMove);
+        nextOpponentMove.card.owner.hudAnimator.SetTrigger("onMoveHighlight");
+        nextOpponentMove.card.play(nextOpponentMove.card.owner, nextOpponentMove.selectedTargetPokemon);
+
         // Discard cost to play
         if (!nextOpponentMove.card.keepEnergiesOnPlay)
         {
             nextOpponentMove.card.owner.DiscardEnergy(nextOpponentMove.card.owner.attachedEnergy[0]);
-            await battleGameBoard.worldDialog.ShowMessageAsync("Energy discared to play " + nextOpponentMove.card.cardName);
+            //await battleGameBoard.worldDialog.ShowMessageAsync("Energy discared to play " + nextOpponentMove.card.cardName);
         }
-
-        // Play the card
-        nextOpponentMove.card.owner.hudAnimator.SetTrigger("onMoveHighlight");
-        nextOpponentMove.card.play(nextOpponentMove.card.owner, nextOpponentMove.selectedTargetPokemon);
 
         // Track the move and move to discard
         lastMoveUsed = nextOpponentMove;

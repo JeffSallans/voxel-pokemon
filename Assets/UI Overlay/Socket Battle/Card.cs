@@ -35,8 +35,7 @@ public class Card : MonoBehaviour
                     .Replace("{userHeal}", userHeal.ToString())
                     .Replace("{maxStacks}", maxStacks.ToString())
                     .Replace("{currentStacks}", currentStacks.ToString())
-                    .Replace("{stacksLeft}", (maxStacks - currentStacks).ToString())
-                    .Replace("{flipText}", flipButtonFunctionality?.getFlipButtonText());
+                    .Replace("{stacksLeft}", (maxStacks - currentStacks).ToString());
             return desc;
         }
     }
@@ -266,12 +265,6 @@ public class Card : MonoBehaviour
     /// Set to override default functionality
     /// </summary>
     public ICard overrideFunctionality = null;
-
-    /// <summary>
-    /// Button that flips a card
-    /// </summary>
-    [HideInInspector]
-    public IFlipButton flipButtonFunctionality = null;
 
     /// <summary>
     /// Current energies during a battle
@@ -544,7 +537,6 @@ public class Card : MonoBehaviour
         deckBuilderAddCard = GameObject.FindObjectOfType<DeckBuilderAddCard>();
 
         overrideFunctionality = GetComponent<ICard>();
-        flipButtonFunctionality = GetComponent<IFlipButton>();
 
         // Create card cost energies
         if (cost.Count == 0)
@@ -566,7 +558,7 @@ public class Card : MonoBehaviour
     void Start()
     {
         raycastLayer = LayerMask.GetMask("UI Raycast");
-        cardAnimator.SetBool("hideFlipButton", flipButtonFunctionality == null);
+        cardAnimator.SetBool("hideFlipButton", true);
     }
 
     // Update is called once per frame
@@ -617,16 +609,6 @@ public class Card : MonoBehaviour
             if (cardInteractEnabled && isSelected && !isDragging && Input.GetKeyDown(KeyCode.Mouse0))
             {
                 onDragHelper();
-            }
-        }
-
-        // Update flip button activeness
-        if (cardInteractEnabled && flipButtonFunctionality != null)
-        {
-            var flipButtonEnabled = isFlipButtonEnabled();
-            if (flipButtonEnabled != cardAnimator.GetBool("isFlipButtonEnabled"))
-            {
-                cardAnimator.SetBool("isFlipButtonEnabled", flipButtonEnabled);
             }
         }
 
@@ -983,12 +965,6 @@ public class Card : MonoBehaviour
                 if (targetAnimationType2 != "") t.modelAnimator.SetTrigger(targetAnimationType2);
             } 
         });
-
-        // Trigger flip functionality if applicable
-        if (flipButtonFunctionality != null && flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard))
-        {
-            flipButtonFunctionality.onPlay(this, battleGameBoard, selectedTarget);
-        }
     }
 
     private bool commonCardPlay(Pokemon user, Pokemon target)
@@ -1022,7 +998,7 @@ public class Card : MonoBehaviour
         addStatHelper(statusTarget, "evasionStat", evasionStat, 1);
         addStatHelper(statusTarget, "blockStat", blockStat, statusTarget.initHealth);
         addStatHelper(statusTarget, "attackMultStat", attackMultStat);
-        addStatHelper(statusTarget, "poison", poisonStacks, 15);
+        addStatHelper(statusTarget, "poison", poisonStacks, 9);
         if (grantsInvulnerability)
         {
             statusTarget.attachedStatus.Add(new StatusEffect(statusTarget, this, "invulnerabilityEffect", new Dictionary<string, string>() {
@@ -1290,33 +1266,6 @@ public class Card : MonoBehaviour
     {
         cardAnimator.SetTrigger("onDrawCard");
         battleGameBoard.cardEventService.onDraw(this, myActivePokemon);
-    }
-
-    ///////////////////////////////////
-    // Flip Button Section
-    ///////////////////////////////////
-
-    public bool isFlipButtonEnabled()
-    {
-        if (flipButtonFunctionality == null) return false;
-        return flipButtonFunctionality.isFlipButtonEnabled(this, battleGameBoard);
-    }
-
-    public void onFlipButtonPress()
-    {
-        if (!canBePlayed) { return; }
-        cardAnimator.SetTrigger("onFlip");
-        flipButtonFunctionality?.onFlipButtonPress(this, battleGameBoard);
-    }
-
-    public void onFlip()
-    {
-        flipButtonFunctionality?.onFlipEvent(this, battleGameBoard);
-    }
-
-    public void onUnflip()
-    {
-        flipButtonFunctionality?.onUnflipEvent(this, battleGameBoard);
     }
 
     /// <summary>

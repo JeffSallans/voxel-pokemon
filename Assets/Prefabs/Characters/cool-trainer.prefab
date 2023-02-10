@@ -159,134 +159,6 @@ Transform:
   m_Father: {fileID: 8904323054489260058}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5257771225870657452
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5183464544807799814}
-  - component: {fileID: 8330180353438649149}
-  - component: {fileID: 2234274604617022585}
-  m_Layer: 0
-  m_Name: raichu
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5183464544807799814
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5257771225870657452}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7522569017854171351}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8330180353438649149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5257771225870657452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Bite
-  moveDescriptionWithTemplates: Deal {damage} ZZDark dmg
-  actingPokemon: {fileID: 8508700537753058229}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 32
-  damageEnergy: Dark
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
---- !u!114 &2234274604617022585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5257771225870657452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Thunder
-  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg
-  actingPokemon: {fileID: 8508700537753058229}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 96
-  damageEnergy: Electric
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 3
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1 &5808646380956014613
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +193,6 @@ Transform:
   m_Children:
   - {fileID: 1580121721931516655}
   - {fileID: 8904323054489260058}
-  - {fileID: 7522569017854171351}
   - {fileID: 1465526570155848202}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -388,6 +259,7 @@ MonoBehaviour:
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
   priceRequirement: 0
+  priceRequirementMessage: You don't have enough money.
   moneyChange: 0
 --- !u!114 &6808737486173340938
 MonoBehaviour:
@@ -403,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opponentName: Cool Trainer Kat
   party: []
-  movesConfig: []
+  initDeck: []
   opponentStrategyBot: {fileID: 836831633256089512}
   normalEnergyPrefab: {fileID: 4276494747118148778, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
 --- !u!114 &836831633256089512
@@ -418,10 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca2ec52396670f488022f46e0ca44f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextOpponentMove: {fileID: 0}
-  firstChoice: {fileID: 0}
-  secondChoice: {fileID: 0}
-  thirdChoice: {fileID: 0}
 --- !u!65 &1155111290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -435,134 +303,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6138306, y: 3.9244094, z: 1.2299805}
   m_Center: {x: -0.0049743652, y: 2.3474061, z: -0.18365479}
---- !u!1 &5987017246316171148
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3270311375992970120}
-  - component: {fileID: 6933536077202048766}
-  - component: {fileID: 242944878807364630}
-  m_Layer: 0
-  m_Name: ivysaur
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3270311375992970120
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5987017246316171148}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7522569017854171351}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6933536077202048766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5987017246316171148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Mega Drain
-  moveDescriptionWithTemplates: Deal {damage} ZZGrass dmg, heal {userHeal}
-  actingPokemon: {fileID: 340778068888575156}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 16
-  damageEnergy: Grass
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 16
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
---- !u!114 &242944878807364630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5987017246316171148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveName: Growth
-  moveDescriptionWithTemplates: Add 2 ZZSpc
-  actingPokemon: {fileID: 340778068888575156}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Normal
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 2
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 8508700537753058229}
 --- !u!1 &6741204117493749708
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,38 +342,6 @@ Transform:
   - {fileID: 5660632201361376751}
   m_Father: {fileID: 4639280551232219056}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6868505874475453971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7522569017854171351}
-  m_Layer: 0
-  m_Name: moves
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7522569017854171351
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6868505874475453971}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5183464544807799814}
-  - {fileID: 3270311375992970120}
-  m_Father: {fileID: 4639280551232219056}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7047590578498651795
 GameObject:
@@ -762,7 +470,7 @@ Transform:
   m_Children:
   - {fileID: 3445715201634998511}
   m_Father: {fileID: 4639280551232219056}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8826309963957522194
 Animator:
@@ -1634,17 +1342,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b550a368197cf0342a98e171897e65dc, type: 3}
---- !u!114 &8508700537753058229 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3657449041226398145, guid: b550a368197cf0342a98e171897e65dc, type: 3}
-  m_PrefabInstance: {fileID: 4959910734283031156}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &9196846037706776058 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4284302265976545166, guid: b550a368197cf0342a98e171897e65dc, type: 3}
@@ -2194,17 +1891,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7769797705293627792, guid: 9b00b276a4788db4383cb367b46d28bf, type: 3}
   m_PrefabInstance: {fileID: 7411881212970433387}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &340778068888575156 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7090606900850894815, guid: 9b00b276a4788db4383cb367b46d28bf, type: 3}
-  m_PrefabInstance: {fileID: 7411881212970433387}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8270423078862925167
 PrefabInstance:
   m_ObjectHideFlags: 0

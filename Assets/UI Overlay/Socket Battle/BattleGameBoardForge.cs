@@ -91,7 +91,7 @@ public class BattleGameBoardForge : BattleGameBoard
         // Show pokemon icon
         var pokemonIconName = "icon-" + owner?.pokemonName?.ToLower();
         var pokemonIcon = card.gameObject.transform.Find(pokemonIconName);
-        pokemonIcon.gameObject.SetActive(true);
+        if (pokemonIcon != null) pokemonIcon.gameObject.SetActive(true);
 
         // Add custom drag
         card._onDragFunc = (c) => { 
