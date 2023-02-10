@@ -239,10 +239,9 @@ public class BattleGameBoardTutorial : BattleGameBoard
 
                 // Send event to all energy, cards, status, and pokemon
                 allPokemon.ForEach(p => p.onBattleEnd());
-                allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.initDeck.ForEach(m => m.onBattleEnd());
+                cardEventService.onBattleEnd();
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadPreviousScene();
@@ -260,10 +259,9 @@ public class BattleGameBoardTutorial : BattleGameBoard
 
                 // Send event to all energy, cards, status, and pokemon
                 allPokemon.ForEach(p => p.onBattleEnd());
-                allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.initDeck.ForEach(m => m.onBattleEnd());
+                cardEventService.onBattleEnd();
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadPreviousScene(); // <- diff

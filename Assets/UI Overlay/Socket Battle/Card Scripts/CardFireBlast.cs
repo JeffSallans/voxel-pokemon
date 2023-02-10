@@ -14,17 +14,17 @@ public class CardFireBlast : ICard
         numberOfTimesDiscarded = 0;
     }
 
-    public override void onDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed)
+    public override void onThisDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed)
     {
         if (onlyIfDiscardedByACard && !wasPlayed && numberOfTimesDiscarded < maxStacks)
         {
             numberOfTimesDiscarded++;
-            card.initDamage += damagePerDiscard;
+            card.damage += damagePerDiscard;
         }
         else if (numberOfTimesDiscarded < maxStacks)
         {
             numberOfTimesDiscarded++;
-            card.initDamage += damagePerDiscard;
+            card.damage += damagePerDiscard;
         }
     }
 }

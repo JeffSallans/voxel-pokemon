@@ -26,20 +26,14 @@ public class CardOpponentEnergyBuff : ICard
         base.onBattleStart(card, battleGameBoard);
 
         // Set base stat
-        if (usesThisOverrideInstance(card))
-        {
-            baseDamage = card.damage;
-        }
+        baseDamage = card.damage;
     }
 
     public override void onTurnEnd(Card card, BattleGameBoard battleGameBoard)
     {
         base.onTurnEnd(card, battleGameBoard);
 
-        if (usesThisOverrideInstance(card))
-        {
-            card.damage = baseDamage;
-        }
+        card.damage = baseDamage;
     }
 
     public override List<bool> play(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon selectedTarget, List<Pokemon> targets)

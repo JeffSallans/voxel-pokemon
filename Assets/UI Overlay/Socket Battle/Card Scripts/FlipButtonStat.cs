@@ -15,7 +15,7 @@ public class FlipButtonStat : IFlipButton
     public override void onFlipEvent(Card card, BattleGameBoard battleGameBoard)
     {
         base.onFlipEvent(card, battleGameBoard);
-        card.initDamage += damageIncrease;
+        card.damage += damageIncrease;
         card.blockStat += blockIncrease;
         card.attackMultStat += multiplierIncrease;
         card.userHeal += userHealIncrease;
@@ -25,7 +25,7 @@ public class FlipButtonStat : IFlipButton
     public override void onUnflipEvent(Card card, BattleGameBoard battleGameBoard)
     {
         base.onUnflipEvent(card, battleGameBoard);
-        card.initDamage -= damageIncrease;
+        card.damage -= damageIncrease;
         card.blockStat -= blockIncrease;
         card.attackMultStat -= multiplierIncrease;
         card.userHeal -= userHealIncrease;

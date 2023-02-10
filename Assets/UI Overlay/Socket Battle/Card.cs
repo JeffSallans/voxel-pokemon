@@ -1286,38 +1286,11 @@ public class Card : MonoBehaviour
     // Card Override Section
     ///////////////////////////////////
 
-    public void onDraw(Pokemon activePokemon)
+    public void onDraw()
     {
         cardAnimator.SetTrigger("onDrawCard");
-        if (overrideFunctionality) { overrideFunctionality.onDraw(this, battleGameBoard, activePokemon); }
+        battleGameBoard.cardEventService.onDraw(this, myActivePokemon);
     }
-
-    public void onOpponentDraw(Pokemon opponentActivePokemon) {
-        if (overrideFunctionality) { overrideFunctionality.onOpponentDraw(this, battleGameBoard, opponentActivePokemon); }
-    }
-
-    public void onTurnEnd() {
-        if (overrideFunctionality) { overrideFunctionality.onTurnEnd(this, battleGameBoard); }
-        if (flipButtonFunctionality && flipButtonFunctionality.isCardFlipped()) { flipButtonFunctionality.onUnflipEvent(this, battleGameBoard); }
-    }
-
-    public void onOpponentTurnEnd() {
-        if (overrideFunctionality) { overrideFunctionality.onOpponentTurnEnd(this, battleGameBoard); }
-    }
-
-    public void onBattleEnd() {
-        if (overrideFunctionality) { overrideFunctionality.onBattleEnd(this, battleGameBoard); }
-    }
-
-    public void onCardPlayed(Card move, Pokemon user, Pokemon target)
-    {
-        if (overrideFunctionality) { overrideFunctionality.onCardPlayed(this, battleGameBoard, move, user, target); }
-    }
-
-    public void onDiscard(bool wasPlayed) {
-        if (overrideFunctionality) { overrideFunctionality.onDiscard(this, battleGameBoard, wasPlayed); }
-    }
-
 
     ///////////////////////////////////
     // Flip Button Section

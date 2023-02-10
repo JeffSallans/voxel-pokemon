@@ -66,19 +66,16 @@ public class CardEndOfTurnBuff : ICard
     /// <param name="card"></param>
     /// <param name="battleGameBoard"></param>
     /// <param name="wasPlayed"></param>
-    public override void onDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed)
+    public override void onThisDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed)
     {
-        base.onDiscard(card, battleGameBoard, wasPlayed);
+        base.onThisDiscard(card, battleGameBoard, wasPlayed);
 
-        if (usesThisOverrideInstance(card))
-        {
-            card.damage = baseDamage;
-            card.attackStat = baseAttack;
-            card.defenseStat = baseDefense;
-            card.userHeal = baseUserHeal;
+        card.damage = baseDamage;
+        card.attackStat = baseAttack;
+        card.defenseStat = baseDefense;
+        card.userHeal = baseUserHeal;
 
-            currentStacks = 0;
-        }
+        currentStacks = 0;
     }
 
     /// <summary>
@@ -87,19 +84,16 @@ public class CardEndOfTurnBuff : ICard
     /// <param name="card"></param>
     /// <param name="battleGameBoard"></param>
     /// <param name="activePokemon"></param>
-    public override void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
+    public override void onThisDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
     {
-        base.onDraw(card, battleGameBoard, activePokemon);
+        base.onThisDraw(card, battleGameBoard, activePokemon);
 
-        if (usesThisOverrideInstance(card))
-        {
-            baseDamage = card.damage;
-            baseAttack = card.attackStat;
-            baseDefense = card.defenseStat;
-            baseUserHeal = card.userHeal;
+        baseDamage = card.damage;
+        baseAttack = card.attackStat;
+        baseDefense = card.defenseStat;
+        baseUserHeal = card.userHeal;
 
-            currentStacks = 0;
-        }
+        currentStacks = 0;
     }
 
     /// <summary>
@@ -109,7 +103,7 @@ public class CardEndOfTurnBuff : ICard
     /// <param name="battleGameBoard"></param>
     public override void onTurnEnd(Card card, BattleGameBoard battleGameBoard)
     {
-        if (usesThisOverrideInstance(card) && battleGameBoard.hand.Contains(card) && currentStacks < maxStacks)
+        if (battleGameBoard.hand.Contains(card) && currentStacks < maxStacks)
         {
             card.cardAnimator.SetTrigger("onFlip");
             currentStacks++;

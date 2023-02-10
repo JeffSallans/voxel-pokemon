@@ -51,15 +51,12 @@ public class CardStatConditionTargetChange : ICard
         base.onBattleStart(card, battleGameBoard);
 
         // Set base stat
-        if (usesThisOverrideInstance(card))
-        {
-            baseTargetType = card.targetType;
-        }
+        baseTargetType = card.targetType;
     }
 
-    public override void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
+    public override void onAnyDraw(Card card, Card drawnCard, BattleGameBoard battleGameBoard, Pokemon activePokemon)
     {
-        base.onDraw(card, battleGameBoard, activePokemon);
+        base.onAnyDraw(card, drawnCard, battleGameBoard, activePokemon);
 
         checkStatusConditionChange(card, battleGameBoard);
     }
@@ -84,18 +81,18 @@ public class CardStatConditionTargetChange : ICard
     /// <param name="move"></param>
     /// <param name="user"></param>
     /// <param name="target"></param>
-    public override void onCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target)
+    public override void onAnyCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target)
     {
-        base.onCardPlayed(card, battleGameBoard, move, user, target);
+        base.onAnyCardPlayed(card, battleGameBoard, move, user, target);
 
-        if (move == card)
-        {
-            card.targetType = baseTargetType;
-        }
-        else
-        {
-            checkStatusConditionChange(card, battleGameBoard);
-        }
+        checkStatusConditionChange(card, battleGameBoard);
+    }
+
+    public override void onThisCardPlayed(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target)
+    {
+        base.onThisCardPlayed(card, battleGameBoard, user, target);
+
+        card.targetType = baseTargetType;
     }
 
     /// <summary>
@@ -113,21 +110,19 @@ public class CardStatConditionTargetChange : ICard
 
     private void checkStatusConditionChange(Card card, BattleGameBoard battleGameBoard)
     {
-        var cardCanBeTriggered = usesThisOverrideInstance(card);
-
         var attackConditionMet = attackCost > 0 && card.owner && card.owner.attackStat >= attackCost;
         var defenseConditionMet = defenseCost > 0 && card.owner && card.owner.defenseStat >= defenseCost;
         var specialConditionMet = specialCost > 0 && card.owner && card.owner.specialStat >= specialCost;
         var statusConditionMet = attackConditionMet || defenseConditionMet || specialConditionMet;
 
-        if (cardCanBeTriggered && card.currentStacks < card.maxStacks && statusConditionMet)
+        if (card.currentStacks < card.maxStacks && statusConditionMet)
         {
             card.cardAnimator.SetTrigger("onFlip");
             card.currentStacks++;
             card.targetType = newTargetType;
         }
 
-        if (cardCanBeTriggered && card.currentStacks > 0 && !statusConditionMet)
+        if (card.currentStacks > 0 && !statusConditionMet)
         {
             card.cardAnimator.SetTrigger("onFlip");
             card.currentStacks--;

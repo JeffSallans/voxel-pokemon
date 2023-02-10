@@ -38,14 +38,11 @@ public class CardKOEventBuff : ICard
         return attackMissed;
     }
 
-    public override void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
+    public override void onThisDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
     {
         // Reset count when drawn
-        if (card == GetComponent<Card>())
-        {
-            numberAliveOpponentsLastTurn = card.otherTeam.Where(p => !p.isFainted).Count();
-            numberOfKOs = 0;
-        }
+        numberAliveOpponentsLastTurn = card.otherTeam.Where(p => !p.isFainted).Count();
+        numberOfKOs = 0;
     }
 
     public override void onTurnEnd(Card card, BattleGameBoard battleGameBoard)

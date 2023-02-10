@@ -287,7 +287,7 @@ public class InteractionEvent : MonoBehaviour
     public string pokemonToAddSuccessMessage {
         get
         {
-            return "** {pokemon} joined the team **".Replace("{pokemon}", pokemonToAdd);
+            return "<color=purple>{pokemon}</color> joined the team".Replace("{pokemon}", pokemonToAdd);
         }
     }
 
@@ -298,7 +298,7 @@ public class InteractionEvent : MonoBehaviour
     {
         get
         {
-            return "** Team is full, {pokemon} can't join **".Replace("{pokemon}", pokemonToAdd);
+            return "Team is full, {pokemon} can't join".Replace("{pokemon}", pokemonToAdd);
         }
     }
 

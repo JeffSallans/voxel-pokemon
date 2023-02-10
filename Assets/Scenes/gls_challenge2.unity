@@ -1459,42 +1459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Harden
-  moveDescriptionWithTemplates: Add {defense} ZZDef and 1 energy
-  actingPokemon: {fileID: 2041777986}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Grass
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 1
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 2
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 1
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &110842156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,42 +1471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Grass Knot
-  moveDescriptionWithTemplates: 'Deal {damage} ZZGrass dmg, use 1 energy '
-  actingPokemon: {fileID: 2041777986}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 30
-  damageEnergy: Grass
-  energyRequirement: 1
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onGrass
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &110842157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,42 +1483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Harden 2
-  moveDescriptionWithTemplates: Add 1 energy
-  actingPokemon: {fileID: 2041777986}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Grass
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 1
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1001 &117674908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3408,42 +3300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: water gun
-  moveDescriptionWithTemplates: Deal {damage} ZZWater dmg
-  actingPokemon: {fileID: 905591254}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 60
-  damageEnergy: Water
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onWater
-  playInstantly: 0
-  targetType: 4
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
 --- !u!1001 &251503174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3593,43 +3449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Thunder
-  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg, take 20 dmg, use 1
-    energy
-  actingPokemon: {fileID: 743390148}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 100
-  damageEnergy: Electric
-  energyRequirement: 1
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onElectric
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: -20
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &263982075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,42 +3461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: energy placeholder
-  moveDescriptionWithTemplates: 
-  actingPokemon: {fileID: 743390148}
-  initialPriority: 0
-  turnPriority: 0
-  damage: 0
-  damageEnergy: 
-  energyRequirement: 3
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &263982076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3690,42 +3473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Spark
-  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg
-  actingPokemon: {fileID: 743390148}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 20
-  damageEnergy: Electric
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onElectric
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1001 &271809242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4933,42 +4680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Struggle
-  moveDescriptionWithTemplates: Deal 20 ZZNormal dmg, take 10 dmg
-  actingPokemon: {fileID: 1302176784}
-  initialPriority: 0
-  turnPriority: 0
-  damage: 20
-  damageEnergy: Normal
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onNormal
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: -10
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &328150062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4981,43 +4692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Fire Spin
-  moveDescriptionWithTemplates: Deal {damage} ZZFire dmg, gain {attack} ZZAtk, use
-    1 energy
-  actingPokemon: {fileID: 1302176784}
-  initialPriority: 5
-  turnPriority: 0
-  damage: 40
-  damageEnergy: Fire
-  energyRequirement: 1
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 1
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
 --- !u!1001 &330652996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5372,42 +5046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Absorb
-  moveDescriptionWithTemplates: Deal {damage} ZZGrass dmg, heal {userHeal}.
-  actingPokemon: {fileID: 1448446650}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 20
-  damageEnergy: Grass
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onBuff
-  targetAnimationType: onHit
-  targetAnimationType2: onGrass
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 10
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
 --- !u!114 &343586503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,42 +5058,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Spore
-  moveDescriptionWithTemplates: Remove all energies, use 3 energy
-  actingPokemon: {fileID: 1448446650}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Grass
-  energyRequirement: 3
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onDebuff
-  targetAnimationType2: onPowerDown
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: -3
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
 --- !u!1001 &359415933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6150,8 +5752,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: 
   messageName: []
-  message:
-  - <color=purple>Nidoran</color> was added to your team
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -6595,8 +6196,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: 
   messageName: []
-  message:
-  - <color=purple>Pidgey</color> was added to your team
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -9210,6 +8810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1970892677}
     m_Modifications:
+    - target: {fileID: 1589270988426791426, guid: 9b7cf133bed929c47886b99279531354, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3940380925459416242, guid: 9b7cf133bed929c47886b99279531354, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9562,42 +9166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Grass Blade
-  moveDescriptionWithTemplates: Deal {damage} ZZGrass, use 1 energy
-  actingPokemon: {fileID: 1440307946}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 90
-  damageEnergy: Grass
-  energyRequirement: 1
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onGrass
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &590757427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9610,42 +9178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: energy placeholder
-  moveDescriptionWithTemplates: 
-  actingPokemon: {fileID: 1440307946}
-  initialPriority: 0
-  turnPriority: 0
-  damage: 0
-  damageEnergy: 
-  energyRequirement: 3
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &590757428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9658,42 +9190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Absorb
-  moveDescriptionWithTemplates: Deal {damage} ZZGrass dmg, heal {userHeal}
-  actingPokemon: {fileID: 1440307946}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 20
-  damageEnergy: Grass
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onBuff
-  targetAnimationType: onHit
-  targetAnimationType2: onGrass
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 10
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1001 &599578443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9838,8 +9334,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: 
   messageName: []
-  message:
-  - <color=purple>Geodude</color> was added to your team
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -10652,8 +10147,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: 
   messageName: []
-  message:
-  - <color=purple>Charmander</color> was added to your team
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -11038,17 +10532,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
---- !u!114 &656592451 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5907911653830653387, guid: 80e7bbbd5fba25b4ea3c3eb62d4ff6aa, type: 3}
-  m_PrefabInstance: {fileID: 656592450}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &665723764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11883,80 +11366,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 705253988}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &710635096
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710635098}
-  - component: {fileID: 710635097}
-  m_Layer: 0
-  m_Name: BottomRig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &710635097
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710635096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  - Header
-  - Extensions
-  - m_Priority
-  - m_Transitions
-  - m_Follow
-  - m_StandbyUpdate
-  - m_Lens
-  m_LockStageInInspector: 00000000
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 1
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
-  m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 10
-    NearClipPlane: 0.01
-    FarClipPlane: 5000
-    Dutch: 0
-    LensShift: {x: 0, y: 0}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 863151160}
---- !u!4 &710635098
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710635096}
-  m_LocalRotation: {x: 0.12265578, y: -0.6963875, z: 0.12265579, w: 0.69638747}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 863151160}
-  m_Father: {fileID: 913307015}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &715537958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12493,17 +11902,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 741966486}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &743390148 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8768518819478447584, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
-  m_PrefabInstance: {fileID: 1012986513}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &743545471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14267,132 +13665,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
   m_PrefabInstance: {fileID: 850633992}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &863151159
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 863151160}
-  - component: {fileID: 863151163}
-  - component: {fileID: 863151162}
-  - component: {fileID: 863151161}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &863151160
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863151159}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 710635098}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &863151161
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863151159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0
-  m_VerticalDamping: 0
-  m_ScreenX: 0.5
-  m_ScreenY: 0.6
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &863151162
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863151159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3, z: -6}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: -90
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_LegacyRadius: 3.4028235e+38
-  m_LegacyHeightOffset: 3.4028235e+38
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_HeadingIsSlave: 1
---- !u!114 &863151163
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863151159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &865121165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15199,17 +14471,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
---- !u!114 &905591254 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9132085517719923052, guid: 056ed4863dfafa34688eed3b0f694625, type: 3}
-  m_PrefabInstance: {fileID: 905591253}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &912623641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15272,172 +14533,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 912623641}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &913307013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 913307015}
-  - component: {fileID: 913307014}
-  - component: {fileID: 913307016}
-  m_Layer: 0
-  m_Name: Third Person Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &913307014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913307013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 1
-  m_LookAt: {fileID: 535560180}
-  m_Follow: {fileID: 535560180}
-  m_CommonLens: 1
-  m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 10
-    NearClipPlane: 0.01
-    FarClipPlane: 5000
-    Dutch: 0
-    LensShift: {x: 0, y: 0}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_YAxis:
-    Value: 0.5
-    m_SpeedMode: 0
-    m_MaxSpeed: 2
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: 0
-    m_MaxValue: 1
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_YAxisRecentering:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: -90
-    m_SpeedMode: 0
-    m_MaxSpeed: 280
-    m_AccelTime: 0.8
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -270
-    m_MaxValue: 90
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 3
-    m_RecenteringTime: 1
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 4
-  m_SplineCurvature: 0.2
-  m_Orbits:
-  - m_Height: 8
-    m_Radius: 8
-  - m_Height: 3
-    m_Radius: 6
-  - m_Height: -1
-    m_Radius: 4
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_Rigs:
-  - {fileID: 1116989525}
-  - {fileID: 2064599644}
-  - {fileID: 710635097}
---- !u!4 &913307015
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913307013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 692.07, y: 7.69, z: 364.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1116989526}
-  - {fileID: 2064599645}
-  - {fileID: 710635098}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &913307016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913307013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CollideAgainst:
-    serializedVersion: 2
-    m_Bits: 1
-  m_IgnoreTag: Player
-  m_TransparentLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_MinimumDistanceFromTarget: 0.1
-  m_AvoidObstacles: 1
-  m_DistanceLimit: 0
-  m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
-  m_Strategy: 0
-  m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0.4
-  m_DampingWhenOccluded: 0.4
-  m_OptimalTargetDistance: 0
 --- !u!1001 &915855221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15624,17 +14719,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 938217532}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &946348177 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4220564365125637724, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
-  m_PrefabInstance: {fileID: 1012986513}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &952292061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16456,8 +15540,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: 
   messageName: []
-  message:
-  - <color=purple>Ratatta</color> was added to your team
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -17777,42 +16860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Wing Attack
-  moveDescriptionWithTemplates: Deal {damage} ZZPsychic, don't switch, use 1 energy
-  actingPokemon: {fileID: 1930603339}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 70
-  damageEnergy: Psychic
-  energyRequirement: 1
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 0
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onPsychic
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &1071590587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17825,42 +16872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Roost
-  moveDescriptionWithTemplates: Add 3 energy
-  actingPokemon: {fileID: 1930603339}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Normal
-  energyRequirement: 0
-  energyMax: 1
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 0
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 2
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &1071590588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17873,42 +16884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Energy Placeholder
-  moveDescriptionWithTemplates: 
-  actingPokemon: {fileID: 1930603339}
-  initialPriority: 0
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Normal
-  energyRequirement: 3
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: 
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1001 &1073453581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18359,80 +17334,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4691249607144306111, guid: 10de7c52c363c71499f0859b95d2097c, type: 3}
   m_PrefabInstance: {fileID: 1098022979}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1116989524
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1116989526}
-  - component: {fileID: 1116989525}
-  m_Layer: 0
-  m_Name: TopRig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1116989525
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116989524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  - Header
-  - Extensions
-  - m_Priority
-  - m_Transitions
-  - m_Follow
-  - m_StandbyUpdate
-  - m_Lens
-  m_LockStageInInspector: 00000000
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 1
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
-  m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 10
-    NearClipPlane: 0.01
-    FarClipPlane: 5000
-    Dutch: 0
-    LensShift: {x: 0, y: 0}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 2009822479}
---- !u!4 &1116989526
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.16758797, y: -0.6737042, z: 0.16094229, w: 0.701523}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2009822479}
-  m_Father: {fileID: 913307015}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1120162861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18761,8 +17662,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: Inspect
   messageName: []
-  message:
-  - Use a <color=purple>pokemon voucher</color> to add Poliwag to your team?
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -19317,10 +18217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca2ec52396670f488022f46e0ca44f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextOpponentMove: {fileID: 0}
-  firstChoice: {fileID: 0}
-  secondChoice: {fileID: 0}
-  thirdChoice: {fileID: 0}
 --- !u!114 &1182762884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19335,7 +18231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opponentName: Graveler
   party: []
-  movesConfig: []
+  initDeck: []
   opponentStrategyBot: {fileID: 1182762883}
   normalEnergyPrefab: {fileID: 4276494747118148778, guid: f5297e7f2d602304e9b62be6e582e80e, type: 3}
 --- !u!114 &1182762885
@@ -20920,17 +19816,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
---- !u!114 &1302176784 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3146366896733249124, guid: e3da3253e1f4f57448901a30d3c08240, type: 3}
-  m_PrefabInstance: {fileID: 1302176783}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1307405299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22618,43 +21503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Rollout
-  moveDescriptionWithTemplates: Deal {damage} ZZNormal dmg, gain {attack} ZZAtk,
-    use 1 energy
-  actingPokemon: {fileID: 656592451}
-  initialPriority: 5
-  turnPriority: 0
-  damage: 30
-  damageEnergy: Normal
-  energyRequirement: 1
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 1
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
 --- !u!114 &1384655757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22667,42 +21515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Struggle
-  moveDescriptionWithTemplates: Deal 20 ZZNormal dmg, take 10 dmg
-  actingPokemon: {fileID: 656592451}
-  initialPriority: 0
-  turnPriority: 0
-  damage: 20
-  damageEnergy: Normal
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onNormal
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: -10
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1001 &1389221654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23447,17 +22259,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 1437027397}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1440307946 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4945173002686708823, guid: f9392b62e6b5afd40b2c19f4ae3cb018, type: 3}
-  m_PrefabInstance: {fileID: 1012986513}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1441233832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23679,17 +22480,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 275cfce1ec782e349bedaf6fce07ab79, type: 3}
---- !u!114 &1448446650 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6959754211310039485, guid: 275cfce1ec782e349bedaf6fce07ab79, type: 3}
-  m_PrefabInstance: {fileID: 1448446649}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1448942047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24994,17 +23784,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3805769184753400884, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
   m_PrefabInstance: {fileID: 1502856349}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1502856351 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4424213069829249659, guid: c4ef2f556ddf0f14ebbaa9e158b42bb2, type: 3}
-  m_PrefabInstance: {fileID: 1502856349}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1504088930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26319,8 +25098,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: 
   messageName: []
-  message:
-  - <color=purple>Bellsprout</color> was added to your team
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -28718,132 +27496,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4566277694309486355, guid: 7d767aa5f3cf9014293516522b2701f7, type: 3}
   m_PrefabInstance: {fileID: 1642298006}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1645039328
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1645039329}
-  - component: {fileID: 1645039332}
-  - component: {fileID: 1645039331}
-  - component: {fileID: 1645039330}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1645039329
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645039328}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2064599645}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1645039330
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645039328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0
-  m_VerticalDamping: 0
-  m_ScreenX: 0.5
-  m_ScreenY: 0.55
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &1645039331
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645039328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3, z: -6}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: -90
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_LegacyRadius: 3.4028235e+38
-  m_LegacyHeightOffset: 3.4028235e+38
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_HeadingIsSlave: 1
---- !u!114 &1645039332
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645039328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1655070408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29136,42 +27788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Charge Up
-  moveDescriptionWithTemplates: Give 3 energy to each team member, use once.
-  actingPokemon: {fileID: 946348177}
-  initialPriority: 6
-  turnPriority: 0
-  damage: 0
-  damageEnergy: Normal
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: 
-  targetAnimationType: onBuff
-  targetAnimationType2: onPowerUp
-  playInstantly: 0
-  targetType: 8
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 3
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 1
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!114 &1664910340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29184,42 +27800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Thundershock
-  moveDescriptionWithTemplates: Deal {damage} ZZElectric dmg
-  actingPokemon: {fileID: 946348177}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 40
-  damageEnergy: Electric
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onElectric
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 0
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 0
-  overrideTarget: {fileID: 0}
 --- !u!1001 &1674064975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32333,42 +30913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Rock Smash
-  moveDescriptionWithTemplates: 'Deal {damage} ZZRock dmg '
-  actingPokemon: {fileID: 1502856351}
-  initialPriority: 3
-  turnPriority: 0
-  damage: 40
-  damageEnergy: Rock
-  energyRequirement: 0
-  energyMax: 5
-  discardEnergyOnUse: 0
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onRock
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: 0
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 1
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
 --- !u!114 &1891105730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32381,42 +30925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660f6ed07816fd419380bf7a5f64bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveName: Earthquake
-  moveDescriptionWithTemplates: Deal 120 ZZRock dmg, remove all ZZDef and use 3 energy
-  actingPokemon: {fileID: 1502856351}
-  initialPriority: 4
-  turnPriority: 0
-  damage: 140
-  damageEnergy: Rock
-  energyRequirement: 3
-  energyMax: 5
-  discardEnergyOnUse: 1
-  switchInOnUse: 1
-  userAnimationType: onAttack
-  targetAnimationType: onHit
-  targetAnimationType2: onRock
-  playInstantly: 0
-  targetType: 3
-  attackCost: 0
-  defenseCost: -3
-  specialCost: 0
-  evasionCost: 0
-  energyStat: 0
-  attackStat: 0
-  specialStat: 0
-  defenseStat: 0
-  evasionStat: 0
-  blockStat: 0
-  attackMultStat: 0
-  userHeal: 0
-  grantsInvulnerability: 0
-  removeEnergyCount: 0
-  turn: 99
-  statusAffectsUser: 1
-  statusAffectsBothBench: 0
-  isSingleUse: 0
-  endOfTurnAddRandomEnergy: 1
-  overrideTarget: {fileID: 0}
 --- !u!1001 &1892381040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32784,17 +31292,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d055e1b1b6cbe74cace40e161328954, type: 3}
---- !u!114 &1930603339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3395158668527527246, guid: 1d055e1b1b6cbe74cace40e161328954, type: 3}
-  m_PrefabInstance: {fileID: 1930603338}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1931578684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34441,8 +32938,7 @@ MonoBehaviour:
   eventStatus: 0
   interactionHint: 
   messageName: []
-  message:
-  - <color=purple>Pikachu</color> was added to your team
+  message: []
   messageSounds: []
   opponent: {fileID: 0}
   sceneName: 
@@ -35189,132 +33685,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210113816278989141, guid: 05ef3b9d7a2dea94d87263d2d461687a, type: 3}
   m_PrefabInstance: {fileID: 2008853838}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2009822478
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2009822479}
-  - component: {fileID: 2009822482}
-  - component: {fileID: 2009822481}
-  - component: {fileID: 2009822480}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2009822479
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009822478}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1116989526}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2009822480
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009822478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0
-  m_VerticalDamping: 0
-  m_ScreenX: 0.47864616
-  m_ScreenY: 0.49537036
-  m_DeadZoneWidth: 0.05833332
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.820833
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &2009822481
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009822478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3, z: -6}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: -90
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_LegacyRadius: 3.4028235e+38
-  m_LegacyHeightOffset: 3.4028235e+38
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_HeadingIsSlave: 1
---- !u!114 &2009822482
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009822478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2010009844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36141,17 +34511,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2320ce4d34dcc41bb134ad02af24df, type: 3}
---- !u!114 &2041777986 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6640554146710386719, guid: 3f2320ce4d34dcc41bb134ad02af24df, type: 3}
-  m_PrefabInstance: {fileID: 2041777985}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e5a6006af9bca48a3d3d0d62b70e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2047550232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36288,80 +34647,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8263468194728555381, guid: bb8f2095c22a16d4480c61e3fb0cda54, type: 3}
   m_PrefabInstance: {fileID: 2051728930}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2064599643
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2064599645}
-  - component: {fileID: 2064599644}
-  m_Layer: 0
-  m_Name: MiddleRig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2064599644
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064599643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  - Header
-  - Extensions
-  - m_Priority
-  - m_Transitions
-  - m_Follow
-  - m_StandbyUpdate
-  - m_Lens
-  m_LockStageInInspector: 00000000
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 1
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
-  m_Lens:
-    FieldOfView: 60
-    OrthographicSize: 10
-    NearClipPlane: 0.01
-    FarClipPlane: 5000
-    Dutch: 0
-    LensShift: {x: 0, y: 0}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 1645039329}
---- !u!4 &2064599645
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064599643}
-  m_LocalRotation: {x: 0.14255074, y: -0.6925888, z: 0.14255072, w: 0.69258887}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1645039329}
-  m_Father: {fileID: 913307015}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2075070231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38035,6 +36320,127 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4251662801601888285, guid: ea63feebbb02052409aabff54cc50cbc, type: 3}
   m_PrefabInstance: {fileID: 4902371622727022100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5093576858102718961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5093576857002903975, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857002903975, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857002903975, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7009443
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857002903975, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1674497
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857002903975, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.67430633
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857002903975, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.16108613
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857112259500, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69258887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857112259500, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.14255074
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857112259500, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6925888
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576857112259500, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.14255072
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751540, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_Name
+      value: Third Person Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 692.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 364.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751542, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858267751543, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 535560180}
+    - target: {fileID: 5093576858267751543, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 535560180}
+    - target: {fileID: 5093576858466226091, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69638747
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858466226091, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.12265578
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858466226091, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6963875
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093576858466226091, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.12265579
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98894a866ea61394193bfb510c82dc3b, type: 3}
 --- !u!1001 &6384171681285942938
 PrefabInstance:
   m_ObjectHideFlags: 0

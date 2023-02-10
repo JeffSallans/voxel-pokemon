@@ -161,6 +161,12 @@ public class BattleGameBoardForge : BattleGameBoard
             p.updatePlacement(playerPokemonLocations[i], pokemonModelLocations[i], true);
             i++;
         });
+
+        // Keep energies in the same spot
+        energyDeck.ForEach(e =>
+        {
+            e.transform.position = energyDeckLocation.transform.position;
+        });
     }
 
     public override void onTurnEnd()

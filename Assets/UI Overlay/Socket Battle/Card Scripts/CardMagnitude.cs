@@ -8,8 +8,8 @@ public class CardMagnitude : ICard
     public int maxDamage = 80;
     public int stepIncrement = 10;
 
-    public override void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
+    public override void onThisDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
     {
-        card.initDamage = Mathf.RoundToInt(Random.Range(minDamage, maxDamage + 1) / stepIncrement) * stepIncrement;
+        card.damage = Mathf.RoundToInt(Random.Range(minDamage, maxDamage + 1) / stepIncrement) * stepIncrement;
     }
 }

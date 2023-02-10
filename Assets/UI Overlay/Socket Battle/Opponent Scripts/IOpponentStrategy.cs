@@ -35,7 +35,7 @@ public class IOpponentStrategy : MonoBehaviour
     /// <summary>
     /// The cards available to be played
     /// </summary>
-    protected List<OpponentCardMove> hand;
+    public List<OpponentCardMove> hand;
 
     /// <summary>
     /// The cards that have been played
@@ -122,6 +122,7 @@ public class IOpponentStrategy : MonoBehaviour
         var cardDrawn = deck.First();
         hand.Add(cardDrawn);
         deck.Remove(cardDrawn);
+        cardDrawn.card.onDraw();
     }
 
     public virtual string computeOpponentsNextMove()
@@ -328,15 +329,14 @@ public class IOpponentStrategy : MonoBehaviour
     }
 
     public virtual void onTurnEnd() {
-        deck.ForEach(move => move.card.onTurnEnd());
+        // don't do card stuff here
     }
 
     public virtual void onOpponentTurnEnd() {
         // Reset player turn tracking on the start of their turn
         lastPlayersTurn.Clear();
 
-        // Reset priority picks
-        deck.ForEach(move => move.card.onOpponentTurnEnd());
+        // don't do card stuff here
     }
 
     public virtual void onBattleEnd() { }

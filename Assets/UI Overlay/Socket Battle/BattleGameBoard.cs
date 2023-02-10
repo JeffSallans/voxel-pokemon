@@ -8,6 +8,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Manages the entire battle state and events
 /// </summary>
+[RequireComponent(typeof(CardEventService))]
 public class BattleGameBoard : MonoBehaviour
 {
     public PlayerDeck player;
@@ -375,6 +376,7 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public bool playerHasWon = true;
 
+    public CardEventService cardEventService;
 
     // Triggers before start https://www.monkeykidgc.com/2020/07/unity-lifecycle-awake-vs-onenable-vs-start.html
     void Awake()
@@ -388,6 +390,8 @@ public class BattleGameBoard : MonoBehaviour
         {
             opponent = GameObject.FindObjectOfType<OpponentDeck>();
         }
+
+        cardEventService = GetComponent<CardEventService>();
     }
 
     // Start is called before the first frame update
@@ -534,6 +538,7 @@ public class BattleGameBoard : MonoBehaviour
         });
 
         // Send event to all energy, cards, and pokemon
+        cardEventService.onBattleStart(this);
         allPokemon.ForEach(p => p.onBattleStart(this));
         allPartyCards.ForEach(c => c.onBattleStart(this));
         allEnergy.ForEach(e => e.onBattleStart(this));
@@ -648,7 +653,7 @@ public class BattleGameBoard : MonoBehaviour
         cardDrawn.transform.rotation = handLocations[hand.Count - 1].transform.rotation;
 
         // Trigger event
-        cardDrawn.onDraw(activePokemon);
+        cardDrawn.onDraw();
     }
 
     /// <summary>
@@ -678,7 +683,7 @@ public class BattleGameBoard : MonoBehaviour
         cardDrawn.transform.rotation = switchCardLocation.transform.rotation;
 
         // Trigger event
-        cardDrawn.onDraw(activePokemon);
+        cardDrawn.onDraw();
     }
 
     /// <summary>
@@ -766,7 +771,9 @@ public class BattleGameBoard : MonoBehaviour
         {
             payMoveCost(move.cost.Take(1).ToList(), user, discardCardCost);
         }
-        
+
+        hand.Remove(move);
+
         // Trigger move action
         move.play(user, target);
 
@@ -774,9 +781,7 @@ public class BattleGameBoard : MonoBehaviour
         cardDiscard(move, user, true);
 
         // Send card playedEvent to all cards
-        allCards.ForEach(c => c.onCardPlayed(move, user, target));
-        opponent?.opponentStrategyBot?.onCardPlayed(move, user, target);
-
+        cardEventService.onCardPlayed(move, user, target);
 
         // Check if you won after a card play
         var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
@@ -848,7 +853,7 @@ public class BattleGameBoard : MonoBehaviour
 
         target.Translate(discardLocation.transform.position, "cardDiscard");
         target.transform.rotation = discardLocation.transform.rotation;
-        target.onDiscard(wasPlayed);
+        cardEventService.onDiscard(target, wasPlayed);
     }
 
     /// <summary>
@@ -990,10 +995,9 @@ public class BattleGameBoard : MonoBehaviour
 
         // Send event to all energy, cards, status, and pokemon
         allPokemon.ForEach(p => p.onTurnEnd());
-        allCards.ForEach(c => c.onTurnEnd());
         allEnergy.ForEach(e => e.onTurnEnd());
         opponent.opponentStrategyBot.onTurnEnd();
-        opponent.initDeck.ForEach(m => m.onTurnEnd());
+        cardEventService.onTurnEnd();
 
         // Check game end conditions
         onEitherTurnEnd();
@@ -1013,9 +1017,9 @@ public class BattleGameBoard : MonoBehaviour
         {
             // Send event to all energy, cards, status, and pokemon
             allPokemon.ForEach(p => p.onOpponentTurnEnd());
-            allCards.ForEach(c => c.onOpponentTurnEnd());
             allEnergy.ForEach(e => e.onOpponentTurnEnd());
             opponent.opponentStrategyBot.onOpponentTurnEnd();
+            cardEventService.onOpponentTurnEnd();
 
             // Check game end conditions
             onEitherTurnEnd();
@@ -1125,6 +1129,12 @@ public class BattleGameBoard : MonoBehaviour
             i++;
         });
 
+        // Keep energies in the same spot
+        energyDeck.ForEach(e =>
+        {
+            e.transform.position = energyDeckLocation.transform.position;
+        });
+
         // Animate swap       
         //user.GetComponent<Animator>().SetTrigger("onSwitchOut");
         //target.GetComponent<Animator>().SetTrigger("onSwitchIn");
@@ -1186,10 +1196,9 @@ public class BattleGameBoard : MonoBehaviour
 
                 // Send event to all energy, cards, status, and pokemon
                 allPokemon.ForEach(p => p.onBattleEnd());
-                allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.initDeck.ForEach(m => m.onBattleEnd());
+                cardEventService.onBattleEnd();
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadPreviousScene();
@@ -1207,10 +1216,9 @@ public class BattleGameBoard : MonoBehaviour
 
                 // Send event to all energy, cards, status, and pokemon
                 allPokemon.ForEach(p => p.onBattleEnd());
-                allCards.ForEach(c => c.onBattleEnd());
                 allEnergy.ForEach(e => e.onBattleEnd());
                 opponent.opponentStrategyBot.onBattleEnd();
-                opponent.initDeck.ForEach(m => m.onBattleEnd());
+                cardEventService.onBattleEnd();
 
                 onPackupPlayer();
                 player.GetComponent<InteractionChecker>().LoadTitleScreen();

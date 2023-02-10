@@ -66,17 +66,14 @@ public class CardHandSizeBuff : ICard
     {
         base.onBattleStart(card, battleGameBoard);
 
-        if (usesThisOverrideInstance(card))
-        {
-            cardReference = card;
+        cardReference = card;
 
-            baseDamage = card.damage;
-            baseAttack = card.attackStat;
-            baseDefense = card.defenseStat;
-            baseUserHeal = card.userHeal;
+        baseDamage = card.damage;
+        baseAttack = card.attackStat;
+        baseDefense = card.defenseStat;
+        baseUserHeal = card.userHeal;
 
-            currentStacks = 0;
-        }
+        currentStacks = 0;
     }
 
     /// <summary>
@@ -85,9 +82,9 @@ public class CardHandSizeBuff : ICard
     /// <param name="card"></param>
     /// <param name="battleGameBoard"></param>
     /// <param name="wasPlayed"></param>
-    public override void onDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed)
+    public override void onAnyDiscard(Card card, Card discardedCard, BattleGameBoard battleGameBoard, bool wasPlayed)
     {
-        base.onDiscard(card, battleGameBoard, wasPlayed);
+        base.onAnyDiscard(card, discardedCard, battleGameBoard, wasPlayed);
 
         card.cardAnimator.SetTrigger("onFlip");
 
@@ -105,9 +102,9 @@ public class CardHandSizeBuff : ICard
     /// <param name="card"></param>
     /// <param name="battleGameBoard"></param>
     /// <param name="activePokemon"></param>
-    public override void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
+    public override void onAnyDraw(Card card, Card drawnCard, BattleGameBoard battleGameBoard, Pokemon activePokemon)
     {
-        base.onDraw(card, battleGameBoard, activePokemon);
+        base.onAnyDraw(card, drawnCard, battleGameBoard, activePokemon);
 
         if (currentStacks < maxStacks)
         {

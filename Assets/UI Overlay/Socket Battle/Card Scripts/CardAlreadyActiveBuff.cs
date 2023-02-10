@@ -36,21 +36,20 @@ public class CardAlreadyActiveBuff : ICard
         base.onBattleStart(card, battleGameBoard);
         
         // Set base stat
-        if (usesThisOverrideInstance(card))
-        {
-            baseDamage = card.damage;
-        }
+        baseDamage = card.damage;
     }
 
-    public override void onCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target)
+    public override void onAnyCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target)
     {
-        base.onCardPlayed(card, battleGameBoard, move, user, target);
+        base.onAnyCardPlayed(card, battleGameBoard, move, user, target);
 
         // Remove bonus if last active pokemon switches out
-        if (usesThisOverrideInstance(card) && move.owner != lastTurnActivePokemon && bonusIsApplied)
+        if (move.owner != lastTurnActivePokemon && bonusIsApplied)
         {
             card.cardAnimator.SetTrigger("onFlip");
             card.damage = baseDamage;
+            bonusIsApplied = false;
+            lastTurnActivePokemon = move.owner;
         }
     }
 
@@ -59,7 +58,7 @@ public class CardAlreadyActiveBuff : ICard
         base.onTurnEnd(card, battleGameBoard);
 
         // Check if the active pokemon is this card's owner
-        if (usesThisOverrideInstance(card) && card.myActivePokemon == card.owner)
+        if (card.myActivePokemon == card.owner)
         {
             card.cardAnimator.SetTrigger("onFlip");
             card.damage += bonusDamage;

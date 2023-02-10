@@ -19,34 +19,30 @@ public class CardStatWhileInHand : ICard
     /// </summary>
     public int defenseStat;
 
-    public override void onCardPlayed(Card card, BattleGameBoard battleGameBoard, Card move, Pokemon user, Pokemon target)
+    public override void onThisCardPlayed(Card card, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target)
     {
         // Remove the stat if the card is played
-        if (card == move)
-        {
+        card.owner.attackStat -= attackStat;
+        card.owner.defenseStat -= defenseStat;
+        card.owner.specialStat -= specialStat;
+    }
+
+    public override void onThisDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed)
+    {
+        if (!wasPlayed) {
+            // Remove the stat if the card is discarded
             card.owner.attackStat -= attackStat;
             card.owner.defenseStat -= defenseStat;
             card.owner.specialStat -= specialStat;
         }
     }
 
-    public override void onDiscard(Card card, BattleGameBoard battleGameBoard, bool wasPlayed)
-    {
-        // Remove the stat if the card is discarded
-        card.owner.attackStat -= attackStat;
-        card.owner.defenseStat -= defenseStat;
-        card.owner.specialStat -= specialStat;
-    }
-
-    public override void onDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
+    public override void onThisDraw(Card card, BattleGameBoard battleGameBoard, Pokemon activePokemon)
     {
         // Reset count when drawn
-        if (card == GetComponent<Card>())
-        {
-            addStatHelper(card.owner, "attackStat", attackStat, 6);
-            addStatHelper(card.owner, "defenseStat", defenseStat, 6);
-            addStatHelper(card.owner, "specialStat", specialStat, 1);
-        }
+        addStatHelper(card.owner, "attackStat", attackStat, 6);
+        addStatHelper(card.owner, "defenseStat", defenseStat, 4);
+        addStatHelper(card.owner, "specialStat", specialStat, 1);
     }
 
     /// <summary>
