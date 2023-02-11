@@ -219,4 +219,13 @@ public class BattleGameBoardForge : BattleGameBoard
     {
         return GameObject.FindObjectOfType<BattleGameBoardForge>() != null;
     }
+
+    /// <summary>
+    /// Return the pokemon that player cards can be played for. Is null if the player can select any pokemon
+    /// </summary>
+    /// <returns></returns>
+    public override Pokemon GetPokemonAllowedToPlayCards()
+    {
+        return pokemonAllowedToPlayCards;
+    }
 }

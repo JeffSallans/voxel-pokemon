@@ -1171,6 +1171,15 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     /// <summary>
+    /// Return the pokemon that player cards can be played for. Is null if the player can select any pokemon
+    /// </summary>
+    /// <returns></returns>
+    public virtual Pokemon GetPokemonAllowedToPlayCards()
+    {
+        return activePokemon;
+    }
+
+    /// <summary>
     /// Fisher-Yates Shuffle on the list
     /// https://stackoverflow.com/a/1262619
     /// </summary>

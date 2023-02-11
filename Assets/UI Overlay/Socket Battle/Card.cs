@@ -302,6 +302,9 @@ public class Card : MonoBehaviour
             // Check if there are any remaining card plays this turn
             if (isPlayerPokemon &&  battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
 
+            // Check if the select active pokemon
+            if (isPlayerPokemon && battleGameBoard.GetPokemonAllowedToPlayCards() != null && battleGameBoard.GetPokemonAllowedToPlayCards() != owner) return false;
+
             // Can't play if fainted
             if (owner != null && owner.isFainted) return false;
 
