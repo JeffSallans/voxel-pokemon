@@ -302,6 +302,9 @@ public class Card : MonoBehaviour
             // Check if there are any remaining card plays this turn
             if (isPlayerPokemon &&  battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
 
+            // Can't play if fainted
+            if (owner != null && owner.isFainted) return false;
+
             // Check if self is trapped
             if (owner != null && battleGameBoard != null && owner.isTrapped && myActivePokemon != owner) return false;
 
@@ -1012,7 +1015,7 @@ public class Card : MonoBehaviour
             statusTarget.attachedStatus.Add(new StatusEffect(statusTarget, this, "trapEffect", new Dictionary<string, string>() {
                 { "statType", "trap" },
                 { "stackCount", "1" },
-                { "turnsLeft", "1" }
+                { "turnsLeft", "2" }
             }));
         }
 
@@ -1281,6 +1284,14 @@ public class Card : MonoBehaviour
 
         overrideDefaultDragDropFunc = true;
 
+    }
+
+    public void onFlip()
+    {
+    }
+
+    public void onUnflip()
+    {
     }
 
     /// <summary>

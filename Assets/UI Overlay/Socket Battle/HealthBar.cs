@@ -64,7 +64,7 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateBlockBar(int currentBlock, int maxBlock)
     {
-        blockBarRightTip.SetActive(currentBlock > maxBlock);
+        blockBarRightTip.SetActive(currentBlock >= maxBlock);
         blockBarLeftTip.SetActive(currentBlock > 0);
 
         var blockRatio = currentBlock / (float)maxBlock;

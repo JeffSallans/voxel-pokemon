@@ -40,17 +40,11 @@ public class OpponentDeck : MonoBehaviour
         }
         if (initDeck.Count == 0)
         {
-            initDeck = gameObject.GetComponentsInChildren<Card>().ToList();
+            initDeck = new List<Card>();
+            party.ForEach(p => {
+                initDeck.AddRange(p.initDeck);
+            });
         }
-        
-        // Turn off loose energies but keep card energies
-        /*
-        var energies = gameObject.transform.Find("energies").GetComponentsInChildren<Energy>().ToList();
-        energies.ForEach(e =>
-        {
-            e.gameObject.SetActive(false);
-        });
-        */
 
         // Turn off all possible energies
         party.ForEach(p => p.energyTypes = new List<string>());

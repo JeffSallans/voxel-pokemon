@@ -30,7 +30,7 @@ public class IOpponentStrategy : MonoBehaviour
     /// <summary>
     /// The cards to be drawn
     /// </summary>
-    protected List<OpponentCardMove> deck;
+    public List<OpponentCardMove> deck;
 
     /// <summary>
     /// The cards available to be played
@@ -67,7 +67,7 @@ public class IOpponentStrategy : MonoBehaviour
         battleGameBoard = _battleGameBoard;
 
         // Init deck
-        deck = battleGameBoard.opponent.initDeck.Select(card =>
+        deck = opponentDeck.initDeck.Select(card =>
         {
             card.cardInteractEnabled = false;
 
@@ -116,6 +116,12 @@ public class IOpponentStrategy : MonoBehaviour
             deck.AddRange(discard);
             Shuffle(deck);
             discard.RemoveAll(c => true);
+
+            // Remove all deck cards with fainted pokemon
+            for (int i = deck.Count - 1; i >= 0; i--)
+            {
+                if (deck[i].card.owner.isFainted) cardDiscard(deck[i], deck[i].card.owner, false, true);
+            }
         }
 
         // Draw card
@@ -247,7 +253,7 @@ public class IOpponentStrategy : MonoBehaviour
     public async virtual Task opponentPlay()
     {
         // Check that move can still be used after player's turn
-        if (!nextOpponentMove.canUseMove)
+        if (nextOpponentMove == null || !nextOpponentMove.canUseMove)
         {
             computeOpponentsNextMove();
         }
@@ -268,7 +274,7 @@ public class IOpponentStrategy : MonoBehaviour
         // Switch in the pokemon that is using the move
         if (nextOpponentMove.card.owner != battleGameBoard.opponentActivePokemon && nextOpponentMove.card.switchInOnUse)
         {
-            battleGameBoard.switchOpponentPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.card.owner);
+            battleGameBoard.switchPokemon(battleGameBoard.opponentActivePokemon, nextOpponentMove.card.owner);
             await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " switched in.");
         }
 
@@ -290,7 +296,7 @@ public class IOpponentStrategy : MonoBehaviour
         nextOpponentMove.card.owner.hudAnimator.SetTrigger("onMoveHighlight");
         nextOpponentMove.card.play(nextOpponentMove.card.owner, nextOpponentMove.selectedTargetPokemon);
 
-        // Discard cost to play
+        // discard 1 energy to play
         if (!nextOpponentMove.card.keepEnergiesOnPlay)
         {
             nextOpponentMove.card.owner.DiscardEnergy(nextOpponentMove.card.owner.attachedEnergy[0]);
@@ -299,13 +305,39 @@ public class IOpponentStrategy : MonoBehaviour
 
         // Track the move and move to discard
         lastMoveUsed = nextOpponentMove;
-        hand.Remove(nextOpponentMove);
-        discard.Add(nextOpponentMove);
+        cardDiscard(nextOpponentMove, nextOpponentMove.card.owner, true);
 
         // Add energy to random target
         var energyStatRandomTarget = getPokemonToAddEnergyTo();
         addEnergy(energyStatRandomTarget);
         await battleGameBoard.worldDialog.ShowMessageAsync("Added energy to " + energyStatRandomTarget.pokemonName);
+    }
+
+    /// <summary>
+    /// Discards the given card
+    /// </summary>
+    /// <param name="target">The move to discard</param>
+    /// <param name="user">The pokemon that used the move</param>
+    /// <param name="wasPlayed">True if the discard was after playing</param>
+    public void cardDiscard(OpponentCardMove target, Pokemon user, bool wasPlayed, bool deckDiscard = false)
+    {
+        // Keep track of card in discard if it is not single use
+        if (!(wasPlayed && target.card.isSingleUse))
+        {
+            discard.Add(target);
+        }
+
+
+        if (deckDiscard)
+        {
+            deck.Remove(target);
+        }
+        else
+        {
+            hand.Remove(target);
+        }
+
+        battleGameBoard.cardEventService.onDiscard(target.card, wasPlayed);
     }
 
     /// <summary>

@@ -98,14 +98,14 @@ public class BattleGameBoardForge : BattleGameBoard
             if (c.switchInOnUse)
             {
                 previousActivePokemon = activePokemon;
-                switchPokemonAndKeepCards(activePokemon, card.owner);
+                switchPokemon(activePokemon, card.owner);
             }
             return true;
         };
         card._onDropFunc = (c) => {
             if (c.switchInOnUse)
             {
-                switchPokemonAndKeepCards(card.owner, previousActivePokemon);
+                switchPokemon(card.owner, previousActivePokemon);
             }
             return true;
         };
@@ -120,7 +120,7 @@ public class BattleGameBoardForge : BattleGameBoard
         // Hide pokemon icon
         var pokemonIconName = "icon-" + owner?.pokemonName?.ToLower();
         var pokemonIcon = card.gameObject.transform.Find(pokemonIconName);
-        pokemonIcon.gameObject.SetActive(false);
+        if (pokemonIcon != null) pokemonIcon.gameObject.SetActive(false);
 
         // Remove custom drag
         card._onDragFunc = null;
@@ -139,34 +139,11 @@ public class BattleGameBoardForge : BattleGameBoard
         if (activePokemon != owner)
         {
             // Switch user in
-            switchPokemonAndKeepCards(activePokemon, owner);
+            switchPokemon(activePokemon, owner);
         }
         
 
         base.onPlay(move, owner, target);
-    }
-
-    private void switchPokemonAndKeepCards(Pokemon user, Pokemon target)
-    {
-        // Switch board roles
-        var userIndex = player.party.IndexOf(user);
-        var targetIndex = player.party.IndexOf(target);
-        Swap(player.party, userIndex, targetIndex);
-        activePokemon = target;
-
-        // Update model locations to match switch
-        var i = 0;
-        player.party.ForEach(p =>
-        {
-            p.updatePlacement(playerPokemonLocations[i], pokemonModelLocations[i], true);
-            i++;
-        });
-
-        // Keep energies in the same spot
-        energyDeck.ForEach(e =>
-        {
-            e.transform.position = energyDeckLocation.transform.position;
-        });
     }
 
     public override void onTurnEnd()
@@ -184,7 +161,7 @@ public class BattleGameBoardForge : BattleGameBoard
         if (isPlayerPokeFainted && numberOfPlayerPokeAlive > 0)
         {
             var nextAlivePoke = player.party.Where(p => !p.isFainted).First();
-            switchPokemonAndKeepCards(activePokemon, nextAlivePoke);
+            switchPokemon(activePokemon, nextAlivePoke);
         }
 
         // Remove all deck and hand cards with fainted pokemon
@@ -203,8 +180,36 @@ public class BattleGameBoardForge : BattleGameBoard
             }
         }
 
+        // When player active pokemon is 0 hp - switch in and discard cards
+        // (since the active pokemon will not be fainted after this switch, this is will avoid the base case happening which discards the hand)
+        var numberOfOpponentPokeAlive = opponent.party.Where(p => p.health > 0).Count();
+        var isOpponentPokeFainted = opponentActivePokemon.isFainted;
+        if (isOpponentPokeFainted && numberOfOpponentPokeAlive > 0)
+        {
+            var nextAlivePoke = opponent.party.Where(p => !p.isFainted).First();
+            switchPokemon(opponentActivePokemon, nextAlivePoke);
+        }
+
+        // Remove all deck and hand cards with fainted OPPONENT pokemon
+        var oppHand = opponent.opponentStrategyBot.hand;
+        var oppDeck = opponent.opponentStrategyBot.deck;
+        for (int i = oppHand.Count - 1; i >= 0; i--)
+        {
+            if (oppHand[i].card.owner.isFainted)
+            {
+                opponent.opponentStrategyBot.cardDiscard(oppHand[i], oppHand[i].card.owner, false);
+            }
+        }
+        for (int i = oppDeck.Count - 1; i >= 0; i--)
+        {
+            if (oppDeck[i].card.owner.isFainted)
+            {
+                opponent.opponentStrategyBot.cardDiscard(oppDeck[i], oppDeck[i].card.owner, false, true);
+            }
+        }
+
         base.onEitherTurnEnd();
-    }
+    }   
 
     /// <summary>
     /// Returns true if the game being played at the moment is a forge game.

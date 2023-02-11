@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2154839557541264133, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_Name
-      value: voxcard-rock-slide
+      value: voxcard-rock-slide (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2199905651999634475, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: m_RootOrder
@@ -205,7 +205,8 @@ PrefabInstance:
       objectReference: {fileID: 3760414575152926653}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: initCardDescription
-      value: Deal {damage} ZZRock dmg to any, bonus +30 per def then remove all def.
+      value: Deal {damage} ZZRock dmg to any, bonus +30 per ZZDef then remove all
+        ZZDef.
       objectReference: {fileID: 0}
     - target: {fileID: 5015709387190944138, guid: edefca23011b23b47bb3249e0b353c1b, type: 3}
       propertyPath: targetAnimationType2

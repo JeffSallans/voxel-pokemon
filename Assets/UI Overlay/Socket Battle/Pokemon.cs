@@ -152,6 +152,18 @@ public class Pokemon : MonoBehaviour
     }
 
     /// <summary>
+    /// True if the card belongs to a pokemon controlled by the player
+    /// </summary>
+    public bool isPlayerPokemon
+    {
+        get
+        {
+            var isOpponentPokemon = battleGameBoard?.opponent?.party.Contains(this);
+            return isOpponentPokemon != true;
+        }
+    }
+
+    /// <summary>
     /// Max number of energy a pokemon can hold
     /// </summary>
     public int maxNumberOfAttachedEnergy = 2;
@@ -175,11 +187,6 @@ public class Pokemon : MonoBehaviour
     /// Reference to switch card
     /// </summary>
     public Card initSwitchCard;
-
-    /// <summary>
-    /// Cards to aways show to switch out
-    /// </summary>
-    public Card switchCard;
 
     /// <summary>
     /// The hand the player has
@@ -234,6 +241,11 @@ public class Pokemon : MonoBehaviour
     public GameObject overlayParent;
 
     /// <summary>
+    /// What holds the energies
+    /// </summary>
+    public GameObject energyParent;
+
+    /// <summary>
     /// The object containing the 2D box collider to move into position
     /// </summary>
     public DropEvent onHoverWrapper;
@@ -276,9 +288,9 @@ public class Pokemon : MonoBehaviour
         {
             initDeck = gameObject.GetComponentsInChildren<Card>().ToList();
         }
-        if (initSwitchCard == null)
+        if (energyParent == null)
         {
-            initSwitchCard = initDeck.Find(c => c.cardName == "Switch");
+            energyParent = gameObject.transform.Find("energies").gameObject;
         }
 
         // Set card instatiation variables
@@ -576,7 +588,14 @@ public class Pokemon : MonoBehaviour
         pokemonSelectModel.gameObject.transform.position = modelPlaceholder.transform.position;
     }
 
-    public void onTurnEnd() { }
+    public void onTurnEnd() {
+        // Need to use this method because this function might shrink attachedStatus function
+        var statusCount = attachedStatus.Count;
+        for (var i = statusCount - 1; i >= 0; i--)
+        {
+            attachedStatus[i].onTurnEnd();
+        }
+    }
 
     public void onOpponentTurnEnd() {
         // Need to use this method because this function might shrink attachedStatus function
@@ -616,7 +635,7 @@ public class Pokemon : MonoBehaviour
     /// Removes the energy at the given index from the pokemon
     /// </summary>
     /// <param name="energyToRemoveIndex"></param>
-    public void DiscardEnergy(int energyToRemoveIndex, bool addToEnergyDiscardPile = true)
+    public void DiscardEnergy(int energyToRemoveIndex)
     {
         if (energyToRemoveIndex >= attachedEnergy.Count)
         {
@@ -636,16 +655,16 @@ public class Pokemon : MonoBehaviour
         energyToRemove.transform.localRotation = battleGameBoard.energyDiscardLocation.transform.localRotation;
         energyToRemove.Translate(battleGameBoard.energyDiscardLocation.transform.position);
         
-        if (addToEnergyDiscardPile) battleGameBoard.energyDiscard.Add(energyToRemove);
+        if (isPlayerPokemon) battleGameBoard.energyDiscard.Add(energyToRemove);
         attachedEnergy.Remove(energyToRemove);
     }
 
     /// <summary>
     /// Removes the energy at the given index from the pokemon
     /// </summary>
-    public void DiscardEnergy(Energy energyToRemove, bool addToEnergyDiscardPile = true)
+    public void DiscardEnergy(Energy energyToRemove)
     {
-        DiscardEnergy(attachedEnergy.IndexOf(energyToRemove), addToEnergyDiscardPile);
+        DiscardEnergy(attachedEnergy.IndexOf(energyToRemove));
     }
 
     /// <summary>

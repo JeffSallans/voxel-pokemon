@@ -151,15 +151,23 @@ public class StatusEffect
 
     public void onOpponentDraw() { }
 
-    public void onTurnEnd(Pokemon activePokemon) { }
+    public void onTurnEnd() {
+        if (!targetPokemon.isPlayerPokemon) onTurnEndHelper();
+    }
 
     public void onOpponentTurnEnd() {
+        if (targetPokemon.isPlayerPokemon) onTurnEndHelper();
+    }
+
+    private void onTurnEndHelper()
+    {
         turnsLeft--;
         if (statType == "poison")
         {
             targetPokemon.health -= 10;
             targetPokemon.modelAnimator.SetTrigger("onDebuff");
             targetPokemon.modelAnimator.SetTrigger("onPoison");
+            stackCount--;
         }
         if (turnsLeft <= 0)
         {

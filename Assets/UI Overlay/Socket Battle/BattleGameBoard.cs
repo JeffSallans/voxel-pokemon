@@ -37,21 +37,6 @@ public class BattleGameBoard : MonoBehaviour
     protected System.Func<List<Card>, bool> _setOverrideDeck = null;
 
     /// <summary>
-    /// Switch card to be played
-    /// </summary>
-    public virtual Card switchCard
-    {
-        get
-        {
-            return activePokemon.switchCard;
-        }
-        set
-        {
-            activePokemon.switchCard = value;
-        }
-    }
-
-    /// <summary>
     /// The hand the player has
     /// </summary>
     public virtual List<Card> hand
@@ -452,20 +437,34 @@ public class BattleGameBoard : MonoBehaviour
             j++;
         });
 
+        // Turn off loose energies but keep card energies
+        opponent.party.ForEach(p =>
+        {
+            var energiesTransform = p.transform.Find("energies");
+            if (energiesTransform != null) energiesTransform.gameObject.SetActive(false);
+        });
+
         // Moves cards into placement
         player.party.ForEach(p => setupCardsOffPokemon(p));
+        opponent.party.ForEach(p => setupCardsOffPokemon(p));
     }
 
     private void setupCardsOffPokemon(Pokemon pokemon)
     {
         var cardsObject = pokemon.initDeck[0].gameObject.transform.parent;
         cardsObject.parent = playerPartyParentGameobject.transform;
+
+        var energyObject = pokemon.energyParent.transform;
+        energyObject.parent = playerPartyParentGameobject.transform;
     }
 
     private void packCardsOnPokemon(Pokemon pokemon)
     {
         var cardsObject = pokemon.initDeck[0].gameObject.transform.parent;
         cardsObject.parent = pokemon.transform;
+
+        var energyObject = pokemon.energyParent.transform;
+        energyObject.parent = pokemon.transform;
     }
 
     /// <summary>
@@ -585,12 +584,6 @@ public class BattleGameBoard : MonoBehaviour
         // Refresh card count
         remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
 
-        // Refresh Switch Card
-        if (switchCard == null && switchCardLocation != null)
-        {
-            drawSwitchCard(activePokemon);
-        }
-
         // Refresh energy
         availableEnergy.ForEach(e => { e.isUsed = false; });
 
@@ -651,36 +644,6 @@ public class BattleGameBoard : MonoBehaviour
         var cardLoc = handLocations[hand.Count - 1].transform.position + new Vector3(0, 0, -1);
         cardDrawn.Translate(cardLoc, "drawCard");
         cardDrawn.transform.rotation = handLocations[hand.Count - 1].transform.rotation;
-
-        // Trigger event
-        cardDrawn.onDraw();
-    }
-
-    /// <summary>
-    /// Draw the top card from the deck
-    /// </summary>
-    /// <param name="activePokemon"></param>
-    protected void drawSwitchCard(Pokemon activePokemon)
-    {
-        // Check if drawing to a full area
-        if (switchCard != null) return;
-
-        // Draw card
-        var cardInDiscard = discard.Find(c => c.cardName == "Switch") != null;
-        var cardDrawn = discard.Find(c => c.cardName == "Switch");
-        if (cardInDiscard)
-        {
-            discard.Remove(cardDrawn);
-        }
-        else
-        {
-            cardDrawn = deck.Find(c => c.cardName == "Switch");
-            deck.Remove(cardDrawn);
-        }
-        switchCard = cardDrawn;
-        var cardLoc = switchCardLocation.transform.position + new Vector3(0, 0, -1);
-        cardDrawn.Translate(cardLoc, "drawCard");
-        cardDrawn.transform.rotation = switchCardLocation.transform.rotation;
 
         // Trigger event
         cardDrawn.onDraw();
@@ -825,11 +788,7 @@ public class BattleGameBoard : MonoBehaviour
             }
         }
         
-        if (target == user.initSwitchCard)
-        {
-            switchCard = null;
-        }
-        else if (BattleGameBoardForge.IsAForgeGame())
+        if (BattleGameBoardForge.IsAForgeGame())
         {
             if (deckDiscard)
             {
@@ -1106,14 +1065,12 @@ public class BattleGameBoard : MonoBehaviour
     /// <param name="target"></param>
     public void switchPokemon(Pokemon user, Pokemon target)
     {
-        // Discard pokemon hand
-        hand.ForEach(c =>
+        // Handle opponent switch
+        if (!target.isPlayerPokemon)
         {
-            c.transform.rotation = discardLocation.transform.rotation;
-            c.Translate(discardLocation.transform.position, "switchPokemon");
-        });
-        discard.AddRange(hand);
-        hand.RemoveAll(card => true);
+            switchOpponentPokemon(user, target);
+            return;
+        }
 
         // Switch board roles
         var userIndex = player.party.IndexOf(user);
@@ -1138,21 +1095,6 @@ public class BattleGameBoard : MonoBehaviour
         // Animate swap       
         //user.GetComponent<Animator>().SetTrigger("onSwitchOut");
         //target.GetComponent<Animator>().SetTrigger("onSwitchIn");
-
-        // Draw new pokemon hand
-
-        // Draw switch card
-        if (switchCard == null && switchCardLocation != null)
-        {
-            drawSwitchCard(activePokemon);
-        }
-
-        // Draw cards up to handSize
-        while (hand.Count < handSize)
-        {
-            if (deck.Count < 1) { reshuffleDiscard(); }
-            drawCard(activePokemon);
-        }
     }
 
     /// <summary>
@@ -1160,7 +1102,7 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     /// <param name="user"></param>
     /// <param name="target"></param>
-    public void switchOpponentPokemon(Pokemon user, Pokemon target)
+    private void switchOpponentPokemon(Pokemon user, Pokemon target)
     {
         // Switch board roles
         var userIndex = opponent.party.IndexOf(user);
