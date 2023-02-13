@@ -6972,7 +6972,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
-    m_InvertInput: 0
+    m_InvertInput: 1
     m_MinValue: 0
     m_MaxValue: 1
     m_Wrap: 0
@@ -8520,7 +8520,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116989524}
-  m_LocalRotation: {x: 0.16727895, y: -0.6750486, z: 0.16126345, w: 0.70022947}
+  m_LocalRotation: {x: 0.1674497, y: -0.67430633, z: 0.16108613, w: 0.7009443}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12649,6 +12649,7 @@ MonoBehaviour:
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
   priceRequirement: 0
+  priceRequirementMessage: You don't have enough money.
   moneyChange: 0
 --- !u!114 &1774450248
 MonoBehaviour:
@@ -12702,6 +12703,7 @@ MonoBehaviour:
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
   priceRequirement: 0
+  priceRequirementMessage: You don't have enough money.
   moneyChange: 0
 --- !u!1 &1780345244
 GameObject:

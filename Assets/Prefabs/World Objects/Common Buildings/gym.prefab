@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6491971644660807895
 Transform:
@@ -172,7 +172,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7940813646996091137
 Transform:
@@ -215,7 +215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: 
   eventType: 0
+  eventStatus: 0
   interactionHint: Open
+  messageName: []
   message: []
   messageSounds: []
   opponent: {fileID: 0}
@@ -228,14 +230,10 @@ MonoBehaviour:
   reactionAnimator: {fileID: 0}
   removeOnReturn: 0
   disableOnReturn: 0
-  altDisableInteractionEvent: {fileID: 0}
-  altDisableInteractionEventName: 
-  alt2DisableInteractionEvent: {fileID: 0}
-  alt2DisableInteractionEventName: 
-  nextInteractionEvent: {fileID: 0}
-  nextInteractionEventName: 
-  nextInteractionEvent2: {fileID: 0}
-  nextInteractionEvent2Name: 
+  dependsOnToSetInactive: []
+  dependsOnToDisable: []
+  dependsOnToEnable: []
+  dependsOnToSetActive: []
   autoTriggerInteractionEvent: {fileID: 0}
   autoTriggerInteractionEventName: 
   options: []
@@ -244,6 +242,9 @@ MonoBehaviour:
   optionSecondTriggerInteractionEvent: {fileID: 0}
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
+  priceRequirement: 0
+  priceRequirementMessage: You don't have enough money.
+  moneyChange: 0
 --- !u!1001 &6491971644231687726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,6 +311,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5aebb55187b28434a91d0e44d5c9de71, type: 3}
       propertyPath: m_Name
       value: gym-89
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5aebb55187b28434a91d0e44d5c9de71, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5aebb55187b28434a91d0e44d5c9de71, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aebb55187b28434a91d0e44d5c9de71, type: 3}
@@ -384,6 +393,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6f2c4382203ae6458b99767c3178c2a, type: 3}
       propertyPath: m_Name
       value: gym-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6f2c4382203ae6458b99767c3178c2a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f6f2c4382203ae6458b99767c3178c2a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6f2c4382203ae6458b99767c3178c2a, type: 3}
@@ -463,6 +480,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-42
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e993f067d8bb1924c8af1673c1a356bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e993f067d8bb1924c8af1673c1a356bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e993f067d8bb1924c8af1673c1a356bd, type: 3}
 --- !u!4 &6742632659281966230 stripped
@@ -536,6 +561,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bb28ea60f3ce6a346a67850a9b2d749d, type: 3}
       propertyPath: m_Name
       value: gym-75
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bb28ea60f3ce6a346a67850a9b2d749d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: bb28ea60f3ce6a346a67850a9b2d749d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb28ea60f3ce6a346a67850a9b2d749d, type: 3}
@@ -615,6 +648,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 665f4437d30362f4d9bb61a8f558dea4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 665f4437d30362f4d9bb61a8f558dea4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665f4437d30362f4d9bb61a8f558dea4, type: 3}
 --- !u!4 &6742632659126164062 stripped
@@ -688,6 +729,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 115e03bb28897284a8531147428be3ca, type: 3}
       propertyPath: m_Name
       value: gym-52
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 115e03bb28897284a8531147428be3ca, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 115e03bb28897284a8531147428be3ca, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 115e03bb28897284a8531147428be3ca, type: 3}
@@ -763,6 +812,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-92
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7fd259332e92ca44b993215469ece0b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 7fd259332e92ca44b993215469ece0b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fd259332e92ca44b993215469ece0b8, type: 3}
 --- !u!4 &6742632659147398413 stripped
@@ -836,6 +893,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3e745b23dc743af48aeb3e5f4edd9fea, type: 3}
       propertyPath: m_Name
       value: gym-88
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e745b23dc743af48aeb3e5f4edd9fea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3e745b23dc743af48aeb3e5f4edd9fea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e745b23dc743af48aeb3e5f4edd9fea, type: 3}
@@ -911,6 +976,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-65
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0d3b39cc3d9694749a723bc1fbe4ea62, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 0d3b39cc3d9694749a723bc1fbe4ea62, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d3b39cc3d9694749a723bc1fbe4ea62, type: 3}
 --- !u!4 &6742632659026015630 stripped
@@ -984,6 +1057,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f58cc34e329d504dbfe8ec1e42e9373, type: 3}
       propertyPath: m_Name
       value: gym-4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f58cc34e329d504dbfe8ec1e42e9373, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6f58cc34e329d504dbfe8ec1e42e9373, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f58cc34e329d504dbfe8ec1e42e9373, type: 3}
@@ -1059,6 +1140,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-57
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3133e288e2e06ab4e8209f55085777ba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3133e288e2e06ab4e8209f55085777ba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3133e288e2e06ab4e8209f55085777ba, type: 3}
 --- !u!4 &6742632658991630213 stripped
@@ -1132,6 +1221,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 695a4b0f78b6ab641a85c2999af4eb18, type: 3}
       propertyPath: m_Name
       value: gym-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 695a4b0f78b6ab641a85c2999af4eb18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 695a4b0f78b6ab641a85c2999af4eb18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 695a4b0f78b6ab641a85c2999af4eb18, type: 3}
@@ -1207,6 +1304,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-60
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73ec61626cc6fa3449458655ec36bd90, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 73ec61626cc6fa3449458655ec36bd90, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ec61626cc6fa3449458655ec36bd90, type: 3}
 --- !u!4 &6742632659010612523 stripped
@@ -1280,6 +1385,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8823dc611c7b5be4f90c888a873527d8, type: 3}
       propertyPath: m_Name
       value: gym-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8823dc611c7b5be4f90c888a873527d8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 8823dc611c7b5be4f90c888a873527d8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8823dc611c7b5be4f90c888a873527d8, type: 3}
@@ -1355,6 +1468,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 092573b4714fef1469b85e8e199ab0dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 092573b4714fef1469b85e8e199ab0dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 092573b4714fef1469b85e8e199ab0dd, type: 3}
 --- !u!4 &6742632658975579087 stripped
@@ -1429,6 +1550,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-22
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37b4c28594637594da6a2f01aa1d51d3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 37b4c28594637594da6a2f01aa1d51d3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37b4c28594637594da6a2f01aa1d51d3, type: 3}
 --- !u!4 &6742632658973262889 stripped
@@ -1502,6 +1631,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3633bc1050f7c4f42b79f20ae450cf63, type: 3}
       propertyPath: m_Name
       value: gym-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3633bc1050f7c4f42b79f20ae450cf63, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3633bc1050f7c4f42b79f20ae450cf63, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3633bc1050f7c4f42b79f20ae450cf63, type: 3}
@@ -1581,6 +1718,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-24
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7cfef4047d1b68a4e9e59a6b8a0ef62e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 7cfef4047d1b68a4e9e59a6b8a0ef62e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cfef4047d1b68a4e9e59a6b8a0ef62e, type: 3}
 --- !u!4 &6742632658930396673 stripped
@@ -1654,6 +1799,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dcbd9acfe6293ee4cac3cb6508922cbe, type: 3}
       propertyPath: m_Name
       value: gym-66
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcbd9acfe6293ee4cac3cb6508922cbe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: dcbd9acfe6293ee4cac3cb6508922cbe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcbd9acfe6293ee4cac3cb6508922cbe, type: 3}
@@ -1729,6 +1882,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-61
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8abd3e9a36ce69442b52d4f66ebde864, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 8abd3e9a36ce69442b52d4f66ebde864, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8abd3e9a36ce69442b52d4f66ebde864, type: 3}
 --- !u!4 &6742632658903191054 stripped
@@ -1802,6 +1963,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af5e71cb952f01841bc320b5fe85eb6f, type: 3}
       propertyPath: m_Name
       value: gym-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af5e71cb952f01841bc320b5fe85eb6f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: af5e71cb952f01841bc320b5fe85eb6f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af5e71cb952f01841bc320b5fe85eb6f, type: 3}
@@ -1877,6 +2046,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-71
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5a6f6e2e6433fee43aaea37b4c5fcd0f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5a6f6e2e6433fee43aaea37b4c5fcd0f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a6f6e2e6433fee43aaea37b4c5fcd0f, type: 3}
 --- !u!4 &6742632658857596379 stripped
@@ -1951,6 +2128,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-80
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 43527b1a91d07fe4f8aaf115cdafc1ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 43527b1a91d07fe4f8aaf115cdafc1ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43527b1a91d07fe4f8aaf115cdafc1ae, type: 3}
 --- !u!4 &6742632658832783431 stripped
@@ -2024,6 +2209,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0ea524d6870f983478771c31bc9052a6, type: 3}
       propertyPath: m_Name
       value: gym-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ea524d6870f983478771c31bc9052a6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 0ea524d6870f983478771c31bc9052a6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea524d6870f983478771c31bc9052a6, type: 3}
@@ -2103,6 +2296,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-18
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e422ddc89ac5059419922f950c575352, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e422ddc89ac5059419922f950c575352, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e422ddc89ac5059419922f950c575352, type: 3}
 --- !u!4 &6742632658812711490 stripped
@@ -2176,6 +2377,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7c637524323d7554692d6a530e07e08b, type: 3}
       propertyPath: m_Name
       value: gym-82
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c637524323d7554692d6a530e07e08b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 7c637524323d7554692d6a530e07e08b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c637524323d7554692d6a530e07e08b, type: 3}
@@ -2251,6 +2460,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-51
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 467000ce83237474594b8e851a5f10eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 467000ce83237474594b8e851a5f10eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 467000ce83237474594b8e851a5f10eb, type: 3}
 --- !u!4 &6742632658728852448 stripped
@@ -2324,6 +2541,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 358f0888c0169f441ac69fe5bdf9d912, type: 3}
       propertyPath: m_Name
       value: gym-34
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 358f0888c0169f441ac69fe5bdf9d912, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 358f0888c0169f441ac69fe5bdf9d912, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 358f0888c0169f441ac69fe5bdf9d912, type: 3}
@@ -2399,6 +2624,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-90
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71ca38cd883ef5a4ca77b6e0e3816fe5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 71ca38cd883ef5a4ca77b6e0e3816fe5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71ca38cd883ef5a4ca77b6e0e3816fe5, type: 3}
 --- !u!4 &6742632658715081158 stripped
@@ -2472,6 +2705,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fbcc9fa2b78a0ca4aac1c0d5eeb77e7a, type: 3}
       propertyPath: m_Name
       value: gym-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbcc9fa2b78a0ca4aac1c0d5eeb77e7a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: fbcc9fa2b78a0ca4aac1c0d5eeb77e7a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbcc9fa2b78a0ca4aac1c0d5eeb77e7a, type: 3}
@@ -2547,6 +2788,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6989c91596d771649b47d5597a4d60eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6989c91596d771649b47d5597a4d60eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6989c91596d771649b47d5597a4d60eb, type: 3}
 --- !u!4 &6742632658626109572 stripped
@@ -2620,6 +2869,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 11eabb91e9b022e4487b921bca008398, type: 3}
       propertyPath: m_Name
       value: gym-70
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11eabb91e9b022e4487b921bca008398, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 11eabb91e9b022e4487b921bca008398, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11eabb91e9b022e4487b921bca008398, type: 3}
@@ -2695,6 +2952,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-14
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b825f27db6038d440a4ca733a489d761, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b825f27db6038d440a4ca733a489d761, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b825f27db6038d440a4ca733a489d761, type: 3}
 --- !u!4 &6742632658455572886 stripped
@@ -2768,6 +3033,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4b7e631c2471a184f92d0adb9e11cd04, type: 3}
       propertyPath: m_Name
       value: gym-56
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b7e631c2471a184f92d0adb9e11cd04, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4b7e631c2471a184f92d0adb9e11cd04, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b7e631c2471a184f92d0adb9e11cd04, type: 3}
@@ -2847,6 +3120,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-48
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f90a22c5fbe85bf44b8825e47112c341, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f90a22c5fbe85bf44b8825e47112c341, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90a22c5fbe85bf44b8825e47112c341, type: 3}
 --- !u!4 &6742632658482813688 stripped
@@ -2920,6 +3201,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4171e5a043431c449bc73198df296758, type: 3}
       propertyPath: m_Name
       value: gym-85
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4171e5a043431c449bc73198df296758, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4171e5a043431c449bc73198df296758, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4171e5a043431c449bc73198df296758, type: 3}
@@ -2995,6 +3284,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9e058ac5790e07f439e9836793c6f069, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 9e058ac5790e07f439e9836793c6f069, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e058ac5790e07f439e9836793c6f069, type: 3}
 --- !u!4 &6742632658425138674 stripped
@@ -3068,6 +3365,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6767165acf2578244a7fc9631e284a48, type: 3}
       propertyPath: m_Name
       value: gym-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6767165acf2578244a7fc9631e284a48, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6767165acf2578244a7fc9631e284a48, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6767165acf2578244a7fc9631e284a48, type: 3}
@@ -3143,6 +3448,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-91
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 121251c812fbf6d43a31685270803c80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 121251c812fbf6d43a31685270803c80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 121251c812fbf6d43a31685270803c80, type: 3}
 --- !u!4 &6742632658387623773 stripped
@@ -3216,6 +3529,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 25f4e7522549bd74bbf0a0f3c8311b76, type: 3}
       propertyPath: m_Name
       value: gym-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 25f4e7522549bd74bbf0a0f3c8311b76, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 25f4e7522549bd74bbf0a0f3c8311b76, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25f4e7522549bd74bbf0a0f3c8311b76, type: 3}
@@ -3295,6 +3616,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-49
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a34d0735d1235d74dacd8a184476c8b6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a34d0735d1235d74dacd8a184476c8b6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a34d0735d1235d74dacd8a184476c8b6, type: 3}
 --- !u!4 &6742632658365352314 stripped
@@ -3369,6 +3698,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9019838c495f514286d983a6f1ff872, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e9019838c495f514286d983a6f1ff872, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9019838c495f514286d983a6f1ff872, type: 3}
 --- !u!4 &6742632658313023563 stripped
@@ -3442,6 +3779,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a66bfb410ab3a9f428bfc71125cc1bad, type: 3}
       propertyPath: m_Name
       value: gym-31
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a66bfb410ab3a9f428bfc71125cc1bad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a66bfb410ab3a9f428bfc71125cc1bad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a66bfb410ab3a9f428bfc71125cc1bad, type: 3}
@@ -3521,6 +3866,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b7eabaf6165a4a4b9f206d2102a15c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 1b7eabaf6165a4a4b9f206d2102a15c7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7eabaf6165a4a4b9f206d2102a15c7, type: 3}
 --- !u!4 &6742632658268938702 stripped
@@ -3594,6 +3947,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f4dc1862a95401c41b525c348dbb3749, type: 3}
       propertyPath: m_Name
       value: gym-47
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4dc1862a95401c41b525c348dbb3749, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f4dc1862a95401c41b525c348dbb3749, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4dc1862a95401c41b525c348dbb3749, type: 3}
@@ -3669,6 +4030,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-96
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ccf131e83c4c934981bcb70a37388a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6ccf131e83c4c934981bcb70a37388a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ccf131e83c4c934981bcb70a37388a4, type: 3}
 --- !u!4 &6742632658217413668 stripped
@@ -3742,6 +4111,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14ad13be012836c4286e041b6a68bd8e, type: 3}
       propertyPath: m_Name
       value: gym-73
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14ad13be012836c4286e041b6a68bd8e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 14ad13be012836c4286e041b6a68bd8e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ad13be012836c4286e041b6a68bd8e, type: 3}
@@ -3821,6 +4198,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-58
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 86e931f55580edf428e6632de6c5c312, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 86e931f55580edf428e6632de6c5c312, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e931f55580edf428e6632de6c5c312, type: 3}
 --- !u!4 &6742632658161224633 stripped
@@ -3894,6 +4279,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 18f5bdb37b530f048af6db830652fc78, type: 3}
       propertyPath: m_Name
       value: gym-67
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18f5bdb37b530f048af6db830652fc78, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 18f5bdb37b530f048af6db830652fc78, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f5bdb37b530f048af6db830652fc78, type: 3}
@@ -3969,6 +4362,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-53
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5c2f087568bdab24ab1fbf5b599e618f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5c2f087568bdab24ab1fbf5b599e618f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2f087568bdab24ab1fbf5b599e618f, type: 3}
 --- !u!4 &6742632658158512924 stripped
@@ -4042,6 +4443,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0d11691dd8b3ad8498dafbe6e5c36e24, type: 3}
       propertyPath: m_Name
       value: gym-74
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0d11691dd8b3ad8498dafbe6e5c36e24, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 0d11691dd8b3ad8498dafbe6e5c36e24, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d11691dd8b3ad8498dafbe6e5c36e24, type: 3}
@@ -4117,6 +4526,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-64
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 155216f668a53db4c85f41b5d9fc1a06, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 155216f668a53db4c85f41b5d9fc1a06, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155216f668a53db4c85f41b5d9fc1a06, type: 3}
 --- !u!4 &6742632658169379525 stripped
@@ -4190,6 +4607,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 72849d80efea4bf4f8ad529dfd4c2c9d, type: 3}
       propertyPath: m_Name
       value: gym-59
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 72849d80efea4bf4f8ad529dfd4c2c9d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 72849d80efea4bf4f8ad529dfd4c2c9d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72849d80efea4bf4f8ad529dfd4c2c9d, type: 3}
@@ -4265,6 +4690,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-55
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 30d8a1b072d35f54f98011c4143af789, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 30d8a1b072d35f54f98011c4143af789, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30d8a1b072d35f54f98011c4143af789, type: 3}
 --- !u!4 &6742632658050268053 stripped
@@ -4338,6 +4771,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 795517bb3db5d3647b7d0aa58313b8b4, type: 3}
       propertyPath: m_Name
       value: gym-95
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 795517bb3db5d3647b7d0aa58313b8b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 795517bb3db5d3647b7d0aa58313b8b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 795517bb3db5d3647b7d0aa58313b8b4, type: 3}
@@ -4413,6 +4854,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-16
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a434dd7ea74185941bf6390db92714f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a434dd7ea74185941bf6390db92714f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a434dd7ea74185941bf6390db92714f9, type: 3}
 --- !u!4 &6742632657995924854 stripped
@@ -4486,6 +4935,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5a1e9c10ed86110469af2f9bbd644d78, type: 3}
       propertyPath: m_Name
       value: gym-63
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5a1e9c10ed86110469af2f9bbd644d78, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5a1e9c10ed86110469af2f9bbd644d78, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a1e9c10ed86110469af2f9bbd644d78, type: 3}
@@ -4561,6 +5018,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-41
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6fb0deab19c7b0143bae40a2877873a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6fb0deab19c7b0143bae40a2877873a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb0deab19c7b0143bae40a2877873a0, type: 3}
 --- !u!4 &6742632657956698393 stripped
@@ -4634,6 +5099,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f88b32b3983cbd44dbdb03435004a273, type: 3}
       propertyPath: m_Name
       value: gym-77
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f88b32b3983cbd44dbdb03435004a273, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f88b32b3983cbd44dbdb03435004a273, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88b32b3983cbd44dbdb03435004a273, type: 3}
@@ -4713,6 +5186,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fcf1567b062536341b6f8c187777aef7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: fcf1567b062536341b6f8c187777aef7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf1567b062536341b6f8c187777aef7, type: 3}
 --- !u!4 &6742632657885914968 stripped
@@ -4786,6 +5267,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6b73eb2486f18e44eb4a4d18787d3b2d, type: 3}
       propertyPath: m_Name
       value: gym-35
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b73eb2486f18e44eb4a4d18787d3b2d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6b73eb2486f18e44eb4a4d18787d3b2d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b73eb2486f18e44eb4a4d18787d3b2d, type: 3}
@@ -4861,6 +5350,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-23
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7921ca0ed91cc61409cfaecbc80a16f5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 7921ca0ed91cc61409cfaecbc80a16f5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7921ca0ed91cc61409cfaecbc80a16f5, type: 3}
 --- !u!4 &6742632657887069919 stripped
@@ -4934,6 +5431,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba5e696026767c84d8e11fea4c5818f9, type: 3}
       propertyPath: m_Name
       value: gym-20
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba5e696026767c84d8e11fea4c5818f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: ba5e696026767c84d8e11fea4c5818f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba5e696026767c84d8e11fea4c5818f9, type: 3}
@@ -5009,6 +5514,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-11
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2de72ceb8ca21740a2aceaadccc4cb6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: d2de72ceb8ca21740a2aceaadccc4cb6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2de72ceb8ca21740a2aceaadccc4cb6, type: 3}
 --- !u!4 &6742632657864216907 stripped
@@ -5082,6 +5595,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a7c75bb3c1439d4db519a3bfd28473e, type: 3}
       propertyPath: m_Name
       value: gym-21
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a7c75bb3c1439d4db519a3bfd28473e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 8a7c75bb3c1439d4db519a3bfd28473e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a7c75bb3c1439d4db519a3bfd28473e, type: 3}
@@ -5161,6 +5682,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-25
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9496b067f20989a46b91b2d2ab03ebfa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 9496b067f20989a46b91b2d2ab03ebfa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9496b067f20989a46b91b2d2ab03ebfa, type: 3}
 --- !u!4 &6742632657815817058 stripped
@@ -5234,6 +5763,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3b55ffaf28d0a544c97322cfd1a86a65, type: 3}
       propertyPath: m_Name
       value: gym-50
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b55ffaf28d0a544c97322cfd1a86a65, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3b55ffaf28d0a544c97322cfd1a86a65, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b55ffaf28d0a544c97322cfd1a86a65, type: 3}
@@ -5309,6 +5846,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-76
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b85b6c9c0d6793540b73131178b9342c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b85b6c9c0d6793540b73131178b9342c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b85b6c9c0d6793540b73131178b9342c, type: 3}
 --- !u!4 &6742632657761642885 stripped
@@ -5382,6 +5927,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d564e30d07bd7f3469591fb24ff65ef3, type: 3}
       propertyPath: m_Name
       value: gym-81
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d564e30d07bd7f3469591fb24ff65ef3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: d564e30d07bd7f3469591fb24ff65ef3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d564e30d07bd7f3469591fb24ff65ef3, type: 3}
@@ -5457,6 +6010,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-32
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dbde1cc492a600645b66765daedbb872, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: dbde1cc492a600645b66765daedbb872, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbde1cc492a600645b66765daedbb872, type: 3}
 --- !u!4 &6742632657730790055 stripped
@@ -5530,6 +6091,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1f30584bb3bfc464e8a70d5ef16f7e70, type: 3}
       propertyPath: m_Name
       value: gym-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f30584bb3bfc464e8a70d5ef16f7e70, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 1f30584bb3bfc464e8a70d5ef16f7e70, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f30584bb3bfc464e8a70d5ef16f7e70, type: 3}
@@ -5605,6 +6174,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-84
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 912f699a1d40c32419621c12bdfd1d5e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 912f699a1d40c32419621c12bdfd1d5e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 912f699a1d40c32419621c12bdfd1d5e, type: 3}
 --- !u!4 &6742632657691061839 stripped
@@ -5678,6 +6255,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8fd94fdd5e1a172478057ff7c93a4d8a, type: 3}
       propertyPath: m_Name
       value: gym-86
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8fd94fdd5e1a172478057ff7c93a4d8a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 8fd94fdd5e1a172478057ff7c93a4d8a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd94fdd5e1a172478057ff7c93a4d8a, type: 3}
@@ -5753,6 +6338,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-44
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d2d847bbea22e94ba004730bdbe9595, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 9d2d847bbea22e94ba004730bdbe9595, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d2d847bbea22e94ba004730bdbe9595, type: 3}
 --- !u!4 &6742632657661181649 stripped
@@ -5826,6 +6419,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 80699214102ebe24dba372ff88f92912, type: 3}
       propertyPath: m_Name
       value: gym-68
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 80699214102ebe24dba372ff88f92912, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 80699214102ebe24dba372ff88f92912, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80699214102ebe24dba372ff88f92912, type: 3}
@@ -5905,6 +6506,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-46
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4f8909adf070dfc498afd86358ada823, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4f8909adf070dfc498afd86358ada823, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f8909adf070dfc498afd86358ada823, type: 3}
 --- !u!4 &6742632657631530907 stripped
@@ -5978,6 +6587,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 616286582e531bd4fa42f7920f5ac030, type: 3}
       propertyPath: m_Name
       value: gym-72
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 616286582e531bd4fa42f7920f5ac030, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 616286582e531bd4fa42f7920f5ac030, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 616286582e531bd4fa42f7920f5ac030, type: 3}
@@ -6053,6 +6670,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-62
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7977bd988965c143b647c46ef1cf289, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e7977bd988965c143b647c46ef1cf289, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7977bd988965c143b647c46ef1cf289, type: 3}
 --- !u!4 &6742632657598347123 stripped
@@ -6126,6 +6751,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 93afca1a7e54c0c46806f39b8411c5b6, type: 3}
       propertyPath: m_Name
       value: gym-93
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93afca1a7e54c0c46806f39b8411c5b6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 93afca1a7e54c0c46806f39b8411c5b6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93afca1a7e54c0c46806f39b8411c5b6, type: 3}
@@ -6201,6 +6834,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-69
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4ca14e2ecdf0744fa65203bd1de3840, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a4ca14e2ecdf0744fa65203bd1de3840, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4ca14e2ecdf0744fa65203bd1de3840, type: 3}
 --- !u!4 &6742632657575829678 stripped
@@ -6274,6 +6915,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2ea96a32ec6cef244a80a58f2af62f29, type: 3}
       propertyPath: m_Name
       value: gym-26
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2ea96a32ec6cef244a80a58f2af62f29, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 2ea96a32ec6cef244a80a58f2af62f29, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ea96a32ec6cef244a80a58f2af62f29, type: 3}
@@ -6349,6 +6998,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-19
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ec33363fd471ae489973d4fcf10da10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4ec33363fd471ae489973d4fcf10da10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ec33363fd471ae489973d4fcf10da10, type: 3}
 --- !u!4 &6742632657571076561 stripped
@@ -6422,6 +7079,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 90de10772722c624ebe24dc84a95be85, type: 3}
       propertyPath: m_Name
       value: gym-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 90de10772722c624ebe24dc84a95be85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 90de10772722c624ebe24dc84a95be85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90de10772722c624ebe24dc84a95be85, type: 3}
@@ -6497,6 +7162,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-78
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5cf91942eba28843bdefe18c6e3a9c5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c5cf91942eba28843bdefe18c6e3a9c5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5cf91942eba28843bdefe18c6e3a9c5, type: 3}
 --- !u!4 &6742632657513610700 stripped
@@ -6570,6 +7243,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 203456bd942ea184581b6430fcd03598, type: 3}
       propertyPath: m_Name
       value: gym-54
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 203456bd942ea184581b6430fcd03598, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 203456bd942ea184581b6430fcd03598, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 203456bd942ea184581b6430fcd03598, type: 3}
@@ -6645,6 +7326,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-28
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3968b2a5309bf464298320aa2b47993e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3968b2a5309bf464298320aa2b47993e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3968b2a5309bf464298320aa2b47993e, type: 3}
 --- !u!4 &6742632657530825867 stripped
@@ -6718,6 +7407,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 681b668f0e5a60c4c9f4dd49f5011bec, type: 3}
       propertyPath: m_Name
       value: gym-79
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 681b668f0e5a60c4c9f4dd49f5011bec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 681b668f0e5a60c4c9f4dd49f5011bec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 681b668f0e5a60c4c9f4dd49f5011bec, type: 3}
@@ -6793,6 +7490,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-37
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eecfdaaa9f5d32949bd4133e7bc16b63, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: eecfdaaa9f5d32949bd4133e7bc16b63, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eecfdaaa9f5d32949bd4133e7bc16b63, type: 3}
 --- !u!4 &6742632657512223449 stripped
@@ -6866,6 +7571,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 11489a6862b95f64aba75e603bd91290, type: 3}
       propertyPath: m_Name
       value: gym-27
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11489a6862b95f64aba75e603bd91290, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 11489a6862b95f64aba75e603bd91290, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11489a6862b95f64aba75e603bd91290, type: 3}
@@ -6941,6 +7654,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-30
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 339932f43a2960d4a98e43ab1f19302b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 339932f43a2960d4a98e43ab1f19302b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 339932f43a2960d4a98e43ab1f19302b, type: 3}
 --- !u!4 &6742632657349576528 stripped
@@ -7015,6 +7736,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-87
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8a124ed1a004e3438e9d09e0d2811ea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b8a124ed1a004e3438e9d09e0d2811ea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a124ed1a004e3438e9d09e0d2811ea, type: 3}
 --- !u!4 &6742632657339164095 stripped
@@ -7088,6 +7817,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4e9d52b85fb32b242b100a4514d7d18a, type: 3}
       propertyPath: m_Name
       value: gym-6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4e9d52b85fb32b242b100a4514d7d18a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4e9d52b85fb32b242b100a4514d7d18a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9d52b85fb32b242b100a4514d7d18a, type: 3}
@@ -7167,6 +7904,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-33
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5eb627c5daeadb741a82fed0029eb990, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5eb627c5daeadb741a82fed0029eb990, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eb627c5daeadb741a82fed0029eb990, type: 3}
 --- !u!4 &6742632657291668334 stripped
@@ -7245,6 +7990,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-17
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9eee29e68580efe45855da4e4c38dc30, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 9eee29e68580efe45855da4e4c38dc30, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eee29e68580efe45855da4e4c38dc30, type: 3}
 --- !u!4 &6742632657299643392 stripped
@@ -7318,6 +8071,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e6690df8a9d4e424c8f5c6bcbaa053b0, type: 3}
       propertyPath: m_Name
       value: gym-0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6690df8a9d4e424c8f5c6bcbaa053b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e6690df8a9d4e424c8f5c6bcbaa053b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6690df8a9d4e424c8f5c6bcbaa053b0, type: 3}
@@ -7393,6 +8154,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gym-83
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d93e81534c227be45b843ae9fce9b2b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: d93e81534c227be45b843ae9fce9b2b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93e81534c227be45b843ae9fce9b2b8, type: 3}
 --- !u!4 &6742632657214002321 stripped
@@ -7466,6 +8235,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f71dbc10b80adfb47bb077b7ca784a7e, type: 3}
       propertyPath: m_Name
       value: gym-94
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f71dbc10b80adfb47bb077b7ca784a7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f71dbc10b80adfb47bb077b7ca784a7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f71dbc10b80adfb47bb077b7ca784a7e, type: 3}

@@ -42,6 +42,21 @@ public class IOpponentStrategy : MonoBehaviour
     /// </summary>
     protected List<OpponentCardMove> discard;
 
+    /// <summary>
+    /// The number of cards a user can play per turn
+    /// </summary>
+    private int numberOfCardsCanPlay = 1;
+
+    /// <summary>
+    /// The number of cards an opponent can play for this current turn
+    /// </summary>
+    public int remainingNumberOfCardsCanPlay = 1;
+
+    /// <summary>
+    /// Once a card is played this turn, this pokemon is the only one allowed to play cards
+    /// </summary>
+    public Pokemon pokemonAllowedToPlayCards = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,9 +148,6 @@ public class IOpponentStrategy : MonoBehaviour
 
     public virtual string computeOpponentsNextMove()
     {
-        // Draw a card to hand
-        drawCard();
-
         // Compute targets for all cards
         hand.ForEach(move => move.selectedTargetPokemon = getSelectedTarget(move, battleGameBoard));
 
@@ -199,9 +211,9 @@ public class IOpponentStrategy : MonoBehaviour
         // Initialize priority score to 5 for cards
         var turnPriority = 5f;
 
-        // Score Mod: +3 if the card is super effective against the target
+        // Score Mod: +3 if the damage card is super effective against the target
         var superEffectiveAgainstTarget = allTargets.Any(target => TypeChart.getEffectiveness(move.card, target) > 1);
-        if (superEffectiveAgainstTarget) turnPriority += 3;
+        if (move.card.damage > 0 && superEffectiveAgainstTarget) turnPriority += 3;
 
         // Score Mod: +1 x energy count
         turnPriority += move.card.prefabCost.Count;
@@ -216,6 +228,13 @@ public class IOpponentStrategy : MonoBehaviour
             return hasStatNotInitializedYet;
         });
         if (targetIsMissingStatCardHas) turnPriority += 1;
+
+        // Score Mod: -2 if the move only modifies special and the target doesn't have any special cards
+        var targetCanUseSpecial = allTargets.Any(target => target.initDeck.Any(c => c.overrideFunctionality != null && c.overrideFunctionality.usesSpecialStat()));
+        if (move.card.damage == 0 && move.card.specialStat > 0 && !targetCanUseSpecial) turnPriority -= 2;
+
+        // Score Mod: +1 if there is a play another card
+        if (move.card.playAnotherCard) turnPriority += 1;
 
         // Score Mod: +0-2 random value
         if (includedRandomModifier) turnPriority += Random.Range(0f, 2f);
@@ -246,12 +265,26 @@ public class IOpponentStrategy : MonoBehaviour
         return pokemonToAddEnergyTo;
     }
 
+    public virtual string opponentPrep()
+    {
+        // Refresh card count
+        remainingNumberOfCardsCanPlay = numberOfCardsCanPlay;
+        pokemonAllowedToPlayCards = null;
+
+        // Draw a card to hand
+        drawCard();
+
+        return computeOpponentsNextMove();
+    }
+
     /// <summary>
     /// Call to play the opponents selected card
     /// </summary>
     /// <returns></returns>
     public async virtual Task opponentPlay()
     {
+
+
         // Check that move can still be used after player's turn
         if (nextOpponentMove == null || !nextOpponentMove.canUseMove)
         {
@@ -278,34 +311,43 @@ public class IOpponentStrategy : MonoBehaviour
             await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " switched in.");
         }
 
-        // Check if all targets are fainted
-        if (nextOpponentMove.card.owner.isFainted)
+        while (remainingNumberOfCardsCanPlay > 0 && nextOpponentMove != null)
         {
-            var faintedMessage = nextOpponentMove.card.owner.pokemonName + " fainted before it could attack.";
-            await battleGameBoard.worldDialog.ShowMessageAsync(faintedMessage);
-            return;
+
+            // Check if all targets are fainted
+            if (nextOpponentMove.card.owner.isFainted)
+            {
+                var faintedMessage = nextOpponentMove.card.owner.pokemonName + " fainted before it could attack.";
+                await battleGameBoard.worldDialog.ShowMessageAsync(faintedMessage);
+                return;
+            }
+
+            // Annouce and show the card
+            nextOpponentMove.card.Translate(battleGameBoard.oppPlayedCardLocation.transform.position, "opponentPlay1");
+            await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " used " + nextOpponentMove.card.cardName);
+            nextOpponentMove.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "opponentPlay2");
+
+            // Play the card
+            hand.Remove(nextOpponentMove);
+            nextOpponentMove.card.owner.hudAnimator.SetTrigger("onMoveHighlight");
+            nextOpponentMove.card.play(nextOpponentMove.card.owner, nextOpponentMove.selectedTargetPokemon);
+
+            // discard 1 energy to play
+            if (!nextOpponentMove.card.keepEnergiesOnPlay)
+            {
+                nextOpponentMove.card.owner.DiscardEnergy(nextOpponentMove.card.owner.attachedEnergy[0]);
+                //await battleGameBoard.worldDialog.ShowMessageAsync("Energy discared to play " + nextOpponentMove.card.cardName);
+            }
+
+            // Track the move and move to discard
+            lastMoveUsed = nextOpponentMove;
+            cardDiscard(nextOpponentMove, nextOpponentMove.card.owner, true);
+
+            // Update remaining number of cards to play
+            remainingNumberOfCardsCanPlay--;
+            pokemonAllowedToPlayCards = nextOpponentMove.card.owner;
+            computeOpponentsNextMove();
         }
-
-        // Annouce and show the card
-        nextOpponentMove.card.Translate(battleGameBoard.oppPlayedCardLocation.transform.position, "opponentPlay1");
-        await battleGameBoard.worldDialog.ShowMessageAsync(nextOpponentMove.card.owner.pokemonName + " used " + nextOpponentMove.card.cardName);
-        nextOpponentMove.card.Translate(battleGameBoard.oppDeckLocation.transform.position, "opponentPlay2");
-
-        // Play the card
-        hand.Remove(nextOpponentMove);
-        nextOpponentMove.card.owner.hudAnimator.SetTrigger("onMoveHighlight");
-        nextOpponentMove.card.play(nextOpponentMove.card.owner, nextOpponentMove.selectedTargetPokemon);
-
-        // discard 1 energy to play
-        if (!nextOpponentMove.card.keepEnergiesOnPlay)
-        {
-            nextOpponentMove.card.owner.DiscardEnergy(nextOpponentMove.card.owner.attachedEnergy[0]);
-            //await battleGameBoard.worldDialog.ShowMessageAsync("Energy discared to play " + nextOpponentMove.card.cardName);
-        }
-
-        // Track the move and move to discard
-        lastMoveUsed = nextOpponentMove;
-        cardDiscard(nextOpponentMove, nextOpponentMove.card.owner, true);
 
         // Add energy to random target
         var energyStatRandomTarget = getPokemonToAddEnergyTo();

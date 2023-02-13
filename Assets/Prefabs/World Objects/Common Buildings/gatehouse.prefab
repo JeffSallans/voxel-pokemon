@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &445030461685319422
 Transform:
@@ -107,6 +107,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gatehouse-1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6673a8301f2e0a549af892f09da12280, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6673a8301f2e0a549af892f09da12280, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6673a8301f2e0a549af892f09da12280, type: 3}
 --- !u!1 &787137116343528919 stripped
@@ -174,6 +182,7 @@ MonoBehaviour:
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
   priceRequirement: 0
+  priceRequirementMessage: You don't have enough money.
   moneyChange: 0
 --- !u!1001 &445030460724354398
 PrefabInstance:
@@ -233,6 +242,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5373b5e8707609c4fb97d3a592e32dbc, type: 3}
       propertyPath: m_Name
       value: gatehouse-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5373b5e8707609c4fb97d3a592e32dbc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5373b5e8707609c4fb97d3a592e32dbc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5373b5e8707609c4fb97d3a592e32dbc, type: 3}
@@ -300,6 +317,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gatehouse-0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98c88beea4fdd6b4fa16fc45dda443b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 98c88beea4fdd6b4fa16fc45dda443b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c88beea4fdd6b4fa16fc45dda443b1, type: 3}
 --- !u!4 &119250444173469074 stripped
@@ -366,6 +391,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: gatehouse-4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c6ad9827df01b624eb3d04864ab8c25c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c6ad9827df01b624eb3d04864ab8c25c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ad9827df01b624eb3d04864ab8c25c, type: 3}
 --- !u!1 &787137115468610416 stripped
@@ -378,6 +411,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c6ad9827df01b624eb3d04864ab8c25c, type: 3}
   m_PrefabInstance: {fileID: 445030461719512609}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1508678254690132195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787137115468610416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 6.580684, z: 9.835016}
+  m_Center: {x: 2.695435e-14, y: 4.5545254, z: -7.612879}
 --- !u!114 &6980187130937965792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,17 +466,5 @@ MonoBehaviour:
   optionSecondTriggerInteractionEventName: 
   pokemonToAdd: 
   priceRequirement: 0
+  priceRequirementMessage: You don't have enough money.
   moneyChange: 0
---- !u!65 &1508678254690132195
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787137115468610416}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 6.580684, z: 9.835016}
-  m_Center: {x: 2.695435e-14, y: 4.5545254, z: -7.612879}

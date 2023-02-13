@@ -300,10 +300,10 @@ public class Card : MonoBehaviour
             if (inDeckBuilderWorkflow) { return true; }
 
             // Check if there are any remaining card plays this turn
-            if (isPlayerPokemon &&  battleGameBoard?.remainingNumberOfCardsCanPlay == 0) return false;
+            if (remainingNumberOfCardsCanPlay == 0) return false;
 
             // Check if the select active pokemon
-            if (isPlayerPokemon && battleGameBoard?.GetPokemonAllowedToPlayCards() != null && battleGameBoard?.GetPokemonAllowedToPlayCards() != owner) return false;
+            if (pokemonAllowedToPlayCards != null && pokemonAllowedToPlayCards != owner) return false;
 
             // Can't play if fainted
             if (owner != null && owner.isFainted) return false;
@@ -534,6 +534,35 @@ public class Card : MonoBehaviour
         {
             if (isPlayerPokemon) return battleGameBoard.opponentActivePokemon;
             return battleGameBoard.activePokemon;
+        }
+    }
+
+    /// <summary>
+    /// The active pokemon on the other team
+    /// </summary>
+    public int remainingNumberOfCardsCanPlay
+    {
+        get
+        {
+            if (isPlayerPokemon) return battleGameBoard.remainingNumberOfCardsCanPlay;
+            return battleGameBoard.opponent.opponentStrategyBot.remainingNumberOfCardsCanPlay;
+        }
+        set
+        {
+            if (isPlayerPokemon) battleGameBoard.remainingNumberOfCardsCanPlay = value;
+            battleGameBoard.opponent.opponentStrategyBot.remainingNumberOfCardsCanPlay = value;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public Pokemon pokemonAllowedToPlayCards
+    {
+        get
+        {
+            if (isPlayerPokemon) return battleGameBoard.pokemonAllowedToPlayCards;
+            return battleGameBoard.opponent.opponentStrategyBot.pokemonAllowedToPlayCards;
         }
     }
 
@@ -1057,7 +1086,7 @@ public class Card : MonoBehaviour
         // Allow another card to be played
         if (playAnotherCard)
         {
-            battleGameBoard.remainingNumberOfCardsCanPlay++;
+            remainingNumberOfCardsCanPlay++;
         }
 
         return attackMissed;

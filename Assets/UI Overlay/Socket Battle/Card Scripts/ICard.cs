@@ -71,6 +71,15 @@ public abstract class ICard : MonoBehaviour
     public virtual void onThisCardPlayed(Card thisCard, BattleGameBoard battleGameBoard, Pokemon user, Pokemon target) { }
 
     /// <summary>
+    /// Returns true if the override requires a special stat
+    /// </summary>
+    /// <returns></returns>
+    public virtual bool usesSpecialStat()
+    {
+        return false;
+    }
+
+    /// <summary>
     /// Returns true if the given card is in the players hand
     /// </summary>
     /// <param name="card"></param>

@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7688516819618791343
 Transform:
@@ -109,6 +109,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pokemon-center-floor-1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ecc650b7fe689c64f9b999bf8a721156, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: ecc650b7fe689c64f9b999bf8a721156, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecc650b7fe689c64f9b999bf8a721156, type: 3}
 --- !u!4 &7870497963505011946 stripped
@@ -178,6 +186,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ff0f9da3d71a0b848a9d4b5e3a1bb98f, type: 3}
       propertyPath: m_Name
       value: pokemon-center-floor-0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ff0f9da3d71a0b848a9d4b5e3a1bb98f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: ff0f9da3d71a0b848a9d4b5e3a1bb98f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff0f9da3d71a0b848a9d4b5e3a1bb98f, type: 3}

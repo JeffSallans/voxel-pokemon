@@ -22,13 +22,11 @@ public class BattleGameBoardTutorial : BattleGameBoard
     public string endTurnInstruction;
     public bool showedEndTurnInstruction = false;
 
-    public string cardButtonInstruction;
-    public string cardDiscardInstruction;
-    public bool showedCardButtonInstruction = false;
-
-    public string oppAttackInstruction;
     public string typeInstruction;
     public bool showedTypeInstruction = false;
+
+    public string fourthEnergyInstruction;
+    public bool showedFourthEnergyInstruction = false;
 
     /// <summary>
     /// Assumes player and opponent are set before calling this
@@ -79,7 +77,7 @@ public class BattleGameBoardTutorial : BattleGameBoard
             worldDialog.ShowMessage(gameStartInstruction, (t) => {
 
                 // Trigger opponent first move
-                opponent.opponentStrategyBot.computeOpponentsNextMove();
+                opponent.opponentStrategyBot.opponentPrep();
 
                 // Trigger draw
                 onDraw(true);
@@ -116,21 +114,13 @@ public class BattleGameBoardTutorial : BattleGameBoard
                 return true;
             });
         }
-        else if (!showedCardButtonInstruction)
-        {
-            worldDialog.ShowMessage(cardButtonInstruction, (t) =>
-            {
-                worldDialog.ShowMessage(cardDiscardInstruction, (t) => { showedCardButtonInstruction = true; onDrawHelper(initialDraw); return true; });
-                return true;
-            });
-        }
         else if (!showedTypeInstruction)
         {
-            worldDialog.ShowMessage(oppAttackInstruction, (t) =>
-            {
-                worldDialog.ShowMessage(typeInstruction, (t) => { showedTypeInstruction = true; onDrawHelper(initialDraw); return true; });
-                return true;
-            });
+            worldDialog.ShowMessage(typeInstruction, (t) => { showedTypeInstruction = true; onDrawHelper(initialDraw); return true; });
+        }
+        else if (!showedFourthEnergyInstruction)
+        {
+            worldDialog.ShowMessage(fourthEnergyInstruction, (t) => { showedFourthEnergyInstruction = true; onDrawHelper(initialDraw); return true; });
         }
         else
         {

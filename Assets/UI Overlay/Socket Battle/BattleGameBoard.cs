@@ -565,7 +565,7 @@ public class BattleGameBoard : MonoBehaviour
             }
 
             // Trigger opponent first move
-            opponent.opponentStrategyBot.computeOpponentsNextMove();
+            opponent.opponentStrategyBot.opponentPrep();
 
             // Trigger draw
             onDraw(true);
@@ -970,7 +970,7 @@ public class BattleGameBoard : MonoBehaviour
 
     public virtual void onOpponentTurnEnd() {
         // Compute next move
-        var message = opponent.opponentStrategyBot.computeOpponentsNextMove();
+        var message = opponent.opponentStrategyBot.opponentPrep();
 
         System.Func<bool, bool> callback = (t) =>
         {

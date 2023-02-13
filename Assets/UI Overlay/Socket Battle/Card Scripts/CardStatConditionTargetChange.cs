@@ -41,6 +41,11 @@ public class CardStatConditionTargetChange : ICard
 
     public override bool overridesPlayFunc() { return false; }
 
+    public override bool usesSpecialStat()
+    {
+        return specialCost > 0;
+    }
+
     /// <summary>
     /// Set base stats
     /// </summary>
