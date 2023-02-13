@@ -361,7 +361,15 @@ public class BattleGameBoard : MonoBehaviour
     /// </summary>
     public bool playerHasWon = true;
 
+    /// <summary>
+    /// Manages the messaging of card events to all cards (player and opponent) for special card effects
+    /// </summary>
     public CardEventService cardEventService;
+
+    /// <summary>
+    /// Null if any pokemon can play cards, otherwise this is the pokemon that has been selected to play
+    /// </summary>
+    public Pokemon pokemonAllowedToPlayCards = null;
 
     // Triggers before start https://www.monkeykidgc.com/2020/07/unity-lifecycle-awake-vs-onenable-vs-start.html
     void Awake()

@@ -5,10 +5,6 @@ using System.Linq;
 
 public class BattleGameBoardForge : BattleGameBoard
 {
-
-
-    public Pokemon pokemonAllowedToPlayCards = null;
-
     /// <summary>
     /// The combined deck of all cards
     /// </summary>

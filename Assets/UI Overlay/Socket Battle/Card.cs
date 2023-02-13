@@ -544,6 +544,7 @@ public class Card : MonoBehaviour
     {
         get
         {
+            if (battleGameBoard == null) return 0;
             if (isPlayerPokemon) return battleGameBoard.remainingNumberOfCardsCanPlay;
             return battleGameBoard.opponent.opponentStrategyBot.remainingNumberOfCardsCanPlay;
         }
@@ -555,12 +556,13 @@ public class Card : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Null if any pokemon can play cards, otherwise this is the pokemon that has been selected to play
     /// </summary>
     public Pokemon pokemonAllowedToPlayCards
     {
         get
         {
+            if (battleGameBoard == null) return null;
             if (isPlayerPokemon) return battleGameBoard.pokemonAllowedToPlayCards;
             return battleGameBoard.opponent.opponentStrategyBot.pokemonAllowedToPlayCards;
         }

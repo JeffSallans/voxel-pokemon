@@ -162,7 +162,7 @@ public class StatusEffect
     private void onTurnEndHelper()
     {
         turnsLeft--;
-        if (statType == "poison")
+        if (statType == "poison" && !targetPokemon.isFainted)
         {
             targetPokemon.health -= 10;
             targetPokemon.modelAnimator.SetTrigger("onDebuff");
