@@ -21,7 +21,17 @@ public class OpponentDeck : MonoBehaviour
     /// <summary>
     /// The possible moves for this opponent to battle with
     /// </summary>
-    public List<Card> initDeck;
+    public List<Card> initDeck
+    {
+        get
+        {
+            var _initDeck = new List<Card>();
+            party.ForEach(p => {
+                _initDeck.AddRange(p.initDeck);
+            });
+            return _initDeck;
+        }
+    }
 
 
     public IOpponentStrategy opponentStrategyBot;
@@ -37,13 +47,6 @@ public class OpponentDeck : MonoBehaviour
         if (party.Count == 0)
         {
             party = gameObject.GetComponentsInChildren<Pokemon>().ToList();
-        }
-        if (initDeck.Count == 0)
-        {
-            initDeck = new List<Card>();
-            party.ForEach(p => {
-                initDeck.AddRange(p.initDeck);
-            });
         }
 
         // Turn off all possible energies

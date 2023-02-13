@@ -164,6 +164,18 @@ public class BattleGameBoard : MonoBehaviour
     }
 
     /// <summary>
+    /// All opponent cards to trigger
+    /// </summary>
+    public List<Card> allOppCards
+    {
+        get
+        {
+            var cards = opponent.party.SelectMany(p => p.initDeck);
+            return cards.ToList();
+        }
+    }
+
+    /// <summary>
     /// All the pokemon events to trigger
     /// </summary>
     public List<Pokemon> allPokemon

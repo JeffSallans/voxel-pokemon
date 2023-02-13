@@ -66,11 +66,12 @@ public class BattleGameBoardTutorial : BattleGameBoard
         });
 
         // Send event to all energy, cards, and pokemon
+        cardEventService.onBattleStart(this);
         allPokemon.ForEach(p => p.onBattleStart(this));
         allPartyCards.ForEach(c => c.onBattleStart(this));
         allEnergy.ForEach(e => e.onBattleStart(this));
-        opponent.opponentStrategyBot.onBattleStart(this);
         opponent.initDeck.ForEach(m => m.onBattleStart(this));
+        opponent.opponentStrategyBot.onBattleStart(this);
 
         worldDialog.ShowMessage(opponent.opponentName + " wants to battle.", (t) => {
 
